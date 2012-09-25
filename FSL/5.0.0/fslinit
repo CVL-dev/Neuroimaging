@@ -1,0 +1,11 @@
+#!/bin/sh
+
+module load openmpi
+
+FSLDIR=`which fsl | sed "s/\/bin\/fsl//g"`
+
+export FSLDIR
+
+source ${FSLDIR}/etc/fslconf/fsl.sh
+
+${FSLDIR}/bin/fsl

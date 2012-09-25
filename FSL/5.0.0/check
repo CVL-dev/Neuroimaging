@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# CVL build system to check or configure building process after installation.
+#
+
+SOURCE_DIR=$1
+BUILD_DIR=$2
+INSTALL_DIR=$3
+
+cp -r ${BUILD_DIR}/bin ${INSTALL_DIR}
+cp -r ${BUILD_DIR}/lib ${INSTALL_DIR}
+cp -r ${BUILD_DIR}/data ${INSTALL_DIR}
+cp -r ${BUILD_DIR}/etc ${INSTALL_DIR}
+cp -r ${BUILD_DIR}/extras ${INSTALL_DIR}
+cp -r ${BUILD_DIR}/tcl ${INSTALL_DIR}
+cp ${BUILD_DIR}/LICENCE ${INSTALL_DIR}
+cp -r ${BUILD_DIR}/doc ${INSTALL_DIR}
+cp ${SOURCE_DIR}/license ${INSTALL_DIR}/bin
+cp ${SOURCE_DIR}/fslinit ${INSTALL_DIR}/bin
+
+# Copy module validation script to package directory.
+if [ ! -f ${INSTALL_DIR}/validate_module.sh ]; then
+    cp ${SOURCE_DIR}/validate_module.sh ${INSTALL_DIR}
+fi

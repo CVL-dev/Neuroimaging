@@ -1,0 +1,9 @@
+Copyright (C) 2012 Victorian Partnership for Advanced Computing (www.vpac.org), email: info@vpac.org
+
+This directory and subdirectory contains content derived from VPAC systems.  It is provided to the MASSIVE Program in accordance with the MASSIVE Operating Service Provider agreement.
+
+Victorian Partnership for Advanced Computing (www.vpac.org), email: info@vpac.org
+
+Questions can be directed to Paul McIntosh : paulmc@vpac.org
+
+2 July 2012

@@ -1,0 +1,252 @@
+#!/bin/sh
+#
+# CVL build system to configure source parameters.
+#
+#
+# Module file description.
+#
+ModuleFileDescription="Application"
+
+#
+# Package release number.
+#
+PACKAGE_RELEASE="0.1"
+
+#
+# For source package, set it "ON", for binary package, set it "OFF".
+#
+SOURCE_BUILD_FLAG="ON"
+
+#
+# Source configure file.
+#
+CONFIGURE="build"
+
+#
+# Build configuration set up.
+#
+function ConfigurationCommand() 
+{
+    SOURCE=$1
+    INSTALL=$2
+
+    ${SOURCE}/build
+}
+
+#
+# Make command
+#
+function MakeCommand()
+{
+    echo
+}
+
+#
+# Make install command
+#
+function InstallCommand()
+{
+    echo
+}
+
+#
+# Source patch command.
+#
+function PatchCommand()
+{
+    SourceDirectory=$1
+    BuildSourceDirectory=$2
+    InstallDirectory=$3
+
+    echo
+}
+
+#
+# Module file environment setting, multipe lines should be delimited by ";".
+# Note: Certian characters such as " and $ need be escapted by "\"
+#
+#EnvironmentModuleList="
+#prepend-path --delim \" \" JPEG_CFLAGS -I/usr/local/$name/$ver/include;
+#prepend-path --delim \" \" JPEG_LDFLAGS -L/usr/local/$name/$ver/lib;
+#prepend-path --delim \" \" JPEG_LDFLAGS -lturbojpeg\n
+#prepend-path --delim \" \" CPPFLAGS -I/usr/local/$name/$ver/include;
+#prepend-path --delim \" \" LDFLAGS -L/usr/local/$name/$ver/lib"
+
+#
+# Install configuration files to package in format of "<Source>:<Destination>",
+# multiple lines must be delimeted by ";". Source files must be available in
+# current source directory.
+#
+#PackageInstallFileList=
+
+#
+# Install configuration directories to package in format of 
+# "<Source>:<Destination>", multiple lines must be delimeted by ";". 
+# Source files must be available in current source directory.
+#
+#PackageInstallDirectoryList=
+
+#
+# Set menu layout in format <project_type>:<application_menu>. If this is not 
+# set, the following MeuDirectory and MenuDesktop will be ignored.
+#
+# The <project_type> is curently only defined for "cvl" project.
+# Supporting for "cvl" application_menu includes:
+# - toolbox
+# - system
+# - structural-biology
+# - neuroimaging
+# - energy-materials
+#
+MenuLayout="cvl:neuroimaging"
+
+#
+# Set directory menu in format <comment>:<icon>. If the icon file is from
+# package, using "~" for package installation path.
+#
+MenuDirectory="NFS:~/doc/images/fsl-logo.png"
+
+#
+# Set desktop menu in format <executable_file>:<comment>:<icon>:<add_terminal>,
+# multiple lines should be delimited by ";". The value of <add_terminal> flag
+# is "true" or "false"
+#
+# If the icon file is from package, using "~" for package installation path.
+#
+# The binary_path is a relative path including executable filename but without 
+# the installation prefix. For example, if /usr/local/turbovnc/1.1/bin/vncviewer
+# is the FQPN, the executable_file should be set to bin/vncviewer.
+#
+MenuDesktop="bin/fslinit:NFS:~/doc/images/fslstart.jpg:true;bin/license:Lincese:help.png:false"
+
+#
+# Set library dependencies in following format (version is optional):
+# <module1/version>:<module2/version>...:<moduleN/version>
+#
+#LibraryDependency=
+
+#
+# Local build flag, set it to ON for building or OFF otherwise.
+#
+REQUEST_BUILD="ON"
+
+#
+# Local package flag, set it to ON for packaging or OFF otherwise.
+#
+REQUEST_PACKAGE="ON"
+
+#
+# Build in source directory, "ON" or "OFF".
+#
+BUILD_IN_SOURCE="ON"
+
+#
+# Install module file flag, "ON" or "OFF".
+#
+INSTALL_MODULE_FILE="ON"
+
+#
+# Binary installation directory "<Source>:<Destination>". This field is only 
+# for applications which have special requirement of source code in different 
+# structure or different binary destination directory.
+#
+#InstallDirectory=
+
+#
+# Package auto dependency check flag, "true" for enabling the check, "false"
+# for not.
+#
+AutoDependencyCheck="true"
+
+#
+# Pre installation script for RPM package only. The bash script file should be
+# available in the source localtion. Edit following variable for file name
+# (no path) and only one script can be defined.
+#
+PreInstallScript="license.sh"
+
+#
+# Post script for RPM package only. The bash script file should be available
+# in the source localtion. Edit following variable for file name (no path) and
+# only one script can be defined.
+#
+# PostInstallScript=
+
+case "$1" in
+    -a|--description)
+        echo -n ${ModuleFileDescription}
+        ;;
+    -b|--build)
+        echo -n ${REQUEST_BUILD}
+        ;;
+    -c|--config)
+        SOURCE_DIR="$2"
+        INSTALL_DIR="$3"
+        ConfigurationCommand ${SOURCE_DIR} ${INSTALL_DIR}
+        ;;
+    -d|--directory-installation-list)
+        echo -n ${PackageInstallDirectoryList}
+        ;;
+    -e|--enviornment-module-list)
+        echo -n ${EnvironmentModuleList}
+        ;;
+    -f|--file-installation-list)
+        echo -n ${PackageInstallFileList}
+        ;;
+    -g|--group-module-file-installation)
+        echo -n ${INSTALL_MODULE_FILE}
+        ;;
+    -h|--install-directory)
+        echo -n ${InstallDirectory}
+        ;;
+    -i|--install-command)
+        InstallCommand
+        ;;
+    -j|--patch-command)
+        SOURCE_DIR="$2"
+        BUILD_SOURCE_DIR="$3"
+        INSTALL_DIR="$4"
+        PatchCommand ${SOURCE_DIR} ${BUILD_SOURCE_DIR} ${INSTALL_DIR}
+        ;;
+    -k|--make-command)
+        MakeCommand
+        ;;
+    -l|--menu-layout)
+        echo -n ${MenuLayout}
+        ;;
+    -m|--module-file)
+        ;;
+    -n|--menu-directory)
+        echo -n ${MenuDirectory}
+        ;;
+    -o|--menu-desktop)
+        echo -n ${MenuDesktop}
+        ;;
+    -p|--package)
+        echo -n ${REQUEST_PACKAGE}
+        ;;
+    -q|--library-dependency)
+        echo -n ${LibraryDependency}
+        ;;
+    -r|--release)
+        echo -n ${PACKAGE_RELEASE}
+        ;;
+    -s|--use-source-directory)
+        echo -n ${BUILD_IN_SOURCE}
+        ;;
+    -t|--type)
+        echo -n ${CONFIGURE}
+        ;;
+    -u|--auto-dependency-check)
+        echo -n ${AutoDependencyCheck}
+        ;;
+    -v|--pre-install-script-file)
+        echo -n ${PreInstallScript}
+        ;;
+    -y|--post-install-script-file)
+        echo -n ${PostInstallScript}
+        ;;
+    -z|--source-build-flag)
+        echo -n ${SOURCE_BUILD_FLAG}
+        ;;
+esac

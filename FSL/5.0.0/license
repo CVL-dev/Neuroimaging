@@ -1,0 +1,3 @@
+#!/bin/sh
+
+firefox http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence 
