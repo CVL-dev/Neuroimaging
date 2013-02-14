@@ -10,7 +10,7 @@ ModuleFileDescription="Application"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="0.1"
+PACKAGE_RELEASE="2.6"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -96,28 +96,51 @@ function PatchCommand()
 # - system
 # - structural-biology
 # - neuroimaging
-# - energy-materials
+# - energy-materials-atom
+# - energy-materials-xray
 #
 MenuLayout="cvl:neuroimaging"
 
 #
-# Set directory menu in format <comment>:<icon>. If the icon file is from
-# package, using "~" for package installation path.
+# Set up module category menu, the syntax is in following format:
 #
-MenuDirectory="NFS:~/doc/images/fsl-logo.png"
+# <name>:<icon>:<category>
+#
+# (1) <name> is the module category name showing on menu.
+#
+# (2) <icon> is the icon file, if the icon file is from the package, using "~"
+#     for package path.
+#
+# (3) <category> is optional, it does not need to be specified if the <name>
+#     is the application name. Otherwise, it can be defined similar to the
+#     <name> without white spaces. Make sure there are NO SPACES in <category>.
+#
+MenuDirectory="FSL:~/doc/images/fsl-logo.png"
 
 #
-# Set desktop menu in format <executable_file>:<comment>:<icon>:<add_terminal>,
-# multiple lines should be delimited by ";". The value of <add_terminal> flag
-# is "true" or "false"
+# Set up desktop application menu, the syntax is in following format:
 #
-# If the icon file is from package, using "~" for package installation path.
+# <executable_file>:<name>:<icon>:<add_terminal>:<license>
 #
-# The binary_path is a relative path including executable filename but without 
-# the installation prefix. For example, if /usr/local/turbovnc/1.1/bin/vncviewer
-# is the FQPN, the executable_file should be set to bin/vncviewer.
+# (1) <executable_file> is relative path to the installation prefix. If the
+#     executable file is in /usr/local/fsl/5.0/bin/fsl, it should be set to
+#     "bin/fsl"
 #
-MenuDesktop="bin/fslinit:NFS:~/doc/images/fslstart.jpg:true;bin/license:Lincese:help.png:false"
+# (2) <name> is the application name showing on menu, the <name> needs be 
+#     unique to avoid the conflict to use the same <name> in different packages.
+#
+# (3) <icon> is the name of icon file, if the icon file is from the package,
+#     using "~" for package parent path.
+#
+# (4) <add_terminal> is a flag with two values of "true" or false".
+#
+# (5) <license> is optional, ignore it if there is no license requirement.
+#     It should point to the license file in the package. For example,
+#     /usr/local/fsl/5.0/bin/license.txt should be set to "bin/license.txt"
+#
+# Multiple lines should be delimited by ";".
+#
+MenuDesktop="bin/fslinit:NFS GUI Initialisation:~/doc/images/fslstart.png:true:bin/license.txt"
 
 #
 # Set library dependencies in following format (version is optional):
@@ -163,7 +186,7 @@ AutoDependencyCheck="true"
 # available in the source localtion. Edit following variable for file name
 # (no path) and only one script can be defined.
 #
-PreInstallScript="license.sh"
+PreInstallScript="cvl-license-installer.sh"
 
 #
 # Post script for RPM package only. The bash script file should be available

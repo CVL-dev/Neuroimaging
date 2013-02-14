@@ -1,16 +1,12 @@
-#!/bin/sh
-#
-# Characters such as " and $ must be escapted by "\".
-#
-#
+FSL LICENCES
 
-LICENSE="FMRIB Software Library, Release 5.0 (c) 2012, The University of Oxford
-(the \"Software\")
+FMRIB Software Library, Release 5.0 (c) 2012, The University of Oxford
+(the "Software")
 
-The Software remains the property of the University of Oxford (\"the
-University\").
+The Software remains the property of the University of Oxford ("the
+University").
 
-The Software is distributed \"AS IS\" under this Licence solely for
+The Software is distributed "AS IS" under this Licence solely for
 non-commercial use in the hope that it will be useful, but in order
 that the University as a charitable foundation protects its assets for
 the benefit of its educational and research purposes, the University
@@ -51,7 +47,7 @@ final aim of developing non-software products for sale or license to a
 third party, or (4) use of the Software to provide any service to an
 external organisation for which payment is received. If you are
 interested in using the Software commercially, please contact Isis
-Innovation Limited (\"Isis\"), the technology transfer company of the
+Innovation Limited ("Isis"), the technology transfer company of the
 University, to negotiate a licence. Contact details are:
 innovation@isis.ox.ac.uk quoting reference BS/9564.
 
@@ -87,7 +83,7 @@ non-commercial edition, and distribute the resulting executable,
 without including the source code for the Qt non-commercial edition in
 the source distribution.
 
-FSLView is distributed \"AS IS\" under this Licence in the hope that it
+FSLView is distributed "AS IS" under this Licence in the hope that it
 will be useful, but in order that the University as a charitable
 foundation protects its assets for the benefit of its educational and
 research purposes, the University makes clear that no condition is
@@ -97,11 +93,4 @@ particular purpose or for use under any specific conditions.
 Furthermore, the University disclaims all responsibility for the use
 which is made of the Software. It further disclaims any liability for
 the outcomes arising from using the Software.
-"
 
-echo -e \"${LICENSE}\"
-read -p \"License Agreement (y/n)?\"
-if [ \"\$REPLY\" == \"n\" ]; then
-    echo \"Software installation aborted.\"
-    exit 1
-fi
