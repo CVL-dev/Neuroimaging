@@ -19,7 +19,6 @@ if [ $? -ne 0 ]; then
         echo "Build aborted! Check for errors..."
         exit -1
 fi
-rm -rf $NAME-$VERSION-sources.tar.gz 
 
 rm -rf config
 cp -r config.build config
@@ -31,6 +30,8 @@ if [ $? -ne 0 ]; then
 	echo "Build aborted! Check for errors..."
         exit -1
 fi
+
+rm -rf $NAME-$VERSION-sources.tar.gz 
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 rm -rf $NAME-$VERSION-binaries.tar.gz

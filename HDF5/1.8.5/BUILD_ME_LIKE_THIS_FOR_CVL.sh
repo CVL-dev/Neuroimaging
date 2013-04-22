@@ -15,7 +15,6 @@ if [ $? -ne 0 ]; then
         echo "Build aborted! Check for errors..."
         exit -1
 fi
-rm -rf $NAME-$VERSION-sources.tar.gz
 
 echo -e "\n\n*********************************************************************************************************"
 echo -e "!!! THIS BUILD OF HDF5 HAS TO ADDRESS FILE NAME CLASHES WITH CVL, ADD A README.TXT AND TAR EVERYTHING !!!"
@@ -30,6 +29,8 @@ if [ $? -ne 0 ]; then
         echo "Build aborted! Check for errors..."
         exit -1
 fi
+
+rm -rf $NAME-$VERSION-sources.tar.gz
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 rm -rf $NAME-$VERSION-binaries.tar.gz
