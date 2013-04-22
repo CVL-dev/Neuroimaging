@@ -1,12 +1,18 @@
 clear
 
-echo -e "\n\n*****************************************************************************************************************"
-echo -e "!!! THIS BUILD OF GRAPHICS MAGICK HAS TO ADDRESS FILE NAME CLASHES WITH CVL, ADD A README.TXT AND TAR EVERYTHING !!!"
-echo -e "*****************************************************************************************************************\n\n"
-
 NAME=graphicsmagick
 VERSION=1.3.18
 BUILD_DIR=`pwd`/graphicsmagick_build
+DEST_PATH=${NAME^^}/$VERSION
+
+if [ `pwd | grep /usr/local/src/$DEST_PATH | wc -c` -eq 0 ]; then
+	echo "Please copy directory contents to '/usr/local/src/$DEST_PATH' and execute this script there!"
+        exit -1;
+fi
+
+echo -e "\n\n*****************************************************************************************************************"
+echo -e "!!! THIS BUILD OF GRAPHICS MAGICK HAS TO ADDRESS FILE NAME CLASHES WITH CVL, ADD A README.TXT AND TAR EVERYTHING !!!"
+echo -e "*****************************************************************************************************************\n\n"
 
 tar xvzf $NAME-$VERSION-sources.tar.gz
 rm -rf $NAME-$VERSION-sources.tar.gz 
@@ -17,9 +23,15 @@ rm -rf $BUILD_DIR
 
 ./configure --prefix=$BUILD_DIR/$NAME/$VERSION --enable-shared && make install && make clean
 
+if [ $? -ne 0 ]; then
+	echo "Build aborted! Check for errors..."
+        exit -1
+fi
+
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 rm -rf $NAME-$VERSION.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR/$NAME
+rm -rf $BUILD_DIR
 
 rm -rf config
 cp config.cvl config
