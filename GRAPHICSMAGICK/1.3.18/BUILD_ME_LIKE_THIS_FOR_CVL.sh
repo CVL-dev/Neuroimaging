@@ -15,6 +15,10 @@ echo -e "!!! THIS BUILD OF GRAPHICS MAGICK HAS TO ADDRESS FILE NAME CLASHES WITH
 echo -e "*****************************************************************************************************************\n\n"
 
 tar xvzf $NAME-$VERSION-sources.tar.gz
+if [ $? -ne 0 ]; then
+        echo "Build aborted! Check for errors..."
+        exit -1
+fi
 rm -rf $NAME-$VERSION-sources.tar.gz 
 
 rm -rf config
@@ -29,7 +33,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
-rm -rf $NAME-$VERSION.tar.gz
+rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR/$NAME
 rm -rf $BUILD_DIR
 
