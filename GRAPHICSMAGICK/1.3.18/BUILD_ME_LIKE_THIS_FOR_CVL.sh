@@ -16,9 +16,9 @@ echo -e "***********************************************************************
 
 tar xvzf $NAME-$VERSION-sources.tar.gz
 if [ $? -ne 0 ]; then
-        echo "Build aborted! Check for errors..."
-        exit -1
+        echo "WARNING: $NAME-$VERSION-sources.tar.gz IS NOT PRESENT! If this is the first run of the script, the build WILL fail later on. If it isn't, you can safely ignore this message."
 fi
+rm -rf $NAME-$VERSION-sources.tar.gz 
 
 rm -rf config
 cp -r config.build config
@@ -30,8 +30,6 @@ if [ $? -ne 0 ]; then
 	echo "Build aborted! Check for errors..."
         exit -1
 fi
-
-rm -rf $NAME-$VERSION-sources.tar.gz 
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 rm -rf $NAME-$VERSION-binaries.tar.gz
