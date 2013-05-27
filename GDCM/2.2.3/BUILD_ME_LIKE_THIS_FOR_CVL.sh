@@ -39,8 +39,7 @@ if [ $? -ne 0 ]; then
         exit -1
 fi
 
-mv $BUILD_DIR/bin/*.a  $BUILD_DIR/$NAME/$VERSION/lib
-mv $BUILD_DIR/bin/*.so $BUILD_DIR/$NAME/$VERSION/lib
+mv $BUILD_DIR/bin/*.so* $BUILD_DIR/$NAME/$VERSION/lib
 cp -r $BUILD_DIR/bin/* $BUILD_DIR/$NAME/$VERSION/bin
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 
