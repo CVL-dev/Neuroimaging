@@ -10,7 +10,7 @@ ModuleFileDescription="Application"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="3.0"
+PACKAGE_RELEASE="4.0.1"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -140,7 +140,8 @@ MenuDirectory="FSL:~/doc/images/fsl-logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/fslinit:NFS GUI Initialisation:~/doc/images/fslstart.png:true:bin/license.txt"
+#MenuDesktop="bin/fslinit:NFS GUI Initialisation:~/doc/images/fslstart.png:true:bin/license.txt"
+MenuDesktop="bin/fslinit:NFS GUI Initialisation:~/doc/images/fslstart.png:true"
 
 #
 # Set library dependencies in following format (version is optional):
@@ -186,7 +187,7 @@ AutoDependencyCheck="true"
 # available in the source localtion. Edit following variable for file name
 # (no path) and only one script can be defined.
 #
-PreInstallScript="cvl-license-installer.sh"
+#PreInstallScript="cvl-license-installer.sh"
 
 #
 # Post script for RPM package only. The bash script file should be available
