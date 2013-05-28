@@ -17,9 +17,9 @@ if [ $? -ne 0 ]; then
         echo "WARNING: $NAME-$VERSION-sources.tar.gz IS NOT PRESENT! If this is the first run of the script, the build WILL fail later on. If it isn't, you can safely ignore this message."
 fi
 
-echo -e "\n\n****************************************************************************"
-echo -e "!!! THIS BUILD OF THE DICOM Toolkit BUILDS THE SOFTWARE FOR CVL PACKAGING !!!"
-echo -e "*****************************************************************************\n\n"
+echo -e "\n\n********************************************************************"
+echo -e "!!! THIS BUILD OF THE GDCM BUILDS THE SOFTWARE FOR CVL PACKAGING !!!"
+echo -e "*********************************************************************\n\n"
 
 rm -rf $NAME-$VERSION-sources.tar.gz
 rm -rf $BUILD_DIR
