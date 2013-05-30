@@ -1,4 +1,4 @@
-lear
+clear
 
 NAME=dcmtk
 VERSION=3.6.0
