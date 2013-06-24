@@ -1,0 +1,7 @@
+#!/bin/sh
+
+module load openmpi
+
+source ${FSLDIR}/etc/fslconf/fsl.sh
+
+${FSLDIR}/bin/fsl
