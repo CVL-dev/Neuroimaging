@@ -47,6 +47,7 @@ if [ $? -ne 0 ]; then
         exit -1
 fi
 
+#cp -r usr $BUILD_DIR/$NAME/$VERSION
 rm -rf $NAME-$VERSION-sources.tar.gz
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt

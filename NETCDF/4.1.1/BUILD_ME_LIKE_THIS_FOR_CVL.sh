@@ -30,6 +30,29 @@ fi
 rm -rf $NAME-$VERSION-sources.tar.gz
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
+
+mkdir -p ./etc/profile.d
+rm -rf ./etc/profile.d/"$NAME"_modules.sh
+cat > ./etc/profile.d/"$NAME"_modules.sh <<EOF
+#!/bin/bash
+echo -n "Checking ${NAME^^} 'modules' requirements..."
+if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules package is not installed !!!!!\n"; fi;
+
+. /etc/profile.d/modules.sh
+
+if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
+
+module load $NAME/$VERSION 2> /tmp/build_mod_load
+CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
+if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate $NAME package. Please install it and load it: 'module load $NAME' !!!!!\n"
+fi
+
+rm -rf /tmp/build_mod_load
+
+echo -e "Finished.\n"
+EOF
+chmod 777 ./etc/profile.d/"$NAME"_modules.sh
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR/$NAME
 rm -rf $BUILD_DIR
