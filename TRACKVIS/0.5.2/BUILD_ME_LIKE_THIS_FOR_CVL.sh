@@ -45,6 +45,20 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/trackvis_modules.sh
 
+# create CVL GUI launcher scripts
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh <<EOF
+#!/bin/sh
+if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
+#load modules
+module load virtualgl 2> /tmp/build_mod_load
+module load libjpeg-turbo 2> /tmp/build_mod_load
+module load trackvis 2> /tmp/build_mod_load
+#execute
+vglrun trackvis
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
 
