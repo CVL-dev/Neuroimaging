@@ -1,0 +1,485 @@
+#!/bin/tcsh
+
+# ----------------------------------------------------------------------
+# upgrade the AFNI binaries
+#
+# Update the package specified by "afni -ver" in the directory
+# specified by "which afni".  Allow for overriding options of:
+#
+#       -package PACKAGE            
+#       -bindir  DIRECTORY
+#
+# terminate on any error, and be clear about which command failed
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+# history:
+# ...         : a few updates
+# 07 Mar 2012 : existing package and install dir no longer required for -d
+# 13 Sep 2012 : download and run the current version on the website
+#             - added option -no_recur
+# 21 Dec 2012 : do rehash before apsearch
+#             - check download by looking for string in this file
+# ----------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------
+# apply any options
+
+# initialize options to 'unset'
+set abin = ""
+set package = ""
+set tmp_dir = ".tmp.install"    # should start with '.'
+set make_backup = 1             # backup previous binaires
+set prog = `basename $0`
+
+if ( $#argv == 0 ) then
+    set help = 1
+else
+    set help = 0
+endif
+
+set testing     = 0
+set use_curl    = 0
+set do_apsearch = 1     # run apserach -update_all_afni_help
+set do_recur    = 1     # download a new version of @uab, first
+
+set ac = 1
+while ( $ac <= $#argv )
+    if ( "$argv[$ac]" == "-apsearch" ) then
+        @ ac ++
+        if ( $ac > $#argv ) then
+            echo "** missing parameter for option '-apsearch'"
+            exit 1
+        endif
+        set resp = `echo $argv[$ac] | cut -b1`
+        if ( $resp == 'N' || $resp == 'n' ) set do_apsearch = 0
+    else if ( "$argv[$ac]" == "-bindir" ) then
+        @ ac ++
+        if ( $ac > $#argv ) then
+            echo "** missing parameter for option '-bindir'"
+            exit 1
+        endif
+        set abin = $argv[$ac]
+    else if ( "$argv[$ac]" == "-curl" ) then
+        set use_curl = 1
+    else if ( "$argv[$ac]" == "-test" ) then
+        set testing = 1
+    else if ( "$argv[$ac]" == "-package" ) then
+        @ ac ++
+        if ( $ac > $#argv ) then
+            echo "** missing parameter for option '-package'"
+            exit 1
+        endif
+        set package = $argv[$ac]
+    else if ( "$argv[$ac]" == "-no_recur" ) then
+        set do_recur = 0
+    else if ( "$argv[$ac]" == "-help" ) then
+        set help = 1
+    else if ( "$argv[$ac]" == "-d" || "$argv[$ac]" == "-defaults" ) then
+        set defaults = 1
+    else
+        echo "** unknown option $argv[$ac]"
+        exit 1
+    endif
+    @ ac ++
+end
+
+# if requested, show help and exit
+if ( $help ) then
+    echo "------------------------------------------------------------"
+    echo "$prog   - upgrade AFNI binaries"
+    echo ""
+    echo "Update the AFNI binaries, either via '-defaults' or by the"
+    echo "'-bindir' and/or '-package' options."
+    echo ""
+    echo "examples:"
+    echo ""
+    echo "    $prog -defaults"
+    echo "    $prog -package linux_xorg7"
+    echo "    $prog -package linux_xorg7 -bindir ~/abin"
+    echo ""
+    echo "options:"
+    echo ""
+    echo "    -help                 : show this help"
+    echo ""
+    echo "    -apsearch yes/no      : specify getting apsearch updates"
+    echo "    -bindir ABIN          : set AFNI binary directory to ABIN"
+    echo "    -curl                 : default to curl instead of wget"
+    echo "    -defaults             : install current package into abin"
+    echo "    -d                    : (short for -defaults)"
+    echo ""
+    echo "        This would be the method to 'update the package that I"
+    echo "        am currently using'."
+    echo ""
+    echo "        The package would be decided by 'afni -ver' and the"
+    echo "        directory would come from 'which afni'.  If either of"
+    echo "        these is not appropriate, the package would be determined"
+    echo "        by the OS (Linux or OSX allowed, 32 or 64-bits), and the"
+    echo "        install dir would be ~/abin."
+    echo ""
+    echo "        If -bindir or -package cannot be determined, it must be"
+    echo "        supplied by the user."
+    echo ""
+    echo "        26 Sep 2012 : -update_apsearch is applied by default"
+    echo "                      (if installed afni is in PATH)"
+    echo ""
+    echo "    -no_recur             : do not download and run new @uab script"
+    echo "    -package PACKAGE      : install distribution package PACKAGE"
+    echo "    -test                 : just attempt the download and quit"
+    echo ""
+    echo "Note that the user must have write permissions in the ABIN"
+    echo "directory."
+    echo ""
+    exit
+endif
+
+# note any current AFNI location
+which afni >& /dev/null
+if ( $status ) then
+   echo "-- no current AFNI package..."
+   set cur_afni = ""
+else
+   set cur_afni = `which afni`
+   set cur_afni = $cur_afni:h
+   echo "-- have AFNI binaries under $cur_afni"
+endif
+
+# possibly apply default binary directory
+if ( $abin == "" ) then
+    if ( $cur_afni == "" ) then
+       echo "-- install dir: using default ~/abin"
+       set abin = ~/abin
+    else
+       # have program, nuke trailing 'afni' to get directory
+       set abin = $cur_afni
+       echo "-- install dir: using existing $abin"
+    endif
+endif
+
+# possibly apply default package
+if ( $package == "" ) then
+   if ( $cur_afni != "" ) then
+      set package = `afni -ver | grep binary | awk '{print $3}' | sed 's/://g'`
+      if ( $status || $package == "" ) then
+          echo "** failed setting package from 'afni -ver'"
+          exit 1
+      endif
+   else
+      # pick package based on OS
+      set sysname = `uname -s`
+      set errs = 0
+      if ( $status ) then
+         @ errs ++
+         set sysname = ""
+      endif
+
+      set cpuname = `uname -p`
+      if ( $status ) then
+         @ errs ++
+         set cpuname = ""
+      endif
+
+      if ( $errs > 0 ) then
+         echo "** failed to note system and cpu, must specify -package"
+         exit
+      endif
+
+      # simple cases for now, can expand later
+      if ( $sysname == Linux ) then
+         if ( $cpuname == x86_64 ) then
+             set package = linux_xorg7_64
+         else
+             set package = linux_xorg7
+         endif
+      else if ( $sysname == Darwin ) then
+         # default to no.omp.glib for now
+         set package = macosx_10.6_Intel_64.no.omp.glib
+      else
+         @ errs ++
+      endif
+
+      if ( $errs > 0 ) then
+         echo "** unknown system $sysname/$cpuname, must specify -package"
+         exit
+      endif
+   endif
+endif
+
+# test for existence of wget or curl
+which wget >& /dev/null
+set missing_wget = $status
+which curl >& /dev/null
+set missing_curl = $status
+if ( $testing ) echo "-- wget, curl status = $missing_wget, $missing_curl"
+
+if ( $missing_wget && $missing_curl ) then
+    echo ""
+    echo "** programs wget and curl are missing, please install *either*,"
+    echo "   or look it up on the AFNI message board:"
+    echo "       http://afni.nimh.nih.gov/afni/community/board"
+    echo ""
+    exit 1
+endif
+
+# default to wget, else use curl
+set get_prog = ( "wget" )
+if ( $use_curl || $missing_wget ) set get_prog = ( curl -O -f )
+
+# make sure package is set to the base name
+if ( $package =~ *.tgz ) set package = $package:r
+
+echo "-- attempting to install package $package under"
+echo "   install dir: $abin..."
+
+# ----------------------------------------------------------------------
+# if the install dir does not exist, create it
+if ( -d $abin ) then
+   echo "-- have install dir"
+else
+   echo "++ creating install dir"
+   mkdir -pv $abin
+   if ( $status ) then
+      echo "** failed to create install dir, $abin"
+      exit
+   endif
+   echo ""
+   sleep 1
+endif
+
+# note appropriate backup directory
+set date = `date +%Y_%m_%d`
+set backup_dir = auto_backup.$package
+
+# ----------------------------------------------------------------------
+# go to the binary directory and check that we can write
+cd $abin
+
+# check permissions before doing anything
+if ( ! -w . ) then
+    echo "** you do not have write permissions in the install directory"
+    echo "   (install dir = `pwd`)"
+    exit 1
+endif
+
+# ======================================================================
+# begin work (most work from temp dir)
+# ======================================================================
+
+# ----------------------------------------------------------------------
+# remove any old package
+if ( -f $package.tgz || -d $package ) then
+    echo nuking old package...
+    \rm -fr $package $package.tgz
+    if ( $status ) then
+        echo "** failed to remove old package $package"
+        exit 1
+    endif
+endif
+
+# remove any temp install directory
+if ( -d $tmp_dir ) then
+    echo nuking old temporary directory...
+    \rm -fr $tmp_dir
+endif
+
+# ----------------------------------------------------------------------
+# create and enter temporary working directory; test whether update is needed
+echo "++ working in new temp dir, $tmp_dir"
+mkdir $tmp_dir
+if ( $status ) then
+    echo "** failed to create new or remove old temp dir, $tmp_dir"
+    exit 1
+endif
+cd $tmp_dir
+
+# ----------------------------------------------------------------------
+# first, make sure we run the latest @update.afni.binaries:
+#     get a new version of this script to make sure we are current...
+#     (sneaky suggestion by Bob)
+# download to a temp name, though
+if ( $do_recur ) then
+   set temp_prog = tmp.$prog         # temp name to run with
+   set retry = 0                     # use multiple attempts to get this
+
+   set bin_root = http://afni.nimh.nih.gov/pub/dist/bin
+   set get_package = $bin_root/$package/$prog
+   echo "++ getting install prog $package/$prog ..."
+   $get_prog $get_package
+
+   # ----- might not exist: try twice and skip if fail       26 Sep 2012
+
+   if ( $status ) then
+      set retry = 1
+   else
+      # see if we have this text (and therefore the actual program)
+      grep 'upgrade the AFNI binaries' $prog > /dev/null
+      if ( $status ) then
+         set retry = 1
+         \rm -f $prog
+      endif
+   endif
+
+   if ( $retry ) then
+      set retry = 0
+      set ppp = linux_openmp_64
+      echo "** failed, trying $ppp/$prog ..."
+      $get_prog $bin_root/$ppp/$prog
+      if ( $status ) then
+         set retry = 1
+      else
+         # see if we have this text (and therefore the actual program)
+         grep 'upgrade the AFNI binaries' $prog > /dev/null
+         if ( $status ) then
+            set retry = 1
+            \rm -f $prog
+         endif
+      endif
+
+      if ( $retry ) then
+         echo "** failed again, skipping check for new installer"
+         goto SKIP_RECUR
+      endif
+   endif
+
+   # ----- okay, we have a new installer to check on
+
+   # see if there are any changes to apply
+   cmp -s $prog ../$prog
+   if ( $status ) then
+      # use new version!
+      echo "++ using updated $prog, instead..."
+      echo ""
+
+      # move it up to a temp name and run it (without further recursion)
+      if ( -f ../$temp_prog ) \rm -f ../$temp_prog
+      \mv $prog ../$temp_prog
+      cd ..     # so we don't sit in deleted directory
+
+      echo "++ running: tcsh $temp_prog -no_recur $argv"
+      tcsh $temp_prog -no_recur $argv
+      set ss = $status
+      if ( ! $ss ) then
+         echo "\n...finished, removing temp version, $temp_prog"
+         \rm -f $temp_prog
+      endif
+      exit $ss  # exit with status of called program
+   else
+      echo "-- $prog is current, continuing with this version..."
+   endif
+else
+   echo "-- skipping update of $prog"
+endif
+SKIP_RECUR:
+
+# ----------------------------------------------------------------------
+# just download single afni binary and compare
+set get_package = http://afni.nimh.nih.gov/pub/dist/bin/$package/afni
+echo "++ downloading test file $package/afni ..."
+$get_prog $get_package
+cmp -s afni ../afni
+if ( ! $status ) then
+    echo "++ no update needed"
+    cd ..
+    \rm -fr $tmp_dir
+    exit
+endif
+
+# if just testing, we are done
+if ( $testing ) then
+    echo "++ install needed, but just testing download via '$get_prog', done"
+    echo "(temp download in `pwd`)"
+    exit
+endif
+
+echo ""
+echo "++ update needed, installing..."
+echo ""
+sleep 1
+
+# ----------------------------------------------------------------------
+# an update is needed, download full package
+
+# download the full binary set
+echo "++ downloading full $package.tgz package..."
+set get_package = http://afni.nimh.nih.gov/pub/dist/tgz/$package.tgz
+$get_prog $get_package
+if ( $status ) then
+    echo "** failed to download package $get_package"
+    exit 1
+endif
+
+echo "++ extracting package $package..."
+tar xfz $package.tgz
+if ( $status ) then
+    echo "** failed to extract package $package.tgz"
+    exit 1
+endif
+
+# ----------------------------------------------------------------------
+# delete any previous auto-backup and install the new binaries
+
+# if not making a backup dir, use rsync for install
+# (since there might be new and unknown directories)
+set use_rsync = 1
+
+# if the directory is empty, no rsync or backup
+set nfiles = `\ls .. | wc -l`
+
+# make a backup directory (first under 'hidden' temp dir)
+if ( $nfiles == 0 ) then
+    set use_rsync = 0   # now do not need rsync
+    echo "-- nothing to back up or sync"
+else if ( $make_backup ) then
+    # nuke previous auto-backup directory
+    if ( -d ../$backup_dir ) then
+        echo nuking old backup directory, $backup_dir ...
+        \rm -fr ../$backup_dir
+    endif
+
+    # create new auto-backup directory
+    mkdir $backup_dir
+    if ( $status ) then
+        echo "** failed to make backup directory $backup_dir, exiting..."
+        exit 1
+    endif
+    echo "++ backing up current binaries to $backup_dir"
+    \mv ../* $backup_dir
+    \mv $backup_dir ..
+
+    set use_rsync = 0   # now do not need rsync
+endif
+
+# abin may have sub-directories         17 Oct 2011 [rickr]
+
+# actually install the new binaries
+if ( $use_rsync ) then
+   echo "++ synching new binaries..."
+   rsync -a $package/ ../
+   if ( $status ) then
+       echo "** failed to overwrite existing package, exiting..."
+       exit
+   endif
+else
+   echo "++ installing new binaries..."
+   \mv $package/* ..
+   if ( $status ) then
+       echo "** failed to overwrite existing package, exiting..."
+       exit
+   endif
+endif
+
+# and possibly run apsearch
+if ( $do_apsearch && $cur_afni == $abin ) then
+   rehash
+   set cmd = "apsearch -update_all_afni_help"
+   echo "++ running $cmd ..."
+   $cmd
+endif
+
+# finally nuke any leftovers
+cd ..
+\rm -fr $tmp_dir
+
+echo "done, yay (binaries are under $abin)"
+

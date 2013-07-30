@@ -22,6 +22,7 @@ echo -e "********************************************\n\n"
 
 rm -rf $NAME-$VERSION-sources.tar.gz
 mkdir -p ./etc/profile.d
+mkdir -p $BUILD_DIR/$NAME/$VERSION/bin
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 
 rm -rf ./etc/profile.d/3dslicer_modules.sh
@@ -44,6 +45,20 @@ rm -rf /tmp/build_mod_load
 echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/3dslicer_modules.sh
+
+# create CVL GUI launcher scripts
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/3dslicer_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/3dslicer_cvl.sh <<EOF
+#!/bin/sh
+if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
+#load modules
+module load virtualgl 2> /tmp/build_mod_load
+module load libjpeg-turbo 2> /tmp/build_mod_load
+module load 3dslicer 2> /tmp/build_mod_load
+#execute
+vglrun Slicer
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/3dslicer_cvl.sh
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
