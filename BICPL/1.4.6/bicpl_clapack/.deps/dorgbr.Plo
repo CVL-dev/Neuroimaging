@@ -1,0 +1,5 @@
+dorgbr.lo: dorgbr.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:

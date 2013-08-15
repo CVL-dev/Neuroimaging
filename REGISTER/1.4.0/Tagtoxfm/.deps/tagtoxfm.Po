@@ -1,0 +1,284 @@
+tagtoxfm.o: tagtoxfm.c /usr/include/stdlib.h /usr/include/features.h \
+ /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
+ /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h \
+ /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/include/bits/byteswap.h /usr/include/sys/types.h \
+ /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+ /usr/include/time.h /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/sigset.h /usr/include/bits/time.h \
+ /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+ /usr/include/alloca.h /usr/include/stdio.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h /usr/include/string.h /usr/include/xlocale.h \
+ /usr/include/bits/string.h /usr/include/bits/string2.h \
+ /usr/local/bicpl/1.4.6/include/bicpl.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/data_structures.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/objects.h \
+ /usr/local/minc/2.1.0/include/volume_io.h \
+ /usr/local/minc/2.1.0/include/volume_io/basic.h /usr/include/math.h \
+ /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h \
+ /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
+ /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
+ /usr/include/memory.h /usr/local/minc/2.1.0/include/volume_io/def_math.h \
+ /usr/local/minc/2.1.0/include/volume_io/system_dependent.h \
+ /usr/local/minc/2.1.0/include/volume_io/string_funcs.h \
+ /usr/local/minc/2.1.0/include/volume_io/files.h \
+ /usr/local/minc/2.1.0/include/volume_io/arrays.h \
+ /usr/local/minc/2.1.0/include/volume_io/alloc.h \
+ /usr/local/minc/2.1.0/include/volume_io/geom_structs.h \
+ /usr/local/minc/2.1.0/include/volume_io/progress.h \
+ /usr/local/minc/2.1.0/include/volume_io/geometry.h \
+ /usr/local/minc/2.1.0/include/volume_io/volume.h \
+ /usr/local/minc/2.1.0/include/minc.h \
+ /usr/local/netcdf/4.1.1/include/netcdf.h /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
+ /usr/local/minc/2.1.0/include/volume_io/transforms.h \
+ /usr/local/minc/2.1.0/include/volume_io/multidim.h \
+ /usr/local/minc/2.1.0/include/volume_io/volume_cache.h \
+ /usr/local/minc/2.1.0/include/volume_io/vol_io_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/obj_defs.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/stack.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/bintree.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/colours.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/object_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/bitlist.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/hash.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/priority_queue.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/queue.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/skiplist.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/ds_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/geom.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/geom_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/trans.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/compute_xfm.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/trans_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/numerical.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/amoeba.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/histogram.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/minimization.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/statistics.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/numeric_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/prog_utils.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/global_lookup.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/prog_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/vols.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/colour_coding.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/vol_prototypes.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/images.h \
+ /usr/local/bicpl/1.4.6/include/bicpl/image_prototypes.h ParseArgv.h \
+ tagtoxfm.h
+
+/usr/include/stdlib.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/stdio.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/bits/string.h:
+
+/usr/include/bits/string2.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/data_structures.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/objects.h:
+
+/usr/local/minc/2.1.0/include/volume_io.h:
+
+/usr/local/minc/2.1.0/include/volume_io/basic.h:
+
+/usr/include/math.h:
+
+/usr/include/bits/huge_val.h:
+
+/usr/include/bits/huge_valf.h:
+
+/usr/include/bits/huge_vall.h:
+
+/usr/include/bits/inf.h:
+
+/usr/include/bits/nan.h:
+
+/usr/include/bits/mathdef.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/mathinline.h:
+
+/usr/include/memory.h:
+
+/usr/local/minc/2.1.0/include/volume_io/def_math.h:
+
+/usr/local/minc/2.1.0/include/volume_io/system_dependent.h:
+
+/usr/local/minc/2.1.0/include/volume_io/string_funcs.h:
+
+/usr/local/minc/2.1.0/include/volume_io/files.h:
+
+/usr/local/minc/2.1.0/include/volume_io/arrays.h:
+
+/usr/local/minc/2.1.0/include/volume_io/alloc.h:
+
+/usr/local/minc/2.1.0/include/volume_io/geom_structs.h:
+
+/usr/local/minc/2.1.0/include/volume_io/progress.h:
+
+/usr/local/minc/2.1.0/include/volume_io/geometry.h:
+
+/usr/local/minc/2.1.0/include/volume_io/volume.h:
+
+/usr/local/minc/2.1.0/include/minc.h:
+
+/usr/local/netcdf/4.1.1/include/netcdf.h:
+
+/usr/include/errno.h:
+
+/usr/include/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/asm/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/local/minc/2.1.0/include/volume_io/transforms.h:
+
+/usr/local/minc/2.1.0/include/volume_io/multidim.h:
+
+/usr/local/minc/2.1.0/include/volume_io/volume_cache.h:
+
+/usr/local/minc/2.1.0/include/volume_io/vol_io_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/obj_defs.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/stack.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/bintree.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/colours.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/object_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/bitlist.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/hash.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/priority_queue.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/queue.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/skiplist.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/ds_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/geom.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/geom_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/trans.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/compute_xfm.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/trans_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/numerical.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/amoeba.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/histogram.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/minimization.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/statistics.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/numeric_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/prog_utils.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/global_lookup.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/prog_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/vols.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/colour_coding.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/vol_prototypes.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/images.h:
+
+/usr/local/bicpl/1.4.6/include/bicpl/image_prototypes.h:
+
+ParseArgv.h:
+
+tagtoxfm.h:

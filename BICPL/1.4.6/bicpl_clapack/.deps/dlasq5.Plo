@@ -1,0 +1,5 @@
+dlasq5.lo: dlasq5.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:

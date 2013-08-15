@@ -1,0 +1,5 @@
+dgebd2.lo: dgebd2.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:

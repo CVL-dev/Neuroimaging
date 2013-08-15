@@ -1,0 +1,5 @@
+dorgl2.lo: dorgl2.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:

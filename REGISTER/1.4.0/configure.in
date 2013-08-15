@@ -1,0 +1,95 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT([MNI-Register], [1.4.0], [a.janke@gmail.com], [Register])
+AC_CONFIG_SRCDIR([common_include.h])
+AM_INIT_AUTOMAKE
+AM_CONFIG_HEADER(config.h)
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+
+smr_WITH_BUILD_PATH
+
+dnl Checks for header files.
+AC_PATH_XTRA
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(fcntl.h limits.h unistd.h)
+
+dnl Checks for libraries.
+
+smr_REQUIRED_LIB(m,sqrt,math.h)
+mni_REQUIRE_BICPL
+
+MNI_LIBS="$LIBS"
+LIBS=
+
+AC_SUBST(MNI_LIBS)
+
+# time to hunt for OpenGL
+AX_CHECK_GL
+AX_CHECK_GLU
+AX_CHECK_GLUT
+
+# check if we found them
+if test "$no_gl" = yes -o "$no_glu" = yes -o "$no_glut" = yes ;
+then
+   AC_MSG_ERROR([
+================================================================================
+WARNING: GL/GLU/GLUT not found.
+
+The GL, GLU, and GLUT libraries are required. (also check libXi and libXmu)
+================================================================================
+   ])
+fi
+
+
+AC_SUBST(GL_LIBS)
+AC_SUBST(GL_CFLAGS)
+AC_SUBST(GLU_LIBS)
+AC_SUBST(GLU_CFLAGS)
+AC_SUBST(GLUT_LIBS)
+AC_SUBST(GLUT_CFLAGS)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(strtod strtol)
+
+AC_OUTPUT(Makefile 
+Functionality/Makefile
+Functionality/initialize/Makefile
+Functionality/tags/Makefile
+Functionality/slices/Makefile
+Functionality/update/Makefile
+Graphics/Makefile
+Graphics/GLUT_windows/Makefile
+Graphics/G_graphics/Makefile
+Graphics/OpenGL_graphics/Makefile
+Register_resample/Makefile 
+Tagtoxfm/Makefile
+UI_calls_F/Makefile
+User_interface/Makefile
+User_interface/colour_popup/Makefile
+User_interface/delete_tags_popup/Makefile
+User_interface/event_callbacks/Makefile
+User_interface/event_handling/Makefile
+User_interface/filter_popup/Makefile
+User_interface/input/Makefile
+User_interface/layout/Makefile
+User_interface/main/Makefile
+User_interface/print_popup/Makefile
+User_interface/quit_popup/Makefile
+User_interface/resampling/Makefile
+User_interface/slices/Makefile
+User_interface/transform_popup/Makefile
+User_interface/value_readout/Makefile
+User_interface/widget_instances/Makefile
+User_interface/widgets/Makefile
+User_interface/windows/Makefile
+epm-header
+)
+

@@ -1,0 +1,5 @@
+s_copy.lo: s_copy.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:

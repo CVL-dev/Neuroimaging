@@ -1,0 +1,5 @@
+dtrmm.lo: dtrmm.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:

@@ -1,0 +1,167 @@
+2010-08-23  Andrew L Janke <a.janke@gmail.com>
+   * Graphics/GLUT_windows/glut_windows.c: munted the create_GLUT_window
+      function to always return a RGB double buffered window in an attempt
+      to get around display problems on Nvidia + Ubuntu Lucid issues
+      With thanks to Hugh Fisher
+
+2008-08-18  Andrew L Janke <a.janke@gmail.com>
+	* configure.in: added error output if missing GLUT/GL
+	* epm-header.in: removed netcdf, changed from Register to register
+
+2005-02-28  Bert Vincent <bert@bic.mni.mcgill.ca>
+	* Fix save_image.c to calculate the correct parameters to pass to
+	the ImageMagick "import" utility.
+	* Changed color mapping to mimic the behavior of Display.  This
+	change allows Register to load images in the original type (with
+	only normal slice normalization), which in turn should cause us to 
+	represent the full range of the data rather than mapping volumes
+	onto a single-byte range. The crucial issue here was that for
+	non-RGB images, the previous code created the merged images by 
+	calculating a 2D array of composited colors, indexed by the voxel
+	values of volume 1 and volume 2 to get the composite color for
+	each merged pixel.  This was practical only because the volume was
+	mapped onto the 0-255 byte range. As soon as the range widened to,
+	say, 0-65535, the scheme falls apart because we cannot allocate a
+	65536x65536x4 array of colormap entries to perform this lookup 
+	operation.
+	Thankfully, a solution already existed in the form of the code to
+	implement the merged images when using RGB volumes.  Since there
+	is no lookup table for RGB volumes, the code special-cased them to
+	form the merged image by first calculating the individual pixel
+	maps for volume 1 and volume 2, then calculating the
+	composite. This is slower but clearly much less memory intensive.
+	* Fixed a small bug that caused incorrect 0.0 voxel values to 
+	display for 4D volumes.
+	
+	
+2005-02-02  Andrew Janke <a.janke@gmail.com>
+        * Changes to autoconf build that allows a native build on OSX
+        also changes to various headers so that gl.h and glut.h are found
+
+2005-01-25  Bert Vincent <bert@bic.mni.mcgill.ca>
+	* Added file User_interface/windows/xsect.c, which implements the
+	"timecourse" (cross-section) window.
+	* Changed color maps and voxels to be 16-bit rather than
+	8-bits. This allows greater voxel precision.  This should be
+	generalized further to allow arbitrary precision of voxel values.
+	* Implemented support for time-varying (functional) files.
+	* Added the 'T', '>', and '<' keyboard commands
+	
+2004-09-01  Bert Vincent <bert@bic.mni.mcgill.ca>
+        * Use ImageMagick's 'import' utility rather than 'scrsave' to
+	implement the image capture functionality.  This allows us to
+	save ".tiff" format files on those platforms where ImageMagick
+	is available.
+	
+2004-06-29  Bert Vincent <bert@bic.mni.mcgill.ca>
+	* Stubbed out copy_x_colours.c in the Graphics/GLUT_windows 
+	directory.  This function appears to be unnecessary in 99% of
+	cases, and it relied upon undocumented GLUT features which are
+	not duplicated in FreeGLUT.
+	
+2004-06-28  Bert Vincent <bert@bic.mni.mcgill.ca>
+	* Remove old m4 directory contents
+	* Update autogen.sh to require checkout of m4 from 
+	libraries/mni-acmacros 
+	* Update configure.in to use mni_REQUIRE_BICPL
+	
+2003-12-16  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* configure.in: Set version to 1.3.4.  Use -lXi and -lm when
+	probing for libglut; add all X libs to GL_LIBS variable.
+
+	* Makefile.am (register_LDADD): Don't link with X libs as they are
+	now in $(GL_LIBS).
+	(man_MANS): Install register manpage.
+
+2003-05-29  Steve ROBBINS  <stever@bic.mni.mcgill.ca>
+
+	* User_interface/main/main.c: Use autoconf-generated version
+	string for "-version".
+	(HARD_CODED_REGISTER_DIRECTORY1): Add $(prefix) to top of
+	search list for file "register_UI.globals".
+
+	* Makefile.am (blurg_DATA): Install file "register_UI.globals"
+	into $(libdir).
+
+2001-08-11  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* configure.in: Bump version to 1.3.3.
+
+	Add CVS tag Register-1_3_2.
+
+2001-07-24  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* autogen.sh: Improved ordering; stop on error; use "aclocal -I m4".
+
+	* acinclude.m4: Remove.
+
+	* m4/smr_OPTIONAL_LIB.m4:
+	* m4/smr_REQUIRED_LIB.m4:
+	* m4/smr_WITH_BUILD_PATH.m4: New files.  These replace the old
+	smr_CHECK_LIB macro in acinclude.m4.
+
+	* Makefile.am (EXTRA_DIST): Distribute new m4 files and
+	register_UI.globals.
+
+	* INSTALL.register: Describe usage of register_UI.globals.
+
+	* configure.in: Use new macros.  Check for glut, GLU, and GL
+	libraries.
+
+2001-07-09  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* acinclude.m4 (AC_HELP_STRING): Disable the too-clever pretty
+	formatter.
+
+2001-05-22  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* branch-1_3 merge: Many files added for autoconfig.
+
+	* acinclude.m4: New.  Concatenation of the two m4 files
+	distributed from "smr_macros-0.2.4"
+	[from www.cs.mcgill.ca/~stever/software].
+
+	* User_interface/main/main.c:
+	* User_interface/Include/user_interface.h:
+	* Tagtoxfm/tagtoxfm.c:
+	* Functionality/initialize/initialize.c:
+	* Functionality/Include/register.h: Change include from "foo.h" to
+	"bicpl/foo.h", to match current practice of the "bicpl" library
+	(formerly known as BIC_PL).
+
+	* configure.in: New.  Added infrastructure for autoconf-generated
+	build procedure.  The subdirectories Functionality, Graphics, 
+	UI_calls_F, and User_interface do not yet have automake-generated
+	makefiles; they include "Makefile.include", however, which now
+	*is* generated, so some of the variable definitions are generated
+	there automatically.
+
+	* common_include.h: Change include from "internal_volue_io.h" to
+	"volume_io/internal_volume_io.h", to match recent MINC practice.
+
+2001-05-22  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* User_interface/event_callbacks/tag_events.c:	Rolled back
+	to version 1.7.
+
+	* Functionality/initialize/main.c:
+	* Functionality/tags/matrix_basics.c:
+	* Functionality/tags/matrix_procrustes.c: Removed.
+
+	* tagged as david-source-2001-05-22.  This set of sources is
+	identical to the current contents of ~david/Source/Register (with
+	this ChangeLog added).
+
+2000-10-07  Steve Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* tagged as release-1_3: sources copied from
+	~david/Source/Register, with two files rolled back one revision,
+	to match the `Display+register_src_v1.3' tarball, distributed from
+	David's web page.
+
+	* User_interface/event_callbacks/tag_events.c:	
+	* User_interface/event_handling/window_events.c: rolled back to 
+	version found in Display+register_src_v1.3, distributed from
+	web page.
+

@@ -1,0 +1,5 @@
+dorm2r.lo: dorm2r.c blaswrap.h f2c.h
+
+blaswrap.h:
+
+f2c.h:
