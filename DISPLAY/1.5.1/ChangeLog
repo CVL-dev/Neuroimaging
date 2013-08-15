@@ -1,0 +1,208 @@
+2012-03-02  Andrew L Janke <a.janke@gmail.com>
+   * autogen.sh: added libtoolize line
+
+2010-10-29 John G. Sled <jgsled@phenogenomics.ca>
+   * changed random number generator seed for rendering objects with between
+      2000000 and 4000000 polygons
+
+2010-09-06  Andrew L Janke <a.janke@gmail.com>
+   * updated README, NEWS, removed TODO, README.CVS
+   * built against simplified version of Graphics/GLUT (RGB DB only)
+
+2008-08-18  Andrew L Janke <a.janke@gmail.com>
+	* configure.in: added error output if missing GLUT/GL
+	* epm-header.in: removed netcdf, changed from Register to register
+
+2006-08-03  Claude Lepage <claude@bic.mni.mcgill.ca>
+	* Added a mode for line drawing during painting
+	(a contribution from Rene Mandl, U. of Copenhagen)
+
+2005-04-03  Andrew L Janke  <a.janke@gmail.com>
+	* Added GL/GLU/GLUT m4 macros to EXTRA_DIST
+
+2005-04-02  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* configure.in: Restore AM_PROG_LIBTOOL to link using libtool.
+	This obsoletes AC_PROG_RANLIB.
+
+2005-02-02  Andrew Janke <rotor@bic.mni.mcgill.ca>
+	* Added OSX build support for Native OpenGL/GLUT
+	* Added epm-header.in for binary builds
+
+2004-06-29  Bert Vincent <bert@bic.mni.mcgill.ca>
+	* Stubbed out copy_x_colours.c in the Graphics/GLUT_windows 
+	directory.  This function appears to be unnecessary in 99% of
+	cases, and it relied upon undocumented GLUT features which are
+	not duplicated in FreeGLUT.
+	
+2004-06-28  Bert Vincent <bert@bic.mni.mcgill.ca>
+	* Modify autogen.sh to require m4 be checked out from 
+	libraries/mni-acmacros
+	* Use mni_REQUIRE_BICPL in configure.in
+	* Update version to 1.3.9
+	* Require autoconf 2.57 instead of 2.58
+	
+2003-12-20  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* configure.in: Add X libraries to definition of GL_LIBS.
+	* Set version to 1.3.8.
+
+	* Makefile.am (Display_LDADD): Don't add X libraries, as
+	they now come with GL_LIBS.
+
+2003-11-17  Steve ROBBINS  <stever@bic.mni.mcgill.ca>
+	* configure.in: Run autoupdate.  Set version to 1.3.7.
+
+2002-11-27  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* Documentation/Makefile.am: New.  Build manual using
+	"make Display.ps".
+
+2001-08-16  Steve ROBBINS  <stever@bic.mni.mcgill.ca>
+	* configure.in: Bump version to 1.3.6.
+	* menu/menu.c: Include <config.h>.
+
+2001-08-12  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* configure.in: Bump version to 1.3.5.
+
+2001-08-11  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* main/Makefile.am (AM_CFLAGS): Define HARD_CODED_DISPLAY_DIRECTORY1
+	dynamically.
+	* main/main.c (main): Exit if cannot load menu file.  Remove
+	#define for HARD_CODED_DISPLAY_DIRECTORY1.
+	* menu/menu.c: Disable the compiled-in default_menu_string if
+	--disable-menu-fallback supplied at configure time.
+	(initialize_menu): Emit error if the menu file cannot be found,
+	and no compiled-in fallback is available.
+	* configure.in: Use AC_PREREQ to force autoconf 2.50.
+	Bump version to 1.3.4.  Add --disable-menu-fallback option.
+	* NEWS:
+	* README.CVS: Update.
+
+2001-07-25  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* Makefile.am (CLEANFILES): Clean Display.menu.
+
+2001-07-24  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* autogen.sh: Improved ordering; stop on error; use "aclocal -I m4".
+	* acinclude.m4: Remove.
+	* m4/smr_OPTIONAL_LIB.m4:
+	* m4/smr_REQUIRED_LIB.m4:
+	* m4/smr_WITH_BUILD_PATH.m4: New files.  These replace the old
+	smr_CHECK_LIB macro in acinclude.m4.
+	* configure.in: Use new macros.  Check for glut, GLU, and GL
+	libraries.  Add AM_CONFIG_HEADER.
+	* Makefile.am: Link Display using GL_LIBS.
+
+2001-07-09  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+	* acinclude.m4 (AC_HELP_STRING): Disable the too-clever
+        pretty formatter.
+	* Makefile.am (Display_LDADD): Put X_LIBS (which holds the -L
+	options) ahead of -l options.
+
+2001-06-05  Peter Neelin <neelin@bic.mni.mcgill.ca>
+	* peter_fix_for_jens_June2001: Tag added.
+	* release-1_3_3: Tag added. This is bogus - no change from
+	previous version.
+	* callbacks/segmenting: When saving labels to a minc file in
+	function save_label_data, copy header info from backup file rather
+	than from original file since frequently that file is being
+	overwritten and under some circumstances an error will occur.
+
+2001-06-04  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* configure.in: Use 3-argument AC_DEFINE for HAVE_MALLINFO;
+	otherwise autoheader gives error.
+
+2001-05-27  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* release-1_3_2: Tag added.  The package built contains identical
+	source code to that released as 1.3.1.
+
+	* Include/connect.h:
+	* Include/globals.h:
+	* Include/graphics.h:
+	* Include/graphics_dependent.h:
+	* Include/graphics_types.h:
+	* Include/marker_segment.h:
+	* Include/surface_fitting.h: Removed files.
+
+2001-05-26  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* release-1_3_1: Unpack the release 1.3.1 tarfile overtop the
+	sources.  Release 1.3.1 was generated from David's 1.3 tarball;
+	most of the changes were related to the build.  Unfortunately,
+	the CVS repository that produced the distributed 1.3.1 release
+	is slightly different, so no tag exists for this release.
+
+	* Makefile:
+	* Documentation/Makefile:
+	* Hardware/Makefile:
+	* segmenting_3d/Makefile:
+	* slice_window/Makefile: Removed.
+
+	* acinclude.m4: New file.  Concatenation of the two m4 files
+	distributed from "smr_macros-0.2.4"
+	[from www.cs.mcgill.ca/~stever/software].
+
+	* AUTHORS:
+	* COPYING:
+	* INSTALL:
+	* INSTALL.display:
+	* Makefile.am:
+	* NEWS:
+	* README:
+	* TODO:
+	* configure.in:
+	* atlas/Makefile.am:
+	* callbacks/Makefile.am:
+	* current_obj/Makefile.am:
+	* cursor/Makefile.am:
+	* cursor_contours/Makefile.am:
+	* edit_surface/Makefile.am:
+	* events/Makefile.am:
+	* images/Makefile.am:
+	* immediate_mode/Makefile.am:
+	* input_files/Makefile.am:
+	* intersect/Makefile.am:
+	* main/Makefile.am:
+	* markers/Makefile.am:
+	* menu/Makefile.am:
+	* segmenting/Makefile.am:
+	* slice_window/Makefile.am:
+	* structures/Makefile.am:
+	* surface_curves/Makefile.am:
+	* surface_extraction/Makefile.am:
+	* tubes/Makefile.am:
+	* voxel_scan/Makefile.am: New files.
+
+	* Include/display.h:
+	* Include/surface_extract.h:
+	* callbacks/line_ops.c:
+	* images/images.c:
+	* main/main.c:
+	* surface_curves/edge_distance.c:
+	* surface_extraction/extract.c: Include <bicpl/foo.h> and
+	<volume_io/foo.h> rather than just <foo.h>.
+
+	* callbacks/call_globals.c (DEF_MENU_FUNCTION): Protect include of
+	<malloc.h> based on autoconfigure symbol HAVE_MALLOC_H.  Make code
+	conditional on HAVE_MALLINFO symbol, rather than !linux && !__sun.
+
+	* main/event_loop.c: Roll back to revision found in 1.3 sources.
+	
+2001-05-26  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* David-RCS-update: Update the repository with the checked-out
+	file versions as well as files that do not already have an RCS
+	file.  Tagged as David-RCS-update.
+
+	* Documentation/Makefile: Replaced symlink with target file.
+
+	* boucl1_e1.mnc.gz:
+	* boucl1_e2.mnc.gz: Removed symlinks to nonexistent files.
+
+2001-05-26  Steve M. Robbins  <steve@nyongwa.montreal.qc.ca>
+
+	* David-RCS: Import the RCS files from David's source.  Since
+	David's home directory was damaged, this copy comes from a late
+	1998 tape copy of ~david/Source/Display; the top-level directory
+	is dated 1998-11-05.  This ChangeLog file is the only addition.
+	Tagged as David-RCS.
+

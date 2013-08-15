@@ -1,0 +1,10 @@
+%product display
+%copyright 1993-2002 David MacDonald
+%vendor McConnell Brain Imaging Centre
+%packager Andrew Janke <a.janke@gmail.com>
+%license COPYING
+%readme README
+%description MINC display thing
+%version 1.5.1
+%requires minc
+%requires bicpl

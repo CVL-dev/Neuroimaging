@@ -1,0 +1,14 @@
+MNI-Display is an interactive program to display and segment 3 dimensional
+images, as well as to display and manipulate 3D geometric objects.
+
+The following libraries must be installed before building Display.
+
+  NetCDF
+
+  MINC and bicpl
+    - available from http://packages.bic.mni.mcgill.ca/tgz
+
+Any comments, questions, bug reports, or patches may be
+sent to
+	Andrew Janke - a.janke@gmail.com
+
