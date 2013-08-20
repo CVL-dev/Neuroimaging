@@ -10,7 +10,7 @@ ModuleFileDescription="Application"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.1"
+PACKAGE_RELEASE="4.0.4"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -79,7 +79,7 @@ setenv PBS_ROOT /usr/local/hpc/1.0"
 # multiple lines must be delimeted by ";". Source files must be available in
 # current source directory.
 #
-#PackageInstallFileList=
+PackageInstallFileList="fsl-logo.png:/usr/local/icons"
 
 #
 # Install configuration directories to package in format of 
@@ -117,7 +117,7 @@ MenuLayout="cvl:neuroimaging"
 #     is the application name. Otherwise, it can be defined similar to the
 #     <name> without white spaces. Make sure there are NO SPACES in <category>.
 #
-MenuDirectory="FSL:~/doc/images/fsl-logo.png"
+MenuDirectory="FSL:/usr/local/icons/fsl-logo.png"
 
 #
 # Set up desktop application menu, the syntax is in following format:
@@ -142,8 +142,7 @@ MenuDirectory="FSL:~/doc/images/fsl-logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-#MenuDesktop="bin/fslinit:NFS GUI Initialisation:~/doc/images/fslstart.png:true:bin/license.txt"
-MenuDesktop="bin/fslinit:NFS GUI Initialisation:~/doc/images/fslstart.png:true"
+MenuDesktop="bin/fslinit:FSL-5.0.2:~/doc/images/fslstart.png:true"
 
 #
 # Set library dependencies in following format (version is optional):
@@ -213,7 +212,7 @@ case "$1" in
     -d|--directory-installation-list)
         echo -n ${PackageInstallDirectoryList}
         ;;
-    -e|--enviornment-module-list)
+    -e|--environment-module-list)
         echo -n ${EnvironmentModuleList}
         ;;
     -f|--file-installation-list)
