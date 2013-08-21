@@ -10,7 +10,7 @@ ModuleFileDescription="Application"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.7"
+PACKAGE_RELEASE="4.0.8"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -142,7 +142,7 @@ MenuDirectory="FSL:/usr/local/icons/fsl-logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/fslinit:FSL-5.0.0:~/doc/images/fslstart.png:true"
+MenuDesktop="bin/fslinit:FSL 5.0.0 Initialisation:~/doc/images/fslstart.png:true"
 
 #
 # Set library dependencies in following format (version is optional):

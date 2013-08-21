@@ -142,7 +142,7 @@ MenuDirectory="FSL:/usr/local/icons/fsl-logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/fslinit:FSL-5.0.4:~/doc/images/fslstart.png:true"
+MenuDesktop="bin/fslinit:FSL 5.0.4 Initialisation:~/doc/images/fslstart.png:true"
 
 #
 # Set library dependencies in following format (version is optional):
