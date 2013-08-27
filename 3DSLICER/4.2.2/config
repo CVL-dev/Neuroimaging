@@ -10,7 +10,7 @@ ModuleFileDescription="3dslicer"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.1"
+PACKAGE_RELEASE="4.0.2"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
