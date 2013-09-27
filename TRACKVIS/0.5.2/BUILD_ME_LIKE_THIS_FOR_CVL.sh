@@ -47,6 +47,16 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/trackvis_modules.sh
 
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+trackvis
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
 

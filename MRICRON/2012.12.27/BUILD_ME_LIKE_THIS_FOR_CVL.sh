@@ -47,6 +47,36 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/mricron_modules.sh
 
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/mricron_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/mricron_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+mricron
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/mricron_cvl.sh
+
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/dcm2niigui_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/dcm2niigui_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+dcm2niigui
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/dcm2niigui_cvl.sh
+
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/npm_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/npm_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+npm
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/npm_cvl.sh
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
 

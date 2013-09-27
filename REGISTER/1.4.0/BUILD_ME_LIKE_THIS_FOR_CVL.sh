@@ -78,8 +78,8 @@ chmod 777 ./etc/profile.d/"$NAME"_modules.sh
 cp minc_logo.png $BUILD_DIR/$NAME/$VERSION/
 cp register_logo.png $BUILD_DIR/$NAME/$VERSION/
 
-rm -rf $BUILD_DIR/$NAME/$VERSION/bin/register_mod_mod
-cat >  $BUILD_DIR/$NAME/$VERSION/bin/register_mod_load <<EOF
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/register_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/register_cvl.sh <<EOF
 #!/bin/sh
 module load mesalib
 module load libjpeg-turbo
@@ -89,7 +89,7 @@ module load bicpl
 module load minc
 register
 EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/register_mod_load
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/register_cvl.sh
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR/$NAME

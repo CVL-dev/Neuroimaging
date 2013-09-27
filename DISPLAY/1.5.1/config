@@ -10,7 +10,7 @@ ModuleFileDescription="display"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.1"
+PACKAGE_RELEASE="4.0.2"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -145,7 +145,7 @@ MenuDirectory="MINC TOOLS:~/minc_logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/display_mod_load:Display GUI:~/display_logo.png:false"
+MenuDesktop="bin/display_cvl.sh:Display GUI:~/display_logo.png:false"
 
 #
 # Set library dependencies in following format (version is optional):

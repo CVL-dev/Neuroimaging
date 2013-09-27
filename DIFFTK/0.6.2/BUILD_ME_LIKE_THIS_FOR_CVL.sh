@@ -47,6 +47,16 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/difftk_modules.sh
 
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/difftk_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/difftk_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+dtk
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/difftk_cvl.sh
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
 

@@ -10,7 +10,7 @@ ModuleFileDescription="register"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.1"
+PACKAGE_RELEASE="4.0.2"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -145,7 +145,7 @@ MenuDirectory="MINC TOOLS:~/minc_logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/register_mod_load:Register GUI:~/register_logo.png:false"
+MenuDesktop="bin/register_cvl.sh:Register GUI:~/register_logo.png:false"
 
 #
 # Set library dependencies in following format (version is optional):

@@ -10,7 +10,7 @@ ModuleFileDescription="afni-suma"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.2"
+PACKAGE_RELEASE="4.0.3"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -21,7 +21,7 @@ SOURCE_BUILD_FLAG="ON"
 # Set RPM package dependency requires, using following string format and 
 # delimited by ",". <package1 >= version, package2 >= version, .....>
 #
-RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,freeglut, cvl-glu9_0_0, cvl-mesalib9_1,cvl-virtualgl2_3_1,cvl-libjpeg-turbo1_3_0"
+RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,freeglut, cvl-glu9_0_0, cvl-mesalib9_1,cvl-libjpeg-turbo1_3_0"
 
 #
 # Source configure file.
@@ -145,7 +145,7 @@ MenuDirectory="AFNI/SUMA:~/suma_logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/afni:Afni GUI:~/afnigui_logo.png:false;bin/suma:Suma GUI:~/suma_logo.png:false"
+MenuDesktop="bin/afni_cvl.sh:Afni GUI:~/afnigui_logo.png:false;bin/suma_cvl.sh:Suma GUI:~/suma_logo.png:false"
 
 #
 # Set library dependencies in following format (version is optional):

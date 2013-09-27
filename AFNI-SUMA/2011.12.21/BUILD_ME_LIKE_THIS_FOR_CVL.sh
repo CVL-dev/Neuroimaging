@@ -71,6 +71,26 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/afni-suma_modules.sh
 
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/afni_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/afni_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+afni
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/afni_cvl.sh
+
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/suma_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/suma_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+suma
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/suma_cvl.sh
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
 rm -rf $BUILD_DIR

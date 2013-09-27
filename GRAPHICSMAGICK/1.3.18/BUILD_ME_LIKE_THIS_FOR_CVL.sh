@@ -33,11 +33,6 @@ fi
 
 #copy over logo
 cp gm_logo.png $BUILD_DIR/$NAME/$VERSION/
-cat > $BUILD_DIR/$NAME/$VERSION/bin/gm_display <<EOF
-#!/bin/bash
-gm -display
-EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/gm_display
 
 mkdir -p ./etc/profile.d
 rm -rf ./etc/profile.d/graphicsmagick_modules.sh
@@ -62,6 +57,16 @@ rm -rf /tmp/build_mod_load
 echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/graphicsmagick_modules.sh
+
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/gm_cvl.sh
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/gm_cvl.sh <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+gm -display
+EOF
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/gm_cvl.sh
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 rm -rf $NAME-$VERSION-binaries.tar.gz

@@ -47,6 +47,16 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/3dslicer_modules.sh
 
+rm -rf $BUILD_DIR/bin/slicer_mod_load
+cat >  $BUILD_DIR/bin/slicer_mod_load <<EOF
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+Slicer
+EOF
+chmod 777 $BUILD_DIR/bin/slicer_mod_load
+
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
 
