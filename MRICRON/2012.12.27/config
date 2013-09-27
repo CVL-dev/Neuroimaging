@@ -21,7 +21,7 @@ SOURCE_BUILD_FLAG="ON"
 # Set RPM package dependency requires, using following string format and 
 # delimited by ",". <package1 >= version, package2 >= version, .....>
 #
-RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,cvl-virtualgl2_3_1,cvl-libjpeg-turbo1_3_0"
+RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,cvl-virtualgl2_3_1,freeglut, cvl-mesalib9_1,cvl-libjpeg-turbo1_3_0"
 
 #
 # Source configure file.
@@ -145,7 +145,7 @@ MenuDirectory="MRICRON:~/mricon_logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/mricron_cvl.sh:Mricron GUI:~/mricon_logo.png:false;bin/dcm2niigui_cvl.sh:Dcm2nii GUI:~/mricon_logo.png:false;bin/npm_cvl.sh:Npm GUI:~/mricon_logo.png:false"
+MenuDesktop="bin/mricron:Mricron GUI:~/mricon_logo.png:false;bin/dcm2niigui:Dcm2nii GUI:~/mricon_logo.png:false;bin/npm:Npm GUI:~/mricon_logo.png:false"
 
 #
 # Set library dependencies in following format (version is optional):

@@ -10,7 +10,7 @@ ModuleFileDescription="graphicsmagick"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.0"
+PACKAGE_RELEASE="4.0.1"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -21,7 +21,7 @@ SOURCE_BUILD_FLAG="ON"
 # Set RPM package dependency requires, using following string format and 
 # delimited by ",". <package1 >= version, package2 >= version, .....>
 #
-RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,cvl-virtualgl2_3_1,cvl-libjpeg-turbo1_3_0"
+RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,freeglut, cvl-mesalib9_1, cvl-virtualgl2_3_1,cvl-libjpeg-turbo1_3_0"
 
 #
 # Source configure file.
@@ -90,7 +90,7 @@ function PatchCommand()
 # "<Source>:<Destination>", multiple lines must be delimited by ";". 
 # Source files must be available in current source directory.
 #
-#PackageInstallDirectoryList=
+PackageInstallDirectoryList=etc:/
 
 #
 # Set menu layout in format <project_type>:<application_menu>. If this is not 
@@ -145,7 +145,7 @@ MenuDirectory="Graphics Magick:~/gm_logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/gm_cvl.sh:Graphics Magick GUI:~/gm_logo.png:false"
+MenuDesktop="bin/gm_display:Graphics Magick GUI:~/gm_logo.png:false"
 
 #
 # Set library dependencies in following format (version is optional):

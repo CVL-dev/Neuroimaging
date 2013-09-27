@@ -57,6 +57,9 @@ if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules pack
 
 if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
 
+module load mesalib 2> /tmp/build_mod_load
+module load libjpeg-turbo 2> /tmp/build_mod_load
+module load glu 2> /tmp/build_mod_load
 module load afni-suma/2011.12.21 2> /tmp/build_mod_load
 CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
 if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate afni/suma package. Please install it and load it: 'module load afni-suma' !!!!!\n"
@@ -67,34 +70,6 @@ rm -rf /tmp/build_mod_load
 echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/afni-suma_modules.sh
-
-# create CVL GUI launcher scripts
-rm -rf $BUILD_DIR/$NAME/$VERSION/bin/afni_cvl.sh
-cat >  $BUILD_DIR/$NAME/$VERSION/bin/afni_cvl.sh <<EOF
-#!/bin/sh
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-#load modules
-module load virtualgl 2> /tmp/build_mod_load
-module load libjpeg-turbo 2> /tmp/build_mod_load
-module load afni-suma 2> /tmp/build_mod_load
-#execute
-vglrun afni
-EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/afni_cvl.sh
-
-# create CVL GUI launcher scripts
-rm -rf $BUILD_DIR/$NAME/$VERSION/bin/suma_cvl.sh
-cat >  $BUILD_DIR/$NAME/$VERSION/bin/suma_cvl.sh <<EOF
-#!/bin/sh
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-#load modules
-module load virtualgl 2> /tmp/build_mod_load
-module load libjpeg-turbo 2> /tmp/build_mod_load
-module load afni-suma 2> /tmp/build_mod_load
-#execute
-vglrun suma
-EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/suma_cvl.sh
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR

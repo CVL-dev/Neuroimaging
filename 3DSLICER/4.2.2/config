@@ -10,7 +10,7 @@ ModuleFileDescription="3dslicer"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.3"
+PACKAGE_RELEASE="4.0.4"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -21,7 +21,7 @@ SOURCE_BUILD_FLAG="ON"
 # Set RPM package dependency requires, using following string format and 
 # delimited by ",". <package1 >= version, package2 >= version, .....>
 #
-RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,cvl-virtualgl2_3_1,cvl-libjpeg-turbo1_3_0"
+RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,freeglut, cvl-mesalib9_1,cvl-virtualgl2_3_1,cvl-libjpeg-turbo1_3_0"
 
 #
 # Source configure file.
@@ -145,7 +145,7 @@ MenuDirectory="3D SLICER:~/3d_slicer.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/3d_slicer_cvl.sh:3D Slicer GUI:~/3d_slicer.png:false"
+MenuDesktop="bin/Slicer:3D Slicer GUI:~/3d_slicer.png:false"
 
 #
 # Set library dependencies in following format (version is optional):

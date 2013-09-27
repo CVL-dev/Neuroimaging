@@ -33,19 +33,35 @@ fi
 
 #copy over logo
 cp gm_logo.png $BUILD_DIR/$NAME/$VERSION/
-# create CVL GUI launcher scripts
-rm -rf $BUILD_DIR/$NAME/$VERSION/bin/gm_cvl.sh
-cat >  $BUILD_DIR/$NAME/$VERSION/bin/gm_cvl.sh <<EOF
-#!/bin/sh
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-#load modules
-module load virtualgl 2> /tmp/build_mod_load
-module load libjpeg-turbo 2> /tmp/build_mod_load
-module load graphicsmagick 2> /tmp/build_mod_load
-#execute
-vglrun gm display
+cat > $BUILD_DIR/$NAME/$VERSION/bin/gm_display <<EOF
+#!/bin/bash
+gm -display
 EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/gm_cvl.sh
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/gm_display
+
+mkdir -p ./etc/profile.d
+rm -rf ./etc/profile.d/graphicsmagick_modules.sh
+cat > ./etc/profile.d/graphicsmagick_modules.sh <<EOF
+#!/bin/bash
+echo -n "Checking GRAPHICSMAGICK 'modules' requirements..."
+if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules package is not installed !!!!!\n"; fi;
+
+. /etc/profile.d/modules.sh
+
+if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
+
+module load mesalib 2> /tmp/build_mod_load
+module load libjpeg-turbo 2> /tmp/build_mod_load
+module load graphicsmagick/1.3.18 2> /tmp/build_mod_load
+CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
+if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate graphicsmagick package. Please install it and load it: 'module load graphicsmagick' !!!!!\n"
+fi
+
+rm -rf /tmp/build_mod_load
+
+echo -e "Finished.\n"
+EOF
+chmod 777 ./etc/profile.d/graphicsmagick_modules.sh
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 rm -rf $NAME-$VERSION-binaries.tar.gz

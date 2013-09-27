@@ -34,6 +34,8 @@ if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules pack
 
 if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
 
+module load mesalib 2> /tmp/build_mod_load
+module load libjpeg-turbo 2> /tmp/build_mod_load
 module load trackvis/0.5.2 2> /tmp/build_mod_load
 CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
 if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate trackvis package. Please install it and load it: 'module load trackvis' !!!!!\n"
@@ -44,20 +46,6 @@ rm -rf /tmp/build_mod_load
 echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/trackvis_modules.sh
-
-# create CVL GUI launcher scripts
-rm -rf $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh
-cat >  $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh <<EOF
-#!/bin/sh
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-#load modules
-module load virtualgl 2> /tmp/build_mod_load
-module load libjpeg-turbo 2> /tmp/build_mod_load
-module load trackvis 2> /tmp/build_mod_load
-#execute
-vglrun trackvis
-EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/trackvis_cvl.sh
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR

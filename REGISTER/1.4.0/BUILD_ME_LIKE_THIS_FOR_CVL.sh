@@ -17,7 +17,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "\n\n**********************************************************************************"
-echo -e "!!! THIS BUILD OF BICPL WILL BUILD FOR THE SPECIFICS OF CVL !!!"
+echo -e "!!! THIS BUILD OF REGISTER WILL BUILD FOR THE SPECIFICS OF CVL !!!"
 echo -e "**********************************************************************************\n\n"
 
 rm -rf $BUILD_DIR
@@ -58,6 +58,12 @@ if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules pack
 
 if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
 
+module load mesalib 2> /tmp/build_mod_load
+module load libjpeg-turbo 2> /tmp/build_mod_load
+module load hdf5 2> /tmp/build_mod_load
+module load netcdf 2> /tmp/build_mod_load
+module load bicpl 2> /tmp/build_mod_load
+module load minc 2> /tmp/build_mod_load
 module load $NAME/$VERSION 2> /tmp/build_mod_load
 CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
 if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate $NAME package. Please install it and load it: 'module load $NAME' !!!!!\n"
@@ -72,23 +78,18 @@ chmod 777 ./etc/profile.d/"$NAME"_modules.sh
 cp minc_logo.png $BUILD_DIR/$NAME/$VERSION/
 cp register_logo.png $BUILD_DIR/$NAME/$VERSION/
 
-# create CVL GUI launcher scripts
-rm -rf $BUILD_DIR/$NAME/$VERSION/bin/register_cvl.sh
-cat >  $BUILD_DIR/$NAME/$VERSION/bin/register_cvl.sh <<EOF
+rm -rf $BUILD_DIR/$NAME/$VERSION/bin/register_mod_mod
+cat >  $BUILD_DIR/$NAME/$VERSION/bin/register_mod_load <<EOF
 #!/bin/sh
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-#load modules
-module load virtualgl 2> /tmp/build_mod_load
-module load libjpeg-turbo 2> /tmp/build_mod_load
-module load netcdf 2> /tmp/build_mod_load
-module load hdf5 2> /tmp/build_mod_load
-module load minc 2> /tmp/build_mod_load
-module load bicpl 2> /tmp/build_mod_load
-module load register 2> /tmp/build_mod_load
-#execute
-vglrun register
+module load mesalib
+module load libjpeg-turbo
+module load hdf5
+module load netcdf
+module load bicpl
+module load minc
+register
 EOF
-chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/register_cvl.sh
+chmod 777 $BUILD_DIR/$NAME/$VERSION/bin/register_mod_load
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR/$NAME
