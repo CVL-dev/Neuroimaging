@@ -2,9 +2,10 @@ clear
 
 NAME=ants
 VERSION=1.9.4
-CMAKE_2_8_12=`pwd`/cmake-2.8.12
-SOURCES=`pwd`/sources
-BUILD_DIR=`pwd`/ants_build
+CURRENT=$(pwd)
+CMAKE_2_8_12=$CURRENT/cmake-2.8.12
+SOURCES=$CURRENT/sources
+BUILD_DIR=$CURRENT/ants_build
 
 DEST_PATH=${NAME^^}/$VERSION
 
@@ -24,17 +25,18 @@ echo -e "!!! NOTE: YOU WILL NEED TO HAVE A LOCAL INSTALL OF CMAKE VERSION 1.8.4 
 echo -e "**********************************************************************************\n\n"
 
 rm -rf $NAME-$VERSION-sources.tar.gz
-#rm -rf $BUILD_DIR
+rm -rf $BUILD_DIR
 mkdir -p ./etc/profile.d
 
 mkdir -p $BUILD_DIR/$NAME/$VERSION
 
-#$CMAKE_2_8_12/bin/cmake $SOURCES
+cd $BUILD_DIR/$NAME/$VERSION
+$CMAKE_2_8_12/bin/cmake $SOURCES
 if [ $? -ne 0 ]; then
         echo "Build aborted! Check for errors..."
         exit -1
 fi
-#make -j 4
+make -j 4
 if [ $? -ne 0 ]; then
         echo "Build aborted! Check for errors..."
         exit -1
@@ -42,6 +44,7 @@ fi
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 cp $SOURCES/Scripts/* $BUILD_DIR/$NAME/$VERSION/bin
 
+cd $CURRENT
 rm -rf ./etc/profile.d/ants_modules.sh
 cat > ./etc/profile.d/ants_modules.sh <<EOF
 #!/bin/bash
@@ -64,11 +67,10 @@ echo -e "Finished.\n"
 EOF
 chmod 777 ./etc/profile.d/ants_modules.sh
 
-TARGET=`pwd`/$NAME-$VERSION-binaries.tar.gz
+TARGET=$CURRENT/$NAME-$VERSION-binaries.tar.gz
 rm -rf $TARGET
-cd $BUILD_DIR
-tar cvfz $TARGET $NAME/$VERSION/bin $NAME/$VERSION/lib $NAME/$VERSION/readme.txt
-#rm -rf $BUILD_DIR
+tar cvfz $TARGET $BUILD_DIR/$NAME/$VERSION/bin $BUILD_DIR/$NAME/$VERSION/lib $BUILD_DIR/$NAME/$VERSION/readme.txt
+rm -rf $BUILD_DIR
 
 echo -e "\n\n*******************************************************************"
 echo -e "\tNOW GO AHEAD AND CVL BUILD ME FROM THE TAR JUST CREATED"
