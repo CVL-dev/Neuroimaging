@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+  <namespace>test-ns</namespace>
+  <pair>
+    <name>x</name>
+    <value>a</value>
+  </pair>
+</config>

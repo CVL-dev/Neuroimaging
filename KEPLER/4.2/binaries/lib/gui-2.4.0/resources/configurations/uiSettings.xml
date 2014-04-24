@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+<!--
+################################################################################
+#
+#    '$RCSfile$'
+#
+#     '$Author: barseghian $'
+#       '$Date: 2011-11-21 15:05:58 -0800 (Mon, 21 Nov 2011) $'
+#   '$Revision: 28981 $'
+#
+# This ResourceBundle contains the settings and mappings used by the kepler menu
+# framework
+#
+# NOTES:
+# *** IMPORTANT!!!
+#   The following characters MUST be escaped with a backslash:
+#      :   <whitespace>   #   !   \    =
+#   (except where ":", "=" or " " are used as a delimeter between the key and
+#   its corresponding value). This means that any COLON characters in the LSID
+#   *MUST* be escaped with a backslash, thus  \:
+#   for example:    WRONG - urn:lsid:localhost:director:1:1=myIcon
+#                 CORRECT - urn\:lsid\:localhost\:director\:1\:1=myIcon
+# ***
+################################################################################
+-->
+<config>
+  <!--
+  ################################################################################
+  # ENABLE/DISABLE FEATURES
+  ################################################################################
+  
+  
+  # If set to true, the system will use the Kepler-specific menus. If false, it
+  # will use the original PTII menus
+  #
+  -->
+  <pair>
+    <name>KEPLER_MENUS</name>
+    <value>true</value>
+  </pair>
+  <!--
+  # NOTE - to enable/disable Kepler-specific CONTEXT menus, edit the file
+  #        configs/ptolemy/configs/kepler/configure.xml, and look for two
+  #        properties named: "contextMenuFactory" and "canvasContextMenuFactory".
+  #        These can be commented out or deleted to revert to the original
+  #        old-kepler/ptii context menus
+  
+  
+  #  If set to true, the system will use the newer Batik-based framework for
+  # rendering the newer, kepler-style SVG icons, which are set using the
+  # attributes "_iconDescription" (full-size) and "_smallIconDescription"
+  # (thumbnails)
+  # If set to false, the system will default to using the older-style Diva SVG
+  # rendering, for the older-style Icons that are set using the attributes
+  # "_iconDescription" (full-size) and "_smallIconDescription" (thumbnails)
+  #
+  -->
+  <pair>
+    <name>SVG_RENDERING_IS_BATIK</name>
+    <value>true</value>
+  </pair>
+  <!--
+  # NOTE! If you set this to false, and want to have all the old ptii icons
+  # show up again, you will also need to edit build-ptolemy.xml, and remove
+  # the line:
+  #
+  #    <exclude name="**/*Icon.xml"/>
+  #
+  # Then do an "ant full-clean ptolemy" and rebuild kepler before running
+  ##########
+  
+  
+  # denotes whether the context dialogs (Actor, Director, Port, Link, Workflow)
+  # are modal or not
+  #
+  -->
+  <pair>
+    <name>diaogs.all.isModal</name>
+    <value>true;</value>
+  </pair>
+  <!--
+  ################################################################################
+  # DIMENSIONS
+  ################################################################################
+  -->
+  
+  <!--
+  # dims of universally-used default spacer
+  -->
+  <pair>
+    <name>general.defaultSpacer.width</name>
+    <value>10</value>
+  </pair>
+  <pair>
+    <name>general.defaultSpacer.height</name>
+    <value>10</value>
+  </pair>
+  
+  <!--
+  # dims of dialog OK, Apply, Cancel & Help buttons
+  -->
+  <pair>
+    <name>dialogs.buttons.width</name>
+    <value>74</value>
+  </pair>
+  <pair>
+    <name>dialogs.buttons.height</name>
+    <value>20</value>
+  </pair>
+  
+  <!--
+  # limit font to this size where long strings need to fit on short buttons
+  -->
+  <pair>
+    <name>button.limitedSpace.maxFontSize</name>
+    <value>11</value>
+  </pair>
+  
+  <!--
+  # dims of params dialog tab buttons
+  -->
+  <pair>
+    <name>dialogs.params.buttons.width</name>
+    <value>94</value>
+  </pair>
+  <pair>
+    <name>dialogs.params.buttons.height</name>
+    <value>22</value>
+  </pair>
+  
+  <!--
+  # dims of dialog JLabels to left of text input fields. Don't forget to allow for
+  # the padding defined in "dialogs.tabPanels.padding.left"
+  -->
+  <pair>
+    <name>dialogs.labels.width</name>
+    <value>70</value>
+  </pair>
+  <pair>
+    <name>dialogs.labels.height</name>
+    <value>20</value>
+  </pair>
+  <pair>
+    <name>dialogs.textfields.width</name>
+    <value>255</value>
+  </pair>
+  <pair>
+    <name>dialogs.textfields.height</name>
+    <value>20</value>
+  </pair>
+  
+  <!--
+  # dims of "ID" label on dialog "general" tab
+  -->
+  <pair>
+    <name>dialogs.labels.id.width</name>
+    <value>60</value>
+  </pair>
+  <pair>
+    <name>dialogs.labels.id.height</name>
+    <value>20</value>
+  </pair>
+  <!--
+  # dims of button panel. located at bottom of Actor/Director etc dialog,
+  # which holds OK, Apply, Cancel & Help buttons
+  # Note that width is ignored, but must have a valid value of some kind (try 40)
+  #
+  -->
+  <pair>
+    <name>dialogs.labels.idvalue.width</name>
+    <value>210</value>
+  </pair>
+  <pair>
+    <name>dialogs.labels.idvalue.height</name>
+    <value>20</value>
+  </pair>
+  <pair>
+    <name>dialogs.buttonPanel.width</name>
+    <value>40</value>
+  </pair>
+  <pair>
+    <name>dialogs.buttonPanel.height</name>
+    <value>40</value>
+  </pair>
+  <!--
+  # dims of the main jpanel under each tab in the tabbed dialog.
+  -->
+  <pair>
+    <name>dialogs.tabPanels.width</name>
+    <value>630</value>
+  </pair>
+  <pair>
+    <name>dialogs.tabPanels.height</name>
+    <value>200</value>
+  </pair>
+  <pair>
+    <name>dialogs.tabPanels.padding.top</name>
+    <value>10</value>
+  </pair>
+  <pair>
+    <name>dialogs.tabPanels.padding.left</name>
+    <value>20</value>
+  </pair>
+  <pair>
+    <name>dialogs.tabPanels.padding.bottom</name>
+    <value>5</value>
+  </pair>
+  <pair>
+    <name>dialogs.tabPanels.padding.right</name>
+    <value>20</value>
+  </pair>
+  <!--
+  ################################################################################
+  # COLORS
+  ################################################################################
+  
+  # background color for the workflow canvas, in the form of its red, gree & blue
+  # components, where each component is an integer between 0 and 255, inclusive
+  # set each component to 229 for the classic 'ptolemy' background
+  # set each component to 255 for a white background
+  -->
+  <pair>
+    <name>WORKFLOW_CANVAS_COLOR_RED</name>
+    <value>255</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW_CANVAS_COLOR_GREEN</name>
+    <value>255</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW_CANVAS_COLOR_BLUE</name>
+    <value>255</value>
+  </pair>
+  <pair>
+    <name>dialogs.mainPanel.bgcolor.r</name>
+    <value>190</value>
+  </pair>
+  <pair>
+    <name>dialogs.mainPanel.bgcolor.g</name>
+    <value>200</value>
+  </pair>
+  <pair>
+    <name>dialogs.mainPanel.bgcolor.b</name>
+    <value>211</value>
+  </pair>
+  <!--
+  ################################################################################
+  # *** NON-DISPLAYABLE *** STRING VALUES
+  #
+  #  (*DO NOT* PUT DISPLAY TEXT HERE (i.e. text that users will see in the UI);
+  #   Display text goes in uiDisplayText_en_US.properties.
+  #   Allowable values for this section are NOT LOCALE-SPECIFIC - such as URLs for
+  #   on-disk or online resources etc.
+  ################################################################################
+  
+  # used if no "_help" parameter is defined in configuration.xml
+  #
+  -->
+  <pair>
+    <name>dialogs.defaultHelpURL</name>
+    <value>ptolemy/configs/doc/basicHelp.htm</value>
+  </pair>
+  <!--
+  ################################################################################
+  # JAVA LOOK & FEEL
+  ################################################################################
+  
+  # Set an alternative Look & Feel here.
+  # NOTE - Typically won't need to (and shouldn't) change LnF for Windows or
+  # Mac OS X - we should use the native LnF's on these systems
+  #
+  # Primarily intended for Linux, since Sun's standard Look & Feel for linux
+  # doesn't really match the newer linuxes (linices??), and has big ol' honking
+  # fonts that don't fit on our dainty buttons.
+  #
+  #
+  # for other L&F's, see http://javootoo.l2fprod.com/
+  #
+  # If anything goes wrong, or if the property is left blank, Kepler will revert
+  # to the appropriate system-default Look and Feel
+  
+  -->
+  <pair>
+    <name>WINDOWS_LNF</name>
+    <value></value>
+  </pair>
+  <pair>
+    <name>MACOSX_LNF</name>
+    <value></value>
+  </pair>
+  <pair>
+    <name>LINUX_LNF</name>
+    <value></value>
+  </pair>
+  <!--
+  # CURRENT POSSIBLE VALUES FOR L&F:
+  #
+  ## JGoodies Looks (in lib/jar/LnF_looks-1.3.2.jar): ###
+  # http://www.jgoodies.com/freeware/looks/index.html
+  # BSD License
+  #
+  # com.jgoodies.looks.plastic.Plastic3DLookAndFeel
+  # com.jgoodies.looks.plastic.PlasticLookAndFeel
+  # com.jgoodies.looks.plastic.PlasticXPLookAndFeel
+  # com.jgoodies.looks.windows.WindowsLookAndFeel
+  #
+  #
+  
+  
+  ################################################################################
+  # UI ICONS & SVG/THUMBNAIL DEFAULTS
+  ################################################################################
+  
+  
+  #####################################################
+  # full-size actor SVG icons
+  # These are displayed in the workflow, on the canvas
+  #####################################################
+  
+  # The directory in which the full-size actor SVG icons are located.
+  #
+  -->
+  <pair>
+    <name>SVG_ICON_BASE_PATH</name>
+    <value>/svg/</value>
+  </pair>
+  <!--
+  # The default file extension for the full-size actor SVG icons
+  # (Note that it is not obligatory for the extension to start with
+  #  a "." if it doesn't, and doesn't contain a ".", then one will
+  #  be prepended. If it does contain a ".", it will be left as is.)
+  #
+  -->
+  <pair>
+    <name>SVG_BASE_ICON_EXT</name>
+    <value>.svg</value>
+  </pair>
+  <!--
+  #####################################################
+  # thumbnail-sized actor raster icons for ONTOLOGY CATEGORIES
+  # These are displayed in the actor library tree
+  #####################################################
+  -->
+  <pair>
+    <name>ONTOL_CLASS_TREEICON_PATH</name>
+    <value>/ptolemy/configs/kepler/sms/class.png</value>
+  </pair>
+  <pair>
+    <name>ONTOLOGY_TREEICON_OPEN_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/book_open.png</value>
+  </pair>
+  <pair>
+    <name>ONTOLOGY_TREEICON_CLOSED_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/book.png</value>
+  </pair>
+  <pair>
+    <name>FOLDER_TREEICON_OPEN_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/folder.png</value>
+  </pair>
+  <pair>
+    <name>FOLDER_TREEICON_CLOSED_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/folder.png</value>
+  </pair>
+  <pair>
+    <name>PACKAGE_SILKICON_OPEN_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/bin.png</value>
+  </pair>
+  <pair>
+    <name>PACKAGE_SILKICON_CLOSED_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/bin_closed.png</value>
+  </pair>
+  <pair>
+    <name>PACKAGE_SILKICON_ERROR_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/bin_error.png</value>
+  </pair>
+  <pair>
+    <name>MAGNIFIER_SILKICON_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/magnifier.png</value>
+  </pair>
+  <pair>
+    <name>REMOTE_TREEICON_PATH</name>
+    <value>/ptolemy/configs/kepler/icon/silk/computer.png</value>
+  </pair>
+  <!--
+  #####################################################
+  # thumbnail-sized actor raster icons for ACTORS
+  # These are displayed in the actor library tree
+  #####################################################
+  -->
+  <pair>
+    <name>RASTER_THUMBNAIL_BASE_PATH</name>
+    <value>/actorthumbs/</value>
+  </pair>
+  <pair>
+    <name>RASTER_THUMBNAIL_EXT</name>
+    <value>-sm.gif</value>
+  </pair>
+  <pair>
+    <name>RASTER_THUMBNAIL_HEIGHT_PLUS_PADDING</name>
+    <value>18</value>
+  </pair>
+  <!--
+  #####################################################
+  # Default icons
+  # These are displayed if an icon has not been assigned explicitly
+  # in the svgIconMappingsByClass or svgIconMappingsByLSID resource bundles,
+  # or if some other problem prevents the correct icons from being assigned
+  #####################################################
+  -->
+  <pair>
+    <name>DEFAULT_DIRECTOR_ICON</name>
+    <value>director</value>
+  </pair>
+  <pair>
+    <name>DEFAULT_ACTOR_ICON</name>
+    <value>basic-actor</value>
+  </pair>
+</config>

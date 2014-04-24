@@ -1,0 +1,105 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="NetCDFReader" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:706:1">
+    </property>
+    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.data.netcdf.NetCDFReader">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="null">
+        </property>
+    </property>
+    <property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="NONE">
+    </property>
+    <property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+    </property>
+    <property name="filename" class="ptolemy.actor.parameters.FilePortParameter" value="">
+    </property>
+    <property name="constraint" class="ptolemy.actor.parameters.PortParameter" value="">
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#LocalInput">
+    </property>
+    <property name="kepler:output" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="unknown">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+        <property name="_hide" class="ptolemy.kernel.util.Attribute">
+        </property>
+    </property>
+    <property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="unknown">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="true">
+        </property>
+        <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+        </property>
+    </property>
+    <property name="kepler:filename" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="unknown">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="kepler:constraint" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="string">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Daniel Crawl</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: NetCDFReader.java 30701 2012-09-18 18:39:51Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+This actor reads values from a NetCDF file. The &lt;i&gt;constraint&lt;/i&gt; parameter
+ specifies the variables to read and optionally how to subset them. For each
+ variable, an output port with the same name is created. The type of the
+ output port depends on how many dimensions are left unconstrained in the
+ variable: scalar tokens for zero, array tokens for one, and matrix tokens for
+ two. Unconstrained dimensions of greater than two are not supported.
+ &lt;p&gt;
+ The syntax for the &lt;i&gt;constraint&lt;/i&gt; parameter is a space-separated list of
+ variables. Each variable may optionally have a set of dimensional constraints
+ in the form of [start:end:stride], where start is the starting index, end is
+ the ending index, and stride is the increment. A dimension may be left
+ unconstrained by specifying [:]. For example, suppose the variable is a
+ two-dimensional matrix z[x,y]. To read the entire matrix, use z. To read all
+ the values where y = 3, use z[:][3].
+ &lt;p&gt;</configure>
+    </property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output port.  The type of this port is unspecified.  Derived classes may set it.</configure>
+    </property>
+<property name="port:filename" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The name of the NetCDF file to read.</configure>
+    </property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The trigger port.  The type of this port is undeclared, meaning  that it will resolve to any data type.</configure>
+    </property>
+<property name="port:constraint" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Space-separated list of variables with an optional set of  constraints. Each dimension may be constrained using the  syntax [start:end:stride], or use [:] for no constraint.</configure>
+    </property>
+<property name="prop:filename" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The name of the NetCDF file to read.</configure>
+    </property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If a positive integer, then the number of iterations before the  actor indicates to the scheduler that it is finished by returning  false in its postfire() method.</configure>
+    </property>
+<property name="prop:constraint" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Space-separated list of variables with an optional set of  constraints. Each dimension may be constrained using the  syntax [start:end:stride], or use [:] for no constraint.</configure>
+    </property>
+</property>
+</entity>

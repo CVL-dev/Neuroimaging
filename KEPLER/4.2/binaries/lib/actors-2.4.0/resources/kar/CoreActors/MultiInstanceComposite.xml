@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<entity name="MultiInstanceComposite" class="org.kepler.moml.CompositeClassEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:538:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.hoc.MultiInstanceComposite" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:538:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="nInstances" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="instance" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+
+<property name="showClones" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Workflow">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Zoltan Kemenczy, Sean Simmons, Research In Motion Limited</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>
+A composite actor that creates multiple instances of itself during
+the preinitialize phase of model execution. A MultiInstanceComposite
+actor may be used to instantiate <i>nInstances</i> identical
+processing blocks within a model. This actor (the &quot;master&quot;)
+creates <i>nInstances</i> - 1 additional instances (clones) of
+itself during the <i>preinitialize()</i> phase of model execution
+and destroys these instances during model <i>wrapup()</i>.
+MultiInstanceComposite <b>must contain a director</b>, so
+that its Actor interface methods (<i>preinitialize(), ..., wrapup()</i>)
+are invoked during model initialization. Each instance may refer
+to its <i>instance</i> [0..<i>nInstances</i>-1] parameter, which is
+set automatically by the master if it needs to know its instance
+number.
+</p>
+<p>
+MultiInstanceComposite input ports must not be multiports and may
+be connected to multiports or regular ports. During <i>preinitialize()</i>,
+the master MultiInstanceComposite determines how its input ports
+are connected, and creates additional relations in its container
+(the model it is embedded in) to connect the input ports of its
+clones (instances) to the same output port if that port is a
+multiport.  If that output port is a regular port, the clone's input
+port is linked to the already existing relation between that output
+port and the master's input port.  MultiInstanceComposite output
+ports must not be multiports and must be connected to input multiports.
+The master MultiInstanceComposite creates additional relations to
+connect the output ports of its clones to the input port.
+</p>
+<p>
+Finally, after all these connections are made, the master's
+<i>preinitialize()</i> calls <i>preinitialize()</i> of the clones.
+From here on until <i>wrapup()</i>, nothing special happens. Type
+resolution occurs on all instances in the modified model, so does
+<i>initialize()</i> and the computation of schedules by directors
+of the master and clones.  During model <i>wrapup()</i>, the master
+MultiInstanceComposite deletes any relations created, unlinks any
+ports if needed, and deletes the clones it created. To re-synchronize
+vergil's model graph, an empty <i>ChangeRequest</i> is also queued
+with the Manager.
+</p>
+</configure></property>
+<property name="prop:instance" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The index of this instance.</configure></property>
+<property name="prop:nInstances" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The total number of instances to instantiate including instance 0 (the master copy).</configure></property>
+<property name="prop:showClones" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, display the clones on the canvas.</configure></property>
+</property></entity>

@@ -1,0 +1,47 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="SemanticTypeParameter" class="org.kepler.moml.PropertyEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:522:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+This is a subtype of StringParameter. All the data is stored through the
+ StringParameter.setExpression() call, as a single string. This string is
+ interpreted as follows:
+ 
+ If form is A#B#C, then A is the ontology URI, B is the concept ID, and C is
+ the concept label
+ else if form is A#B, then A is the ontology URI, B is the concept ID
+ else if form is A, then A is the concept ID</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.sms.SemanticType">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1184:1">
+        </property>
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+    </property>
+    <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+    </property>
+    <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+        <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+        </property>
+    </property>
+    <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+        <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+    </property>
+    <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+    </property>
+</entity>

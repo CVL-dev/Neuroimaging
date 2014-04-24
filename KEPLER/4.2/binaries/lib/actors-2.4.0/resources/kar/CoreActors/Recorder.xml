@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<entity name="Recorder" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:9:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Recorder actor receives tokens of any type via its input multiport. By default, the actor stores each token, along with the current time.</p>
+
+<p>The Recorder is often used to test configurations of actors, or by programs that invoke Kepler workflows and then query the results after a workflow is run.</p>
+
+<p>The capacity parameter limits the size of the record. If the capacity is set to zero, then no tokens are recorded, but the total number of input tokens is counted. If the capacity is 1, then only the most recently seen token on each channel is recorded. If the capacity is negative (the default), then the capacity is infinite.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that receives tokens of any type.</configure></property>
+<property name="prop:capacity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The size of the record for each channel. The value must be an integer. The default is -1 (meaning that the capacity is infinite).</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Recorder" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:885:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Variable" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#TextualOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

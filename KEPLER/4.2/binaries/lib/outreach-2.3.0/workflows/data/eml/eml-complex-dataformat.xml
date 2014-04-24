@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<eml:eml
+    packageId="eml.1.1" system="knb"
+    xmlns:eml="eml://ecoinformatics.org/eml-2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ds="eml://ecoinformatics.org/dataset-2.0.0"
+    xmlns:stmml="http://www.xml-cml.org/schema/stmml"
+    xsi:schemaLocation="eml://ecoinformatics.org/eml-2.0.0 eml.xsd">
+
+<dataset>
+  <title>It is a test eml</title>
+  <creator id="Rodrigo.Torrens">
+    <individualName>
+      <salutation>Mr.</salutation>
+      <givenName>Rodrigo</givenName>
+      <surName>Torrens</surName>
+    </individualName>
+  </creator>
+  <contact>
+    <references>Rodrigo.Torrens</references>
+  </contact>
+  <dataTable>
+    <entityName>Make up data</entityName>
+    <entityDescription> Dtos Estacion meteorologica La Hechicera para e?
+    2001</entityDescription>
+    <physical>
+      <objectName>complex.dat</objectName>
+      <size unit="bytes">55</size>
+      <characterEncoding>ASCII</characterEncoding>
+      <dataFormat>
+        <textFormat>
+          <numHeaderLines>1</numHeaderLines>
+          <recordDelimiter>\n</recordDelimiter>
+          <attributeOrientation>column</attributeOrientation>
+          <complex>
+             <textFixed>
+                <fieldWidth>1</fieldWidth>
+                <fieldStartColumn>2</fieldStartColumn>
+             </textFixed>
+             <textDelimited>
+                <fieldDelimiter>,</fieldDelimiter>
+             </textDelimited>
+             <textFixed>
+                <fieldWidth>2</fieldWidth>
+             </textFixed>
+             <textFixed>
+                <fieldWidth>2</fieldWidth>
+             </textFixed>
+             <textDelimited>
+                <fieldDelimiter>#</fieldDelimiter>
+             </textDelimited>
+             <textDelimited>
+                <fieldDelimiter>;</fieldDelimiter>
+             </textDelimited>
+             <textFixed>
+                <fieldWidth>2</fieldWidth>
+             </textFixed>
+          </complex>
+        </textFormat>
+      </dataFormat>
+      <distribution>
+        <online>
+          <url>file:///outreach/resources/data/eml/complex.dat</url>
+        </online>
+      </distribution>
+    </physical>
+    <attributeList>
+      <attribute id="att.1">
+        <attributeName>SerialNumber</attributeName>
+        <attributeLabel>Number</attributeLabel>
+        <attributeDefinition>Serial Number
+        </attributeDefinition>
+        <storageType>integer</storageType>
+        <measurementScale>
+          <ratio>
+            <unit>
+              <standardUnit>dimensionless</standardUnit>
+            </unit>
+            <precision>
+              1
+            </precision>
+            <numericDomain>
+              <numberType>integer</numberType>
+            </numericDomain>
+          </ratio>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.2">
+        <attributeName>TIME</attributeName>
+        <attributeLabel>TIME</attributeLabel>
+        <attributeDefinition>Time of collection
+        </attributeDefinition>
+        <storageType>integer</storageType>
+        <measurementScale>
+          <ratio>
+            <unit>
+              <standardUnit>second</standardUnit>
+            </unit>
+            <precision>
+              1
+            </precision>
+            <numericDomain>
+              <numberType>integer</numberType>
+            </numericDomain>
+          </ratio>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.3">
+        <attributeName>T_AIR</attributeName>
+        <attributeLabel>T_AIR</attributeLabel>
+        <attributeDefinition>Air temperature
+        </attributeDefinition>
+        <storageType>string</storageType>
+        <measurementScale>
+          <nominal>
+             <nonNumericDomain>
+                <textDomain><definition>It is a string</definition></textDomain>
+              </nonNumericDomain>
+          </nominal>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.4">
+        <attributeName>RH</attributeName>
+        <attributeLabel>RH</attributeLabel>
+        <attributeDefinition>Relative Humidity
+        </attributeDefinition>
+        <storageType>string</storageType>
+         <measurementScale>
+          <nominal>
+             <nonNumericDomain>
+                <textDomain><definition>It is a string</definition></textDomain>
+              </nonNumericDomain>
+          </nominal>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.5">
+        <attributeName>DEW</attributeName>
+        <attributeLabel>DEW</attributeLabel>
+        <attributeDefinition>Dew point
+        </attributeDefinition>
+        <storageType>string</storageType>
+       <measurementScale>
+          <nominal>
+             <nonNumericDomain>
+                <textDomain><definition>It is a string</definition></textDomain>
+              </nonNumericDomain>
+          </nominal>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.6">
+        <attributeName>BARO</attributeName>
+        <attributeLabel>BARO</attributeLabel>
+        <attributeDefinition>Barometric preasure
+        </attributeDefinition>
+        <storageType>string</storageType>
+        <measurementScale>
+          <nominal>
+             <nonNumericDomain>
+                <textDomain><definition>It is a string</definition></textDomain>
+              </nonNumericDomain>
+          </nominal>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.7">
+        <attributeName>WD</attributeName>
+        <attributeLabel>WD</attributeLabel>
+        <attributeDefinition>Wind direction
+        </attributeDefinition>
+        <storageType>string</storageType>
+         <measurementScale>
+          <nominal>
+             <nonNumericDomain>
+                <textDomain><definition>It is a string</definition></textDomain>
+              </nonNumericDomain>
+          </nominal>
+        </measurementScale>
+      </attribute>
+    </attributeList>
+    <caseSensitive>no</caseSensitive>
+    <numberOfRecords>3</numberOfRecords>
+  </dataTable>
+</dataset>
+</eml:eml>

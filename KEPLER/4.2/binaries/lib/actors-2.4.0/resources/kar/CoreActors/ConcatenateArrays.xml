@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<entity name="Concatenate Arrays" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:527:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1.0 Sept 21, 2007</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The concatenateArrays actor reads individual arrays via its input port and outputs an array consisting of a concatenation of those arrays.</p>
+
+<p>The actor accepts input elements of arrays of ints, doubles, strings, etc..  Each time the actor fires, it reads one token from each channel of the input port, concatenates the contents of these arrays, and outputs a resulting array.</p>
+</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a concatenation of the input arrays.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts arrays</configure></property>
+</property>
+<property name="class" value="util.ConcatenateArrays" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:527:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArrayActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataArrayOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

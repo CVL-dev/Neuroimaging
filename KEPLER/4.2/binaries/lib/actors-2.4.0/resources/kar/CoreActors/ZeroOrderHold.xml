@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<entity name="ZeroOrderHold" class="ptolemy.kernel.ComponentEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.ZeroOrderHold" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:14:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:14:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      Convert discrete events at the input to a continuous-time&#10; signal at the output by holding the value of the discrete&#10; event until the next discrete event arrives. Specifically,&#10; on each firing, if an input is present, then record the&#10; value of the input. Then produce the recorded value.&#10; This actor will throw an exception if the input is not&#10; purely discrete. Specifically, this means that when the input&#10; is present, the step size of the solver has to be 0.0. </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee, Haiyang Zheng</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: ZeroOrderHold.xml 24234 2010-05-06 05:21:26Z welker $</configure>
+    </property>
+    <property name="prop:defaultValue" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Default output before any input has received.&#10;  The default is empty, indicating&#10;  that no output is produced until an input is received.&#10;  The type of the output is set to at least the type of&#10;  this parameter (and also at least the type of the input).
+      </configure>
+    </property>
+    <property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An input port that contains the value to be sampled.</configure>
+    </property>
+    <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An output port that broadcasts the sampled value.</configure>
+    </property>
+  </property>
+  <property name="input" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+</entity>

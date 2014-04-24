@@ -1,0 +1,12 @@
+HPWREN	ML	AIRTEMP2_A	RH_AVG	32.97	-116.64
+HPWREN	LP	AIRTEMP_AV	RH_AVG	32.70	-116.76
+HPWREN	MW	tmpout		RHout	33.01	-116.97
+HPWREN	RMNA	tmpout		RHout	33.03	-116.96
+HPWREN	SCI	tmpout		RHout	32.93	-118.25
+HPWREN	SRR	tmpout		RHout	33.452	-116.70
+#SDC	IB	air_temp	rel_hum	32.58	-117.09
+SDC	IB	air_temp	rhbad	32.58	-117.09
+SDC	CI	air_temp	rel_hum	32.47	-117.19
+#HPWREN	SDSC	tmpout	32.88	-117.24
+SMER	NORTH	air_temp_a	rh_avg	33.39	-117.37
+SIO	PierDavis		Temp-out	Hum-out	32.87	-117.25

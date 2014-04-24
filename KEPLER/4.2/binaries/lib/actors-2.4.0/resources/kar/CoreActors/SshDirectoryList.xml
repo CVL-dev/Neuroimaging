@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<entity name="SSH Directory Listing" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:508:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1.1 Feb. 2008</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The SSHDirectoryListing actor gets a directory listing for a local or remote directory. If the directory is remote, the actor uses SSH protocol. The actor returns an array of new files (new since the last time the actor was triggered), new and modified files, all files, or only files that match a specified mask. Each element in the array is a record consisting of a file name, size, and date.</p>
+
+<p>If 'newFilesOnly' is set (the default) the file list is updated each time the actor is triggered and only 'new' filenames are output. 'New' files are determined by the difference between the current and the previous directory listings. Files not found in the previous listing are considered new.  If 'newFilesOnly' is not set, the entire directory list is returned each time the actor is triggered.</p>
+
+<p>Select the 'checkSizeAndDate' parameter to return modified files in addition to new ones. If this parameter is selected, the actor will return all modified files  (i.e., files where the size or date has changed between the previous and current listings) in addition to the new files. If 'checkSizeAndDate' is not set (the default), only brand new files are listed. This flag can be used for watching a specific file to look for changes in size or access time.</p>
+
+<p>Directory listings are output as an array. Each element in the array is a record containing a file name, size and date (e.g., {name=String, size=long, date=long}). File size is in bytes and date is in UTC seconds. The resolution depends on the 'ls -l' output, i.e. at most a minute, and for old files a day. In the local case, resolution depends on the resolution of Java and the local OS, usually less than a millisecond.</p>
+
+<p>The 'sendEmpty' parameter specifies if this actor should emit an empty ArrayToken of RecordTokens in case no files are found. Very useful option under directors that expect a fixed token rate.</p>
+
+<p>The 'delay' parameter specifies if the actor should postpone the emission of lists by one step, i.e., emit the results of the previous listing and store the recent one for the next time. 'delay' and 'sendEmpty' cannot be both true; 'sendEmpty' will be considered false if 'delay' is true. This is a strange option. It is used to safely watch a simulation by not listing the newest files which may be still under construction by the simulation. The assumption here is that if we find a new set of files with the recent listing, the "new" files in the previous listing are completely finished by the simulation. Note that the last set of files will not be emitted, except if 'frequencySec' and 'stopmask' are used, see below.</p>
+
+<p>The 'frequencySec' and 'stopmask' parameters can be used to make this actor run in a loop itself. If frequencySec is non-zero, the actor will list the directory with the time interval of frequencySec until a file matching the stop mask is found. The stop file(s) will be emitted as a separate token after the token of newest files. The actor does not finalize after that, so it can be fired again to start a new file watching loop. Use only in PN, since this mode can block other directors. If 'delayed' is true, the last listing is know: when a stop file is found. In this case, both the previous listing and the current listing and moreover, the stop file(s) will be emitted in the firing, i.e. three tokens are produced.</p>
+
+
+
+</configure></property>
+   
+   <property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. </configure></property>
+   <property name="port:dir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path of the directory to be read on the target machine.   </configure></property>
+   <property name="port:masks" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The list of file masks. Only files and directories that match one of the masks will be listed. "" means all files.  </configure></property>
+   <property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The actor's trigger port. You need to pass a token to the trigger port to trigger the actor only if you do not connect any other port. </configure></property>
+   <property name="port:newFiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output array of files (new files by default). This port is an output port of type ArrayToken. Each element is a record containing the name of the file, its size and date, e.g., {name=String, size=long, date=long}. </configure></property>
+   <property name="prop:newFilesOnly" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should contain only new files (files not found in previous listing) or all files.  By default, only new files are listed.</configure></property>
+   <property name="prop:checkSizeAndDate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should contain modified files as well as new files. By default, modified files are not included.   </configure></property>
+   <property name="prop:sendEmpty" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether an empty ArrayToken (of RecordTokens) should be emitted if no files found. Useful in SDF which awaits a result. </configure></property>
+   <property name="prop:delay" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Delay the listings by one step, i.e. emit the list found in the revious step while storing the recent list for the next firing. If true, sendEmpty is considered to be false. </configure></property>
+   <property name="prop:frequencySec" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If non-zero, the actor runs in a loop and lists the directory regularly with the given time interval. The actor will stop only when a file is found matching the stop mask. The stop mask usually should not be included in the list of masks. Use only in PN </configure></property>
+   <property name="port:stopmask" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The "stop" file mask. This parameter is used only if frequencySec is set to be greater than zero. Then, the actor performs the listing in a loop until a file matching the stopmask is found. Use this mode only in PN, because the actor would block all other models. </configure></property>
+  
+</property>
+<property name="class" value="org.kepler.actor.io.SshDirectoryList_v1_1" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1209:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="target" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="dir" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="masks" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="stopmask" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="newFiles" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{{name=string,date=long,size=long}}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticTyper21" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#RemoteInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType23" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType41" value="urn:lsid:localhost:onto:4:1#CPES" class="org.kepler.sms.SemanticType"/>
+
+</entity>

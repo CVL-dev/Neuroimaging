@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Sequence" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:721:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.Sequence" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="values" class="ptolemy.data.expr.Parameter" value="{1}">
+</property>
+
+<property name="repeat" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+<property name="holdLastOutput" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#IterativeOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#WorkflowInput" class="org.kepler.sms.SemanticType"/>
+
+<property name="kepler:enable" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: Sequence.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This actor produces a sequence of values, optionally periodically repeating&#10; them. The &lt;i&gt;values&lt;/i&gt; parameter contains an ArrayToken that specifies the&#10; sequence of values to produce at the output. If the &lt;i&gt;enable&lt;/i&gt; input&#10; port is connected, then it provides a boolean sequence that specifies&#10; whether to produce an output. If the &lt;i&gt;enable&lt;/i&gt; is present and&#10; true, then the actor will produce the next output. Otherwise, it&#10; produces no output and will produce the next in the sequence&#10; on the next firing (if enable is true). If the &lt;i&gt;holdLastOutput&lt;/i&gt;&#10; parameter is true, then the sequence is infinite, with the last&#10; value being repeated forever.&#10; &lt;p&gt;&#10; Compared with the Pulse actor, this actor can be enabled or disabled&#10; on each firing by providing a true or false input on the &lt;i&gt;enable&lt;/i&gt;&#10; port.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. The type is greater than or equal to the  types of the two input ports.</configure></property>
+<property name="port:enable" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The enable input port.  If this port is connected, then its  input will determine whether an output is produced in any  given firing. The type is boolean.</configure></property>
+<property name="prop:values" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The values that will be produced on the output.  This parameter is an array, with default value {1}.</configure></property>
+<property name="prop:holdLastOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A flag indicating whether to interpret the &lt;i&gt;values&lt;/i&gt;  as an infinite sequence where the last value is repeated  forever. This is a boolean that defaults to false.</configure></property>
+<property name="prop:repeat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The flag that indicates whether the sequence needs to be  repeated. If this is false, then either the last value of the  sequence is repeatedly produced after the entire sequence  has been produced, or the actor stops producing output,  depending on the value of &lt;i&gt;holdLastOutput&lt;/i&gt;.  This is a boolean, and defaults to false.</configure></property>
+</property></entity>

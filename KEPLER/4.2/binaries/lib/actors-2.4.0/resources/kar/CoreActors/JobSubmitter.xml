@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<entity name="JobSubmitter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:354:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The JobSubmitter actor is to submit a job into a jobmanager on the local/remote machine, using external execute command/ssh. </p>
+<p> It currently support multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF, and can be extended for more. </p> </configure></property>
+<property name="port:jobIn" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The job object created by the JobCreator.</configure></property>
+<property name="port:jobManager" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The jobManager object created by JobManager Actor.</configure></property>
+<property name="port:jobOut" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The job of the submitted job is passed on so that it can be used later to query its status in JobStatus, or destroyed in JobRemover.</configure></property>
+<property name="port:succ" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> (boolean): true means successful submission, false means error.</configure></property>
+<property name="port:log" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The logging information of job status query.</configure></property>
+<property name="prop:jobSubmitOptions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> submit options, which are different for different job scheduler.</configure></property>
+</property>
+<property name="class" value="org.kepler.actor.job.JobSubmitter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1219:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="jobIn" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="jobManager" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="jobOut" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="succ" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="log" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="jobSubmitOptions" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#JobCommand" class="org.kepler.sms.SemanticType"/>
+</entity>

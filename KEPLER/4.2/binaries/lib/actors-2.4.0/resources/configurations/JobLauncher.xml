@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+# Properties file for JobLauncher actor.
+# This properties file is used for retrieving
+# the correct job scheduler support class by
+# doing a lower-case comparison on the key.
+# Additional job scheduler support classes
+# may be added by including ...
+#	 	key = support class name
+# in this properties file as well as
+# adding the job support class with
+# naming convention 
+# 		JobSupport{support class name}.java
+# and placed in the correct directory.
+# JobLauncher.properties should be in $KEPLER_HOME/common/configs/ptolemy/configs/kepler
+-->
+<config>
+  <pair>
+    <name>condor</name>
+    <value>Condor</value>
+  </pair>
+  <pair>
+    <name>fork</name>
+    <value>Fork</value>
+  </pair>
+  <pair>
+    <name>loadleveler</name>
+    <value>LoadLeveler</value>
+  </pair>
+  <pair>
+    <name>nccs</name>
+    <value>NCCS</value>
+  </pair>
+  <pair>
+    <name>pbs</name>
+    <value>PBS</value>
+  </pair>
+  <pair>
+    <name>sge</name>
+    <value>SGE</value>
+  </pair>
+  <pair>
+    <name>moab</name>
+    <value>Moab</value>
+  </pair>
+  <pair>
+    <name>lsf</name>
+    <value>LSF</value>
+  </pair>
+</config>

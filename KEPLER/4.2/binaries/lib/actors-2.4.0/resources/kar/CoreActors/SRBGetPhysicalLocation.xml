@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<entity name="SRB Get Physical Location" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:257:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SRBGetPhysicalLocation actor takes the logical path of a Storage Resource Broker (SRB) file and outputs the physical location of the file. The physical location can be used to fetch or stage files without requiring an SRB connection.</p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). SRB collections use a "logical name space" that maps logical paths consisting of collections (directories) and individual data objects (files) to physical files stored on different devices. Users see and interact with the logical paths, and the physical location is handled by the SRB system and administrators. Use the SRBGetPhysicalLocation actor to "translate" a logical path to a physical one.</p>
+
+<p>The SRBGetPhysicalLocation actor receives two inputs: a logical path to a remote SRB file, and a connection reference to an SRB file system. Use the SRBConnect actor to connect to an SRB file system and return a connection reference that the SRBGetPhysicalLocation actor can use. 
+The actor outputs the physical location of the SRB file as well as an exit code status indicating either success or failure/errors in getting file's physical location.</p></configure></property>
+<property name="port:logicalPath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a logical path to an SRB file. Logical paths, which consist of SRB collection and data object information, can be mapped to the physical location of a file.</configure></property>
+<property name="port:physicalPath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the physical location of the SRB file.</configure></property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a reference to an SRB file system. Use the SRBConnect actor to open a connection and create the reference.</configure></property>
+</property>
+<property name="class" value="org.srb.SGetPhysicalLocation" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1083:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="logicalPath" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="physicalPath" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

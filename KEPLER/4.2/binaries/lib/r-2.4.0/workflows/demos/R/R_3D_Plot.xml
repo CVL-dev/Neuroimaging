@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity class="ptolemy.actor.TypedCompositeActor" name="R_3D_Plot">
+    <property class="ptolemy.kernel.attributes.VersionAttribute" name="_createdBy" value="6.0-devel">
+    </property>
+    <property class="ptolemy.domains.sdf.kernel.SDFDirector" name="SDF Director">
+        <property class="ptolemy.data.expr.Parameter" name="iterations" value="1">
+        </property>
+        <property class="ptolemy.moml.SharedParameter" name="timeResolution" value="1E-10">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:director:1:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:directorclass:1:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType00" value="urn:lsid:localhost:onto:1:1#Director">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType11" value="urn:lsid:localhost:onto:2:1#Director">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="{50, 40}">
+        </property>
+    
+<property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Steve Neuendorffer</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The SDF Director is often used to oversee fairly simple, sequential workflows in which the director can determine the order of actor invocation from the workflow. Types of workflows that would run well under an SDF Director include processing and reformatting tabular data, converting one data type to another, and reading and plotting a series of data points. A workflow in which an image is read, processed (rotated, scaled, clipped, filtered, etc.), and then displayed, is also an example of a sequential workflow that requires a director simply to ensure that each actor fires in the proper order (i.e., that each actor executes only after it receives its required inputs).</p>
+
+<p>The SDF Director is very efficient and will not tax system resources with overhead. However, this efficiency requires that certain conditions be met, namely that the data consumption and production rate of each actor in an SDF workflow be constant and declared. If an actor reads one piece of data and calculates and outputs a single result, it must always read and output a single token of data. This data rate cannot change during workflow execution and, in general, workflows that require dynamic scheduling and/or flow control cannot use this director. Additionally, the SDF Director has no understanding of passing time (at least by default), and actors that depend on a notion of time may not work as expected. For example, a TimedPlotter actor will plot all values at time zero when used in SDF. </p>
+
+<p>By default, the SDF Director requires that all actors in its workflow be connected. Otherwise, the director cannot account for concurrency between disconnected workflow parts. Usually, a PN Director should be used for workflows that contain disconnected actors; however, the SDF Director's allowDisconnectedGraphs parameter may also be set to true. The SDF Director will then schedule each disconnected "island" independently. The director cannot infer the sequential relationship between disconnected actors (i.e., nothing forces the director to finish executing all actors on one island before firing actors on another). However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF model indicate an error.</p>
+ 
+<p>Because SDF Directors schedule actors to fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause "deadlock" errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a SampleDelay actor to generate and inject an initial input value into the workflow.</p>
+
+<p>The SDF Director determines the order in which actors execute and how many times each actor needs to be fired to complete a single iteration of the workflow. This schedule is calculated BEFORE the director begins to iterate the workflow. Because the SDF Director calculates a schedule in advance, it is quite efficient. However, SDF workflows must be static. In other words, the same number of tokens must be consumed/produced at every iteration of the workflow. Workflows that require dynamic control structures, such as a BooleanSwitch actor that sends output on one of two ports depending on the value of a 'control', cannot be used with an SDF Director because the number of tokens on each output can change for each execution.</p>
+
+<p>Unless otherwise specified, the SDF Director assumes that each actor consumes and produces exactly one token per channel on each firing. Actors that do not follow the one-token-per-channel firing convention (e.g., Repeat or Ramp) must declare the number of tokens they produce or consume via the appropriate parameters. </p>
+
+<p>The number of times a workflow is iterated is controlled by the director's iterations parameter. By default, this parameter is set to "0". Note that "0" does not mean "no iterations." Rather, "0" means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </p>
+
+<p>The amount of data processed by an SDF workflow is a function of both the number of times the workflow iterates and the value of the director's vectorizationFactor parameter. The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </p>
+
+<p>The SDF Director has several advanced parameters that are generally only relevant when an SDF workflow contains composite components. In most cases the period, timeResolution, synchronizeToRealTime, allowRateChanges, timeResolution, and constrainBufferSizes parameters can be left at their default values.</p>
+
+<p>For more information about the SDF Director, see the Ptolemy documentation (http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf).</p>
+
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:allowDisconnectedGraphs">
+<configure>Specify whether to allow disconnected actors in the workflow (by default, all actors are required to be connected). If disconnected actors are permitted, the SDF Director will schedule each disconnected 'island' independently. Nothing "forces" the director to finish executing all actors on one island before firing actors on another. However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF workflow indicate an error.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:allowRateChanges">
+<configure>Specify whether dynamic rate changes are permitted or not. By default, rate changes are not permitted, and the director will perform a check to disallow such workflows. If the parameter is selected, then workflows that require rate parameters to be modified during execution are valid, and the SDF Director will dynamically compute a new schedule at runtime. This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:timeResolution">
+<configure>The time precision used by this director. All time values are rounded to the nearest multiple of this number. The value is a double that defaults to "1E-10" (which is 10-10). This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:constrainBufferSizes">
+<configure>Specify whether buffer sizes are fixed. By default, buffers are fixed, and attempts to write to the buffer that cause the buffer to exceed its scheduled size result in an error. This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:iterations">
+<configure>Specify the number of times a workflow is iterated. By default, this parameter is set to "0". Note that "0" does not mean "no iterations." Rather, "0" means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:vectorizationFactor">
+<configure>The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:synchronizeToRealTime">
+<configure>Specify whether the execution should synchronize to real time or not. By default, the director does not synchronize to real time. If synchronize is selected, the director will only process the workflow when elapsed real time matches the product of the period parameter and the iteration count. Note: if the period parameter has a value of 0.0 (the default), then selecting this parameter has no effect. This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:period">
+<configure>The time period of each iteration. The value is a double that defaults to 0.0, which means that the director does not increment workflow time. If the value greater than 0.0, the actor will increment workflow time each time it fires. This is an advanced parameter that can usually be left at its default value. </configure>
+</property>
+</property>
+</property>
+    <property class="ptolemy.actor.gui.WindowPropertiesAttribute" name="_windowProperties" value="{bounds={40, 13, 865, 644}, maximized=false}">
+    </property>
+    <property class="ptolemy.actor.gui.SizeAttribute" name="_vergilSize" value="[572, 514]">
+    </property>
+    <property class="ptolemy.data.expr.ExpertParameter" name="_vergilZoomFactor" value="1.0">
+    </property>
+    <property class="ptolemy.data.expr.ExpertParameter" name="_vergilCenter" value="{286.0, 257.0}">
+    </property>
+    <entity class="org.ecoinformatics.seek.R.RExpression" name="RExpression">
+        <property class="ptolemy.kernel.util.StringAttribute" name="expression" value="x &lt;- seq(-10, 10, length= 30)&#10;y &lt;- x&#10;f &lt;- function(x,y) { r &lt;- sqrt(x^2+y^2); 10 * sin(r)/r }&#10;z &lt;- outer(x, y, f)&#10;z[is.na(z)] &lt;- 1&#10;op &lt;- par(bg = &quot;white&quot;)&#10;persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = &quot;lightblue&quot;)&#10;">
+            <property class="ptolemy.actor.gui.style.TextStyle" name="R Expression">
+                <property class="ptolemy.data.expr.Parameter" name="height" value="10">
+                </property>
+                <property class="ptolemy.data.expr.Parameter" name="width" value="30">
+                </property>
+            </property>
+        </property>
+        <property class="ptolemy.data.expr.StringParameter" name="Rcwd" value="C:\Documents and Settings\Dan Higgins">
+        </property>
+        <property class="ptolemy.data.expr.StringParameter" name="save_nosave" value="--no-save">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="graphicsOutput" value="true">
+        </property>
+        <property class="ptolemy.data.expr.StringParameter" name="numXPixels" value="480">
+        </property>
+        <property class="ptolemy.data.expr.StringParameter" name="numYPixels" value="480">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:360:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="org.ecoinformatics.seek.R.RExpression">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:1126:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType00" value="urn:lsid:localhost:onto:1:1#MathOperationActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[70.0, 245.0]">
+        </property>
+    
+<property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Dan Higgins</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The RExpression actor runs an R script or function. Input and output port are created by the user and correspond to R variables used in the specified R script. The actor outputs the result of the evaluated script.</p>
+
+<p>The R application must be installed on the local system to use this actor. R is a language and environment for statistical computing and graphics. For more information about R, see http://www.r-project.org/.</p>
+
+<p>Kepler contains a number of preconfigured R-actors: Barplot, Boxplot, Scatterplot, Summary, RandomNormal, RandomUniform, Correlation, LinearModel, Regression, RMean, RMedian, RQuantile, and  SummaryStatistics.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:graphicsFileName">
+<configure>An output port that broadcasts the file name of the generated graph of the results.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:output">
+<configure>An output port that broadcasts a copy of the text output that R generates. As the actor communicates with R to run the R function or script, the output port sends back the response (i.e., the values and statistical outputs).</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:numXPixels">
+<configure>The width of the output graphic in pixels.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:Rcwd">
+<configure>The 'R' working directory (the home directory by default). </configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:expression">
+<configure>The expression that is evaluated to produce the output.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:graphicsOutput">
+<configure>Specify whether or not to create a graphics output port. By default, the actor will create a graphics output port.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:displayGraphicsOutput">
+<configure>Select to display the plot once the actor has generated it.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:graphicsFormat">
+<configure>The graphics output format. Currently the actor supports either  *.pdf or  *.png.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:numYPixels">
+<configure>The height of the output graphic in pixels.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:save_nosave">
+<configure>Specify whether or not to save the R workspace when R is closed; set to '--save' to retrieve the workspace later in a workflow in another R-actor.</configure>
+</property>
+</property>
+</entity>
+    <entity class="ptolemy.actor.lib.gui.Display" name="Display">
+        <property class="ptolemy.data.expr.Parameter" name="rowsDisplayed" value="10">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="columnsDisplayed" value="40">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="suppressBlankLines" value="false">
+        </property>
+        <property class="ptolemy.actor.gui.WindowPropertiesAttribute" name="_windowProperties" value="{bounds={395, 620, 544, 307}, maximized=false}">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:7:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.actor.lib.gui.Display">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:883:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType00" value="urn:lsid:localhost:onto:1:1#TextualOutputActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType11" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[270.0, 340.0]">
+        </property>
+    
+<property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Yuhong Xiong, Edward A. Lee</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The Display actor reads tokens of any type via its input multiport, and displays each token on a separate line in a text display window.</p>
+
+<p>Specify the size of the text display window with the rowsDisplayed and columnsDisplayed parameters. Simply resizing the window onscreen does not persistently change the size when the workflow is saved, closed, and then re-opened. </p>
+
+<p>If the input is a string token, then the actor strips the surrounding quotation marks before displaying the value.</p> 
+
+<p>Select the suppressBlankLines parameter to specify that the actor not add blank lines to the display. By default, the actor will add blank lines.</p>
+
+<p>Note: this actor can consume large amounts of memory. It is not advisable to use it to display large output streams.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:input">
+<configure>A multiport that accepts tokens of any type.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:suppressBlankLines">
+<configure>Specify whether the actor should display blank lines (the default) or suppress them.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:rowsDisplayed">
+<configure>The vertical size of the display, in rows. The value is an integer that defaults to 10.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:columnsDisplayed">
+<configure>The horizontal size of the display, in columns. The value is an integer that defaults to 40.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:title">
+<configure>The title of the text display window. If specified, the value will appear in the title bar of the text display window.</configure>
+</property>
+</property>
+</entity>
+    <entity class="util.ImageJActor" name="ImageJ">
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:251:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="util.ImageJActor">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:1077:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType00" value="urn:lsid:localhost:onto:1:1#ImageManipulationActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType11" value="urn:lsid:localhost:onto:2:1#GraphicalOutput">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[285.0, 200.0]">
+        </property>
+    
+<property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Dan higgins</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The ImageJ actor reads an image file name and opens and displays the image along with a toolbar of image-processing options, which can be used to process the image.</p>
+
+<p>The actor uses the ImageJ application to open and work with images. ImageJ can be used to display and process a wide variety of images (tiffs, gifs, jpegs, etc.) For more information about ImageJ, see http://rsb.info.nih.gov/ij/.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:input">
+<configure>A multiport that accepts the path of an image file (a tiff, gif, jpeg, or any other format supported by ImageJ). The file name can also be input through the fileOrURL parameter.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:fileOrURL">
+<configure>The file name or URL of an image to process (a tiff, gif, jpeg, or any other format supported by ImageJ). The file name may also be input through the input port.</configure>
+</property>
+</property>
+</entity>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation4">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+    </relation>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation5">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+    </relation>
+    <link port="RExpression.graphicsFileName" relation="relation5"/>
+    <link port="RExpression.output" relation="relation4"/>
+    <link port="Display.input" relation="relation4"/>
+    <link port="ImageJ.input" relation="relation5"/>
+</entity>

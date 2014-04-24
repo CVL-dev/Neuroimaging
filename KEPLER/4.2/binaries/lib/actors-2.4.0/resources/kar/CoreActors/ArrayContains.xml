@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ArrayContains" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:602:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.ArrayContains" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="element" class="ptolemy.actor.parameters.PortParameter">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DataArrayOperation">
+</property>
+
+<property name="kepler:array" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:element" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ArrayContains.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Determine whether an element is contained in an array.&#10; This actor reads an array from the &lt;i&gt;array&lt;/i&gt;&#10; input port and an element from the &lt;i&gt;element&lt;/i&gt;&#10; port parameter and outputs true if the element is contained by&#10; the array.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Boolean output specifying whether the element is contained in         the array.</configure></property>
+<property name="port:element" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The element to test for presence in the array.</configure></property>
+<property name="port:array" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Input array. The type of this port is at least an array  of the type of the &lt;i&gt;element&lt;/i&gt; port.</configure></property>
+<property name="prop:element" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The element to test for presence in the array.</configure></property>
+</property></entity>

@@ -1,0 +1,104 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Archive Counter" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:510:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Norbert Podhorszki</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: ArchiveCounter.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;
+ Chop up list of files to archive lists with a minimum size.&lt;br/&gt;
+ The input should be a stream of tokens of file information: a record of
+ {name=&lt;filename&gt;, size=&lt;size in bytes&gt;, date=&lt;date in seconds&gt;} Such tokens
+ are produced by org.kepler.actor.io.SshDirectoryListing.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ Numbering (first number field) in the file names can denote timesteps of a
+ simulation, and this actor keeps files of the same timestep together. If
+ there is no number in the file names, then they are considered to be
+ stand-alone steps.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ The actor outputs a list of files to be archived whenever the processed
+ files' total size overcomes the specified minimum (and full set of timesteps
+ are available). The output is a record of (a) string containing the list of
+ files to be archived together (separated with \n), (b) the total size and (c)
+ first and (d) last timestep included in this list: {list=&amp;lt;string&amp;gt;,
+ size=&amp;lt;long&amp;gt;, firstTS=&amp;lt;int&amp;gt;, lastTS=&amp;lt;int&amp;gt;}.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ The actor outputs also the file info's of the files to be archived
+ one-by-one, for checkpointing and logging purposes, but after such firing
+ when outputs the list.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ This actor does not produce any tokens for an unknown number of firings, then
+ suddenly it produces a token. Thus, it cannot be used in SDF.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ If the finish flag is set to true, the actor will emit the (last) list
+ without considering its total size. The actual input file will not be
+ considered and listed at all. Thus, the flag can be used to stop the
+ counting, using a special file for this purpose.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ The unit of the specified archive minimum size is MB (1024*1024 bytes).
+ &lt;/p&gt;</configure>
+    </property>
+<property name="port:finish" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Finish flag for counting. It must be false for all files to be considered in archiving. Use true flag e.g. to stop counting and emitting the last list, giving a 'fake' file for input for such firing. Type of the port: boolean</configure>
+    </property>
+<property name="port:file" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>File info record as outputted by org.kepler.actor.io.SshDirectoryList: {name=&amp;lt;filename&amp;gt;, size=&amp;lt;size in bytes&amp;gt;, date=&amp;lt;date in UTC seconds&amp;gt;}</configure>
+    </property>
+<property name="port:list" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output is record: a string containing the list of files to be archived together, and the first and last timesteps in the list. This port has a record type of {filename=&amp;lt;string&amp;gt;, firstTS=&amp;lt;int&amp;gt;, lastTS=&amp;lt;int&amp;gt;}.</configure>
+    </property>
+<property name="prop:archMinSizeMB" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The minimum size for an archive list given in MBs. Files are gathered as long as their total sum reaches the minimum, and they represent complete timesteps.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.sdm.spa.ArchiveCounter">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1209:1">
+        </property>
+    </property>
+    <property name="file" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="{name=string,date=long,size=long}">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="finish" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="boolean">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="list" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="{list=string,size=long,firstTS=int,lastTS=int}">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+    </property>
+</entity>

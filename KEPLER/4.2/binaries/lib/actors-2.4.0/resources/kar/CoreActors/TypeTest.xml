@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<entity name="Type Test" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:117:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The TypeTest actor reads typed values from specified actors and compares them to types stored in the TypeTest actor's parameters. The actor is used to double-check Kepler's type resolution system. After a workflow initializes and Kepler has automatically resolved data types, the TypeTest actor compares the resolved types to the types stored in its parameters. If the types are the same, the actor does nothing; if the types are different, the actor generates an error. </p>
+
+<p>The actor stores expected data types in two parameters, portTypes and parameterTypes. Each parameter contains a record consisting of a label corresponding to the name of an actor, and a nested record consisting of the name of a typed object and its type, e.g., {Constant = {value = "long"}, Constant2 = {value = "double"}}. For the portTypes parameter, the typed objects are assumed to be ports; for the parameterTypes parameter, the objects are assumed to be parameters. </p>
+
+<p>Note: referenced actors must be at the same hierarchical level as the TypeTest actor. The TypeTest actor only tests type resolution at one level of opaque hierarchy. Hierarchical models should include multiple instances of the actor. </p>
+
+<p>Because manually filling in the type parameters is difficult, the actor includes a training mode. Select the trainingMode parameter to automatically fill in the type parameters. It is not necessary to specify the types of all typeable objects. Any objects for which no types are specified will not be checked.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts input of any type.</configure></property>
+<property name="prop:portTypes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Values specifying what the port types should be. The format is a record consisting of a label corresponding to the name of an actor, and a nested record consisting of the name of the actor's port and a string representing its type, e.g., {Constant = {output = "long", trigger = "unknown"}, Constant2 = {output = "{double}", trigger = "unknown"}}</configure></property>
+<property name="prop:parameterTypes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Values specifying what the parameter types should be. The format is a record consisting of a label corresponding to the name of an actor, and a nested record consisting of the name of the actor's parameter and a string representing its type, e.g., {Constant = {value = "long"}, Constant2 = {value = "double"}}.</configure></property>
+<property name="prop:trainingMode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select the trainingMode parameter to collect the input types and place them in the proper format in the parameterTypes and portTypes parameters. The trainingMode parameter is a shared parameter, meaning that changing it for any one instance of the actor in the model will change all instances.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.TypeTest" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:986:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitTestControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitTestControl" class="org.kepler.sms.SemanticType"/>
+</entity>

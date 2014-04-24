@@ -1,0 +1,779 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="urn:lsid:lsid.ecoinformatics.org:onto:6:1#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="urn:lsid:lsid.ecoinformatics.org:onto:6:1">
+  <owl:Ontology rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SEEK Biodiversity Ontology</rdfs:label>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Station">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A station is an abstract spatial location that covers one or more biomes. For example, H.J. Andrews would be considered a particular station.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Locality"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Block"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="has-nested-location"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="contains-entity"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Plot"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Biome"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SpatialExtent"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Subplot"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Locality"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BiomassMeasurement">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CoverHeightMeasurement"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Measurement"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="has-measured-property"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Biomass"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CoverAreaMeasurement"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A measurement that measures the property biomass.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Locality">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Block"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Block"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Plot"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A locality is an abstract spatial location that denotes one or more ecosystems.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Subplot"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Ecosystem"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Station"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biome">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="has-nested-entity"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ObservableEntity"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Species"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Population"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A biome is a major regional group of distinctive plant and animal communities well adapted to the region's physical environment. The concept of a biome highlights the interaction among plant and animal populations, soil, water and air.  (Wikipedia)
+
+A biome contains one or more ecosystems.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Community"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Block">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Plot"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Locality"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Plot"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A block is an abstract spatial location used in experiments. A block typically denotes exactly one Ecosystem entity, and can contain one or more Community entities. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Station"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Subplot"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+              <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biome"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Experiment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Methodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalDuration">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Treatment"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ObservableProperty"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Treatment">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="AnalyticalMethodology">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Treatment"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Treatment"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="SpeciesCoverAreaMeasurement">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="has-measured-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A measurement that measures the property cover area of a species.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverAreaMeasurement"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CoverHeight">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biomass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CoverArea"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="SpeciesBiomassMeasurement">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-entity"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A measurement that measures the property biomass of a species.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#BiomassMeasurement"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A population is defined as a collection of one or more species.</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biome"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biomass">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverHeight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverArea"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Treatment"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Subplot">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Station"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Block"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A subplot is an abstract spatial location that covers exactly one population and one species. Subplots are defined for experimental purposes.</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Locality"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Plot"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverArea">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverHeight"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biomass"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Plot">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Locality"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Station"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Subplot"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Subplot"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A plot is an abstract spatial location that has exactly one community and covers one or more species populations.</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Block"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+              <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="has-unit"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="has-spatial-context"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-property"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="has-temporal-context"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biome"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes all the interacting organisms living together in a specific habitat (or biotope). The extent or geographical area of a community is limited only by the requirement of a more or less uniform species composition. (Wikipedia)
+
+A community contains one or more populations.</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverHeightMeasurement">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverAreaMeasurement"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-property"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverHeight"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A measurement that measures the property cover height.</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#BiomassMeasurement"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Treatment"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Methodology"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Treatment"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverAreaMeasurement">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverArea"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-property"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A measurement that measures the property cover area.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverHeightMeasurement"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#BiomassMeasurement"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpeciesCoverHeightMeasurement">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#CoverHeightMeasurement"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-entity"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Ecosystem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Species"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Population"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Community"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Biome"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An ecosystem is a naturally occurring assemblage of organisms (plant, animal and other living organisms---also referred to as a biotic community or biocoenosis) living together with their environment (or biotope), functioning as a unit of sorts. (Wikipedia)
+
+An ecosystem consists of one or more communities. 
+</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-location">
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="has-part"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the kinds of spatial locations that can be nested within another spatial location.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#contains-entity">
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates a spatial location to the kinds of entities it contains. This property is transitive (although because of OWL-DL limitations, it is not defined as such). </rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-unit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the standard by which the property is measured. Every measurement has exactly one unit.</rdfs:comment>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Unit"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-temporal-context">
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines when the measurement was taken. Every measurement has one or more temporal contexts.</rdfs:comment>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#TemporalDuration"/>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-nested-entity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the kinds of entities  that can be nested within other entities.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-spatial-context">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines where the measurement was taken.  Every measurement has one or more spatial contexts.</rdfs:comment>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#SpatialExtent"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-property">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines what property of the entity was being measured, e.g., biomass. A measurement has exactly one measurement property.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-measured-entity">
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#ObservableEntity"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the thing that is being measured (e.g., a species). Note that the measurement assigns a value to a property of the entity, e.g., to the weight of a species, and not to the entity itself.  Every measurement has exactly one entity.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#has-part"/>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:6:1#Measurement"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.0, Build 257)  http://protege.stanford.edu -->

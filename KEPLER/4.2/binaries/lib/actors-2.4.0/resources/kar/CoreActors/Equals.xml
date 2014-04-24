@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<entity name="Equals" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:65:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>John Li and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Equals actor reads one token of any type from each channel of its input multiport and compares the values to see if they are equal. If all input tokens are equal, the actor outputs the Boolean value true; if the tokens are not all equal, the actor outputs false.</p>
+
+<p>The actor automatically resolves the input type; however, if all input channels cannot resolve to the same type (which would be the case if one input were a matrix and another an array, for example), the actor will generate an error. If the actor does not receive an input token on at least one input channel, it will produce no output.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a Boolean token: true if all input tokens are equal, or false if they are not.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that receives tokens of any type. The actor automatically resolves the input type; however, if all input channels cannot resolve to the same type (which would be the case if one input were a matrix and another an array, for example), the actor will generate an error.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.logic.Equals" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:940:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#BooleanControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#BooleanControl" class="org.kepler.sms.SemanticType"/>
+</entity>

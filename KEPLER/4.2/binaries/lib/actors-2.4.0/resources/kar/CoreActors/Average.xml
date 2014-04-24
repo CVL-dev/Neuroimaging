@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="Average" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:71:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee, Jie Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The Average actor outputs the average of the values it receives via its input port. If the actor receives a "true" token on its reset port, then it will reset to 0, and the averaging will begin anew. The actor outputs the current average each time it fires.</p>
+
+<p>The inputs and outputs can be any token type that supports addition and division by an integer. The output type is constrained to be the same as the input type. Note that if the input is an integer, then the output is an integer, which may not be expected. Set the input and output port to double to force the result to be a double.</p>
+
+<p>The actor will automatically resolve the input type. If the type does not support addition and division, the actor will generate an error.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the current average of the input values.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts values of any type that supports addition and division by an integer.</configure></property>
+<property name="port:reset" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts Boolean tokens. If this port receives a true token, then the actor's state will be reset to 0.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Average" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:946:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="reset" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArithmeticMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#StatisticalOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#CentralTendency"/>
+</entity>

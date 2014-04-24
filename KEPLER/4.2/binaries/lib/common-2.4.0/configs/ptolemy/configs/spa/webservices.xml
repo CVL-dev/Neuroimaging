@@ -1,0 +1,535 @@
+<?xml version="1.0" standalone="no"?> 
+<!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd"><entity name="web services" class="ptolemy.moml.EntityLibrary">
+  <configure>
+<?moml 
+      <group><entity name="Blast" class="ptolemy.moml.EntityLibrary">
+ <entity name="Blast_searchParam" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Blast.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchParam">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="param" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Blast_searchSimple" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Blast.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchSimple">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Blast_extractPosition" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Blast.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="extractPosition">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="result" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Blast_searchParamAsync" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Blast.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchParamAsync">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="param" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Blast_searchSimpleAsync" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Blast.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchSimpleAsync">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ </entity>
+<entity name="ClustalW" class="ptolemy.moml.EntityLibrary">
+ <entity name="ClustalW_analyzeParam" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/ClustalW.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="analyzeParam">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="param" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="ClustalW_analyzeSimple" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/ClustalW.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="analyzeSimple">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="ClustalW_analyzeParamAsync" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/ClustalW.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="analyzeParamAsync">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="param" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="ClustalW_analyzeSimpleAsync" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/ClustalW.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="analyzeSimpleAsync">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ </entity>
+<entity name="DDBJ" class="ptolemy.moml.EntityLibrary">
+ <entity name="DDBJ_getFFEntry" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getFFEntry">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="accession" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="DDBJ_getXMLEntry" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getXMLEntry">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="accession" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="DDBJ_getFeatureInfo" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getFeatureInfo">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="accession" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="feature" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="DDBJ_getAllFeatures" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getAllFeatures">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="accession" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="DDBJ_getRelatedFeatures" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getRelatedFeatures">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="accession" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="start" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="stop" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="DDBJ_getRelatedFeaturesSeq" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getRelatedFeaturesSeq">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="accession" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="start" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="stop" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ </entity>
+<entity name="Fasta" class="ptolemy.moml.EntityLibrary">
+ <entity name="Fasta_searchParam" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Fasta.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchParam">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="param" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Fasta_searchSimple" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Fasta.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchSimple">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Fasta_searchParamAsync" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Fasta.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchParamAsync">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="param" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="Fasta_searchSimpleAsync" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/Fasta.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchSimpleAsync">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="program" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="database" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ </entity>
+<entity name="TxSearch" class="ptolemy.moml.EntityLibrary">
+ <entity name="TxSearch_searchSimple" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/TxSearch.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchSimple">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="tx_Name" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="TxSearch_searchParam" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/TxSearch.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchParam">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="tx_Name" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="tx_Clas" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="tx_Rank" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="tx_Rmax" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="tx_Dcls" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="TxSearch_getTxId" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/TxSearch.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getTxId">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="tx_Name" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="TxSearch_getTxName" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/TxSearch.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="getTxName">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="tx_Id" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ <entity name="TxSearch_searchLineage" class="org.sdm.spa.WebServiceStub">
+    <property name="wsdlUrl" class="ptolemy.kernel.util.StringParameter" value="http://xml.nig.ac.jp/wsdl/TxSearch.wsdl">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+    <property name="methodName" class="ptolemy.kernel.util.StringParameter" value="searchLineage">
+        <property name="_style" class="ptolemy.actor.gui.style.NotEditableLineStyle"/>
+    </property>
+         <port name="query" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="ranks" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="superkingdom" class="ptolemy.actor.TypedIOPort">
+             <property name="input"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+         <port name="Result" class="ptolemy.actor.TypedIOPort">
+             <property name="output"/>
+             <property name="type" class="ptolemy.actor.TypeAttribute" value="string"/>
+         </port>
+ </entity>
+ </entity>
+</group>
+?>
+</configure>
+</entity>

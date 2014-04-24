@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-command-panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CipresCommandLanguage.xsd">
+	<!-- cmd param for sequence file-->
+	<cmd-params name="infile">
+		<datatype>InFile</datatype>
+		<is-mandatory>true</is-mandatory>
+		<label>Path to input data file</label>
+		<tool-tip-text>The program accepts sequences in the following formats: NBRF/PIR, EMBL/UniProt, Pearson (Fasta), GDE, ALN/ClustalW, GCG/MSF, RSF</tool-tip-text>
+		<code-template>" -infile=$infile"</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- cmd param for ouput file-->
+	<cmd-params name="outfile">
+		<datatype>InFile</datatype>
+		<label>Path for output data file</label>
+		<tool-tip-text>Sets the location to write the output file</tool-tip-text>
+		<code-template>" -outfile=$outfile"</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- cmd param for specifying the output format-->
+	<cmd-params name="output">
+		<datatype>Excl</datatype>
+		<label>Output format</label>
+		<tool-tip-text>Sets the format for the output file</tool-tip-text>
+		<list-item>
+			<value>NEXUS</value>
+			<display>NEXUS</display>
+		</list-item>
+		<list-item>
+			<value>PHYLIP</value>
+			<display>PHYLIP</display>
+		</list-item>
+		<list-item>
+			<value>GCG</value>
+			<display>GCG</display>
+		</list-item>
+		<list-item>
+			<value>GDE</value>
+			<display>GDE</display>
+		</list-item>
+		<list-item>
+			<value>PIR</value>
+			<display>PIR</display>
+		</list-item>
+		<code-template> -output=$output</code-template>
+		<test test-name="isOutfileNotSet">
+			<left-operand>$outfile</left-operand>
+			<operator>not_null</operator>
+			<right-operand></right-operand>
+		</test>
+		<availability-test-expression>isOutfileNotSet</availability-test-expression>
+		<availability-test-expression-message>output format can only be set if an output file location has been set</availability-test-expression-message>
+	</cmd-params>
+	
+	<!-- cmd param for showPairwise button-->
+	<cmd-params name="showPairwise">
+		<datatype>dialog</datatype>
+		<label>Set Pairwise Alignment Parameters</label>
+		<tool-tip-text>Click to display panel for setting parameters for pairwise alignment</tool-tip-text>
+		<gui-xml>clustalw_pairwiseParams.xml</gui-xml>
+	</cmd-params>
+	
+	<!-- cmd param for showPairwise button-->
+	<cmd-params name="showMultiple">
+		<datatype>dialog</datatype>
+		<label>Set Multiple Alignment Parameters</label>
+		<tool-tip-text>Click to display panel for setting parameters for multiple alignment</tool-tip-text>
+		<gui-xml>clustalw_multAlignParams.xml</gui-xml>
+	</cmd-params>
+	
+</service-command-panel>

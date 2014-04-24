@@ -1,0 +1,12 @@
+ $CONTRL COORD=CART UNITS=ANGS $END
+ $DATA
+Ethyne
+Put symmetry info here
+
+C      6.0    -0.59970   0.01750  -0.00990 
+C      6.0     0.59970  -0.01750   0.01000 
+H      1.0    -1.65920   0.04830  -0.02750 
+H      1.0     1.65920  -0.04830   0.02760 
+ $END
+
+

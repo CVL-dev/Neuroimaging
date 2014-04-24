@@ -1,0 +1,103 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="PythonSysPath" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.1.devel">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={171, 30, 941, 687}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 538]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{300.0, 269.0}">
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="allowRateChanges" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{115, 50}">
+        </property>
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Display the contents of the Python sys.path variable">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[60.0, 120.0]">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:8639:49:18">
+    </property>
+    <property name="Annotation2" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Double click on the &#10;Python Script actor&#10;to see the Python script">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[140.0, 250.0]">
+        </property>
+    </property>
+    <entity name="Const" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <doc>Create a constant sequence.</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[95.0, 215.0]">
+        </property>
+    </entity>
+    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={598, 421, 484, 208}, maximized=false}">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[325.0, 195.0]">
+        </property>
+    </entity>
+    <entity name="Python Actor" class="ptolemy.actor.lib.python.PythonScript">
+        <property name="jythonClassName" class="ptolemy.kernel.util.StringAttribute" value="Main">
+        </property>
+        <property name="script" class="ptolemy.kernel.util.StringAttribute" value="import sys.path&#10;&#10;import ptolemy.data.type.BaseType&#10;import ptolemy.data.StringToken&#10;&#10;class Main :&#10;  &quot;Report the components of Jython's syspath&quot;&#10;  def preinitialize(self):&#10;    self.output.setTypeEquals(ptolemy.data.type.BaseType.STRING)&#10;  def prefire(self):&#10;    return self.input.hasToken(0)&#10;  def fire(self) :&#10;    y=self.input.get(0) # retrieve and discard the trigger&#10;    result=&quot;&quot;&#10;    sp=sys.path&#10;    for i in range(len(sp)) :&#10;      if (len(result) &gt; 0):&#10;          result+=&quot;\n&quot;&#10;      result+=sp[i]&#10;    self.output.broadcast(ptolemy.data.StringToken(result))&#10;    return">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&#10;This actor executes a Python script. The default script has an&#10;input port and an output port. To view or edit the script, double-click&#10;on the actor.&#10;&lt;p&gt;&#10;&#10;As an example, a simplified version of the Scale actor can be&#10;implemented by the following script:&#10;&lt;/p&gt;&#10;&lt;pre&gt;&#10;1.  class Main :&#10;2. &quot;scale&quot;&#10;3.    def fire(self) :&#10;4.      if not self.input.hasToken(0) :&#10;5.        return&#10;6.      s = self.scale.getToken()&#10;7.      t = self.input.get(0)&#10;8.      self.output.broadcast(s.multiply(t))&#10;&lt;/pre&gt;&#10;Line 1 defines a Python class Main. This name is fixed. An instance&#10;of this&#10; class is created when the actor is initialized. Line&#10;2 is a description of&#10; the purpose of the script. Lines 3-8&#10;define the fire() method. In the method body,&#10; &lt;i&gt;input&lt;/i&gt;&#10;and &lt;i&gt;output&lt;/i&gt; are ports that have been&#10; added&#10;to the actor, and &lt;i&gt;scale&lt;/i&gt; is a parameter added to&#10;the actor (these can be added in the XML that defines the&#10; actor&#10;instance in an actor library).  The Main class can provide other&#10;&#10;methods in the Executable interface&#10; as needed.&#10; &lt;p&gt;&#10;&#10;In the script, use &lt;code&gt;self.actor&lt;/code&gt; to access&#10;the actor.  For example,&#10;&#10;&lt;code&gt;self.actor.getDirector()&lt;/code&gt; returns the current&#10;director of the&#10; actor. For debugging, use&#10;&lt;code&gt;self.actor.debug(someMessage)&lt;/code&gt;. The&#10;&#10;final message sent to the debug listeners of the actor will have&#10;the string&#10; &quot;From script: &quot; inserted at the beginning.&#10;To avoid generating the debug&#10; message when there are no&#10;listeners, use:&#10;&lt;pre&gt;&#10;if self.actor.isDebugging() :&#10;  self.actor.debug(someMessage)&#10;&lt;/pre&gt;&#10;&lt;p&gt;&#10;This class relies on Jython, which is a Java implementation of&#10;Python.&#10;&lt;/p&gt;&#10;Follow the links below for more information about the Python&#10;language,&#10; licensing, downloads, etc.&#10;&lt;p&gt;&lt;a href=&quot;http://www.python.org&quot; target=&quot;_top&quot;&gt;Python&lt;/a&gt;&lt;/p&gt;&#10;&lt;p&gt;&lt;a href=&quot;http://www.jython.org&quot; target=&quot;_top&quot;&gt;Jython&lt;/a&gt;&lt;/p&gt;&#10;&lt;p&gt;&lt;a href=&quot;http://www.jython.org/docs/differences.html&quot;&gt;Differences between Jython and the C version of Python&lt;/a&gt;&lt;/p&gt;&#10;&lt;p&gt;&lt;a&#10;href=&quot;http://www.jython.org/Project/userguide.html#the-jython-registry&quot;&gt;The&#10;Jython Registry&lt;/a&gt; - information about how to set the search&#10;path.&#10;&#10;&lt;/p&gt;&#10;</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:8639:50:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.python.PythonScript">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:545:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.TextEditorConfigureFactory">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="script">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[175.0, 195.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:545:1">
+        </property>
+        <port name="input" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="Const.output" relation="relation"/>
+    <link port="Display.input" relation="relation2"/>
+    <link port="Python Actor.input" relation="relation"/>
+    <link port="Python Actor.output" relation="relation2"/>
+</entity>

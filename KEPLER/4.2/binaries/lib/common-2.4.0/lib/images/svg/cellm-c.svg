@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11.0, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+    <!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+    <!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+    <!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+    <!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+    <!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+    <!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+    <!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+    <!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+    <!ENTITY ns_svg "http://www.w3.org/2000/svg">
+    <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg
+     xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" i:viewOrigin="272.7363 419.5015" i:rulerOrigin="0 0" i:pageBounds="0 792 612 0"
+     xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     width="68.318" height="48.607" viewBox="0 0 68.318 48.607" overflow="visible" enable-background="new 0 0 68.318 48.607"
+     xml:space="preserve">
+        <switch>
+            <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                </i:pgfRef>
+            </foreignObject>
+            <g i:extraneous="self">
+                <g id="Layer_1" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#4F008000FFFF">
+                    <g>
+                        <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M67.318,35c0,3.313-2.633,6-5.883,6H14.369
+                            c-3.25,0-5.883-2.688-5.883-6V7c0-3.313,2.633-6,5.883-6h47.066c3.25,0,5.883,2.687,5.883,6V35z"/>
+                        <path i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="4" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                            c-3.314,0-6-2.688-6-6v-28c0-3.314,2.686-6,6-6h48c3.314,0,6,2.686,6,6V40.607z"/>
+                        <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                            c-3.314,0-6-2.688-6-6v-28c0-3.314,2.686-6,6-6h48c3.314,0,6,2.686,6,6V40.607z"/>
+                    </g>
+                    <polygon i:knockout="Off" fill="#FFFFFF" points="56.901,13.555 51.063,7.717 51.063,11.531 6.632,11.531 6.632,15.578
+                        51.063,15.578 51.063,19.393 "/>
+                    <g>
+                        <rect x="11.594" y="20.143" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="17.5" y="20.143" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="23.406" y="20.143" i:knockout="Off" fill="#FFFFFF" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="29.313" y="20.143" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="35.219" y="20.143" i:knockout="Off" fill="#FFFFFF" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="41.125" y="20.143" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="11.594" y="26.048" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="17.5" y="26.048" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="23.406" y="26.048" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="29.313" y="26.048" i:knockout="Off" fill="#FFFFFF" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="35.219" y="26.048" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="41.125" y="26.048" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="11.594" y="31.955" i:knockout="Off" fill="#FFFFFF" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="17.5" y="31.955" i:knockout="Off" fill="#FFFFFF" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="23.406" y="31.955" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="29.313" y="31.955" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="35.219" y="31.955" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="41.125" y="31.955" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="11.594" y="37.861" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="17.5" y="37.861" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="23.406" y="37.861" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="29.313" y="37.861" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="35.219" y="37.861" i:knockout="Off" fill="#FFFFFF" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                        <rect x="41.125" y="37.861" i:knockout="Off" fill="none" stroke="#FFFFFF" width="5.906" height="5.906"/>
+                    </g>
+                </g>
+            </g>
+        </switch>
+    </svg>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<property name="HTMLText" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:698:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.vergil.basic.export.web.HTMLText" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="displayText" class="ptolemy.data.expr.StringParameter" value="Content for Export to Web">
+</property>
+
+<property name="height" class="ptolemy.data.expr.Parameter" value="20">
+</property>
+
+<property name="width" class="ptolemy.data.expr.Parameter" value="60">
+</property>
+
+<property name="style" class="ptolemy.actor.gui.style.TextStyle">
+    <property name="height" class="ptolemy.data.expr.Parameter" value="height">
+    </property>
+    <property name="width" class="ptolemy.data.expr.Parameter" value="width">
+    </property>
+</property>
+
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+
+<property name="textPosition" class="ptolemy.vergil.basic.export.web.HTMLTextPosition" value="start">
+</property>
+
+<property name="_icon" class="ptolemy.vergil.icon.TextIcon">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowWebExport">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: HTMLText.java 63832 2012-06-28 18:03:37Z ltrnc $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Attribute for inserting HTML text into the page exported by Export to Web.&#10; Drag its icon onto the background of a model, and specify the HTML text to&#10; export (double click on the attribute to set the text).&#10; By default, this text will be placed before the image for the model,&#10; after the title, but you can change the position by setting the&#10; &lt;i&gt;textPosition&lt;/i&gt; parameter. You can also separately control what&#10; text is displayed in the model, or make the attribute disappear altogether&#10; in the model (for this, just set &lt;i&gt;displayText&lt;/i&gt; to an empty string).</configure></property>
+<property name="prop:height" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the height of the editing box.  This is an int that defaults to 20.</configure></property>
+<property name="prop:width" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the width of the editing box.  This is an int that defaults to 60.</configure></property>
+<property name="prop:displayText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter giving the text to display in the Ptolemy model.  This defaults to &quot;Content for Export to Web&quot;.</configure></property>
+<property name="prop:textPosition" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the position into which to export HTML text. The parameter offers the following possibilities:  &lt;ul&gt;  &lt;li&gt;&lt;b&gt;end&lt;/b&gt;: Put the text at the end of the HTML file.  &lt;li&gt;&lt;b&gt;header&lt;/b&gt;: Put the text in the header section.  &lt;li&gt;&lt;b&gt;start&lt;/b&gt;: Put the text at the start of the body section.  &lt;li&gt;&lt;i&gt;anything_else&lt;/i&gt;: Put the text in a div of this name.  &lt;/ul&gt;  The default is &quot;start&quot;.</configure></property>
+</property></property>

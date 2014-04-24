@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+  <viewPaneTabPanes>
+    <viewPane>
+      <name>Kepler Classic</name>
+      <viewPaneLocation>
+        <name>W</name>
+        <tabPane>
+          <name>Components</name>
+        </tabPane>
+        <tabPane>
+          <name>Data</name>
+        </tabPane>
+        <tabPane>
+          <name>Outline</name>
+        </tabPane>
+      </viewPaneLocation>
+      <viewPaneLocation>
+        <name>E</name>
+  		</viewPaneLocation>
+      <viewPaneLocation>
+        <name>W</name>
+        <value>test value 1</value>
+  		</viewPaneLocation>
+      <viewPaneLocation>
+        <name>W</name>
+        <value>test value 2</value>
+  		</viewPaneLocation>
+      <viewPaneLocation>
+        <name>S</name>
+  		</viewPaneLocation>
+    </viewPane>
+  </viewPaneTabPanes>
+</config>

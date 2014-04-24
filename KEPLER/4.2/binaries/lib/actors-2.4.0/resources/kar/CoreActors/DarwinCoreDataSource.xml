@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<entity name="DarwinCoreDataSource" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:517:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+  <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure></configure>
+  </property>
+  <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Spears, Higgins</configure></property>
+  <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1</configure></property>
+  <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+    <p>The DarwinCoreDataSource actor uses the DiGIR (Distributed Generic Information Retrieval) 
+      protocol to search for and access occurrence data for species contained in museum collections.</p>
+    
+    <p>The DarwinCoreDataSource actor provides query access to DiGIR data and handles the mechanical issues involved in searching the collection, downloading the results, and emitting the data to downstream actors.</p>
+
+    <p>By default, the ports created by the DarwinCoreDataSource actor provide a complete data table as a string with additional ports specifying the number of attributes and the attribute delimiter used in the data table.</p>    
+    
+    <p>When As Field is specified for the outputType, the actor automatically reconfigures its exposed ports to provide one port for each attribute contained in the result table (after receiving initial search results from the DiGIR service).</p>
+    
+    <p>NOTE: Retrieving data from DiGIR collections may take several minutes per species the first time the workflow is run. Subsequent workflow executions are considerably faster because the data is cached locally during the first execution.</p>
+  </configure>
+  </property>  <property name="port:speciesName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Allows search term[s] to be dynamically input as part of the workflow rather than specificed as a static parameter for this actor</configure></property>
+  <property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Allows other actors to signal that the the search be performed.  This should be used in cases when the speciesName input port is not being used.</configure></property>
+  <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output ports are automatically configured depending on the selected outputType.  See the documentation on outputType for more information</configure></property>  
+  <property name="prop:outputType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+    Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in the data table, or one port that emits the entire data table at once. Specifically, the output format choices are:
+    <table>
+      <tr><td>As Field</td><td> The actor creates one output port for each field (i.e., column/attribute/variable) that is contained in the DiGIR results. The type of each port (e.g., string, int, double, etc.) matches the base type of the field.  Note: a search term should be specified in the searchData in order for the field ports to be created. </td></tr>
+      
+      <tr><td>As Table (the default)</td><td> The selected data will be output as a string that contains the entire search result data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and numColumns - the number of fields in the table. </td></tr>
+      
+      <tr><td>As Row</td><td>  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. </td></tr>  
+    </table>
+    
+  </configure></property>
+  <property name="prop:searchData" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Search DiGIR using the entered search term (if not using the speciesName input port)</configure></property>
+  <property name="prop:endPoint" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The DiGIR query service endpoint</configure></property>
+</property>  
+<property name="class" value="org.ecoinformatics.seek.datasource.darwincore.DarwinCoreDataSource" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:2002:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="endPoint" class="ptolemy.kernel.util.StringAttribute" value="http://darwincore.ecoinformatics.org:8080/DigirImpl/services/DigirQueryService">
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#RemoteInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType33" value="urn:lsid:localhost:onto:2:1#XMLProcessor" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="XSLTransformer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:680:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.xslt.XSLTransformer" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="styleSheetParameters" class="ptolemy.actor.parameters.PortParameter" value="emptyRecord()">
+</property>
+
+<property name="styleSheetFile" class="ptolemy.data.expr.FileParameter" value="">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#XMLProcessor">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="xmltoken" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:styleSheetParameters" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yang Zhao, Christopher Hylands Brooks</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: XSLTransformer.java 61458 2011-07-11 19:54:07Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This actor reads an XSLT file and apply it to a dom tree. The file or&#10;   URL is specified using any form acceptable to the FileParameter class.&#10;&#10;   &lt;p&gt;Currently, this actor requires the&#10;   &lt;a href=&quot;http://saxon.sourceforge.net/&quot;&gt;Saxon&lt;/a&gt; XSLT processor&#10;   so as to ensure reproducible results.  This restriction may&#10;   be relaxed in later versions of this actor.&#10;&#10;   &lt;p&gt;FIXME: what should the type of the input/output ports be???.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="port:styleSheetParameters" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The parameters to be used in the stylesheet. This is a record  that defaults to &quot;emptyRecord()&quot;, an expression language command  that returns an empty record.  For example, if the parameter used in the style sheet is named  &lt;i&gt;a&lt;/i&gt; with type &lt;i&gt;int&lt;/i&gt;, then the styleSheetParameters has  type &lt;i&gt;{a = int}&lt;/i&gt;. If the style sheet has multiple parameters,  then each of them is represented as a field of the record.</configure></property>
+<property name="prop:styleSheetFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL from which to read.  This is a string with  any form accepted by FileParameter.</configure></property>
+<property name="prop:styleSheetParameters" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The parameters to be used in the stylesheet. This is a record  that defaults to &quot;emptyRecord()&quot;, an expression language command  that returns an empty record.  For example, if the parameter used in the style sheet is named  &lt;i&gt;a&lt;/i&gt; with type &lt;i&gt;int&lt;/i&gt;, then the styleSheetParameters has  type &lt;i&gt;{a = int}&lt;/i&gt;. If the style sheet has multiple parameters,  then each of them is represented as a field of the record.</configure></property>
+</property></entity>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<entity name="String Splitter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:293:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The StringSplitter actor reads a string and splits it into segments at specified points. The actor outputs the segments as an array of strings.</p> 
+
+<p>The actor separates the input string at points specified by the regular expression parameter. For example, if the input string is a URL (http://www.mysite.com/home/archive/stuff) and the Regular expression parameter is /, the actor will output the following array {"http:", "", "home", "archive", "stuff"}. For more information about regular expressions, see http://java.sun.com/docs/books/tutorial/extra/regex/index.html.</p>
+</configure></property>
+<property name="port:string" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string. </configure></property>
+<property name="port:array" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of string segments.</configure></property>
+<property name="prop:Regular expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A regular expression used to identify the points at which the actor should break the string. For more information about regular expressions, see http://java.sun.com/docs/books/tutorial/extra/regex/index.html.</configure></property>
+</property>
+<property name="class" value="org.resurgence.actor.StringSplitter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1118:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="string" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="array" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

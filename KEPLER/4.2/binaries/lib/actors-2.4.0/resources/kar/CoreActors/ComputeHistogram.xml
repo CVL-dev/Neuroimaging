@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ComputeHistogram" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:740:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.ComputeHistogram" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="minimumValue" class="ptolemy.data.expr.Parameter" value="0.0">
+</property>
+
+<property name="maximumValue" class="ptolemy.data.expr.Parameter" value="1.0">
+</property>
+
+<property name="numberOfBins" class="ptolemy.data.expr.Parameter" value="10">
+</property>
+
+<property name="inputCount" class="ptolemy.actor.parameters.PortParameter" value="10">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#StatisticalOperation">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="arrayType(int)" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:inputCount" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ComputeHistogram.java 64107 2012-07-26 14:55:25Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Compute a histogram.&#10; &lt;p&gt;&#10; The output array consists of a set of vertical bars, each representing&#10; a histogram bin.  The height of the bar is the count of the number&#10; of inputs that have been observed that fall within that bin.&#10; The &lt;i&gt;n&lt;/i&gt;-th bin represents values in the range&#10; (&lt;i&gt;x&lt;/i&gt; - &lt;i&gt;w&lt;/i&gt;/2 + &lt;i&gt;o&lt;/i&gt;, &lt;i&gt;x&lt;/i&gt; + &lt;i&gt;w&lt;/i&gt;/2 + &lt;i&gt;o&lt;/i&gt;),&#10; where &lt;i&gt;w&lt;/i&gt; is the value of the &lt;i&gt;binWidth&lt;/i&gt; parameter,&#10; and &lt;i&gt;o&lt;/i&gt; is the value of the &lt;i&gt;binOffset&lt;/i&gt; parameter.&#10; So for example, if &lt;i&gt;o = w/2&lt;/i&gt;,&#10; then each bin represents values from &lt;i&gt;nw&lt;/i&gt; to&#10; (&lt;i&gt;n&lt;/i&gt; + 1)&lt;i&gt;w&lt;/i&gt; for some integer &lt;i&gt;n&lt;/i&gt;.&#10; The default offset is 0.5, half the default bin width, which is 1.0.&#10; &lt;p&gt;&#10; This actor has a &lt;i&gt;legend&lt;/i&gt; parameter,&#10; which gives a comma-separated list of labels to attach to&#10; each dataset.  Normally, the number of elements in this list&#10; should equal the number of input channels, although this&#10; is not enforced.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port of type array of integer.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port of type double.</configure></property>
+<property name="port:inputCount" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of tokens to compute the histogram for.</configure></property>
+<property name="prop:minimumValue" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The lowest value that will be recorded in the histogram.  This parameter has type double, with default value 0.0.</configure></property>
+<property name="prop:numberOfBins" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of bins.  This parameter has type int, with default value 10.</configure></property>
+<property name="prop:maximumValue" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The highest value that will be recorded in the histogram.  This parameter has type double, with default value 1.0.</configure></property>
+<property name="prop:inputCount" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of tokens to compute the histogram for.</configure></property>
+</property></entity>

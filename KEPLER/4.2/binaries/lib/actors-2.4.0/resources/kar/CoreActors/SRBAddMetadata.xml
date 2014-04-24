@@ -1,0 +1,117 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="SRB Add Metadata" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:259:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Efrat Jaeger</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: SRBAddMetadata.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;
+ SRBAddMD is a Kepler Actor which adds user defined metadeta to an SRB dataset
+ or collection. When ingesting metadata, only equal operator is used. The
+ following actor expects as input a reference to the SRB file system. This
+ reference connection is obtained via the SRBConnect Actor in Kepler. &lt;i&gt;See
+ SRBConnect and its documentation.&lt;/i&gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ The file reference system is created with a unique SRB user account and with
+ this connection reference as input the SRBAddMD actor is able to gain access
+ to the SRB file space. Once an alive SRB file connection system has been
+ established the actor gets the remode SRB file/directory and the attribute
+ value pair conditions defining the metadata. If the file/directory exists the
+ conditions are added via jargon API methods to the SRB file or directory.
+ &lt;/p&gt;
+ &lt;p&gt;
+ &lt;B&gt;Actor Input:&lt;/B&gt; Accepts a reference to the SRB files system, an SRB
+ remote file/directory path and a list of attribute value pairs.
+ &lt;/p&gt;
+ &lt;p&gt;
+ Sample Attribute Value pairs : "a 5","b 10","c abc"
+ &lt;/p&gt;
+ &lt;p&gt;
+ The above is a string array of 3 conditions(a,b,c) and their values to be
+ added to the SRB file/dir metadata.
+ &lt;/p&gt;
+ &lt;p&gt;
+ &lt;B&gt;Actor Output:&lt;/B&gt; Outputs an exit status.The exit status gives a message
+ of "success" or appropriate error to indicate the status of adding metadata
+ process.
+ 
+ &lt;/p&gt;
+ &lt;p&gt;
+ The following actor accesses SRB file reference system and SRB file space
+ with the SRB Jargon API provided. The JARGON is a pure API for developing
+ programs with a data grid interface and I/O for SRB file systems.
+ &lt;/p&gt;
+ 
+ &lt;A href="http://www.sdsc.edu/srb"&gt;&lt;I&gt;Further information on SRB&lt;/I&gt; &lt;/A&gt;</configure>
+    </property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An input trigger.</configure>
+    </property>
+<property name="port:srbFilePath" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Path to SRB file.</configure>
+    </property>
+<property name="port:conditions" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>{"att val"}</configure>
+    </property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>pointer to the SRB file system.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.srb.SRBAddMD">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1085:1">
+        </property>
+    </property>
+    <property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="general">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+        <property name="_showName" class="ptolemy.kernel.util.Attribute">
+        </property>
+    </property>
+    <property name="srbFilePath" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="string">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+        <property name="_showName" class="ptolemy.kernel.util.Attribute">
+        </property>
+    </property>
+    <property name="conditions" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="{string}">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+        <property name="_showName" class="ptolemy.kernel.util.Attribute">
+        </property>
+    </property>
+    <property name="trigger" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="string">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+        <property name="_showName" class="ptolemy.kernel.util.Attribute">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor">
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DatabaseOutputFunction">
+    </property>
+</entity>

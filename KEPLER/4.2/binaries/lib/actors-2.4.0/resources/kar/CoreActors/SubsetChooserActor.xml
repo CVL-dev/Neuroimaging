@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<entity name="SubsetChooser" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:471:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Alex Borchers, Zhijie Guan</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SubsetChooser actor allows users to select a subset of molecular data sequences or a set of trees via a graphical interface. If the input data is a set of sequences, then it follows the FASTA format. If the input data is a set of trees, it follows the NEXUS format. The actor writes the selected entities to an output file.</p>
+
+<p>To use the full suite of CIPRES actors, CIPRES software must be installed on the local system. The CIPRES (Cyberinfrastructure for Phylogenetic Research) project works to enable large-scale phylogenetic reconstructions that facilitate analyses of datasets containing large numbers of bio molecular sequences. For more information about CIPRES, see http://www.phylo.org/</p>
+
+</configure></property>
+<property name="port:Selected entities file" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the user-selected subset of entities (molecular sequences or trees).</configure></property>
+<property name="port:Subset Chooser Input File" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input file. The input data can be either a set of molecular data sequences or a set of trees and allows users to select a subset of the input values via a graphical interface. If the input data is a set of sequences, then it follows the FASTA format. If the input data is a set of trees, it follows the NEXUS format</configure></property>
+<property name="prop:Output File Path and Name" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name and path of the output file.</configure></property>
+</property><property name="class" value="org.cipres.kepler.SubsetChooserActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1210:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#CIPResActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#CIPRes" class="org.kepler.sms.SemanticType"/>
+</entity>

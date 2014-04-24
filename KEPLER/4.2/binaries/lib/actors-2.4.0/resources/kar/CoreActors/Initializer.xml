@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<entity name="Initializer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:455:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Zhijie Guan</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Initializer actor initializes the registry of CORBA services required by CIPRES actors that invoke CORBA services (e.g., RecIDCM3 or PAUPInfer). </p>
+
+<p>CORBA services, much like Web services, are computer programs that run on a remote host and communicate using a standardized protocol that allows them to interoperate. CIPRES services, such as Tree Decomposer, are specifically designed to help analyze phylogenetic data sets.</p>
+
+<p>Once the Inititalizer actor has successfully connected to the registry, it broadcasts a trigger signal that can be used by other actors that require access to the registry. </p>
+
+<p>The CIPRES (Cyberinfrastructure for Phylogenetic Research) project works to enable large-scale phylogenetic reconstructions that facilitate analyses of datasets containing large numbers of bio molecular sequences. For more information about CIPRES, see http://www.phylo.org/</p></configure></property>
+<property name="port:outputTrigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a trigger signal after the registry has been initialized successfully. The signal may be used by other actors that require access to the registry.</configure></property>
+</property><property name="class" value="org.cipres.kepler.Initializer" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1210:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#CIPResActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#CIPRes" class="org.kepler.sms.SemanticType"/>
+</entity>

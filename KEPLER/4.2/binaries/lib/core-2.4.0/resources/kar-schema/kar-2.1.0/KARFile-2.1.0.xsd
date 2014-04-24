@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.kepler-project.org/kar-2.1.0"
+xmlns="http://www.kepler-project.org/kar-2.1.0">
+
+<xs:element name="kar" type="karFileType"/>
+
+ <xs:complexType name="karFileType">
+    <xs:sequence>
+    	<xs:element name="karFileName" minOccurs="0" />
+    	<xs:element name="karFileSize" minOccurs="0" />
+       <xs:element name="mainAttributes" type="mainAttributesType"/>
+       <xs:element name="karEntry" type="karEntryType" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType> 
+
+
+<xs:complexType name="karEntryType">
+    <xs:sequence>
+       <xs:element name="karEntryAttributes" type="xs:anyType"/>
+       <xs:element name="karEntryXML" type="xs:anyType" minOccurs="0"/>
+     </xs:sequence>
+  </xs:complexType>
+
+
+ <xs:complexType name="mainAttributesType">
+     <xs:sequence>
+       <xs:element name ="lsid" />
+       <xs:element name ="module-dependencies" minOccurs="0" />
+       <xs:element name ="KAR-Version" />
+       <xs:element name ="Manifest-Version" />
+    </xs:sequence>
+  </xs:complexType>
+
+
+<!--<xs:complexType name="karEntryAttributesType">
+    <xs:sequence>
+       <xs:element name ="Name"  type="xs:string" />
+	   <xs:element name ="lsid" />
+       <xs:element name ="dependsOn" minOccurs="0" />
+       <xs:element name ="handler" />
+	   <xs:element name ="type" />
+	   <xs:element name="customAttributes" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>-->
+
+
+
+</xs:schema>
+

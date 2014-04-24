@@ -1,0 +1,413 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Elk_Wolf" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="9.0.devel">
+    </property>
+    <property name="Continuous Director" class="ptolemy.domains.continuous.kernel.ContinuousDirector">
+        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="100">
+        </property>
+        <property name="ODESolver" class="ptolemy.data.expr.StringParameter" value="ExplicitRK23Solver">
+            <property name="style" class="ptolemy.actor.gui.style.EditableChoiceStyle">
+                <property name="choice0" class="ptolemy.data.expr.Parameter" value="ExplicitRK23Solver">
+                </property>
+                <property name="choice1" class="ptolemy.data.expr.Parameter" value="ExplicitRK45Solver">
+                </property>
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[20.0, 50.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jie Liu, Haiyang Zheng</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&#10;&lt;p&gt;The Continuous Time (CT) Director is designed to oversee workflows that predict how systems evolve as a function of time (i.e., &quot;dynamic systems&quot;). In CT workflows, the rates of change of parameters are related to the current value or rates of change of other parameters, often in complex and coupled ways that are described by differential equations.&lt;/p&gt;&#10;&#10;&lt;p&gt;When a CT directed workflow is used in Kepler, tokens are passed from one actor to another just as they are in SDF or PN workflows. However, the Continuous Director keeps track of the &quot;time&quot; of each iteration as well as the time between each iteration (i.e., the &quot;time step&quot;). By insuring that the time step is small enough, the director can use simple extrapolations to estimate new values. The Continuous Director then iterates the workflow enough times to reach the desired stop time. The entire process is thus just numerical integration. &lt;/p&gt;&#10;&#10;&lt;p&gt;In general, the relevance of the director's parameters varies depending on the type of  ODE solver algorithm selected. If the algorithm is fixed-step (FowardEulerSolver and BackwardEulerSolver), the director will use the value specified by the initStepSize as the step size. The specified value is a 'guess' at an initial integration step size. If the integral does not look right, changing the initStepSize might provide a better result. For variable-step-size algorithms (ExplicitRK23Solver and ExplicitRK45Solver), step-size will change based on the rate of change of the original function's values (i.e., derivative values). In other words, time-steps within an integration will change throughout the calculation, and the initStepSize is used only as an initial suggestion.&lt;/p&gt;&#10;&#10;&lt;p&gt;Directors with variable-step-size algorithms use the maxStepSize and minStepSize parameters to set upper and lower bounds for estimated step sizes. These parameters are used for adjusting tradeoffs between accuracy and performance. For simple dynamic systems, setting an upper bound with the maxStepSize parameter helps ensure that the algorithm will use an adequate number of time points. For more complex systems, the minStepSize ensures that the algorithm will not consume too many system resources by using increasingly minute step sizes. The minStepSize is also used for the first step after breakpoints.&lt;/p&gt;&#10;&#10;&lt;p&gt;The timeResolution parameter is also used to adjust the tradeoff between accuracy and speed. In general, one would not change this parameter unless a function is known to change substantially in times of less than the parameter's default value, 1E-10 sec. The parameter helps ensure that variable-step-size algorithms do not use unnecessarily small time steps that would result is long execution times. Reducing the parameter's value might produce more accurate results, but at a performance cost.&lt;/p&gt;&#10;&#10;&lt;p&gt;The errorTolerance parameter is only relevant to CT directors that use variable-step-size algorithms. Workflow actors that perform integration error control (e.g., the Integrator actor) will compare their estimated error to the value specified by the errorTolerance parameter. If the estimated error is greater than the errorTolerance, the director will decide that the step size is inaccurate and will decrease it. In most cases, the default value of the errorTolerance parameter (1e-4) does not require change.&lt;/p&gt;&#10;&#10;&lt;p&gt;The startTime and stopTime parameters specify the initial and final time for the integration. By default, the time starts at 0 and runs to infinity. Note: the startTime and stopTime parameters are only applicable when the Continuous Director is at the top level. If a CT workflow is contained in another workflow, the Continuous Director will use the time of its executive director.&lt;/p&gt;&#10;&#10;&lt;p&gt;The maxIterations specifies the number of times the director will iterate to determine a &quot;fixed point.&quot;  A fixed point is reached if two successive iteration steps produce the &quot;same&quot; result. How close values must be to be considered fixed, is specified with the valueResolution parameter, which defaults to 1e-6.&lt;/p&gt;&#10;&#10;&lt;p&gt;The synchronizeToRealTime and runAheadLength parameters are advanced parameters that are genrally only used when a CT workflow is nested in another workflow. For example, if the Continuous Director is embedded in an event-based workflow (e.g., a workflow that uses a DE Director), the Continuous Director will &quot;run ahead&quot; of the global time by the amount specified by the runAheadLength parameter, and prepare to roll back if necessary. The local current time in the sub-workflow is compared with the current time of the executive director. If the local time is later than the global time, then the directed system will rollback to a &quot;known good&quot; state. The &quot;known good&quot; state is the state of the system at the time when local time is equal to the current time of the executive director. In general, the timeResolution and runAheadLength parameters should be left at their default values.&lt;/p&gt;&#10;&#10;&lt;p&gt;For more information about the Continuous Director, see the Ptolemy II User Manual http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf.&lt;/p&gt;&#10;</configure></property>
+<property name="prop:initStepSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The initial integration step size. The value is a double that defaults to 0.1.</configure></property>
+<property name="prop:stopTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The final time for the integration. By default, the time starts at 0 and runs to infinity.</configure></property>
+<property name="prop:startTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Starting time of the integration. The value is a double that defaults to 0.0.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The timeResolution parameter is  used to adjust the tradeoff between accuracy and speed. In general, one would not change this parameter unless a function is known to change substantially in times of less than the parameter's default value, 1E-10 sec. The parameter helps ensure that variable-step-size algorithms do not use unnecessarily small time steps that would result is long execution times. Reducing the parameter's value might produce more accurate results, but at a performance cost.</configure></property>
+<property name="prop:ODESolver" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The class name of the normal ODE solver used. The default value is a string: &quot;ptolemy.domains.continuous.kernel.solver.ExplicitRK23Solver&quot;.</configure></property>
+<property name="prop:maxIterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maxIterations specifies the number of times the director will iterate to determine a &quot;fixed point.&quot;  A fixed point is reached if two successive iteration steps produce the &quot;same&quot; result. How close values must be to be considered fixed is specified with the valueResolution parameter.</configure></property>
+<property name="prop:errorTolerance" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The errorTolerance parameter is only relevant to directors that use variable-step-size algorithms. Workflow actors that perform integration error control (e.g., the Integrator actor) will compare their estimated error to the value specified by the errorTolerance parameter. If the estimated error is greater than the errorTolerance, the director will decide that the step size is inaccurate and will decrease it. In most cases, the default value of the errorTolerance parameter (1e-4) does not require change</configure></property>
+<property name="prop:maxStepSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maxStepSize  parameter sets an upper bound for estimated step sizes. The value is a double that defaults to 1.0.</configure></property>
+<property name="prop:runAheadLength" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The runAheadLength parameter is an advanced parameter that is genrally only used when a CT workflow is nested in another workflow. For example, if the Continuous Director is embedded in an event-based workflow (e.g., a workflow that uses a DE Director), the Continuous Director will &quot;run ahead&quot; of the global time by the amount specified by the runAheadLength parameter, and prepare to roll back if necessary. The local current time in the sub-workflow is compared to the current time of the executive director. If the local time is later than the global time, then the directed system will rollback to a &quot;known good&quot; state. The &quot;known good&quot; state is the state of the system at the time when local time is equal to the current time of the executive director. </configure></property>
+<property name="prop:minStepSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The minStepSize  parameter sets a lower bound for estimated step sizes. The value is a double that defaults to 1e-5.</configure></property>
+<property name="prop:valueResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Value resolution specifies how close values must be to be considered fixed. The default is 1e-6.</configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Indicator whether the execution will synchronize to real time. The value is a Boolean token that defaults to false. The synchronizeToRealTime is an advanced parameter that is genrally only used when a CT workflow is nested in another workflow.</configure></property>
+</property>    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={1, 22, 1043, 793}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[702, 644]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{351.0, 355.0}">
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="This is a more explicit model of the Preditor/Prey relations (Lotka Voltera)&#10;annotated in terms of Wolves interacting with Elk. Rather than using&#10;mathematical expressions, simple mathematical actors (Multiply/Divide and&#10;Add/Subtract) are used to calculate rates that are integrated to obtain&#10;populations as a function of time.&#10;&#10;Dan Higgins - NCEAS&#10;2005">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 515.0]">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:55:17">
+    </property>
+    <entity name="Net Growth Rate per Elk" class="ptolemy.actor.lib.AddSubtract">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[185.0, 165.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>yuhong xiong and Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The AddOrSubtract actor reads values via its two input ports (plus and minus), performs an add and/or subtract operation, and outputs the result.&lt;/p&gt;&#10;&#10;&lt;p&gt;The input ports are multiports, meaning that they can accept multiple inputs. Any values received via the plus port will be added; any values received via the minus port will be subtracted. Either port can be left unconnected. Leave the minus port unconnected to create a simple adder, for example. &lt;/p&gt;&#10;&#10;&lt;p&gt;Both of the input ports are polymorphic, accepting data of multiple types. The actor will automatically resolve the input type to the least upper bound of the presented values. For example, if the plus input port receives a Boolean value on one input channel and an integer on another, the resolved type will be a string, permitting the two inputs to be concatenated as strings. Note that strings cannot be subtracted. If the actor resolves an input type into a type that cannot be subtracted, it will generate an error.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor outputs the sum or difference and derives an output type based on the input values.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the sum or difference of the inputs. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:minus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be subtracted. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:plus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be added. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>    </entity>
+    <entity name="TimedPlotter" class="ptolemy.actor.lib.gui.TimedPlotter">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={386, 337, 500, 322}, maximized=false}">
+        </property>
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[590.0, 220.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The TimedPlotter actor reads one or more double tokens via its input multiport and plots each as a separate data set each time the actor iterates. The actor displays the graph on the screen. The horizontal axis represents time.&lt;/p&gt;&#10;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts double tokens that will be plotted over time.</configure></property>
+<property name="prop:fillOnWrapup" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to rescale the plot so that all data is visible. By default, the actor scales the plot to fill the display area.</configure></property>
+<property name="prop:legend" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Annotations that will be displayed with the plot graph. Specify a comma-separated list of values that correspond to the input data sets (e.g., rainfall, temperature, elevation).</configure></property>
+<property name="prop:startingDataset" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The starting dataset number. The value must be a non-negative integer. The default is 0.</configure></property>
+</property>        <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>TimedPlotter</title>
+<xRange min="0.0" max="100.0"/>
+<yRange min="-8.381292783654085E-7" max="103.47637389988968"/>
+</plot>?>
+        </configure>
+    </entity>
+    <entity name="Rate of Elk Increase" class="ptolemy.actor.lib.MultiplyDivide">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, 155.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MultiplyOrDivide actor reads values via its two input ports (multiply and divide), performs the multiply and/or divide operation, and outputs the result. &lt;/p&gt;&#10;&#10;&lt;p&gt;The actor's input ports are multiports, meaning that they can accept multiple inputs. Any values received via the multiply port will be multiplied; any values received via the divide port will be divided. Either port can be left unconnected. If no input tokens are available on the multiply input, then a numerator of one is assumed for division operations. Alternatively,  the divide port can be left unconnected to create a simple multiplier.&lt;/p&gt;&#10;&#10;&lt;p&gt;Both of the actor's input ports are polymorphic, accepting data of multiple types (integers, floats, etc). The actor will automatically resolve the input type to the least upper bound of the presented values. The actor may permit the multiply and divide inputs to resolve to types that cannot in fact be multiplied or divided. If the actor resolves an input type into a type that cannot be processed, it will generate an error.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor outputs the result of the calculation and derives an output type from the input values.&lt;/p&gt;&#10;</configure></property>
+<property name="port:multiply" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be multiplied. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the calculation. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:divide" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be divided. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>    </entity>
+    <entity name="Elk death rate per Elk" class="ptolemy.actor.lib.Const">
+        <doc>Create a constant sequence</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 185.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Wolf death rate per Wolf" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value=".1">
+        </property>
+        <doc>Create a constant sequence</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 440.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Elk kill rate per Wolf" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value=".1">
+        </property>
+        <doc>Create a constant sequence</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 250.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Elk eaten rate" class="ptolemy.actor.lib.MultiplyDivide">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[165.0, 260.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MultiplyOrDivide actor reads values via its two input ports (multiply and divide), performs the multiply and/or divide operation, and outputs the result. &lt;/p&gt;&#10;&#10;&lt;p&gt;The actor's input ports are multiports, meaning that they can accept multiple inputs. Any values received via the multiply port will be multiplied; any values received via the divide port will be divided. Either port can be left unconnected. If no input tokens are available on the multiply input, then a numerator of one is assumed for division operations. Alternatively,  the divide port can be left unconnected to create a simple multiplier.&lt;/p&gt;&#10;&#10;&lt;p&gt;Both of the actor's input ports are polymorphic, accepting data of multiple types (integers, floats, etc). The actor will automatically resolve the input type to the least upper bound of the presented values. The actor may permit the multiply and divide inputs to resolve to types that cannot in fact be multiplied or divided. If the actor resolves an input type into a type that cannot be processed, it will generate an error.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor outputs the result of the calculation and derives an output type from the input values.&lt;/p&gt;&#10;</configure></property>
+<property name="port:multiply" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be multiplied. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the calculation. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:divide" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be divided. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>    </entity>
+    <entity name="Wolf increase rate" class="ptolemy.actor.lib.MultiplyDivide">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[265.0, 370.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MultiplyOrDivide actor reads values via its two input ports (multiply and divide), performs the multiply and/or divide operation, and outputs the result. &lt;/p&gt;&#10;&#10;&lt;p&gt;The actor's input ports are multiports, meaning that they can accept multiple inputs. Any values received via the multiply port will be multiplied; any values received via the divide port will be divided. Either port can be left unconnected. If no input tokens are available on the multiply input, then a numerator of one is assumed for division operations. Alternatively,  the divide port can be left unconnected to create a simple multiplier.&lt;/p&gt;&#10;&#10;&lt;p&gt;Both of the actor's input ports are polymorphic, accepting data of multiple types (integers, floats, etc). The actor will automatically resolve the input type to the least upper bound of the presented values. The actor may permit the multiply and divide inputs to resolve to types that cannot in fact be multiplied or divided. If the actor resolves an input type into a type that cannot be processed, it will generate an error.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor outputs the result of the calculation and derives an output type from the input values.&lt;/p&gt;&#10;</configure></property>
+<property name="port:multiply" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be multiplied. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the calculation. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:divide" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be divided. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>    </entity>
+    <entity name="Wolf birth rate per Elk per Wolf" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value=".1">
+        </property>
+        <doc>Create a constant sequence</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 360.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Net Wolf Growth Rate" class="ptolemy.actor.lib.AddSubtract">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[385.0, 420.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>yuhong xiong and Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The AddOrSubtract actor reads values via its two input ports (plus and minus), performs an add and/or subtract operation, and outputs the result.&lt;/p&gt;&#10;&#10;&lt;p&gt;The input ports are multiports, meaning that they can accept multiple inputs. Any values received via the plus port will be added; any values received via the minus port will be subtracted. Either port can be left unconnected. Leave the minus port unconnected to create a simple adder, for example. &lt;/p&gt;&#10;&#10;&lt;p&gt;Both of the input ports are polymorphic, accepting data of multiple types. The actor will automatically resolve the input type to the least upper bound of the presented values. For example, if the plus input port receives a Boolean value on one input channel and an integer on another, the resolved type will be a string, permitting the two inputs to be concatenated as strings. Note that strings cannot be subtracted. If the actor resolves an input type into a type that cannot be subtracted, it will generate an error.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor outputs the sum or difference and derives an output type based on the input values.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the sum or difference of the inputs. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:minus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be subtracted. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:plus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be added. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>    </entity>
+    <entity name="Wolf death rate" class="ptolemy.actor.lib.MultiplyDivide">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 450.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MultiplyOrDivide actor reads values via its two input ports (multiply and divide), performs the multiply and/or divide operation, and outputs the result. &lt;/p&gt;&#10;&#10;&lt;p&gt;The actor's input ports are multiports, meaning that they can accept multiple inputs. Any values received via the multiply port will be multiplied; any values received via the divide port will be divided. Either port can be left unconnected. If no input tokens are available on the multiply input, then a numerator of one is assumed for division operations. Alternatively,  the divide port can be left unconnected to create a simple multiplier.&lt;/p&gt;&#10;&#10;&lt;p&gt;Both of the actor's input ports are polymorphic, accepting data of multiple types (integers, floats, etc). The actor will automatically resolve the input type to the least upper bound of the presented values. The actor may permit the multiply and divide inputs to resolve to types that cannot in fact be multiplied or divided. If the actor resolves an input type into a type that cannot be processed, it will generate an error.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor outputs the result of the calculation and derives an output type from the input values.&lt;/p&gt;&#10;</configure></property>
+<property name="port:multiply" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be multiplied. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the calculation. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:divide" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be divided. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>    </entity>
+    <entity name="Elk birth rate per Elk" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="3">
+        </property>
+        <doc>Create a constant sequence</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 140.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Elk" class="ptolemy.domains.continuous.lib.Integrator">
+        <property name="initialState" class="ptolemy.actor.parameters.PortParameter" value="1.0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Haiyang Zheng and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: Elk_Wolf.xml 30681 2012-09-14 23:08:08Z crawl $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;      The integrator in the continuous domain.&#10; The &lt;i&gt;derivative&lt;/i&gt; port receives the derivative of the state of the integrator&#10; with respect to time. The &lt;i&gt;state&lt;/i&gt; output port shows the state of the&#10; integrator. So an ordinary differential equation (ODE),&#10; dx/dt = f(x, t), can be built as follows:&#10; &lt;P&gt;&#10; &lt;pre&gt;&#10;            +---------------+&#10;     dx/dt  |               |   x&#10; +---------&gt;|   Integrator  |---------+-----&gt;&#10; |          |               |         |&#10; |          +----^-----^----+         |&#10; |                                    |&#10; |             |---------|            |&#10; +-------------| f(x, t) |&lt;-----------+&#10;               |---------|&#10; &lt;/pre&gt;&#10; &lt;P&gt;&#10; An integrator also has a port-parameter called &lt;i&gt;initialState&lt;/i&gt;. The&#10; parameter provides the initial state for integration during the initialization&#10; stage of execution. If during execution an input token is provided on&#10; the port, then the state of the integrator will be reset at that time&#10; to the value of the token. The default value of the parameter is 0.0.&#10; &lt;P&gt;&#10; An integrator also has an input port named &lt;i&gt;impulse&lt;/i&gt;.&#10; When present, a token at the &lt;i&gt;impulse&lt;/i&gt; input&#10; port is interpreted as the weight of a Dirac delta function.&#10; It cause an instantaneous increment or decrement to the state.&#10; If both &lt;i&gt;impulse&lt;/i&gt; and &lt;i&gt;initialState&lt;/i&gt; have data, then&#10; &lt;i&gt;initialState&lt;/i&gt; dominates.&#10; &lt;P&gt;&#10; An integrator can generate an output (its current state) before&#10; the derivative input is known, and hence can be used in feedback&#10; loops like that above without creating a causality loop.&#10; The &lt;i&gt;impulse&lt;/i&gt; and &lt;i&gt;initialState&lt;/i&gt; inputs&#10; ports must be known, however, before an output can be produced.&#10; The effect of data at these inputs on the output is instantaneous.&#10; &lt;P&gt;&#10; For different ODE solving methods, the functionality&#10; of an integrator may be different. The delegation and strategy design&#10; patterns are used in this class, the abstract ODESolver class, and the&#10; concrete ODE solver classes. Some solver-dependent methods of integrators&#10; delegate to the concrete ODE solvers.&#10; &lt;P&gt;&#10; An integrator can possibly have several auxiliary variables for the&#10; the ODE solvers to use. The ODE solver class provides the number of&#10; variables needed for that particular solver.&#10; The auxiliary variables can be set and get by setAuxVariables()&#10; and getAuxVariables() methods.&#10; &lt;p&gt;&#10; This class is based on the CTIntegrator by Jie Liu. </configure></property>
+<property name="port:state" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the &quot;next step&quot; for the integration.</configure></property>
+<property name="port:impulse" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The impulse input port. This is a single port of type double.</configure></property>
+<property name="prop:initialState" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The initial state of the integrator. The default value is 0.0.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:64:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.continuous.lib.Integrator">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:ptolemy.org:class:9:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ContinuousActor">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[465.0, 155.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:ptolemy.org:actor:9:1">
+        </property>
+        <port name="impulse" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+            </property>
+        </port>
+        <port name="initialState" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+            </property>
+        </port>
+    </entity>
+    <entity name="Wolves" class="ptolemy.domains.continuous.lib.Integrator">
+        <property name="initialState" class="ptolemy.actor.parameters.PortParameter" value="1.0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Haiyang Zheng and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: Elk_Wolf.xml 30681 2012-09-14 23:08:08Z crawl $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;      The integrator in the continuous domain.&#10; The &lt;i&gt;derivative&lt;/i&gt; port receives the derivative of the state of the integrator&#10; with respect to time. The &lt;i&gt;state&lt;/i&gt; output port shows the state of the&#10; integrator. So an ordinary differential equation (ODE),&#10; dx/dt = f(x, t), can be built as follows:&#10; &lt;P&gt;&#10; &lt;pre&gt;&#10;            +---------------+&#10;     dx/dt  |               |   x&#10; +---------&gt;|   Integrator  |---------+-----&gt;&#10; |          |               |         |&#10; |          +----^-----^----+         |&#10; |                                    |&#10; |             |---------|            |&#10; +-------------| f(x, t) |&lt;-----------+&#10;               |---------|&#10; &lt;/pre&gt;&#10; &lt;P&gt;&#10; An integrator also has a port-parameter called &lt;i&gt;initialState&lt;/i&gt;. The&#10; parameter provides the initial state for integration during the initialization&#10; stage of execution. If during execution an input token is provided on&#10; the port, then the state of the integrator will be reset at that time&#10; to the value of the token. The default value of the parameter is 0.0.&#10; &lt;P&gt;&#10; An integrator also has an input port named &lt;i&gt;impulse&lt;/i&gt;.&#10; When present, a token at the &lt;i&gt;impulse&lt;/i&gt; input&#10; port is interpreted as the weight of a Dirac delta function.&#10; It cause an instantaneous increment or decrement to the state.&#10; If both &lt;i&gt;impulse&lt;/i&gt; and &lt;i&gt;initialState&lt;/i&gt; have data, then&#10; &lt;i&gt;initialState&lt;/i&gt; dominates.&#10; &lt;P&gt;&#10; An integrator can generate an output (its current state) before&#10; the derivative input is known, and hence can be used in feedback&#10; loops like that above without creating a causality loop.&#10; The &lt;i&gt;impulse&lt;/i&gt; and &lt;i&gt;initialState&lt;/i&gt; inputs&#10; ports must be known, however, before an output can be produced.&#10; The effect of data at these inputs on the output is instantaneous.&#10; &lt;P&gt;&#10; For different ODE solving methods, the functionality&#10; of an integrator may be different. The delegation and strategy design&#10; patterns are used in this class, the abstract ODESolver class, and the&#10; concrete ODE solver classes. Some solver-dependent methods of integrators&#10; delegate to the concrete ODE solvers.&#10; &lt;P&gt;&#10; An integrator can possibly have several auxiliary variables for the&#10; the ODE solvers to use. The ODE solver class provides the number of&#10; variables needed for that particular solver.&#10; The auxiliary variables can be set and get by setAuxVariables()&#10; and getAuxVariables() methods.&#10; &lt;p&gt;&#10; This class is based on the CTIntegrator by Jie Liu. </configure></property>
+<property name="port:state" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the &quot;next step&quot; for the integration.</configure></property>
+<property name="port:impulse" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The impulse input port. This is a single port of type double.</configure></property>
+<property name="prop:initialState" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The initial state of the integrator. The default value is 0.0.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:63:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.continuous.lib.Integrator">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:ptolemy.org:class:9:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ContinuousActor">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[500.0, 440.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:ptolemy.org:actor:9:1">
+        </property>
+        <port name="impulse" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+            </property>
+        </port>
+        <port name="initialState" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+            </property>
+        </port>
+    </entity>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[395.0, 220.0]">
+        </vertex>
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation8" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[555.0, 315.0]">
+        </vertex>
+    </relation>
+    <relation name="relation11" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation10" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation13" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation14" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="Net Growth Rate per Elk.plus" relation="relation"/>
+    <link port="Net Growth Rate per Elk.minus" relation="relation2"/>
+    <link port="Net Growth Rate per Elk.minus" relation="relation9"/>
+    <link port="Net Growth Rate per Elk.output" relation="relation5"/>
+    <link port="TimedPlotter.input" relation="relation3"/>
+    <link port="TimedPlotter.input" relation="relation7"/>
+    <link port="Rate of Elk Increase.multiply" relation="relation5"/>
+    <link port="Rate of Elk Increase.multiply" relation="relation3"/>
+    <link port="Rate of Elk Increase.output" relation="relation14"/>
+    <link port="Elk death rate per Elk.output" relation="relation2"/>
+    <link port="Wolf death rate per Wolf.output" relation="relation12"/>
+    <link port="Elk kill rate per Wolf.output" relation="relation8"/>
+    <link port="Elk eaten rate.multiply" relation="relation8"/>
+    <link port="Elk eaten rate.multiply" relation="relation7"/>
+    <link port="Elk eaten rate.output" relation="relation9"/>
+    <link port="Wolf increase rate.multiply" relation="relation3"/>
+    <link port="Wolf increase rate.multiply" relation="relation7"/>
+    <link port="Wolf increase rate.multiply" relation="relation11"/>
+    <link port="Wolf increase rate.output" relation="relation10"/>
+    <link port="Wolf birth rate per Elk per Wolf.output" relation="relation11"/>
+    <link port="Net Wolf Growth Rate.plus" relation="relation10"/>
+    <link port="Net Wolf Growth Rate.minus" relation="relation13"/>
+    <link port="Net Wolf Growth Rate.output" relation="relation6"/>
+    <link port="Wolf death rate.multiply" relation="relation12"/>
+    <link port="Wolf death rate.multiply" relation="relation7"/>
+    <link port="Wolf death rate.output" relation="relation13"/>
+    <link port="Elk birth rate per Elk.output" relation="relation"/>
+    <link port="Elk.derivative" relation="relation14"/>
+    <link port="Elk.state" relation="relation3"/>
+    <link port="Wolves.derivative" relation="relation6"/>
+    <link port="Wolves.state" relation="relation7"/>
+</entity>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<entity name="OpendapDataSource" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:533:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Nathan Potter</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>1</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure><p>
+
+   The OPeNDAP actor reads data from OPeNDAP data sources (i.e.
+   servers).
+
+   <h1>OPeNDAP Actor Overview</h1>
+
+   The OPeNDAP actor provides access to data served by any Data Access
+   Protocol (DAP) 2.0 compatible data source. The actor takes as
+   configuration parameters the URL to the data source and an optional
+   constraint expression (CE). Based on the URL and optional CE, the
+   actor configures its output ports to match the variables to be read
+   from the data source.
+
+   <h2>More information about the OPeNDAP  actor</h2>
+
+   The OPeNDAP actor reads data from a single DAP data server and
+   provides that data as either a vector.matrix or array for
+   processing by downstream elements in a Kepler workflow. Each DAP
+   server provides (serves) many data sources and each of those data
+   sources can be uniquely identified using a URL in a way that's
+   similar to how pages are provided by a web server. For more
+   information on the DAP and on OPeNDAP's software, see
+   www.opendap.org.
+
+   <h3>Characterization of Data Sources</h3>
+
+   Data sources accessible using DAP 2.0 are characterized by a URL
+   that references a both a specific data server and a data granule
+   available from that server and a Constraint Expression that describes
+   which variables to read from within the data granule. In addition
+   to reading data from a granule, a DAP 2.0 server can provide two
+   pieces of information about the granule: a description of all of
+   its variables, their names and their data types; and a collection
+   of 'attributes' which are bound to those variables. 
+
+   <h3>Operation of the Actor</h3>
+
+   The actor must have a valid URL before it can provide any
+   information (just as a file reader actor need to point toward a
+   file to provide data). Given a URL and the optional CE, the OPeNDAP
+   actor will interrogate that data source and configure its output
+   ports.
+
+   <h3>Data Types Returned by the Actor</h3>
+
+   There are two broad classes of data types returned by the actor.
+   First there are vectors, matrices and arrays. These correspond to
+   one, two and N (&gt; 2) dimensional arrays. The distinction between
+   the vector and matrix types and the N-dimensional array is that
+   Kepler can operate on the vector and matrix types far more
+   efficiently than the N-dimensional arrays. Many variables present
+   in DAP data sources are of the N-dimensional array class and one
+   way to work with these efficiently is to use the constraint
+   expression to reduce the order of these data to one or two, thus
+   causing the actor to store them in a vector or matrix.
+
+   <p>As an example, consider the FNOC1 data source available at
+   test.opendap.org. The full URL for this is
+   http://test.opendap.org/opendap/data/nc/fnoc1.nc. It contains a
+   variable 'u' which has three dimensions. We can constrain 'u' so
+   that it has only two dimensions when read into Kepler using the CE
+   'u[0][0:16][0:20]' which selects only the first element (index 0)
+   for the first dimension while requesting all of the remaining
+   elements for the second and third dimensions. The www.opendap.org
+   has documentation about the CE syntax.</p>
+
+   <p>The second data type returned by the actor is a record. In
+   reality, all DAP data sources are records but the actor
+   automatically 'disassembles' the top most record since we know
+   that's what the vast majority of users will want. However, some
+   data sources contains nested hierarchies of records many levels
+   deep. When dealing with those data sources you will need to use the
+   Kepler record disassembler in your work flow.</p>
+</p>
+      </configure>
+    </property>
+  <property name="prop:DAP2 URL" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure> The OPeNDAP URL that identifies a (possibly constrained) dataset.
+    </configure>
+  </property>
+  <property name="prop:DAP2 Constraint Expression" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure> The OPeNDAP Constraint Expression used to sub sample the dataset.
+    </configure>
+  </property>
+  <property name="prop:Metadata Options" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure> Controls if and how the DAP2 metadata is incorporated into the Actors output.
+    </configure>
+  </property>
+  </property>
+  <property name="class" value="org.kepler.dataproxy.datasource.opendap.OpendapDataSource" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#RemoteInput" class="org.kepler.sms.SemanticType"/>
+</entity>

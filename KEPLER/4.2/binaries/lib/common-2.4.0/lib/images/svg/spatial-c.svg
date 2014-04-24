@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11.0, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+    <!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+    <!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+    <!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+    <!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+    <!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+    <!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+    <!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+    <!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+    <!ENTITY ns_svg "http://www.w3.org/2000/svg">
+    <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg
+     xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" i:viewOrigin="272.4839 419.918" i:rulerOrigin="0 0" i:pageBounds="0 792 612 0"
+     xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     width="68.319" height="48.607" viewBox="0 0 68.319 48.607" overflow="visible" enable-background="new 0 0 68.319 48.607"
+     xml:space="preserve">
+        <switch>
+            <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                </i:pgfRef>
+            </foreignObject>
+            <g i:extraneous="self">
+                <g id="Layer_1" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#4F008000FFFF">
+                    <g>
+                        <g>
+                            <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M67.319,35c0,3.313-2.633,6-5.883,6H14.369
+                                c-3.25,0-5.883-2.688-5.883-6V7c0-3.314,2.633-6,5.883-6h47.067c3.25,0,5.883,2.686,5.883,6V35z"/>
+                            <path i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="4" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                                c-3.314,0-6-2.688-6-6V12.605c0-3.313,2.686-6,6-6h48c3.314,0,6,2.688,6,6V40.607z"/>
+                            <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                                c-3.314,0-6-2.688-6-6V12.605c0-3.313,2.686-6,6-6h48c3.314,0,6,2.688,6,6V40.607z"/>
+                        </g>
+
+                            <rect x="16.765" y="11.521" i:knockout="Off" fill="#199698" stroke="#FFFFFF" stroke-width="2" width="30.5" height="30.5"/>
+                        <g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="30.307" y1="13.688" x2="32.141" y2="15.521"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="32.141" y1="13.688" x2="30.308" y2="15.521"/>
+                            </g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="36.245" y1="13.688" x2="38.079" y2="15.521"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="38.079" y1="13.688" x2="36.245" y2="15.521"/>
+                            </g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="42.182" y1="13.688" x2="44.016" y2="15.521"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="44.016" y1="13.688" x2="42.182" y2="15.521"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="30.307" y1="19.376" x2="32.141" y2="21.209"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="32.141" y1="19.376" x2="30.308" y2="21.209"/>
+                            </g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="36.245" y1="19.376" x2="38.079" y2="21.209"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="38.079" y1="19.376" x2="36.245" y2="21.209"/>
+                            </g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="42.182" y1="19.376" x2="44.016" y2="21.209"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="44.016" y1="19.376" x2="42.182" y2="21.209"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="30.307" y1="25.063" x2="32.141" y2="26.896"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="32.141" y1="25.063" x2="30.308" y2="26.896"/>
+                            </g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="36.245" y1="25.063" x2="38.079" y2="26.896"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="38.079" y1="25.063" x2="36.245" y2="26.896"/>
+                            </g>
+                            <g>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="42.182" y1="25.063" x2="44.016" y2="26.896"/>
+                                <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="44.016" y1="25.063" x2="42.182" y2="26.896"/>
+                            </g>
+                        </g>
+                        <g>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="33.307" y1="16.501" x2="35.141" y2="18.334"/>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="35.141" y1="16.501" x2="33.308" y2="18.334"/>
+                        </g>
+                        <g>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="39.245" y1="16.501" x2="41.079" y2="18.334"/>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="41.079" y1="16.501" x2="39.245" y2="18.334"/>
+                        </g>
+                        <g>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="33.307" y1="22.188" x2="35.141" y2="24.021"/>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="35.141" y1="22.188" x2="33.308" y2="24.021"/>
+                        </g>
+                        <g>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="39.245" y1="22.188" x2="41.079" y2="24.021"/>
+                            <line i:knockout="Off" stroke="#FFFFFF" stroke-width="0.75" x1="41.079" y1="22.188" x2="39.245" y2="24.021"/>
+                        </g>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="1.5" x1="27.683" y1="11.918" x2="27.683" y2="42.251"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="1.5" x1="27.683" y1="28.918" x2="47.016" y2="28.918"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="14.751" x2="27.516" y2="14.751"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="17.709" x2="27.516" y2="17.709"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="20.667" x2="27.516" y2="20.667"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="23.625" x2="27.516" y2="23.625"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="26.584" x2="27.516" y2="26.584"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="29.542" x2="27.516" y2="29.542"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="32.5" x2="27.516" y2="32.5"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="35.458" x2="27.516" y2="35.458"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="17.016" y1="38.416" x2="27.516" y2="38.416"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="45.583" y1="28.918" x2="32.333" y2="42.168"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="47.2" y1="31.768" x2="36.799" y2="42.168"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="47.433" y1="36.001" x2="41.266" y2="42.168"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="41.116" y1="28.918" x2="27.866" y2="42.168"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="36.649" y1="28.918" x2="27.833" y2="37.734"/>
+                        <line i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="0.75" x1="32.183" y1="28.918" x2="27.683" y2="33.418"/>
+                    </g>
+                </g>
+            </g>
+        </switch>
+    </svg>

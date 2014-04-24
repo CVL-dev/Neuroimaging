@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<ontologies>
+
+  <!-- this should be the only library for now -->
+  <ontology filename="keplerActorOntology.owl" library="false"/>
+
+  <ontology filename="kepler-component.owl" library="true"/>
+
+  <ontology filename="kepler-project.owl" library="true"/>
+
+  <ontology filename="kepler-discipline.owl" library="true"/>
+
+  <ontology filename="kepler-statistics.owl" library="true"/>
+
+  <ontology filename="seekBiodiversityOntology_inferred.owl" library="false"/>
+
+  <ontology filename="seekStatisticsOntology.owl" library="false"/>
+
+  <ontology filename="SeekFieldObservationOntology_JUN_2005.owl" library="false"/>
+
+  <!-- this ontology does not exist; should create dialog box -->
+  <!-- <ontology filename="projectsOntology.owl"/> -->
+
+</ontologies>
+
+

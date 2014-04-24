@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<entity name="XSLT Processor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:210:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ilkay Altintas</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The XSLTProcessor transforms an XML stream into an HTML stream that can be viewed using a BrowserUI actor.</p>
+
+<p>The actor performs the transformation using an XSLT file, which specifies how the document should be transformed. For more information about XSLT, see http://www.w3.org/TR/xslt.</p>
+
+<p>The actor receives an XML stream via its input port. Specify an XSLT file in the XSLTFilePath parameter. The actor outputs the transformed file as a string that can be displayed by the BrowserUI actor.
+ </p>
+
+</configure></property>
+<property name="port:xmlIn" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an XML input stream, as a string.  </configure></property>
+<property name="port:htmlOut" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an HTML stream, as a string.</configure></property>
+<property name="prop:XSLT File Path" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path to the XSLT file used to transform the XML input into HTML.</configure></property>
+</property>
+<property name="class" value="org.sdm.spa.XSLTActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1057:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="xmlIn" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="htmlOut" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#XMLStringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#XMLProcessor" class="org.kepler.sms.SemanticType"/>
+</entity>

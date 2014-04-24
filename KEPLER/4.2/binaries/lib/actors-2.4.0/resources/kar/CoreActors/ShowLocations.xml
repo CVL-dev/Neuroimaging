@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="ShowLocations" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:274:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ShowLocations actor reads a set of points specified in an input text file, and plots them to a specified background image/map file. The actor displays the generated image on the screen.</p>
+
+<p>The actor uses the ImageJ application to create the location map, which is an image raster file that ImageJ can display and process. For more information about ImageJ, see http://rsb.info.nih.gov/ij/.</p>
+
+<p>The actor accepts input points via an input text file (specified by a file name). A single point location is given per line with the x and y values separated by either a space or a tab. The background map is specified via the fileOrURL parameter.</p>
+
+<p>Specify the x and y values of the upper-left corner of the background image, and a multiplicative scale factor to map the point coordinates to the background.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts a string representing the path to an input text file. The input file contains a space- or tab-delimited set of x and y values (one set per line), which will be plotted by the actor.</configure></property>
+<property name="prop:X_upperleft" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The x-value of the upper-left corner of the background image.</configure></property>
+<property name="prop:Y_upperleft" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The y-value of the upper-left corner of the background image.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the background map or image. The value is a string representing the file path of the background image. The input points will be plotted on top of this image.</configure></property>
+
+<property name="prop:scale_factor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The scale factor. (x,y) input points are plotted at the pixel nearest the (x-pos, y-pos) where:
+x-pos = (x-X_upperleft)*scale_factor and y-pos = (y-Y_upperleft)*scale_factor 
+</configure></property>
+<property name="prop:macroString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ImageJ macro to execute. The macro may include the expression "_FILE_", which will be replaced by the path of the specified image file. x and y data from the input file will replace "_XPOINTS_" and "_YPOINTS_"</configure></property>
+</property>
+<property name="class" value="util.ShowLocations" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1099:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ImageManipulationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GraphicalOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

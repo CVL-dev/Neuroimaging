@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<property name="StringParameter" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:421:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>StringParameter specifies a persistent string. </p>
+
+<p>Change the name of the StringParameter to better identify the specified value (right-click the parameter and select "Customize Name" from the menu). Other actors may refer to the StringParameter using the $NAME syntax (e.g. $Parameter).
+</p></configure></property>
+
+
+</property>
+<property name="class" value="ptolemy.data.expr.StringParameter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1185:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+<property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+    <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+    </property>
+</property>
+<property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+</property>
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+</property>

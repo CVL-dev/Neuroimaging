@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+      "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width='400.0' height='750.0'>
+
+<script type="text/ecmascript">
+
+<![CDATA[
+     function show(tid) {
+         if (lastMsg != null) {
+            lastMsg.setAttribute("visibility", "hidden");
+         }
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "visible");
+         obj.setAttribute("fill", "navy");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "#5f7f8f");
+     }
+     function unshow(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "hidden");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "white");
+         if (lastMsg != null) {
+            lastMsg.setAttribute("fill", "brown");
+            lastMsg.setAttribute("visibility", "visible");
+         }
+     }
+     var lastCircle;
+     var lastMsg;
+// ]]>
+
+</script>
+
+<text id='properties' visibility = 'hidden' properties='top Plag left Px right Ol bot NULL leftPadding 40.0 topPadding 31.102725426581742 diagramWidth 340.0 triangleDiagramHeight 294.44863728670913' />
+<conversion id='xRatio' visibility = 'hidden'>log10(val)*100.0</conversion>
+<conversion id='yRatio' visibility = 'hidden'>350.0-(log10(val)*100.0)</conversion>
+<conversion id='toOriginalX' visibility = 'hidden'>pow(10.0,(val/100.0))</conversion>
+<conversion id='toOriginalY' visibility = 'hidden'>pow(10.0,((350.0-val)/100.0))</conversion>
+<rect x='0' y='0' rx='5' ry='5' width='400.0' height='770.0' fill='#f4f4f4' />
+<text x='70.0' y='200' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >FeO/MgO</text>
+<text x='220' y='380' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Zr+Nb+Ce+Y</text>
+<polygon id='Atype1Polygon' points='169.897,229.588 169.897,80.103 377.8151,80.103 377.8151,350.0 254.4068,350 254.4068,229.588' onmouseover='show("Atype1")' onmouseout='unshow("Atype1")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='Atype1' x='270.0' y='410.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >A-type</text>
+<polygon id='fgPolygon' points='169.897,229.588 254.4068,229.588 254.4068,289.794 169.897,289.794' onmouseover='show("fg")' onmouseout='unshow("fg")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='fg' x='270.0' y='410.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >FG</text>
+<polygon id='ogtPolygon' points='169.897,350.0 169.897,289.794 254.4068,289.794 254.4068,350.0' onmouseover='show("ogt")' onmouseout='unshow("ogt")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='ogt' x='270.0' y='410.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >OGT</text>
+</svg>
+

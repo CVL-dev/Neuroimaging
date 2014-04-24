@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="configuration" class="ptolemy.actor.gui.Configuration">
+    <input source="KeplerDisplayActorNoRedirect.xml" />
+    <input source="KeplerDisplayActorWithRedirect.xml" />    
+
+    <entity name="directory" class="ptolemy.actor.gui.ModelDirectory"/>
+
+    <!-- EffigyFactory which does not edit moml files -->
+    <entity name="effigyFactory"
+            class="ptolemy.actor.gui.PtolemyEffigy$Factory"/>
+
+    <!-- remove the graphical classes -->
+    <property name="_removeGraphicalClasses" class="ptolemy.data.expr.Parameter"
+              value="true"/>
+
+            
+</entity>

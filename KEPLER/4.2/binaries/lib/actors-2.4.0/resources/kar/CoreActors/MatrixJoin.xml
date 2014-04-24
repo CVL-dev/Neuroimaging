@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="MatrixJoin" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:686:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.domains.sdf.lib.MatrixJoin" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="columns" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="rows" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#MatrixOperation">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: MatrixJoin.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This actor joins matrices into a single matrix by tiling.&#10; It reads N*M input matrices from the input port, where N is&#10; the value of the &lt;i&gt;rows&lt;/i&gt; parameter, and M is&#10; the value of the &lt;i&gt;columns&lt;/i&gt; parameter. The matrices&#10; read are arranged left-to-right,&#10; top-to-bottom, in a raster scan pattern.&#10; For example, if &lt;i&gt;rows&lt;/i&gt; = &lt;i&gt;columns&lt;/i&gt; = 2, then on&#10; each firing, four matrices, A, B, C, D, will be read from&#10; the input channel.  Assuming A is the first one read, then&#10; the output matrix will be a matrix arranged as follows:&#10; &lt;pre&gt;&#10;   A B&#10;   C D&#10; &lt;/pre&gt;&#10; The size of the output depends on the matrices in the top row&#10; and left column. That is, in the above examples, the number of&#10; columns in the output will equal the sum of the number of columns&#10; in A and B.  The number of rows will equal the sum of the number&#10; of rows in A and C.  The matrices are tiled in raster-scan order,&#10; first A, then B, then C, and then D.  Gaps are zero filled,&#10; and overlaps are overwritten, where later matrices in the raster-scan&#10; order overwrite earlier matrices.  For example, if B has more rows&#10; than A, then the bottom rows of B will be overwritten by rows of D.&#10; &lt;p&gt;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="prop:columns" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of matrices to arrange left to right on the output.  This is an integer that defaults to 1.</configure></property>
+<property name="prop:rows" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of matrices to arrange top to bottom on the output.  This is an integer that defaults to 1.</configure></property>
+</property></entity>

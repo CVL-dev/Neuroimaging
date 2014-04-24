@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<entity name="JobStatus" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:353:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The JobStatus actor is to check the status a job that can be submitted with JobSubmitter. This actor itself is not for job execution. </p>
+<p> It currently support multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF, and can be extended for more. </p> </configure></property>
+<property name="prop:Wait Until Status" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Wait until the job has a reached specific status. The available status' that can be reached are: any, wait, running, not in queue, and error.</configure>
+</property>
+<property name="prop:numTasks" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Parameter to set if the workflow is task parallel. This allows for the tasks to be created and set to the submitted state.</configure>
+</property>
+<property name="prop:Wait Until Sleep" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Amount of time (in seconds) to sleep between checking job status.</configure>
+</property>
+<property name="prop:Send all status changes" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Parameter to set if you want job status to ignore waitUntil parameter and send out every status change.</configure>
+</property>
+<property name="port:jobIn" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input should be a previously submitted job which has not been removed yet, i.e. the output from a JobSubmitter, never given to a JobRemover.</configure></property>
+<property name="port:jobOut" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The same job object for input.</configure></property>
+<property name="port:log" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The logging information of job status query.</configure></property>
+<property name="port:statusCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p> The status code of the job:
+<ul>
+<li>0: Error: some error occured during the execution of the actor</li>
+<li>1: NotInQueue: no such job in the queue, i.e. never was or already gone</li>
+<li>2: Wait: the job is in the queue and it is not running yet</li>
+<li>3: Running: the job is running</li>
+</ul>
+</p>
+<p>If not such job exists, the result will be also the Error status.</p></configure></property>
+</property>
+<property name="class" value="org.kepler.actor.job.JobStatus" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1218:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="jobIn" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="jobOut" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="statusCode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="log" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#JobCommand" class="org.kepler.sms.SemanticType"/>
+</entity>

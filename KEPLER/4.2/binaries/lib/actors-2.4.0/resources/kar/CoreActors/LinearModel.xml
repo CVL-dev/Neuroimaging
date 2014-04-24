@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<entity name="LinearModel" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:485:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Josh Madin</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The LinearModel actor runs a variance or linear regression analysis on its inputs and outputs the result.</p>
+
+<p>The actor accepts an independent and a dependent variable. If the independent variable is categorical, the actor uses R to run a variance analysis (or a t-test if the variable has only 2 categories). If the independent variable is continuous, a linear regression is run. The actor outputs both a graphical and textual representation of the analysis.</p>
+
+<p>The R application must be installed on the local system to use this actor. R is a language and environment for statistical computing and graphics. For more information about R, see http://www.r-project.org/.</p>
+
+<p>The actor performs the linear analysis and saves the results  to the Kepler working directory. To view the results, connect an ImageJ actor to the graphicsFileName output port and/or a Display actor to the results port. </p>
+
+</configure></property>
+<property name="port:graphicsFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated graphic.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a copy of the text output that R generates.  As the actor communicates with R to run the R function or script, the output port sends back the response (i.e., the values and statistical outputs).</configure></property>
+<property name="port:results" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the textual results of the analysis as an array of integers.</configure></property>
+<property name="port:Dependent" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a dependent variable (continuous).</configure></property>
+<property name="port:Independent" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an independent variable (continuous or categorical).</configure></property>
+
+<property name="prop:numXPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The width of the output graphic in pixels.</configure></property>
+<property name="prop:Rcwd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The 'R' working directory (the home directory, by default).</configure></property>
+<property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The expression that is evaluated to produce the output.</configure></property>
+<property name="prop:graphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to create a graphics output port. By default, the actor will create a graphics output port.</configure></property>
+<property name="prop:displayGraphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to display the plot once the actor has generated it.</configure></property>
+<property name="prop:graphicsFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The graphics output format. Currently the actor supports either  *.pdf or  *.png</configure></property>
+<property name="prop:numYPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The height of the output graphic in pixels.</configure></property>
+<property name="prop:save_nosave" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to save the R workspace when R is closed; set to '--save' to allow downstream R-actors to retrieve the workspace later in a workflow.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.R.RExpression" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:graphicsFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:Independent" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:Dependent" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:results" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="expression" class="ptolemy.kernel.util.StringAttribute" value="if (is.character(Dependent)) {&#10;	Dependent &lt;- factor(Dependent)&#10;}&#10;&#10;model &lt;- lm(Dependent ~ Independent)&#10;&#10;plot(Independent, Dependent, xlab=&quot;Independent&quot;, ylab=&quot;Dependent&quot;)&#10;&#10;if (is.numeric(Dependent)) {&#10;	abline(model)&#10;	intercept &lt;- as.numeric(model$coefficient[1])&#10;	slope &lt;- as.numeric(model$coefficient[2])&#10;	intercept&#10;	slope&#10;} &#10;if (is.character(Dependent)) {&#10;	results &lt;- anova(model)&#10;	results&#10;} &#10;&#10;	&#10;&#10;">
+    <property name="R Expression" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+<property name="save_nosave" class="ptolemy.data.expr.StringParameter" value="--save">
+</property>
+<property name="graphicsOutput" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+<property name="numXPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+<property name="numYPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+<property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#StatisticalOperation"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#RegressionAnalysis"/>
+<property name="semanticType33" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#BivariateAnalysis"/>
+<property name="_location" class="ptolemy.kernel.util.Location" value="{360.0, 230.0}">
+</property>
+</entity>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<property name="DefaultIconLink" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:693:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.vergil.basic.export.web.DefaultIconLink" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="displayText" class="ptolemy.data.expr.StringParameter" value="http://ptolemy.org">
+</property>
+
+<property name="height" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="width" class="ptolemy.data.expr.Parameter" value="60">
+</property>
+
+<property name="style" class="ptolemy.actor.gui.style.TextStyle">
+    <property name="height" class="ptolemy.data.expr.Parameter" value="height">
+    </property>
+    <property name="width" class="ptolemy.data.expr.Parameter" value="width">
+    </property>
+</property>
+
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+
+<property name="linkTarget" class="ptolemy.vergil.basic.export.web.LinkTarget" value="_lightbox">
+</property>
+
+<property name="include" class="ptolemy.data.expr.StringParameter" value="Entities">
+</property>
+
+<property name="instancesOf" class="ptolemy.data.expr.StringParameter" value="">
+</property>
+
+<property name="_icon" class="ptolemy.vergil.icon.TextIcon">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowWebExport">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: DefaultIconLink.java 63960 2012-07-13 22:59:42Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;A parameter specifying default hyperlink to associate&#10; with icons in model. Putting this attribute into a model causes&#10; the icons of entities, attributes, or both, to be assigned a&#10; default hyperlink to the URI given by &lt;i&gt;linkTarget&lt;/i&gt;.&#10; This will replace any configuration default link that &#10; includes the same objects, and&#10; targets the same instanceOf possibilities.</configure></property>
+<property name="prop:height" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the height of the editing box.  This is an int that defaults to 20.</configure></property>
+<property name="prop:include" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specification of whether to provide the link for  Attributes, Entities, or both. This is either &quot;Entities&quot; (the  default), &quot;Attributes&quot;, or &quot;All&quot;.</configure></property>
+<property name="prop:width" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the width of the editing box.  This is an int that defaults to 60.</configure></property>
+<property name="prop:displayText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter giving the text to display in the Ptolemy model.  This defaults to &quot;Content for Export to Web&quot;.</configure></property>
+<property name="prop:instancesOf" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If non-empty (the default), specifies a class name.  Only entities or attributes (depending on &lt;i&gt;include&lt;/i&gt;)  implementing the specified  class will be assigned the control defined by this  DefaultIconLink parameter.</configure></property>
+<property name="prop:linkTarget" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the target for the link.  The possibilities are:  &lt;ul&gt;  &lt;li&gt;&lt;b&gt;_lightbox&lt;/b&gt;: Open in a lightbox-style popup frame.  &lt;li&gt;&lt;b&gt;_blank&lt;/b&gt;: Open in a new window or tab.  &lt;li&gt;&lt;b&gt;_self&lt;/b&gt;: Open in the same frame as it was clicked.  &lt;li&gt;&lt;b&gt;_parent&lt;/b&gt;: Open in the parent frameset.  &lt;li&gt;&lt;b&gt;_top&lt;/b&gt;: Open in the full body of the window.  &lt;li&gt;&lt;b&gt;&lt;i&gt;framename&lt;/i&gt;&lt;/b&gt;: Open in a named frame.  &lt;/ul&gt;  The default is &quot;_lightbox&quot;.</configure></property>
+</property></property>

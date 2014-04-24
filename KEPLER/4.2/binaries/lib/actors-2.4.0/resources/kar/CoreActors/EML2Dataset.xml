@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<entity name="EML 2 Dataset" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:119:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>matt jones, jing tao, chad</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The EML2Dataset actor provides access to a wide variety of data packages that have been described using EML (Ecological Metadata Language). The actor accesses an EML dataset and handles the mechanical issues involved in parsing metadata, downloading the dataset (if applicable), and emitting data to downstream actors.</p>
+
+<p>Each data package contains an EML metadata description and one or more data entities (e.g., data tables, spatial raster images, spatial vector images). The EML metadata allows the described data to be easily ingested into Kepler and exposed for use in downstream components. The data packages can be accessed from the local file system or through any EcoGrid server that provides access to its collection of data objects. The supported data transfer protocols include http, ftp, file, ecogrid, and srb. </p>
+
+<p>After parsing the EML metadata, the actor automatically reconfigures its exposed ports to provide one port for each attribute described by the first entity of the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document. To preview the data, right-click the actor icon and select Preview from the drop-down menu.</p>
+
+<p>By default, the ports created by the EML2Dataset actor represent data fields, and one tuple of data (e.g., one database row) is emitted on these ports each time the actor fires. Alternatively, the actor can be configured so that the ports represent an array of field values (&quot;AsColumnVector&quot;), or so that the ports represent an entire table of data (&quot;AsTable&quot;). Data tables are formatted in comma-separated-value (CSV) format.</p>
+
+<p>If more than one data entity is described in the EML metadata, then the output of the actor defaults to the first entity listed in the EML. To select the other entities, specify an entity with the Selected parameter, or use the Query Builder to describe the filter and join that should be used to produce the data output. To use the Query Builder, right-click the actor and select &quot;Open Actor.&quot; Specify the fields to be output and any filtering constraints to be applied.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output ports are automatically configured to provide one port for each attribute in the first entity described in the EML description. For example, if the first entity is a data table with four columns, the ports might be "Site", "Date", "Plot", and "Rainfall." These details are obtained from the EML document.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:fileExtensionFilter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A file extension used to limit the array of file names returned by the actor when the selected output type is "As UnCompressed File Name". This parameter is ignored for other output types.</configure></property>
+
+<property name="prop:dataOutputFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in a data table, or one port that emits the entire data table at once in CSV format. Specifically, the output format choices are:
+<table>
+<tr><td>As Field (the default)</td><td> The actor creates one output port for each field (i.e., column/attribute/variable) that is described in the EML metadata for the data package. The type of each port (e.g., string, int, double, etc.) matches the base type of the field. If a query statement has been used to subset the data, then only those fields selected in the query statement will be configured as ports. </td></tr>
+
+<tr><td>As Table</td><td> The selected data will be output as a string that contains the entire entity data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and NumColumns - the number of fields in the table. </td></tr>
+
+<tr><td>As Row</td><td>  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. </td></tr>
+
+<tr><td>As Byte Array</td><td> Selected data will be output as an array of bytes. The actor creates two output ports: BinaryData - contains the raw data itself, and EndOfStream - indicates whether the end of data stream has been reached.</td></tr> 
+
+<tr><td>As UnCompressed File Name</td><td> This format is only used when the data package is a compressed file (zip, tar, et al). The compressed archive file is uncompressed after it is downloaded. The actor creates one output port, which contains an array of the filenames of all of the uncompressed archive files. If a FileExtensionFilter is specified, then the array will only contain files that match the specified extension.</td></tr> 
+
+<tr><td>As Cache File Name</td><td>   Kepler stores data files downloaded from remote sites into its cache system. This output format will send the local cache file path for the data package so that workflow designers can directly access the cache files. The actor creates two output ports: CacheLocalFileName (the local file path) and CacheResourceName (the EML data link. e.g., ecogrid://knb/tao.2.1).</td></tr> 
+
+<tr><td>As Column Vector</td><td> This output format is similar to "As Field", except instead of sending out a single value on each port, the actor sends out an array of all of the data for each field. The type of each port is an array of the base type for the field.</td></tr>
+
+<tr><td>As ColumnBased Record</td><td>  This output format sends all data on one port using a record structure that encapsulates the entire data entity. The record will contain one array for each data field, and the type of each array will be determined by the type of the field it represents.</td></tr>
+</table>
+
+</configure></property>
+<property name="prop:selectedEntity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this EML data package has multiple entities, the selectedEntity parameter specifies which entity should be output. When this parameter is unset (the default), data from the first entity described in an EML package is output. This parameter is only used if no query statement is specified, or if a query statement is used and the output format is one of "As Table", "As Byte Array", "As Uncompressed File Name", and "As Cache File Name". To specify a query statement, right-click the actor and select Open Actor.</configure></property>
+<property name="prop:emlFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path of a local EML metadata file used to describe and access an EML data set.</configure></property>
+
+<property name="prop:dataFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to a local data file described by EML (must be used in conjunction with a local EML file). The actor will retrieve the data and automatically configure its ports to output it.</configure></property>
+
+<property name="prop:isLenient" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this parameter is selected, "extra" columns of data (e.g., comments that people have entered on a line or something of that nature) that are not described in the metadata are ignored, allowing the workflow to execute. If the option is unchecked (the default), the workflow execution will halt until the discrepancy between the data and metadata is corrected.</configure></property>
+
+<property name="prop:checkVersion" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to check the EarthGrid for updates to the data. If the actor finds a version of the data that is more recent than the cached data on your local system, the actor will prompt the user to either download the latest data and metadata or ignore the newer version. Note that different versions of the data can have vastly different structures (new columns, or even new tables of data might be included or removed). If this parameter is selected, users should be prepared to handle changes that might arise from differences in the data structure.</configure></property>
+
+</property>
+<property name="class" value="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:988:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#RemoteInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType33" value="urn:lsid:localhost:onto:2:1#XMLProcessor" class="org.kepler.sms.SemanticType"/>
+</entity>

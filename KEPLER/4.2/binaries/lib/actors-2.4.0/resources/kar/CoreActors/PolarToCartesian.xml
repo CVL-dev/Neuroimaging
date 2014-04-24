@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<entity name="Polar To Cartesian" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:42:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Michael Leung</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The PolarToCartesian actor reads two double tokens representing polar coordinates (magnitude and angle) and outputs two new double tokens representing Cartesian coordinates (x and y).</p>
+
+<p>Note that the angle input is assumed to be in radians. If either input is NaN or infinity, then the outputs are NaN or infinity. </p>
+
+<p>The outputs are a Cartesian representation of the input, where x = magnitude * cos(angle) and y = magnitude * sin(angle).</p></configure></property>
+<property name="port:x" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a double token representing the x-coordinate of the Cartesian pair.</configure></property>
+<property name="port:magnitude" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token representing the magnitude component of the polar coordinate.</configure></property>
+<property name="port:angle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token representing the angle component of the polar coordinate in radians.</configure></property>
+<property name="port:y" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a double token representing the y-coordinate of the Cartesian pair.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.conversions.PolarToCartesian" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:918:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="magnitude" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="angle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="x" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="y" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#Scaling"/>
+</entity>

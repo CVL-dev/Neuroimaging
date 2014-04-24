@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<property name="ParameterSet" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:529:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Christopher Brooks, contributor: Edward A. Lee</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+ An attribute that reads multiple values from a file and sets
+ corresponding parameters in the container.
+ The values are in the form:
+ <pre>
+ <i>attributeName</i> = <i>value</i>
+ </pre>
+ where <code><i>variableName</i></code> is the name of the attribute
+ in a format suitable for {@link ptolemy.kernel.util.NamedObj#setName(String)}
+ (i.e., does not contain periods) and  <code><i>value</i></code> is
+ the expression in the Ptolemy expression language.
+ Comments are lines that begin with the <code>#</code> character.
+ Each line in the file is interpreted as a separate assignment.
+
+ <p>The attributes that are created will have the same
+ visibility as parameters of the container of the attribute.
+ They are shadowed, however, by parameters of the container.
+ That is, if the container has a parameter with the same name
+ as one in the parameter set, the one in the container provides
+ the value to any observer.</p>
+
+ <p>If the file is modified during execution of a model, by default
+ this will not be noticed until the next run. If you set the
+ <i>checkForFileUpdates</i> parameter to <i>true</i>, then
+ on each prefiring of the enclosing opaque composite actor,
+ this parameter will check for updates of the file. Otherwise,
+ it will only check between runs of the model or when the file
+ name or URL gets changed.</p>
+
+ <p>Note that the order the parameters are created is arbitrary,
+ this is because we read the file in using java.util.Properties.load(),
+ which uses a HashMap to store the properties.  We use a Properties.load()
+ because it provides a nice parser for the files and can read and write
+ values in both text and XML.</p>
+    </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.parameters.ParameterSet" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1184:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#Parameter" class="org.kepler.sms.SemanticType"/>
+</property>

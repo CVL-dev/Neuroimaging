@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<entity name="SSH Directory Creator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:514:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The SSHDirectoryCreator actor creates a local or remote directory. The actor reads the path to a target machine as well as the name of the directory to create. The actor outputs the operation results: true if the directory is created successfully, and false if not. In addition, the actor outputs the text of generated error messages, if any.</p>
+
+<p>For remote operations, a relative path is relative to the home directory. For local operations, a relative path is relative to the current directory. If the 'parent' flag is set, intermediate directories in the provided path will be created if necessary. </p>
+
+</configure></property>
+   
+   <property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. This parameter is read once at initialize. </configure></property>
+     <property name="port:dir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the target directory. This parameter is read once at initialize.  </configure></property>
+       <property name="port:succ" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A Boolean token: true if the operation is successful, false if not. </configure></property>
+         <property name="port:error" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The actor's execution errors, if any; otherwise an empty string. </configure></property>
+           <property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with ssh. This parameter is read once at initialize. </configure></property>
+           <property name="prop:dir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the directory to be read on the target machines. This parameter is read once at initialize. </configure></property>
+           <property name="prop:parent" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether parent directories should be created recursively if necessary. If the 'parent' flag is set the operation is considered successful even if the directory already exists.  </configure></property>
+</property>
+<property name="class" value="org.kepler.actor.ssh.DirectoryCreator" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1209:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="target" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="dir" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="succ" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="error" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType11" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType21" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType41" value="urn:lsid:localhost:onto:4:1#CPES" class="org.kepler.sms.SemanticType"/>
+
+</entity>

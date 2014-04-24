@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<entity name="String Compare" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:93:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Vinay Krishnan, Daniel Lazaro Cuadrado (contributor: Edward A. Lee)</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The StringCompare actor reads two strings and compares them using a specified comparison function. The actor outputs true if the strings satisfy the comparison criteria, or false if not.</p>
+
+<p>The comparison functions are specified with the function parameter: </p>
+<ul>
+<li>equals: Output true if the strings are equal (the default). </li>
+<li>startsWith: Output true if the first string starts with second string. </li>
+<li>endsWith: Output true if the first string ends with the second string. </li>
+<li>contains: Output true if the first string contains the second string. </li>
+</ul>
+
+<p>Strings will be read from the input ports if they are connected; otherwise strings are read from the parameters.</p></configure></property>
+<property name="port:secondString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the second string.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the comparison (either true or false).</configure></property>
+<property name="port:firstString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the first string.</configure></property>
+<property name="prop:secondString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The second string.</configure></property>
+<property name="prop:firstString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The first string.</configure></property>
+<property name="prop:function" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The comparison function (equals, startsWith, endsWith, contains). The default is "equals".</configure></property>
+<property name="prop:ignoreCase" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to ignore case. By default, the actor is case-sensitive. Select the parameter to ignore case.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.string.StringCompare" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:967:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="firstString" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="secondString" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#StatisticalOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

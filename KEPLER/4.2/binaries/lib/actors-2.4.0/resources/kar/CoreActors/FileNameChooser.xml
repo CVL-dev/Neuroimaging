@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<entity name="File Name Chooser" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:388:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The FileNameChooser actor is a composite actor used inside the GamessInputGenerator actor, which is used in computational chemistry workflows.</p>
+
+<p>GAMESS (General Atomic and Molecular Electronic Structure System) is a program that can perform a broad range of quantum chemical computations. For more information about GAMESS, see http://www.msg.ameslab.gov/GAMESS/</p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system. In addition, the Nimrod/G part of the Nimrod toolkit for distributed parametric modeling must be installed.</p>
+</configure></property>
+<property name="prop:OutputFileDirectory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The directory in which to place the output files.</configure></property>
+<property name="prop:FileNameAddition" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A string to append to each file name.</configure></property>
+<property name="prop:OutputFileType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of the output files.</configure></property>
+
+<property name="port:inputFileHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The names of the source files.</configure></property>
+<property name="port:inputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the original files.</configure></property>
+<property name="port:outputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the new file names.</configure></property>
+</property>
+<property name="class" value="org.resurgence.moml.FileNameChooser" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.FileNameChooser" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1152:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputFileHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="{35.0, 155.0}">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="inputFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="{670.0, 145.0}">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="outputFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[670.0, 315.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ProcessingUtilitiesActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#ProcessUtility" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,55 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Array Append" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:20:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Steve Neuendorffer</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: ArrayAppend.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+An actor that appends ArrayTokens together.  This actor has a single input
+ multiport, and a single output port.  The types on the input and the output
+ port must both be the same array type.  During each firing, this actor reads
+ up to one ArrayToken from each channel of the input port and creates an
+ ArrayToken of the same type on the output port.  If no token is available on
+ a particular channel, then there will be no contribution to the output.
+ The output is an array of length equal to the sum of the lengths of
+ the input arrays (which may be zero if either there are no input
+ arrays or the lengths of the input arrays are all zero).</configure>
+    </property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure>
+    </property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.ArrayAppend">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:896:1">
+        </property>
+    </property>
+    <property name="input" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="{unknown}">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="true">
+        </property>
+    </property>
+    <property name="output" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="unknown">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ArrayActor">
+    </property>
+</entity>

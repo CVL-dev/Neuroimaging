@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<catalog>
+    <driver>
+	<title>Igneous rocks database</title>
+	<name>org.objectweb.rmijdbc.Driver</name>
+	<dbURL>jdbc:rmi://jaeger-pc.sdsc.edu:38383/jdbc:odbc:VirginiaIgneousRock</dbURL>
+    </driver>
+    <driver>
+	<title>testpgap on DB2</title>
+	<name>com.ibm.db2.jcc.DB2Driver</name>
+	<dbURL>jdbc:db2://compute1.sdsc.geongrid.org:50000/testpgap</dbURL>
+    </driver>
+    <driver>
+	<title>ODBC:JDBC</title>
+	<name>sun.jdbc.odbc.JdbcOdbcDriver</name>
+	<dbURL>jdbc:odbc:yourDatabaseName</dbURL>
+    </driver>
+</catalog>

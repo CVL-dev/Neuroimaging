@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<entity name="GARPSummary" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:362:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GARPSummary actor examines a predicted species distribution and calculates error statistics (omission and commission). Because GARP predictions of the spatial distribution of a species are probabilistic, they will differ every time a calculation is executed. The GARPSummary actor generates a measure of how well a given run does in predicting distributions, based on a "test set" of known species locations.</p>
+
+<p>The actor reads a predicted species distribution (an ASCII raster grid file that can be output by a GARPPrediction actor) as well as a list of test locations consisting of (long, lat) points. In addition, the actor reads a rule set file, which is required to reproduce the predicted distribution.</p>
+
+<p>The actor outputs the omission and commission values, as well as the rule set file name after the calculations have been performed. Omission is the fraction of test set points that are not predicted by the calculation. Commission is the proportion of area predicted present with regard to the total area of interest, not counting masked pixels.</p>
+
+<p>GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.</p></configure></property>
+<property name="port:omissionValue" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the omission value.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the ASCII raster grid file.</configure></property>
+<property name="port:ruleSetFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the rule set used to create the predicted species distribution.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of an ASCII raster grid file (*.asc) containing predicted species distribution data.</configure></property>
+<property name="port:outputRuleSetFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the rule set.</configure></property>
+<property name="port:commissionValue" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the commission value.</configure></property>
+<property name="port:pointFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of a file containing a list of locations (long, lat) used to evaluate the prediction. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.java_gis.GARPSummary" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1128:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="pointFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ruleSetFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="omissionValue" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="commissionValue" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputRuleSetFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#NicheModelingActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:4:1#NicheModelingOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

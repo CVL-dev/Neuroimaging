@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<entity name="Line Reader" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:62:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The LineReader actor reads a file or URL, one line at a time, and outputs each line as a string. </p>
+
+<p>Kepler contains several actors used to read and output files in different ways. To read and output a file as a single string, use the FileReader or SimpleFileReader actor. To read and output a specified section of the file, use the SegmentFileReader actor.</p>
+
+<p>Use the numberOfLinesToSkip parameter to optionally specify the number of lines to skip at the beginning of the file. </p>
+
+<p>When the end of the file is reached, the actor will cease firing. With some directors (such as SDF), the model will stop executing when the actor does. With other directors (such as DE), the actor will cease firing, but the model will continue to execute. </p>
+
+<p>To reset the LineReader to start again at the beginning of the file, use a modal model with a reset-enabled transition. For more information about modal models, see the User Manual. </p>
+</configure></property>
+
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a string for each line of the input file.</configure></property>
+<property name="port:endOfFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that indicates whether or not the end of the file has been reached. If the end of the file has been reached, the port will produce a true value and the actor will cease firing. Otherwise, the value is  false.</configure></property>
+
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the file to be read. See FileParameter for more information about specifying file names.</configure></property>
+<property name="prop:numberOfLinesToSkip" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of lines to skip at the beginning of the file or URL. 0 is specified by default. The value of this parameter must be non-negative. </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.io.LineReader" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:937:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="endOfFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ReaderExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+</entity>

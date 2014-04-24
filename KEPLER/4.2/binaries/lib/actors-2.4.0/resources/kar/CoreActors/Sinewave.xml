@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<entity name="Sinewave" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:6:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+  <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+  <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+  <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+  <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Sinewave actor is a composite actor that generates a sine wave. Each time the actor iterates, it outputs a sample from the generated sinusoidal signal. Output values are uniformly sampled.</p></configure></property>
+  <property name="port:phase" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token representing sinusoid phase in radians. The default is 0.0. The phase may also be specified with the phase parameter.</configure></property>
+  <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a uniformly sampled sinusoidal signal.</configure></property>
+  <property name="port:frequency" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token representing the sinusoid frequency in cycles per second (Hertz). The default is 440.0. The frequency may also be specified with the frequency parameter.</configure></property>
+  <property name="prop:phase" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The sinusoid phase in radians. The default is 0.0. The phase may also be specified via the phase port.</configure></property>
+  <property name="prop:samplingFrequency" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The sampling frequency in cycles per second (Hertz), a double with default 8000.0.</configure></property>
+  <property name="prop:frequency" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The sinusoid frequency in cycles per second (Hertz). The default is 440.0. The frequency may also be specified via the frequency port.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Sinewave" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:882:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="frequency" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_location" class="ptolemy.kernel.util.Location" value="{30.0, 90.0}">
+</property>
+</property>
+<property name="phase" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_location" class="ptolemy.kernel.util.Location" value="{30.0, 130.0}">
+</property>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+
+  <property name="_location" class="ptolemy.kernel.util.Location" value="515.0, 270.0">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#TrigMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#TrigonometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

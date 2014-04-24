@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<entity name="Nondeterministic Merge" class="org.kepler.moml.CompositeClassEntity">
+    <property name="entityId"  value="urn:lsid:kepler-project.org:actor:525:1" class="org.kepler.moml.NamedObjId"/>
+    <property name="class" value="ptolemy.domains.pn.kernel.NondeterministicMerge" class="ptolemy.kernel.util.StringAttribute">
+        <property name="id" value="urn:lsid:kepler-project.org:class:525:1" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+        <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+        <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee, Haibo Zeng</configure></property>
+        <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+        <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p> This actor takes any number of input streams and merges them
+ nondeterministically.  This actor is intended for use in the
+ PN domain. It is a composite actor that
+ creates its own contents.  It contains an instance of PNDirector and one
+ actor for each input channel (it creates these actors automatically
+ when a connection is created to the input multiport).  The contained
+ actors are special actors (implemented as an instance of an inner class)
+ that read from the port of this actor and write to the port of
+ this actor. They have no ports of their own.  The lifecycle of the
+ contained actors (when they are started or stopped) is handled by
+ the PNDirector in the usual way.</p>
+        </configure></property>
+        <property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input multi-port that accepts tokens of any type.</configure></property>
+        <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port for the merged input tokens.</configure></property>
+        <property name="port:channel" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output port used to indicate which input channel the current output came from. This has type int.</configure></property>
+    </property>
+    <property name="input" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="output" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="channel" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH"/>
+    </property>
+    <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ControlActor" class="org.kepler.sms.SemanticType"/>
+    <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowControl" class="org.kepler.sms.SemanticType"/>
+</entity>

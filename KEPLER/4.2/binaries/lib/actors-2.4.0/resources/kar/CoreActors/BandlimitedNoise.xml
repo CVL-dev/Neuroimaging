@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<entity name="BandlimitedNoise" class="ptolemy.kernel.ComponentEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.BandlimitedNoise" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:2:2" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:2:2" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      This actor generates continuous-time noise with a Gaussian distribution&#10;and controlled bandwidth. The power spectrum of the noise produced&#10;is given by&#10;&lt;pre&gt;&#10;  S(f) = T s^2 sinc^4(pi f T)&#10;&lt;/pre&gt;&#10;where f is frequency, s is the standard deviation,&#10;and the sinc function is given by&#10;&lt;pre&gt;&#10;  sinc(a) = sin(a)/a&#10;&lt;/pre&gt;&#10;Here, T = 1/b, where b is the value of the &lt;i&gt;bandwidth&lt;/i&gt; parameter.&#10;Notice that the power declines as the fourth power&#10;of one over the frequency. The &lt;i&gt;bandwidth&lt;/i&gt; parameter specifies&#10;the frequency (in Hertz) at which the first zero occurs, or,&#10;equivalently, roughly the width of the main lobe.&#10;&lt;p&gt;&#10;This actor may affect the step size taken by the solver. Specifically,&#10;it ensures that the solver provides executions at least as frequently&#10;as twice the specified bandwidth. This is nominally the Nyquist frequency&#10;of an ideally bandlimited noise frequency, but since this noise process&#10;is not ideally bandlimited, the solver samples will typically have&#10;aliasing distortion. If you need to control that aliasing distortion,&#10;then you can set the &lt;i&gt;maxStepSize&lt;/i&gt; parameter to something smaller&#10;than 1/2b, where c is the &lt;i&gt;bandwidth&lt;/i&gt;.&#10;&lt;p&gt;&#10;For some uses, the effect that this actor has on the step size may&#10;be undesirable because it increases the cost of simulation.&#10;If a less rigorous form of noise is desired (for rough models or&#10;simple demonstrations), you can use the ptolemy.domains.continuous.lib.Noise actor. </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: BandlimitedNoise.xml 24234 2010-05-06 05:21:26Z welker $</configure>
+    </property>
+    <property name="prop:bandwidth" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The bandwidth of the noise random process in Hertz.&#10;  The bandwidth is the frequency where the power spectral&#10;  density first hits zero. This is a double that defaults to&#10;  10.0 Hertz.
+      </configure>
+    </property>
+    <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An output port that broadcasts the generated random numbers.</configure>
+    </property>
+    <property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure>
+    </property>
+    <property name="prop:mean" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The mean of the random numbers. The value is a double that defaults to 0.</configure>
+    </property>
+    <property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The seed that controls the random number generation. A seed of zero (the default) means that the seed is derived from the current system time and a Java hash code (i.e., System.currentTimeMillis() + hashCode()). With extremely high probability, the default seed will ensure that two distinct actors will have distinct seeds. However, current time may not have enough resolution to ensure that two subsequent executions of the same model have distinct seeds. The parameter contains a long token, initially with value 0.</configure>
+    </property>
+    <property name="prop:standardDeviation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard deviation of the random numbers. The value is a double that defaults to 1.</configure>
+    </property>
+    <property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Select to reset  the random number generator each time the workflow is run. By default, the generator does not reset. </configure>
+    </property>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="trigger" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="mean" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="standardDeviation" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:2:1#RandomNumberMathOperationActor" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:3:1#RandomNumberOperation" class="org.kepler.sms.SemanticType"/>
+  <property name="seed" class="ptolemy.actor.parameters.SharedParameter" value="0L">
+  </property>
+</entity>

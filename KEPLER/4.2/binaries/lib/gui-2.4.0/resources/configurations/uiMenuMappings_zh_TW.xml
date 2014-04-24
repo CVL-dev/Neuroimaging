@@ -1,0 +1,529 @@
+<?xml version="1.0"?>
+<!--
+################################################################################
+#
+#    '$RCSfile$'
+#
+#     '$Author: leinfelder $'
+#       '$Date: 2010-07-28 22:41:52 -0700 (Wed, 28 Jul 2010) $'
+#   '$Revision: 25170 $'
+#
+# This ResourceBundle contains the mappings used by the kepler menu framework
+#
+# MENUBAR MENU MAPPINGS - HOWTO:
+# These are KEPLER menu assignments.
+# Valid entries are in one of the following forms:
+#
+# 1) RE-USING PTII MENU ITEMS:
+#             <KEPLER MENU LOCATION>=<PTII MENU LOCATION>
+#
+#    Each Key and its corresponding Value are a delimited String
+#    representation of the hierarchical "path" to this menu item.
+#    For example, the "Graph Editor" menu item
+#    beneath the "New" item on the "File" menu would have
+#    a menuPath of File->New->Graph Editor. Delimeter is
+#    "->" (no quotes), and *escaped* spaces are allowed within menu
+#    text strings, but not around the delimiters; i.e:
+#     "New->Graph\ Editor" is OK, but "File\ ->New" is not.
+#
+#    EXAMPLE:
+#             File->New->Workflow=File->New->Graph\ Editor
+#
+#    This would take the Action that was originally assigned to the
+#    PTII menu location at "File->New->Graph\ Editor", and would
+#    re-assign it to a Kepler menu that will be created at
+#    "File->New->Workflow"
+#
+#    * NOTE (i): the "key" part of the key=value pair (i.e. the KEPLER MENU
+#         LOCATION) is case-sensitive - The menu text shown in Kepler will be
+#         exactly the same as the "key" text.
+#
+#    * NOTE (ii): the "value" part of the key=value pair (i.e. the PTII MENU
+#         LOCATION) is *not* case-sensitive - so you don't need to worry about
+#         whether the original PTII menu was File->Print or File->print - either
+#         form will work.
+#
+#    * NOTE (iii): the "value" part of the key=value pair ***MUST*** contain at
+#         least one delimiter ("->"), otherwise it will be assumed to be a
+#         classname; see section (2):
+#
+# 2) INSTANTIATING NEW KEPLER ACTIONS:
+#             <KEPLER MENU LOCATION>=fully.qualified.Classname
+#
+#    Again, each Key is a delimited String representation of the
+#    hierarchical "path" to this Kepler menu item (see above).
+#    Each value is a fully-qualified classname of a class that implements the
+#    javax.swing.Action interface, and which will be instantiated and assigned
+#    to the menu location specified in the key.
+#
+#    * NOTE (iv): the "key" part of the key=value pair (i.e. the KEPLER MENU
+#         LOCATION) is case-sensitive - see explanation in NOTE (i), above.
+#
+#    * NOTE (v): the "value" part of the key=value pair is also case-sensitive
+#         when using this fully.qualified.Classname form. it should match the
+#         case of the actual fully.qualified.Classname exactly
+#
+#
+# 3) NOTE ON ACCELERATOR KEY ASSIGNMENTS:
+#
+#    To add accelerator key assignments (Alt+whatever), and thus show the
+#    relevant letter of the menu name as underlined, add a tilde (~) before
+#    the letter that should be the accelerator, but ONLY IN THE KEY (the part
+#    before the "="); for example, in the top-level Workflow menu, to make the
+#    "o" an accelerator key (so the user can access it by typing Alt+o), and to
+#    add an underline below the "o", the mapping entry would look like this:
+#
+#      W~orkflow->Add\ Relation=Graph->New\ Relation
+#
+#    NOTE: If you have more than one entry for a given menu, all entries
+#    *should* have the same accelerator key set; however, in the event that
+#    conflicting entries are found, only the *first* entry will be used.  For
+#    example, if the following mappings appear in this order:
+#
+#    ~File->Open\ URL=File->Open\ URL
+#    File->MENU_SEPARATOR_1=line
+#    F~ile->New\ Workflow->Blank=File->New->Graph\ Editor
+#
+#    ...then the first accelerator (the "F") will be the one that is assigned.
+#    This enables the inclusion of only one accelerator tilde on the first
+#    line, if desired, in order to enhance readability - instead of repeating
+#    the accelerator for all entries. Consequently, if the first occurence of a
+#    menu does *not* have an accelerator assigned, the menu will not have an
+#    accelerator key, even if a subsequent mapping does try to introduce a key!
+#
+# 4) ADDING MENU SEPARATORS:
+#
+#    To add a menu separator, add a key=value pair of the following form:
+#    MenuName->MENU_SEPARATOR_<UNIQUE number>=<one or more chars>.
+#    So for example, a separator in the File menu might look like this:
+#    ...
+#    File->Open\ URL=File->Open\ URL
+#    File->MENU_SEPARATOR_1=line
+#    File->New\ Workflow->Blank=File->New->Graph\ Editor
+#    ...etc
+#    The number after the "MENU_SEPARATOR_" MUST be unique for THIS particular
+#    menu - if it is not, only the first separator will appear in Kepler. One
+#    way is to assign an incrementing int to each menu separator (1, 2, 3.. etc)
+#    (note: they are not *required* to be in order - it's just easier to track)
+#    The choice of characters after the "=" is fairly arbitrary, provided
+#    there is at least one character, and none of the characters belong to the
+#    set of "special" characters (see important note below); however, you should
+#    be consistent to avoid confusion. I have chosen dashes to
+#    mimic the appearance of a menu separator, so it is obvious at a glance.
+#
+# * * * * * * * * * * * * IMPORTANT NOTE FOR ALL ENTRIES * * * * * * * * * * * *
+#
+#   The following characters MUST be escaped with a backslash:
+#      <whitespace>   :   #   !   \    =
+#   (EXCEPT where ":" "=" or " " are used as a delimeter between the key and
+#   its corresponding value). This means that any WHITESPACE characters
+#   *MUST* be escaped with a backslash, thus  \:
+#   for example:    WRONG - File->New->Workflow=File->New->Graph Editor
+#                 CORRECT - File->New->Workflow=File->New->Graph\ Editor
+#
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+################################################################################
+-->
+<config>
+  <!--
+  #############################
+  # FILE MENU
+  #############################
+  -->
+  <fileMenu>
+    <pair>
+      <name>~檔案->開放 ~檔案...</name>
+      <value>File->Open File</value>
+    </pair>
+    <pair>
+      <name>檔案->開放 ~URL...</name>
+      <value>File->Open URL</value>
+    </pair>
+    <pair>
+      <name>檔案->MENU_SEPARATOR_1</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>檔案->開放存檔 (KAR)</name>
+      <value>org.kepler.gui.kar.OpenArchiveAction</value>
+    </pair>
+    <pair>
+      <name>檔案->保存存檔 (KAR)</name>
+      <value>org.kepler.gui.kar.ExportArchiveAction</value>
+    </pair>
+    <pair>
+      <name>檔案->MENU_SEPARATOR_2</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>檔案->~新的工作流程->~空白的</name>
+      <value>File->New->Graph Editor</value>
+    </pair>
+    <pair>
+      <name>檔案->新的工作流程->~FSM 模型</name>
+      <value>File->New->FSM Editor</value>
+    </pair>
+    <pair>
+      <name>檔案->新的工作流程->~模態模型</name>
+      <value>File->New->Modal Model</value>
+    </pair>
+    <pair>
+      <name>檔案->~保存</name>
+      <value>File->Save</value>
+    </pair>
+    <pair>
+      <name>檔案->保存為...</name>
+      <value>File->Save As</value>
+    </pair>
+    <pair>
+      <name>檔案->MENU_SEPARATOR_3</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>檔案->~打印...</name>
+      <value>File->Print</value>
+    </pair>
+    <pair>
+      <name>檔案->MENU_SEPARATOR_4</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>檔案->~關閉</name>
+      <value>File->Close</value>
+    </pair>
+    <pair>
+      <name>檔案->走</name>
+      <value>File->Exit</value>
+    </pair>
+  </fileMenu>
+  <!--
+  # Recently-opened files here...
+  # Recently-opened files here...
+  # Recently-opened files here...
+  ####
+  
+  #############################
+  # EDIT MENU
+  #############################
+  -->
+  <editMenu>
+    <pair>
+      <name>~編輯->~復原</name>
+      <value>Edit->Undo</value>
+    </pair>
+    <pair>
+      <name>編輯->~重做</name>
+      <value>Edit->Redo</value>
+    </pair>
+    <pair>
+      <name>編輯->MENU_SEPARATOR_1</name>
+      <value>--------------------</value>
+    </pair>
+    <pair>
+      <name>編輯->~切</name>
+      <value>Edit->Cut</value>
+    </pair>
+    <pair>
+      <name>編輯->~複製</name>
+      <value>Edit->Copy</value>
+    </pair>
+    <pair>
+      <name>編輯->~貼</name>
+      <value>Edit->Paste</value>
+    </pair>
+    <pair>
+      <name>編輯->~刪除</name>
+      <value>Edit->Cut</value>
+    </pair>
+  </editMenu>
+  <!--
+  #############################
+  # VIEW MENU
+  #############################
+  -->
+  <viewMenu>
+    <pair>
+      <name>~看->~復位變焦</name>
+      <value>View->Zoom Reset</value>
+    </pair>
+    <pair>
+      <name>看->放大</name>
+      <value>View->Zoom In</value>
+    </pair>
+    <pair>
+      <name>看->~縮小</name>
+      <value>View->Zoom Out</value>
+    </pair>
+    <pair>
+      <name>看->~變焦適合</name>
+      <value>View->Zoom Fit</value>
+    </pair>
+    <pair>
+      <name>看->~自動化佈局</name>
+      <value>Graph->Automatic Layout</value>
+    </pair>
+    <pair>
+      <name>看->MENU_SEPARATOR_1</name>
+      <value>-------------------</value>
+    </pair>
+    
+    <!--
+    # [LLD>] I think some of this is existing and some new.  For instance the
+    # names of actors and ports are there but I don't remember where you can set
+    # the display.  I think it is buried in one of the dialogs somewhere but not
+    # on the menus.  What is different I believe is that the names need to be
+    # coupled with the actor and not some free flowing piece of text or something,
+    # if I'm remembering correctly.  Workflow notes exist but I don't think we
+    # have anyway to turn them on or off and again I think they are free flowing
+    # text items instead of couple logically with the workflow.  So yes there is
+    # some functionality that needs to be "fixed" or incorporated to make these
+    # things work correctly.  I presented this stuff a long time ago and people
+    # seemed to be in agreement but I don't know that we ever created a specific
+    # bug/task for this stuff.  I'd have to look at the bugs.
+    #
+    # View->~Names/Notes->Show\ All\ ~Names/Notes=***@TODO***
+    # View->Names/Notes->Show\ ~Workflow\ Notes=***@TODO***
+    # View->Names/Notes->Show\ All\ A~ctor\ Notes=***@TODO***
+    # View->Names/Notes->Show\ All\ ~Actor\ Names=***@TODO***
+    # View->Names/Notes->Show\ All\ ~Port\ Names=***@TODO***
+    -->
+    <pair>
+      <name>看->MENU_SEPARATOR_2</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>看->~XML視圖</name>
+      <value>View->XML View</value>
+    </pair>
+    <!--
+    # NOTE - the following item shows up ONLY in the HTML viewer that
+    # displays the EML Metadata when "Get Metadata" is used on a data source
+    -->
+    <pair>
+      <name>看->頁面源代碼</name>
+      <value>View->Source</value>
+    </pair>
+  </viewMenu>
+  <!--
+  #############################
+  # WORKFLOW MENU
+  #############################
+  -->
+  <workflowMenu>
+    <pair>
+      <name>工作流程->實時窗口...</name>
+      <value>View->Run Window</value>
+    </pair>
+    <pair>
+      <name>工作流程->MENU_SEPARATOR_1</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工作流程->MENU_SEPARATOR_2</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工作流程->~加關係</name>
+      <value>Graph->New Relation</value>
+    </pair>
+    <pair>
+      <name>工作流程->~新境界</name>
+      <value>Graph->New State</value>
+    </pair>
+    <pair>
+      <name>工作流程->添加端口->~輸入端口</name>
+      <value>Graph->New Input Port</value>
+    </pair>
+    <pair>
+      <name>工作流程->添加端口->~輸出端口</name>
+      <value>Graph->New Output Port</value>
+    </pair>
+    <pair>
+      <name>工作流程->添加端口->輸入/輸出端口</name>
+      <value>Graph->New Input/Output Port</value>
+    </pair>
+    <pair>
+      <name>工作流程->添加端口->輸入多端</name>
+      <value>Graph->New Input Multiport</value>
+    </pair>
+    <pair>
+      <name>工作流程->添加端口->多端口輸出</name>
+      <value>Graph->New Output Multiport</value>
+    </pair>
+    <pair>
+      <name>工作流程->添加端口->輸入/輸出多端</name>
+      <value>Graph->New Input/Output Multiport</value>
+    </pair>
+  </workflowMenu>
+  <!--
+  #############################
+  # TOOLS MENU
+  #############################
+  -->
+  <toolsMenu>
+    <pair>
+      <name>~工具->~動畫在運行時...</name>
+      <value>org.kepler.gui.RunWithFeedbackChkBoxAction</value>
+    </pair>
+    <!--
+    # [LLD] Listen to Director just listens to the director only
+    # but may not show everything that is happening in the workflow.  Debug would
+    # be a window that is showing the code execution for the entire workflow as
+    # it executes and Run with Feedback would be just highlighting which actor the
+    # workflow is on as it executes but with no other window open showing any code
+    # execution or messages behind the scenes.  If it turns out that "listen to
+    # director" shows the same as debug then we only need one item and I would
+    # leave it Tools->Debug if that is the case and remove Tools->Listen to
+    # Director.  Let's leave both for now until I find out the difference, if
+    # there is one.
+    #
+    # MB Note - if we use the mapping Tools->Debug=Debug->Listen\ to\ Director, the
+    # resulting menu item appears as "Listen to Director" instead of "Degbug", which
+    # gives us 2 menu items with the same name
+    # - so commenting this out for now, until this bug is fixed
+    #
+    #Tools->~Debug=Debug->Listen\ to\ Director
+    -->
+    <pair>
+      <name>工具->聽主任</name>
+      <value>Debug->Listen to Director</value>
+    </pair>
+    <pair>
+      <name>工具->MENU_SEPARATOR_1</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工具->MENU_SEPARATOR_2</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工具->~創建複合演員</name>
+      <value>Graph->Create Hierarchy</value>
+    </pair>
+    <pair>
+      <name>工具->MENU_SEPARATOR_3</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工具->~表達式計算器</name>
+      <value>File->New->Expression Evaluator</value>
+    </pair>
+    <pair>
+      <name>工具->實例化組件</name>
+      <value>Graph->Instantiate Entity</value>
+    </pair>
+    <pair>
+      <name>工具->實例屬性</name>
+      <value>Graph->Instantiate Attribute</value>
+    </pair>
+    <pair>
+      <name>工具->檢查系統設置</name>
+      <value>View->JVM Properties</value>
+    </pair>
+    <pair>
+      <name>工具->Ecogrid認證</name>
+      <value>org.kepler.gui.AuthenticateAction</value>
+    </pair>
+    <pair>
+      <name>工具->MENU_SEPARATOR_4</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工具->偏好</name>
+      <value>org.kepler.gui.PreferencesAction</value>
+    </pair>
+    <pair>
+      <name>工具->MENU_SEPARATOR_5</name>
+      <value>-------------------</value>
+    </pair>
+    <pair>
+      <name>工具->~文本編輯器</name>
+      <value>File->New->Text Editor</value>
+    </pair>
+    <pair>
+      <name>工具->模塊管理...</name>
+      <value>org.kepler.modulemanager.gui.ModuleManagerAction</value>
+    </pair>
+  </toolsMenu>
+  <!--
+  #############################
+  # CASE MENU
+  #############################
+  -->
+  <caseMenu>
+    <pair>
+      <name>Case->Add Case</name>
+      <value>Case->Add Case</value>
+    </pair>
+    <pair>
+      <name>Case->Remove Case</name>
+      <value>Case->Remove Case</value>
+    </pair>
+  </caseMenu>
+  <!--
+  #############################
+  # WINDOW MENU
+  #############################
+  -->
+  <windowMenu>
+    <pair>
+      <name>~窗->~運行窗口 - </name>
+      <value>View->Run Window</value>
+    </pair>
+    <pair>
+      <name>窗->MENU_SEPARATOR_1</name>
+      <value>-------------------</value>
+    </pair>
+  </windowMenu>
+  <!--
+  #############################
+  # SPECIAL MENU
+  # NOTE - this is shown only in plot windows
+  #############################
+  -->
+  <specialMenu>
+    <pair>
+      <name>特別->明確</name>
+      <value>SPECIAL->CLEAR</value>
+    </pair>
+    <pair>
+      <name>特別->輸出</name>
+      <value>Special->Export</value>
+    </pair>
+    <pair>
+      <name>特別->填</name>
+      <value>Special->Fill</value>
+    </pair>
+    <pair>
+      <name>特別->復位軸</name>
+      <value>Special->Reset Axes</value>
+    </pair>
+    <pair>
+      <name>特別->樣地</name>
+      <value>Special->Sample Plot</value>
+    </pair>
+  </specialMenu>
+  <!--
+  #############################
+  # HELP MENU
+  #############################
+  -->
+  <helpMenu>
+
+    <pair>
+      <name>~幫助->~關於</name>
+      <value>org.kepler.gui.AboutAction</value>
+    </pair>
+   
+    <pair>
+      <name>幫助->Kepler文檔</name>
+      <value>Help->Help</value>
+    </pair>
+    
+     <pair>
+      <name>~幫助->~模塊文件</name>
+      <value>org.kepler.modulemanager.ModuleDocumentationManagerAction</value>
+    </pair>
+    
+  </helpMenu>
+</config>

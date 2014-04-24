@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<entity name="Polygon Diagrams Transition" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:141:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>efrat jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The PolygonDiagramTransition actor is a project-specific actor designed to work with the GEON Mineral Classification workflow.</p>
+
+<p>GEON (Geosciences Network) is a distributed infrastructure for Geoscience research and education. For more information about GEON, see http://www.geongrid.org/.</p>
+
+<p>The PolygonDiagramTransition actor contains SVG (Scalable Vector Graphics) rock-naming diagrams and the transitions between them. The actor outputs the diagram and transition information to a subworkflow that iterates to use the information to classify a given mineral on increasingly fine descriptive levels.</p></configure></property>
+<property name="port:index" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a reference to the initial diagram to be used by the workflow.</configure></property>
+<property name="port:diagramsAndTransitions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts SVG rock-naming diagrams and transitions information.</configure></property>
+</property>
+<property name="class" value="org.geon.DiagramTransitions" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1000:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="diagramsAndTransitions" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="index" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GraphicalOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ImageOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

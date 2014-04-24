@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<eml:eml
+    packageId="eml.1.1" system="knb"
+    xmlns:eml="eml://ecoinformatics.org/eml-2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ds="eml://ecoinformatics.org/dataset-2.0.0"
+    xmlns:stmml="http://www.xml-cml.org/schema/stmml"
+    xsi:schemaLocation="eml://ecoinformatics.org/eml-2.0.0 eml.xsd">
+
+<dataset>
+  <title>Datos Meteorologicos</title>
+  <creator id="Rodrigo.Torrens">
+    <individualName>
+      <salutation>Mr.</salutation>
+      <givenName>Rodrigo</givenName>
+      <surName>Torrens</surName>
+    </individualName>
+  </creator>
+  <contact>
+    <references>Rodrigo.Torrens</references>
+  </contact>
+  <dataTable>
+    <entityName>Datos Meteorologicos</entityName>
+    <entityDescription> Dtos Estacion meteorologica La Hechicera para e?
+    2001</entityDescription>
+    <physical>
+      <objectName>sample.dat</objectName>
+      <size unit="bytes">188860</size>
+      <characterEncoding>ASCII</characterEncoding>
+      <dataFormat>
+        <textFormat>
+          <numHeaderLines>1</numHeaderLines>
+          <recordDelimiter>\n</recordDelimiter>
+          <attributeOrientation>column</attributeOrientation>
+          <simpleDelimited>
+            <fieldDelimiter>,</fieldDelimiter>
+          </simpleDelimited>
+        </textFormat>
+      </dataFormat>
+      <distribution>
+        <online>
+          <url>file://@ptolemydir@/sample.dat</url>
+        </online>
+      </distribution>
+    </physical>
+    <attributeList>
+      <attribute id="att.1">
+        <attributeName>DATE</attributeName>
+        <attributeLabel>DATE</attributeLabel>
+        <attributeDefinition>Date of collection
+        </attributeDefinition>
+        <storageType>string</storageType>
+        <measurementScale>
+          <datetime>
+            <formatString>MM/DD/YY</formatString>
+            <dateTimePrecision>1</dateTimePrecision>
+            <dateTimeDomain>
+              <bounds>
+                <minimum>01/01/01</minimum>
+                <maximum>01/05/01</maximum>
+              </bounds>
+            </dateTimeDomain>
+          </datetime>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.2">
+        <attributeName>TIME</attributeName>
+        <attributeLabel>TIME</attributeLabel>
+        <attributeDefinition>Time of collection
+        </attributeDefinition>
+        <storageType>string</storageType>
+        <measurementScale>
+          <datetime>
+            <formatString>HH:MM</formatString>
+            <dateTimePrecision>1</dateTimePrecision>
+            <dateTimeDomain>
+              <bounds>
+                <minimum>00:00</minimum>
+                <maximum>23:59</maximum>
+              </bounds>
+            </dateTimeDomain>
+          </datetime>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.3">
+        <attributeName>T_AIR</attributeName>
+        <attributeLabel>T_AIR</attributeLabel>
+        <attributeDefinition>Air temperature
+        </attributeDefinition>
+        <storageType>float</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>celsius</standardUnit>
+            </unit>
+            <precision>
+              .1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.4">
+        <attributeName>RH</attributeName>
+        <attributeLabel>RH</attributeLabel>
+        <attributeDefinition>Relative Humidity
+        </attributeDefinition>
+        <storageType>int</storageType>
+        <measurementScale>
+          <ratio>
+            <unit>
+              <standardUnit>dimensionless</standardUnit>
+            </unit>
+            <precision>
+              1
+            </precision>
+            <numericDomain>
+              <numberType>integer</numberType>
+            </numericDomain>
+          </ratio>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.5">
+        <attributeName>DEW</attributeName>
+        <attributeLabel>DEW</attributeLabel>
+        <attributeDefinition>Dew point
+        </attributeDefinition>
+        <storageType>float</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>celsius</standardUnit>
+            </unit>
+            <precision>
+              .1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.6">
+        <attributeName>BARO</attributeName>
+        <attributeLabel>BARO</attributeLabel>
+        <attributeDefinition>Barometric preasure
+        </attributeDefinition>
+        <storageType>float</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>millibars</standardUnit>
+            </unit>
+            <precision>
+              .1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.7">
+        <attributeName>WD</attributeName>
+        <attributeLabel>WD</attributeLabel>
+        <attributeDefinition>Wind direction
+        </attributeDefinition>
+        <storageType>int</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>degree</standardUnit>
+            </unit>
+            <precision>
+              1
+            </precision>
+            <numericDomain>
+              <numberType>integer</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.8">
+        <attributeName>WS</attributeName>
+        <attributeLabel>WS</attributeLabel>
+        <attributeDefinition>Wind speed
+        </attributeDefinition>
+        <storageType>float</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>knots</standardUnit>
+            </unit>
+            <precision>
+              .1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.9">
+        <attributeName>RAIN</attributeName>
+        <attributeLabel>RAIN</attributeLabel>
+        <attributeDefinition>Amount of Rain
+        </attributeDefinition>
+        <storageType>float</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>centimeters</standardUnit>
+            </unit>
+            <precision>
+              .1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.10">
+        <attributeName>SOL</attributeName>
+        <attributeLabel>SOL</attributeLabel>
+        <attributeDefinition>Solar radiation
+        </attributeDefinition>
+        <storageType>integer</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>watt</standardUnit>
+            </unit>
+            <precision>
+              1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+      <attribute id="att.11">
+        <attributeName>SOL_SUM</attributeName>
+        <attributeLabel>SOL_SUM</attributeLabel>
+        <attributeDefinition>Solar radiation accumulation
+        </attributeDefinition>
+        <storageType>integer</storageType>
+        <measurementScale>
+          <interval>
+            <unit>
+              <standardUnit>watt</standardUnit>
+            </unit>
+            <precision>
+              1
+            </precision>
+            <numericDomain>
+              <numberType>real</numberType>
+            </numericDomain>
+          </interval>
+        </measurementScale>
+      </attribute>
+    </attributeList>
+    <caseSensitive>no</caseSensitive>
+    <numberOfRecords>100</numberOfRecords>
+  </dataTable>
+</dataset>
+</eml:eml>

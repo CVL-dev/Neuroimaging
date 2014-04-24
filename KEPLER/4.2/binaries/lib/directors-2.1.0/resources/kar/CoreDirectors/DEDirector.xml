@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<property name="DE Director" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:director:3:2" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Lukito Muliadi, Edward A. Lee, Jie Liu, Haiyang Zheng</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Discrete Event (DE) Director, which oversees workflows where events occur at discrete times along a time line, is well suited for modeling time-oriented systems, such as queuing systems, communication networks, and occurrence rates or wait times. </p>
+
+<p>In DT workflows, actors send "event tokens," which consist of a data token and a time stamp. The director reads these tokens, and places each on a global, workflow timeline. Large event queues or queues that change often are "expensive" in terms of system resources and may have performance issues.
+All actors in a DE workflow must receive input tokens, even if the tokens are solely used as triggers. Once active, an actor will fire until it has no more tokens in its input ports, or until it returns false. </p>
+
+<p>Because DE actors only fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause "deadlock" errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a TimedDelay actor to generate and inject an initial input token.</p>
+
+<p>The DE Director and each event in its workflow contain a tag that consists of a timestamp and additional information that helps the director determine when to process each event. On each iteration, the director will process all events with tags that are equal to its tag (the "model tag"), and then advance its model tag and perform a new set of matching events. Note that "model time" is not "real time." Model time starts from the time specified by startTime parameter, which has a default value of 0.0. The stop time is specified by the stopTime parameter, which has a default value of Infinity, meaning that the execution will run forever. </p>
+
+<p>Execution of a DE workflow ends when the timestamp of the earliest event exceeds the stop time. By default, execution also ends when the global event queue becomes empty. To prevent ending the execution when there are no more events (if your workflow relies on user interaction, for example), set the stopWhenQueueIsEmpty parameter to false. </p>
+
+<p>If the parameter synchronizeToRealTime is set to true, then the director will not process events until the real time elapsed since the workflow started matches the timestamp of the event. Synchronizing ensures that the director does not get ahead of real time; however, synchronizing does not ensure that the director keeps up with real time. </p>
+
+<p>The DE Director's timeResolution parameter is an advanced parameter that is only useful when the DE workflow contains composite components. In general, leave the parameter set to its default value ("1E-10").</p>
+
+</configure></property>
+<property name="prop:stopWhenQueueIsEmpty" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not the execution stops when the queue is empty. By default, the director will stop when the queue is empty.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time precision used by the director. All time values are rounded to the nearest multiple of this number. The value is a double token that defaults to "1E-10", which is 10-10. In general, leave the parameter set to its default value.</configure></property>
+<property name="prop:stopTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The stop time of the workflow. The value is a double token that defaults to Infinity.</configure></property>
+<property name="prop:startTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The start time of the workflow. The value is a double token that defaults to 0.0.</configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not the execution should synchronize to real time. When synchronized with real time, the director will not process events until the elapsed real time matches the time stamp of the events. By default, the director does not synchronize to real time.</configure></property>
+</property>
+<property name="class" value="ptolemy.domains.de.kernel.DEDirector" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:directorclass:3:2" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Director" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Director"/>
+
+<property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-10">
+</property>
+
+</property>

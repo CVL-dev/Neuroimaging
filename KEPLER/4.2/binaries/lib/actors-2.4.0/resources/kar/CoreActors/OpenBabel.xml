@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<entity name="Open Babel" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:381:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The OpenBabel actor is a composite actor that uses Open Babel software to convert chemical modeling data from one file format to another. The actor reads a chemical structure via its input port and outputs the structure in a specified new format (e.g., SMILES, or MDL MOL). </p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system. In addition, the Nimrod/G part of the Nimrod toolkit for distributed parametric modeling must be installed as well.</p>
+
+<p>Double-click the OpenBabel actor to customize the internal parameters (e.g., the output file type and the output file directory). Input can be passed to the actor by the MoleculeSelector actor, which is used to select molecular structures from a local file system.</p>
+
+<p>Open Babel is an application designed to convert file formats used in molecular modeling and computational chemistry. For more information about Open Babel, see http://openbabel.sourceforge.net/api/.</p></configure></property>
+
+<property name="port:inputFormatHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a sequence of molecule file names.</configure></property>
+<property name="port:outputFormatHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file names of the converted files.</configure></property>
+
+
+<property name="prop:OpenBabelBinary" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The directory in which the OpenBabel application resides (e.g., /usr/local/bin/babel)</configure></property>
+<property name="prop:OutputFileDirectory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The local directory into which to place the output files (e.g., /tmp/openbabel)</configure></property>
+<property name="prop:AdditionalOptions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Additional options to perform (e.g., -t to denote that all input files describe a single molecule). For a list of options, see http://openbabel.sourceforge.net/wiki/Tutorial:Basic_Usage</configure></property>
+<property name="prop:OutputFileType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The desired output format (e.g., gamin or box). Select a format from the drop-down menu.</configure></property>
+</property>
+<property name="class" value="org.resurgence.moml.OpenBabel" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.OpenBabel" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1145:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputFormatHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[25.0, 145.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="outputFormatHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[665.0, 145.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ComputationalChemistryActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#ComputationalChemistry" class="org.kepler.sms.SemanticType"/>
+</entity>

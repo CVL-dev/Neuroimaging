@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<entity name="SSH File Remover" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:515:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The SSHFileRemover actor connects to a local or remote host and deletes the specified files/directories. If the host is a remote machine, the actor will connect using SSH protocol. If the host is local, all commands will be executed locally using Java Runtime. A file mask indicates which files should be deleted. The actor performs the delete operation and outputs the operation results: success or failure, as well as internal error messages, if any.</p>
+
+<p>The file mask identifies which files and directories to remove. Note that the recursive parameter must be selected when removing directories. Relative paths are relative to the home directory in case of remote operations and relative to the current directory in case of local operations. A file mask can contain wildcards. To use wildcards in the mask file, select the allowMask parameter.</p>
+
+<p>Note that symbolic links will also be deleted, but if they refer to a directory, they are not followed. </p>
+
+
+
+
+
+
+</configure></property>
+   
+   <property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+     <property name="port:mask" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>File mask as string (e.g., "/path/test.txt" or "/path"). Only files and directories that match the mask will be removed. Path expressions are allowed. To use wildcards in the mask, select the allowMask parameter. </configure></property>
+       <property name="port:succ" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A Boolean token indicating if the copy operation was successful: true if ALL matched files and directories are copied; false if not. Note: if copying directories and  'recursive' is not set, the value will be false (files will be copied but directories will not be).  </configure></property>
+       <property name="port:error" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The actor's execution errors, if any; otherwise an empty string.  </configure></property>
+           <property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+               <property name="prop:mask" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>File mask as string (e.g., "/path/test.txt" or "/path"). Only files and directories that match the mask will be removed. Path expressions are allowed. To use wildcards in the mask, select the allowMask parameter. </configure></property>
+           <property name="prop:recursive" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether directories should be removed recursively. </configure></property>
+            <property name="prop:allowMask" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>	Specify whether wildcards (e.g., an asterisk or question mark) are allowed in the mask.  </configure></property>
+              
+</property>
+<property name="class" value="org.kepler.actor.ssh.FileRemover" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1209:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="target" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="mask" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="succ" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="error" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType21" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType41" value="urn:lsid:localhost:onto:4:1#CPES" class="org.kepler.sms.SemanticType"/>
+
+
+</entity>

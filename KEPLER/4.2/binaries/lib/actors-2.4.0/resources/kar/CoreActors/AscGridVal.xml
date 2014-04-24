@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<entity name="AscGrid Value" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:530:1" class="org.kepler.moml.NamedObjId"/>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The AscGridValue actor interpolates a parameter value (e.g., elevation or rainfall) for a specified geospatial point. The x and y coordinates (longitude and latitude) are input as well as a data file in ASC Grid spatial raster format (*.asc). The actor outputs the interpolated value.</p> 
+
+<p>The actor uses the interpolation algorithm specified in its parameters (either Nearest Neighbor or Inverse Distance Weighted) to calculate the value at the indicated point. If the input point is outside of the data set's geographical extent, or if the point corresponds to "missing data" points, the AscGridValue actor will output a 'nil' value. </p>
+
+
+</configure></property>
+<property name="port:xLocation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The longitude value of the geospatial point (e.g., -100.0). If the value is outside of the extent of the data set, or if the point corresponds to "missing data" points, the AscGridValue actor will output a 'nil' value.</configure></property>
+<property name="port:yLocation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The latitude value of the geospatial point (e.g., 50.0). If the value is outside of the extent of the data set, or if the point corresponds to "missing data" points, the AscGridValue actor will output a 'nil' value.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of an ASC Grid spatial raster (*.asc). </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The interpolated parameter value for the specified point.</configure></property>
+<property name="prop:useDisk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to use disk memory for storing grid data. This option in much slower than using only RAM memory (the default) but allows for very large rasters.</configure></property>
+<property name="prop:algorithm" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The interpolation algorithm to  use for calculating the value (either 'Nearest Neighbor' or 'Inverse Distance Weighted')</configure></property>
+
+
+
+</property>
+
+
+<property name="class" value="org.ecoinformatics.seek.gis.java_gis.AscGridValue" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:530:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:xLocation" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:yLocation" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="algorithm" class="ptolemy.data.expr.StringParameter" value="Nearest Neighbor">
+</property>
+
+<property name="useDisk" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+</entity>

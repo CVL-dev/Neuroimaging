@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<entity name="Unit Converter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:40:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yuhong Xiong, Xiaojun Liu, Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The UnitConverter actor converts an input specified in units (e.g., meters, or cm/sec, etc) to another unit type (e.g., inches, or in/ms). The UnitConverter actor can be used to ensure that numbers are interpreted correctly in a model, and can help prevent certain critical errors. The actor outputs the converted value without units.</p>
+
+<p>The actor must be used with a Unit System (BasicUnits or CGSUnitBase, for example). Double-click the Unit System to see the list of the units it defines.</p>
+
+<p>The actor accepts a double token with units (e.g., 23.7*cm/sec) and converts it by dividing by the value of the units parameter (e.g., inches/minute). The units parameter must contain units of the same unit category as the input. Unit categories include length, time, mass, or length/time (speed), length*length (area). If the unit categories are different, the actor will generate an error.</p>
+
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token with units (e.g., 23.7*cm/sec). </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the converted value without units. </configure></property>
+<property name="prop:units" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The units to which the input tokens will be converted. The default value of this parameter is 1.0. For a list of workflow units, double-click the Unit System (BasicUnits, CGSUnitBase, etc). A Unit System must be used with the UnitConverter actor.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.conversions.InUnitsOf" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:916:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStructureOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

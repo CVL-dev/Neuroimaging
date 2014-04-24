@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<!-- Specify the display related classes in Kepler that support '-redirectGUI' option. 
+     The classes are dilimited by ','. They will be replaced to Discard class if 
+     running with '-nogui' option. Classes in Ptolemy should not be listed here since 
+     they are managed well in Ptolemy. -->
+<property name="_keplerDisplayClassesWithRedirect" class="ptolemy.data.expr.StringParameter"
+          value="util.ImageJActor,pl.psnc.kepler.common.actor.MultipleTabDisplay">
+</property>            

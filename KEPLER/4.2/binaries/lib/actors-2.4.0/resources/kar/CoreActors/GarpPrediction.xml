@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<entity name="Garp Prediction" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:123:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkeley, Dan Higgins, NCEAS, UC Santa Barbara</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GARPPrediction actor predicts the distribution of a species in given locations based on a predefined rule set. The actor outputs a bitmapped image (a map) representing species presence or absence with different pixel values (e.g., different colors).</p>
+
+<p>The input rule set is usually passed to the actor by the GARPAlgorithm actor, which creates the rule set and outputs it in the proper format. Input locations with environmental data, or "environmental layers", are passed to the GARPPrediction actor in a summary xml file (*.dxl).</p> 
+
+<p>The actor outputs the predicted species distribution in two formats: bitmap and ASCII raster grid. Both files contain the same information. The bitmap file is often more easily displayed; the ASCII raster grid can be used by the GARPSummary actor to test the accuracy of the predicted distribution.</p>
+
+<p>The actor requires libgarp.so (on linux systems) or garp.dll and libexpat.dll (on Windows systems). Currently, the actor does not work on MacOSX systems. </p>
+
+<p>GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.</p></configure></property>
+<property name="port:ruleSetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the file containing the rule set data (usually the output of a GarpAlgorithm actor).</configure></property>
+<property name="port:layersetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the location and environmental information (the environmental layers). The file is a *.dxl file, which summarizes a set of spatial data files.</configure></property>
+<property name="port:outputBMPFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated bitmap file after the file has been created. The bitmap file contains the same information as the ASCII  grid file, but in a more easily displayed raster format.</configure></property>
+<property name="port:outputBMP" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the output bitmapped file (*.bmp).</configure></property>
+<property name="port:outputASCIIFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the ASCII grid file containing the predicted species distribution. The port fires after the file has been created.</configure></property>
+<property name="port:outputASCII" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the output ASCII grid file (*.asc).</configure></property>
+<property name="prop:ruleSetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the file containing the rule set data (usually the output of a GarpAlgorithm actor).</configure></property>
+<property name="prop:outputASCIIParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to be used for the output ASCII grid file (*.asc).</configure></property>
+<property name="prop:outputBMPParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to be used for the output bitmap file (*.bmp)</configure></property>
+<property name="prop:layersetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the location and environmental data. The file is a *.dxl file, which summarizes a set of spatial data files that contain environmental data.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.garp.GarpPrediction" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:992:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ruleSetFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="layersetFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputASCII" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputBMP" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputASCIIFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputBMPFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#NicheModelingActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:4:1#NicheModelingOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

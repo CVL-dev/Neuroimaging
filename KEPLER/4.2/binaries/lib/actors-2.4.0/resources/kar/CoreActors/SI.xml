@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<property name="SI" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:440:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>SI (International System of Units) defines a unit system that consists of a set of base and derived units.</p>
+
+<p>To view or edit the defined units, right-click the SI icon and select Configure Attribute from the drop-down menu.</p>
+</configure></property>
+</property>
+<property name="class" value="ptolemy.data.unit.UnitSystem" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1203:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitSystemMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitSystem" class="org.kepler.sms.SemanticType"/>
+<property name="cm" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Length" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="gram" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Mass" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="second" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Time" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="ampere" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="electricCurrent" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="population" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Count" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="pi" class="ptolemy.data.expr.Parameter" value="3.1415926535898">
+</property>
+<property name="meter" class="ptolemy.data.expr.Parameter" value="100*cm">
+</property>
+<property name="kilogram" class="ptolemy.data.expr.Parameter" value="1000*gram">
+</property>
+<property name="squareAmpere" class="ptolemy.data.expr.Parameter" value="0.01*(lightSpeed^2)*cm*gram/(second^2)">
+</property>
+<property name="kelvin" class="ptolemy.data.expr.Parameter" value="1.38065E-23*kilogram*(meter^2)/(second^2)">
+</property>
+<property name="mole" class="ptolemy.data.expr.Parameter" value="6.022142E+23">
+</property>
+<property name="candela" class="ptolemy.data.expr.Parameter" value="kilogram*(meter^2)/(second^3)/683">
+</property>
+<property name="volt" class="ptolemy.data.expr.Parameter" value="kilogram*(meter^2)/(second^3)/ampere">
+</property>
+<property name="ohm" class="ptolemy.data.expr.Parameter" value="volt/ampere">
+</property>
+<property name="mho" class="ptolemy.data.expr.Parameter" value="ampere/volt">
+</property>
+<property name="coulomb" class="ptolemy.data.expr.Parameter" value="ampere*second">
+</property>
+<property name="esu" class="ptolemy.data.expr.Parameter" value="coulomb/(299792458.0*10)">
+</property>
+<property name="statvolt" class="ptolemy.data.expr.Parameter" value="299.792458*volt">
+</property>
+<property name="gauss" class="ptolemy.data.expr.Parameter" value="statvolt/(meter/100)">
+</property>
+<property name="electronCharge" class="ptolemy.data.expr.Parameter" value="1.6021765E-19*coulomb">
+</property>
+<property name="farad" class="ptolemy.data.expr.Parameter" value="ampere*second/volt">
+</property>
+<property name="henry" class="ptolemy.data.expr.Parameter" value="volt*second/ampere">
+</property>
+<property name="watt" class="ptolemy.data.expr.Parameter" value="joule/second">
+</property>
+<property name="planckConstant" class="ptolemy.data.expr.Parameter" value="hBar*2*pi">
+</property>
+<property name="planckConstantReduced" class="ptolemy.data.expr.Parameter" value="1.0545716E-34*joule*second">
+</property>
+<property name="hBar" class="ptolemy.data.expr.Parameter" value="planckConstantReduced">
+</property>
+<property name="lightSpeed" class="ptolemy.data.expr.Parameter" value="299792458.0*meter/second">
+</property>
+<property name="dyne" class="ptolemy.data.expr.Parameter" value="gram*cm/second^2">
+</property>
+<property name="newton" class="ptolemy.data.expr.Parameter" value="kilogram*meter/second^2">
+</property>
+<property name="joule" class="ptolemy.data.expr.Parameter" value="newton*meter">
+</property>
+<property name="erg" class="ptolemy.data.expr.Parameter" value="dyne*cm">
+</property>
+<property name="degree" class="ptolemy.data.expr.Parameter" value="calorie/cm^3">
+</property>
+<property name="minute" class="ptolemy.data.expr.Parameter" value="60*second">
+</property>
+<property name="hour" class="ptolemy.data.expr.Parameter" value="3600*second">
+</property>
+<property name="day" class="ptolemy.data.expr.Parameter" value="24*hour">
+</property>
+<property name="yearCalendar" class="ptolemy.data.expr.Parameter" value="365.2425*day">
+</property>
+<property name="yearSidereal" class="ptolemy.data.expr.Parameter" value="31558150*second">
+</property>
+<property name="yearTropical" class="ptolemy.data.expr.Parameter" value="31556930*second">
+</property>
+<property name="curie" class="ptolemy.data.expr.Parameter" value="3.7E+10/second">
+</property>
+<property name="angstrom" class="ptolemy.data.expr.Parameter" value="1E-10*meter">
+</property>
+<property name="gallonCanadian" class="ptolemy.data.expr.Parameter" value="4546.09*cm^3">
+</property>
+<property name="gallonUS" class="ptolemy.data.expr.Parameter" value="3785.412*cm^3">
+</property>
+<property name="gallon" class="ptolemy.data.expr.Parameter" value="gallonUS">
+</property>
+<property name="barrel" class="ptolemy.data.expr.Parameter" value="42*gallonUS">
+</property>
+<property name="ozFluidUS" class="ptolemy.data.expr.Parameter" value="gallonUS/128">
+</property>
+<property name="tablespoon" class="ptolemy.data.expr.Parameter" value="ozFluidUS/2">
+</property>
+<property name="teaspoon" class="ptolemy.data.expr.Parameter" value="ozFluidUS/6">
+</property>
+<property name="cup" class="ptolemy.data.expr.Parameter" value="8*ozFluidUS">
+</property>
+<property name="pint" class="ptolemy.data.expr.Parameter" value="2*cup">
+</property>
+<property name="quart" class="ptolemy.data.expr.Parameter" value="2*pint">
+</property>
+<property name="astronomicalUnit" class="ptolemy.data.expr.Parameter" value="1.495979E+11*meter">
+</property>
+<property name="inch" class="ptolemy.data.expr.Parameter" value="0.0254*meter">
+</property>
+<property name="foot" class="ptolemy.data.expr.Parameter" value="0.3048*meter">
+</property>
+<property name="yard" class="ptolemy.data.expr.Parameter" value="3*foot">
+</property>
+<property name="cord" class="ptolemy.data.expr.Parameter" value="128*foot^3">
+</property>
+<property name="footUSSurvey" class="ptolemy.data.expr.Parameter" value="0.3048006*meter">
+</property>
+<property name="fathom" class="ptolemy.data.expr.Parameter" value="6*footUSSurvey">
+</property>
+<property name="acre" class="ptolemy.data.expr.Parameter" value="43560*footUSSurvey^2">
+</property>
+<property name="acreFoot" class="ptolemy.data.expr.Parameter" value="acre*footUSSurvey">
+</property>
+<property name="mileNautical" class="ptolemy.data.expr.Parameter" value="1852*meter">
+</property>
+<property name="mile" class="ptolemy.data.expr.Parameter" value="5280*foot">
+</property>
+<property name="barn" class="ptolemy.data.expr.Parameter" value="1E-28*meter^2">
+</property>
+<property name="hectare" class="ptolemy.data.expr.Parameter" value="1E+4*meter^2">
+</property>
+<property name="knot" class="ptolemy.data.expr.Parameter" value="mileNautical/hour">
+</property>
+<property name="mph" class="ptolemy.data.expr.Parameter" value="mile/hour">
+</property>
+<property name="tonMetric" class="ptolemy.data.expr.Parameter" value="1000*kg">
+</property>
+<property name="pound" class="ptolemy.data.expr.Parameter" value="453.5924*gram">
+</property>
+<property name="ton" class="ptolemy.data.expr.Parameter" value="2000*pound">
+</property>
+<property name="tonLong" class="ptolemy.data.expr.Parameter" value="2240*pound">
+</property>
+<property name="oz" class="ptolemy.data.expr.Parameter" value="pound/16">
+</property>
+<property name="poundTroy" class="ptolemy.data.expr.Parameter" value="373.2417">
+</property>
+<property name="ounceTroy" class="ptolemy.data.expr.Parameter" value="poundTroy/12">
+</property>
+<property name="earthGravity" class="ptolemy.data.expr.Parameter" value="9.80665*meter/second^2">
+</property>
+<property name="ounceForce" class="ptolemy.data.expr.Parameter" value="oz*earthGravity">
+</property>
+<property name="poundForce" class="ptolemy.data.expr.Parameter" value="pound*earthGravity">
+</property>
+<property name="psi" class="ptolemy.data.expr.Parameter" value="pound/inch^2">
+</property>
+<property name="pascal" class="ptolemy.data.expr.Parameter" value="10*dyne/cm^2">
+</property>
+<property name="atm" class="ptolemy.data.expr.Parameter" value="101325*pascal">
+</property>
+<property name="bar" class="ptolemy.data.expr.Parameter" value="100000*pascal">
+</property>
+<property name="millibar" class="ptolemy.data.expr.Parameter" value="100*pascal">
+</property>
+<property name="inchOfWater" class="ptolemy.data.expr.Parameter" value="249.0889*pascal">
+</property>
+<property name="mmOfWater" class="ptolemy.data.expr.Parameter" value="inchOfWater/25.4">
+</property>
+<property name="inchOfMercury" class="ptolemy.data.expr.Parameter" value="3386.389*pascal">
+</property>
+<property name="mmOfMercury" class="ptolemy.data.expr.Parameter" value="inchOfMercury/25.4">
+</property>
+<property name="torr" class="ptolemy.data.expr.Parameter" value="mmOfMercury">
+</property>
+<property name="rankine" class="ptolemy.data.expr.Parameter" value="5*kelvin/9">
+</property>
+<property name="thermUS" class="ptolemy.data.expr.Parameter" value="1.054804E+8*joule">
+</property>
+<property name="btuIT" class="ptolemy.data.expr.Parameter" value="1055.056*joule">
+</property>
+<property name="tonTNT" class="ptolemy.data.expr.Parameter" value="4.184E+9*joule">
+</property>
+<property name="calorie" class="ptolemy.data.expr.Parameter" value="4.1868*joule">
+</property>
+<property name="tonOfRefrigeration" class="ptolemy.data.expr.Parameter" value="12000*btuIT/hour">
+</property>
+<property name="hp" class="ptolemy.data.expr.Parameter" value="550*foot*poundForce/second">
+</property>
+<property name="centipoise" class="ptolemy.data.expr.Parameter" value="1E-3*pascal*second">
+</property>
+<property name="poise" class="ptolemy.data.expr.Parameter" value="1E-1*pascal*second">
+</property>
+<property name="centistoke" class="ptolemy.data.expr.Parameter" value="1E-6*meter^2/second">
+</property>
+<property name="stoke" class="ptolemy.data.expr.Parameter" value="1E-4*meter^2/second">
+</property>
+<property name="kg" class="ptolemy.data.expr.Parameter" value="kilogram">
+</property>
+<property name="amp" class="ptolemy.data.expr.Parameter" value="ampere">
+</property>
+<property name="sec" class="ptolemy.data.expr.Parameter" value="second">
+</property>
+<property name="gallons" class="ptolemy.data.expr.Parameter" value="gallon">
+</property>
+<property name="watts" class="ptolemy.data.expr.Parameter" value="watt">
+</property>
+<property name="calories" class="ptolemy.data.expr.Parameter" value="calorie">
+</property>
+<property name="seconds" class="ptolemy.data.expr.Parameter" value="second">
+</property>
+<property name="secs" class="ptolemy.data.expr.Parameter" value="second">
+</property>
+<property name="time" class="ptolemy.data.expr.Parameter" value="second">
+</property>
+<property name="degrees" class="ptolemy.data.expr.Parameter" value="degree">
+</property>
+<property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <rect x="-30" y="-15" width="60" height="30" style="fill:grey"></rect>
+      </svg>
+    </configure>
+</property>
+</property>

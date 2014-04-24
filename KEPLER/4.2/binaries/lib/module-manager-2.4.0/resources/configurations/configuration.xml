@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+
+    <releaseLocation>
+        https://code.kepler-project.org/code/kepler/releases/released/
+    </releaseLocation>
+
+    <check-for-patches>true</check-for-patches>    
+
+</config>

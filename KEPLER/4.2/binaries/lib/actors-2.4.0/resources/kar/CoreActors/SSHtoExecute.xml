@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<entity name="SSH to Execute" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:369:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+ <p>The SSHToExecute actor connects to a remote host, executes commands, and returns their output. The actor will keep the SSH session open until it receives a different username and host. It will return an error if an incorrect identity file is given, if the host is unreachable, if the login is unsuccessful, or if the session dies prematurely.
+</p>
+
+<p>Note: Streaming of output during the command execution is not currently
+   implemented.</p>
+
+
+
+
+</configure></property>
+   
+   <property name="port:host" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+     <property name="port:user" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Username for the remote SSH host.   </configure></property>
+       <property name="port:identity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path for the SSH identity file. Specify an identity path to connect to a remote SSH host without having to reenter the password.   </configure></property>
+         <property name="port:command" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The command to be executed on the remote host.  </configure></property>
+             <property name="port:stdout" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output of the command as it would output to the standard shell. If there is an SSH connection related error (or timeout) the value will be an empty string. </configure></property>
+       <property name="port:stderr" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any errors that were reported by the remote execution or while connecting. If there is an SSH connection related error (or timeout) the value will be an empty string. </configure></property>
+         <property name="port:returncode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The return code of the execution: 0 (zero) if the execution is not successful, and a positive integer if it is successful. </configure></property>
+           <property name="port:errors" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string representation of actor execution errors, if any. 
+ </configure></property>
+           <property name="prop:host" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+           <property name="prop:user" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Username for the remote SSH host.   </configure></property>
+             <property name="prop:identity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path for the SSH identity file. Specify an identity path to connect to a remote SSH host without having to reenter the password.   </configure></property>
+         
+       
+           <property name="prop:streaming mode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be sent in a streaming mode.
+   Note: Streaming is not implemented yet.
+ </configure></property>
+ 
+
+</property>
+<property name="class" value="org.sdm.spa.Ssh2Exec" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1135:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="user" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="host" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="identity" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="command" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="stdout" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="stderr" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="returncode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="errors" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnixCommand" class="org.kepler.sms.SemanticType"/>
+</entity>

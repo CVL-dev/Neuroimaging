@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<property name="RequireVersion" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:426:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>RequireVersion specifies a particular version of Ptolemy II (e.g., 6.0-devel). The specified value is compared against the version of the currently executing Ptolemy II installation. If the executing version is less than the value set, an error is generated.</p>
+</configure>
+</property>
+</property>
+<property name="class" value="ptolemy.kernel.attributes.RequireVersion" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1190:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+<property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+</property>
+<property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-V-</text>
+      </svg>
+    </configure>
+</property>
+</property>

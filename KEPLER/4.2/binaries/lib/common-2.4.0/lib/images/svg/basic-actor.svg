@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11.0, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="62" height="42.002" viewBox="0 0 62 42.002" overflow="visible" enable-background="new 0 0 62 42.002"
+	 xml:space="preserve">
+		<g id="Layer_1">
+			<g>
+				<path fill="#1D9598" stroke="#1D9598" stroke-width="2" d="M61,35.002c0,3.313-2.686,6-6,6H7c-3.314,0-6-2.688-6-6V7
+					c0-3.313,2.686-6,6-6h48c3.314,0,6,2.688,6,6V35.002z"/>
+				<polygon display="none" fill="#FFFFFF" points="55.901,7.949 50.063,2.111 50.063,5.926 5.632,5.926 5.632,9.971 50.063,9.971 
+					50.063,13.787 "/>
+			</g>
+		</g>
+	</svg>

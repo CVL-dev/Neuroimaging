@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<entity name="Distributor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:531:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Mudit Goel, Edward A. Lee</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure><p>
+A polymorphic distributor, which splits an input stream into a set of
+output streams. The distributor has an input port and an output port,
+the latter of which is a multiport.
+The types of the ports are undeclared and will be resolved by the type
+resolution mechanism, with the constraint that the output type must be
+greater than or equal to the input type. On each call to the fire method, the
+actor reads at most <i>N</i> tokens from the input, where <i>N</i> is
+the width of the output port times the <i>blockSize</i> parameter,
+and writes <i>blockSize</i> tokens to each output channel,
+in the order of the channels.  If there are fewer than <i>N</i> tokens
+at the input, then the all available input tokens are sent to the output
+channels, and the fire() method returns.  In the next iteration of this
+actor, it will begin producing outputs on the first channel that did
+not have enough tokens in the previous iteration.
+</p><p>
+For the benefit of domains like SDF, which need to know the token consumption
+or production rate for all ports before they can construct a firing schedule,
+this actor sets the tokenConsumptionRate parameter for the input port
+to equal the number of output channels times the <i>blockSize</i> parameter,
+and the output production rate is set to the <i>blockSize</i> parameter.
+The consumption rate parameter is set each time that a link is established with
+the input port, or when a link is removed.  The director is notified
+that the schedule is invalid, so that if the link is modified at
+run time, the schedule will be recalculated if necessary.
+</p>
+      </configure>
+    </property>
+  <property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure>
+    </configure>
+  </property>
+  <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure>
+    </configure>
+  </property>
+  <property name="prop:blockSize" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure>
+The number of tokens produced on each output channel on each firing. This is an 
+integer with default value 1.
+    </configure>
+  </property>
+  </property>
+  <property name="class" value="ptolemy.actor.lib.Distributor" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="input" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="blockSize" class="ptolemy.data.expr.Parameter" value="1">
+  </property>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowControl" class="org.kepler.sms.SemanticType"/>
+</entity>

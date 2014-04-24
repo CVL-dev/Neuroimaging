@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<entity name="Simple File Reader" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:361:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SimpleFileReader reads and outputs the contents of a file as a single string.</p> 
+
+<p>The actor is similar to the FileReader, except that the SimpleFileReader can only take its input from another workflow component via an input port, whereas the FileReader actor can use either a port or parameter.</p></configure></property>
+<property name="port:content" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a string of the specified file contents.</configure></property>
+<property name="port:file" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name or URL of the file to read and output. The file name is passed as a string from another workflow component. Pass a file name with a StringConstant actor, for example.</configure></property>
+</property>
+<property name="class" value="org.resurgence.actor.SimpleFileReader" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1127:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="file" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="content" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#FileSystemActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+</entity>

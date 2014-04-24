@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<entity name="Boolean Accumulator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:285:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The BooleanAccumulator actor reads a sequence of Boolean values and outputs one Boolean value from their combination. </p>
+
+<p>The actor uses the logical operator (&quot;and&quot; or &quot;or&quot;) specified with the logicalOperator parameter to combine the input values. If the &quot;and&quot; operation is selected, the output will be false if at least one input is false. If the &quot;or&quot; operation is selected, the output will be true if at least one input is true.</p></configure></property>
+<property name="port:combination" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a Boolean value based on the combination of the input values.</configure></property>
+<property name="port:number" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the number of Boolean values in the input sequence. The default is 1. The number may also be specified with the number parameter.</configure></property>
+<property name="port:booleans" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a sequence of Boolean values.</configure></property>
+<property name="prop:Logical operator" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify either &quot;and&quot; or &quot;or&quot;. The actor uses the logical operator when combining the input values. If the &quot;and&quot; operation is selected, the output will be false if at least one input is false. If the &quot;or&quot; operation is selected, the output will be true if at least one input is true.</configure></property>
+<property name="prop:number" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of Boolean values in the input sequence. The default is 1. The number may  be specified via the number port or parameter.</configure></property>
+</property>
+<property name="class" value="org.resurgence.actor.BooleanAccumulator" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1110:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="booleans" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="combination" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="number" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#IterativeMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#IterativeOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

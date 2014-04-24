@@ -1,0 +1,590 @@
+BODY
+{
+	FONT-SIZE: 11px;
+	FONT-FAMILY: verdana,arial,tahoma,helvetica;
+	color : #333333;
+	MARGIN-TOP: 0px;
+	MARGIN-LEFT: 0px;
+	MARGIN-RIGHT: 0px;
+}
+TD
+{
+	FONT-SIZE: 12px;
+	FONT-FAMILY: verdana,arial,tahoma,helvetica;
+	color : #333333;
+}
+A, A:link
+{
+	TEXT-DECORATION: none;
+	color : #00539F;
+}
+A:visited
+{
+	TEXT-DECORATION: none;
+	color : #00539F;
+}
+A:hover
+{
+
+	TEXT-DECORATION: underline;
+	color : #990000;
+}
+
+/******  FORM STYLES ******/
+FORM
+{
+	display: inline;
+} 
+INPUT
+{
+	FONT-SIZE: 12px;
+	FONT-FAMILY: verdana,arial,tahoma,helvetica;
+	color : #333333;
+}
+TEXTAREA
+{
+	FONT-SIZE: 12px;
+	FONT-FAMILY: verdana,arial,tahoma,helvetica;
+	color : #333333;
+}
+SELECT
+{
+    FONT-FAMILY: verdana,arial,tahoma,helvetica;
+	FONT-SIZE: 12px;
+	color : #333333;
+}
+.bluefield
+{
+	padding-left: 2px;
+	border-top: solid 1px #7F9DB9;
+	border-bottom: solid 1px #7F9DB9;
+	border-right: solid 1px #7F9DB9;
+	border-left: solid 1px #7F9DB9;
+} 
+
+/******  FORM CELLS ******/
+.emailform
+{
+	border-top: solid 1px #7F9DB9;
+	border-bottom: solid 1px #7F9DB9;
+	border-right: solid 1px #7F9DB9;
+	border-left: solid 1px #7F9DB9;
+} 
+.volunteerform
+{
+	FONT-SIZE: 10px;
+	line-height : 14px;
+	padding-bottom : 8px;
+}
+.formcell
+{
+	FONT-SIZE: 10px;
+	line-height : 14px;
+	padding-bottom : 8px;
+}
+.formerror
+{
+	color: red;
+	font-weight: bold;
+}
+.formheader
+{
+	padding-bottom : 5px;
+}
+
+
+/******  TABLE CELLS THAT HAVE A CHECK BOX ******/
+.check
+{
+	padding-top : 2px;
+	FONT-SIZE: 10px;
+	line-height : 14px;
+	padding-bottom : 6px;
+}
+
+
+/******  BREADCRUMB ******/
+.breadcrumb
+{
+	FONT-SIZE: 10px;
+	line-height: 12px;
+	color: #666666;
+}
+.breadcrumb A
+{
+	color: #666666;
+}
+.breadcrumb A:visited
+{
+	color: #666666;
+}
+.breadcrumb A:hover
+{
+	TEXT-DECORATION: underline;
+	color : #990000;
+}
+
+
+
+/******  BODY TEXT ******/
+.bodytext
+{
+	line-height : 16px;
+}
+.smalltext
+{
+	FONT-SIZE: 10px;
+	line-height : 12px;
+}
+.smalltext2
+{
+	FONT-SIZE: 10px;
+	line-height : 14px;
+}
+.mediumtext
+{
+	FONT-SIZE: 11px;
+	line-height : 14px;
+}
+.largetext
+{
+	FONT-SIZE: 12px;
+	line-height : 18px;
+}
+
+/******  BODY TEXT ******/
+.box
+{
+	
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+.grid {border-collapse: collapse}
+.grid td {border: 1px solid #666666; }
+
+.line
+{
+	padding-top:5px;
+	padding-bottom:10px
+}
+.linetext
+{
+	padding-top:5px;
+	FONT-SIZE: 10px;
+	line-height : 12px;
+	text-align:right;
+}
+
+.top-right {margin-left: 10px; margin-bottom: 10px}
+.top-left  {margin-right: 10px; margin-bottom: 10px}
+.bottom-right {margin-left: 10px; margin-top: 10px}
+.bottom-left  {margin-right: 10px; margin-top: 10px}
+
+
+
+/******  FOOTER ******/
+.footer
+{
+	FONT-SIZE: 10px;
+	color: #ffffff;
+}
+.footer A
+{
+	FONT-SIZE: 10px;
+	color: #ffffff;
+}
+
+.footer A:visited
+{
+	color: #ffffff;
+}
+.footer A:hover
+{
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+/****** SIDEBAR TEXT/TABLE ******/
+.sidebar_top
+{
+	FONT-SIZE: 10px;
+	border-bottom: 1px solid #CCCCCC;
+	height: 10px
+}
+
+
+.sidebar
+{
+	FONT-SIZE: 10px;
+	padding-left:5px;
+	border-bottom: 1px solid #CCCCCC;
+	height: 18px
+}
+.sidebar A
+{
+	TEXT-DECORATION: none;
+}
+.sidebar A:visited
+{
+	TEXT-DECORATION: none;
+}
+.sidebar A:hover
+{
+	TEXT-DECORATION: none;
+	color : #990000;
+}
+.sidebar_header
+{
+	FONT-SIZE: 10px;
+	padding-left:5px;
+	height: 18px
+}
+
+.box_bullet
+{
+	FONT-SIZE: 10px;
+	line-height: 14px;
+	padding-bottom: 8px;
+}
+
+.sidebar_header A
+{
+	TEXT-DECORATION: none;
+}
+.sidebar_header A:visited
+{
+	TEXT-DECORATION: none;
+}
+.sidebar_header A:hover
+{
+	TEXT-DECORATION: none;
+	color : #990000;
+}
+
+
+
+
+/****** SECTION HEADERS ******/
+.date
+{
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	padding-bottom: 5px;
+	border-bottom: solid 1px #B2B2AC;
+}
+.sectionheader
+{
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	padding-bottom: 12px;
+}
+h2.sectionheader
+{
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	padding-bottom: 12px;
+	margin-bottom: 0;
+}
+.sectionheader2
+{
+	FONT-SIZE: 14px;
+	padding-bottom: 12px;
+}
+.pageheader
+{
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	padding-bottom: 15px;
+}
+
+
+/****** HEADINGS ******/
+
+h1, h2, h3, h4
+{
+	font-weight: bold;
+}
+
+h1
+{
+	font-size: 14px;
+	padding-bottom: 15px;
+}
+
+h2
+{
+	font-size: 12px;
+}
+
+h3
+{
+	font-size: 11px;
+}
+
+h4
+{
+	font-size: 10px;
+}
+
+#content h1
+{
+	margin-top: 4px;
+	margin-bottom: 2px;
+	padding: 0px;
+}
+
+/****** STATE STUFF (V2.1 CSS Implementation) ******/
+
+.post_entry
+{
+	border-bottom: 1px dashed #c8c8c8;
+	margin: 0px 0px 8px 0px;
+}
+
+.post_entry img
+{
+	margin: 2px 2px 12px 2px;
+}
+
+.post_entry img.nwsp {margin: 0px;}
+
+.sidebar_box
+{
+	border-top: 1px solid #c8c8c8;
+	border-left: 1px solid #c8c8c8;
+	border-right: 2px solid #666666;
+	border-bottom: 2px solid #666666;
+	padding: 0px 5px 10px 8px;
+	margin: 0 0 15px 0;
+}
+
+.sidebar_box h2
+{
+	font-size: 12px;
+	margin-top: 5px;
+	padding-top: 0px;
+}
+.sidebar_box p
+{
+	font-size: 10px;
+}
+
+/********* New Video Stuff *********/
+
+.sidebar_container
+{
+	border-top: 1px solid #c8c8c8;
+	border-left: 1px solid #c8c8c8;
+	border-right: 2px solid #666666;
+	border-bottom: 2px solid #666666;
+	padding: 0;
+	margin: 0 0 15px 0;
+}
+
+.sidebar_content
+{
+	padding: 5px;
+	font-size: 10px;
+}
+
+.sidebar_content h2
+{
+	font-size: 12px;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.sidebar_content .date
+{
+	font-size: 10px;
+	padding: 0;
+	border: 0;
+	font-weight: normal;
+}
+
+.sidebar_footer
+{
+	background-color: #e0e0e0;
+	margin: 0;
+	padding: 5px;
+}
+
+
+/****** BLOG STUFF (V2.1 CSS Implementation) ******/
+
+.blog_entry
+{
+	border-bottom: 1px dashed #c8c8c8;
+}
+
+.blog_listing_comment
+{
+	border-bottom: dashed 1px #666;	
+	margin-bottom: 1.5em;
+	background-color: #fff;
+	padding: 0 0 1em 0;
+}
+.blog_listing_comment p
+{
+	line-height: 1.2;
+}
+
+
+/****** OTHER CSS STUFF (V2.1 CSS Implementation) ******/
+
+ul.arrow
+{
+	padding: 5px;
+	margin: 5px;
+}
+
+ul.arrow li
+{
+ 	background: #fff url(http://www.johnkerry.com/images/arrow_nwsp.gif) 0px 4px no-repeat;
+	margin-left: 0px;
+	padding-left: 10px;
+	list-style:none;
+}
+
+/* ******** revised tabs ********** */
+
+.tabcontainerhome {width: 295px}
+/* .tabcontainerhome * {font-size: 10px;} */
+
+.tabcontent {border-left: solid 1px #c0c0c0; border-right: ridge 2px; padding: 5px 10px 10px 10px}
+.tabcontentnogray {border-left: solid 1px #c0c0c0; border-right: ridge 2px; padding: 10px; border-bottom: ridge 2px;}
+.tabgrayrow, .tabcontainer .tabgrayrow {background-color: #e9e9e9; border-bottom: ridge 2px; padding-left: 10px; border-left: solid 1px #c0c0c0; border-right: ridge 2px; height: 18px;
+             padding-top: 3px;}
+.sidebar_ridge {padding:0; border-bottom: ridge 2px #999999; border-right: ridge 2px #999999; border-left: solid 1px #c0c0c0; border-top: solid 1px #c0c0c0;}
+.sidebar_ridge_gray {background-color:#e9e9e9; padding: 3px 3px 3px 10px; margin:0;}
+
+.tb {border-left: solid 1px #c0c0c0; border-bottom: ridge 2px; border-right: ridge 2px; }
+.tcontent {padding: 5px 10px 10px 10px}
+.tgr {background-color: #e9e9e9; padding: 3px 3px 3px 10px}
+
+/* ******** communities video inset (formerly sidebar) *********** */
+
+div.video-inset            { float: left; margin-right: 10px; margin-top: 14px; margin-bottom: 18px; width: 180px; }  
+div.video-inset img        { border: 0px solid #FFFFFF; }  
+div.video-inset a          { font-weight: bold; }  
+div.video-inset img.inline { border: none; display: inline; vertical-align: middle; margin-right: 2px }  
+#lead div.video-inset      { float: left; margin-right: 10px; margin-top: 4px; margin-bottom: 18px; width: 100px; }     
+
+
+/******  99 DISTORTION STYLES ******/
+
+
+
+/****** PHP SERVER VALIDATION STYLES *******/
+.error_summary
+{
+	color: red;
+	background-color: white;
+	border: dashed 1px red;
+	margin: 8px 0 8px 0;
+	padding: 4px;
+}
+
+
+
+/****** FINAL -- AND WE MEAN IT -- SIDEBAR BOX CLASSES ******/
+
+	/* tab box structure */
+	div.box_tab_container
+	{
+	  padding: 0;
+	  margin: 0 0 10px 0;
+	  border: 0;
+	}
+
+	div.box_tab_strip,
+	{
+	  padding: 0;
+	  margin: 0;
+	  border: 0;
+	}
+
+	table.box_tab_content
+	{
+	  border-collapse: collapse;
+	  border-bottom: ridge 2px #999;
+	  border-left: solid 1px #c0c0c0;
+	  border-right:  ridge 2px #999;
+
+	  padding: 0;
+	  margin: 0;
+	}
+
+	
+	/* box structure */
+
+	table.box_container
+	{
+	  border-top: solid 1px #c0c0c0;
+	  border-left: solid 1px #c0c0c0;
+	  border-bottom: ridge 2px #999;
+	  border-right: ridge 2px #999;
+	  border-collapse: collapse;
+	  padding: 0;
+	  margin: 0 0 10px 0;
+	}
+
+	/* table cells within tab or box */
+
+	td.box_content
+	{
+	  padding: 8px 8px 4px 8px;
+	  margin: 0;
+	  font-size: 10px;
+	  vertical-align: top;
+	}
+
+	td.box_image
+	{
+	  padding: 0;
+	  margin: 0;
+	}
+
+	td.box_footer
+	{
+	  padding: 3px 8px 3px 8px;
+	  margin: 0;
+	  background-color: #e9e9e9;
+	  font-size: 10px;
+	}
+
+	table.box_tab_content tr td
+	{
+	  font-size: 10px;
+	}
+
+
+	/* content within tabs/boxes */
+
+	td.box_content p
+	{
+	  padding: 0;
+	  margin: 0px 0 8px 0;
+	  font-size: 10px;
+	}
+
+	td.box_content img.header
+	{
+	  margin: 0 0 4px 0;
+	  padding: 0;
+	}
+
+	td.box_content h2
+	{
+	  font-size: 12px;
+	  margin-top: 0;
+	  padding-top: 0;
+	}
+
+	td.box_content ul li,
+	table.box_tab_content tr td ul li
+	{
+	  padding-bottom: 4px;
+	}

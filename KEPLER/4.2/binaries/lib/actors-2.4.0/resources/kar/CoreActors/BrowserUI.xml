@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<entity name="BrowserUI" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:240:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ilkay Altintas, Efrat Jaeger and Kai Lin</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The BrowserUI actor displays text/HTML in the system's default browser, allowing users to interact with the content during workflow execution. The actor outputs arrays of user-selected &quot;(name, value)&quot; pairs in XML format.</p>
+
+<p>The actor can also be used to simply display a file in a Web browser, which is useful for displaying the output of legacy applications. Select the useForDisplay parameter to use the BrowserUI actor as a browser viewer with no output port.</p>
+
+<p>The actor accepts either a URL/file path or a string of HTML/text. If content is input as a string, select a file type (e.g., html or xml) with the fileExtensionParameter.</p>
+
+<p>The BrowserUI actor is often used in conjunction with the SRBCreateQueryConditions and SRBCreateQueryInterface actors to create a set of user-specified query conditions.</p></configure></property>
+<property name="port:connected" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>This port is used only for scheduling the actor. Activate the hasTrigger parameter to display the trigger port.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The port to trigger the actor in case there are no other input ports. By default, this port is hidden.</configure></property>
+<property name="port:xmlOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of user-selected xml &quot;(name, value)&quot; pairs.</configure></property>
+<property name="port:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name or URL of a file to be read. The value can also be specified with the fileOrURL parameter.</configure></property>
+<property name="port:fileContent" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string of content to display. Select a file extension that matches the content (e.g., .html,.xml or .svg) with the file extension parameter.</configure></property>
+<property name="prop:file extension" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The extension of the input content: .html, .xml, .txt, .xsl, or .svg. Specify this parameter when content is input via the fileContent input port.</configure></property>
+<property name="prop:use for display" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this setting to use the actor solely for display. The output port will be turned off. By default, the setting is off.</configure></property>
+<property name="prop:portConfiguration" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port configuration. The actor will create the described ports. Each port should be represented on a separate line as portName portType  (e.g., height int).</configure></property>
+<property name="prop:hasTrigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to activate a trigger port or not. The default is off.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of a file to be read. The value can also be specified via the fileOrURL port.</configure></property>
+</property>
+<property name="class" value="org.sdm.spa.BrowserUI" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1066:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="fileOrURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="fileContent" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="xmlOutput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="xmltoken" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalGraphicalOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#TextualOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

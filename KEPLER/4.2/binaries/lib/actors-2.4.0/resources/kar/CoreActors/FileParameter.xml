@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<property name="FileParameter" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:422:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>none</configure></property>
+
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>yang zhao, edward lee</configure></property>
+
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>none</configure></property>
+
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+<configure><p>The FileParameter specifies a file or URL. The value of the parameter is a string that may contain references to variables within scope (i.e., variables defined at the same level of the hierarchy or higher) using the $ID ${ID}, or $(ID) syntax. </p>
+
+<p>Change the name of the FileParameter to better identify the file it specifies (right-click the parameter and select &quot;Customize Name&quot; from the menu). Other actors may refer to the specified file using the $NAME syntax (e.g., $FileParameter or $SourceFile).</p>
+
+<p>File names can be specified in several ways:</p>
+
+<ol>
+<li>As a full path, which can be selected via the Browse option.</li>
+
+<li>As a path relative to a base, often the path of the parent workflow. Files specified relative to a base can be kept in the same directory as the parent workflow file, and should be moved together with the workflow. Note: workflows must be saved as MOML files before the workflow path can be used as a base. If the workflow has not been saved to a file, then the class path is used for identifying relative file names. </li>
+
+<li>A path that contains references to system-defined strings via the $NAME syntax (e.g., $CWD or $HOME). The following strings may be useful (to see the values of these strings, select &quot;Check System Settings&quot; from the Tools menu in the Toolbar):
+<table>
+<tr><td> $CWD</td><td>The current working directory </td></tr>
+<tr><td>$HOME</td><td>The user&apos;s home directory</td></tr>
+<tr><td> $TMPDIR</td><td>The temporary directory</td></tr>
+     </table>                   
+</li>
+<li>A special file name. The following file names are understood:
+<table>
+<tr><td> System.in </td><td> Standard input </td></tr>
+<tr><td>System.out</td><td>Standard output</td></tr>
+ </table>  
+</li>
+</ol>
+</configure></property>
+
+<property name="prop:fileParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The specified file or URL.</configure></property>
+
+
+</property>
+<property name="class" value="ptolemy.data.expr.FileParameter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1186:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+<property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+    <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 1.0, 0.0, 1.0}">
+    </property>
+</property>
+<property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:#00BB00" y="20">-F-</text>
+        </svg>
+      </configure>
+</property>
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+</property>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+  <viewPaneTabPanes>
+    <viewPane>
+      <name>Kepler Classic</name>
+      <viewPaneLocation>
+        <name>West</name>
+        <tabPane>
+          <name>Komponent</name>
+        </tabPane>
+        <tabPane>
+          <name>Data</name>
+        </tabPane>
+        <tabPane>
+          <name>Umriss</name>
+        </tabPane>
+      </viewPaneLocation>
+      <viewPaneLocation>
+        <name>Ost</name>
+  		</viewPaneLocation>
+    </viewPane>
+  </viewPaneTabPanes>
+</config>

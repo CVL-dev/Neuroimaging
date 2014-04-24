@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-command-panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CipresCommandLanguage.xsd">
+
+	<!-- location of paup-->
+	<cmd-params name="paup">
+		<datatype>InFile</datatype>
+		<label>Path to Paup* executable</label>
+		<code-template>$paup</code-template>
+	</cmd-params>
+	<!-- -->
+	
+	<!--default location for data input files-->
+	<cmd-params name="defaultInputFileDir">
+		<datatype>dir</datatype>
+		<label>Default location of data input files</label>
+		<code-template>$defaultInputFileDir</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!--default location for std out log files-->
+	<cmd-params name="defaultStdOutDir">
+		<datatype>dir</datatype>
+		<label>Default location for std out log files</label>
+		<code-template>$defaultStdOutDir</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!--default location for std out error files-->
+	<cmd-params name="defaultStdErrDir">
+		<datatype>dir</datatype>
+		<label>Default location for std out error files</label>
+		<code-template>$defaultStdErrDir</code-template>
+	</cmd-params>
+	<!-- -->
+
+
+</service-command-panel>

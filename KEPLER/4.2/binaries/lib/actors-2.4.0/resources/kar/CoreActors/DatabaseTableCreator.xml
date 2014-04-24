@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Database Table Creator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:573:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="org.kepler.actor.database.DatabaseTableCreator" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="NONE">
+</property>
+
+<property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+
+<property name="Table Name" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="Create the table if it doesn't exist" class="ptolemy.actor.parameters.PortParameter" value="true">
+</property>
+
+<property name="SQL Script" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="Database Param" class="ptolemy.actor.parameters.PortParameter" value="{driver = &quot;org.hsqldb.jdbcDriver&quot;, password = &quot;pass&quot;, url = &quot;jdbc:hsqldb:hsql://localhost/hsqldb&quot;, user = &quot;sa&quot;}">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DatabaseExternalInputActor">
+</property>
+
+<property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction">
+</property>
+
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:Table Name" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="kepler:Create the table if it doesn't exist" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="kepler:SQL Script" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="kepler:Database Param" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{driver = string, password = string, url = string, user = string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="kepler:Status" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jing Tao</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Create a database table if the table doesn't exist.</configure></property>
+<property name="port:statusPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output of this actor. Ture if the table exists or was created successfully, false otherwise</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="port:sqlScriptParam" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A sql script to create the table</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="port:dbParams" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter to access a database. It includes user name, password,         driver name and db url</configure></property>
+<property name="port:createTableIfNotExistParam" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Flag indicates to create the table if the table doesn't exist</configure></property>
+<property name="port:tableNameParam" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the table which will be created</configure></property>
+<property name="prop:Table Name" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the table which will be created</configure></property>
+<property name="prop:Create the table if it doesn't exist" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Flag indicates to create the table if the table doesn't exist</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="prop:SQL Script" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A sql script to create the table</configure></property>
+<property name="prop:Database Param" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter to access a database. It includes user name, password,         driver name and db url</configure></property>
+</property></entity>

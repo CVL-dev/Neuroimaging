@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<entity name="GUIRunCIPRes" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:469:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Zhijie Guan</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GUIRunCIPRES actor helps facilitate phylogenic analysis by invoking an external CIPRES application and outputting its response. </p>
+
+<p>To use the full suite of CIPRES actors, CIPRES software must be installed on the local system. PAUP software is required in some instances as well.</p>
+
+<p>The actor generates a graphical interface that allows users to input information (e.g., a command or working directory) and pass the data to the CIPRES application. Once the application has been contacted and has processed the input, the actor returns the generated results, or an error if the application did not execute correctly. </p>
+
+<p>If the actor is used to actor is used to contact a CIPRES CORBA service, it must be used with the Initializer actor, which connects to a CIPRES registry.</p>
+
+<p>The actor can also be used to monitor error words in the generated results. Whenever the actor identifies any of the user-specified error words, it will notify the user and ask for further instructions.</p>
+
+<p>The CIPRES (Cyberinfrastructure for Phylogenetic Research) project works to enable large-scale phylogenetic reconstructions that facilitate analyses of datasets containing large numbers of bio molecular sequences. For more information about CIPRES, see http://www.phylo.org/</p></configure></property>
+<property name="port:standardError" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the standard error stream of the execution.</configure></property>
+<property name="port:inputParameterValue" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name of an input file. Input files should contain the data to be analyzed, and should be in the format required by the CIPRES application.</configure></property>
+<property name="port:inputParameterName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name of the input data (usually "infile").</configure></property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the exit code of the execution.</configure></property>
+<property name="port:outputParameterValue" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the name of the file that contains the execution results.</configure></property>
+<property name="port:standardOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts results of the execution.</configure></property>
+
+<property name="prop:monitoredErrorWords" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Words to monitor. Whenever the actor identifies any of the specified error words, it will notify the user and ask for further instructions.</configure></property>
+<property name="prop:parameterToOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The parameter to return. Usually the parameter is "outfile".</configure></property>
+<property name="prop:command" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Commands are automatically generated and sent to the CIPRES application via the actor's graphical user interface. </configure></property>
+<property name="prop:uiXMLFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The actor uses the specified file to generate its user interface</configure></property>
+<property name="prop:outputFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The standard output file path (e.g., C:\Documents and Settings\Myself\results.txt). Results are written in Nexus format.</configure></property>
+<property name="prop:workingDirectory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The working directory of the external CIPRES program.</configure></property>
+<property name="prop:parameterForOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The parameter to return. Usually the parameter is "outfile". </configure></property>
+<property name="prop:errorFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The standard error file path (e.g., C:\Documents and Settings\Myself\errors.txt).</configure></property>
+
+</property><property name="class" value="org.cipres.kepler.GUIRunCIPRes" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1210:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#CIPResActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#CIPRes" class="org.kepler.sms.SemanticType"/>
+</entity>

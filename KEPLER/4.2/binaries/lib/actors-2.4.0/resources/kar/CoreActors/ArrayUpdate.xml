@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ArrayUpdate" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:606:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.ArrayUpdate" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="index" class="ptolemy.actor.parameters.PortParameter" value="0">
+</property>
+
+<property name="value" class="ptolemy.actor.parameters.PortParameter" value="1">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DataArrayOperation">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:index" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+</property>
+<property name="kepler:value" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ArrayUpdate.java 62962 2012-02-14 22:57:18Z eal $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Replace an element in an array with a new value.  This actor reads an array from the&#10; &lt;i&gt;input&lt;/i&gt; port and sends a new array to the &lt;i&gt;output&lt;/i&gt;&#10; port with the specified element replaced by the specified value.&#10; The type of the output array elements is the greater than or equal to&#10; the type of the elements of the input array and the replacement value.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="port:index" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The index into the input array at which to set the new value.  This is a non-negative integer that defaults to 0, and is  required to be less than the length of the input array.</configure></property>
+<property name="port:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value to insert into the array at the position given by  &lt;i&gt;index&lt;/i&gt;.</configure></property>
+<property name="prop:index" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The index into the input array at which to set the new value.  This is a non-negative integer that defaults to 0, and is  required to be less than the length of the input array.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value to insert into the array at the position given by  &lt;i&gt;index&lt;/i&gt;.</configure></property>
+</property></entity>

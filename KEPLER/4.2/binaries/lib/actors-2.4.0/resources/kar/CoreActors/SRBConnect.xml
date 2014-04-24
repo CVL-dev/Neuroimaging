@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<entity name="SRB Connect" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:159:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Bing Zhu and Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SRBConnect actor allows users to connect to a SDSC Storage Resource Broker (SRB). Users must have a valid SRB account. The actor outputs a reference to the SRB system.</p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). For more information about SRB, see http://www.sdsc.edu/srb/.</p>
+
+<p>The SRBConnect actor connects to an SRB file system and returns a reference to the connected system. This connection reference can be propagated to all actors accessing the SRB workspace, allowing the actors to access the SRB system.</p>
+
+<p>The SRBConnect actor requires the user to specify account information in the connection parameters (srbHost, srbPort, srbUserName, srbPasswd, srbHomeCollection, srbDomainName, and srbDefaultResource)</p></configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a reference to the connected SRB workspace. This connection reference can be propagated to all actors accessing the SRB workspace.</configure></property>
+<property name="prop:srbMdasDomainHome" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Identity of  the site or project (e.g., sdsc)</configure></property>
+<property name="prop:srbHomeCollection" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The user's home collection. Each SRB-registered user has a home collection, where the user may read, write, create-sub collections, and grant access permissions.</configure></property>
+<property name="prop:srbDefaultResource" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of a SRB resource system capable of storing data objects (e.g., sfs-tape-sdsc).</configure></property>
+<property name="prop:srbPasswd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>SRB user password</configure></property>
+<property name="prop:srbUserName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>SRB username.</configure></property>
+<property name="prop:srbHost" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The SRB hostname (e.g., srb.sdsc.edu)</configure></property>
+<property name="prop:srbPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The port number to connect to on the SRB server (e.g., 7510)</configure></property>
+</property>
+<property name="class" value="org.srb.SRBConnect" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1017:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#DatabaseOutputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

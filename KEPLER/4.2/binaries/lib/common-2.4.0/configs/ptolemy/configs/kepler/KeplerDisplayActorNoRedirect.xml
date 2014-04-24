@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<!-- Specify the display related classes in Kepler that do not support '-redirectgui' opition so far. 
+     The classes are dilimited by ','. They will be replaced to be Discard class if running with 
+     '-redirectgui' or '-nogui' option. Classes in Ptolemy should not be listed here since they are 
+     managed well in Ptolemy. -->
+<property name="_keplerDisplayClassesNoRedirect" class="ptolemy.data.expr.StringParameter"
+          value="org.kepler.actor.gui.XMLViewer,org.geon.BrowserDisplay">
+</property>

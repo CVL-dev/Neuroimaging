@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity name="Molecule Array Producer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:414:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The MoleculeArrayProducer actor reads a sequence of molecule file names and outputs an array of molecule file names.</p>
+
+<p>Double-click the actor to specify the number of molecules to include in the array. The input sequence can be produced by and received from the MoleculeSelector actor.</p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system.</p></configure></property>
+
+<property name="port:moleculeFileHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a sequence of molecule file names.</configure></property>
+<property name="port:moleculeNameArray" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of molecule file names.</configure></property>
+<property name="prop:NumberOfMolecules" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of molecules in the output array.</configure></property>
+</property>
+<property name="class" value="org.resurgence.moml.MoleculeArrayProducer" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.MoleculeArrayProducer" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1178:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="moleculeFileHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[40.0, 360.0]">
+</property>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="moleculeNameArray" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{unknown}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[905.0, 370.0]">
+</property>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ProcessingUtilitiesActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#ProcessUtility" class="org.kepler.sms.SemanticType"/>
+</entity>

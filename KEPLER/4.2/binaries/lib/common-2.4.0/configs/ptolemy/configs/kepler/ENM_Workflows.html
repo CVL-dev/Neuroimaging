@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>ENM Workflows</title>
+</head>
+<body>
+<h1 style="text-align: center;">Ecological Niche Modeling (GARP)
+Workflows</h1>
+<br>
+A number of&nbsp; Ecological Niche Modeling (GARP) workflows have been
+created using Kepler. Most are just pieces of a final, complete
+workflow.. Brief descriptions of these 'samples'&nbsp; are given below<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/garpModel.xml">1. Baseline 3-Actor GARP - Browser
+Display</a><br>
+      </td>
+      <td style="vertical-align: top;">This is the basic starting point
+for many of the ENM workflows. It consists of Desktop GARP code wrapped
+into 3 actors with inputs from static (pre-defined) files that are
+already in the exact formats required by GARP (e.g. layers in *.raw
+format). The final occurrence distribution map is displayed using a
+browser.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/garpModel_ImageJ.xml">2. Baseline 3-Actor GARP -
+ImageJ Display</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow is the same as the
+previous one except the actor for displaying the resulting map is now
+the ImageJ actor, based on the ImageJ image processing system developed
+at NIH. This actor allows the user to carry out a variety of
+manipulations on the resulting image.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/garpModel_ImageJ_withData.xml">3. GARP with
+Occurrence
+Data from Digir/Ecogrid</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow gets the GARP
+occurrence data from a DarwinCore data search through the Ecogrid. It
+illustrates how Kepler/SEEK technology can supply dynamic data sources.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/garpModel_ASC_withData.xml">4. GARP with
+Occurrence
+Data and Layer Integration</a><br>
+      </td>
+      <td style="vertical-align: top;">This example extends the
+previous model by adding the dynamic integration of a set of geographic
+layers that are in *.ASC grid format. In this case, the ASC grids all
+have the same extent and grid sizes. These layers are feed through an
+actor which converts them to the raw files needed for GARP and
+automatically creates the *.dxl file which summarized the layers for
+GARP.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/garpModel_ASC_withData_Layer.xml">5. GARP with
+Occurrence Data and Ecogrid Layer Integration</a><br>
+      </td>
+      <td style="vertical-align: top;">This example obtains occurrence
+data and one layer of ASC spatial data from the Ecogrid. The spatial
+data layer is regridded and integrated with other ASC layers to create
+the *.RAW and *.dxl files needed by GARP. This example thus illustrates
+how one can add to spatial data with new source. (Note: spatial data is
+low resolution to minimize download and run times.)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/gdal-test.xml">6. GDAL Input and ReProjection</a>
+      <br>
+      </td>
+      <td style="vertical-align: top;">This workflow shows an example
+of using the GDAL system for input of specialized GIS format files and
+reprojection of spatial data into desired forms.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/garpModel_Omission_Commission.xml">7. GARP
+Omission
+Commission Example</a><br>
+      </td>
+      <td style="vertical-align: top;">The example calculates omission
+and commision values from the output of a GARP prediction map and a
+'test set' of occurence longitudes and latitudes. Results are written
+to a local file as a table.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/GARP_BestSubset_R.xml">8. GARP Best Subset
+Example
+(using R)</a><br>
+      </td>
+      <td style="vertical-align: top;">This is an example of the
+RExpression actor with a custom R script for calculating the 'best
+subset' of a number of GARP runs. The example takes the
+omission/commission table as an input.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/ENM_11_18_04.xml">9. Overall ENM Workflow</a><br>
+      </td>
+      <td style="vertical-align: top;">This is a high level view of an
+ENM workflow constructed to give a view of all of the high level
+actions that need to be carried out. It started as a simple conceptual
+workflow built with Composite actors. Note that one can "Look Inside"
+many of these composite actors to see details of their actions.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/climateInputTest.xml">10. Climate Layer Data
+Import
+and Formatting</a><br>
+      </td>
+      <td style="vertical-align: top;">IPCC climate data has been
+described using EML and saved on the Ecogrid/SRB. It can thus be
+obtained using a Kepler data search and the result dragged to the
+screen as a data source. Each file, however, contains data for each
+month and that data needs to be separated/combined to create
+annual/winter/spring/summer/fall data sets in ASC grid formats that can
+be combined to create GARP geographic layers. This is a test workflow
+which creates and displays a ASC file.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a href="../../../../workflows/test/gisl.xml">11.
+Convex
+Hull Operations (GRASS-based code)</a><br>
+      </td>
+      <td style="vertical-align: top;">Actors for calculating a Convex
+Hull and related GIS operations are shown in this test workflow. The
+actors used code from the GRASS GIS system recompiled using JNI
+interfaces to Java<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/gisl-J.xml">12. Convex Hull Operations<br>
+(Java-based code)</a><br>
+      </td>
+      <td style="vertical-align: top;">This is an example of Convex
+Hull and related operations implemented completely in Java.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/GridRescalerTest.xml">13. Rescaling Example</a><br>
+      </td>
+      <td style="vertical-align: top;">Example workflow that changes
+the grid size and extent of input *.ASC grid files<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/mergeTest.xml">14. Grid Merging Example</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow starts with a grid
+image of the entire world, creates rescaled images of North and South
+America, and then recombines the 2 rescaled grids into a new grid of
+the western hemisphere using the MergeGrid actor.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/ASC2RAWTest.xml">15. ASC to RAW,&nbsp; DXL Example</a><br>
+      </td>
+      <td style="vertical-align: top;">Workflow which takes a set of
+*.ASC grid files and creates corresponding *.RAW filed for GARP input
+along with the *.dxl layer summary file<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/IPCC_Base_Layers.xml">16. IPCC Base Climate Layers</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow copies all 10 of
+the IPCC historical climate information files from the Ecogrid to the
+local cache and converts them to *.ASC files. The default files are
+annual averages; user can change to minimums or maximums and change
+time periods.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/GDAL_h1K_NS.xml">17. Hydro1K Data Preparation</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow shows how one
+inports Hydro1K digital elevation model derived spatial data and
+processes it for use in a GARP model. GDAL actors are used to import
+and re-project the spatial grid data.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/GARP_SingleSpecies_BestRuleSet_Nov2005.xml">18.
+GARP
+Single Species Best RuleSet - Local Files</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow runs the GARP
+algorithm multiple times and calculates omission and commission values
+to determine 'best' rulesets. Spatial and location data are read from
+local files. It is thus assumed that this input data has been
+previously prepared.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/GARP_SingleSpecies_BestRuleSet.xml">19. GARP
+Single
+Species Best RuleSet - Local Spatial Files with DigiR Location Data</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow runs the GARP
+algorithm multiple times and calculates
+omission and commission values to determine 'best' rulesets. Spatial
+data is read from local files. It is thus assumed that
+this input data has been previously prepared. Location data is read
+from a DigiR ecogrid data source, making it easy to change the input
+species by just doing another data search.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/test/IPCC_Change_Test.xml">20. Prepare Climate Change
+Prediction Data</a><br>
+      </td>
+      <td style="vertical-align: top;">This is an example of how an
+IPCC climate change dataset is processed by combining with the
+historical data to produce a grid that can be used for ENM/GARP future
+predictions.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/eco/BaselineLayersToDXL.xml">21. Convert Baseline Layers (local files) to GARP 
+raw files and create DXL summary</a><br>
+      </td>
+      <td style="vertical-align: top;">This example converts a set of local *.asc layer fiiles
+to GARP RAW files and creates the *.dxl file needed by GARP.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</body>
+</html>

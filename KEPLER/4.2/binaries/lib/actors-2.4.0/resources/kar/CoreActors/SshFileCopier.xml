@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<entity name="SSH File Copier" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:511:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+ <p>The SSHFileCopier actor connects to a remote host using SSH protocol and copies a file or directory to or from the host. Either the source or the target file must be local. This actor cannot copy remote files to remote places. For such operations, use the SSHExecuteCmd actor. The actor performs the copy operation and outputs the operation results (success or failure, as well as internal error messages, if any).</p>
+
+
+The file references should be in the format: [[user@]host:]path. For example,
+   <ul>
+   <li><i>foo.txt</i> 
+       The file foo.txt in the current directory on the local machine</li>
+   <li><i>playdir/foo.txt</i>
+       The relative path to the current dir on the local machine</li>
+   <li><i>/home/littleboy/playdir/foo.txt</i> 
+       The absolute path to foo.txt on the local machine</li>
+   <li><i>local:playdir/foo.txt</i>
+       The relative path to $HOME on the local machine</li>
+   <li><i>localhost:playdir/foo.txt</i>
+       The relative path to $HOME on the 'localhost' machine </li>
+   <li><i>john@farmachine:playdir/foo.txt</i>
+       The relative path to $HOME on the 'farmachine' machine of user 'john'</li>
+   </ul>
+
+   <p>If the target is an existing file, it will be overwritten. If the target is an existing directory, a subdirectory within the existing directory will be created with the name of the source.</p>
+
+   <p>If copying a directory, set the parameter 'recursive' to true to copy the entire directory.</p>
+
+
+
+
+
+</configure></property>
+   
+   <property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+     <property name="port:source" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The location of the files and directories to copy.   </configure></property>
+       <property name="port:succ" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A Boolean token indicating if the copy operation was successful: true if ALL matched files and directories are copied; false if not. Note: if copying directories and  'recursive' is not set, the value will be false (files will be copied but directories will not be).  </configure></property>
+       <property name="port:error" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The actor's execution errors, if any; otherwise an empty string.  </configure></property>
+           <property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+              <property name="prop:source" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The location of the files and directories to copy.   </configure></property>
+           <property name="prop:recursive" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether directories can be copied recursively. </configure></property>
+              
+ 
+
+</property>
+<property name="class" value="org.kepler.actor.ssh.FileCopier" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1209:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="source" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="target" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="succ" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="error" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType21" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType41" value="urn:lsid:localhost:onto:4:1#CPES" class="org.kepler.sms.SemanticType"/>
+
+
+</entity>

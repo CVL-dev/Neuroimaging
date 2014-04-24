@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#"> 
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <!ENTITY ans "http://seek.ecoinformatics.org/annotation-schema#">
+]>
+
+
+
+<rdf:RDF xmlns:rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl  = "http://www.w3.org/2002/07/owl#"
+         xmlns:xsd  = "http://www.w3.org/2001/XMLSchema#"
+         xmlns:ans  = "&ans;"
+         xml:base   = "&ans;"
+	 xmlns      = "&ans;">
+
+
+  <!-- header: note that this is a schema, not an ontology per se -->
+  <owl:Ontology rdf:about=""/>
+
+
+  <!--
+    ***
+    *** BASIC ANNOTATIONS
+    *** 
+   -->
+
+  <!-- LSIDReference -->
+  <owl:Class rdf:ID="LSIDReference">
+    <owl:equivalentClass>      
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#lsid"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+  <!-- Annotation -->
+  <owl:Class rdf:ID="Annotation">
+    <rdfs:subClassOf rdf:resource="#LSIDReference"/>      
+    <rdfs:subClassOf>      
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#annotates"/>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#TreeType"/>
+    <owl:disjointWith rdf:resource="#TreeNode"/>
+  </owl:Class>
+
+  <!-- Tag -->
+  <owl:Class rdf:ID="Tag">
+    <owl:disjointWith rdf:resource="#Item"/>
+    <owl:disjointWith rdf:resource="#Annotation"/>
+    <owl:disjointWith rdf:resource="#TreeType"/>
+    <owl:disjointWith rdf:resource="#TreeNode"/>
+  </owl:Class>
+
+  <!-- Item -->
+  <owl:Class rdf:ID="Item">
+    <owl:disjointWith rdf:resource="#Annotation"/>
+    <owl:disjointWith rdf:resource="#TreeType"/>
+    <owl:disjointWith rdf:resource="#TreeNode"/>
+  </owl:Class>
+
+  <!-- TreeType -->
+  <owl:Class rdf:ID="TreeType">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#root"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#TreeNode"/>
+  </owl:Class>
+
+
+  <!-- Port -->
+  <owl:Class rdf:ID="Port">
+    <rdfs:subClassOf rdf:resource="#Item"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#portname"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- Actor -->
+  <owl:Class rdf:ID="Actor">
+    <rdfs:subClassOf rdf:resource="#LSIDReference"/>      
+    <rdfs:subClassOf rdf:resource="#Item"/>
+    <owl:disjointWith rdf:resource="#Port"/>
+  </owl:Class>
+
+  <!-- Dataset --> 
+  <owl:Class rdf:ID="Dataset">
+    <rdfs:subClassOf rdf:resource="#LSIDReference"/>      
+    <rdfs:subClassOf rdf:resource="#Item"/>
+    <owl:disjointWith rdf:resource="#Actor"/>
+    <owl:disjointWith rdf:resource="#Port"/>
+  </owl:Class>
+
+  <!-- lsid -->
+  <owl:DatatypeProperty rdf:ID="lsid">
+    <rdfs:domain rdf:resource="#LSIDReference"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  </owl:DatatypeProperty>
+
+  <!-- annotates -->
+  <owl:ObjectProperty rdf:ID="annotates">
+    <rdfs:domain rdf:resource="#Annotation"/>
+    <rdfs:range rdf:resource="#Tag"/>
+    <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+  </owl:ObjectProperty> 
+
+  <!-- itemType -->
+  <owl:ObjectProperty rdf:ID="itemType">
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="#TreeType"/>
+  </owl:ObjectProperty>
+
+  <!-- portname -->
+  <owl:DatatypeProperty rdf:ID="portname">
+    <rdfs:domain rdf:resource="#Port"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  </owl:DatatypeProperty>
+
+  <!-- inputPort -->
+  <owl:ObjectProperty rdf:ID="inputPort">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="#Port"/>
+    <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+  </owl:ObjectProperty> 
+
+  <!-- outputPort -->
+  <owl:ObjectProperty rdf:ID="outputPort">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="#Port"/>
+    <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+  </owl:ObjectProperty> 
+
+
+  <!--
+    ***
+    *** TAGS
+    *** 
+   -->
+
+  <!-- ItemTag -->
+  <owl:Class rdf:ID="ItemTag">
+    <rdfs:subClassOf rdf:resource="#Tag"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#taggedItem"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- taggedItem -->
+  <owl:ObjectProperty rdf:ID="taggedItem">
+    <rdfs:domain rdf:resource="#ItemTag"/>
+    <rdfs:range rdf:resource="#Item"/>
+  </owl:ObjectProperty>
+
+
+
+  <!--
+    ***
+    *** TREE NODES
+    *** 
+   -->
+
+  <!-- TreeNode -->
+  <owl:Class rdf:ID="TreeNode"/>
+
+  <!-- LabeledTreeNode -->
+  <owl:Class rdf:ID="LabeledTreeNode">
+    <owl:equivalentClass rdf:resource="#TreeNode"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#nodeLabel"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <!-- TreeEdge -->  
+  <owl:Class rdf:ID="TreeEdge">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#edgeIndex"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#edgeNode"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#TreeNode"/>
+  </owl:Class>
+
+  <!-- MultipleTreeEdge -->  
+  <owl:Class rdf:ID="MultipleTreeEdge">
+    <rdfs:subClassOf rdf:resource="#TreeEdge"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#edgeIndex"/>
+        <owl:hasValue rdf:datatype="&xsd;nonNegativeInteger">1</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- root -->
+  <owl:ObjectProperty rdf:ID="root">
+    <rdfs:domain rdf:resource="#TreeType"/>
+    <rdfs:range rdf:resource="#TreeNode"/>
+    <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- nodeLabel -->
+  <owl:DatatypeProperty rdf:ID="nodeLabel">
+    <rdfs:domain rdf:resource="#LabeledTreeNode"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  </owl:DatatypeProperty>
+
+  <!-- edgeIndex -->
+  <owl:DatatypeProperty rdf:ID="edgeIndex">
+    <rdfs:domain rdf:resource="#TreeEdge"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  </owl:DatatypeProperty>
+
+  <!-- edgeNode -->
+  <owl:ObjectProperty rdf:ID="edgeNode">
+    <rdfs:domain rdf:resource="#TreeEdge"/>
+    <rdfs:range rdf:resource="#TreeNode"/>
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  </owl:ObjectProperty>
+
+  <!-- childNode -->
+  <owl:ObjectProperty rdf:ID="childNode">
+    <rdfs:domain rdf:resource="#TreeNode"/>
+    <rdfs:range rdf:resource="#TreeEdge"/>
+    <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+  </owl:ObjectProperty>
+
+
+</rdf:RDF>
+

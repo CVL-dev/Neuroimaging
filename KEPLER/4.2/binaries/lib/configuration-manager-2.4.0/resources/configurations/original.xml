@@ -1,0 +1,18 @@
+<config>
+    <item>
+        <a>First</a>
+        <b>Second</b>
+        <c>Third</c>
+    </item>
+    <item>
+        <a>Uno</a>
+        <b>Dose</b>
+        <c>Third</c>
+    </item>
+    <item>
+        <a>Apple</a>
+        <b>Orange</b>
+        <c>Banana</c>
+    </item>
+    <y>somewhere</y>
+</config>

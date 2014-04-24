@@ -1,0 +1,118 @@
+<?xml version="1.0" standalone="no"?> 
+<entity name="ANOVA" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:481:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The ANOVA actor  uses R to perform a variance analysis on input data. The actor outputs a graphical representation of its calculations.</p>
+
+<p>The R application must be installed on the local system to use this actor. R is a language and environment for statistical computing and graphics. For more information about R, see http://www.r-project.org/.</p>
+
+<p>Input factors might include 'date', 'site,' or 'replicate' data. In addition to factors, a variable (usually a continuous variable such as 'height' or 'rain fall') must be specified via the variable port.</p>
+
+<p>The actor performs the analysis and saves the results to the Kepler working directory. To view the results, connect an ImageJ actor to the graphicsFileName output port.</p></configure></property>
+<property name="port:Method" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The summary method. The default method is 'presence.' Use the Constant actor to input another summary method (e.g., mean, max, sum, etc.)</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a copy of the text output that R generates. As the actor communicates with R to run the R function or script, the output port sends back the response (i.e., the values and statistical outputs).</configure></property>
+<property name="port:Variable" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The variable to be summarized. </configure></property>
+<property name="port:Factor5" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any factor of interest  (e.g., 'date' or 'site' data)</configure></property>
+<property name="port:graphicsFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated graph of the results.</configure></property>
+<property name="port:Factor4" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any factor of interest  (e.g., 'date' or 'site' data)</configure></property>
+<property name="port:Factor3" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any factor of interest (e.g., 'date' or 'site' data)</configure></property>
+<property name="port:Factor2" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any factor of interest  (e.g., 'date' or 'site' data)</configure></property>
+<property name="port:Factor1" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any factor of interest (e.g., 'date' or 'site' data)</configure></property>
+
+<property name="prop:numXPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The width of the output graphic in pixels.</configure></property>
+<property name="prop:Rcwd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The 'R' working directory (the home directory by default). </configure></property>
+<property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The expression that is evaluated to produce the output.</configure></property>
+<property name="prop:graphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to create a graphics output port. By default, the actor will create a graphics output port.</configure></property>
+<property name="prop:displayGraphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to display the plot once the actor has generated it.</configure></property>
+<property name="prop:graphicsFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The graphics output format. Currently the actor supports either  *.pdf or  *.png.</configure></property>
+<property name="prop:numYPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The height of the output graphic in pixels.</configure></property>
+<property name="prop:save_nosave" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to save the R workspace when R is closed; set to '--save' to retrieve the workspace later in a workflow in another R-actor.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.R.RExpression" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:graphicsFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:Factor1" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Factor2" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Factor3" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Factor4" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Factor5" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Variable" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+</property>
+<property name="kepler:Method" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+</property>
+<property name="expression" class="ptolemy.kernel.util.StringAttribute" value="if (any(ls() == 'Method') == FALSE) {Method &lt;- 'gaussian'}&#10;&#10;Factors &lt;- c('Factor1', 'Factor2', 'Factor3', 'Factor4', 'Factor5')&#10;Names   &lt;- c('fact1', 'fact2', 'fact3', 'fact4', 'fact5')&#10;FU      &lt;- c('f1', 'f2', 'f3', 'f4', 'f5')&#10;mark &lt;- 1&#10;facts &lt;- c()&#10;fs &lt;- c()&#10;row_vec &lt;- c()&#10;for (f in Factors) {&#10;	if (any(ls() == f) == TRUE) {&#10;		assign(Names[mark], get(f))&#10;		assign(FU[mark], unique(get(f)))&#10;		row_vec &lt;- c(row_vec, length(unique(get(f))))&#10;		facts &lt;- c(facts, Names[mark])&#10;		fs &lt;- c(fs, FU[mark])&#10;		mark &lt;- mark + 1&#10;	}&#10;}&#10;&#10;var &lt;- as.numeric(Variable)&#10;var[is.na(var) == TRUE] &lt;- 1&#10;&#10;&#10;mod &lt;- c(paste('var', facts[1], sep = ' ~ '))&#10;vec &lt;- data.frame(get(facts[1]))&#10;if (length(facts) &gt; 1) {&#10;	for (i in 2:length(facts)) {&#10;		mod &lt;- paste(mod, facts[i], sep = ' + ')&#10;		vec &lt;- data.frame(vec, get(facts[i]))&#10;	}&#10;}&#10;vec &lt;- data.frame(vec, var)&#10;colnames(vec) &lt;- c(facts, 'var')&#10;&#10;model &lt;- glm(formula(mod), data = vec, family = Method)&#10;summary(model)&#10;">
+    <property name="R Expression" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+<property name="save_nosave" class="ptolemy.data.expr.StringParameter" value="--save">
+</property>
+<property name="graphicsOutput" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+<property name="numXPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+<property name="numYPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+<property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#StatisticalOperation"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#AnalysisOfVariance"/>
+<property name="_location" class="ptolemy.kernel.util.Location" value="[135.0, 435.0]">
+</property>
+</entity>

@@ -1,0 +1,888 @@
+<?xml version="1.0"?>
+<config>
+  <splash-image>images/kepler-splash.png</splash-image>
+  
+  <!--the directory where jars inside actor KARs are written. -->
+  <jar-dir>actors/lib/jar/</jar-dir>
+  
+  <!--set to 'true' to auto-refresh datasources (registry entries) when Kepler first starts -->
+  <!--the delay attribute is the number of seconds to wait before executing the update thread -->
+  <!-- See org.kepler.KeplerInitializer.updateDataSources() to see where this happens. -->
+  <autoDataSourcesUpdate>
+    <delay>0</delay>
+    <value>true</value>
+  </autoDataSourcesUpdate>
+  
+  <!--set to 'true' to redirect stf out and err messages to a file called "kepler_stderr.log" -->
+  <log-file>false</log-file>
+  
+  <!-- Startup configuration -->
+  <startup>
+    <mkdir>
+      <dir>cachedata</dir>
+      <dir>objects</dir>
+      <dir>RawData</dir>
+    </mkdir>
+    
+    <!--  changing this line to move to hsql 1.8.0.10: -->
+    <!-- <tabletestsql>select TABLE_NAME from SYSTEM_TABLES where TABLE_NAME = ucase(?)</tabletestsql> -->
+    <tabletestsql>select TABLE_NAME from INFORMATION_SCHEMA.SYSTEM_TABLES where TABLE_NAME = ucase(?)</tabletestsql>
+    <!-- 
+    	This table is used for EML stuff
+     -->
+    <createtable>create cached table KEPLERTEXTTABLES ( TABLENAME varchar, URL varchar )</createtable>
+    <!-- 
+    	The CACHECONTENTTABLE maintains a list of all of the objects that have been Java Serialized
+    	in the cache directory.
+    	NAME - This is the name of the object
+    	LSID - The LSID of the object
+    	DATE - ??
+    	FILE - The File where the java serialization can be found in the cache
+    	EXPIRATION - When this object should expire from the cache
+    	TYPE - The java binary class name of the object (e.g. ptolemy.actor.lib.gui.Display)
+     -->
+    <createtable>create cached table CACHECONTENTTABLE ( NAME varchar, LSID varchar, DATE varchar, FILE varchar, EXPIRATION varchar, TYPE varchar, PRIMARY KEY (LSID) )</createtable>
+    <!-- 
+		The LOCALKARREPOS table is used to store the paths of the local repositories.
+		PATH - the absolute path of the local directory that is the root directory of this local repository
+		NAME - a user specified name to be used as a short name for the local repository
+	  -->
+    <createtable>create cached table KAR_LOCAL_REPOS ( NAME varchar, PATH varchar, PRIMARY KEY (NAME), UNIQUE (PATH) )</createtable>
+    <!--
+    	The CACHEDKARS table is used to keep track of what KARS have been cached in Kepler and where they are on disk.
+    	NAME - This is the name of the kar file (e.g. Display.kar)
+    	LSID - This is the lsid of the kar file
+    	REPONAME - This is the name of the local repository that the kar file came from (e.g. actors)
+    	KARPATH - This is the path to the subdirectory from the local repository where this KAR is located.
+     -->
+    <createtable>create cached table KARS_CACHED ( LSID varchar, NAME varchar, VERSION varchar, REPONAME varchar, KARPATH varchar, PRIMARY KEY (LSID), FOREIGN KEY (REPONAME) REFERENCES KAR_LOCAL_REPOS (NAME) ON DELETE CASCADE ON UPDATE CASCADE )</createtable>
+    <!-- 
+		The KARCONTENTS table is a linking table that tells us which cache object came from which KAR file.
+		KARLSID - the LSID from the CACHEDKARS table
+		LSID - the LSID of the KAREntry
+		NAME - the name of the KAREntry in the KARFile (e.g. /resources/file.xml)
+		TYPE - the type of the KAREntry
+	  -->
+    <createtable>create cached table KAR_CONTENTS ( KARLSID varchar, LSID varchar, NAME varchar, TYPE varchar, PRIMARY KEY (KARLSID,LSID), FOREIGN KEY (KARLSID) REFERENCES KARS_CACHED (LSID) ON DELETE CASCADE, FOREIGN KEY (LSID) REFERENCES CACHECONTENTTABLE (LSID) ON DELETE CASCADE  )</createtable>
+  </startup>
+  
+  <!-- List of stylesheets used to transform XML documents -->
+  <stylesheet>
+    <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace>
+    <systemid>style/eml-2.0.1/eml.xsl</systemid>
+  </stylesheet>
+  <!-- why do these entries point at eml2.xsl common points them all at eml.xsl? -->
+  <stylesheet>
+    <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace>
+    <systemid>style/eml-2.0.1/eml2.xsl</systemid>
+  </stylesheet>
+  <stylesheet>
+    <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+    <systemid>style/eml-2.1.0/eml2.xsl</systemid>
+  </stylesheet>
+    <stylesheet>
+    <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+    <systemid>style/eml-2.1.0/eml2.xsl</systemid>
+  </stylesheet>
+  
+  <!-- Style parameters particular to the EML stylesheets -->
+  <qformat>kepler</qformat>
+  <stylePath>style</stylePath>
+  
+  <servers>
+    <server>
+      <name>geon</name>
+      <url>http://geon01.sdsc.edu:8164/</url>
+    </server>
+  </servers>
+  <documentation>
+    <namespace>http://www.sdsc.geongrid.org/services/search</namespace>
+    <url>http://geon10.sdsc.edu:8080/GEONSearchPortlet/jsp/dataset-detail.jsp</url>
+    <username>kepler</username>
+  </documentation>
+  
+  <!-- The list of Authority URLs for obtaining a namespace.-->
+  <authNamespaceServices>
+    <authNamespaceService>
+      <ordering>1</ordering>
+      <url>https://kepler-project.org/ns/</url>
+    </authNamespaceService>
+  </authNamespaceServices>
+  
+  <!-- 
+  Here is where the location of TabPanes within ViewPanes is defined.
+  The TabPanes listed here need to be configured in the tabPaneFactory element
+  of the configuration.xml file.
+  The ViewPanes listed here need to be configured in the viewPaneFactory element
+  of the configuration.xml file.
+   -->
+  <viewPaneTabPanes>
+    <viewPane>
+      <name>Kepler Classic</name>
+      <viewPaneLocation>
+        <name>W</name>
+        <tabPane>
+          <name>Components</name>
+        </tabPane>
+        <tabPane>
+          <name>Data</name>
+        </tabPane>
+        <tabPane>
+          <name>Outline</name>
+        </tabPane>
+      </viewPaneLocation>
+      <viewPaneLocation>
+        <name>E</name>
+  		</viewPaneLocation>
+    </viewPane>
+  </viewPaneTabPanes>
+  <!-- Specify where the canvas should go -->
+  <canvasViewPaneLocation>
+    <viewPane>
+      <name>Kepler Classic</name>
+      <viewPaneLocation> 
+        <name>E</name>
+      </viewPaneLocation>
+    </viewPane>
+  </canvasViewPaneLocation>
+  <!-- a list of data type mappings and synonomies -->
+  <dataTypeDictionary>
+    <dataType>
+      <name>INTEGER</name>
+      <numberType>natural</numberType>
+      <description>32 bit integer without o and negtive integer</description>
+      <alias>natural</alias>
+      <numericType>
+        <minValue>1</minValue>
+        <maxValue>2147483647</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>LONG</name>
+      <numberType>natural</numberType>
+      <description>64 bit integer without o and negtive integer</description>
+      <alias>natural</alias>
+      <numericType>
+        <minValue>1</minValue>
+        <maxValue>9.22337e18</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>INTEGER</name>
+      <numberType>whole</numberType>
+      <description>32 bit integer</description>
+      <alias>whole</alias>
+      <numericType>
+        <minValue>0</minValue>
+        <maxValue>2147483647</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>LONG</name>
+      <numberType>whole</numberType>
+      <description>64 bit integer</description>
+      <alias>whole</alias>
+      <numericType>
+        <minValue>0</minValue>
+        <maxValue>9.22337e18</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>INTEGER</name>
+      <numberType>integer</numberType>
+      <description>32 bit integer</description>
+      <alias>xs:integer</alias>
+      <alias>integer</alias>
+      <alias>Integer</alias>
+      <alias>int</alias>
+      <alias>Integers</alias>
+      <numericType>
+        <minValue>-2147483647</minValue>
+        <maxValue>2147483647</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>LONG</name>
+      <numberType>integer</numberType>
+      <description>64 bit integer</description>
+      <alias>xs:long</alias>
+      <alias>long</alias>
+      <alias>Long</alias>
+      <numericType>
+        <minValue>-9.22337e18</minValue>
+        <maxValue>9.22337e18</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>FLOAT</name>
+      <numberType>real</numberType>
+      <description>IEEE 754 single precision floating point</description>
+      <alias>xs:float</alias>
+      <alias>float</alias>
+      <alias>Float</alias>
+      <alias>Floating point</alias>
+      <alias>Floating Point</alias>
+      <numericType>
+        <minValue>2e-38</minValue>
+        <maxValue>2e38</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>DOUBLE</name>
+      <numberType>real</numberType>
+      <description>IEEE 754 double precision floating point</description>
+      <alias>xs:double</alias>
+      <alias>double</alias>
+      <alias>Double</alias>
+      <alias>decimal</alias>
+      <numericType>
+        <minValue>2e-308</minValue>
+        <maxValue>2e308</maxValue>
+      </numericType>
+    </dataType>
+    <dataType>
+      <name>STRING</name>
+      <numberType>nan</numberType>
+      <description>text string</description>
+      <alias>xs:string</alias>
+      <alias>string</alias>
+      <alias>String</alias>
+      <alias>Text</alias>
+      <alias>text</alias>
+      <alias>Date</alias>
+      <alias>Enumeration</alias>
+      <alias>Codes</alias>
+      <textType>
+        <encoding>ASCII</encoding>
+      </textType>
+    </dataType>
+    <dataType>
+      <name>DATETIME</name>
+      <numberType>datetime</numberType>
+      <description>date time string</description>
+      <alias>dateTime</alias>
+      <textType>
+        <encoding>ASCII</encoding>
+      </textType>
+    </dataType>
+  </dataTypeDictionary>
+  <!-- this part is for data query sql engine in kepler-->
+  <sqlEngines>
+    <sqlEngine>
+      <sqlEngineName>hsql</sqlEngineName>
+      <userName>sa</userName>
+      <password> </password>
+      <dbDriver>org.hsqldb.jdbcDriver</dbDriver>
+      <jdbcConnect>jdbc:hsqldb:data/hsql/hsqldb</jdbcConnect>
+      <SQLDictionary>
+        <createTable>CREATE CACHED TABLE</createTable>
+        <dropSuffix>IF EXISTS</dropSuffix>
+        <semicolon>;</semicolon>
+        <textTable>
+          <createTextTable>CREATE TEXT TABLE</createTextTable>
+          <setTable>SET TABLE</setTable>
+          <source>SOURCE</source>
+          <fieldSeperator>fs=</fieldSeperator>
+          <ignoreFirst>ignore_first=true</ignoreFirst>
+        </textTable>
+      </SQLDictionary>
+      <DBdataTypeMapping>
+        <defaultDBdataType>LONGVARCHAR</defaultDBdataType>
+        <defaultJavaDataType>String</defaultJavaDataType>
+        <mapping>
+          <metadataDataType>INTEGER</metadataDataType>
+          <DBdataType>INTEGER</DBdataType>
+          <javaDataType>Integer</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>LONG</metadataDataType>
+          <DBdataType>BIGINT</DBdataType>
+          <javaDataType>Long</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>DOUBLE</metadataDataType>
+          <DBdataType>DOUBLE</DBdataType>
+          <javaDataType>Double</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>FLOAT</metadataDataType>
+          <DBdataType>FLOAT</DBdataType>
+          <javaDataType>Float</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>STRING</metadataDataType>
+          <DBdataType>LONGVARCHAR</DBdataType>
+          <javaDataType>String</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>DATETIME</metadataDataType>
+          <DBdataType>DATETIME</DBdataType>
+          <javaDataType>Timestamp</javaDataType>
+        </mapping>
+      </DBdataTypeMapping>
+      <delimiterMapping>
+        <mapping>
+          <!-- Note the below metadataDelimiter is a <tab> character -->
+          <metadataDelimiter>	</metadataDelimiter>
+          <DBdelimiter>\t</DBdelimiter>
+        </mapping>
+        <mapping>
+          <metadataDelimiter>;</metadataDelimiter>
+          <DBdelimiter>\semi</DBdelimiter>
+        </mapping>
+        <mapping>
+          <metadataDelimiter>"</metadataDelimiter>
+          <DBdelimiter>\quote</DBdelimiter>
+        </mapping>
+        <mapping>
+          <metadataDelimiter>'</metadataDelimiter>
+          <DBdelimiter>\apos</DBdelimiter>
+        </mapping>
+        <mapping>
+          <metadataDelimiter> </metadataDelimiter>
+          <DBdelimiter>\space</DBdelimiter>
+        </mapping>
+        <mapping>
+          <metadataDelimiter>\</metadataDelimiter>
+          <DBdelimiter>\\</DBdelimiter>
+        </mapping>
+        <prefixmapping>
+          <metadataDelimiter>0x</metadataDelimiter>
+          <DBdelimiter>\u</DBdelimiter>
+        </prefixmapping>
+        <prefixmapping>
+          <metadataDelimiter>#x</metadataDelimiter>
+          <DBdelimiter>\u00</DBdelimiter>
+        </prefixmapping>
+      </delimiterMapping>
+    </sqlEngine>
+    <sqlEngine>
+      <sqlEngineName>geon</sqlEngineName>
+      <userName>geongrid</userName>
+      <password/>
+      <email>klin@ucsd.edu</email>
+      <dbDriver>org.geongrid.jdbc.driver.Driver</dbDriver>
+      <jdbcConnect>jdbc:geon://geon01.sdsc.edu:25322</jdbcConnect>
+    </sqlEngine>
+  </sqlEngines>
+  <!-- This part is for kepler to access ecogrid service -->
+  <ecogridService>
+    <ldapOrganizations>
+      <organization>KU</organization>
+      <organization>LTER</organization>
+      <organization>MSU</organization>
+      <organization>NAPIER</organization>
+      <organization>NCEAS</organization>
+      <organization>OBFS</organization>
+      <organization>OSUSB</organization>
+      <organization>PISCO</organization>
+      <organization>SAEON</organization>
+      <organization>SANParks</organization>
+      <organization>SDSC</organization>
+      <organization>unaffiliated</organization>
+      <organization>UVM</organization>
+    </ldapOrganizations>
+    <authenticationMapping>
+      <serviceType>http://ecoinformatics.org/authenticationservice-1.0.0</serviceType>
+      <serviceClass>org.kepler.authentication.LDAPAuthenticationService</serviceClass>
+    </authenticationMapping>
+    <authenticationMapping>
+      <serviceType>GAMAAuthenticationServiceType</serviceType>
+      <serviceClass>org.kepler.authentication.GAMAAuthenticationService</serviceClass>
+    </authenticationMapping>
+    <servicesList>
+      <!--<service>
+        <serviceName>KU DiGIR Query Interface</serviceName>
+        <serviceType>http://ecoinformatics.org/queryservice-1.0.0</serviceType>
+        <endPoint>http://darwincore.ecoinformatics.org:8080/DigirImpl/services/DigirQueryService</endPoint>
+        <serviceGroup>DiGIR</serviceGroup>
+        <documentType>
+          <namespace>http://digir.net/schema/conceptual/darwin/full/2001/1.0</namespace>
+          <label>Darwin Core 1.0</label>
+          <selected>false</selected>
+        </documentType>
+        <selected>false</selected>
+      </service>-->
+      <service>
+        <serviceName>KNB Identifier (LSID) Interface</serviceName>
+        <serviceType>http://ecoinformatics.org/identifierservice-1.0.0</serviceType>
+        <endPoint>http://ecogrid.ecoinformatics.org/knb/services/IdentifierService</endPoint>
+        <serviceGroup>KNB</serviceGroup>
+      </service>
+      <service>
+        <serviceName>KNB Put Interface</serviceName>
+        <serviceType>http://ecoinformatics.org/putservice-1.0.0</serviceType>
+        <endPoint>http://ecogrid.ecoinformatics.org/knb/services/PutService</endPoint>
+        <serviceGroup>KNB</serviceGroup>
+      </service>
+      <service>
+        <serviceName>KNB Metacat Query Interface</serviceName>
+        <serviceType>http://ecoinformatics.org/queryservice-1.0.0</serviceType>
+        <endPoint>http://ecogrid.ecoinformatics.org/knb/services/QueryService</endPoint>
+        <serviceGroup>KNB</serviceGroup>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace>
+          <label>Ecological Metadata Language 2.0.0</label>
+          <selected>true</selected>
+        </documentType>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace>
+          <label>Ecological Metadata Language 2.0.1</label>
+          <selected>true</selected>
+        </documentType>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+          <label>Ecological Metadata Language 2.1.0</label>
+          <selected>true</selected>
+        </documentType>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+          <label>Ecological Metadata Language 2.1.1</label>
+          <selected>true</selected>
+        </documentType>
+        <selected>true</selected>
+      </service>
+      <service>
+        <serviceName>KNB Metacat Authenticated Query Interface</serviceName>
+        <serviceType>http://ecoinformatics.org/authenticatedqueryservice-1.0.0</serviceType>
+        <endPoint>http://ecogrid.ecoinformatics.org/knb/services/AuthenticatedQueryService</endPoint>
+        <serviceGroup>KNB</serviceGroup>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace>
+          <label>Ecological Metadata Language 2.0.0</label>
+          <selected>false</selected>
+        </documentType>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace>
+          <label>Ecological Metadata Language 2.0.1</label>
+          <selected>false</selected>
+        </documentType>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+          <label>Ecological Metadata Language 2.1.0</label>
+          <selected>false</selected>
+        </documentType>
+        <documentType>
+          <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+          <label>Ecological Metadata Language 2.1.1</label>
+          <selected>false</selected>
+        </documentType>
+        <selected>false</selected>
+      </service>
+      <service>
+        <serviceName>KNB Authentication Interface</serviceName>
+        <serviceType>http://ecoinformatics.org/authenticationservice-1.0.0</serviceType>
+        <endPoint>http://ecogrid.ecoinformatics.org/knb/services/AuthenticationService</endPoint>
+        <serviceGroup>KNB</serviceGroup>
+      </service>
+    </servicesList>
+    <queryList>
+      <query>
+        <queryId>eml200-quick-search-query</queryId>
+        <system>http://knb.ecoinformatics.org</system>
+        <namespace> 
+          <prefix>eml</prefix>
+          <value>eml://ecoinformatics.org/eml-2.0.0</value>
+        </namespace>
+        <returnField>dataset/title</returnField>
+        <returnField>entityName</returnField>
+        <title>eml200-quick-search-query</title>
+        <AND>
+          <OR>
+            <condition>
+              <concept>dataset/title</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>keyword</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>creator/individualName/surName</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>taxonRankValue</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>abstract/para</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition> 
+              <concept>dataset/dataTable/physical/distribution/online/url</concept> 
+              <operator>LIKE</operator>
+              <value>http://%</value>
+            </condition>
+            <condition> 
+              <concept>dataset/dataTable/physical/distribution/online/url</concept>
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+            <condition>
+              <concept>dataset/spatialRaster/physical/distribution/online/url</concept>
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition> 
+              <concept>dataset/dataTable/physical/distribution/online/url/@function</concept>
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+            <condition> 
+              <concept>dataset/spatialRaster/physical/distribution/online/url/@function</concept>
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+          </OR>
+        </AND>
+      </query>
+      <query> 
+        <queryId>eml201-quick-search-query</queryId> 
+        <system>http://knb.ecoinformatics.org</system>
+        <namespace>
+          <prefix>eml</prefix>
+          <value>eml://ecoinformatics.org/eml-2.0.1</value>
+        </namespace>
+        <returnField>dataset/title</returnField>
+        <returnField>entityName</returnField>
+        <title>eml201-quick-search-query</title>
+        <AND>
+          <OR>
+            <condition>
+              <concept>dataset/title</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>keyword</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition>
+              <concept>creator/individualName/surName</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition>
+              <concept>taxonRankValue</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>abstract/para</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url</concept> 
+              <operator>LIKE</operator>
+              <value>http://%</value>
+            </condition>
+            <condition> 
+              <concept>dataset/dataTable/physical/distribution/online/url</concept>
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+            <condition>
+              <concept>dataset/spatialRaster/physical/distribution/online/url</concept>
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition> 
+              <concept>dataset/dataTable/physical/distribution/online/url/@function</concept> 
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+            <condition>
+              <concept>dataset/spatialRaster/physical/distribution/online/url/@function</concept>
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+          </OR>
+        </AND>
+      </query>
+      <query>
+        <queryId>eml210-quick-search-query</queryId> 
+        <system>http://knb.ecoinformatics.org</system>
+        <namespace>
+          <prefix>eml</prefix>
+          <value>eml://ecoinformatics.org/eml-2.1.0</value>
+        </namespace>
+        <returnField>dataset/title</returnField>
+        <returnField>entityName</returnField>
+        <title>eml210-quick-search-query</title>
+        <AND>
+          <OR>
+            <condition>
+              <concept>dataset/title</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition>
+              <concept>keyword</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>creator/individualName/surName</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>taxonRankValue</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>abstract/para</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url</concept>
+              <operator>LIKE</operator>
+              <value>http://%</value>
+            </condition>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url</concept> 
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+            <condition> 
+              <concept>dataset/spatialRaster/physical/distribution/online/url</concept> 
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url/@function</concept> 
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+            <condition> 
+              <concept>dataset/spatialRaster/physical/distribution/online/url/@function</concept>
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+          </OR>
+        </AND>
+      </query>
+      <query>
+        <queryId>eml211-quick-search-query</queryId> 
+        <system>http://knb.ecoinformatics.org</system>
+        <namespace>
+          <prefix>eml</prefix>
+          <value>eml://ecoinformatics.org/eml-2.1.1</value>
+        </namespace>
+        <returnField>dataset/title</returnField>
+        <returnField>entityName</returnField>
+        <title>eml211-quick-search-query</title>
+        <AND>
+          <OR>
+            <condition>
+              <concept>dataset/title</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition>
+              <concept>keyword</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>creator/individualName/surName</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>taxonRankValue</concept> 
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+            <condition> 
+              <concept>abstract/para</concept>
+              <operator>LIKE</operator>
+              <value>#value#</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url</concept>
+              <operator>LIKE</operator>
+              <value>http://%</value>
+            </condition>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url</concept> 
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+            <condition> 
+              <concept>dataset/spatialRaster/physical/distribution/online/url</concept> 
+              <operator>LIKE</operator>
+              <value>ecogrid://%</value>
+            </condition>
+          </OR>
+          <OR>
+            <condition>
+              <concept>dataset/dataTable/physical/distribution/online/url/@function</concept> 
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+            <condition> 
+              <concept>dataset/spatialRaster/physical/distribution/online/url/@function</concept>
+              <operator>EQUALS</operator>
+              <value>download</value>
+            </condition>
+          </OR>
+        </AND>
+      </query>
+      
+      <query>
+        <queryId>darwincore-quick-search-query</queryId>
+        <system>http://knb.ecoinformatics.org</system>
+        <namespace>
+          <prefix>darwin</prefix>
+          <value>http://digir.net/schema/conceptual/darwin/2003/1.0</value>
+        </namespace>
+        <returnField>/Species</returnField>
+        <returnField>/ScientificName</returnField>
+        <returnField>/Collector</returnField>
+        <returnField>/YearCollected</returnField>
+        <returnField>/InstitutionCode</returnField>
+        <returnField>/CollectionCode</returnField>
+        <returnField>/CatalogNumber</returnField>
+        <returnField>/CatalogNumberText</returnField>
+        <returnField>/DecimalLatitude</returnField>
+        <returnField>/DecimalLongitude</returnField>
+        <title>darwincore-quick-search-query</title>
+        <condition>
+          <concept>ScientificName</concept>
+          <operator>LIKE</operator>
+          <value>#value#</value>
+        </condition>
+      </query>
+      <query> 
+        <queryId>geon-quick-search-query</queryId>
+        <system>http://knb.ecoinformatics.org</system>
+        <namespace> 
+          <prefix>geon</prefix>
+          <value>http://www.sdsc.geongrid.org/services/search</value>
+        </namespace>
+        <returnField>shapefile</returnField>
+        <returnField>database</returnField>
+        <title>geon-quick-search-query</title>
+        <condition> 
+          <concept>keyword</concept>
+          <operator>LIKE</operator>
+          <value>#value#</value>
+        </condition>
+      </query>
+    </queryList>
+    <metadataSpecificationClassList>
+      <metadataSpecificationClass> 
+        <namespace>http://digir.net/schema/conceptual/darwin/full/2001/1.0</namespace>
+        <value>org.ecoinformatics.seek.datasource.darwincore.DarwinCoreMetaDataSpecification</value>
+      </metadataSpecificationClass>
+      <metadataSpecificationClass>
+        <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace>
+        <value>org.ecoinformatics.seek.datasource.eml.eml2.EML2MetadataSpecification</value>
+      </metadataSpecificationClass>
+      <metadataSpecificationClass>
+        <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace>
+        <value>org.ecoinformatics.seek.datasource.eml.eml2.EML201MetadataSpecification</value>
+      </metadataSpecificationClass>
+      <metadataSpecificationClass>
+        <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+        <value>org.ecoinformatics.seek.datasource.eml.eml2.EML210MetadataSpecification</value>
+      </metadataSpecificationClass>
+      <metadataSpecificationClass>
+        <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+        <value>org.ecoinformatics.seek.datasource.eml.eml2.EML211MetadataSpecification</value>
+      </metadataSpecificationClass>
+      <metadataSpecificationClass>
+        <namespace>http://www.sdsc.geongrid.org/services/search</namespace>
+        <value>org.kepler.dataproxy.metadata.ADN.ADNMetadataSpecification</value>
+      </metadataSpecificationClass>
+    </metadataSpecificationClassList>
+    <returnFieldTypeList>
+      <returnField>
+        <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace>
+        <type>title</type>
+        <value>dataset/title</value>
+      </returnField>
+      <returnField> 
+        <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace> 
+        <type>entityName</type>
+        <value>entityName</value>
+      </returnField>
+      <returnField>
+        <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace>
+        <type>title</type>
+        <value>dataset/title</value>
+      </returnField>
+      <returnField> 
+        <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace> 
+        <type>entityName</type>
+        <value>entityName</value>
+      </returnField>
+      <returnField> 
+        <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+        <type>title</type>
+        <value>dataset/title</value>
+      </returnField>
+      <returnField>
+        <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+        <type>entityName</type>
+        <value>entityName</value>
+      </returnField>
+      <returnField> 
+        <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+        <type>title</type>
+        <value>dataset/title</value>
+      </returnField>
+      <returnField>
+        <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+        <type>entityName</type>
+        <value>entityName</value>
+      </returnField>
+    </returnFieldTypeList>
+    <registry>
+      <endPoint>http://knb.ecoinformatics.org/registry/services/RegistryService</endPoint>
+    </registry>
+    <!--this part is for srb -->
+    <srb>
+      <endPoint>http://srb.ecoinformatics.org:8080/SRBImpl/services/SRBQueryService</endPoint>
+      <user>testuser.sdsc</user>
+      <passwd>TESTUSER</passwd>
+      <machineName>srb-mcat.sdsc.edu</machineName>
+    </srb>
+    <digir>
+      <schema>http://bnhm.berkeley.edu/manis/DwC/darwin2jrw030315.xsd</schema>
+    </digir>
+  </ecogridService>
+  
+  <test>
+    <stylesheet>
+      <namespace>tn</namespace>
+      <systemid>ts</systemid>
+    </stylesheet>
+  </test>
+</config>
+

@@ -1,0 +1,478 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="urn:lsid:localhost:onto:1:1#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="urn:lsid:localhost:onto:1:1">
+  <owl:Ontology rdf:about="urn:lsid:localhost:onto:1:1">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Kepler Actor Ontology</rdfs:label>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+  </owl:Ontology>
+
+
+ <owl:Class rdf:ID="WorkflowComponent">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Component</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Director">
+   <!-- <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#WorkflowComponent"/> -->
+   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Director</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Actor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#WorkflowComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Actor</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Variable">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#WorkflowComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Variable</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ComputationalChemistryActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Computational Chemistry Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DomainSpecificActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VectorActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ComplexStructureActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Vector Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BlastWebServiceActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Blast</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PreConfiguredWebServiceActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GISExternalInputActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GISFunctionActor"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ExternalInputActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External GIS Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PromoterIdentificationActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GenBankActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Promoter Identification (PIW) Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="NimrodActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nimrod</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GridFunctionActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GriddlesActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Griddles</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#Actor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+    <owl:Class rdf:ID="PreConfiguredGridletActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >gridlets</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GriddlesActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="DDBJWebServiceActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#PreConfiguredWebServiceActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DDBJ</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="FileSystemOutputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Output File System Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="OutputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitTestControlActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unit Test Control</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ControlActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GamessInputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GAMESS Input Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ComputationalChemistryActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GlobusExternalInputActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#ExternalInputActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Globus Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="IterativeMathOperationActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MathOperationActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Iterative Operator</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ClockActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clock Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InternalInputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#ControlActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Control Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#Actor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#MathOperationActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mathematical Operator</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#Actor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NicheModelingActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#DomainSpecificActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Niche Modeling Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="StringFunctionActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#Actor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >String Function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GenBankActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#DomainSpecificActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GenBank</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="RandomNumberMathOperationActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Random Number Operator</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TextualOutputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Textual Output Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#OutputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ArrayActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#ComplexStructureActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Array Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ExternalExecutionEnvironmentActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#Actor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External Execution Environment Actors</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ConstantActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Constant Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#Actor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ExperimentActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nimrod Experiment Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#NimrodActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExternalGraphicalOutputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External Graphical Display</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GraphicalOutputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BiodiversityActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#DomainSpecificActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Biodiversity Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ExceptionControlActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Exception Control Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ControlActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FastaWebServiceActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Fasta</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#PreConfiguredWebServiceActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DiscreteMathOperationActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Discrete Operator</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="TxSearchWebServiceActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TxSearch</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#PreConfiguredWebServiceActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="XMLStringFunctionActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >XML String Function</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#StringFunctionActor"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#OutputActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Output Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="RecordActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#ComplexStructureActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Record Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BooleanControlActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Boolean Control Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ControlActor"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#InternalInputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Internal Input Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#ExternalInputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External Input Actor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#InputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#ComplexStructureActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Complex Structure Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProcessingUtilitiesActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ComputationalChemistryActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Processing Utility</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ClustalWWebServiceActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#PreConfiguredWebServiceActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ClustalW</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="StatisticMathOperationActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistical Operator</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#PreConfiguredWebServiceActor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WebServiceActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pre-Configured Web Service</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Parameter">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Parameter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#WorkflowComponent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TrigMathOperationActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Trig Operator</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Scope">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GraphicalOutputActor"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Scope</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CalculusMathOperationActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Calculus Operator</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#WebServiceActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Web Service</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitSystemMathOperationActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unit System Operator</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Grapher">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Grapher</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GraphicalOutputActor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GraphicalOutputActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#OutputActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Graphical Display</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DatabaseExternalInputActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ExternalInputActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External Database Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DocumentationActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Documentation Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ConstantActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ArithmeticMathOperationActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Arithmetic Operator</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ReaderExternalInputActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ExternalInputActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External Reader Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#DomainSpecificActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Domain Specific Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="FilterActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Filter</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DataminingActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Datamining Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TableActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ComplexStructureActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Table Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="SRBExternalInputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External SRB Input Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ExternalInputActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DecorativeActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ConstantActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Decorative Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ImageManipulationActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Image Manipulation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GISFunctionActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GIS Function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ConversionActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Conversion Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="OrbActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#DomainSpecificActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Orb</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#InputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Input Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#GridFunctionActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Grid Function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:localhost:onto:1:1#CIPResActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CIPRes</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Plotter">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Plotter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#GraphicalOutputActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GISOutputActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GIS Output Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#GISFunctionActor"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#OutputActor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WriterOutputActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#OutputActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Writer Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ModelActor">
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#ComplexStructureActor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Model Actor</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="FileSystemActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >File System Actor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="urn:lsid:localhost:onto:1:1#Actor"/>
+  </owl:Class>
+</rdf:RDF>

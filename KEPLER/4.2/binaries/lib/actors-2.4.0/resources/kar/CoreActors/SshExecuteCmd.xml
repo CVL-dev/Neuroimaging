@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<entity name="SSH Execute cmd" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:506:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1.1 March 2008</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+ <p>The SSHExecuteCmd actor connects to a remote host using SSH protocol and executes a command. If the host is an empty string or "local", the Java
+   Runtime will be used for execution instead of SSH. After the command terminates, the actor returns the stdout,  stderr, and exit code of the operation.</p>
+
+<p>Set the <i>timeoutSeconds</i> parameter to terminate the command after a specified amount of time. Specify 0 to wait indefinitely for command termination. If connecting to a Unix host, use the <i>cleanupAfterError</i>
+Parameter to kill the remote process (and all of its children) after an error or timeout. Set this parameter only if connecting to a Unix server (other platforms do not support it). 
+</p>
+
+<p>Note: Streaming of output during the command execution is not currently
+   implemented.</p>
+
+  <p><b>Third party operation.</b>
+  If the remote command is expected to ask for a password
+  (or passphrase when connecting to a remote host with public-key authentication)
+  set the port/parameter <i>thirdParty</i> for the user@host:port of that third party
+  (it can be the same as <i>target</i> if a sudo command is executed).</p>
+
+  <p>The authentication to the third party should be the same from the target
+  host and from Kepler's local host. Kepler authenticates (by opening a channel)
+  to the third party and then it provides the password/passphrase used for the
+  authentication to the command on the target host. Therefore, this actor cannot be
+  used to reach a remote host through a proxy machine and execute a command there.</p>
+
+  <p>The third party execution can be used e.g. to execute and ssh/scp command
+  that connects to another host, also reachable from Kepler's host, to execute external
+  data transfer commands (bbcp, GridFTP, SRM-Lite etc) or sudo commands.</p>
+
+  <p>The actor will first authenticate Kepler to the third party host
+  (if not yet done by other actors, e.g. SshSession). During the execution of the command,
+  it looks for the appearance of the string 'password' or 'passphrase' in the stdout/stderr
+  streams (case-insensitively). If such string is found, it writes the authentication code
+  stored within Kepler used for the authentication. Therefore, the command must read the
+  password on the standard input, not directly from the terminal device.
+  This process is performed only once!</p>
+
+  <p>The underlying java code does not have pseudo-terminal emulation, so if you cannot
+  force the command to read passwords from the stdin (e.g. scp command), you have to use an
+  external tool to execute the command through a pseudo-terminal. <b>ptyexec</b> is provided
+  in the <i>org.kepler.ssh</i> package, a C program, that should be compiled and put into the path
+  on the target machine. Then you can execute <i>"ptyexec scp ..."</i>. It works on Linux only.</p>
+
+</configure></property>
+   
+   <property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+     <property name="port:command" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The command to be executed on the remote host, specified as a string (e.g., "uname -a; date")   </configure></property>
+       <property name="port:stdout" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output of the command as it would output to the standard shell. If there is an SSH connection related error (or timeout) the value will be an empty string.  </configure></property>
+       <property name="port:stderr" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Any errors that were reported by the remote execution or while connecting. If there is an SSH connection related error (or timeout) the value will be an empty string. </configure></property>
+         <property name="port:exitcode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The exit code of the command. If there is an SSH connection related error (or timeout) the exitcode will be -32767 </configure></property>
+           <property name="port:errors" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string representation of actor execution errors, if any. 
+ </configure></property>
+           <property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+           <property name="prop:thirdParty" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The third party machine where the command wants to connect and needs to authenticate. Kepler can be used to do the authentication and then provide the password or private-key passphrase to the command. It should be defined as [user@]host[:port]. </configure></property>
+           <property name="prop:timeoutSeconds" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Timeout in seconds. The command will be timed out after the specified amount of time. Specify 0 to wait indefinitely for command termination. </configure></property>
+              <property name="prop:cleanupAfterError" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Kill remote process(es) after an error or timeout. Set this parameter only if connecting to a Unix server (other platforms do not support it). All processes belonging to the same group as the remote command (i.e., its children) will be killed. </configure></property>
+           <property name="prop:streaming mode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be sent in a streaming mode.
+   Note: Streaming is not currently implemented.
+ </configure></property>
+ 
+
+
+
+</property>
+<property name="class" value="org.kepler.actor.ssh.ExecuteCmd" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1213:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="target" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="command" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="thirdParty" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="false"/>
+  <property name="_hide" class="ptolemy.data.expr.Parameter" value="true"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH"/>
+</property>
+<property name="stdout" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="stderr" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="exitcode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="errors" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType21" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType41" value="urn:lsid:localhost:onto:4:1#CPES" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#Tutorial" class="org.kepler.sms.SemanticType"/>
+
+</entity>

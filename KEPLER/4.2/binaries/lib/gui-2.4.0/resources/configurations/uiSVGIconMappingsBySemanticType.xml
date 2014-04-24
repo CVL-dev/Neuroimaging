@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+
+This file contains a mapping from semantic types to icon names. 
+NOTE: these mappings are only used for a component if the component's
+LSID is not found in uiSVGIconMappingsByLSID.xml, and the component's
+class name is not found in uiSVGIconMappingsByClass.xml.
+
+-->
+<config>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#DataStructureOperation</name>
+        <value>xformation</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#DataArrayOperation</name>
+        <value>arrayproc</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#DataStringOperation</name>
+        <value>string</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#FileSystem</name>
+        <value>fileop</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#Filtering</name>
+        <value>math_limiter</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#LocalInput</name>
+        <value>documentRead</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#LocalOutput</name>
+        <value>documentWrite</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#RandomNumberOperation</name>
+        <value>math_random</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#Spectrum</name>
+        <value>math_signal-process</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#StatisticalOperation</name>
+        <value>stat</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#Time</name>
+        <value>timer</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#WebService</name>
+        <value>webservice</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#WorkflowControl</name>
+        <value>control</value>
+    </pair>
+    <pair>
+        <name>urn:lsid:localhost:onto:2:1#WorkflowDevelopment</name>
+        <value>utility</value>
+    </pair>
+</config>

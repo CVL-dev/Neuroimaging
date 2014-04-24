@@ -1,0 +1,49 @@
+<?xml version="1.0" standalone="no"?>
+<!--
+ *    '$RCSfile$'
+ *
+ *     '$Author: welker $'
+ *       '$Date: 2010-05-05 22:21:26 -0700 (Wed, 05 May 2010) $'
+ *   '$Revision: 24234 $'
+ *
+ *  For Details: http://kepler.ecoinformatics.org
+ *
+ * Copyright (c) 2004 The Regents of the University of California.
+ * All rights reserved.
+ *
+ * Permission is hereby granted, without written agreement and without
+ * license or royalty fees, to use, copy, modify, and distribute this
+ * software and its documentation for any purpose, provided that the
+ * above copyright notice and the following two paragraphs appear in
+ * all copies of this software.
+ *
+ * IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY
+ * FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
+ * IF THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY
+ * OF SUCH DAMAGE.
+ *
+ * THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE SOFTWARE
+ * PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND THE UNIVERSITY
+ * OF CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT,
+ * UPDATES, ?, OR MODIFICATIONS.
+-->
+
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<group>
+  <entity name="Graph Editor"
+          class="ptolemy.actor.gui.PtolemyEffigy$Factory">
+    <entity name="blank" class="ptolemy.actor.TypedCompositeActor"/>
+  </entity>
+  <!--
+  * MB Commented this out to fix Bug #2150 - see
+  * http://bugzilla.ecoinformatics.org/show_bug.cgi?id=2150
+  <entity name="Icon Editor"
+          class="ptolemy.actor.gui.PtolemyEffigy$Factory">
+    <property name="blank" class="ptolemy.vergil.icon.EditorIcon"/>
+  </entity>
+  -->
+</group>

@@ -1,0 +1,7 @@
+kepler-1.0              https://code.kepler-project.org/code/kepler/trunk/modules
+loader-for-kepler-1.0   https://code.kepler-project.org/code/kepler/trunk/modules
+comad-1.0               https://code.kepler-project.org/code/kepler/trunk/modules
+ppod-1.0                https://code.kepler-project.org/code/kepler/trunk/modules
+ppod-actors-1.0         https://code.kepler-project.org/code/kepler/trunk/modules
+ppod-gui-1.0            https://code.kepler-project.org/code/kepler/trunk/modules
+provenance-apps-1.0     https://code.kepler-project.org/code/kepler/trunk/modules

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-command-panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CipresCommandLanguage.xsd">
+
+	<cmd-params name="infile">
+		<datatype>InFile</datatype>
+		<is-mandatory>true</is-mandatory>
+		<label>Path to input nexus file</label>
+		<code-template>"SET WARNRESET=NO; Execute $infile ;"</code-template>
+	</cmd-params>
+	
+	<cmd-params name="outfile">
+		<datatype>InFile</datatype>
+		<is-mandatory>true</is-mandatory>
+		<label>Trees saved to file ...</label>
+		<code-template></code-template>
+	</cmd-params>
+	
+	<cmd-params name="maxtrees">
+		<datatype>Integer</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Maximum number of trees saved (Maxtrees)</label>
+		<tool-tip-text>Sets the maximum number of trees that can be saved</tool-tip-text>
+		<code-template>set maxtrees=$maxtrees;</code-template>
+		<test test-name="isGreaterThanZero">
+			<left-operand>$maxtrees</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="IsMultreesYes">
+			<left-operand>$multrees</left-operand>
+			<operator>equals</operator>
+			<right-operand>yes</right-operand>
+		</test>
+		<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+		<requirement-test-expression-message>Maxtrees must be greater than 0</requirement-test-expression-message>
+		<availability-test-expression>IsMultreesYes</availability-test-expression>
+		<availability-test-expression-message>autoincrease only available if multrees = yes</availability-test-expression-message>
+	</cmd-params>
+	<cmd-params name="autoincrease">
+		<datatype>Integer</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Auto-Increase</label>
+		<default-value>100</default-value>
+		<tool-tip-text>specifies the number of trees by which MAXTREES is increased when the number of trees saved reaches MAXTREES</tool-tip-text>
+		<code-template>set Increase=Auto; set AutoInc=$autoincrease;</code-template>
+		<test test-name="isGreaterThanZero">
+			<left-operand>$autoincrease</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="IsMultreesYes">
+			<left-operand>$multrees</left-operand>
+			<operator>equals</operator>
+			<right-operand>yes</right-operand>
+		</test>
+		<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+		<requirement-test-expression-message>Autoincrease must be greater than 0</requirement-test-expression-message>
+		<availability-test-expression>IsMultreesYes</availability-test-expression>
+		<availability-test-expression-message>autoincrease only available if multrees = yes</availability-test-expression-message>
+	</cmd-params>
+	<cmd-params name="hsearch">
+		<datatype>Paragraph</datatype>
+		<is-mandatory>true</is-mandatory>
+		<label>Heuristic search parameters</label>
+		<code-template>hsearch $hsearch; </code-template>
+		<cmd-params name="addseq">
+			<datatype>Excl</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>Addition sequence for stepwise addition</label>
+			<tool-tip-text>Specifies order that taxa are included in the stepwise addition algorithm</tool-tip-text>
+			<code-template>addseq=$addseq</code-template>
+			<list-item >
+				<value>simple</value>
+				<display>Simple</display>
+			</list-item>
+			<list-item>
+				<value>closest</value>
+				<display>Closest</display>
+			</list-item>
+			<list-item>
+				<value>asis</value>
+				<display>As is (the order in the file)</display>
+			</list-item>
+			<list-item is-default="true">
+				<value>random</value>
+				<display>Random</display>
+			</list-item>
+			<list-item>
+				<value>furthest</value>
+				<display>Furthest</display>
+			</list-item>
+		</cmd-params>
+		<cmd-params name="nreps">
+			<datatype>Integer</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>Number of replicates</label>
+			<tool-tip-text>The number of times the search should be repeated (if addition sequence is random, replicate searches may produce different inferences)</tool-tip-text>
+			<code-template>nreps=$nreps;</code-template>
+			<test test-name="isGreaterThanZero">
+				<left-operand>$nreps</left-operand>
+				<operator>greater_than</operator>
+				<right-operand>0</right-operand>
+			</test>
+			<test test-name="IsRandAddSeq">
+				<left-operand>$addseq</left-operand>
+				<operator>equals</operator>
+				<right-operand>random</right-operand>
+			</test>
+			<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+			<requirement-test-expression-message>NReps must be greater than 0</requirement-test-expression-message>
+			<availability-test-expression>IsRandAddSeq</availability-test-expression>
+			<availability-test-expression-message>NReps is only applicable when the addition sequence is "Random"</availability-test-expression-message>
+		</cmd-params>
+		<cmd-params name="swap">
+			<datatype>Excl</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>branch-swapping algorithm (swap)</label>
+			<tool-tip-text>Specifies the algorithm used by branch-swapping.  NNI rearrangements are a subset of those done by SPR, and SPR rearrangements are a subset of those done by TBR. Ordinarily, you will use TBR, but SPR or NNI can be used to reduce search times</tool-tip-text>
+			<code-template>swap=$swap</code-template>
+			<list-item>
+				<value>tbr</value>
+				<display>TBR (tree bisection-reconnection)</display>
+			</list-item>
+			<list-item is-default="true">
+				<value>spr</value>
+				<display>SPR (subtree pruning-regrafting)</display>
+			</list-item>
+			<list-item>
+				<value>nni</value>
+				<display>NNI (nearest-neighbor interchange)</display>
+			</list-item>
+			<list-item>
+				<value>none</value>
+				<display>None (no branch-swapping performed)</display>
+			</list-item>
+		</cmd-params>
+		<cmd-params name="multrees">
+			<datatype>Excl</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>Save all minimal trees (multrees)</label>
+			<tool-tip-text>Default behavior of Paup is to save all minimal trees found during branch swapping. Use of MULTREES=NO is not recommended, as it can drastically reduce the ability of branch swapping to find the best tree</tool-tip-text>
+			<code-template>multrees=$multrees</code-template>
+			<list-item>
+				<value>yes</value>
+				<display>yes (save all minimal trees)</display>
+			</list-item>
+			<list-item  is-default="true">
+				<value>no</value>
+				<display>no (save only one of the best trees found)</display>
+			</list-item>
+		</cmd-params>
+		<cmd-params name="rearrlimit">
+			<datatype>String</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>Max # rearrangements to perform (rearrlimit)</label>
+			<tool-tip-text>If an integer value is specified, the search will be limited to a user-specified number of tree rearrangements (branch swaps), where the integer-value is the maximum number of rearrangements to be performed.  Enter NONE or an integer. </tool-tip-text>
+			<code-template>rearrlimit=$rearrlimit</code-template>
+			<test test-name="isNONE">
+				<left-operand>$rearrlimit</left-operand>
+				<operator>equals</operator>
+				<right-operand>NONE</right-operand>
+			</test>
+			<test test-name="isPosInteger">
+				<left-operand>$rearrlimit</left-operand>
+				<operator>greater_than</operator>
+				<right-operand>0</right-operand>
+			</test>
+			<requirement-test-expression>isNONE OR isPosInteger</requirement-test-expression>
+			<requirement-test-expression-message>Rearrlimit must be an integer or NONE</requirement-test-expression-message>
+		</cmd-params>
+		<cmd-params name="timelimit">
+			<datatype>String</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>Max # seconds to search (timelimit)</label>
+			<default-value>None</default-value>
+			<tool-tip-text>If an integer value is specified, the search will be limited to a user-specified length of time, where the integer-value is the maximum number of seconds to search.  Enter NONE or an integer. </tool-tip-text>
+			<code-template>timelimit=$timelimit</code-template>
+			<test test-name="isNONE">
+				<left-operand>$timelimit</left-operand>
+				<operator>equals</operator>
+				<right-operand>NONE</right-operand>
+			</test>
+			<test test-name="isPosInteger">
+				<left-operand>$timelimit</left-operand>
+				<operator>greater_than</operator>
+				<right-operand>0</right-operand>
+			</test>
+			<requirement-test-expression>isNONE OR isPosInteger</requirement-test-expression>
+			<requirement-test-expression-message>Timelimit must be an integer or NONE</requirement-test-expression-message>
+		</cmd-params>
+		<cmd-params name="reconlimit">
+			<datatype>String</datatype>
+			<is-mandatory>false</is-mandatory>
+			<label>Reconnection limit (reconlimit)</label>
+			<default-value>Infinity</default-value>
+			<tool-tip-text>Limits scope of SPR and TBR rearrangements. If an integer-value is specified, the value corresponds to the sum of the number of nodes between each reconnected branch and the nodes incident to the branch that was cut for pruning (SPR) or bisection (TBR). A rearrangement limit of 1 corresponds to nearest-neighbor interchanges. Enter INFINITY or an integer. The default limit is set to infinity</tool-tip-text>
+			<code-template>reconlimit=$reconlimit</code-template>
+			<test test-name="isINFINITY">
+				<left-operand>$reconlimit</left-operand>
+				<operator>equals</operator>
+				<right-operand>INFINITY</right-operand>
+			</test>
+			<test test-name="isPosInteger">
+				<left-operand>$reconlimit</left-operand>
+				<operator>greater_than</operator>
+				<right-operand>0</right-operand>
+			</test>
+			<requirement-test-expression>isINFINITY OR isPosInteger</requirement-test-expression>
+			<requirement-test-expression-message>Reconlimit must be an integer or INFINITY</requirement-test-expression-message>
+		</cmd-params>
+	</cmd-params>
+</service-command-panel>

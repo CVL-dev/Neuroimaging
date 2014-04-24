@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width='520' height='520'>
+
+<script type="text/ecmascript">
+
+<![CDATA[
+     function show(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "visible");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "#f0faf0");
+     }
+     function unshow(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "hidden");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "white");
+     }
+     function showPoint(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "visible");
+     }
+     function unshowPoint(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "hidden");
+     }
+// ]]>
+
+</script>
+
+<polygon id='anorthositePolygon' points='242,116 278,116 260,80' onmouseover='show("anorthosite")' onmouseout='show("anorthosite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<polygon id='ultramaficPolygon' points='80,440 98,404 422,404 440,440'  onmouseover='show("ultramafic")' onmouseout='show("ultramafic")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<polygon id='noritePolygon' points='242,116 260,116 116,404 98,404'  onmouseover='show("norite")' onmouseout='show("norite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<polygon id='troctolitePolygon' points='260,116 278,116 422,404 404,404'  onmouseover='show("troctolite")' onmouseout='show("troctolite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<polygon id='gabbroPolygon' points='260,116 116,404 404,404'  onmouseover='show("gabbro")' onmouseout='show("gabbro")'  fill='white' style='stroke: black; stroke-width: 0.1; ' />
+<line x1='116' y1='404' x2='404' y2='404' style='fill: white; stroke: black; stroke-width: 0.3; ' />
+<line x1='80' y1='440' x2='440' y2='440' style='fill: white; stroke: black; stroke-width: 0.3; ' />
+<text x='245' y='75' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Plag</text>
+<text x='60' y='440' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Px</text>
+<text x='445' y='440' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Ol</text>
+<text x='222' y='116' style='fill:silver ; font-size: 10pt; font-family: serif; ' >90</text>
+<text x='283' y='116'  style='fill:silver ; font-size: 10pt; font-family: serif; '>90</text>
+<text x='176' y='206.0' style='fill:silver ; font-size: 10pt; font-family: serif; ' >65</text>
+<text x='329' y='206.0'  style='fill:silver ; font-size: 10pt; font-family: serif; '>65</text>
+<text x='124' y='314.0' style='fill:silver ; font-size: 10pt; font-family: serif; ' >35</text>
+<text x='381' y='314.0'  style='fill:silver ; font-size: 10pt; font-family: serif; '>35</text>
+<text x='78' y='404' style='fill:silver ; font-size: 10pt; font-family: serif; '>10</text>
+<text x='427' y='404' style='fill:silver ; font-size: 10pt; font-family: serif; '>10</text>
+<text id='anorthosite' x='200' y='98' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >anorthosite</text>
+<text id='ultramafic' x='260' y='460' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >
+     <tspan>plagioclase-bearing</tspan><tspan x='260' dy='1em'>ultramafic-rock</tspan>
+</text>
+<text id='norite' x='105' y='260' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >
+     <tspan>gabbro(s.s.)</tspan>
+     <tspan x='105' dy='1em'>gabbronorite</tspan>
+     <tspan x='105' dy='1em'>norite</tspan>
+</text>
+<text id='troctolite' x='355' y='260' fill='brown' text-anchor='left' visibility='hidden' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >troctolite</text>
+<text id='gabbro' x='260' y='316' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >
+     <tspan>olivine-gabbro</tspan>
+     <tspan x='260' dy='1em'>olivine-gabbronorite</tspan>
+     <tspan x='260' dy='1em'>olivine-norite</tspan>
+</text>
+<circle id='circle215' cx='339' cy='266' r='2' fill='blue' stroke='blue' stroke-width='0.8' onmouseover='showPoint("215")' onmouseout='showPoint("215")'/>
+<circle id='circle266' cx='355' cy='291' r='2' fill='blue' stroke='blue' stroke-width='0.8' onmouseover='showPoint("266")' onmouseout='showPoint("266")'/>
+<circle id='circle267' cx='359' cy='437' r='2' fill='blue' stroke='blue' stroke-width='0.8' onmouseover='showPoint("267")' onmouseout='showPoint("267")'/>
+<text id='215' x='339' y='260' fill='red' text-anchor='middle' visibility='hidden' style='font-size: 12pt; font-family: serif; ' >215</text>
+<text id='266' x='355' y='285' fill='red' text-anchor='middle' visibility='hidden' style='font-size: 12pt; font-family: serif; ' >266</text>
+<text id='267' x='359' y='431' fill='red' text-anchor='middle' visibility='hidden' style='font-size: 12pt; font-family: serif; ' >267</text>
+</svg>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="HuffmanDecoder" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:653:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.comm.HuffmanDecoder" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="pmf" class="ptolemy.data.expr.Parameter" value="{0.5, 0.5}">
+</property>
+
+<property name="alphabet" class="ptolemy.data.expr.Parameter" value="{0, 1}">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Communications">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:huffmanCodeBook" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="arrayType(string)" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ye Zhou</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: HuffmanDecoder.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Given a probability distribution and the corresponding alphabet,&#10; decode the input using Huffman code and send the result to the output&#10; port. Its base class HuffmanBasic generates the code book.&#10; The decoder simply decode the input according to this code book.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="port:huffmanCodeBook" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A port that produces the Huffman code book generated  based on the probability mass function. It is an array  of strings.</configure></property>
+<property name="prop:alphabet" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The alphabet of the input. This parameter is an ArrayToken.  Its default value is {0, 1}.</configure></property>
+<property name="prop:pmf" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The probability mass function. This parameter is an array  of doubles. Each element should be positive and the sum of  all elements should be 1.0. The default value is {0.5, 0.5}.</configure></property>
+</property></entity>

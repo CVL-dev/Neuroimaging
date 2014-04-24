@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<entity name="Variable Setter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:10:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee, Steve Neuendorffer, Jerome Blanc</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+Set the value of a variable. The result may occur at two different times, depending on the value of the delayed parameter. 
+If delayed is true, then the change to the value of the variable is implemented in a change request, and consequently will not take hold until the end of the current toplevel iteration. This helps ensure that users of value of the variable will see changes to the value deterministically (independent of the schedule of execution of the actors). 
+If delayed is false, then the change to the value of the variable is performed immediately. This allows more frequent reconfiguration, and can mimic the operation of PGM's graph variables. 
+Note that the variable name is observed during preinitialize(). If it is changed after that, the change will not take effect until the next time the model is executed. Moreover, the type of the variable is constrained in preinitialize() to be at least that of the input port for this actor. 
+The variable can be either any attribute that implements the Settable interface. If it is in addition an instance of Variable, then the input token is used directly to set the value, and the type of the variable is constrained to be the same as the type of the input. Otherwise, then input token is converted to a string and the setExpression() method on the variable is used to set the value. 
+The variable can occur anywhere in the hierarchy above the current level. If the variable is not found in the container, then the container of the container is checked until we reach the top level.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.SetVariable" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:886:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Variable" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,89 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="spa" class="ptolemy.moml.EntityLibrary">
+  <configure>
+    <?moml
+      <group>
+        <doc>spa sources</doc>
+
+        <entity name="HelloWorld" class="ptolemy.actor.lib.scidac.HelloWorld">
+        	<doc>HelloWorld</doc>
+        </entity>  
+        
+        <entity name="HelloWorldSwing" class="ptolemy.actor.lib.scidac.HelloWorldSwing">
+        	<doc>HelloWorldSwing</doc>
+        </entity>  
+        
+        <entity name="StringConst" class="ptolemy.actor.lib.scidac.StringConst">
+        	<doc>StringConst</doc>
+        </entity>  
+        
+        <entity name="TryComboBox" class="ptolemy.actor.lib.scidac.TryComboBox">
+        	<doc>TryComboBox</doc>
+        </entity>          
+        
+<!-- THIS COULD BE INSERTED AS A CHOICE FOR TRYCOMBOBOX'S FUNSTION PARAMETER.
+	<property name="function" class="ptolemy.kernel.util.StringAttribute" value="search">
+		<property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+			<property name="search" class="ptolemy.kernel.util.StringAttribute" value="search">
+			</property>
+			<property name="extractPosition" class="ptolemy.kernel.util.StringAttribute" value="extractPosition">
+			</property>
+			<property name="searchAsync" class="ptolemy.kernel.util.StringAttribute" value="searchAsync">
+			</property>
+		</property>
+	</property>      
+-->        
+<!--               
+        <entity name="XQueryMapper" class="ptolemy.actor.lib.scidac.XQueryMapper">
+        	<doc>XQueryMapper</doc>
+        </entity>     
+        
+        <entity name="WebServiceInterface" class="ptolemy.actor.lib.scidac.WebServiceInterface">
+        	<doc>WebServiceInterface</doc>
+        </entity>                 
+-->
+<!--         
+        <entity name="CelsiusConverterP" class="ptolemy.actor.lib.scidac.CelsiusConverterP">
+        	<doc>CelsiusConverterP</doc>
+        </entity>  
+        
+        <entity name="WebServiceInterfaceNonXQuery" class="ptolemy.actor.lib.scidac.WebServiceInterfaceNonXQuery">
+        	<doc>WebServiceInterfaceNonXQuery</doc>
+        </entity>      
+       
+        <entity name="HelloWorld1" class="ptolemy.actor.lib.scidac.HelloWorld1">
+        	<doc>HelloWorld1</doc>
+        </entity>  
+        
+        <entity name="StringConst1" class="ptolemy.actor.lib.scidac.StringConst1">
+        	<doc>StringConst1</doc>
+        </entity> 
+       
+
+        <entity name="StringConstWSDL" class="ptolemy.actor.lib.scidac.StringConstWSDL">
+        	<doc>StringConstWSDL</doc>
+        </entity> 
+        
+        <entity name="DummyActor" class="ptolemy.actor.lib.scidac.DummyActor">
+        	<doc>DummyActor</doc>
+        </entity> 
+        
+        <entity name="WebServiceActor" class="ptolemy.actor.lib.scidac.WebServiceActor">
+        	<doc>WebServiceActor</doc>        
+        </entity>         
+
+   	<entity name="getClone_DDBJEntry" class="ptolemy.actor.lib.scidac.WebServiceActor">
+		<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry"></property>	
+		<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry"></property>	
+		<property name="userName" class="ptolemy.kernel.util.StringAttribute" value=""></property>	
+		<property name="password" class="ptolemy.kernel.util.StringAttribute" value=""></property>	
+    		<property name="method" class="ptolemy.kernel.util.StringAttribute" value="getClone_DDBJEntry"></property> 
+    		<property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var"></property>
+   	</entity>  
+-->
+      </group>
+    ?>
+  </configure>
+</entity>

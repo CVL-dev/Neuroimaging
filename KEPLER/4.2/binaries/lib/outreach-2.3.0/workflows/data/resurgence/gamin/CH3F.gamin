@@ -1,0 +1,13 @@
+ $CONTRL COORD=CART UNITS=ANGS $END
+ $DATA
+Fluoromethane
+Put symmetry info here
+
+C      6.0    -0.53110  -0.27620   0.00550 
+F      9.0     0.84750  -0.33010   0.02390 
+H      1.0    -0.86970   0.78080   0.00040 
+H      1.0    -0.94290  -0.78200   0.90350 
+H      1.0    -0.91870  -0.78300  -0.90280 
+ $END
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<entity name="Text File Writer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:295:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The TextFileWriter actor reads a string token and writes it, without any enclosing quotation marks, to a file. The actor outputs the file path of the generated file.</p> 
+
+<p>The path and name of the output file are specified via input ports. Specify whether the input is appended to the specified file (if it exists), or if an existing file is overwritten via the changeExisting parameter. </p>
+
+<p>The TextFileWriter is similar to the FileWriter actor, except that the TextFileWriter actor does not add line breaks to its output, while the FileWriter actor does.</p></configure></property>
+<property name="port:fileToWrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file path of the file to which to write. See FileParameter for more information about specifying file names.</configure></property>
+<property name="port:string" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives a string token to write-one line at a time--to a file.</configure></property>
+<property name="port:fileWritten" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the name and path of the output file.</configure></property>
+<property name="prop:Change existing" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the input is appended to the specified file (if it exists), or if an existing file is overwritten.</configure></property>
+</property>
+<property name="class" value="org.resurgence.actor.TextFileWriter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1120:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="string" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="fileToWrite" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="fileWritten" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WriterOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

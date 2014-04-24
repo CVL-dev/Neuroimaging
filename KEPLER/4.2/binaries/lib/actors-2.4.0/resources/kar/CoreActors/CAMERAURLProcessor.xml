@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<entity name="CAMERAURLProcessor" class="ptolemy.kernel.ComponentEntity">
+	<property name="entityId" value="urn:lsid:kepler-project.org:actor:556:1"
+		class="org.kepler.moml.NamedObjId" />
+	<property name="class" value="org.camera.service.CAMERAURLProcessor"
+		class="ptolemy.kernel.util.StringAttribute">
+		<property name="id" value="urn:lsid:kepler-project.org:actor:556:1"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+	<property name="kepler:outputPort" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="output"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="string"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+	<property name="delimiter" class="ptolemy.data.expr.Parameter"
+		value="">
+	</property>
+
+	<property name="urlValue" class="ptolemy.data.expr.Parameter"
+		value="">
+	</property>
+
+	<property name="dropDownValue" class="ptolemy.data.expr.Parameter"
+		value="">
+	</property>
+
+	<property name="semanticType00" class="org.kepler.sms.SemanticType"
+		value="urn:lsid:localhost:onto:2:1#WebService">
+	</property>
+
+	<property name="KeplerDocumentation"
+		class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+		<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>null</configure>
+		</property>
+		<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>Madhu, SDSC</configure>
+		</property>
+		<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>null</configure>
+		</property>
+		<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>&#10;&lt;p&gt;The RESTService actor provides the user
+				with&#10;a plug-in interface to execute any REST web service. Given
+				a URL&#10;for the web service and type of the service GET or POST.
+				It works&#10;with both type of servers implementing REST standards
+				or not.&#10;&lt;/p&gt;&#10;&lt;p&gt;&#10;User shall provide all the
+				parameters that server is expecting&#10;either through user
+				configured ports or through actor defined&#10;paramInputPort. For
+				the user defined port(s), port name is the&#10;parameter name and
+				its value is parameter value. Parameters provided&#10;through actor
+				defined paramInputPort should have name &amp; value&#10;separated by
+				= and each name value pair should be separated by a&#10;comma. Same
+				thing holds true for actor defined fileInputPort,&#10;parameter name
+				and the file path are separated by a = and name value&#10;pairs are
+				separated by a comma. This port is not read for the
+				GET&#10;service.&#10;&lt;/p&gt;&#10;&lt;p&gt;&#10;&lt;li&gt; Please
+				double-click on the actor to start
+				customization.&#10;&lt;/li&gt;&lt;li&gt; To enter a URL for the
+				service URLs, select from&#10;&quot;methodtype&quot; dropdown and
+				select GET or POST as appropriate. &#10;&lt;/li&gt;&lt;li&gt; After
+				you select the URL and methodType, &quot;Commit&quot;
+				.&#10;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;/i&gt;&#10;&lt;/p&gt;
+			</configure>
+		</property>
+	</property>
+</entity>

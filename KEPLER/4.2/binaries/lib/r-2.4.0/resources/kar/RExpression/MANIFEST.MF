@@ -1,0 +1,8 @@
+Manifest-Version: 1.4.2
+KAR-Version: 2.0
+lsid: urn:lsid:kepler-project.org:kar:360:2
+
+Name: RExpression.xml
+lsid: urn:lsid:kepler-project.org:actor:360:2
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler

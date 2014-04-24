@@ -1,0 +1,239 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="BaselineLayers" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.beta">
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-10">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:director:1:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:directorclass:1:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Director">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Director">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[70.0, 45.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The SDF Director is often used to oversee fairly simple, sequential workflows in which the director can determine the order of actor invocation from the workflow. Types of workflows that would run well under an SDF Director include processing and reformatting tabular data, converting one data type to another, and reading and plotting a series of data points. A workflow in which an image is read, processed (rotated, scaled, clipped, filtered, etc.), and then displayed, is also an example of a sequential workflow that requires a director simply to ensure that each actor fires in the proper order (i.e., that each actor executes only after it receives its required inputs).&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director is very efficient and will not tax system resources with overhead. However, this efficiency requires that certain conditions be met, namely that the data consumption and production rate of each actor in an SDF workflow be constant and declared. If an actor reads one piece of data and calculates and outputs a single result, it must always read and output a single token of data. This data rate cannot change during workflow execution and, in general, workflows that require dynamic scheduling and/or flow control cannot use this director. Additionally, the SDF Director has no understanding of passing time (at least by default), and actors that depend on a notion of time may not work as expected. For example, a TimedPlotter actor will plot all values at time zero when used in SDF. &lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the SDF Director requires that all actors in its workflow be connected. Otherwise, the director cannot account for concurrency between disconnected workflow parts. Usually, a PN Director should be used for workflows that contain disconnected actors; however, the SDF Director's allowDisconnectedGraphs parameter may also be set to true. The SDF Director will then schedule each disconnected &quot;island&quot; independently. The director cannot infer the sequential relationship between disconnected actors (i.e., nothing forces the director to finish executing all actors on one island before firing actors on another). However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF model indicate an error.&lt;/p&gt;&#10; &#10;&lt;p&gt;Because SDF Directors schedule actors to fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause &quot;deadlock&quot; errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a SampleDelay actor to generate and inject an initial input value into the workflow.&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director determines the order in which actors execute and how many times each actor needs to be fired to complete a single iteration of the workflow. This schedule is calculated BEFORE the director begins to iterate the workflow. Because the SDF Director calculates a schedule in advance, it is quite efficient. However, SDF workflows must be static. In other words, the same number of tokens must be consumed/produced at every iteration of the workflow. Workflows that require dynamic control structures, such as a BooleanSwitch actor that sends output on one of two ports depending on the value of a 'control', cannot be used with an SDF Director because the number of tokens on each output can change for each execution.&lt;/p&gt;&#10;&#10;&lt;p&gt;Unless otherwise specified, the SDF Director assumes that each actor consumes and produces exactly one token per channel on each firing. Actors that do not follow the one-token-per-channel firing convention (e.g., Repeat or Ramp) must declare the number of tokens they produce or consume via the appropriate parameters. &lt;/p&gt;&#10;&#10;&lt;p&gt;The number of times a workflow is iterated is controlled by the director's iterations parameter. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. &lt;/p&gt;&#10;&#10;&lt;p&gt;The amount of data processed by an SDF workflow is a function of both the number of times the workflow iterates and the value of the director's vectorizationFactor parameter. The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. &lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director has several advanced parameters that are generally only relevant when an SDF workflow contains composite components. In most cases the period, timeResolution, synchronizeToRealTime, allowRateChanges, timeResolution, and constrainBufferSizes parameters can be left at their default values.&lt;/p&gt;&#10;&#10;&lt;p&gt;For more information about the SDF Director, see the Ptolemy documentation (http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf).&lt;/p&gt;&#10;&#10;</configure></property>
+<property name="prop:allowDisconnectedGraphs" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to allow disconnected actors in the workflow (by default, all actors are required to be connected). If disconnected actors are permitted, the SDF Director will schedule each disconnected 'island' independently. Nothing &quot;forces&quot; the director to finish executing all actors on one island before firing actors on another. However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF workflow indicate an error.</configure></property>
+<property name="prop:allowRateChanges" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether dynamic rate changes are permitted or not. By default, rate changes are not permitted, and the director will perform a check to disallow such workflows. If the parameter is selected, then workflows that require rate parameters to be modified during execution are valid, and the SDF Director will dynamically compute a new schedule at runtime. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:constrainBufferSizes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether buffer sizes are fixed. By default, buffers are fixed, and attempts to write to the buffer that cause the buffer to exceed its scheduled size result in an error. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time precision used by this director. All time values are rounded to the nearest multiple of this number. The value is a double that defaults to &quot;1E-10&quot; (which is 10-10). This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:iterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify the number of times a workflow is iterated. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </configure></property>
+<property name="prop:vectorizationFactor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the execution should synchronize to real time or not. By default, the director does not synchronize to real time. If synchronize is selected, the director will only process the workflow when elapsed real time matches the product of the period parameter and the iteration count. Note: if the period parameter has a value of 0.0 (the default), then selecting this parameter has no effect. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:period" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time period of each iteration. The value is a double that defaults to 0.0, which means that the director does not increment workflow time. If the value greater than 0.0, the actor will increment workflow time each time it fires. This is an advanced parameter that can usually be left at its default value. </configure></property>
+</property>    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="The Kepler EarthGrid contains a base set of ready-to-use environmental &#10;layers for use with Ecological Niche Modeling (ENM) workflows. Use this &#10;workflow to download and unzip the layer set into the Kepler cache &#10;(~/.kepler/unzip/).&#10;&#10;The environmental layers are created from the historical IPCC climate &#10;data (10 layers) and HYDRO1k topographical data (5 layers). The data are &#10;global in extent and have a cell resolution of 0.1 degrees (1800 x 3600 cells).&#10;All of the data layers have been preprocessed to be in the *.asc format &#10;and all are scaled to the same size.&#10;&#10;For more information, double-click the Documentation button, or right-click the&#10;Workflow canvas and select Documentation from the drop-down menu.&#10;&#10;Dan Higgins - NCEAS&#10;February 2007&#10;&#10;">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[110.0, 265.0]">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={176, 24, 1056, 785}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[725, 636]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{365.5, 305.0}">
+    </property>
+    <property name="DocViewer" class="ptolemy.kernel.util.SingletonAttribute">
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The DocViewer attribute renders a clickable documentation icon on the Workflow canvas. Clicking the icon opens the workflow documentation window.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:467:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.kernel.util.SingletonAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1184:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="viewer" class="ptolemy.vergil.basic.DocViewerFactory">
+        </property>
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-5.0, 285.0]">
+        </property>
+    </property>
+    <property name="DocAttribute" class="ptolemy.vergil.basic.DocAttribute">
+        <property name="description" class="ptolemy.data.expr.StringParameter" value="&lt;p&gt;The Kepler EarthGrid contains a base set of ready-to-use environmental layers for use with Ecological Niche Modeling (ENM) workflows. Use the BaselineLayers workflow to download and unzip the prepared layers into the Kepler cache (~/.kepler/unzip/). Cached files can later be moved to a permanent location on the local host.&lt;/p&gt;&#10;&#10;&lt;p&gt;The environmental layers are created from the historical &lt;a href=&quot;http://www.ipcc.ch/ &quot;&gt;IPCC&lt;/a&gt; climate data (10 layers) and &lt;a href=&quot;http://lpdaac.usgs.gov/gtopo30/hydro/readme.asp&quot;&gt;HYDRO1k&lt;/a&gt; topographical data (5 layers). The data are global in extent and have a cell resolution of 0.1 degrees (1800 x 3600 cells). All of the data layers have been preprocessed to be in the *.asc format and all are scaled to the same size.&lt;/p&gt;&#10;&#10;&lt;p&gt;The data are originally retrieved via a search for &quot;IPCC&quot; on the EarthGrid from the Kepler Data tab. The dataset (named &quot;Baseline Layers for ENM/GARP Calculations (IPCC/Hydro1K)&quot;) appears at the bottom of the returned search results. &lt;/p&gt;&#10;&#10;&lt;p&gt;Once the layers have been downloaded to the cache, they must be extracted from the zip file. The &lt;i&gt;Baseline Layers for ENM/GARP Calculations (IPCC, Hydro1K)&lt;/i&gt; actor's &lt;code&gt;Data Output Format&lt;/code&gt; parameter instructs the actor to unzip the downloaded layers into the Kepler cache and output an array of the contained layers (*.asc files). The &lt;i&gt;Array To Sequence&lt;/i&gt; actor then transform the array of file names into a sequence of file names that are displayed by the &lt;i&gt;Display&lt;/i&gt; actor.&lt;/p&gt;&#10;&#10;&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Before the data can be used in the ENM workflow, they must be converted to a raw binary format (*.raw) and collected into a single layer set (described by a *.dxl file) that can be sampled by the GARP algorithm. See &quot;Ecological Niche Modeling in Kepler&quot; (http://cvs.ecoinformatics.org/cvs/cvsweb.cgi/kepler-docs/user/GuideToENM.doc) for more information.&lt;/p&gt;&#10;">
+        </property>
+        <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Dan Higgins -- NCEAS">
+        </property>
+        <property name="since" class="ptolemy.kernel.util.StringAttribute" value="February  2007">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:436:1">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:276:52:1">
+    </property>
+    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={134, 614, 975, 255}, maximized=false}">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[975, 233]">
+        </property>
+        <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+        </property>
+        <property name="suppressBlankLines" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:7:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.Display">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:883:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#TextualOutputActor">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[315.0, 215.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yuhong Xiong, Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Display actor reads tokens of any type via its input multiport, and displays each token on a separate line in a text display window.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specify the size of the text display window with the rowsDisplayed and columnsDisplayed parameters. Simply resizing the window onscreen does not persistently change the size when the workflow is saved, closed, and then re-opened. &lt;/p&gt;&#10;&#10;&lt;p&gt;If the input is a string token, then the actor strips the surrounding quotation marks before displaying the value.&lt;/p&gt; &#10;&#10;&lt;p&gt;Select the suppressBlankLines parameter to specify that the actor not add blank lines to the display. By default, the actor will add blank lines.&lt;/p&gt;&#10;&#10;&lt;p&gt;Note: this actor can consume large amounts of memory. It is not advisable to use it to display large output streams.&lt;/p&gt;&#10;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts tokens of any type.</configure></property>
+<property name="prop:suppressBlankLines" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should display blank lines (the default) or suppress them.</configure></property>
+<property name="prop:rowsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vertical size of the display, in rows. The value is an integer that defaults to 10.</configure></property>
+<property name="prop:columnsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The horizontal size of the display, in columns. The value is an integer that defaults to 40.</configure></property>
+<property name="prop:title" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The title of the text display window. If specified, the value will appear in the title bar of the text display window.</configure></property>
+</property>    </entity>
+    <entity name="Array To Sequence" class="ptolemy.domains.sdf.lib.ArrayToSequence">
+        <property name="arrayLength" class="ptolemy.data.expr.Parameter" value="16">
+        </property>
+        <property name="enforceArrayLength" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:31:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.sdf.lib.ArrayToSequence">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:907:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ArrayActor">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DataArrayOperation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[180.0, 180.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The ArrayToSequence actor  outputs the individual values of an array as a sequence of tokens.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can accept an array with any element type (e.g., int, double, etc.). Each time the actor fires, it reads and disassembles one array and outputs a sequence of values.&lt;/p&gt;&#10;&#10;&lt;p&gt;The arrayLength parameter can be used to specify the length of the source array. If the enforceArrayLength parameter is selected, then the actor will only accept arrays of the specified length. The enforceArrayLength parameter should be selected if using an SDF director. If using other directors, such as DE or PN, the enforceArrayLength parameter can be deselected, in which case the arrayLength parameter is ignored.&lt;/p&gt;&#10;&#10;&lt;p&gt;The ArrayToSequence actor is similar to the ArrayToElements actor, except that it outputs values as a sequence via a single output port. The ArrayToElements actor outputs individual values on multiple channels of the output port. Use the ArrayAccumulator actor to convert an array into a single string, where each value is separated by a specified separator.&lt;/p&gt;&#10;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of elements of any type.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a sequence of the disassembled array values. </configure></property>
+<property name="prop:enforceArrayLength" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to enforce the arrayLength parameter. By default, the arrayLength is enforced, and the actor will only accept arrays of the specified length.</configure></property>
+<property name="prop:arrayLength" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The size of the input array. The default is 1.</configure></property>
+</property>    </entity>
+    <entity name="Baseline Layers for ENM/GARP Calculations (IPCC, Hydro1K)2" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="emlFilePath" class="ptolemy.data.expr.FileParameter" value="">
+            <display name="EML File"/>
+        </property>
+        <property name="dataFilePath" class="ptolemy.data.expr.FileParameter" value="">
+            <display name="Data File"/>
+        </property>
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;schema&gt;&#10;  &lt;table name=&quot;BaselineLayers&quot;&gt;&#10;    &lt;field name=&quot;zipped_asc_layers&quot; dataType=&quot;STRING&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <display name="Schema Definition"/>
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <display name="SQL Command"/>
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="selectedEntity" class="ptolemy.data.expr.StringParameter" value="BaselineLayers">
+            <display name="Selected Entity"/>
+        </property>
+        <property name="dataOutputFormat" class="ptolemy.data.expr.StringParameter" value="As UnCompressed File Name">
+            <display name="Data Output Format"/>
+        </property>
+        <property name="fileExtensionFilter" class="ptolemy.data.expr.StringParameter" value="asc">
+            <display name="File Extension Filter"/>
+        </property>
+        <property name="checkVersion" class="ptolemy.data.expr.Parameter" value="false">
+            <display name="Check for latest version"/>
+        </property>
+        <property name="_tableauFactory" class="org.kepler.objectmanager.data.db.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="higgins.5087.7">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[80.0, 180.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>matt jones, jing tao, chad</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The EML2Dataset actor provides access to a wide variety of data packages that have been described using EML (Ecological Metadata Language). The actor accesses an EML dataset and handles the mechanical issues involved in parsing metadata, downloading the dataset (if applicable), and emitting data to downstream actors.&lt;/p&gt;&#10;&#10;&lt;p&gt;Each data package contains an EML metadata description and one or more data entities (e.g., data tables, spatial raster images, spatial vector images). The EML metadata allows the described data to be easily ingested into Kepler and exposed for use in downstream components. The data packages can be accessed from the local file system or through any EcoGrid server that provides access to its collection of data objects. The supported data transfer protocols include http, ftp, file, ecogrid, and srb. &lt;/p&gt;&#10;&#10;&lt;p&gt;After parsing the EML metadata, the actor automatically reconfigures its exposed ports to provide one port for each attribute described by the first entity of the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document. To preview the data, right-click the actor icon and select Preview from the drop-down menu.&lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the ports created by the EML2Dataset actor represent data fields, and one tuple of data (e.g., one database row) is emitted on these ports each time the actor fires. Alternatively, the actor can be configured so that the ports represent an array of field values (&quot;AsColumnVector&quot;), or so that the ports represent an entire table of data (&quot;AsTable&quot;). Data tables are formatted in comma-separated-value (CSV) format.&lt;/p&gt;&#10;&#10;&lt;p&gt;If more than one data entity is described in the EML metadata, then the output of the actor defaults to the first entity listed in the EML. To select the other entities, specify an entity with the Selected parameter, or use the Query Builder to describe the filter and join that should be used to produce the data output. To use the Query Builder, right-click the actor and select &quot;Open Actor.&quot; Specify the fields to be output and any filtering constraints to be applied.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output ports are automatically configured to provide one port for each attribute in the first entity described in the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:isLenient" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this parameter is selected, &quot;extra&quot; columns of data (e.g., comments that people have entered on a line or something of that nature) that are not described in the metadata are ignored, allowing the workflow to execute. If the option is unchecked (the default), the workflow execution will halt until the discrepancy between the data and metadata is corrected.</configure></property>
+<property name="prop:checkVersion" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to check the EarthGrid for updates to the data. If the actor finds a version of the data that is more recent than the cached data on your local system, the actor will prompt the user to either download the latest data and metadata or ignore the newer version. Note that different versions of the data can have vastly different structures (new columns, or even new tables of data might be included or removed). If this parameter is selected, users should be prepared to handle changes that might arise from differences in the data structure.</configure></property>
+<property name="prop:selectedEntity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this EML data package has multiple entities, the selectedEntity parameter specifies which entity should be output. When this parameter is unset (the default), data from the first entity described in an EML package is output. This parameter is only used if no query statement is specified, or if a query statement is used and the output format is one of &quot;As Table&quot;, &quot;As Byte Array&quot;, &quot;As Uncompressed File Name&quot;, and &quot;As Cache File Name&quot;. To specify a query statement, right-click the actor and select Open Actor.</configure></property>
+<property name="prop:dataOutputFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in a data table, or one port that emits the entire data table at once in CSV format. Specifically, the output format choices are:&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Field (the default)&lt;/td&gt;&#10;&lt;td&gt; The actor creates one output port for each field (i.e., column/attribute/variable) that is described in the EML metadata for the data package. The type of each port (e.g., string, int, double, etc.) matches the base type of the field. If a query statement has been used to subset the data, then only those fields selected in the query statement will be configured as ports. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Table&lt;/td&gt;&#10;&lt;td&gt; The selected data will be output as a string that contains the entire entity data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and NumColumns - the number of fields in the table. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Row&lt;/td&gt;&#10;&lt;td&gt;  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Byte Array&lt;/td&gt;&#10;&lt;td&gt; Selected data will be output as an array of bytes. The actor creates two output ports: BinaryData - contains the raw data itself, and EndOfStream - indicates whether the end of data stream has been reached.&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As UnCompressed File Name&lt;/td&gt;&#10;&lt;td&gt; This format is only used when the data package is a compressed file (zip, tar, et al). The compressed archive file is uncompressed after it is downloaded. The actor creates one output port, which contains an array of the filenames of all of the uncompressed archive files. If a FileExtensionFilter is specified, then the array will only contain files that match the specified extension.&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Cache File Name&lt;/td&gt;&#10;&lt;td&gt;   Kepler stores data files downloaded from remote sites into its cache system. This output format will send the local cache file path for the data package so that workflow designers can directly access the cache files. The actor creates two output ports: CacheLocalFileName (the local file path) and CacheResourceName (the EML data link. e.g., ecogrid://knb/tao.2.1).&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Column Vector&lt;/td&gt;&#10;&lt;td&gt; This output format is similar to &quot;As Field&quot;, except instead of sending out a single value on each port, the actor sends out an array of all of the data for each field. The type of each port is an array of the base type for the field.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As ColumnBased Record&lt;/td&gt;&#10;&lt;td&gt;  This output format sends all data on one port using a record structure that encapsulates the entire data entity. The record will contain one array for each data field, and the type of each array will be determined by the type of the field it represents.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;&#10;</configure></property>
+<property name="prop:emlFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path of a local EML metadata file used to describe and access an EML data set.</configure></property>
+<property name="prop:fileExtensionFilter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A file extension used to limit the array of file names returned by the actor when the selected output type is &quot;As UnCompressed File Name&quot;. This parameter is ignored for other output types.</configure></property>
+<property name="prop:dataFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to a local data file described by EML (must be used in conjunction with a local EML file). The actor will retrieve the data and automatically configure its ports to output it.</configure></property>
+</property>        <port name="UnzippedFileName" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="Display.input" relation="relation2"/>
+    <link port="Array To Sequence.input" relation="relation"/>
+    <link port="Array To Sequence.output" relation="relation2"/>
+    <link port="Baseline Layers for ENM/GARP Calculations (IPCC, Hydro1K)2.UnzippedFileName" relation="relation"/>
+</entity>

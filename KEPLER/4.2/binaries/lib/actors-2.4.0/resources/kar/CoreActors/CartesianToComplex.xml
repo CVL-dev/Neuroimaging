@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<entity name="Cartesian To Complex" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:35:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Michael Leung, Jie Liu, Edward A. Lee, Paul Whitaker</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The CartesianToComplex actor converts a Cartesian pair (x,y) to a single complex token (e.g., 2 + 3i), which it outputs.</p>
+
+<p>Each time the actor fires, it consumes exactly one token from each of its two input ports
+ (x and y) and outputs a complex token. The x-input becomes the real part of the complex output and the y-input becomes the imaginary part. If either input port is empty, the actor outputs nothing.</p></configure></property>
+<property name="port:x" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the x-coordinate of the Cartesian pair. The type is double.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the complex token.</configure></property>
+<property name="port:y" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the y-coordinate of the Cartesian pair. The type is double.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.conversions.CartesianToComplex" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:911:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="x" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="y" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="complex" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

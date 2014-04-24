@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Transitions>
+    <region name = "diorite gabbro anorthosite">
+	<nextDiagram id = "2">
+            <cond>
+		<left>M</left>
+		<right>90</right>
+		<op>lt</op>
+            </cond>
+            <cond>
+		<left>Ol</left>
+		<right>0</right>
+		<op>gt</op>
+            </cond>
+	</nextDiagram>
+	<nextDiagram id = "3">
+            <cond>
+		<left>M</left>
+		<right>90</right>
+		<op>lt</op>
+            </cond>
+            <cond>
+		<left>Hbl</left>
+		<right>0</right>
+		<op>gt</op>
+            </cond>
+	</nextDiagram>
+	<nextDiagram id = "4">
+            <cond>
+		<left>M</left>
+		<right>90</right>
+		<op>gt</op>
+            </cond>
+            <cond>
+		<left>Cpx</left>
+		<right>0</right>
+		<op>gt</op>
+            </cond>
+	</nextDiagram>
+	<nextDiagram id = "4">
+            <cond>
+		<left>M</left>
+		<right>90</right>
+		<op>gt</op>
+            </cond>
+            <cond>
+		<left>Opx</left>
+		<right>0</right>
+		<op>gt</op>
+            </cond>
+	</nextDiagram>
+	<nextDiagram id = "5">
+            <cond>
+		<left>M</left>
+		<right>90</right>
+		<op>gt</op>
+            </cond>
+            <cond>
+		<left>Hbl</left>
+		<right>0</right>
+		<op>gt</op>
+            </cond>
+	</nextDiagram>
+	<nextDiagram id = "5">
+            <cond>
+		<left>M</left>
+		<right>90</right>
+		<op>gt</op>
+            </cond>
+            <cond>
+		<left>Px</left>
+		<right>0</right>
+		<op>gt</op>
+            </cond>
+	</nextDiagram>
+    </region>
+    <region name = "gabbro">
+	<nextDiagram id = "6">
+	</nextDiagram>
+    </region>
+    <region name = "norite">
+	<nextDiagram id = "6">
+	</nextDiagram>
+    </region>
+</Transitions>

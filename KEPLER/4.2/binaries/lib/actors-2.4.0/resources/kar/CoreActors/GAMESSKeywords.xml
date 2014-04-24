@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<entity name="GAMESS Keywords" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:390:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GamessKeywords actor is a composite actor used inside the GamessInputGenerator actor, which is used in computational chemistry workflows.</p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system. </p>
+
+<p>GAMESS (General Atomic and Molecular Electronic Structure System) is a program that can perform a broad range of quantum chemical computations. For more information about GAMESS, see http://www.msg.ameslab.gov/GAMESS/</p></configure></property>
+
+<property name="prop:ScfType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:MpLevel" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file.For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:RunType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:ExeType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:Charge" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:Multiplicity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:TimeLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:ReplicatedMemory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:DistributedMemory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:GaussianBasisSet" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:NumberOfGaussians" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:HeavyAtomPolarizationFunctions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:LightAtomPolarizationFunctions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+<property name="prop:HeavyAtomDiffuseShell" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:LightAtomDiffuseShell" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:DftType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:GamessInputDirectory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/. </configure></property>
+<property name="prop:NameOfStep" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter used to create the GAMESS input file. For more information about GAMESS parameters, see http://www.msg.ameslab.gov/GAMESS/.  </configure></property>
+
+<property name="port:gamessInputName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts molecular model files that are formatted for use in GAMESS software (e.g., gamin files) </configure></property>
+<property name="port:gamessAtomData" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts atom data, which can be generated by the GamessAtomDataExtractor actor. </configure></property>
+<property name="port:gamessInputHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts parameterized GAMESS input files. </configure></property>
+</property>
+<property name="class" value="org.resurgence.moml.GamessKeywords" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.GamessKeywords" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1154:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="gamessInputHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[640.0, 555.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="gamessInputName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 255.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="gamessAtomData" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[40.0, 410.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ProcessingUtilitiesActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#ProcessUtility" class="org.kepler.sms.SemanticType"/>
+</entity>

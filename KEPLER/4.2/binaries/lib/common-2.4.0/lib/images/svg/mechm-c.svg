@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11.0, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+    <!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+    <!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+    <!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+    <!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+    <!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+    <!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+    <!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+    <!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+    <!ENTITY ns_svg "http://www.w3.org/2000/svg">
+    <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg
+     xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" i:viewOrigin="272.7363 419.5" i:rulerOrigin="0 0" i:pageBounds="0 792 612 0"
+     xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     width="68.318" height="48.607" viewBox="0 0 68.318 48.607" overflow="visible" enable-background="new 0 0 68.318 48.607"
+     xml:space="preserve">
+        <switch>
+            <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                </i:pgfRef>
+            </foreignObject>
+            <g i:extraneous="self">
+                <g id="Layer_1" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#4F008000FFFF">
+                    <g>
+                        <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M67.318,35c0,3.313-2.633,6-5.883,6H14.369
+                            c-3.25,0-5.883-2.688-5.883-6V7c0-3.314,2.633-6,5.883-6h47.066c3.25,0,5.883,2.686,5.883,6V35z"/>
+                        <path i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="4" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                            c-3.314,0-6-2.688-6-6V12.605c0-3.313,2.686-6,6-6h48c3.314,0,6,2.688,6,6V40.607z"/>
+                        <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                            c-3.314,0-6-2.688-6-6V12.605c0-3.313,2.686-6,6-6h48c3.314,0,6,2.688,6,6V40.607z"/>
+                    </g>
+                    <polygon i:knockout="Off" fill="#FFFFFF" points="56.901,13.555 51.063,7.717 51.063,11.531 6.632,11.531 6.632,15.576
+                        51.063,15.576 51.063,19.393 "/>
+                    <path i:knockout="Off" fill="#FFFFFF" d="M42.768,28.564c-0.141-0.596-0.328-1.189-0.57-1.773
+                        c-0.243-0.586-0.528-1.139-0.853-1.66l-3.62,1.283c-0.407-0.523-0.873-0.986-1.384-1.381l1.281-3.623
+                        c-1.06-0.656-2.221-1.137-3.433-1.422l-1.655,3.467c-0.641-0.082-1.297-0.084-1.954,0l-1.654-3.469
+                        c-0.598,0.141-1.19,0.33-1.775,0.572c-0.586,0.242-1.138,0.527-1.66,0.85l1.282,3.623c-0.521,0.406-0.983,0.871-1.38,1.383
+                        l-3.623-1.281c-0.655,1.061-1.137,2.219-1.422,3.434l3.469,1.656c-0.082,0.641-0.085,1.295-0.002,1.951l-3.469,1.656
+                        c0.141,0.596,0.329,1.191,0.571,1.775s0.529,1.137,0.85,1.658l3.626-1.281c0.403,0.523,0.867,0.984,1.38,1.381l-1.282,3.621
+                        c1.063,0.656,2.222,1.137,3.436,1.424l1.656-3.469c0.641,0.082,1.297,0.084,1.952,0.002l1.655,3.467
+                        c0.598-0.141,1.191-0.328,1.775-0.57s1.136-0.529,1.657-0.852l-1.281-3.623c0.524-0.404,0.987-0.869,1.382-1.381l3.621,1.281
+                        c0.655-1.061,1.136-2.221,1.423-3.434l-3.466-1.656c0.08-0.641,0.083-1.297,0-1.953L42.768,28.564z M32.977,34.627
+                        c-1.893,0.785-4.064-0.115-4.849-2.01c-0.785-1.893,0.115-4.064,2.008-4.85c1.896-0.783,4.065,0.115,4.852,2.01
+                        C35.771,31.672,34.872,33.842,32.977,34.627z"/>
+                </g>
+            </g>
+        </switch>
+    </svg>

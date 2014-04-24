@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<entity name="XML To ADN Converter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:167:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The XMLToADN actor converts a string of XML name/value pairs to an ADN metadata file that describes an earth-systems dataset. The ADN schema is output as a string and can be applied to the dataset when it is registered via a Web service. </p>
+
+<p>ADN stands for ADEPT, DLESE, NASA--three organizations that agreed upon the ADN metadata standard to describe earth-systems datasets. For more information about ADN, see http://www.dlese.org/Metadata/adn-item/0.6.50/index.htm.</p>
+
+<p>The XMLToADN actor receives the URL of a dataset and a string of XML name/value pairs, which are generated earlier in the workflow.</p>
+
+<p>The actor outputs an ADN schema for use with the input dataset.</p>
+
+</configure></property>
+<property name="port:datasetURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a path to an earth-systems dataset that will use the generated ADN schema. </configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts XML name-value pairs input as a string. </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an ADN schema, output as a string. The schema can be applied to the input dataset when it is registered via a Web service.  </configure></property>
+</property>
+<property name="class" value="org.geon.XMLToADN" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1024:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="datasetURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStructureOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#XMLProcessor" class="org.kepler.sms.SemanticType"/>
+</entity>

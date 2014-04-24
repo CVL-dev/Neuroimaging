@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<entity name="ENM PCP" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:376:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> Jianting Zhang</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>
+The ENMPCP actor invokes a Parallel Coordinate Plot (PCP)  window to display GARP presampling results.</p>
+
+<p> Known problem: c.f. ENMPCPFrame.java </p>
+
+
+<p>GARP is a genetic algorithm that creates an ecological niche model that represents the environmental conditions where a species would be able to maintain populations. GARP is an acronym for Genetic Algorithm for Rule Set Production, a program originally created by David Stockwell. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.</p></configure></property>
+<property name="port:SampleStringPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A string that consists of GARP presampling results, which can be passed to the actor by the GARPPresampleLayers actor. </configure></property>
+</property>
+<property name="class" value="org.kepler.gis.display.ENMPCPVisualizer" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1140:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SampleStringPort" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GraphicalOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

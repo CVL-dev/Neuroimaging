@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>ENM Workflows</title>
+</head>
+<body>
+<h1 style="text-align: center;">R in Kepler</h1>
+<br>
+<p><b>What is R?</b></p>
+<blockquote>
+R is a language and environment for statistical computing and graphics.
+It is a GNU project which is similar to the S language and environment
+which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent
+Technologies) by John Chambers and colleagues...R provides a wide
+variety of statistical (linear and nonlinear modelling, classical
+statistical tests, time-series analysis, classification, clustering,
+...) and graphical techniques, and is highly extensible.
+</blockquote>
+<br>
+<i>from the R Project Web page -</i>
+<a href="http://www.r-project.org#in_browser">http://www.r-project.org</a>
+
+<br>
+<br>
+<p><b>Installing R</b></p>
+There are several examples workflows which use the R system. For these
+example to operate, R must be installed on the computer running the
+Kepler application. R can be freely downloaded from links on the R
+Project web site 
+(<a href="http://www.r-project.org#in_browser">http://www.r-project.org</a>).
+Follow the instructions
+provided for installation. In addition, the R 'bin' directory must be
+added to the PATH variable on the host computer. A simple test to see
+if installation is correct is to open a command/terminal window and
+type the command 'R'. This should startup the R system and provide
+messages telling the user that R has been started.<br>
+<br>
+<p><b>R ExampleWorkflows</b></p>
+There are several examples of using R in Kepler. Most use the
+RExpression actor which is described more fully in 
+"docs/user/RExpressionActor.pdf".
+Most of the examples can be
+found in the 'workflows' subdirectory<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/gce-mollusc-avg_by_spp_R_local.xml">Average Count Data
+by Species</a> </td>
+      <td style="vertical-align: top;">This workflow accesses a table
+in the local filesystem and then averages count data by species. </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/eml-simple-plot-R.xml">EML Simple Plot</a> </td>
+      <td style="vertical-align: top;">This example shows how to
+convert EML column data to arrays and then plot using R. This is an R
+version of the eml-simple-plot example. </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/localFile_to_dataFrame_R.xml">Local File to
+DataFrame Example</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow shows how to read
+a local table file into R and then process the information in the table.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/dataFrame_R.xml">Ecogrid Data Source to R DataFrame
+(I)</a><br>
+      </td>
+      <td style="vertical-align: top;">This example uses an EML2
+Datasource as the source for an R DataFrame, passing the data as a file
+name.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/eml_Table_as_Record_R.xml">Ecogrid Data Source to R
+DataFrame (II)</a> </td>
+      <td style="vertical-align: top;">This example uses an EML2
+Datasource as the source for an R DataFrame, passing the data as a
+Kepler 'column record' token. </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/emlToRecord_R.xml">Sequence to Record Example</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow shows how
+sequences of values can be converted to arrays and then to a record,
+creating a table which is passed to an RExpression actor.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/eml-simple-linearRegression-R.xml">Linear Regression
+Example</a><br>
+      </td>
+      <td style="vertical-align: top;">Here, the RExpression actor is
+used to carry out a linear regression calculation and plot the results<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/eml-pairs-R.xml">EML Pairs Plot (from arrays)</a><br>
+      </td>
+      <td style="vertical-align: top;">This workflow configures the
+EML2 DataSource to supply arrays for each column. The arrays are
+connected to RExpression.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><a
+ href="../../../../workflows/R/R_output_example.xml">Output from RExpression</a><br>
+      </td>
+      <td style="vertical-align: top;">This example shows how the
+RExpressions actor can output Kepler arrays<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

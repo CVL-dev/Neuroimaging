@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<entity name="SoaplabChooseOperation" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:380:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Nandita Mangal</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SoaplabChooseOperation actor specifies the value of a Web service input (e.g., an input sequence) in a format that the Soaplab service can use. The actor accepts the value of the input along with the name of a predefined "set operation" (e.g., set_sequence_data) used by the service. The actor outputs a Soaplab client object.</p>
+
+<p>Soaplab is a set of Web services providing access to (mainly) data analysis applications on remote computers. The Soaplab actors require an EBI-registered Web Service Description Language (WSDL) file. WSDL is a format for describing network services--from simple eBay watcher services to complex distributed applications. For a complete list of registered EBI-registered WSDLs, see http://www.ebi.ac.uk/soaplab/services.</p>
+
+<p>Specify a Soaplab input (e.g., a format string) via the actor's input port (use a String Constant or Constant actor to create the initial value). In the SoaplabServiceStarter parameters, specify an EBI-registered WSDL via the wsdlUrl parameter and click Commit.  When the actor is next opened, the inputSetMethods parameter will contain a drop-down menu containing a complete list of "set operations" used to specify input values so that the Soaplab service can use them. Select an operation (e.g., set_format) and click Commit.</p> 
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a value to pass to the Soaplab service via the inputSetMethod parameter.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a Soaplab client. Use  the SoaplabServiceStarter to start the client and create an empty job used by the workflow.</configure></property>
+<property name="prop:wsdlUrl" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An EBI-registered Web Service Description Language (WSDL) file. For a complete list of registered EBI-registered WSDLs, see http://www.ebi.ac.uk/soaplab/services.</configure></property>
+<property name="prop:inputSetMethods" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An operation used to set the value of a Soaplab service input.</configure></property>
+
+</property>
+<property name="class" value="org.sdm.spa.SoaplabChooseOperation" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1144:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WebServiceActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WebService" class="org.kepler.sms.SemanticType"/>
+</entity>

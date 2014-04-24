@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="Cartesian To Polar" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:36:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Michael Leung, Edward Lee, Paul Whitaker</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The CartesianToPolar actor converts a Cartesian pair (x and y) to polar coordinates (magnitude and angle). The angle is returned in radians.</configure></property>
+<property name="port:x" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the x-coordinate of the input pair, which has type double.</configure></property>
+<property name="port:magnitude" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the magnitude component of the polar value, which has type double.</configure></property>
+<property name="port:angle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the angle component of the polar value, which has type double.</configure></property>
+<property name="port:y" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the y-coordinate of the input pair, which has type double.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.conversions.CartesianToPolar" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:912:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="x" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="y" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="magnitude" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="angle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,71 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ClustalWSeqAlign" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:470:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Zhijie Guan, Alex Borchers</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: ClustalWSeqAlign.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+This actor calls ClustalW for Sequence Alignment. The Cipres-Kepler registry
+ is used to provide the application information for ClustalW. After setting
+ all the application related information, such as command name, GUIGen XML
+ file, and standard output/error files, this actor invokes ClustalW and
+ retrieves back the alignment result after the execution.
+ 
+ This actor inherits GUIRunCIPRes actor since basically it is a customized
+ GUIRunCIPRes actor to call external Cipres programs.</configure>
+    </property>
+<property name="port:standardError" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard error stream of the execution is sent out through this port.</configure>
+    </property>
+<property name="port:inputParameterValue" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The input parameter value (usually the name of the input file of the execution) is sent through this port.</configure>
+    </property>
+<property name="port:inputParameterName" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The input parameter name (usually "infile") is sent through this port.</configure>
+    </property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The exit code of the execution is sent out through this port.</configure>
+    </property>
+<property name="port:outputParameterValue" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output parameter value, usually the name of the output file of the execution, is sent out throught this port.</configure>
+    </property>
+<property name="port:standardOutput" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard output stream of the execution is sent out through this port.</configure>
+    </property>
+<property name="prop:monitoredErrorWords" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The monitored words are defined in this parameter.</configure>
+    </property>
+<property name="prop:parameterForOutput" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The GUIRun parameter to be send out is defined in this parameter. Usually this GUIRun parameter is "outfile".</configure>
+    </property>
+<property name="prop:uiXMLFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The GUIGen xml file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:errorFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard error file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:workingDirectory" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The workfing directory of the external program is defined in this parameter.</configure>
+    </property>
+<property name="prop:outputFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard output file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:command" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The command path and name are defined in this parameter.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.cipres.kepler.ClustalWSeqAlign">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1210:1">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#CIPResActor">
+    </property>
+</entity>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+# Properties file for MetadataParser actor.
+# It maintains a list of mapping between the metadata type and the parser class name.
+-->
+<config>
+  <mappingList>
+    <mapping>
+      <type>eml://ecoinformatics.org/eml-2.0.0</type>
+      <class>org.ecoinformatics.seek.datasource.eml.eml2.Eml200Parser</class>
+    </mapping>
+    <mapping>
+      <type>eml://ecoinformatics.org/eml-2.0.1</type>
+      <class>org.ecoinformatics.seek.datasource.eml.eml2.Eml200Parser</class>
+    </mapping>
+    <mapping>
+      <type>eml://ecoinformatics.org/eml-2.1.0</type>
+      <class>org.ecoinformatics.seek.datasource.eml.eml2.Eml200Parser</class>
+    </mapping>
+    <mapping>
+      <type>eml://ecoinformatics.org/eml-2.1.1</type>
+      <class>org.ecoinformatics.seek.datasource.eml.eml2.Eml200Parser</class>
+    </mapping>
+  </mappingList>
+</config>

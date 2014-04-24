@@ -1,0 +1,58 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="NetCDFWriter" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:707:1">
+    </property>
+    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.data.netcdf.NetCDFWriter">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="null">
+        </property>
+    </property>
+    <property name="filename" class="ptolemy.data.expr.FileParameter" value="">
+    </property>
+    <property name="inputVariable" class="ptolemy.data.expr.StringParameter" value="">
+    </property>
+    <property name="dimensions" class="ptolemy.data.expr.StringParameter" value="">
+    </property>
+    <property name="writeOnFinish" class="ptolemy.data.expr.Parameter" value="false">
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#LocalOutput">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Daniel Crawl</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: NetCDFWriter.java 30701 2012-09-18 18:39:51Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+This actor writes a single variable in a new NetCDF file. There
+ are input ports for each dimension and the variable. For example,
+ if the variable is z[x,y], then there are input ports called x,
+ y, and z. The input ports are automatically created when the
+ &lt;i&gt;variable&lt;/i&gt; and &lt;i&gt;dimensions&lt;/i&gt; parameters are set.
+ &lt;p&gt;
+ The actor reads a token on each input port every time it executes.
+ A token read by a port for a dimension is used as the index, and
+ a token read by a port for the variable is used as the value. For
+ example, if the variable is z[x,y], and the values read by ports
+ x, y, and z, are 1, 2, and 10, respectively, then the value 
+ written to z[1,2] = 10. 
+ &lt;p&gt;</configure>
+    </property>
+<property name="prop:inputVariable" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The name of the variable to write.</configure>
+    </property>
+<property name="prop:filename" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The name of the NetCDF file.</configure>
+    </property>
+<property name="prop:writeOnFinish" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If true, wait until the workflow is finished before writing data to  the NetCDF file. Set this to true if the length of the dimensions  are not known before the workflow starts. (A length number is still  required for each dimension in the dimensions parameter, but the  value is ignored).</configure>
+    </property>
+<property name="prop:dimensions" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>A space-separated list of dimensions and their length, e.g., x[10] y[4].</configure>
+    </property>
+</property>
+</entity>

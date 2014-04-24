@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<entity name="Grass Raster" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:248:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jianting Zhang</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The GRASSRaster actor reads a list of (x,y) points representing a convex hull polygon (i.e., the smallest polygon that contains a set of given points). The actor creates a "mask" based on the input: points within the convex hull are set to a value of 1 and points outside the hull have a value of "NO_DATA." The actor saves the mask as a raster file and outputs the path of the file.</p>
+
+<p>The actor is based on GRASS (Geographic Resources Analysis Support System), which is an open source software toolkit used to manage and analyze geospatial data and produce graphics and maps. For more information about GRASS, see http://grass.itc.it/. </p>
+
+<p>The hullFileName port accepts a space-delimited text file containing one pair of (x,y) convex hull points per line. The GRASSHull actor can be used to generate this input. Use the rasterFileName input port to specify a name for the output raster file.</p>
+
+<p>The size and resolution of the generated raster file can be specified with the numRasterRows, numRasterCols, xMin, xMax, yMin and yMax parameters.</p>
+
+<p>Note: Use the GrassBuffer actor to expand the masked area.</p></configure></property>
+<property name="port:rasterFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path of the generated mask file, which the actor creates and saves in *.asc format.</configure></property>
+<property name="port:numHullPoint" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the number of hull points in the input convex hull file.</configure></property>
+<property name="port:numRasterRows" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the number of rows for the output mask file. This is an integer.</configure></property>
+<property name="port:xmin" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the minimum x-value for the output mask file. Set xMin to -1 to set the parameter to the minimum x-value in the input convex hull file.</configure></property>
+<property name="port:ymax" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the maximum y-value for the output mask file. Set yMax to -1 to set the parameter to the maximum y-value in the input convex hull file.</configure></property>
+<property name="port:xmax" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the maximum x-value for the output mask file. Set xMax to -1 to set the parameter to the maximum x-value in the input convex hull file.</configure></property>
+<property name="port:rasterFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a name to be given to the output mask file.</configure></property>
+<property name="port:hullFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port accepting a space-delimited text file containing (x,y) convex hull data points (one pair of points per line).</configure></property>
+<property name="port:ymin" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the minimum y-value for the output mask file. Set yMin to -1 to set the parameter to the minimum x-value in the input convex hull file.</configure></property>
+<property name="port:numRasterCols" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the number of columns for the output mask file. This is an integer.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.grass.GISRasterActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1074:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="hullFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="numHullPoint" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="rasterFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="numRasterRows" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="numRasterCols" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="xmin" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ymin" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="xmax" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ymax" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="rasterFileResult" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<entity name="ASC To RAW" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:253:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ASCToRaw actor converts ASCII raster files (*.asc) to binary files (*.raw) that can be used as environmental layers (e.g., climate, rainfall, or temperature) in GARP.</p> 
+
+<p>GARP is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.</p>
+
+<p>The ASCToRaw actor receives either an array of ASCII file names or a single ASCII file to convert (via the inputAscFilenameArrayPort or singleFileNamePort input port respectively.) If a single file is specified, the actor outputs the name of the converted binary file. If an array of files is specified, the actor outputs the name of an XML file (*.dxl) that is used by GARP to summarize a layer list. The actor creates the *.dxl file in addition to converting and saving the input files.</p></configure></property>
+<property name="port:outputValuesPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a *.dxl file name (if an array of ASCII file names is input via the inputAscFilenameArrayPort) or a single binary file name (if a single ASCII file is input via the singleFilenamePort).</configure></property>
+<property name="port:inputAscFilenameArrayPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of ASCII raster file names. The ASCII files must have the same extent and number of cells. If an array is specified via this port, the actor will convert each file to a binary format that can be used as a GARP spatial layer. The actor will also create a *.dxl file that summarizes the layer list. The name of the *.dxl file is output.</configure></property>
+<property name="port:singleFilenamePort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a single ASCII file name. If a single file is specified via this port, the actor will convert the file to a binary format that can be used as a GARP spatial layer input. The name of the binary file is output.</configure></property>
+<property name="prop:outputRawFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the converted file. The file name is output as a string when a single ASCII file is input via the singleFilenamePort.</configure></property>
+<property name="prop:dxlFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the *.dxl file. The *.dxl file name is output as a string when an array of ASCII file names is input via the inputAscFilenameArrayPort.</configure></property>
+<property name="prop:EnvLayerSetIdParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ID of the environmental layer set. The specified ID is used in the generated *.dxl file.</configure></property>
+<property name="prop:EnvLayerSetTitleParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The title of the environmental layer set. The specified title is used in the generated *.dxl file.</configure></property>
+<property name="prop:scaleRaw" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ASCToRaw actor automatically scales ASCII data values so that they fall within the required binary range (0-255). In some cases, it is not desirable to scale the input file (e.g., if the ASCII file already represents data that is in the range of 0-255). Set the scaleRaw parameter to false to prevent data scaling. Note that a false value is ignored if the ASCII range falls outside 0.0 to 255.0.</configure></property>
+
+</property>
+<property name="class" value="util.AscToRaw" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1079:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputAscFilenameArrayPort" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="singleFilenamePort" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputValuesPort" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStructureOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

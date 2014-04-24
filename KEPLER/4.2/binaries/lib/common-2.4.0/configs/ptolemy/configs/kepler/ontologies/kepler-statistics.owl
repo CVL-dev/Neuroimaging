@@ -1,0 +1,519 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="urn:lsid:localhost:onto:5:1#"
+  xml:base="urn:lsid:localhost:onto:5:1">
+  <owl:Ontology rdf:about="">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics</rdfs:label>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="CanonicalAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MultipleCorrelationAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Canonical Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MultipleAnalysisOfVariance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MultivariateAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multiple Analysis Of Variance</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfVariances">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UnivariateAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comparison Of Variances</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="StatisticalDistribution">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling Distribution</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PartialCanonicalAnalysis">
+    <rdfs:subClassOf rdf:resource="#CanonicalAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partial Canonical Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ScatterPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Scatter Plot</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="AnalysisOfCovariance">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Analysis Of Covariance</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BivariateAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PolarOrdination">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Polar Ordination</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BoxAndWhiskerPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Box And Whisker Plot</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfRegression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comparison Of Regression</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BivariateAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LowPassFilterTemporalAnalysis">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="FourierTemporalAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TemporalAnalysis"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NonlinearTemporalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WaveletTemporalAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Low Pass Filter Temporal Analysis</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LinearTemporalAnalysis"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="FactorAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Factor Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#WaveletTemporalAnalysis">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#FourierTemporalAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wavelet Temporal Analysis</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LinearTemporalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#LowPassFilterTemporalAnalysis"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NonlinearTemporalAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TemporalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NormalDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GeometricDistribution"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#StatisticalDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="UniformDistribution"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Normal Distribution</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="BinomialDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NegativeBinomialDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PoissonDistribution"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="NonmetricMultidimensionalScaling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nonmetric Multidimensional Scaling</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#MultipleCorrelationAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multiple Correlation Analysis</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultivariateAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DataTransformation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data Transformation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnivariateAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MultiwayCrossTabulation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multiway Cross Tabulation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultivariateAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CanonicalCorrespondenceAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Canonical Correspondence Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#CanonicalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StemAndLeafPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Stem And Leaf Plot</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#UnivariateAnalysis">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#BivariateAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Univariate Analysis</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="StatisticalAnalysis"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultivariateAnalysis"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#NonlinearTemporalAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TemporalAnalysis"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#FourierTemporalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#LowPassFilterTemporalAnalysis"/>
+    <owl:disjointWith rdf:resource="#WaveletTemporalAnalysis"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LinearTemporalAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nonlinear Temporal Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ReciprocalAveraging">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reciprocal Averaging</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Dispersion">
+    <rdfs:subClassOf rdf:resource="#UnivariateAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Dispersion</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Rank">
+    <rdfs:subClassOf rdf:resource="#DataTransformation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Rank</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="KendallCorrelation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Kendall Correlation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CorrelationAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#BivariateAnalysis">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultivariateAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StatisticalAnalysis"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UnivariateAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bivariate Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#UniformDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GeometricDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PoissonDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#NormalDistribution"/>
+    <rdfs:subClassOf rdf:resource="#StatisticalDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NegativeBinomialDistribution"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Uniform Distribution</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#BinomialDistribution"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#PoissonDistribution">
+    <owl:disjointWith rdf:resource="#UniformDistribution"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Poisson Distribution</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GeometricDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#NormalDistribution"/>
+    <rdfs:subClassOf rdf:resource="#StatisticalDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#BinomialDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NegativeBinomialDistribution"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ParallelCoordinatePlot">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Parallel Coordinate Plot</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MultipleRegressionAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multiple Regression Analysis</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultivariateAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BarChart">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bar Chart</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="AnalysisOfVariance">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Analysis Of Variance</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#UnivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PrincipalComponentsAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Principal Components Analysis</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#BinomialDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GeometricDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UniformDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NegativeBinomialDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PoissonDistribution"/>
+    <rdfs:subClassOf rdf:resource="#StatisticalDistribution"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Binomial Distribution</rdfs:label>
+    <owl:disjointWith rdf:resource="#NormalDistribution"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DotPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Dot Plot</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Distribution">
+    <rdfs:subClassOf rdf:resource="#UnivariateAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Distribution</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#LinearTemporalAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TemporalAnalysis"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#NonlinearTemporalAnalysis"/>
+    <owl:disjointWith rdf:resource="#WaveletTemporalAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Linear Temporal Analysis</rdfs:label>
+    <owl:disjointWith rdf:resource="#LowPassFilterTemporalAnalysis"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#FourierTemporalAnalysis"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="SupervisedClassification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DiscriminantAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Supervised Classification</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CentralTendency">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Central Tendency</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#UnivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PieChart">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pie Chart</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#OrdinationAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ordination Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MultipleCorrelationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CrosstabulationAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Crosstabulation Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FourierTemporalAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Fourier Temporal Analysis</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TemporalAnalysis"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#NonlinearTemporalAnalysis"/>
+    <owl:disjointWith rdf:resource="#WaveletTemporalAnalysis"/>
+    <owl:disjointWith rdf:resource="#LowPassFilterTemporalAnalysis"/>
+    <owl:disjointWith rdf:resource="#LinearTemporalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RegressionAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Regression Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TemporalAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StatisticalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Temporal Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#NegativeBinomialDistribution">
+    <rdfs:subClassOf rdf:resource="#StatisticalDistribution"/>
+    <owl:disjointWith rdf:resource="#BinomialDistribution"/>
+    <owl:disjointWith rdf:resource="#NormalDistribution"/>
+    <owl:disjointWith rdf:resource="#PoissonDistribution"/>
+    <owl:disjointWith rdf:resource="#UniformDistribution"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Negative Binomial Distribution</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GeometricDistribution"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#StatisticalAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistical Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#DiscriminantAnalysis">
+    <rdfs:subClassOf rdf:resource="#MultipleCorrelationAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Discriminant Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Scaling">
+    <rdfs:subClassOf rdf:resource="#DataTransformation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Scaling</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#MultivariateAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multivariate Analysis</rdfs:label>
+    <owl:disjointWith rdf:resource="#BivariateAnalysis"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#StatisticalAnalysis"/>
+    <owl:disjointWith rdf:resource="#UnivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Histogram">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GraphicalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Histogram</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ClusterAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cluster Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MultipleCorrelationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GeometricDistribution">
+    <owl:disjointWith rdf:resource="#PoissonDistribution"/>
+    <rdfs:subClassOf rdf:resource="#StatisticalDistribution"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Geometric Distribution</rdfs:label>
+    <owl:disjointWith rdf:resource="#BinomialDistribution"/>
+    <owl:disjointWith rdf:resource="#NormalDistribution"/>
+    <owl:disjointWith rdf:resource="#UniformDistribution"/>
+    <owl:disjointWith rdf:resource="#NegativeBinomialDistribution"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CanonicalAnalysisOfDiscriminance">
+    <rdfs:subClassOf rdf:resource="#DiscriminantAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Canonical Analysis Of Discriminance</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#GraphicalAnalysis">
+    <rdfs:subClassOf rdf:resource="#StatisticalAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Graphical Analysis</rdfs:label>
+    <owl:disjointWith rdf:resource="#MultivariateAnalysis"/>
+    <owl:disjointWith rdf:resource="#BivariateAnalysis"/>
+    <owl:disjointWith rdf:resource="#UnivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfMeans">
+    <rdfs:subClassOf rdf:resource="#UnivariateAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comparison Of Means</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CanonicalCorrelationAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Canonical Correlation Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#CanonicalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpearmanCorrelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CorrelationAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spearman Correlation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="SpatialAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spatial Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#StatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfMultipleMeans">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comparison Of Multiple Means</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#UnivariateAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CorrelationAnalysis">
+    <rdfs:subClassOf rdf:resource="#BivariateAnalysis"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlation Analysis</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PearsonCorrelation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pearson Correlation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#CorrelationAnalysis"/>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

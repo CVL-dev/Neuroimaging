@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<entity name="Web Service Actor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:207:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ilkay Altintas </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The WebService actor executes a Web service, which is a computer program that runs on a remote host and communicates using a standardized protocol. The actor invokes the Web service and broadcasts the response through its output ports.</p>
+
+<p>The actor is intended to invoke any Web service with certain limitations: only base types may be input and output to the Web service. Base types are defined in the Web Service Description Language (WSDL) file that describes the Web service. WSDL is a format for describing network services--from simple eBay watcher services to complex distributed applications. For more information on WSDL, see http://www.w3.org/TR/wsdl.</p>
+
+<p>The WebService actor accepts the URL of a WSDL file and the name of an operation defined by that file. Once the user has selected a WSDL and operation, the actor automatically configures itself to perform that operation by creating the necessary input and output ports. Double-click the actor to start customization. </p>
+
+<p>To enter a WSDL URL that is not in the drop-down configuration menu, click the "Preferences" button on the configuration interface and change the type of the wsdUrl parameter to "Text". Then type in the WSDL to use; click "Commit" and double-click the actor again to reconfigure the list of available operations. Please do this every time the WSDL URL is updated.</p>
+
+
+</configure></property>
+<property name="port:startTrigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An optional input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) The port is activated by the hasTrigger parameter. Please enable the startTrigger port ONLY when the actor has no input and the trigger port is required to schedule the actor. </configure></property>
+<property name="port:clientExecErrors" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts execution errors (if any exist), or "NO ERRORS."</configure></property>
+<property name="prop:wsdlUrl" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The URL of the Web service WSDL. Select a URL from the drop-down menu, or click the Properties button and change the type of the wsdlURL parameter to text to type in a new WSDL. Click Commit and double-click the actor again to reconfigure the list of available operations. Please do this every time the WSDL URL is updated. </configure></property>
+<property name="prop:methodName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of an operation defined by the WSDL (e.g., getXMLEntry or searchParam). </configure></property>
+<property name="prop:userName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The user name for the Web service, if necessary. </configure></property>
+<property name="prop:password" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The password for the Web service, if necessary.</configure></property>
+<property name="prop:timeout" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The amount of time to wait for the Web service to respond to a request. </configure></property>
+<property name="prop:hasTrigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Activate the optional startTrigger port. Please activate the port ONLY when the actor has no input and the startTrigger port is required to schedule the actor.</configure></property>
+</property>
+<property name="class" value="org.sdm.spa.WebService" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1054:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="startTrigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="clientExecErrors" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WebServiceActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WebService" class="org.kepler.sms.SemanticType"/>
+<property name="wsdlUrl" class="ptolemy.kernel.util.Attribute">
+    <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+        <property name="DDBJ" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/wsdl/DDBJ.wsdl">
+        </property>
+        <property name="Blast" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/wsdl/Blast.wsdl">
+        </property>
+        <property name="ClustalW" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/wsdl/ClustalW.wsdl">
+        </property>
+        <property name="Fasta" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/wsdl/Fasta.wsdl">
+        </property>
+        <property name="TxSearch" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/wsdl/TxSearch.wsdl">
+        </property>
+        <property name="TFScan" class="ptolemy.kernel.util.StringAttribute" value="http://industry.ebi.ac.uk/soaplab/wsdl/nucleic_transcription__tfscan.wsdl">
+        </property>
+        <property name="SRS" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/wsdl/SRS.wsdl">
+        </property>
+        <property name="PIWServices-Genbank" class="ptolemy.kernel.util.StringAttribute" value="http://sdm2.csc.ncsu.edu:8080/axis/services/urn:spa.service.Genbank?wsdl">
+        </property>
+        <property name="PIWServices-Match" class="ptolemy.kernel.util.StringAttribute" value="http://sdm2.csc.ncsu.edu:8080/axis/services/urn:spa.service.Match?wsdl">
+        </property>
+        <property name="PIWServices-Blast" class="ptolemy.kernel.util.StringAttribute" value="http://sdm2.csc.ncsu.edu:8080/axis/services/urn:spa.service.Blast?wsdl">
+        </property>
+        <property name="PIWServices-ClustalW" class="ptolemy.kernel.util.StringAttribute" value="http://sdm2.csc.ncsu.edu:8080/axis/services/urn:spa.service.ClustalW?wsdl">
+        </property>
+        <property name="OntoData" class="ptolemy.kernel.util.StringAttribute" value="http://geon01.sdsc.edu:8164/axis/services/OntologyData?wsdl">
+        </property>
+        <property name="ImgQuery" class="ptolemy.kernel.util.StringAttribute" value="http://geon07.sdsc.edu:8080/axis/services/ImageQueryService?wsdl">
+        </property>
+        <property name="ImgAssembly" class="ptolemy.kernel.util.StringAttribute" value="http://geon07.sdsc.edu:8080/axis/services/ImageAssemblyService?wsdl">
+        </property>
+        <property name="GrassService1" class="ptolemy.kernel.util.StringAttribute" value="http://trestles.nceas.ucsb.edu:8004/seek/grass.wsdl">
+        </property>
+        <property name="ZipCodesToIls" class="ptolemy.kernel.util.StringAttribute" value="http://webservices.instantlogic.com/zipcodes.ils?wsdl">
+        </property>
+        <property name="FindEmployees" class="ptolemy.kernel.util.StringAttribute" value="http://jmc.sdsc.edu:8888/axis/services/FindEmployees?wsdl">
+        </property>
+    </property>
+</property>
+</entity>

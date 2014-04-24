@@ -1,0 +1,8 @@
+Manifest-Version: 1.4.2
+KAR-Version: 2.0
+lsid: urn:lsid:kepler-project.org:kar:533:1
+
+Name: OpendapDataSource.xml
+lsid: urn:lsid:kepler-project.org:actor:533:1
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler

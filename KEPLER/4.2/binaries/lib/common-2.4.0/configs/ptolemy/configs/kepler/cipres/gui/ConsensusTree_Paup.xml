@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-command-panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CipresCommandLanguage.xsd">
+
+<cmd-params name="infile">
+	<datatype>InFile</datatype>
+	<is-mandatory>true</is-mandatory>
+	<label>Path to input nexus file</label>
+	<code-template>" Execute $infile ;"</code-template>
+</cmd-params>
+
+<cmd-params name="outfile">
+	<datatype>InFile</datatype>
+	<is-mandatory>true</is-mandatory>
+	<label>Save results to file ...</label>
+	<code-template></code-template>
+</cmd-params>
+	
+<cmd-params name="contree">
+	<datatype>Paragraph</datatype>
+	<is-mandatory>true</is-mandatory>
+	<label></label>
+	<code-template>ConTree ALL/ $contree </code-template>
+
+	<cmd-params name="strict">
+		<datatype>boolean</datatype>
+		<label>Strict</label>
+		<default-value>Yes</default-value>
+		<code-template>strict=$strict</code-template>
+		<switch-true-value>yes</switch-true-value>
+		<switch-false-value>no</switch-false-value>
+	</cmd-params>
+
+	<cmd-params name="semistrict">
+		<datatype>boolean</datatype>
+		<label>Semistrict</label>
+		<tool-tip-text>Specify semistrict = yes to request computation of a semistrict (combinable component) consensus tree.</tool-tip-text>
+		<code-template>semistrict=$semistrict</code-template>
+		<switch-true-value>yes</switch-true-value>
+		<switch-false-value>no</switch-false-value>
+	</cmd-params>
+
+<cmd-params name="Adams">
+		<datatype>boolean</datatype>
+		<label>Adams</label>
+		<tool-tip-text>If Adams=yes is specified, an Adams consensus tree is computed.</tool-tip-text>
+		<code-template>Adams=$Adams</code-template>
+		<switch-true-value>yes</switch-true-value>
+		<switch-false-value>no</switch-false-value>
+	</cmd-params>
+
+
+	<cmd-params name="majrule">
+		<datatype>boolean</datatype>
+		<label>Majority Rule (Majrule)</label>
+		<tool-tip-text>Specify Majrule=yes to request computation of a semistrict (combinable component) consensus tree. Majrule=no reverses the effect of a previous Majrule specification</tool-tip-text>
+		<code-template>majrule=$majrule</code-template>
+		<switch-true-value>yes</switch-true-value>
+		<switch-false-value>no</switch-false-value>
+	</cmd-params>
+
+	<cmd-params name="percent">
+		<datatype>Integer</datatype>
+		<is-mandatory>false</is-mandatory>
+<label>Percent (integer value)</label>
+		<tool-tip-text> The integer-value specifies the percentage of the trees on which  a group must appear in order to be retained in the majority- rule consensus.  A group must appear on more than this percentage of the trees before it is retained.  If no value is specified a default of 50 is used. </tool-tip-text>
+		<code-template>percent=$percent</code-template>
+		<test test-name="isPosInteger">
+			<left-operand>$percent</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="isMajruleYes">
+			<left-operand>$majrule </left-operand>
+			<operator>equals</operator>
+			<right-operand>yes</right-operand>
+		</test>
+		<requirement-test-expression>isPosInteger </requirement-test-expression>
+		<requirement-test-expression-message>Percent must be a positive integer</requirement-test-expression-message>
+<availability-test-expression> isMajruleYes</availability-test-expression>
+		<availability-test-expression-message>Percent, LE50, and GrpFreq can only be set if Majrule = yes</availability-test-expression-message>
+	</cmd-params>
+
+		
+	<cmd-params name="LE50">
+		<datatype>boolean</datatype>
+		<label>LE50</label>
+		<tool-tip-text>If LE50=yes is specified, groups occurring on less than 50% of the trees are retained in the consensus if they are compatible with the groups already on the tree.</tool-tip-text>
+		<code-template>LE50=$LE50</code-template>
+		<switch-true-value>yes</switch-true-value>
+		<switch-false-value>no</switch-false-value>
+		<test test-name="isMajruleYes">
+			<left-operand>$majrule </left-operand>
+			<operator>equals</operator>
+			<right-operand>yes</right-operand>
+		</test>
+<availability-test-expression> isMajruleYes</availability-test-expression>
+	</cmd-params>
+
+	<cmd-params name="GrpFreq">
+		<datatype>boolean</datatype>
+		<label>Output Group Frequency Table (GrpFreq)</label>
+		<default-value>Yes</default-value>
+		<tool-tip-text>If GrpFreq=yes is specified, a table is output that shows all partitions (or groups) occurring on at least one tree and the frequency of each such group.</tool-tip-text>
+		<code-template>GrpFreq=$GrpFreq</code-template>
+		<switch-true-value>yes</switch-true-value>
+		<switch-false-value>no</switch-false-value>
+		<test test-name="isMajruleYes">
+			<left-operand>$majrule </left-operand>
+			<operator>equals</operator>
+			<right-operand>yes</right-operand>
+		</test>
+<availability-test-expression> isMajruleYes</availability-test-expression>
+	</cmd-params>
+
+</cmd-params>	
+
+</service-command-panel>

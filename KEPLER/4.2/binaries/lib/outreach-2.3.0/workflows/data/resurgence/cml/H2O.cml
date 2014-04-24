@@ -1,0 +1,23 @@
+<molecule title="Water">
+<metadataList title="generated automatically from Openbabel">
+<metadata name="dc:creator" content="OpenBabel version 1-100.1"/>
+<metadata name="dc:description" content="Conversion of legacy filetype to CML"/>
+<metadata name="dc:identifier" content="Unknown"/>
+<metadata name="dc:content"/>
+<metadata name="dc:rights" content="unknown"/>
+<metadata name="dc:type" content="chemistry"/>
+<metadata name="dc:contributor" content="unknown"/>
+<metadata name="dc:creator" content="Openbabel V1-100.1"/>
+<metadata name="dc:date" content="Tue Jun 15 14:45:55 CEST 2004"/>
+<metadata name="cmlm:structure" content="yes"/>
+</metadataList>
+<atomArray>
+<atom id="a1" elementType="O" x3="-0.4443" y3="-0.2041" z3="-0.0954"/>
+<atom id="a2" elementType="H" x3="0.4971" y3="-0.2211" z3="-0.0657"/>
+<atom id="a3" elementType="H" x3="-0.726" y3="-0.6535" z3="0.6831"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a1 a2" order="1"/>
+<bond atomRefs2="a1 a3" order="1"/>
+</bondArray>
+</molecule>

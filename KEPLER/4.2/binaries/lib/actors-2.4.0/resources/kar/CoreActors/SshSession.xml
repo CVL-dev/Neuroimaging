@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<entity name="SSH Session" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:507:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+ <p>The SSHSession actor creates an SSH session to a remote host.  If requested, the session will not be opened until the first actor that uses SSH is invoked by the workflow (e.g., an SSHExecuteCmd actor). This actor is used to provide a private-key for public-key authentication, and to connect to a remote machine at a certain point in the workflow (e.g., at the very beginning so that a password is specified then rather than during execution).</p>
+   
+<p>The actor outputs a connection reference (the name of the host target), which is retrieved by other actors so that they can use the connection. If the target is an empty string or "local", the actor does nothing, and all commands (in other SSH actors) will be executed locally using Java Runtime.</p>
+
+<p>If the parameter <i>postpone</i> is true, the connection is not established until the first remote operation is executed. However, one of the main purposes of this actor is to request passwords and make a connection at the beginning of the workflow. The default is false. </p>
+
+<p>If the parameter <i>closeAtEnd</i> is true, the session will be closed at the end of the workflow. If false, the session will remain open. The default is false, as the underlying SSH package has only one session (within Kepler) to a given user@host:port.   If two workflows are executing on the same host, and the SSH session is closed at the end of one of the workflows, the other will likely experience a broken operation.</p>
+
+<p>The <i>failed</i> output port emits a BooleanToken indicating whether the connection failed: 'true' if the <i>postpone</i> flag is false and the connection failed, otherwise, 'false'. The port is used to throw an exception or stop a workflow that cannot run without  a connection, or to successively try out other hosts.</p>
+
+<p>Port forwarding is supported. The 'portforwarding' parameter should have the format  "-L port:host:hostport -R port:host:hostport ...". Many local and/or remote forwarding specification can be given.</p>
+
+
+
+
+
+</configure></property>
+   
+   <property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+     <property name="port:identity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path for the SSH identity file. Specify an identity path to connect to an SSH host without having to reenter the password.   </configure></property>
+     <property name="port:portforwarding" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specification for local and/or port forwardings. Format: "-L port:host:hostport -R port:host:hostport ...". Many local and/or remote forwarding specification can be given.  </configure></property>
+       <property name="port:target_out" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A string that identifies the created session. The value is identical to the value of the specified target. If the target is specified as a parameter, you do not need to connect this port to pass the connection reference to downstream actors.  </configure></property>
+       <property name="port:failed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A BooleanToken indicating whether the connection failed: 'true' if the <i>postpone</i> flag is false and the connection failed, otherwise, 'false'. </configure></property>
+        
+           <property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, "" or "local" for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+           <property name="prop:identity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path for the SSH identity file. Specify an identity path to connect to an SSH host without having to reenter the password.  </configure></property>
+     <property name="prop:portforwarding" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specification for local and/or port forwardings. Format: "-L port:host:hostport -R port:host:hostport ...". Many local and/or remote forwarding specification can be given.  </configure></property>
+              <property name="prop:postpone" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to postpone the connection until the first remote operation is executed. The default is false, as one of the main purposes of this actor is to request passwords and make a connection at the beginning of the workflow.  </configure></property>
+           <property name="prop:closeAtEnd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the connection to the host should be closed when the workflow terminates. If you run more than one workflow simultaneously on the same remote host, this flag should be false to avoid closing the session in one workflow while the others are still using it. 
+ </configure></property>
+ 
+</property>
+<property name="class" value="org.kepler.actor.ssh.SshSession" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1211:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="target" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="identity" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="portforwarding" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="target_out" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="failed" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType21" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType41" value="urn:lsid:localhost:onto:4:1#CPES" class="org.kepler.sms.SemanticType"/>
+</entity>

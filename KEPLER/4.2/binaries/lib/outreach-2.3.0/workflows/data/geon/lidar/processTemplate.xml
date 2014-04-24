@@ -1,0 +1,447 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="processTemplate" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="5.1-devel">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 0, 1024, 780}, maximized=true}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[790, 660]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8311824951914">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{112.2265625000002, 553.0247231012677}">
+    </property>
+    <property name="PN Director" class="ptolemy.domains.pn.kernel.PNDirector">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:director:2:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[370.0, 185.0]">
+        </property>
+    </property>
+    <property name="uniqueId" class="ptolemy.data.expr.StringParameter" value="1">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:219:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-320.0, 195.0]">
+        </property>
+    </property>
+    <property name="output" class="ptolemy.data.expr.StringParameter">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:219:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{-10.0, 745.0}">
+        </property>
+    </property>
+    <property name="email" class="ptolemy.data.expr.StringParameter" value="efrat@sdsc.edu">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:219:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-320.0, 215.0]">
+        </property>
+    </property>
+    <property name="appPath" class="ptolemy.data.expr.StringParameter">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:219:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-125.0, 190.0]">
+        </property>
+    </property>
+    <property name="host" class="ptolemy.data.expr.StringParameter">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:219:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-125.0, 210.0]">
+        </property>
+    </property>
+    <property name="port" class="ptolemy.data.expr.StringParameter">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:219:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-125.0, 230.0]">
+        </property>
+    </property>
+    <entity name="Prepare" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-260.0, 320.0]">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 0, 1024, 780}, maximized=true}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[790, 660]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8769404214726">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{73.4296875000002, 376.3083465189853}">
+        </property>
+        <port name="port2" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[250.0, 380.0]">
+            </property>
+        </port>
+        <entity name="String Constant2" class="org.sdm.spa.StringConst">
+            <property name="value" class="ptolemy.data.expr.FileParameter" value="${appPath}data/tmp/params$uniqueId.txt">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:204:1">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-165.0, 400.0]">
+            </property>
+        </entity>
+        <entity name="SCP2" class="org.geon.Scp">
+            <property name="host" class="ptolemy.actor.parameters.PortParameter" value="agassiz.la.asu.edu">
+            </property>
+            <property name="user" class="ptolemy.actor.parameters.PortParameter" value="efrat">
+            </property>
+            <property name="remoteFilePath" class="ptolemy.actor.parameters.FilePortParameter" value="testGrass/params/params$uniqueId.txt">
+            </property>
+            <property name="identity" class="ptolemy.data.expr.FileParameter" value="/home/efrat/.ssh/id_rsa">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:381:1">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[90.0, 375.0]">
+            </property>
+        </entity>
+        <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="port2" relation="relation5"/>
+        <link port="String Constant2.output" relation="relation"/>
+        <link port="SCP2.localFilePath" relation="relation"/>
+        <link port="SCP2.stdout" relation="relation5"/>
+    </entity>
+    <entity name="String Constant" class="org.sdm.spa.StringConst">
+        <property name="value" class="ptolemy.data.expr.FileParameter" value="cd testGrass; perl rst1.pl /export/downloads/kepler/rawData/$uniqueId /home/efrat/testGrass/params/params$uniqueId.txt">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:204:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[60.0, 320.0]">
+        </property>
+    </entity>
+    <entity name="Interpolate" class="org.sdm.spa.Ssh2Exec">
+        <property name="user" class="ptolemy.actor.parameters.PortParameter" value="&quot;efrat&quot;">
+        </property>
+        <property name="host" class="ptolemy.actor.parameters.PortParameter" value="&quot;agassiz.la.asu.edu&quot;">
+        </property>
+        <property name="identity" class="ptolemy.data.expr.FileParameter" value="/home/efrat/.ssh/id_rsa">
+        </property>
+        <property name="streaming mode" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:369:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[338.6823272705078, 274.93284606933594]">
+        </property>
+    </entity>
+    <entity name="Transmitter" class="org.geon.TokenToSeparateChannels">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:371:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-315.0, 570.0]">
+        </property>
+    </entity>
+    <entity name="TGZ" class="ptolemy.actor.lib.Expression">
+        <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="filePath">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:75:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-160.0, 745.0]">
+        </property>
+        <port name="filePath" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="CreateHTML" class="ptolemy.actor.lib.Expression">
+        <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="&quot;&lt;html&gt;&#10;&lt;HEAD&gt;&#10;&lt;TITLE&gt;LiDAR Processing Workflow Outputs&lt;/TITLE&gt;&#10;&lt;/HEAD&gt;&#10;&lt;body bgcolor=\&quot;#FFFFFF\&quot;&gt;&#10;&lt;TABLE&gt;&#10;&lt;TR&gt;&#10;&lt;TD&gt;&lt;A HREF=\&quot;http://activetectonics.la.asu.edu/GEONatASU/index.htm\&quot; target=\&quot;_new\&quot;&gt;&lt;IMG SRC=\&quot;http://agassiz.la.asu.edu/logos/GEONASUWebBanner.jpg\&quot; alt=\&quot;GEON at ASU homepage\&quot;&gt;&lt;/A&gt;&lt;/TD&gt;&#10;&lt;TD&gt;&lt;a href=\&quot;http://www.sdsc.edu\&quot; target=\&quot;_new\&quot;&gt;&lt;img src=\&quot;http://www.sdsc.edu/logos/SDSClogo-plusname-red.gif\&quot; alt=\&quot;San Diego Supercomputer Center\&quot; height=\&quot;60\&quot; width=\&quot;216\&quot;&gt;&lt;/a&gt;&lt;/TD&gt;&#10;&lt;/TR&gt;&#10;&lt;/TABLE&gt;&#10;&lt;BR&gt;&lt;BR&gt;&#10;&lt;h1&gt;LiDAR Processing Workflow Outputs&lt;/h1&gt;&#10;&lt;BR&gt;&lt;BR&gt;&#10;&lt;TABLE cellpadding=2&gt;&#10;&lt;TR&gt;&lt;TD align=center&gt;Spline Interpolation&lt;/TD&gt;&lt;/TR&gt;&#10;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=\&quot;&quot; + spline + &quot;\&quot; alt=\&quot;Spline Interpolation\&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;&#10;&lt;/TABLE&gt;&#10;&lt;BR&gt;&lt;BR&gt;&#10;&lt;TABLE cellpadding=2&gt;&#10;&lt;TR&gt;&lt;TD align=center&gt;Slope Interpolation&lt;/TD&gt;&lt;/TR&gt;&#10;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=\&quot;&quot; + slope + &quot;\&quot; alt=\&quot;Slope Interpolation\&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;&#10;&lt;/TABLE&gt;&#10;&lt;BR&gt;&lt;BR&gt;&#10;&lt;TABLE cellpadding=2&gt;&#10;&lt;TR&gt;&lt;TD align=center&gt;Pcurv Interpolation&lt;/TD&gt;&lt;/TR&gt;&#10;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=\&quot;&quot; + pcurv + &quot;\&quot; alt=\&quot;Pcurv Interpolation\&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;&#10;&lt;/TABLE&gt;&#10;&lt;BR&gt;&lt;BR&gt;&#10;&lt;HR&gt;&lt;BR&gt;&#10;&lt;p&gt;Below you can download an archive file (tgz format) with the results of your job&lt;/P&gt;&#10;&lt;A href=\&quot;&quot; + tgz + &quot;\&quot;&gt;Results&lt;/A&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;&quot;">
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:75:1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[130.0, 585.0]">
+        </property>
+        <port name="spline" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="slope" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="aspect" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="pcurv" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="tgz" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="File Writer" class="org.geon.FileWrite">
+        <property name="fileName" class="ptolemy.data.expr.FileParameter" value="${appPath}data/tmp/output$uniqueId.html">
+        </property>
+        <property name="confirmOverwrite" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:144:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{360.0, 585.0}">
+        </property>
+    </entity>
+    <entity name="Variable Setter" class="ptolemy.actor.lib.SetVariable">
+        <property name="variableName" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:10:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{530.0, 690.0}">
+        </property>
+    </entity>
+    <entity name="String Constant2" class="org.sdm.spa.StringConst">
+        <property name="value" class="ptolemy.data.expr.FileParameter" value="http://$host:$port/lidar/data/tmp/output$uniqueId.html">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:204:1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{200.0, 690.0}">
+        </property>
+    </entity>
+    <entity name="EmailNotification" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="500.578125, 606.203125">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={89, 0, 846, 786}, maximized=false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 660]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{300.0, 330.0}">
+        </property>
+        <port name="in" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[40.0, 350.0]">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <entity name="Expression" class="ptolemy.actor.lib.Expression">
+            <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="&quot;Thank you for using the GEON LiDAR Workflow running on the GEONgrid.  Your results are available at &quot; + &#10;in +&quot;.&#10;&#10;Please note that the results will expire after 48 hours.&#10;&#10;---------------&#10;The GEON project&quot; ">
+                <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                    <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                    </property>
+                    <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                    </property>
+                </property>
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:75:1">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[275.0, 350.0]">
+            </property>
+            <port name="in" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+                </property>
+                <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </port>
+        </entity>
+        <entity name="Email Sender" class="org.sdm.spa.Email">
+            <property name="toAddress" class="ptolemy.data.expr.StringParameter" value="$email">
+            </property>
+            <property name="fromAddress" class="ptolemy.data.expr.StringParameter" value="Lidar Processing Notification &lt;efrat@geon01.sdsc.edu&gt;">
+            </property>
+            <property name="host" class="ptolemy.data.expr.StringParameter" value="localhost">
+            </property>
+            <property name="subject" class="ptolemy.actor.parameters.PortParameter" value="Grass-based Lidar processing results">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:188:1">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[520.0, 325.0]">
+            </property>
+        </entity>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="in" relation="relation2"/>
+        <link port="Expression.output" relation="relation"/>
+        <link port="Expression.in" relation="relation2"/>
+        <link port="Email Sender.messageBody" relation="relation"/>
+    </entity>
+    <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation13" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[490.0, 405.0]">
+        </vertex>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[445.0, 690.0]">
+        </vertex>
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="Prepare.port2" relation="relation9"/>
+    <link port="String Constant.output" relation="relation13"/>
+    <link port="String Constant.trigger" relation="relation9"/>
+    <link port="Interpolate.command" relation="relation13"/>
+    <link port="Interpolate.stdout" relation="relation12"/>
+    <link port="Transmitter.input" relation="relation12"/>
+    <link port="CreateHTML.output" relation="relation4"/>
+    <link port="File Writer.input" relation="relation4"/>
+    <link port="File Writer.url" relation="relation3"/>
+    <link port="Variable Setter.input" relation="relation2"/>
+    <link port="String Constant2.output" relation="relation2"/>
+    <link port="String Constant2.trigger" relation="relation3"/>
+    <link port="EmailNotification.in" relation="relation2"/>
+</entity>

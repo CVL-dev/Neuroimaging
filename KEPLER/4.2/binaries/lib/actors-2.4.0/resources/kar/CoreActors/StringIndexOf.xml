@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<entity name="String Index Of" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:95:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Rakesh Reddy, Philip Baldwin, Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The StringIndexOf actor reads an input string, searches for a specified substring, and outputs the index of the substring, or -1 if the substring is not found. </p>
+
+<p>The actor reads an input string via the inText port or parameter. The actor will search the string for the substring specified by the searchFor port or parameter.</p>
+
+<p>The search begins at the string index specified with the startIndex port or parameter and ends at either the end or the beginning of the string, depending on the setting of the  searchForwards parameter. Note: An index of 0 refers to the first character of the string.</p>
+
+</configure></property>
+<property name="port:searchFor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a substring to find in the source string. The substring can also be specified with the searchFor parameter. The default is an empty string. </configure></property>
+<property name="port:inText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port specifying the string that will be searched. The string can also be specified with the inText parameter. The default is an empty string, which matches no strings.</configure></property>
+<property name="port:startIndex" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string index, which determines where to begin the search. The default is the integer 0, representing the first character in the string. The index can also be specified with the startIndex parameter.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the index of the searchFor substring, or -1 if the substring is not found.</configure></property>
+<property name="prop:ignoreCase" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to ignore case or not. By default, the case is relevant. </configure></property>
+<property name="prop:searchForwards" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify the direction in which to search. By default, the search proceeds forward.</configure></property>
+<property name="prop:searchFor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A substring to find in the source string. The substring can also be specified via the searchFor port. The default is an empty string. </configure></property>
+<property name="prop:inText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string that will be searched. The string can also be specified via the inText port. The default is an empty string.</configure></property>
+<property name="prop:startIndex" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A string index, which determines where to begin the search. The default is the integer 0, representing the first character in the string. The index can also be specified via the startIndex port.</configure></property>
+
+</property>
+<property name="class" value="ptolemy.actor.lib.string.StringIndexOf" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:969:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="searchFor" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="inText" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="startIndex" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<entity name="XML Assembler" class="ptolemy.kernel.ComponentEntity">
+  <property name="entityId"  value="urn:lsid:kepler-project.org:actor:520:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Daniel Crawl</configure></property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+     On each firing, read one token from each input port and assemble them
+     into an XML document where the root element name is specified by the 
+     output port name. 
+    </configure></property>
+    <property name="prop:inputNil" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, then for each unconnected input port an element is created in the output document with an attribute nil whose value is "true".
+    </configure></property>
+    <property name="prop:encloseInputPortName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, then each token received will be added to an element with the name of the input port. By setting it false, input XML documents can be merged into a single document.
+    </configure></property>
+  </property>
+  <property name="class" value="org.sdm.spa.XMLAssembler" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:kepler-project.org:class:520:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="inputNil" class="ptolemy.data.expr.Parameter" value="true">
+  </property>
+  <property name="encloseInputPortName" class="ptolemy.data.expr.Parameter" value="true">
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:2:1#DataStructureOperation" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#XMLProcessor" class="org.kepler.sms.SemanticType"/>
+</entity>

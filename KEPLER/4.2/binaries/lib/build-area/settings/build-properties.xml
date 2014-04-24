@@ -1,0 +1,37 @@
+<project name="build-properties">
+    <property name="appname" value="Kepler"/>
+    <property name="version" value="trunk"/>
+    <property name="main" value="undefined"/>
+    <property name="name" value="undefined"/>
+    <property name="suite" value="undefined"/>
+    <property name="module" value="undefined"/>
+    <property name="class" value="undefined"/>
+    <property name="full" value="false"/>
+    <property name="args" value=""/>
+    <property name="verbose" value="false"/>
+    <property name="workflow" value=""/>
+    <property name="properties" value="undefined"/>
+    <property name="compiler-args" value="undefined"/>
+    <property name="debug" value="false"/>
+    <property name="under" value="undefined"/>
+    <property name="include" value="undefined"/>
+    <property name="exclude" value="undefined"/>
+    <property name="skip" value="undefined"/>
+    <property name="rev" value="head"/>
+    <property name="repository" value="keplerRepository"/>
+    <property name="domain" value="KNB"/>
+    <property name="username" value="uid=kepler,o=unaffiliated,dc=ecoinformatics,dc=org"/>
+    <property name="password" value="kepler"/>
+    <property name="date" value="undefined"/>
+    <property name="branch" value="null"/>
+    <property name="location" value="undefined"/>
+    <property name="test" value="false"/>
+    <property name="test-release" value="false"/>
+    <property name="reference-patches" value="true" />
+    <property name="run-module-manager" value="false"/>
+    <property name="url" value="undefined"/>
+    <property name="number" value="undefined"/>
+    <property name="depend" value="false" />
+    <property name="depend-classpath" value="false" />
+    <property name="depend-closure" value="false" />
+</project>

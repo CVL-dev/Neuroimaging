@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="VariableFIR" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:691:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.domains.sdf.lib.VariableFIR" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="decimation" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="decimationPhase" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+
+<property name="interpolation" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="taps" class="ptolemy.data.expr.Parameter" value="{1.0}">
+</property>
+
+<property name="blockSize" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Filtering">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="kepler:newTaps" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee, Yuhong Xiong</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: VariableFIR.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This actor implements a type polymorphic finite-impulse response&#10; filter with multirate capability, where the impulse response&#10; of the filter is provided by an input. Since this filter operates on&#10; Tokens, it is polymorphic in the type of data it operates on.&#10; &lt;p&gt;&#10; If the &lt;i&gt;decimation&lt;/i&gt; parameter is unity (the default), then&#10; the &lt;i&gt;blockSize&lt;/i&gt; parameter specifies the number of inputs&#10; of the filter that are processed per coefficient set provided on the&#10; &lt;i&gt;newTaps&lt;/i&gt; input.  Otherwise, if &lt;i&gt;decimation&lt;/i&gt; is greater than unity,&#10; then the number of tokens consumed is the product of &lt;i&gt;decimation&lt;/i&gt;&#10; and &lt;i&gt;blockSize&lt;/i&gt;, and all these inputs are processed using the&#10; filter coefficients provided on &lt;i&gt;newTaps&lt;/i&gt;.&#10; In all other respects, the behavior of this&#10; actor is the same as that of the base class.&#10; &lt;p&gt;&#10; Note that when a new set of filter coefficients arrives on &lt;i&gt;newTaps&lt;/i&gt;,&#10; if the new set has more coefficients than the old set, then a transient&#10; will occur that may be unexpected.  The delay line containing previously&#10; consumed data has to be increased in length to match the number of&#10; new coefficients.  However, the extended part of the delay line cannot&#10; possibly be initialized with previously consumed data because that&#10; data has not been saved.  Unless this actor were to save &lt;i&gt;all&lt;/i&gt;&#10; previously consumed data (which would be hopelessly inefficient), there&#10; is no way it can be assured of always having the requisite data.&#10; Thus, the actor initializes the extended part of the delay line&#10; with zeros of the same type as the input data.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="port:newTaps" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input for new tap values.  This is an array.</configure></property>
+<property name="prop:interpolation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The interpolation ratio of the filter. This must contain an  IntToken, and by default it has value one.</configure></property>
+<property name="prop:decimation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The decimation ratio of the filter. This must contain an  IntToken, and by default it has value one.</configure></property>
+<property name="prop:blockSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of inputs that use each each coefficient set is the  value of this parameter multiplied by the value of the  &lt;i&gt;decimation&lt;/i&gt; parameter.  This is an integer that defaults to 1.</configure></property>
+<property name="prop:decimationPhase" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The decimation phase of the filter. This must contain an  IntToken, and by default it has value zero.</configure></property>
+<property name="prop:taps" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The taps of the filter. This has a type of ArrayToken.  By default, it contains an array with a single integer one,  meaning that the output of the filter is the same as the input.</configure></property>
+</property></entity>

@@ -1,0 +1,158 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="eml-simple-plot" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="6.0-devel">
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="timeResolution" class="ptolemy.moml.SharedParameter" value="1E-10">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:director:1:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:directorclass:1:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Director">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[750.0, 15.0]">
+        </property>
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="A simple example of using EML data.  First, a search is done in the Data&#10;pane to locate an EML-described data set, which is dragged onto the&#10;workflow canvas.  The EML data source is added to the workflow, and then it&#10;contacts the EcoGrid server to download the data and configure the ports.&#10;After being configured, it displays the ports from the EML data source,&#10;which are then mapped into an XY scatterplot.&#10;&#10;Matt Jones - NCEAS">
+        </property>
+        <property name="timeResolution" class="ptolemy.moml.SharedParameter" value="1E-10">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:436:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[735.0, 230.0]">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={9, 3, 901, 635}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[629, 505]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{975.5, 235.5}">
+    </property>
+    <entity name="XY Plotter" class="ptolemy.actor.lib.gui.XYPlotter">
+        <property name="fillOnWrapup" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={614, 521, 508, 357}, maximized=false}">
+        </property>
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+        </property>
+        <property name="startingDataset" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:11:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.XYPlotter">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:887:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Plotter">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1005.0, 100.0]">
+        </property>
+        <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>XY Plotter</title>
+<xLabel></xLabel>
+<yLabel></yLabel>
+<xRange min="2.3" max="21.7"/>
+<yRange min="950.2" max="955.5"/>
+<default connected="no" marks="dots"/>
+</plot>?>
+        </configure>
+    </entity>
+    <entity name="Datos Meteorologicos" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;schema&gt;&#10;  &lt;table name=&quot;Datos Meteorologicos&quot;&gt;&#10;    &lt;field name=&quot;DATE&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;TIME&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;T_AIR&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;RH&quot; dataType=&quot;INTEGER&quot;/&gt;&#10;    &lt;field name=&quot;DEW&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;BARO&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;WD&quot; dataType=&quot;INTEGER&quot;/&gt;&#10;    &lt;field name=&quot;WS&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;RAIN&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;SOL&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;SOL_SUM&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="selectedEntity" class="ptolemy.data.expr.StringParameter" value="Datos Meteorologicos">
+        </property>
+        <property name="dataOutputFormat" class="ptolemy.data.expr.StringParameter" value="As Field">
+        </property>
+        <property name="_tableauFactory" class="org.kepler.objectmanager.data.db.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="tao.1.1">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{835, 125}">
+        </property>
+        <port name="DATE" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="TIME" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="T_AIR" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="RH" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="DEW" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="BARO" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="WD" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="WS" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="RAIN" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="SOL" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="SOL_SUM" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="XY Plotter.inputX" relation="relation"/>
+    <link port="XY Plotter.inputY" relation="relation2"/>
+    <link port="Datos Meteorologicos.DEW" relation="relation"/>
+    <link port="Datos Meteorologicos.BARO" relation="relation2"/>
+</entity>

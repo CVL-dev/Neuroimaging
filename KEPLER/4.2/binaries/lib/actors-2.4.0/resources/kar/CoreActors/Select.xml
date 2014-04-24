@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<entity name="Select" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:50:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Select  actor "selects" and outputs a token from among its input tokens. The actor accepts one or more values of any type via its input multiport and selects the value on the channel specified via the control port. The value of the selected channel is output each time the actor iterates.</p>
+
+<p>Each time the actor iterates, it checks to see if a token is available on its control port. If so, the actor reads the value and uses it to determine which of its input channels to output next. If an input token is available on the specified channel, then that token is read and sent to the output. 
+If the actor has never received a value on the control port, then the actor will read and output channel zero of the input port. If the value of the most recently received token on the control port is out of range (less than zero, or greater than or equal to the width of the input), then the actor will not fire (although it will continue to consume tokens on the control port). </p>
+
+<p>The actor never discards input tokens. Note that in DE workflows, where this actor is commonly used, every time the actor receives a new "select" channel via the control port, the actor will output (at the next firing) all previously unread input tokens on the specified channel in the order in which they arrived.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the selected input channel.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts tokens of any type.</configure></property>
+<property name="port:control" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts integer tokens that indicate which input channel to output (0, 1, 2, 3, etc). If the value is out of range (less than zero, or greater than or equal to the width of the input), then the actor will not fire.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Select" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:926:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="control" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowControl" class="org.kepler.sms.SemanticType"/>
+</entity>

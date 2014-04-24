@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<entity name="GDAL Format Translator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:267:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkley </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The GDALFormatTranslator actor reads a geospatial raster file and translates it to a specified format (e.g., JPEG, AAIGrid, etc). Before performing the translation, the actor checks the Kepler file cache to see if the translated file already exists. The actor outputs the name of the translated file (or the name of an existing cached version).</p>
+
+<p>The actor uses the GDAL (Geospatial Data Abstraction Library) translation library to perform the translation. 
+For more information about GDAL, see http://www.gdal.org/index.html.</p>
+
+<p>Translated files are often stored in the Kepler cache. Files are cached by their file names (without the file extension) and their output format.</p>
+
+<p>Use the actor's cacheOption parameter to specify whether the output should be copied to the cache ("Copy files to cache"), copied to the cache as well as the directory where the input raster is stored ("Cache files but preserve location"), or not cached ("No caching"). If "No caching" is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.</p></configure></property>
+<property name="port:inputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input geospatial raster file.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outputCacheType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified output format (e.g., "GTiff" or "AAIGrid") </configure></property>
+<property name="port:outputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the translated file.</configure></property>
+<property name="port:outputCachename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the cache location of the translated output file. If "No cache" is selected as the cacheOption, the port will broadcast nothing. </configure></property>
+<property name="prop:output type" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The  type of output (e.g., "byte" or "int").</configure></property>
+<property name="prop:Cache options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be copied to the cache ("Copy files to cache"), copied to the cache as well as the directory where the input raster is stored ("Cache files but preserve location"), or not cached ("No caching"). If "No caching" is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.</configure></property>
+<property name="prop:output format" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format to which the input raster file should be translated (e.g., JPEG, AAIGrid, etc).</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.gdal.GDALTranslateActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1093:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="tokenProductionRate" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+</property>
+<property name="outputCachename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputCacheType" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+<property name="output format" class="ptolemy.kernel.util.Attribute">
+    <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+        <property name="VRT" class="ptolemy.kernel.util.StringAttribute" value="VRT">
+        </property>
+        <property name="GeoTiff" class="ptolemy.kernel.util.StringAttribute" value="GeoTiff">
+        </property>
+        <property name="NITF" class="ptolemy.kernel.util.StringAttribute" value="NITF">
+        </property>
+        <property name="HFA" class="ptolemy.kernel.util.StringAttribute" value="HFA">
+        </property>
+        <property name="ELAS" class="ptolemy.kernel.util.StringAttribute" value="ELAS">
+        </property>
+        <property name="AAIGrid" class="ptolemy.kernel.util.StringAttribute" value="AAIGrid">
+        </property>
+        <property name="DTED" class="ptolemy.kernel.util.StringAttribute" value="DTED">
+        </property>
+        <property name="PNG" class="ptolemy.kernel.util.StringAttribute" value="PNG">
+        </property>
+        <property name="JPEG" class="ptolemy.kernel.util.StringAttribute" value="JPEG">
+        </property>
+        <property name="MEM" class="ptolemy.kernel.util.StringAttribute" value="MEM">
+        </property>
+        <property name="GIF" class="ptolemy.kernel.util.StringAttribute" value="GIF">
+        </property>
+        <property name="XPM" class="ptolemy.kernel.util.StringAttribute" value="XPM">
+        </property>
+        <property name="BMP" class="ptolemy.kernel.util.StringAttribute" value="BMP">
+        </property>
+        <property name="PCIDSK" class="ptolemy.kernel.util.StringAttribute" value="PCIDSK">
+        </property>
+        <property name="PNM" class="ptolemy.kernel.util.StringAttribute" value="PNM">
+        </property>
+        <property name="ENVI" class="ptolemy.kernel.util.StringAttribute" value="ENVI">
+        </property>
+        <property name="ESRI" class="ptolemy.kernel.util.StringAttribute" value="ESRI">
+        </property>
+        <property name="PCI" class="ptolemy.kernel.util.StringAttribute" value="PCI">
+        </property>
+        <property name="MFF" class="ptolemy.kernel.util.StringAttribute" value="MFF">
+        </property>
+        <property name="MFF2" class="ptolemy.kernel.util.StringAttribute" value="MFF2">
+        </property>
+        <property name="BT" class="ptolemy.kernel.util.StringAttribute" value="BT">
+        </property>
+        <property name="FIT" class="ptolemy.kernel.util.StringAttribute" value="FIT">
+        </property>
+        <property name="USGSDEM" class="ptolemy.kernel.util.StringAttribute" value="USGSDEM">
+        </property>
+    </property>
+</property>
+<property name="output type" class="ptolemy.kernel.util.Attribute">
+    <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+        <property name="Byte" class="ptolemy.kernel.util.StringAttribute" value="Byte">
+        </property>
+        <property name="Int16" class="ptolemy.kernel.util.StringAttribute" value="Int16">
+        </property>
+        <property name="UInt16" class="ptolemy.kernel.util.StringAttribute" value="UInt16">
+        </property>
+        <property name="UInt32" class="ptolemy.kernel.util.StringAttribute" value="UInt32">
+        </property>
+        <property name="Int32" class="ptolemy.kernel.util.StringAttribute" value="Int32">
+        </property>
+        <property name="Float32" class="ptolemy.kernel.util.StringAttribute" value="Float32">
+        </property>
+        <property name="Float64" class="ptolemy.kernel.util.StringAttribute" value="Float64">
+        </property>
+        <property name="CInt16" class="ptolemy.kernel.util.StringAttribute" value="CInt16">
+        </property>
+        <property name="CInt32" class="ptolemy.kernel.util.StringAttribute" value="CInt32">
+        </property>
+        <property name="CFloat32" class="ptolemy.kernel.util.StringAttribute" value="CFloat32">
+        </property>
+        <property name="CFloat64" class="ptolemy.kernel.util.StringAttribute" value="CFloat64">
+        </property>
+    </property>
+</property>
+<property name="Cache options" class="ptolemy.kernel.util.Attribute">
+    <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+        <property name="CacheInternal" class="ptolemy.kernel.util.StringAttribute" value="Copy Files to Cache">
+        </property>
+        <property name="CacheExternal" class="ptolemy.kernel.util.StringAttribute" value="Cache Files but Preserve Location">
+        </property>
+        <property name="NoCache" class="ptolemy.kernel.util.StringAttribute" value="No Caching">
+        </property>
+    </property>
+</property>
+</entity>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="Bernoulli" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:87:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The Bernoulli actor generates and outputs a sequence of random Boolean values.</p>
+
+<p>The generated values are independent and identically distributed. The probability of true is given by the parameter trueProbability. The seed parameter controls the random number generation.</p>
+
+<p>Note that if the parameters are changed during workflow execution, there is a one iteration delay before the changes take effect.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a sequence of random Boolean values.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The seed that controls the random number generation. A seed of zero (the default) means that the seed is derived from the current system time and a Java hash code (i.e., System.currentTimeMillis() + hashCode()). With extremely high probability, the default seed will ensure that two distinct actors will have distinct seeds. However, current time may not have enough resolution to ensure that two subsequent executions of the same model have distinct seeds. The parameter contains a long token, initially with value 0.</configure></property>
+<property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to reset  the random number generator each time the workflow is run. By default, the generator does not reset. </configure></property>
+<property name="prop:trueProbability" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The probability of true. The default is 0.5.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Bernoulli" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:961:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#RandomNumberMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#RandomNumberOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

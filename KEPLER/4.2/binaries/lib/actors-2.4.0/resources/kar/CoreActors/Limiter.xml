@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="Limiter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:76:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Limiter actor reads a scalar value and compares it to the top and bottom value of a specified range. The actor outputs a value that falls within the range:</p>
+
+<ul>
+<li>
+The value of the top parameter (if the input is greater than the top value)</li>
+
+<li>The input value (if the input falls between the top and bottom value)</li>
+
+<li>The bottom value (if the input falls below the bottom value)</li>
+</ul>
+</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a value that falls within the specified range.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a scalar value.</configure></property>
+<property name="prop:bottom" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The bottom of the limiting range. The value is scalar and default to 0.0.</configure></property>
+<property name="prop:top" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The top of the limiting range. The value is scalar and default to 1.0.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Limiter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:951:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#IterativeMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#IterativeOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

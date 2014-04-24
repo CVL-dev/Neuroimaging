@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<!-- Factory for graph editing.  -->
+<property name="factory2" class="ptolemy.actor.gui.PtolemyTableauFactory">
+  <!-- These will appear in the View menu of a the graph editor. -->
+  <!-- <property name="Graph Editor"
+            class="ptolemy.vergil.actor.ActorGraphTableau$Factory"/> -->
+  <property name="Graph Editor"
+            class="org.kepler.gui.frame.KeplerGraphTableau$Factory"/>
+  <property name="Run Window"
+            class="ptolemy.actor.gui.RunTableau$Factory"/>
+  <property name="Tree View"
+            class="ptolemy.vergil.tree.TreeTableau$Factory"/>
+  <property name="XML View"
+            class="ptolemy.actor.gui.TextEditorTableau$Factory"/>
+  <property name="JVM Properties"
+            class="ptolemy.actor.gui.JVMTableau$Factory"/>
+  <!--<property name="New Actor"
+    class="org.ecoinformatics.seek.workflow.gui.NewActorWizardTableau$Factory"/>-->
+</property>

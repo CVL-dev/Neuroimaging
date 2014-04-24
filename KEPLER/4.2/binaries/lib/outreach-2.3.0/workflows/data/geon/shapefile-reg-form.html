@@ -1,0 +1,1106 @@
+
+<HTML>
+<BODY bgcolor="#ffffff" marginheight="0" marginwidth="0" topmargin="6" leftmargin="6" rightmargin="6">
+
+<FORM method="post" action="http://geon01.sdsc.edu:8164/pt2/jsp/pts.jsp">
+
+<SCRIPT type=text/javascript>
+//<![CDATA[
+
+
+function v() {
+     if (!emptyString.test(document.forms[0].begin_age) &&
+         !emptyString.test(document.forms[0].end_age)) {
+
+          var b = parseInt(document.forms[0].begin_age.value);
+          var e = parseInt(document.forms[0].end_age.value);
+
+          if (!isNaN(b) && !isNaN(e)) {
+	         if ( b < e ) {
+	              msg("agerror",
+			  "error",
+			  "&nbsp;<b><font color=red>The begin year is later than the end year</font></b>");
+		      return false;
+	         } else {
+	              msg("bcerror", "warn", "");
+	         }
+	}
+     }
+     return true;
+}
+
+function validateBC() {
+
+     if (!emptyString.test(document.forms[0].bc_begin_year) &&
+         !emptyString.test(document.forms[0].bc_end_year)) {
+
+          var b = parseInt(document.forms[0].bc_begin_year.value);
+          var e = parseInt(document.forms[0].bc_end_year.value);
+
+          if (!isNaN(b) && !isNaN(e)) {
+
+	         if ( b < e ) {
+	              msg("bcerror",
+			  "error",
+			  "&nbsp;<b><font color=red>The begin year is later than the end year</font></b>");
+		      return false;
+	         } else {
+	              msg("bcerror", "warn", "");
+	         }
+	}
+     }
+
+     return true;
+}
+
+
+function validateAD() {
+
+     if (!emptyString.test(document.forms[0].begin_year) &&
+         !emptyString.test(document.forms[0].end_year)) {
+
+          var b = parseInt(document.forms[0].begin_year.value);
+          var e = parseInt(document.forms[0].end_year.value);
+
+          if (!isNaN(b) && !isNaN(e)) {
+
+	         if ( b > e  ||
+                      (b == e && document.forms[0].begin_month.value > document.forms[0].end_month.value) ||
+		      (b == e && document.forms[0].begin_month.value == document.forms[0].end_month.value
+			      && document.forms[0].begin_day.value > document.forms[0].end_day.value)     ||
+		      (b == e && document.forms[0].begin_month.value == document.forms[0].end_month.value
+			      && document.forms[0].begin_day.value == document.forms[0].end_day.value
+			      && document.forms[0].begin_hour.value > document.forms[0].end_hour.value)   ||
+		      (b == e && document.forms[0].begin_month.value == document.forms[0].end_month.value
+			      && document.forms[0].begin_day.value == document.forms[0].end_day.value
+			      && document.forms[0].begin_hour.value == document.forms[0].end_hour.value
+			      && document.forms[0].begin_min.value > document.forms[0].end_min.value	)   ||
+		      (b == e && document.forms[0].begin_month.value == document.forms[0].end_month.value
+			      && document.forms[0].begin_day.value == document.forms[0].end_day.value
+			      && document.forms[0].begin_hour.value == document.forms[0].end_hour.value
+			      && document.forms[0].begin_min.value == document.forms[0].end_min.value
+                              && document.forms[0].begin_sec.value > document.forms[0].end_sec.value
+		              )
+                     ) {
+	              msg("cerror",
+			  "error",
+			  "&nbsp;<b><font color=red>The begin year is later than the end year</font></b>");
+		      return false;
+	         } else {
+	              msg("cerror", "warn", "");
+	         }
+	}
+     }
+
+     return true;
+}
+
+
+
+
+function submitform() {
+
+    var elem;
+    var errs=0;
+    // execute all element validations in reverse order, so focus gets
+    // set to the first one in error.
+
+    if ( document.forms[0].time[2].checked && document.forms[0].geologic_time.value == "other") {
+
+	var b = !validateNumber(document.forms[0].begin_age,  'agerror');
+        var e = !validateNumber(document.forms[0].end_age,  'agerror');
+
+        if (b)  errs += 1;
+        if (e)  errs += 1;
+
+	if (!b && !e) {
+	   if (document.forms[0].begin_age.value < document.forms[0].end_age.value) {
+	      msg("agerror", "error", "<b><font color=red>The begin age is later than the end age</font></b>");
+	      errs += 1;
+	   }
+	}
+    }
+
+    if ( document.forms[0].time[1].checked) {
+        if (!validatePresent(document.forms[0].begindate,  'inf_begindate', true))        errs += 1;
+        if (!validatePresent(document.forms[0].enddate,  'inf_enddate', true))          errs += 1;
+    }
+
+    if (errs > 0) DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_3");
+    var count = errs;
+    errs = 0;
+
+    if (document.forms[0].person1[0].checked) {
+        if (!validatePresent(document.forms[0].email1,  'inf_email1', true))        errs += 1;
+        if (!validateAlphabet(document.forms[0].lastname1,  'inf_lastname1'))        errs += 1;
+        if (!validateAlphabet(document.forms[0].firstname1,  'inf_firstname1'))      errs += 1;
+    }
+    if (!validatePresent(document.forms[0].org1,  'inf_org1'))                      errs += 1;
+
+    if (errs > 0) DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_2");
+    count += errs;
+    errs = 0;
+
+    if (!validatePresent(document.forms[0].description,  'inf_description'))        errs += 1;
+    if (!validatePresent(document.forms[0].title,  'inf_title'))                    errs += 1;
+
+    if (errs > 0) DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_1");
+    errs += count;
+
+    if (errs == 0) document.forms[0].submit();
+}
+
+
+function any() {
+
+   var present = document.getElementById("present");
+   var nonpresent = document.getElementById("nonpresent");
+   present.style.display = "none";
+   nonpresent.style.display = "none";
+
+}
+
+
+function present(val) {
+
+   var present = document.getElementById("present");
+   var nonpresent = document.getElementById("nonpresent");
+
+   if (val) {
+       present.style.display = "none";
+       nonpresent.style.display = "block";
+   } else {
+       present.style.display = "block";
+       nonpresent.style.display = "none";
+   }
+}
+
+function set1(val) {
+
+   var person = document.getElementById("personform1");
+   var email = document.getElementById("emailform1");
+
+   if (val) {
+       person.style.display="block";
+       email.style.display="block";
+   } else {
+       person.style.display="none";
+       email.style.display="none";
+   }
+}
+
+function set2(val) {
+   if (val) {
+       document.all.personform2.style.display = "block";
+       document.all.emailform2.style.display = "block";
+   } else {
+       document.all.personform2.style.display = "none";
+       document.all.emailform2.style.display = "none";
+   }
+}
+
+
+function changeTime(val) {
+
+    var element = document.getElementById("period");
+    if (val.value == "other") {
+	element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
+}
+
+function timeSelect(val) {
+
+   var ad = document.getElementById("adform");
+   var bc = document.getElementById("bcform");
+   var direct = document.getElementById("directform");
+
+   if (val == 1) {
+
+	ad.style.display = "block";
+	bc.style.display = "none";
+	direct.style.display = "none";
+
+   } else if (val == 2) {
+
+        ad.style.display = "none";
+	bc.style.display = "block";
+	direct.style.display = "none";
+
+   } else {
+
+        ad.style.display = "none";
+	bc.style.display = "none";
+	direct.style.display = "block";
+
+  }
+}
+
+
+//]]>
+
+</SCRIPT>
+
+
+<script language="javascript" src="dotj/dotj_2.0.js"></script>
+<script language="javascript" src="formval.js"></script>
+
+<div>&nbsp;</div>
+
+<blockquote>
+<div style="PADDING-BOTTOM: 25px;">
+<span style="FONT: bolder 16px Verdana; color: black;">Shapefile Registration</span>
+<span style="FONT: 11px Verdana; color: lightgrey;">using ADN Metadata Schema</span>
+</div>
+
+<!-- General Section -->
+<table width=700 id='DotJ_ex1_Tab_1'  border='0' cellpadding='0' cellspacing='0'>
+<tr>
+  <td>
+    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+      <tr>
+          <td  width='100'  valign='bottom' class='TabRow'>
+             <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_1");' class='Tab'><img name="tb1on"
+              height="22" border="0" width="100" src="dotj-images/general-on.gif"></a>
+          </td>
+
+          <td  width='100'  valign='bottom' class='TabRow'>
+            <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_2");' class='Tab'><img name="tb2off"
+               height="19" border="0" width="100" src="dotj-images/contributors-off.gif"></a>
+          </td>
+
+          <td  width='100'  valign='bottom' class='TabRow'>
+            <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_3");' class='Tab'><img name="tb2off"
+               height="19" border="0" width="100" src="dotj-images/coverage-off.gif"></a>
+          </td>
+
+          <td class='TabBottomLine'><img height='1' alt='' src='http://www.dotjonline.com/images/_spacer.gif'
+               border='0'>
+           </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td class='TabBody'  height='160' width=700>
+
+
+<center><table border=0 cellpadding=10 cellspacing=5 width=100%>
+   <tr>
+       <td>
+           <table id=formTable cellpadding=7 cellspacing=0 border=0>
+              <tr>
+                  <td align=right>
+       	              <div class=geon-label>Title:</div>
+       	          </td>
+       	          <td>
+                       <input type=text class=geon-input onchange="validatePresent(this, 'inf_title');"
+			      name=title size=50><span id=inf_title></span>
+                  </td>
+       	     </tr>
+              <tr>
+                  <td align=right>
+       	              <div class=geon-label>Subjects:</div>
+       	          </td>
+       	          <td>
+	               <select name=subjects>
+                        <option value="DLESE:Agricultural science">Agricultural science</option>
+			<option value="DLESE:Atmospheric science">Atmospheric science</option>
+			<option value="DLESE:Biological oceanography">Biological oceanography</option>
+			<option value="DLESE:Biology">Biology</option>
+			<option value="DLESE:Chemical oceanography">Chemical oceanography</option>
+			<option value="DLESE:Chemistry">Chemistry</option>
+			<option value="DLESE:Climatology">Climatology</option>
+			<option value="DLESE:Cryology">Cryology</option>
+			<option value="DLESE:Ecology">Ecology</option>
+			<option value="DLESE:Educational theory and practice">Education</option>
+			<option value="DLESE:Environmental science">Environmental science</option>
+			<option value="DLESE:Forestry">Forestry</option>
+			<option value="DLESE:Geochemistry">Geochemistry</option>
+			<option value="DLESE:Geologic time">Geologic time</option>
+			<option value="DLESE:Geology" selected>Geology</option>
+			<option value="DLESE:Geophysics">Geophysics</option>
+			<option value="DLESE:History and philosophy of science">History</option>
+			<option value="DLESE:Human geography">Human geography</option>
+			<option value="DLESE:Hydrology">Hydrology</option>
+			<option value="DLESE:Mathematics">Mathematics</option>
+			<option value="DLESE:Mineralogy or petrology">Mineralogy or petrology</option>
+			<option value="DLESE:Natural hazards">Natural hazards</option>
+			<option value="DLESE:Other">Other</option>
+			<option value="DLESE:Paleontology">Paleontology</option>
+			<option value="DLESE:Physical geography">Physical geography</option>
+			<option value="DLESE:Physical oceanography">Physical oceanography</option>
+			<option value="DLESE:Physics">Physics</option>
+			<option value="DLESE:Policy issues">Policy issues</option>
+			<option value="DLESE:Soil science">Soil science</option>
+			<option value="DLESE:Space science">Space science</option>
+			<option value="DLESE:Structural geology">Structural geology</option>
+			<option value="DLESE:Technology">Technology</option>
+	               </select>
+                  </td>
+       	     </tr>
+              <tr>
+                  <td align=right>
+       	              <div class=geon-label>Keywords:</div>
+       	          </td>
+       	          <td>
+                       <input type=text name=keywords size=30>
+                  </td>
+       	     </tr>
+       	    <tr>
+                <td align=right>
+       	          <div class=geon-label>Permission:</div>
+       	        </td>
+       	         <td>
+                    <select size=1 class=geon-input  name=permission>
+                          <option value=public>public</option>
+                          <option value=private>private</option>
+                    </select>
+                </td>
+       	    </tr>
+       	    <tr>
+                  <td align=right valign=top>
+       	             <div class=geon-label>Description:</div>
+       	          </td>
+       	          <td>
+                     <textarea name=description cols=60 rows=5 onchange="validatePresent(this, 'inf_description');"></textarea><span id="inf_description"></span>
+                  </td>
+       	     </tr>
+           </table>
+
+       </td>
+   </tr>
+</table></center>
+
+
+    </td>
+</tr>
+<tr>
+  <td style='text-align:left;' width=700 class='TabFooter'>
+     <a href="javascript:submitform();"><b><font color=black>Submit</font></b></a></td>
+  </td>
+</tr>
+</table>
+
+
+<!-- Contributors -->
+<table width=700 id='DotJ_ex1_Tab_2' style='display:none'  border='0' cellpadding='0' cellspacing='0'>
+<tr>
+  <td>
+    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+      <tr>
+          <td  width='100'  valign='bottom' class='TabRow'>
+              <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_1");' class='Tab'><img
+                 name="tb1off" height="19" border="0" width="100"
+                 src="dotj-images/general-off.gif">
+              </a>
+          </td>
+          <td  width='100'  valign='bottom' class='TabRow'>
+              <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_2");' class='Tab'><img
+                 name="tb2on" height="22" border="0" width="100"
+                 src="dotj-images/contributors-on.gif"></a>
+          </td>
+
+          <td  width='100'  valign='bottom' class='TabRow'>
+            <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_3");' class='Tab'><img name="tb2off"
+               height="19" border="0" width="100" src="dotj-images/coverage-off.gif"></a>
+          </td>
+
+          <td class='TabBottomLine'><img height='1' alt='' src='dotj-images/_spacer.gif'
+              border='0'>
+          </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class='TabBody' width=700 height='160'>
+
+
+
+
+
+<center><table border=0 cellpadding=10 cellspacing=20 width=100%>
+   <tr>
+       <td>
+
+	   <table>
+              <div class=geon-label>
+                 <input type=radio name=person1 value="Person" checked onclick="set1(true);">Person</input>
+                 <input type=radio name=person1 value="Organization" onclick="set1(false);">Organization</input>
+              </div>
+	   </table>
+
+           <table  cellpadding=5 cellspacing=0 border=0>
+            <tr>
+             <td>
+	        <div class=geon-label>Role:<br>
+                <select name="role1" class="geon-input">
+                  <option value="Author" selected>Author</option>
+                  <option value="Contact">Contact</option>
+                  <option value="Contributor">Contributor</option>
+                  <option value="Editor">Editor</option>
+                  <option value="Principal Investigator">Principal Investigator</option>
+                  <option value="Publisher">Publisher</option>
+                </select>
+		</div>
+              </td>
+	   </table>
+
+	   <!-- begin person form -->
+	   <div id="personform1" style="display:block">
+           <table  cellpadding=5 cellspacing=0 border=0>
+            <tr>
+              <td>
+	        <div class=geon-label>Name Title:<br>
+	        <select name="nametitle1">
+                  <option value="Dr" selected>Dr</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Prof">Prof</option>
+                </select>
+		</div>
+              </td>
+
+              <td>
+                <div class="geon-label">First Name:<br>
+                <input type="text" name="firstname1" maxlength="25"  size=10  class="geon-input"
+		       onchange="validateAlphabet(this, 'inf_firstname1');"><span id="inf_firstname1"></span>
+		</div>
+	       </td>
+
+              <td>
+                <div class=geon-label>Middle Name:<br>
+                <input type="text" name="middlename1" maxlength="25" size=10>
+	        </div>
+              </td>
+
+              <td>
+                <div class=geon-label>Last Name:<br>
+                <input type="text" name="lastname1" maxlength="25"   size=10 class="geon-input"
+		       onchange="validateAlphabet(this, 'inf_lastname1');"><span id="inf_lastname1"></span>
+	        </div>
+              </td>
+
+            </tr>
+          </table>
+	  </div>
+
+	  <table border=0 cellpadding=5 cellspacing=0>
+            <tr>
+              <td colspan=4>
+                <div class=geon-label>
+                Organization:<br>
+                <input type="text" name="org1" maxlength="256" value="" size="60" class="geon-input" onchange="validatePresent(this, 'inf_org1');"><span id="inf_org1"></span>
+		</div>
+              </td>
+            </tr>
+        </table>
+
+	<div id="emailform1" style="display:block" >
+        <table border=0 cellpadding=5 cellspacing=0>
+            <tr>
+              <td>
+                <div class=geon-label>
+                E-mail<br>
+                <input type="text" name="email1" maxlength="256" size="30" value="" class="geon-input"
+		       onchange="if (document.forms[0].person1[0].checked) validateEmail(this, 'inf_email1', true);" ><span id="inf_email1"></span>
+		</div>
+              </td>
+            </tr>
+
+        </table>
+	</div>
+
+       </td>
+   </tr>
+</table></center>
+
+
+
+   </td>
+</tr>
+<tr>
+  <td style='text-align:left;' width=700 class='TabFooter'>
+  <a href="javascript:submitform();"><b><font color=black>Submit</font></b></a></td>
+</tr>
+</table>
+
+
+<!-- Coverage -->
+<table width=700 id='DotJ_ex1_Tab_3' style='display:none'  border='0' cellpadding='0' cellspacing='0'>
+<tr>
+  <td>
+    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+      <tr>
+          <td  width='100'  valign='bottom' class='TabRow'>
+              <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_1");' class='Tab'><img
+                 name="tb1off" height="19" border="0" width="100"
+                 src="dotj-images/general-off.gif">
+              </a>
+          </td>
+          <td  width='100'  valign='bottom' class='TabRow'>
+              <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_2");' class='Tab'><img
+                 name="tb2on" height="19" border="0" width="100"
+                 src="dotj-images/contributors-off.gif"></a>
+          </td>
+
+          <td  width='100'  valign='bottom' class='TabRow'>
+            <a href='' onclick='return DotJ_displayTab(ex1_tabs, "DotJ_ex1_Tab_3");' class='Tab'><img name="tb2off"
+               height="22" border="0" width="100" src="dotj-images/coverage-on.gif"></a>
+          </td>
+
+          <td class='TabBottomLine'><img height='1' alt='' src='dotj-images/_spacer.gif'
+              border='0'>
+          </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class='TabBody' width=700 height='160'>
+
+
+
+<br>
+<fieldset>
+	<legend><b>Spatial Coverage</b></legend>
+
+        <blockquote>
+        <table border="0" cellpadding=8>
+	     <tr>
+	          <td align=right>Horzontal Global Geodatic Datum:</td>
+                  <td>
+                      <select name="hrizontal">
+                         <option value="DLESE:WGS72">WGS72</option>
+                         <option value="DLESE:WGS84">WGS84</option>
+                         <option value="DLESE:PZ90">PZ90</option>
+                         <option value="DLESE:NAD27">NAD27</option>
+                         <option value="DLESE:NAD83" selected>NAD83</option>
+                         <option value="DLESE:ATS77">ATS77</option>
+	              </select>
+                  </td>
+	     </tr>
+
+	     <tr>
+	          <td align=right>Projection:</td>
+                  <td>
+		     <select name="projection">
+			<option value="DLESE:Does not apply" selected>unprojected</option>
+			<option value="DLESE:Albers conical equal area">Albers conical equal area</option>
+			<option value="DLESE:Lambert azimuthal equal area">Lambert azimuthal equal area</option>
+			<option value="DLESE:Lambert conformal conic">Lambert conformal conic</option>
+			<option value="DLESE:Mercator">Mercator</option>
+			<option value="DLESE:Polar stereographic">Polar stereographic</option>
+			<option value="DLESE:Transverse Mercator">Transverse Mercator</option>
+			<option value="DLESE:Space oblique Mercator">Space oblique Mercator</option>
+	             </select>
+	          </td>
+             </tr>
+
+
+	     <tr>
+	          <td align=right>Coordinate System: </td>
+                  <td>
+		     <select name="coordinate">
+                          <option value="Geographic Latitude and Longtitude"
+				  selected>Geographic Latitude and Longtitude</option>
+	             </select>
+	          </td>
+             </tr>
+
+
+	     <!--
+	     <tr>
+                 <td nowrap>Mininum Altitude:
+	         <input type="text" size="10" maxlength="200" name="min_altitude" value="0.0" onchange="validateFloat(this, 'inf_mina');">&nbsp;(meters) &nbsp; <span id="inf_mina"></span>
+                 </td>
+
+		 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td nowrap>Maximum Altitude:
+	          <input type="text" size="10" maxlength="200" name="max_altitude" value="0.0" onchange="validateFloat(this, 'inf_maxa');">&nbsp;(meters) &nbsp; <span id="inf_maxa"></span>
+                </td>
+	     </tr>
+
+	     -->
+
+	</table>
+	</blockquote>
+</fieldset>
+
+<br><p>
+<fieldset>
+    <legend><b>Temporal Coverage</b></legend>
+
+    <blockquote>
+
+       <div class=geon-label>
+           <input type=radio name=time value="any" checked onclick="any();">Any</input>
+           <input type=radio name=time value="present" checked onclick="present(true);">Present</input>
+           <input type=radio name=time value="notpresent" onclick="present(false);">Geologic Time</input>
+       </div>
+
+       <div id="present" style='display:none;' >
+
+          <br><p>
+          Geologic Time:
+          <select name="geologic_time" onChange="changeTime(this);">
+	      <option value="other">Explicit Time Period</option>
+	      <%= org.geongrid.ontology.GeologyAge.html %>
+	  </select>
+
+	  <div id="period" style="display:none;">
+	  <p>From <input type="text" size="4" maxlength="4" name="begin_age"
+	       onchange="validateNumber(this, 'agerror'); v();"> ma
+	  to <input type="text" size="4" maxlength="4" name="end_age"
+               onchange="validateNumber(this, 'agerror'); v();"> ma
+
+          <br><p><span id="agerror">&nbsp;</span>
+
+	  </div>
+
+       </div>
+
+       <div id="nonpresent" style="display:block">
+
+       <div id="adform" name="test" style="display:block;">
+       <table border="0">
+	  <tr>
+	      <td><img src="images/spacer" width="1" height="1" border=0></td>
+	  </tr>
+          <tr>
+            <td nowrap valign=top>
+	            <img src="images/spacer" width="20" height=1 border=0>
+		    between
+	            <img src="images/spacer" width="3" height=1 border=0>
+                    <SCRIPT language=javascript src="popcalendar.js"></SCRIPT>
+		    <INPUT type=text name="begindate"  id="begindate" size=12 readonly>
+		    <IMG onclick="popUpCalendar(this, document.getElementById('begindate'), 'mm/dd/yyyy', 0, 0)" height=17
+		         src="images/calendaricon.gif" width=17 border=0>
+
+	      <img src="images/spacer" width="10" height=1 border=0>
+              <select size="1"  name="begin_hour">
+                  <option value="0" selected>00</option>
+	          <option value="1">01</option>
+	          <option value="2">02</option>
+	          <option value="3">03</option>
+	          <option value="4">04</option>
+	          <option value="5">05</option>
+	          <option value="6">06</option>
+	          <option value="7">07</option>
+	          <option value="8">08</option>
+	          <option value="9">09</option>
+	          <option value="10">10</option>
+	          <option value="11">11</option>
+	          <option value="12">12</option>
+	          <option value="13">13</option>
+	          <option value="14">14</option>
+	          <option value="15">15</option>
+	          <option value="16">16</option>
+	          <option value="17">17</option>
+	          <option value="18">18</option>
+	          <option value="19">19</option>
+	          <option value="20">20</option>
+	          <option value="21">21</option>
+	          <option value="22">22</option>
+	          <option value="23">23</option>
+	      </select>
+               :
+              <select size="1"  name="begin_min">
+	          <option value="0" selected>00</option>
+	          <option value="1">01</option>
+	          <option value="2">02</option>
+	          <option value="3">03</option>
+	          <option value="4">04</option>
+	          <option value="5">05</option>
+	          <option value="6">06</option>
+	          <option value="7">07</option>
+	          <option value="8">08</option>
+	          <option value="9">09</option>
+	          <option value="10">10</option>
+	          <option value="11">11</option>
+	          <option value="12">12</option>
+	          <option value="13">13</option>
+	          <option value="14">14</option>
+	          <option value="15">15</option>
+	          <option value="16">16</option>
+	          <option value="17">17</option>
+	          <option value="18">18</option>
+	          <option value="19">19</option>
+	          <option value="20">20</option>
+	          <option value="21">21</option>
+	          <option value="22">22</option>
+	          <option value="23">23</option>
+	          <option value="24">24</option>
+	          <option value="25">25</option>
+	          <option value="26">26</option>
+	          <option value="27">27</option>
+	          <option value="28">28</option>
+	          <option value="29">29</option>
+	          <option value="30">30</option>
+	          <option value="31">31</option>
+	          <option value="32">32</option>
+	          <option value="33">33</option>
+	          <option value="34">34</option>
+	          <option value="35">35</option>
+	          <option value="36">36</option>
+	          <option value="37">37</option>
+	          <option value="38">38</option>
+	          <option value="39">39</option>
+	          <option value="40">40</option>
+	          <option value="41">41</option>
+	          <option value="42">42</option>
+	          <option value="43">43</option>
+	          <option value="44">44</option>
+	          <option value="45">45</option>
+	          <option value="46">46</option>
+	          <option value="47">47</option>
+	          <option value="48">48</option>
+	          <option value="49">49</option>
+	          <option value="50">50</option>
+	          <option value="51">51</option>
+	          <option value="52">52</option>
+	          <option value="53">53</option>
+	          <option value="54">54</option>
+	          <option value="55">55</option>
+	          <option value="56">56</option>
+	          <option value="57">57</option>
+	          <option value="58">58</option>
+	          <option value="59">59</option>
+	      </select>
+              :
+              <select size="1" name="begin_sec">
+	          <option value="0" selected>00</option>
+	          <option value="1">01</option>
+	          <option value="2">02</option>
+	          <option value="3">03</option>
+	          <option value="4">04</option>
+	          <option value="5">05</option>
+	          <option value="6">06</option>
+	          <option value="7">07</option>
+	          <option value="8">08</option>
+	          <option value="9">09</option>
+	          <option value="10">10</option>
+	          <option value="11">11</option>
+	          <option value="12">12</option>
+	          <option value="13">13</option>
+	          <option value="14">14</option>
+	          <option value="15">15</option>
+	          <option value="16">16</option>
+	          <option value="17">17</option>
+	          <option value="18">18</option>
+	          <option value="19">19</option>
+	          <option value="20">20</option>
+	          <option value="21">21</option>
+	          <option value="22">22</option>
+	          <option value="23">23</option>
+	          <option value="24">24</option>
+	          <option value="25">25</option>
+	          <option value="26">26</option>
+	          <option value="27">27</option>
+	          <option value="28">28</option>
+	          <option value="29">29</option>
+	          <option value="30">30</option>
+	          <option value="31">31</option>
+	          <option value="32">32</option>
+	          <option value="33">33</option>
+	          <option value="34">34</option>
+	          <option value="35">35</option>
+	          <option value="36">36</option>
+	          <option value="37">37</option>
+	          <option value="38">38</option>
+	          <option value="39">39</option>
+	          <option value="40">40</option>
+	          <option value="41">41</option>
+	          <option value="42">42</option>
+	          <option value="43">43</option>
+	          <option value="44">44</option>
+	          <option value="45">45</option>
+	          <option value="46">46</option>
+	          <option value="47">47</option>
+	          <option value="48">48</option>
+	          <option value="49">49</option>
+	          <option value="50">50</option>
+	          <option value="51">51</option>
+	          <option value="52">52</option>
+	          <option value="53">53</option>
+	          <option value="54">54</option>
+	          <option value="55">55</option>
+	          <option value="56">56</option>
+	          <option value="57">57</option>
+	          <option value="58">58</option>
+	          <option value="59">59</option>
+              </select>
+	       <span id="inf_begindate"></span>
+              </td>
+          </tr>
+
+	  <tr>
+	        <td><img src="images/spacer" width="1" height=5 border=0></td>
+	  </tr>
+
+          <tr>
+            <td nowrap>
+	            <img src="images/spacer" width="51" height=1 border=0>
+		    and
+	            <img src="images/spacer" width="3" height=1 border=0>
+		    <INPUT type=text name="enddate" id="enddate" size=12 readonly >
+		    <IMG onclick="popUpCalendar(this, document.getElementById('enddate'), 'mm/dd/yyyy', 0, 0)" height=17
+		         src="images/calendaricon.gif" width=17 border=0>
+
+	      <img src="images/spacer" width="10" height=1 border=0>
+              <select size="1" name="end_hour">
+	          <option value="0" selected>00</option>
+	          <option value="1">01</option>
+	          <option value="2">02</option>
+	          <option value="3">03</option>
+	          <option value="4">04</option>
+	          <option value="5">05</option>
+	          <option value="6">06</option>
+	          <option value="7">07</option>
+	          <option value="8">08</option>
+	          <option value="9">09</option>
+	          <option value="10">10</option>
+	          <option value="11">11</option>
+	          <option value="12">12</option>
+	          <option value="13">13</option>
+	          <option value="14">14</option>
+	          <option value="15">15</option>
+	          <option value="16">16</option>
+	          <option value="17">17</option>
+	          <option value="18">18</option>
+	          <option value="19">19</option>
+	          <option value="20">20</option>
+	          <option value="21">21</option>
+	          <option value="22">22</option>
+	          <option value="23">23</option>
+              </select>&nbsp;:
+
+              <select size="1" name="end_min">
+	          <option value="0" selected>00</option>
+	          <option value="1">01</option>
+	          <option value="2">02</option>
+	          <option value="3">03</option>
+	          <option value="4">04</option>
+	          <option value="5">05</option>
+	          <option value="6">06</option>
+	          <option value="7">07</option>
+	          <option value="8">08</option>
+	          <option value="9">09</option>
+	          <option value="10">10</option>
+	          <option value="11">11</option>
+	          <option value="12">12</option>
+	          <option value="13">13</option>
+	          <option value="14">14</option>
+	          <option value="15">15</option>
+	          <option value="16">16</option>
+	          <option value="17">17</option>
+	          <option value="18">18</option>
+	          <option value="19">19</option>
+	          <option value="20">20</option>
+	          <option value="21">21</option>
+	          <option value="22">22</option>
+	          <option value="23">23</option>
+	          <option value="24">24</option>
+	          <option value="25">25</option>
+	          <option value="26">26</option>
+	          <option value="27">27</option>
+	          <option value="28">28</option>
+	          <option value="29">29</option>
+	          <option value="30">30</option>
+	          <option value="31">31</option>
+	          <option value="32">32</option>
+	          <option value="33">33</option>
+	          <option value="34">34</option>
+	          <option value="35">35</option>
+	          <option value="36">36</option>
+	          <option value="37">37</option>
+	          <option value="38">38</option>
+	          <option value="39">39</option>
+	          <option value="40">40</option>
+	          <option value="41">41</option>
+	          <option value="42">42</option>
+	          <option value="43">43</option>
+	          <option value="44">44</option>
+	          <option value="45">45</option>
+	          <option value="46">46</option>
+	          <option value="47">47</option>
+	          <option value="48">48</option>
+	          <option value="49">49</option>
+	          <option value="50">50</option>
+	          <option value="51">51</option>
+	          <option value="52">52</option>
+	          <option value="53">53</option>
+	          <option value="54">54</option>
+	          <option value="55">55</option>
+	          <option value="56">56</option>
+	          <option value="57">57</option>
+	          <option value="58">58</option>
+	          <option value="59">59</option>
+              </select>&nbsp;:
+
+              <select size="1" name="end_sec">
+
+	          <option value="0" selected>00</option>
+	          <option value="1">01</option>
+	          <option value="2">02</option>
+	          <option value="3">03</option>
+	          <option value="4">04</option>
+	          <option value="5">05</option>
+	          <option value="6">06</option>
+	          <option value="7">07</option>
+	          <option value="8">08</option>
+	          <option value="9">09</option>
+	          <option value="10">10</option>
+	          <option value="11">11</option>
+	          <option value="12">12</option>
+	          <option value="13">13</option>
+	          <option value="14">14</option>
+	          <option value="15">15</option>
+	          <option value="16">16</option>
+	          <option value="17">17</option>
+	          <option value="18">18</option>
+	          <option value="19">19</option>
+	          <option value="20">20</option>
+	          <option value="21">21</option>
+	          <option value="22">22</option>
+	          <option value="23">23</option>
+	          <option value="24">24</option>
+	          <option value="25">25</option>
+	          <option value="26">26</option>
+	          <option value="27">27</option>
+	          <option value="28">28</option>
+	          <option value="29">29</option>
+	          <option value="30">30</option>
+	          <option value="31">31</option>
+	          <option value="32">32</option>
+	          <option value="33">33</option>
+	          <option value="34">34</option>
+	          <option value="35">35</option>
+	          <option value="36">36</option>
+	          <option value="37">37</option>
+	          <option value="38">38</option>
+	          <option value="39">39</option>
+	          <option value="40">40</option>
+	          <option value="41">41</option>
+	          <option value="42">42</option>
+	          <option value="43">43</option>
+	          <option value="44">44</option>
+	          <option value="45">45</option>
+	          <option value="46">46</option>
+	          <option value="47">47</option>
+	          <option value="48">48</option>
+	          <option value="49">49</option>
+	          <option value="50">50</option>
+	          <option value="51">51</option>
+	          <option value="52">52</option>
+	          <option value="53">53</option>
+	          <option value="54">54</option>
+	          <option value="55">55</option>
+	          <option value="56">56</option>
+	          <option value="57">57</option>
+	          <option value="58">58</option>
+	          <option value="59">59</option>
+	      </select>
+	       <span id="inf_enddate"></span>
+            </td>
+
+          </tr>
+
+          <tr><td colspan=1><br><span id="cerror"></span></td></tr>
+
+         </table>
+	 </div>
+
+
+	</div>
+     </blockquote>
+     <br>
+</fieldset>
+<br>
+
+
+
+   </td>
+</tr>
+<tr>
+  <td style='text-align:left;' width=700 class='TabFooter'>
+      <a href="javascript:submitform();"><b><font color=black>Submit</font></b></a></td>
+  </td>
+</tr>
+</table>
+
+
+</form>
+
+</blockquote>
+
+<script language="javascript" src="http://geon01.sdsc.edu:6060/omi/jsp/dotj/dotj_2.0.js"></script>
+
+<script language="Javascript">
+<!--
+// Build number is 2032
+var DotJ_TOKEN_MINLENGTH = '{minlength}';
+var DotJ_PAIR_DELIMITER = '__';
+var DotJ_ITEM_DELIMITER = '|';
+var DotJ_EMPTY_STRING = '##empty##';
+var DotJ_INPUT_BGCOLOR_ON = '#B7CBEE';
+var DotJ_ALERT_BEHAVIOUR = 'dhtml';
+var DotJ_FIELDVALIDATOR_ERROR_CHANGEFIELDCLASSNAME = true;
+var DotJ_INPUT_BGCOLOR_OFF = '#E4EEFD';
+var DotJ_ERROR_MINLENGTH = 'Field must be at least {minlength} characters.';
+var DotJ_BUTTON_TYPE_SELECT_ALL = 'selectall';
+var DotJ_BUTTON_TYPE_DESELECT_ALL = 'deselectall';
+var DotJ_BUTTON_TYPE_IMAGE_SELECT_ALL = 'imageselectall';
+var DotJ_BUTTON_TYPE_IMAGE_DESELECT_ALL = 'imagedeselectall';
+var DotJ_GRID_CURRENTROW_BORDERCOLOR = '#000080';
+var DotJ_GRID_CURRENTROW_BORDERWIDTH = '1px';
+var DotJ_GRID_CURRENTROW_BORDERSTYLE = 'solid';
+
+//-->
+</script>
+
+<script language="Javascript">
+<!--
+var ex1_tabs;
+var ex1_selectedTab = 1;
+ex1_tabs = new Array('DotJ_ex1_Tab_1','DotJ_ex1_Tab_2', 'DotJ_ex1_Tab_3');
+//-->
+</script>
+<style type='text/css'>
+ .TabBottomLine { border-bottom: solid 1px #c0c0c0; }
+</style>
+
+
+<style type="text/css">
+.TabBottomLine {
+    border-bottom: solid 1px #c0c0c0;
+}
+
+.TabBody {
+    border-left: solid 1px #c0c0c0; border-right: ridge 2px; padding: 5px 10px 10px 10px;
+}
+.TabFooter {
+    background-color: #E8EEDE; border-bottom: ridge 2px; padding-left: 10px; border-left: solid 1px #c0c0c0;
+    border-right: ridge 2px; height: 18px; padding-top: 2px;
+}
+.Tab2BottomLine { border-bottom: solid 1px #000000; }
+.Tab2Body {
+    border-left: solid 1px #000000; border-right: solid 1px #000000;
+}
+.Tab2Footer {
+    background-color: #A12228; color: gold; FONT-WEIGHT: bold;border-bottom: ridge 2px; padding-left: 10px; border-left: solid 1px #000000;
+    border-right: solid 1px #000000; border-left: solid 1px #000000; border-bottom: solid 1px #000000; height: 18px; padding: 2px;
+}
+</style>
+
+
+<link href="stylesheet_small.css" rel="stylesheet" title="master" type="text/css">
+
+</body>
+</html>
+

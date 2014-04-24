@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ApplyFilterOverArray" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:671:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.hoc.ApplyFilterOverArray" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="modelFileOrURL" class="ptolemy.data.expr.FileParameter" value="">
+</property>
+
+<property name="maxOutputLength" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DataArrayOperation">
+</property>
+
+<property name="kepler:inputArray" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:outputArray" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yang Zhao, Ilkay Altintas</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ApplyFilterOverArray.java 61458 2011-07-11 19:54:07Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This is an atomic actor that filters an array received at its&#10; &lt;i&gt;inputArray&lt;/i&gt; input port via applying a model specified by a&#10; file or URL. The specified model is evaluated on each input array&#10; element and should return a boolean value, and the output is an array&#10; that only contains elements satisfying the specified model (the&#10; evaluated result is true). An element of the array received at&#10; &lt;i&gt;inputArray&lt;/i&gt; is provided to the model by setting its&#10; &lt;i&gt;inputArrayElement&lt;/i&gt; parameter (which it must have defined).&#10; The result of executing the model is obtained by reading its&#10; &lt;i&gt;evaluatedValue&lt;/i&gt; parameter (which it must have defined).&#10;&#10; &lt;p&gt; Instead of outputing all the satisfied elements in the input&#10; array, the parameter &lt;i&gt;maxOutputLength&lt;/i&gt; can be used to specify&#10; how many elements this actor should only output. If the specified&#10; length is larger than the number of satisfied elements, it will&#10; ignore the specified length and only output all the satisfied&#10; elements.&#10;&#10; &lt;p&gt;&#10; FIXME: what should be the correct behavior if there are not enough elements to output?&#10; &lt;p&gt;&#10; FIXME: make a convention, say when the maxOutputLength is -1, for output&#10; all the satisfied elements?&#10;&#10; FIXME: should add a ModelToken and an input port for receiving the filter&#10; model. Create a composite actor for providing a ModelToken from its inside&#10; model.&#10; &lt;P&gt;</configure></property>
+<property name="port:inputArray" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port for an input array. It is an ArrayType.</configure></property>
+<property name="port:outputArray" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port for output the filtered array. It has the same  type as the inputArray port.</configure></property>
+<property name="prop:modelFileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the filter model.</configure></property>
+<property name="prop:maxOutputLength" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The max amount of elements in the output array.</configure></property>
+</property></entity>

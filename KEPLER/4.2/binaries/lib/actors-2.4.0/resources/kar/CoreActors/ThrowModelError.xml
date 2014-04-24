@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<entity name="Throw Model Error" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:57:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Haiyang Zheng</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ThrowModelError actor generates a model error when it receives a true Boolean token on any channel of its input multiport. The text of the error message is specified by the message parameter.</p>
+
+<p>A model error is an exception that is passed up the containment hierarchy of the workflow rather than immediately thrown. Any container in the hierarchy may choose to handle the error. By default, containers will pass and delegate the error to their container, if they have one, and throw the exception if they don't. Some containers may do more with the error.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that receives Boolean tokens. The actor will generate an error message whenever a true token is received on any channel.</configure></property>
+<property name="prop:message" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The error message that will be reported.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.ThrowModelError" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:933:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExceptionControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ExceptionControl" class="org.kepler.sms.SemanticType"/>
+</entity>

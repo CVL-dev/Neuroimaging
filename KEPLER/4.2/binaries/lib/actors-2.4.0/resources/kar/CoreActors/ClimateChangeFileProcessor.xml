@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<entity name="ClimateChangeFileProcessor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:367:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>dan higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ClimateChangeFileProcessor actor converts climate change data from the Intergovernmental Panel on Climate Change (IPCC) into a more generalized raster format that can be read by other actors. The actor outputs the name of the converted file.</p>
+
+<p>The ClimateChangeFileProcessor actor is very similar to the ClimateFileProcessor actor, except that it is designed to work with predicted climate change datasets, which differ from historical (1961-1990) IPCC datasets in formatting. For more information about IPCC, see http://www.ipcc.ch/.</p>
+
+<p>The ClimateChangeFileProcessor actor receives the name of an IPCC climate change data file via its input port and saves the reformatted file in the same directory. Specify another location using the baseOutputFileName parameter.</p>
+
+<p>Customize the type of climate change data to output (minimum, maximum, or average climate change values) with the outputType parameter. Specify the output period for the data (the season or year) with the outputPeriod parameter.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the raster file created by the actor. The actor creates this file from the IPCC source data, based on the time and type values specified by the user.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the source IPCC climate change dataset. IPCC data can be located via the EcoGrid.</configure></property>
+<property name="prop:nodatavalueParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value used to indicate missing data.</configure></property>
+<property name="prop:outputPeriod" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time period to output: annual, fall, winter, summer, or spring.</configure></property>
+<property name="prop:colsParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of columns in the data file. The number of columns is specified in the IPCC data source metadata. To view the metadata, right-click the IPCC dataset and select Get Metadata.</configure></property>
+<property name="prop:rowsParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of rows in the data file. The number of rows is specified in the IPCC data source metadata. To view the metadata, right-click the IPCC dataset and select Get Metadata.</configure></property>
+<property name="prop:baseOutputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The base file path for the raster file, which the actor creates and saves. If no path is specified, the file is placed in the same directory as the source IPCC file. In either case, the actor appends text indicating the type and time period of the data to the file name.</configure></property>
+<property name="prop:outputType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of climate change data to output: minimum, maximum, or average climate change values. The selected type will be output for the selected time period, which is specified with the outputPeriod parameter.</configure></property>
+</property>
+<property name="class" value="util.ClimateChangeFileProcessor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1133:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType33" value="urn:lsid:localhost:onto:4:1#NicheModelingOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

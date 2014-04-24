@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity name="GARP Algorithm" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:122:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GARPAlgorithm actor reads a set of spatial locations and associated environmental data, and uses a genetic algorithm to create a "rule set" that can be used to make predictions about the presence or absence of a species at various locations.</p>
+
+<p>The input data is passed to the actor by the GARPPresampleLayers actor, which generates the environmental data (or "layers") in the appropriate format. Output is usually passed to the GARPPrediction actor, which makes the environmental predictions based on the generated rule set.</p>
+
+<p>The actor requires libgarp.so (on linux systems) or garp.dll and libexpat.dll (on Windows systems). Currently, the actor does not work on MacOSX systems.</p>
+
+<p>GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.</p></configure></property>
+<property name="port:ruleSetFilenameOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the generated rule set file. The port is only fired after the rule set has been created, and is usually used as a trigger.</configure></property>
+<property name="port:cellSetFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name of the data file containing the spatial and environmental information. This input is usually the output of the GarpPresampleLayers actor.</configure></property>
+<property name="port:ruleSetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name for the output rule set. The file name can also be specified with the cellSetFileNameParameter parameter.</configure></property>
+<property name="prop:cellSetFileNameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the input data file containing spatial and environmental information. This input is usually the output of the GarpPresampleLayers actor.</configure></property>
+<property name="prop:ruleSetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the output rule set. The file name can also be specified via the cellSetFileName port.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.garp.GarpAlgorithm" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:991:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="cellSetFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ruleSetFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ruleSetFilenameOutput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#NicheModelingActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:4:1#NicheModelingOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<entity name="Data Grid File Transfer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:553:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Lucas Gilbert and Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The DataGridTransfer actor has a functionality similar to the SRB/IRODS commands, namely Sget, Sput, iget, and iput. DataGridTransfer allows users to copy one or more objects from one local/remote filesystem to another local/remote file system. The following actor expects as input a reference to local or remote file systems support by the Jargon API. This reference connection is created from the source and destination URL values, Currently available filesystem URLs are, file:///myDir/myfile.txt, irods://username:password@myhost.org:1247/myDir/myfile.txt, srb://username.domain:password@myhost.org:5544/myDir/myfile.txt, or ftp and http urls. </p>
+
+<p>Currently, the source and destination filesystems can not be changed once the workflow is running.  The filepaths can be changed.</p>
+
+<p>The file reference system is created with a unique user account and with this connection reference as input the DataGridTransfer actor is able to gain access to various files on the file systems. Once an alive DataGridTransfer file connection system has been established the actor gets the destination directory and the source files to establish the DataGridTransfer file path. If the DataGridTransfer destination directory doesn't exist, a new directory is created. Once the DataGridTransfer files path are determined, the files are copied from the source file space to the local drive. In case the above process of parallel copy fails, a streaming copy process is carried out with random access streams where the file is downloaded as a sequence of byte arrays.</p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). For more information about SRB, see http://www.sdsc.edu/srb/.</p>
+
+<p>iROD, the Integrated Rule-Oriented Data System, is a data grid software system developed by the Data Intensive Cyber Environments (DICE) group (developers of the  SRB, the Storage Resource Broker), and collaborators. The iRODS system is based on expertise gained through nearly a decade of applying the SRB technology in support of Data Grids, Digital Libraries, Persistent Archives, and Real-time Data Systems. iRODS management policies (sets of assertions these communities make about their digital collections) are characterized in iRODS Rules and state information. At the iRODS core, a Rule Engine interprets the Rules to decide how the system is to respond to various requests and conditions. For more information about iRODS, see http://www.irods.org.</p></configure></property>
+
+<property name="port:sourceURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that shows the paths to the files to fetch.</configure></property>
+<property name="port:destinationDirectoryURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that shows the destination file paths.</configure></property>
+<property name="port:fetchedFiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that shows the paths of fetched files.</configure></property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that gives a message of 'success' or appropriate error to indicate the status of file get process.</configure></property>
+<property name="prop:overwrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Overwrite existing files or not </configure></property>
+</property>
+<property name="class" value="org.srb.DataGridTransfer" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:553:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="sourceURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="destinationDirectoryURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="fetchedFiles" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="array" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="exitCode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.Parameter" value="true"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GridFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#GridFunction" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType33" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType44" value="urn:lsid:localhost:onto:2:1#DatabaseOutputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

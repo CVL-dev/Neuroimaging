@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<entity name="String Function" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:94:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Mike Kofi Okyere, Ismael M Sarmiento</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The StringFunction actor reads an input string, applies a string function (e.g., toUpperCase), and outputs the converted string.</p>
+
+<p>The name of the string function to apply is specified with the function parameter. The following functions may be specified: </p>
+<ul>
+<li>trim: Remove leading and trailing whitespace from a string. </li>
+<li>toUpperCase: Convert all letters in a string to uppercase. </li>
+<li>toLowerCase: Convert all letters in a string to lowercase. </li>
+</ul>
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string. </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the converted string. </configure></property>
+<property name="prop:function" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string function to apply to the input string. The possible values are "trim" (the default), "toUpperCase", or "toLowerCase". </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.string.StringFunction" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:968:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

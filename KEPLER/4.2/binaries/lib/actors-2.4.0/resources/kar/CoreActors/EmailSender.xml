@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="Email Sender" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:188:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ilkay Altintas</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The EmailSender actor sends email notifications from a workflow to a specified address. Email notifications are especially handy for managing remotely executed long-running workflows.</p>
+
+<p>Specify a &quot;to&quot; and &quot;from&quot; address and an SMPT host via the actor's parameters. The actor will send a message with the subject and body provided by its input port.</p></configure></property>
+<property name="port:subject" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts the message subject (e.g., Notification email from Kepler). The subject can be specified via the subject port or parameter.</configure></property>
+<property name="port:messageBody" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts the message that Kepler will send to the specified email address.</configure></property>
+<property name="prop:subject" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The message subject (e.g., Notification email from Kepler). The subject can be specified via the subject port or parameter.</configure></property>
+<property name="prop:host" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The SMTP host of the message sender (e.g., smtp.yourisp.com).</configure></property>
+<property name="prop:fromAddress" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Email address of the message sender.</configure></property>
+<property name="prop:toAddress" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Email address of the message recipient.</configure></property>
+</property>
+<property name="class" value="org.sdm.spa.Email" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1043:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="subject" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="messageBody" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#TextualOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#TextualOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

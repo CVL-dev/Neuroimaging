@@ -1,0 +1,73 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="JRunCIPRes" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:478:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Zhijie Guan</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: JRunCIPRes.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+This actor calls the external applications.
+ 
+ The JRunCIPRes actor provides a template to invoke external Cipres
+ applications. A set of parameters is configured in the actor to collect
+ application related information. The value of these parameters will be fed to
+ the JRun object when the actor fires. Thus the GUIRun object will invoke the
+ corresponding application with those values, like the input/output file names
+ and the working directory. After the execution, if the external program
+ returns correctly, the standard output of the execution will be sent to the
+ standard output file, and the standard error will be sent to the standard
+ error file.
+ 
+ The user can also set some words to be monitored in the standard output
+ stream. The observer/observable design pattern is used here. The JRunCIPRes
+ object is an observer. The JRun object is an observable. Whenever the JRun
+ object find any of these monitored words in the standard output steam of the
+ program execution, it will notify the JRunCIPRes objects to promote the user
+ handling the issue. Usually the JRunCIPRes actor will stop the execution of
+ the program.</configure>
+    </property>
+<property name="port:standardError" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard error stream of the execution is sent out through this port.</configure>
+    </property>
+<property name="port:inputTrigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The trigger that will enable the execution of this actor is received through this port.</configure>
+    </property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The exit code of the execution is sent out through this port.</configure>
+    </property>
+<property name="port:standardOutput" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard output stream of the execution is sent out through this port.</configure>
+    </property>
+<property name="prop:monitoredErrorWords" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The monitored words are defined in this parameter.</configure>
+    </property>
+<property name="prop:errorFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard error file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:workingDirectory" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The workfing directory of the external program is defined in this parameter.</configure>
+    </property>
+<property name="prop:arguments" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The arguments of the program that will be executed are defined in this parameter.</configure>
+    </property>
+<property name="prop:outputFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard output file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:command" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The command path and name are defined in this parameter.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.cipres.kepler.JRunCIPRes">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1210:1">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#CIPResActor">
+    </property>
+</entity>

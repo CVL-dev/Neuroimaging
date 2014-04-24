@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="SVG Concatenate" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:297:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SVGConcatenate actor concatenates an array of SVG (Scalable Vector Graphics) files. The actor reads an array of SVG  file names. Using a specified x- and y-offset, the actor concatenates the files and outputs the path of the concatenated file, which can be displayed by the BrowserDisplay actor.</p>
+
+<p>SVG files are high resolution graphical images that can be scaled without loss.</p></configure></property>
+<property name="port:outputPath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file path for the concatenated output file. See FileParameter for more information about specifying filenames. The path may also be specified with the svgOutputFile parameter.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the URL of the concatenated SVG file.</configure></property>
+<property name="port:svgFiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of strings representing SVG filenames.</configure></property>
+<property name="prop:outputPathParam" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the output file.</configure></property>
+<property name="prop:confirmOverwrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to confirm before overwriting an existing output file or not.</configure></property>
+<property name="prop:shiftY" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The y-offset to use during concatenation. By default, the value is 0.0.</configure></property>
+<property name="prop:shiftX" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The x-offset to use during concatenation. By default, the value is 0.0.</configure></property>
+</property>
+<property name="class" value="org.geon.SVGConcat" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1122:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="svgFiles" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputPath" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

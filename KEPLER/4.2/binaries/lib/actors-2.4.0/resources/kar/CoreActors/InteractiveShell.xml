@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<entity name="Interactive Shell" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:3:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The InteractiveShell actor creates a Unix command shell on the screen, sending commands that are typed by the user to its output port, and reporting strings received at its input by displaying them.</p>
+
+<p>Each time the actor fires, it reads the input, displays it, then displays a command prompt, and waits for a command to be typed by the user. The command is terminated by an enter or return character, which then results in the command being produced on the output.</p>
+
+<p>The actor is typically preceded by a SampleDelay actor, which provides an initial welcome message or instructions. The InteractiveShell actor's output is routed to some subsystem for processing, and the result is fed back to the input.</p>
+
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts strings. Each time the actor iterates, it displays any received strings before displaying a command prompt. </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the command.</configure></property>
+<property name="port:prompt" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string that will be used as the prompt in the command shell.  To use no prompt (aka, the empty string), create a parameter that has the value "" (for example, foo) and then set the value of the prompt parameter to $foo. </configure></property>
+<property name="prop:prompt" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string that will be used as the prompt in the command shell.  To use no prompt (aka, the empty string), create a parameter that has the value "" (for example, foo) and then set the value of the prompt parameter to $foo. </configure></property>
+
+</property>
+<property name="class" value="ptolemy.actor.lib.gui.InteractiveShell" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:879:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="prompt" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnixCommand" class="org.kepler.sms.SemanticType"/>
+</entity>

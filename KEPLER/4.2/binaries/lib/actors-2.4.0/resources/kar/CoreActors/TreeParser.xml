@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<entity name="TreeParser" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:462:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Zhijie Guan </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The TreeParser actor parses a tree data structure into its components: the tree name, tree score, leaf set, and Newick. The actor broadcasts each component via a dedicated output port.</p></configure></property>
+<property name="port:outputLeafSet" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the tree's leaf set.</configure></property>
+<property name="port:inputTree" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a tree data structure in the format used by CIPRES applications.</configure></property>
+<property name="port:outputScore" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the tree score.</configure></property>
+<property name="port:outputName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the tree name.</configure></property>
+<property name="port:outputNewick" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the tree's Newick expression.</configure></property>
+</property><property name="class" value="org.cipres.kepler.TreeParser" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1210:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#CIPResActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#CIPRes" class="org.kepler.sms.SemanticType"/>
+</entity>

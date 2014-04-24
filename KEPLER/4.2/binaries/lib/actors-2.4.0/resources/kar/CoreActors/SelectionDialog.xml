@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<entity name="SelectionDialog" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId"  value="urn:lsid:kepler-project.org:actor:534:2" class="org.kepler.moml.NamedObjId"/>
+    <property name="class" value="ptolemy.actor.lib.python.PythonScript" class="ptolemy.kernel.util.StringAttribute">
+        <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="kepler:output" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="kepler:choices" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="kepler:prompt" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="script" class="ptolemy.kernel.util.StringAttribute" value="import javax.swing as sshwing&#10;from ptolemy.data import StringToken&#10;from ptolemy.data import ArrayToken&#10;from ptolemy.data.type import BaseType&#10;class Main :&#10;  &quot;Dialog Example&quot;&#10;  def fire(self) :&#10;    prompt = &quot;Select&quot;&#10;    if self.prompt.hasToken(0) :&#10;       prompt = self.prompt.get(0).stringValue()&#10;    inputTokens = self.choices.get(0)&#10;    picks = []&#10;    i=0&#10;    while i &lt; inputTokens.length() :&#10;      if inputTokens.getElement(i).getType().equals(BaseType.STRING) :&#10;         value = inputTokens.getElement(i).stringValue()&#10;      else :&#10;         value = inputTokens.getElement(i).toString()&#10;      picks.append(value)&#10;      i = i + 1&#10;    choice = sshwing.JOptionPane.showInputDialog(None,prompt,&quot;Selection&quot;,1,None,picks,picks[0])&#10;    st = StringToken(choice)&#10;    self.output.broadcast(st)&#10;">
+    </property>
+    
+    <property name="semanticType0" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+    </property>
+    
+    <property name="_editorFactory" class="ptolemy.vergil.toolbox.TextEditorConfigureFactory">
+        <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="script">
+        </property>
+    </property>
+    
+    <property name="_location" class="ptolemy.kernel.util.Location" value="[358.725341796875, 200.26763916015625]">
+    </property>
+    
+    <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+        <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Allows runtime selection of a single value from a list of possible values</configure></property>
+        <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ben Leinfelder, Dan Higgins</configure></property>
+        <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1</configure></property>
+        <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Prompts user to select a single value from a list of possible values.  This is done at workflow execution.</configure></property>
+        <property name="port:prompt" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Prompt shown to user in selection window</configure></property>
+        <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Value selected by user</configure></property>
+        <property name="port:choices" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>List of possible values from which to select</configure></property>
+        <property name="prop:script" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+        <property name="prop:entityId" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+        <property name="prop:class" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+        <property name="prop:semanticType0" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+    </property></entity>

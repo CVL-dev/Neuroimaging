@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<property name="Line" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:432:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The Line attribute renders a line on the Workflow canvas. Double-click the line to customize its length, width, and color.</configure></property>
+<property name="prop:x" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The horizontal extent. The default is 100.0.</configure></property>
+<property name="prop:lineWidth" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The line width. The value is a double that defaults to 1.0.</configure></property>
+<property name="prop:dashArray" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify a dash-pattern for dashed or dotted lines. The value consists of an array of doubles that specify the length of the alternating solid and transparent segments. An empty value indicates that the line should not be dashed (the default).</configure></property>
+<property name="prop:lineColor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The line color. Specify a string representing an array of four elements: red, green, blue, and alpha, where alpha is transparency. The default is an opaque black, {0.0, 0.0, 0.0, 1.0}</configure></property>
+<property name="prop:y" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vertical extent. The default is 0.0.</configure></property>
+</property>
+<property name="class" value="ptolemy.vergil.kernel.attributes.LineAttribute" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1195:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#DecorativeActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation" class="org.kepler.sms.SemanticType"/>
+</property>

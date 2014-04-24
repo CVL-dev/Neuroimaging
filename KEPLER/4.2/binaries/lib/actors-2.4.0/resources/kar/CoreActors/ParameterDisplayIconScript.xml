@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<property name="ParameterDisplayIconScript" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:704:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.vergil.basic.export.web.ParameterDisplayIconScript" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="displayText" class="ptolemy.data.expr.StringParameter" value="Web page script to run on containers icon.">
+</property>
+
+<property name="height" class="ptolemy.data.expr.Parameter" value="20">
+</property>
+
+<property name="width" class="ptolemy.data.expr.Parameter" value="60">
+</property>
+
+<property name="style" class="ptolemy.actor.gui.style.TextStyle">
+    <property name="height" class="ptolemy.data.expr.Parameter" value="height">
+    </property>
+    <property name="width" class="ptolemy.data.expr.Parameter" value="width">
+    </property>
+</property>
+
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+
+<property name="eventType" class="ptolemy.vergil.basic.export.web.AreaEventType" value="onmouseover">
+</property>
+
+<property name="script" class="ptolemy.data.expr.StringParameter" value="">
+    <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="5">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+
+<property name="evaluateScript" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+
+<property name="startText" class="ptolemy.data.expr.StringParameter" value="">
+    <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="5">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+
+<property name="endText" class="ptolemy.data.expr.StringParameter" value="">
+    <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="5">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+
+<property name="jQueryLibraries" class="ptolemy.data.expr.StringParameter" value="">
+    <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="5">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+
+<property name="include" class="ptolemy.data.expr.StringParameter" value="Entities">
+</property>
+
+<property name="instancesOf" class="ptolemy.data.expr.StringParameter" value="">
+</property>
+
+<property name="_icon" class="ptolemy.vergil.icon.TextIcon">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowWebExport">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ParameterDisplayIconScript.java 63960 2012-07-13 22:59:42Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;A parameter specifying default JavaScript actions to associate&#10; with icons in model. Putting this into a model causes an action&#10; to be associated with each icon (as specified by the &lt;i&gt;include&lt;/i&gt;&#10; and &lt;i&gt;instancesOf&lt;/i&gt; parameters) that, on moving the mouse over&#10; the icon, displays in a table the parameters of the corresponding&#10; Ptolemy II object. The table is displayed after the image of the&#10; model.&#10; &lt;p&gt;&#10; This parameter is designed to be included in a Configuration file&#10; to specify global default behavior for export to Web. Just put&#10; it in the top level of the Configuration, and this behavior&#10; will be provided by default.</configure></property>
+<property name="prop:jQueryLibraries" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>jQuery libraries to be included in the HEAD section of the html file The path to the libraries will be copyed in the same order as given</configure></property>
+<property name="prop:include" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specification of whether to provide the default behavior for  Attributes, Entities, or both. This is either &quot;Entities&quot; (the  default), &quot;Attributes&quot;, or &quot;All&quot;.</configure></property>
+<property name="prop:width" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the width of the editing box.  This is an int that defaults to 60.</configure></property>
+<property name="prop:eventType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Event type to respond to by executing the command given by  the value of this Script parameter.  The script will be run when the icon corresponding to the  container of this parameter gets one of the following events:  &lt;ul&gt;  &lt;li&gt;&lt;b&gt;onblur&lt;/b&gt;: Command to be run when an element loses focus.  &lt;li&gt;&lt;b&gt;onclick&lt;/b&gt;: Command to be run on a mouse click.  &lt;li&gt;&lt;b&gt;ondblclick&lt;/b&gt;: Command to be run on a mouse double-click.  &lt;li&gt;&lt;b&gt;onfocus&lt;/b&gt;: Command to be run when an element gets focus.  &lt;li&gt;&lt;b&gt;onmousedown&lt;/b&gt;: Command to be run when mouse button is pressed.  &lt;li&gt;&lt;b&gt;onmousemove&lt;/b&gt;: Command to be run when mouse pointer moves.  &lt;li&gt;&lt;b&gt;onmouseout&lt;/b&gt;: Command to be run when mouse pointer moves out of an element.  &lt;li&gt;&lt;b&gt;onmouseover&lt;/b&gt;: Command to be run when mouse pointer moves over an element.  &lt;li&gt;&lt;b&gt;onmouseup&lt;/b&gt;: Command to be run when mouse button is released.  &lt;li&gt;&lt;b&gt;onkeydown&lt;/b&gt;: Command to be run when a key is pressed.  &lt;li&gt;&lt;b&gt;onkeypress&lt;/b&gt;: Command to be run when a key is pressed and released.  &lt;li&gt;&lt;b&gt;onkeyup&lt;/b&gt;: Command to be run when a key is released.  &lt;/ul&gt;  These are the events supported by the HTML area tag.  The default is &quot;onmouseover&quot;.</configure></property>
+<property name="prop:endText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Text to insert in the end section of the  web page. This text will be inserted exactly once.</configure></property>
+<property name="prop:instancesOf" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If non-empty (the default), specifies a class name.  Only entities or attributes (depending on &lt;i&gt;include&lt;/i&gt;)  implementing the specified  class will be assigned the control defined by this  DefaultIconScript parameter.</configure></property>
+<property name="prop:displayText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter giving the text to display in the Ptolemy model.  This defaults to &quot;Content for Export to Web&quot;.</configure></property>
+<property name="prop:evaluateScript" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter indicating whether the script text's expression should be  evaluated or not.  Ptolemy interprets the dollar sign to indicate that  the value of a parameter should be inserted; for example, $pi and   a variable pi=3.14 would evaluate to 3.14.  However, many scripting   languages such as jQuery use a dollar sign as part of the script itself  (to refer to jQuery variables).  In this case, we want to insert the  exact plain text into the web page, not the evaluated text.</configure></property>
+<property name="prop:script" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Script to insert in the head section of the  web page. This will normally define a JavaScript function that  will be invoked when the UI event specified by &lt;i&gt;eventType&lt;/i&gt;  occurs. By default, this is blank. For example, if the value  of this parameter is the string&lt;pre&gt;function writeText(text) {    document.getElementById(&quot;xyz&quot;).innerHTML = text;};&lt;/pre&gt; and the value of this parameter is &quot;writeText('hello world')&quot;, then the HTML element with ID xyz will be populated with the string 'hello world' when the UI action &lt;i&gt;eventType&lt;/i&gt; occurs.</configure></property>
+<property name="prop:startText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Text to insert in the start section of the  web page. This text will be inserted exactly once.</configure></property>
+<property name="prop:height" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the height of the editing box.  This is an int that defaults to 20.</configure></property>
+</property></property>

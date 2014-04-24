@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity name="Trig Function" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:85:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The TrigFunction actor takes an input value and computes a specified trigonometric function. The actor outputs a double token representing the result.</p>
+
+<p>The function is specified with the function parameter. Functions include:</p>
+
+<ul>
+
+<li>acos: The arc cosine of an angle, in the range from 0.0 through pi. If the argument is NaN or its absolute value is greater than 1, then the result is NaN. </li>
+<li>asin: The arc sine of an angle, in the range of -pi/2 through pi/2. If the argument is NaN or its absolute value is greater than 1, then the result is NaN. If the argument is positive zero, then the result is positive zero; if the argument is negative zero, then the result is negative zero. </li>
+<li>atan: The arc tangent of an angle, in the range of -pi/2 through pi/2. If the argument is NaN, then the result is NaN. If the argument is positive zero, then the result is positive zero; if the argument is negative zero, then the result is negative zero. </li>
+<li> cos: The trigonometric cosine of an angle. If the argument is NaN or an infinity, then the result is NaN. </li>
+<li>sin: The trigonometric sine of an angle. If the argument is NaN or an infinity, then the result is NaN. </li>
+<li> tan: The trigonometric tangent of an angle. If the argument is NaN or an infinity, then the result is NaN. If the argument is positive zero, then the result is positive zero; if the argument is negative zero, then the result is negative zero </li>
+</ul>
+
+<p>NOTE: The above documentation is adapted from the class documentation for java.lang.Math as released in JDK 1.3.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the computed result of the specified trigonometric function.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token representing a value to evaluate.</configure></property>
+<property name="prop:function" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The function to compute: acos, asin, atan, cos, sin, or tan. The default is sin.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.TrigFunction" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:959:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#TrigMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#TrigonometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

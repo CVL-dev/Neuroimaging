@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="Array To Elements" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:30:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ArrayToElements actor reads and disassembles an array. The actor outputs the disassembled values via a multiport output.</p>
+
+<p>The actor can accept an array with any element type (e.g., int, double, etc.). Each time the actor fires, it reads and disassembles one array and outputs the individual values.</p>
+
+<p>The actor's output port is a multiport, meaning that it can broadcast multiple channels of data. If the width of the output port is less than the number of array elements, then the extra output tokens are discarded (i.e., only the first elements in the array are output via the available channels).</p>
+
+<p>The actor is similar to the ArrayToSequence actor, except that it outputs individual values on multiple channels of the output port. The ArrayToSequence actor outputs values as a sequence via a single output port.</p>
+
+</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the disassembled array values on multiple channels.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array consisting of elements of any type.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.ArrayToElements" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:906:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{unknown}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArrayActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataArrayOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

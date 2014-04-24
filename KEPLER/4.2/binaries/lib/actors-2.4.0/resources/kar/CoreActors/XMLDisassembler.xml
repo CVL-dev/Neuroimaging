@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<entity name="XML Disassembler" class="ptolemy.kernel.ComponentEntity">
+  <property name="entityId"  value="urn:lsid:kepler-project.org:actor:521:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Daniel Crawl</configure></property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+    This actor disassembles an XML document into its child elements. 
+    The input port name must match the document's root element name and
+    is peeled off. Each child element is sent to the output port with the
+    same name.
+    </configure></property>
+    <property name="prop:outputNil" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, then for each output port whose name is not a child element of the incoming XML document outputs a nil token.
+    </configure></property>
+    <property name="prop:arraysWrapped" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, each element of an array is wrapped in an additional element.
+    </configure></property>
+  </property>
+  <property name="class" value="org.sdm.spa.XMLDisassembler" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:kepler-project.org:class:521:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="outputNil" class="ptolemy.data.expr.Parameter" value="false">
+  </property>
+  <property name="arraysWrapped" class="ptolemy.data.expr.Parameter" value="false">
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:2:1#DataStructureOperation" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#XMLProcessor" class="org.kepler.sms.SemanticType"/>
+</entity>

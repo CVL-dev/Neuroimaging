@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<entity name="SRB Get Metadata" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:260:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SRBGetMetadata actor retrieves user-defined metadata for a Storage Resource Broker (SRB) dataset or collection. The actor outputs the metadata of the specified SRB dataset or collection as a string. </p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). For more information about SRB, see http://www.sdsc.edu/srb/.</p>
+
+<p>The SRBGetMetadata actor receives two inputs: an SRB file path, and a connection reference to an SRB file system. Use the SRBConnect actor to connect to an SRB file system and return a connection reference that the SRBGetMetadata actor can use.</p></configure></property>
+<property name="port:metadata" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the SRB dataset metadata, returned as a string.</configure></property>
+<property name="port:srbFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a path to an SRB dataset or collection</configure></property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a reference to an SRB file system. Use the SRBConnect actor to open a connection and create this reference.</configure></property>
+<property name="prop:recursive" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to return metadata recursively for non-empty directories.</configure></property>
+</property>
+<property name="class" value="org.srb.SRBGetMD" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1086:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="srbFilePath" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="metadata" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,12 @@
+ $CONTRL COORD=CART UNITS=ANGS $END
+ $DATA
+Ammonia
+Put symmetry info here
+
+N      7.0    -0.40000  -0.16410  -0.00000 
+H      1.0     0.61450  -0.19690  -0.00000 
+H      1.0    -0.72320  -0.66900   0.81900 
+H      1.0    -0.72320  -0.66900  -0.81900 
+ $END
+
+

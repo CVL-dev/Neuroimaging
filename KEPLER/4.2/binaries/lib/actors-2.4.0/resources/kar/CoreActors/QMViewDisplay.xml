@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="QMView Display" class="org.kepler.moml.CompositeClassEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:395:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The QMView actor reads a molecular structure via its input port and displays the structure visually. </p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system. </p>
+
+<p>QMView is a graphical chemistry program with features including: Viewing of molecular configurations, animation of molecular vibrations, building and comparing structures, viewing of molecular electron density data. For more information about QMView, see http://nbcr.net/software/QMView/</p></configure></property>
+<property name="prop:QmViewBinary" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the QMView application (e.g., /opt/QMView/QMView.new)</configure></property>
+<property name="prop:QmViewOptions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Additional viewing options. For more information on available options, see http://nbcr.net/software/QMView/</configure></property>
+
+<property name="port:moleculeFileHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of a molecular structure. Files can be in any format supported by QMView (see http://www.nbcr.net/software/QMView/file.html). </configure></property>
+
+
+</property>
+<property name="class" value="org.resurgence.moml.QmViewDisplay" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.QmViewDisplay" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1159:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="moleculeFileHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[30.0, 140.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ComputationalChemistryActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#ComputationalChemistry" class="org.kepler.sms.SemanticType"/>
+</entity>

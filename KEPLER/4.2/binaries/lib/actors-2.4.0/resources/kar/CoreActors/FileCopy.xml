@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity name="File Copy" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:287:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The FileCopy actor copies a specified file/directory to a destination file/directory and outputs the destination file/directory name and path.</p>
+
+<p>The source and destination file/directory paths can be accepted through either the sourceFile port or parameter. See FileParameter for more information about specifying paths.</p>
+
+<p>Choose to overwrite the destination file/directory or append the copied file to the destination file using the actor's append parameter. By default, the actor will request confirmation before overwriting a file. Note: to move a file instead of copying it, use the FileCopier actor.</p></configure></property>
+<property name="port:sourceFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name and path of a file to be copied. See FileParameter for more information about specifying paths. The file name and path can also be specified using the sourceFile parameter.</configure></property>
+<property name="port:outputFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the name and path of the copied file.</configure></property>
+<property name="port:destinationFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name and path of the destination file. See FileParameter for more information about specifying paths. The destination file name can also be specified using the destinationFile parameter.</configure></property>
+<property name="prop:append" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to append the source file to the specified destination file or to overwrite it. By default, the actor will overwrite any preexisting file (after asking for permission).</configure></property>
+<property name="prop:confirmOverwrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should request confirmation before overwriting an existing file. By default, the actor will ask for confirmation.</configure></property>
+<property name="prop:recursive" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the sub-directories in the source path should also be copied. By default, the actor will copy the sub-directories to destination path.</configure></property>
+<property name="prop:sourceFileParam" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name and path of the file to be copied. See FileParameter for more information about specifying paths. The file name and path can also be specified via the sourceFile port.</configure></property>
+<property name="prop:destFileParam" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name and path of the destination file. See FileParameter for more information about specifying paths. The destination file name can also be specified using the destinationFile parameter.</configure></property>
+</property>
+<property name="class" value="org.geon.FileCopy" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1112:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="sourceFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="destinationFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#FileSystemActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#FileSystem" class="org.kepler.sms.SemanticType"/>
+</entity>

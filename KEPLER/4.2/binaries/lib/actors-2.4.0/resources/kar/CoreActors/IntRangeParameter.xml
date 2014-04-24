@@ -1,0 +1,39 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="IntRangeParameter" class="org.kepler.moml.PropertyEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:424:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: IntRangeParameter.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;This is a parameter with type integer with a limited range.
+ Its value is an integer token that is constrained to lie
+ within the boundaries specified by its two parameters,
+ &lt;i&gt;min&lt;/i&gt; and &lt;i&gt;max&lt;/i&gt;.  These specify the minimum and maximum values.
+ A user interface will typically use this
+ information to represent the parameter value using a slider.
+ The default values for &lt;i&gt;min&lt;/i&gt; and &lt;i&gt;max&lt;/i&gt; are 0 and 100,
+ respectively, and the default value for this parameter is 50.
+ &lt;/p&gt;</configure>
+    </property>
+<property name="prop:max" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The maximum value. This is has an integer value, and defaults to 100.</configure>
+    </property>
+<property name="prop:min" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The minimum value. This is has an integer value, and defaults to 0.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.parameters.IntRangeParameter">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1188:1">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+    </property>
+</entity>

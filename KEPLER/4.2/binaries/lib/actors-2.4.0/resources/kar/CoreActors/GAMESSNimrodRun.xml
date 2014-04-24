@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<entity name="GAMESS Nimrod Run" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:416:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GAMESSNimrodlRun actor is a composite actor that runs a GAMESS application through Nimrod (an application that allows computations to be run on the Grid). For more information about Nimrod, see http://www.csse.monash.edu.au/~davida/nimrod/</p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system. In addition, the Nimrod/G part of the Nimrod toolkit for distributed parametric modeling must be installed as well.</p>
+
+<p>Set the actor's execution parameters by double-clicking the actor and entering the desired settings. The actor reads a GAMESS input file, which can be generated with the GamessInputGenerator actor. </p>
+
+<p>GAMESS (General Atomic and Molecular Electronic Structure System) is a program that can perform a broad range of quantum chemical computations. For more information about GAMESS, see http://www.msg.ameslab.gov/GAMESS/</p></configure></property>
+
+<property name="port:gamessInputHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file names of parameterized GAMESS input files. These input files can be generated with the GAMESSInputGenerator actor.</configure></property>
+<property name="port:gamessOutputHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the name of the results file.</configure></property>
+<property name="port:gamessDataHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the GAMESS data.</configure></property>
+
+
+<property name="prop:ExperimentName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the experiment (i.e., collection of parallel jobs)e.g., gamess</configure></property>
+<property name="prop:GamessVersionNumber" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The version number of the GAMESS application (e.g., Nov222004R1)</configure></property>
+<property name="prop:GamessRunScript" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the GAMESS script to run (e.g., /home/apps/gamess/rungms)</configure></property>
+<property name="prop:NimrodBinary" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The location of the Nimrod application (e.g., /opt/nimrodg-3.0.0/bin/nimrod)</configure></property>
+<property name="prop:NumberOfCpus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of CPUs in the computer system used for calculations.</configure></property>
+<property name="prop:NumberOfMolecules" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of molecules to run (e.g., 9)</configure></property>
+</property>
+<property name="class" value="org.resurgence.moml.GamessNimrodRun" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.GamessNimrodRun" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1180:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="gamessOutputHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[890.0, 430.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="gamessDataHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[890.0, 530.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="gamessInputHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 250.0]">
+</property>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ComputationalChemistryActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#ComputationalChemistry" class="org.kepler.sms.SemanticType"/>
+</entity>

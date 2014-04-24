@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<!--
+################################################################################
+#
+#    '$RCSfile$'
+#
+#     '$Author: berkley $'
+#       '$Date: 2010-04-27 17:12:36 -0700 (Tue, 27 Apr 2010) $'
+#   '$Revision: 24000 $'
+#
+# This ResourceBundle contains mappings between actor or director LSIDs and the
+# base filenames of the corresponding actor/director icons. The base filename is
+# then added to the appropriate path, and the appropriate file extension is
+# added(see svgIconDefaults.properties),  in order to retrieve either the svg
+# icon, a variation on the svg icon (ie same icon, different state), or a raster
+# thumbnail icon for use in the actor library tree.
+#
+# As an example, if you wish to add the mapping stating that the actor with the
+# LSID:
+#
+#   urn:lsid:kepler-project.org:actor:240:1
+#
+# uses the svg icon "browser.svg" on the canvas, and the raster icon
+# "browser-sm.gif" in the actor library, then the mapping is:
+#
+#   urn\:lsid\:kepler-project.org\:actor\:240\:1=browser
+#
+# No spaces, no quotes, nothing else besides what you see here (unless the
+# filename has dashes or underscores in it, which are fine).
+#
+# NOTES:
+# *** IMPORTANT!!!
+#   The following characters MUST be escaped with a backslash:
+#      :   <whitespace>   #   !   \    =
+#   (except where ":", "=" or " " are used as a delimeter between the key and
+#   its corresponding value). This means that any COLON characters in the LSID
+#   *MUST* be escaped with a backslash, thus  \:
+#   for example:    WRONG - urn:lsid:localhost:director:1:1=myIcon
+#                 CORRECT - urn\:lsid\:localhost\:director\:1\:1=myIcon
+# ***
+# * The code first tries to match an actor to an icon by looking at its unique
+#   LSID, and looking for a match in this file. If a match is not found, the
+#   classname of the actor is sought in the file
+#   "svgIconMappingsByClass.properties", and a match is attempted. If no match
+#   is found there, the default "catch-all" icon is used, as defined in
+#   svgIconDefaults.properties
+# * All actor SVG icons must be in the same directory, and must have the same
+#   file extension (currently ".svg"; see "HOW IT WORKS" below)
+# * All thumbnail raster icons must be in the same directory, and must have the
+#   same file extension (currently "-sm.gif"; see "HOW IT WORKS", below)
+# * For any given pair of corresponding svg and raster icons, the base-part of
+#   the name must match. For example, the browser icons must be called
+#   "browser.svg" and "browser-sm.gif (base-name is "browser"); the R composite
+#   actor icons must be called "r-c.svg" and "r-c-sm.gif" (base-name is "r-c")
+#   etc. (see "HOW IT WORKS", below).
+# * There must *always* be an SVG/raster pair of icons with the same base name;
+#   i.e. for every SVG there must be a corresponding raster, and vice-versa
+
+#
+#
+# HOW IT WORKS:
+#
+# The code looks in the file:
+# kepler/configs/ptolemy/configs/kepler/svgIconDefaults.properties
+# for the following:
+#
+# 1) it takes the root name above ("browser"), and adds the path before it (see
+# the svgIconDefaults for the property called "RASTER_THUMBNAIL_BASE_PATH"). It
+# then adds the file extension on the end (see the svgIconDefaults for the
+# property called "RASTER_THUMBNAIL_EXT"). At the time of writing, the path is
+# "/actorthumbs/" and the extension is "-sm.gif", so the raster icon is at:
+#
+#   /actorthumbs/browser-sm.gif
+#
+# 2) The code repeats the above for the SVG icon that is used by the actor in
+# workflows. The path is called "SVG_ICON_BASE_PATH", and the extension is
+# called "SVG_BASE_ICON_EXT". At the time of writing, the path and extension
+# were "/svg/" and ".svg", respectively,
+# resulting in a full icon location of:
+#
+#   /svg/browser.svg
+#
+# These paths start with a "/" because they are loaded using
+# class.getResourceAsStream(), and the "/" tells this method to look for the
+# file relative to the runtime classpath - see javadoc for getResourceAsStream()
+#
+################################################################################
+-->
+<config>
+  <!--
+  ### DIRECTOR ICONS ###########################
+
+  # All Directors use default director icon for now
+  
+  ### ATOMIC ACTOR ICONS ##############################
+  -->
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:447:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:481:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:484:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:485:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:488:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:489:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:490:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:493:1</name>
+    <value>R_stats</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:486:1</name>
+    <value>R_random</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:487:1</name>
+    <value>R_random</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:482:1</name>
+    <value>R_graph</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:483:1</name>
+    <value>R_graph</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:492:1</name>
+    <value>R_graph</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:246:1</name>
+    <value>molecProcWS</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:238:1</name>
+    <value>molecProcWS</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:239:1</name>
+    <value>molecProcWS</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:245:1</name>
+    <value>molecProcWS</value>
+  </pair>
+  <!--### COMPOSITE ACTOR ICONS ###########################-->
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:419:1</name>
+    <value>R_basic-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:6:1</name>
+    <value>signal-c</value>
+  </pair>
+  <!--# GAMESS: ###-->
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:391:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:394:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:386:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:416:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:383:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:384:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:385:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:387:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:389:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:390:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:392:1</name>
+    <value>xformation-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:381:1</name>
+    <value>xformation-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:382:1</name>
+    <value>fileop-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:414:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:395:1</name>
+    <value>image_disp</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:393:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:412:1</name>
+    <value>fileop-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:417:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:413:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:388:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:396:1</name>
+    <value>data_process-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:397:1</name>
+    <value>utility-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:418:1</name>
+    <value>utility-c</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:398:1</name>
+    <value>utility-c</value>
+  </pair>
+  <!--### PARAMETER ICONS ##############################-->
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:467:1</name>
+    <value>documentation</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:437:1</name>
+    <value>units</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:438:1</name>
+    <value>units</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:439:1</name>
+    <value>units</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:440:1</name>
+    <value>units</value>
+  </pair>
+  <pair>
+    <name>urn:lsid:kepler-project.org:actor:428:1</name>
+    <value>parameter</value>
+  </pair>
+</config>

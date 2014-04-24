@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<entity name="Data Group" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:383:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The DataGroup actor is a composite actor used inside the GamessInputGenerator actor.</p>
+
+<p>To use the full suite of computational chemistry actors, GAMESS, Open Babel, Babel, and QMView software must be installed on the local system. </p>
+
+<p>GAMESS (General Atomic and Molecular Electronic Structure System) is a program that can perform a broad range of quantum chemical computations. For more information about GAMESS, see http://www.msg.ameslab.gov/GAMESS/</p></configure></property>
+
+<property name="prop:GroupName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Open the actor to configure the parameter.</configure></property>
+<property name="prop:CalculationTitle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Open the actor to configure the parameter.</configure></property>
+<property name="prop:SymmetryGroup" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Open the actor to configure the parameter.</configure></property>
+<property name="prop:HighestAxisOrder" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Open the actor to configure the parameter.</configure></property>
+<property name="prop:SymmetryGenerators" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Open the actor to configure the parameter.</configure></property>
+
+<property name="port:inputListIn" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a list of inputs</configure></property>
+<property name="port:gamessAtomData" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts GAMESS atom data.</configure></property>
+<property name="port:inputListOut" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the generated results.</configure></property>
+
+</property>
+<property name="class" value="org.resurgence.moml.DataGroup" class="ptolemy.kernel.util.StringAttribute">
+  <property name="momlClass" value="org.resurgence.moml.DataGroup" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="id" value="urn:lsid:kepler-project.org:class:1147:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputListIn" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 145.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="gamessAtomData" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="{205.0, 500.0}">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="inputListOut" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_location" class="ptolemy.kernel.util.Location" value="[670.0, 145.0]">
+</property>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GamessInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#GAMESSInput" class="org.kepler.sms.SemanticType"/>
+</entity>

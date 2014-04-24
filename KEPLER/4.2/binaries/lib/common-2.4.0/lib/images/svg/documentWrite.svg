@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="42.026" height="52.144" viewBox="0 0 42.026 52.144" overflow="visible" enable-background="new 0 0 42.026 52.144"
+	 xml:space="preserve">
+		<g id="Layer_1">
+			<rect x="0.5" y="1.644" fill="#FFCF8A" stroke="#AF8D61" width="40" height="50"/> 
+			<rect x="0.5" y="1.644" fill="#FFE0B6" stroke="#AF8D61" width="40" height="50"/> 
+			<rect x="30.245" y="2.244" fill="#FFFFFF" width="10" height="10"/> 
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.414" y1="6.153" x2="29.776" y2="6.153"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="15.537" x2="35.743" y2="15.537"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="38.998" x2="35.743" y2="38.998"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="34.305" x2="35.743" y2="34.305"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="29.613" x2="35.743" y2="29.613"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="24.921" x2="35.743" y2="24.921"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="20.229" x2="35.743" y2="20.229"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="48.381" x2="35.743" y2="48.381"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.258" y1="43.689" x2="35.743" y2="43.689"/>
+			<line fill="none" stroke="#A08667" stroke-linecap="round" x1="5.643" y1="10.845" x2="30.004" y2="10.845"/>
+			<line fill="none" stroke="#A08158" x1="30.456" y1="1.485" x2="40.694" y2="11.724"/>
+			<line fill="none" stroke="#A08158" x1="30.245" y1="1.2" x2="30.245" y2="12.244"/>
+			<line fill="none" stroke="#A08158" stroke-linecap="square" x1="30.245" y1="12.244" x2="40.5" y2="12.244"/>
+			<g id="Pencil">
+				<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="22.5981" y1="31.9863" x2="19.488" y2="28.8762">
+					<stop  offset="0" style="stop-color:#EA990A"/>
+					<stop  offset="0.166" style="stop-color:#EB9A0D"/>
+					<stop  offset="0.2755" style="stop-color:#ED9F16"/>
+					<stop  offset="0.3686" style="stop-color:#F2A825"/>
+					<stop  offset="0.452" style="stop-color:#F8B33A"/>
+					<stop  offset="0.5225" style="stop-color:#FFC152"/>
+					<stop  offset="0.5821" style="stop-color:#FBBA45"/>
+					<stop  offset="0.7556" style="stop-color:#F2A825"/>
+					<stop  offset="0.9011" style="stop-color:#EC9D11"/>
+					<stop  offset="1" style="stop-color:#EA990A"/>
+					<stop  offset="1" style="stop-color:#3C3C3C"/>
+					<stop  offset="1" style="stop-color:#EA990A"/>
+					<a:midPointStop  offset="0" style="stop-color:#EA990A"/>
+					<a:midPointStop  offset="0.7849" style="stop-color:#EA990A"/>
+					<a:midPointStop  offset="0.5225" style="stop-color:#FFC152"/>
+					<a:midPointStop  offset="0.3765" style="stop-color:#FFC152"/>
+					<a:midPointStop  offset="1" style="stop-color:#EA990A"/>
+					<a:midPointStop  offset="0.5" style="stop-color:#EA990A"/>
+					<a:midPointStop  offset="1" style="stop-color:#3C3C3C"/>
+					<a:midPointStop  offset="0.5" style="stop-color:#3C3C3C"/>
+					<a:midPointStop  offset="1" style="stop-color:#EA990A"/>
+				</linearGradient>
+				<polygon fill="url(#XMLID_3_)" stroke="#635037" stroke-width="0.5" points="36.887,17.696 8.307,46.277 5.197,43.167 
+					33.78,14.586 "/>
+				<line fill="none" stroke="#635037" stroke-width="0.2" x1="6.132" y1="44.103" x2="34.713" y2="15.521"/>
+				<line fill="none" stroke="#635037" stroke-width="0.2" x1="7.479" y1="45.303" x2="36.061" y2="16.722"/>
+				<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="5.7993" y1="48.7676" x2="2.6898" y2="45.6581">
+					<stop  offset="0" style="stop-color:#CEAD6A"/>
+					<stop  offset="0.2646" style="stop-color:#D0AF6C"/>
+					<stop  offset="0.3599" style="stop-color:#D6B672"/>
+					<stop  offset="0.4279" style="stop-color:#E2C17E"/>
+					<stop  offset="0.4824" style="stop-color:#F2D28E"/>
+					<stop  offset="0.5056" style="stop-color:#FCDC97"/>
+					<stop  offset="0.9719" style="stop-color:#CEAD6A"/>
+					<stop  offset="1" style="stop-color:#3C3C3C"/>
+					<stop  offset="1" style="stop-color:#929292"/>
+					<a:midPointStop  offset="0" style="stop-color:#CEAD6A"/>
+					<a:midPointStop  offset="0.87" style="stop-color:#CEAD6A"/>
+					<a:midPointStop  offset="0.5056" style="stop-color:#FCDC97"/>
+					<a:midPointStop  offset="0.5" style="stop-color:#FCDC97"/>
+					<a:midPointStop  offset="0.9719" style="stop-color:#CEAD6A"/>
+					<a:midPointStop  offset="0.5" style="stop-color:#CEAD6A"/>
+					<a:midPointStop  offset="1" style="stop-color:#3C3C3C"/>
+					<a:midPointStop  offset="0.5" style="stop-color:#3C3C3C"/>
+					<a:midPointStop  offset="1" style="stop-color:#929292"/>
+				</linearGradient>
+				<polygon fill="url(#XMLID_4_)" stroke="#635037" stroke-width="0.4" points="4.931,43.416 8.041,46.525 2.002,49.455 "/>
+				<polygon fill="#484949" stroke="#565656" stroke-width="0.2" points="2.614,48.076 3.392,48.854 1.882,49.586 "/>
+			</g>
+			<polygon fill="#FFFFFF" stroke="#FFFFFF" points="30.919,0.5 41.526,0.5 41.526,11.107 "/>
+		</g>
+	</svg>

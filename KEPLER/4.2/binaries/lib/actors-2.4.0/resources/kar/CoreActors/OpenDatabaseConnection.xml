@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<entity name="Open Database Connection" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:155:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>efrat jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The OpenDatabaseConnection actor opens a database connection using the specified database format and URL, username, and password. Once a  database connection has been established, the actor outputs a reference to the connection. Actors downstream in the workflow can use this reference to access the database.</p></configure></property>
+<property name="port:dbcon" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a reference to the established database connection. Other actors can use this reference to interact with the database.</configure></property>
+<property name="prop:password" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Database password.</configure></property>
+<property name="prop:databaseURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The location of the database (e.g. jdbc:db2://compute1.sdsc.geongrid.org:50000/testpgap)</configure></property>
+<property name="prop:databaseFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of database to access (e.g. Oracle, MySQL, etc)</configure></property>
+<property name="prop:username" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Database user name.</configure></property>
+</property>
+<property name="class" value="org.geon.OpenDBConnection" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1013:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="dbcon" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="dbconnection" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#DatabaseExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

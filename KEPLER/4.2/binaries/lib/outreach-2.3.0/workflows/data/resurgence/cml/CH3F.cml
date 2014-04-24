@@ -1,0 +1,27 @@
+<molecule title="Fluoromethane">
+<metadataList title="generated automatically from Openbabel">
+<metadata name="dc:creator" content="OpenBabel version 1-100.1"/>
+<metadata name="dc:description" content="Conversion of legacy filetype to CML"/>
+<metadata name="dc:identifier" content="Unknown"/>
+<metadata name="dc:content"/>
+<metadata name="dc:rights" content="unknown"/>
+<metadata name="dc:type" content="chemistry"/>
+<metadata name="dc:contributor" content="unknown"/>
+<metadata name="dc:creator" content="Openbabel V1-100.1"/>
+<metadata name="dc:date" content="Tue Jun 15 14:45:29 CEST 2004"/>
+<metadata name="cmlm:structure" content="yes"/>
+</metadataList>
+<atomArray>
+<atom id="a1" elementType="C" x3="-0.5311" y3="-0.2762" z3="0.0055"/>
+<atom id="a2" elementType="F" x3="0.8475" y3="-0.3301" z3="0.0239"/>
+<atom id="a3" elementType="H" x3="-0.8697" y3="0.7808" z3="0.0004"/>
+<atom id="a4" elementType="H" x3="-0.9429" y3="-0.782" z3="0.9035"/>
+<atom id="a5" elementType="H" x3="-0.9187" y3="-0.783" z3="-0.9028"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a1 a2" order="1"/>
+<bond atomRefs2="a1 a3" order="1"/>
+<bond atomRefs2="a1 a4" order="1"/>
+<bond atomRefs2="a1 a5" order="1"/>
+</bondArray>
+</molecule>

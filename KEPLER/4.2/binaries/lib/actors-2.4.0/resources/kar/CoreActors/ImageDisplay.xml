@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<entity name="Image Display" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:103:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>James Yeh, Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Image Display actor reads an image token and displays the image on the screen.</p>
+
+<p>If the actor receives a sequence of images that are all the same size, it will continually update the display with the new data. If the size of the input image changes, the actor generates a new picture display. </p>
+
+<p>Image tokens can be generated from image URLs with the ImageReader or the ConvertURLToImage actors.</p>
+
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts image tokens to display. Use the ImageReader or ConvertURLToImage actors to create an image token from a specified image path.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.image.ImageDisplay" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:977:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ImageManipulationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GraphicalOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

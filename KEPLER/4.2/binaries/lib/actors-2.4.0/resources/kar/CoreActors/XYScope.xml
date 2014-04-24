@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<entity name="XY Scope" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:12:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The XYScope actor creates and displays an oscilloscope style graph. The actor
+reads x and y double tokens via its two input multiports. Each time the actor iterates, it reads one token from each input channel. The actor plots the (x,y) points in an oscilloscope style, meaning that the graphed points have a finite persistence. </p>
+
+<p>X and Y tokens received on the first channel of the input port
+ are plotted together, as are the tokens received on the second channels, etc. The two input port must have the same width (i.e., the same number of input channels).</p>
+
+<p>The persistence parameter specifies the number of points displayed. For example, at the default persistence (100), any point older than 100 samples is erased and forgotten.</p></configure></property>
+<property name="port:inputY" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts doubles representing y-values. The port must have the same width (i.e., number of input channels) as the inputX port.</configure></property>
+<property name="port:inputX" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts one or more doubles representing x-values. The port must have the same width (i.e., number of input channels) as the inputY port.</configure></property>
+<property name="prop:fillOnWrapup" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to rescale the plot so that all data is visible. By default, the actor scales the plot to fill the display area.</configure></property>
+<property name="prop:startingDataset" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The starting dataset number to which data is plotted. The value must be a non-negative integer. The default is 0.</configure></property>
+<property name="prop:legend" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Annotations that will be displayed with the graph. Specify a comma-separated list of values that correspond to the input data sets (e.g., rainfall, temperature, elevation).</configure></property>
+<property name="prop:persistence" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of samples from each input channel displayed at any one time (an integer). The default is 100.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.gui.XYScope" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:888:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputX" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputY" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Scope" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GraphicalOutput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#ScatterPlot"/>
+</entity>

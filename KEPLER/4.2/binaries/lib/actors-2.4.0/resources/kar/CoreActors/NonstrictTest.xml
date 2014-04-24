@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<entity name="Nonstrict Test" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:115:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The NonstrictTest actor compares its input to a known value, and only fires successfully if the two values match. </p>
+
+<p>The actor reads an input value of any type and compares it to a corresponding value in a specified array of values. If the two values match, the actor fires successfully. If the two values do not match, the actor generates an error.</p>
+
+<p>The comparison value is specified with the correctValues parameter. The parameter accepts an array of values, the type of which must match the type of the input (the default array is {true}). The actor cycles through the array values, comparing each consecutive input to the next token in the correctValues array. After each of the values in the correctValues parameter has been matched, any subsequent iteration always succeeds. This behavior allows the actor to be used as a "power-up" test for a workflow; the actor will check the first few iterations against some known results. </p>
+
+<p>If the input is a double or complex token, then the comparison "passes" if the value is close to what it should be (i.e., within the specified tolerance). Tolerance is specified with the tolerance parameter, and defaults to 10-9. </p>
+
+<p>Select the trainingMode parameter to collect the input values and place them in the correctValues parameter. The trainingMode parameter is a shared parameter, meaning that changing any one instance of the actor in the workflow will change all instances. </p>
+
+<p>To use this actor, place it in a workflow, select trainingMode to collect the reference data, and then unselect trainingMode. Any subsequent run of the actor will generate an error if the input data does not match the training data.</p>
+
+<p>Unlike the Test actor, the Nonstrict Test actor does not support a multiport input; only single port inputs may be used. The actor also differs from the Test actor in that it ignores absent inputs.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts values of any type. Values will be compared against the values specified by the correctValues parameter. If the input is a double or complex token, then the comparison "passes" if the value is close to what it should be (i.e., within the specified tolerance).</configure></property>
+<property name="prop:tolerance" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token specifying how closely the input must match the value from the correctValues array. The default is 10-9.</configure></property>
+<property name="prop:correctValues" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An array specifying what the input should be. The type of the elements must match the type of the input. The default is an array containing a single Boolean value, {true}.</configure></property>
+<property name="prop:trainingMode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select the trainingMode parameter to collect the input values and place them in the correctValues array. The trainingMode parameter is a shared parameter, meaning that changing any one instance of the actor in the model will change all instances.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.NonStrictTest" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:984:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitTestControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitTestControl" class="org.kepler.sms.SemanticType"/>
+</entity>

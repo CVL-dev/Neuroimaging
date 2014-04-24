@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<entity name="UnionAll" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:559:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="org.ecoinformatics.seek.R.RExpression" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:graphicsFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:records" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:allRecords" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="expression" class="ptolemy.kernel.util.StringAttribute" value="#concatenate all the data into a single dataframe&#10;allRecords = do.call( &quot;rbind&quot;, records)&#10;&#10;&#10;&#10;">
+    <property name="R Expression" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.TextEditorTableauFactory">
+    <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+    </property>
+    <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="80">
+    </property>
+    <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+    </property>
+</property>
+
+<property name="save_nosave" class="ptolemy.data.expr.StringParameter" value="--no-save">
+</property>
+
+<property name="graphicsFormat" class="ptolemy.data.expr.StringParameter" value="png">
+</property>
+
+<property name="graphicsOutput" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+<property name="displayGraphicsOutput" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+<property name="numXPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+
+<property name="numYPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+
+<property name="semanticType00" value="urn:lsid:localhost:onto:2:1#DataStructureOperation" class="org.kepler.sms.SemanticType"/>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ben Leinfelder</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The UnionAll actor uses R to concatenate structurally similar Record Tokens.  An R dataframe representing the result of the data union is provided on the allRecords output port.</p>
+</configure></property>
+<property name="port:records" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input multiport that accepts one or more RecordType Tokens.  The Records are converted to R dataframes and concatenated using rbind.  All Records on this port must have the same structure (number and type of attributes).</configure></property>
+<property name="port:allRecords" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output multiport that broadcasts an R dataframe that is consumable by one or more downstream R actors.</configure></property>
+<property name="port:graphicsFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated graph of the results.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a copy of the text output that R generates. As the actor communicates with R to run the R function or script, the output port sends back the response (i.e., the values and statistical outputs).</configure></property>
+<property name="prop:Rcwd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The 'R' working directory (the home directory by default). </configure></property>
+<property name="prop:displayGraphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to display the plot once the actor has generated it.</configure></property>
+<property name="prop:graphicsFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The graphics output format. Currently the actor supports either  *.pdf or  *.png.</configure></property>
+<property name="prop:numXPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The width of the output graphic in pixels.</configure></property>
+<property name="prop:numYPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The height of the output graphic in pixels.</configure></property>
+<property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The expression that is evaluated to produce the output.</configure></property>
+<property name="prop:graphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to create a graphics output port. By default, the actor will create a graphics output port.</configure></property>
+<property name="prop:save_nosave" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to save the R workspace when R is closed; set to '--save' to retrieve the workspace later in a workflow in another R-actor.</configure></property>
+</property></entity>

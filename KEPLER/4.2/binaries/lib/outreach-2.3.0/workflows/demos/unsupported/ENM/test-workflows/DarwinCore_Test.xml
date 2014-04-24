@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity class="ptolemy.actor.TypedCompositeActor" name="DarwinCore_Test">
+    <property class="ptolemy.kernel.attributes.VersionAttribute" name="_createdBy" value="6.1.devel">
+    </property>
+    <property class="ptolemy.domains.sdf.kernel.SDFDirector" name="SDF Director">
+        <property class="ptolemy.data.expr.Parameter" name="iterations" value="1">
+        </property>
+        <property class="ptolemy.moml.SharedParameter" name="timeResolution" value="1E-10">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:director:1:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:directorclass:1:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#Director">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#Director">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="{60, 40}">
+        </property>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Steve Neuendorffer</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The SDF Director is often used to oversee fairly simple, sequential workflows in which the director can determine the order of actor invocation from the workflow. Types of workflows that would run well under an SDF Director include processing and reformatting tabular data, converting one data type to another, and reading and plotting a series of data points. A workflow in which an image is read, processed (rotated, scaled, clipped, filtered, etc.), and then displayed, is also an example of a sequential workflow that requires a director simply to ensure that each actor fires in the proper order (i.e., that each actor executes only after it receives its required inputs).</p>
+
+<p>The SDF Director is very efficient and will not tax system resources with overhead. However, this efficiency requires that certain conditions be met, namely that the data consumption and production rate of each actor in an SDF workflow be constant and declared. If an actor reads one piece of data and calculates and outputs a single result, it must always read and output a single token of data. This data rate cannot change during workflow execution and, in general, workflows that require dynamic scheduling and/or flow control cannot use this director. Additionally, the SDF Director has no understanding of passing time (at least by default), and actors that depend on a notion of time may not work as expected. For example, a TimedPlotter actor will plot all values at time zero when used in SDF. </p>
+
+<p>By default, the SDF Director requires that all actors in its workflow be connected. Otherwise, the director cannot account for concurrency between disconnected workflow parts. Usually, a PN Director should be used for workflows that contain disconnected actors; however, the SDF Director's allowDisconnectedGraphs parameter may also be set to true. The SDF Director will then schedule each disconnected "island" independently. The director cannot infer the sequential relationship between disconnected actors (i.e., nothing forces the director to finish executing all actors on one island before firing actors on another). However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF model indicate an error.</p>
+ 
+<p>Because SDF Directors schedule actors to fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause "deadlock" errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a SampleDelay actor to generate and inject an initial input value into the workflow.</p>
+
+<p>The SDF Director determines the order in which actors execute and how many times each actor needs to be fired to complete a single iteration of the workflow. This schedule is calculated BEFORE the director begins to iterate the workflow. Because the SDF Director calculates a schedule in advance, it is quite efficient. However, SDF workflows must be static. In other words, the same number of tokens must be consumed/produced at every iteration of the workflow. Workflows that require dynamic control structures, such as a BooleanSwitch actor that sends output on one of two ports depending on the value of a 'control', cannot be used with an SDF Director because the number of tokens on each output can change for each execution.</p>
+
+<p>Unless otherwise specified, the SDF Director assumes that each actor consumes and produces exactly one token per channel on each firing. Actors that do not follow the one-token-per-channel firing convention (e.g., Repeat or Ramp) must declare the number of tokens they produce or consume via the appropriate parameters. </p>
+
+<p>The number of times a workflow is iterated is controlled by the director's iterations parameter. By default, this parameter is set to "0". Note that "0" does not mean "no iterations." Rather, "0" means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </p>
+
+<p>The amount of data processed by an SDF workflow is a function of both the number of times the workflow iterates and the value of the director's vectorizationFactor parameter. The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </p>
+
+<p>The SDF Director has several advanced parameters that are generally only relevant when an SDF workflow contains composite components. In most cases the period, timeResolution, synchronizeToRealTime, allowRateChanges, timeResolution, and constrainBufferSizes parameters can be left at their default values.</p>
+
+<p>For more information about the SDF Director, see the Ptolemy documentation (http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf).</p>
+
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:allowDisconnectedGraphs">
+<configure>Specify whether to allow disconnected actors in the workflow (by default, all actors are required to be connected). If disconnected actors are permitted, the SDF Director will schedule each disconnected 'island' independently. Nothing "forces" the director to finish executing all actors on one island before firing actors on another. However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF workflow indicate an error.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:allowRateChanges">
+<configure>Specify whether dynamic rate changes are permitted or not. By default, rate changes are not permitted, and the director will perform a check to disallow such workflows. If the parameter is selected, then workflows that require rate parameters to be modified during execution are valid, and the SDF Director will dynamically compute a new schedule at runtime. This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:timeResolution">
+<configure>The time precision used by this director. All time values are rounded to the nearest multiple of this number. The value is a double that defaults to "1E-10" (which is 10-10). This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:constrainBufferSizes">
+<configure>Specify whether buffer sizes are fixed. By default, buffers are fixed, and attempts to write to the buffer that cause the buffer to exceed its scheduled size result in an error. This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:iterations">
+<configure>Specify the number of times a workflow is iterated. By default, this parameter is set to "0". Note that "0" does not mean "no iterations." Rather, "0" means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:vectorizationFactor">
+<configure>The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:synchronizeToRealTime">
+<configure>Specify whether the execution should synchronize to real time or not. By default, the director does not synchronize to real time. If synchronize is selected, the director will only process the workflow when elapsed real time matches the product of the period parameter and the iteration count. Note: if the period parameter has a value of 0.0 (the default), then selecting this parameter has no effect. This is an advanced parameter that can usually be left at its default value.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:period">
+<configure>The time period of each iteration. The value is a double that defaults to 0.0, which means that the director does not increment workflow time. If the value greater than 0.0, the actor will increment workflow time each time it fires. This is an advanced parameter that can usually be left at its default value. </configure>
+</property>
+</property>
+</property>
+    <property class="ptolemy.actor.gui.WindowPropertiesAttribute" name="_windowProperties" value="{bounds={7, 8, 875, 794}, maximized=false}">
+    </property>
+    <property class="ptolemy.actor.gui.SizeAttribute" name="_vergilSize" value="[600, 661]">
+    </property>
+    <property class="ptolemy.data.expr.ExpertParameter" name="_vergilZoomFactor" value="1.0">
+    </property>
+    <property class="ptolemy.data.expr.ExpertParameter" name="_vergilCenter" value="{317.0, 312.0357374242834}">
+    </property>
+    <property class="ptolemy.vergil.kernel.attributes.TextAttribute" name="Annotation">
+        <property class="ptolemy.kernel.util.StringAttribute" name="text" value="This workflow uses the DiGIR (Distributed Generic Information Retrieval) &#10;protocol to access occurrence data for multiple species (zapus, a mouse, and &#10;mephitis, a skunk) from museum collections. The occurrence data are retrieved &#10;and written to files, which can be used as source data for environmental niche &#10;modeling (ENM) workflows.&#10;&#10;NOTE: Retrieving data from DiGIR collections may take several minutes &#10;per species the first time the workflow is run. Subsequent workflow &#10;executions are much faster because the data is cached locally during the &#10;first execution.&#10;&#10;Dan Higgins - NCEAS&#10;March 2007">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:436:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType00" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[110.0, 405.0]">
+        </property>
+    </property>
+    <property class="ptolemy.vergil.basic.DocAttribute" name="DocAttribute">
+        <property class="ptolemy.data.expr.StringParameter" name="description" value="&lt;p&gt;The DarwinCore_Test.xml workflow uses the DiGIR (Distributed Generic Information Retrieval) protocol to access occurrence data for multiple species from museum collections. DiGIR is an open source client/server protocol for retrieving distributed information using HTTP, XML, and UDDI (http://digir.net).&lt;/p&gt;&#10;&#10;&lt;p&gt;The workflow uses an &lt;i&gt;Expression&lt;/i&gt; actor to identify the names of species &quot;zapus&quot; (a mouse) and &quot;mephitis&quot; (a skunk). The list of species is specified as an array ({&quot;zapus&quot;,&quot;mephitis&quot;}). The &lt;i&gt;Array To Sequence&lt;/i&gt; actor translates the array into a sequence of individual species names, and a Relation is used to branch the output names so that they can be fed to two downstream actors: an &lt;i&gt;Expression&lt;/i&gt; actor (named &lt;i&gt;Expression2&lt;/i&gt;), as well as the &lt;i&gt;DarwinCoreDataSource&lt;/i&gt; actor. Note that the arrayLength parameter of the &lt;i&gt;Array To Sequence&lt;/i&gt; actor must be set to match the number of species in the input array, in this case, 2.&lt;/p&gt;&#10;&#10;&lt;p&gt;The &lt;i&gt;Expression2&lt;/i&gt; actor uses the Ptolemy expression language to create unique file names that will be applied to the downloaded occurrence datasets. The expression, &lt;code&gt;property(&quot;KEPLER&quot;)+&quot;/&quot;+sp_name+&quot;.txt&quot;&lt;/code&gt;, instructs Kepler to &quot;build&quot; a file path in the Kepler home directory. The sp_name in the expression references the value passed to the actor via the sp_name port, in this case, the species' name. Depending on where Kepler has been installed, the generated file path might look something like this: C:/kepler/zapus.txt and C:/kepler/mephitis.txt.&lt;/p&gt;&#10;&#10;&lt;p&gt;The &lt;i&gt;DarwinCoreDataSource&lt;/i&gt; actor receives the species' names via its &lt;code&gt;speciesName&lt;/code&gt; port. The actor accesses the remote DiGIR specimen table and outputs a table containing only the relevant data: the latitude and longitude of each occurrence point, as well as the name of the species. The actor's Query Builder is used to select the required data fields from the complete set of returned information.&lt;/p&gt;&#10;&#10;&lt;p&gt;The Query Builder (accessed by right-clicking the actor and selecting &quot;Open Actor&quot;)  lists the complete set of data fields returned by the actor, as well as the data type of each. Beneath the list of fields are settings that can be used to filter the returned data. The Query Builder is used to select a &quot;Table&quot; (e.g., Digir Table:mephitis mephitis), a desired &quot;Field&quot; (e.g., DecimalLatitude), and to specify whether that field should be included in the selection. The Query Builder's Operator and Criteria settings specify additional selection criteria. In this example, every record with a longitude and latitude is desired, and the selection criteria are designed to select any record with valid values for both (i.e., any record with latitude or longitude less than 360 degrees). The only records that will be excluded are those without entries, or invalid entries, for longitude or latitude. Note: valid latitudes should be in the range of -90 to +90, but missing data is often coded as a very large number, so the 360 degree value works to screen invalid records in most cases.&lt;/p&gt;&#10;&#10;&lt;p&gt;The &lt;i&gt;DarwinCoreDataSource&lt;/i&gt; actor outputs the data for each species to the &lt;i&gt;Text File Writer&lt;/i&gt; actor, which reads the string and writes it to a file. The &lt;i&gt;Text File Writer&lt;/i&gt; actor saves the file to the path specified via its &lt;code&gt;fileToWrite&lt;/code&gt; port. The data files generated by the workflow can be used as source data for environmental niche modeling (ENM) workflows. &lt;/p&gt;&#10;&#10;&#10;&lt;p&gt;&lt;b&gt;NOTE:&lt;/b&gt; Retrieving data from DiGIR collections may take several minutes &#10;per species the first time the workflow is run. Subsequent workflow &#10;executions are much faster because the data is cached locally during the &#10;first execution.&lt;/p&gt;">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="author" value="Dan Higgins -- NCEAS">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="since" value="March 2007">
+        </property>
+    </property>
+    <property class="ptolemy.kernel.util.SingletonAttribute" name="DocViewer">
+<property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Steve Neuendorffer and Edward A. Lee</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>The DocViewer attribute renders a clickable documentation icon on the Workflow canvas. Clicking the icon opens the workflow documentation window.</configure>
+</property>
+</property>        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:467:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.kernel.util.SingletonAttribute">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:1184:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#Parameter">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property class="ptolemy.vergil.basic.DocViewerFactory" name="viewer">
+        </property>
+        <property class="ptolemy.kernel.util.SingletonAttribute" name="_hideName">
+        </property>
+        <property class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory" name="_editorFactory">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="{25.0, 380.0}">
+        </property>
+    </property>
+    <entity class="ptolemy.actor.lib.Expression" name="Expression">
+        <property class="ptolemy.kernel.util.StringAttribute" name="expression" value="{&quot;zapus&quot;,&quot;mephitis&quot;}">
+            <property class="ptolemy.data.expr.Parameter" name="_hide" value="true">
+            </property>
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:75:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.actor.lib.Expression">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:950:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#MathOperationActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+        </property>
+        <property class="ptolemy.vergil.icon.BoxedValueIcon" name="_icon">
+            <property class="ptolemy.kernel.util.StringAttribute" name="attributeName" value="expression">
+            </property>
+            <property class="ptolemy.data.expr.Parameter" name="displayWidth" value="60">
+            </property>
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[90.0, 140.0]">
+        </property>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Xiaojun Liu, Edward A. Lee, Steve Neuendorffer</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The Expression actor evaluates a specified expression (e.g., an addition or multiplication operation), which may reference the values of user-specified input ports, the current time, or the actor's iteration count. The actor outputs the value of the evaluated expression. </p>
+
+<p>Expressions are specified in the Ptolemy expression language via the expression parameter. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. </p>
+
+<p>By default, the expression parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier "time"; and to the current iteration count by the identifier "iteration." </p>
+
+<p>Input ports are created by the user and correspond to variables used in the specified expression. Currently, the Expression actor does not support input multiports. The actor requires all of its inputs to be present. If inputs are not all present, then the actor will generate an error. </p>
+
+<p>Note: the Expression actor can be used instead of many of the arithmetic actors, such as AddSubtract, MultiplyDivide, and TrigFunction. However, those actors will be usually be more efficient, and sometimes more convenient to use.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:output">
+<configure>An output port that broadcasts the value of the evaluated expression. The actor automatically determines the type based on the type of the input.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:expression">
+<configure>An expression to evaluate. Expressions are specified in the Ptolemy expression language. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. By default, the parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier "time"; and to the current iteration count by the identifier "iteration."</configure>
+</property>
+</property>
+</entity>
+    <entity class="ptolemy.domains.sdf.lib.ArrayToSequence" name="Array To Sequence">
+        <property class="ptolemy.data.expr.Parameter" name="arrayLength" value="2">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="enforceArrayLength" value="true">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:31:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.domains.sdf.lib.ArrayToSequence">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:907:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#ArrayActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#DataArrayOperation">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[90.0, 210.0]">
+        </property>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>unknown</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The ArrayToSequence actor  outputs the individual values of an array as a sequence of tokens.</p>
+
+<p>The actor can accept an array with any element type (e.g., int, double, etc.). Each time the actor fires, it reads and disassembles one array and outputs a sequence of values.</p>
+
+<p>The arrayLength parameter can be used to specify the length of the source array. If the enforceArrayLength parameter is selected, then the actor will only accept arrays of the specified length. The enforceArrayLength parameter should be selected if using an SDF director. If using other directors, such as DE or PN, the enforceArrayLength parameter can be deselected, in which case the arrayLength parameter is ignored.</p>
+
+<p>The ArrayToSequence actor is similar to the ArrayToElements actor, except that it outputs values as a sequence via a single output port. The ArrayToElements actor outputs individual values on multiple channels of the output port. Use the ArrayAccumulator actor to convert an array into a single string, where each value is separated by a specified separator.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:output">
+<configure>An output port that broadcasts a sequence of the disassembled array values. </configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:input">
+<configure>An input port that accepts an array of elements of any type.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:arrayLength">
+<configure>The size of the input array. The default is 1.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:enforceArrayLength">
+<configure>Specify whether or not to enforce the arrayLength parameter. By default, the arrayLength is enforced, and the actor will only accept arrays of the specified length.</configure>
+</property>
+</property>
+</entity>
+    <entity class="ptolemy.actor.lib.gui.Display" name="Display">
+        <property class="ptolemy.actor.gui.WindowPropertiesAttribute" name="_windowProperties" value="{bounds={837, 886, 332, 237}, maximized=false}">
+        </property>
+        <property class="ptolemy.actor.gui.SizeAttribute" name="_paneSize" value="[324, 184]">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="rowsDisplayed" value="10">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="columnsDisplayed" value="40">
+        </property>
+        <property class="ptolemy.data.expr.Parameter" name="suppressBlankLines" value="false">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:7:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.actor.lib.gui.Display">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:883:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#TextualOutputActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[515.0, 325.0]">
+        </property>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Yuhong Xiong, Edward A. Lee</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The Display actor reads tokens of any type via its input multiport, and displays each token on a separate line in a text display window.</p>
+
+<p>Specify the size of the text display window with the rowsDisplayed and columnsDisplayed parameters. Simply resizing the window onscreen does not persistently change the size when the workflow is saved, closed, and then re-opened. </p>
+
+<p>If the input is a string token, then the actor strips the surrounding quotation marks before displaying the value.</p> 
+
+<p>Select the suppressBlankLines parameter to specify that the actor not add blank lines to the display. By default, the actor will add blank lines.</p>
+
+<p>Note: this actor can consume large amounts of memory. It is not advisable to use it to display large output streams.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:input">
+<configure>A multiport that accepts tokens of any type.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:suppressBlankLines">
+<configure>Specify whether the actor should display blank lines (the default) or suppress them.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:rowsDisplayed">
+<configure>The vertical size of the display, in rows. The value is an integer that defaults to 10.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:columnsDisplayed">
+<configure>The horizontal size of the display, in columns. The value is an integer that defaults to 40.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:title">
+<configure>The title of the text display window. If specified, the value will appear in the title bar of the text display window.</configure>
+</property>
+</property>
+</entity>
+    <entity class="org.resurgence.actor.TextFileWriter" name="Text File Writer">
+        <property class="ptolemy.data.expr.StringParameter" name="Change existing" value="Overwrite">
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:295:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="org.resurgence.actor.TextFileWriter">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:1120:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#WriterOutputActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#LocalOutput">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[440.0, 260.0]">
+        </property>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Wibke Sudholt</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The TextFileWriter actor reads a string token and writes it, without any enclosing quotation marks, to a file. The actor outputs the file path of the generated file.</p> 
+
+<p>The path and name of the output file are specified via input ports. Specify whether the input is appended to the specified file (if it exists), or if an existing file is overwritten via the changeExisting parameter. </p>
+
+<p>The TextFileWriter is similar to the FileWriter actor, except that the TextFileWriter actor does not add line breaks to its output, while the FileWriter actor does.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:fileToWrite">
+<configure>An input port that accepts the file path of the file to which to write. See FileParameter for more information about specifying file names.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:string">
+<configure>An input port that receives a string token to write-one line at a time--to a file.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:fileWritten">
+<configure>An output port that broadcasts the name and path of the output file.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:Change existing">
+<configure>Specify whether the input is appended to the specified file (if it exists), or if an existing file is overwritten.</configure>
+</property>
+</property>
+</entity>
+    <entity class="org.ecoinformatics.seek.datasource.darwincore.DarwinCoreDataSource" name="DarwinCoreDataSource">
+        <property class="ptolemy.data.expr.StringParameter" name="searchData" value="mephitis">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="endPoint" value="http://darwincore.ecoinformatics.org:8080/DigirImpl/services/DigirQueryService">
+        </property>
+        <property class="ptolemy.data.expr.StringParameter" name="outputType" value="As Table">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="schemaDef" value="&lt;schema&gt;&#10;  &lt;table name=&quot;DigirTable: mephitis&quot;&gt;&#10;    &lt;field name=&quot;CatalogNumberText&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;CollectionCode&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;YearCollected&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Collector&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;DecimalLongitude&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;DecimalLatitude&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;CatalogNumber&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;ScientificName&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;InstitutionCode&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Species&quot; dataType=&quot;STRING&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <property class="ptolemy.actor.gui.style.TextStyle" name="schemaDef">
+                <property class="ptolemy.data.expr.Parameter" name="height" value="10">
+                </property>
+                <property class="ptolemy.data.expr.Parameter" name="width" value="30">
+                </property>
+            </property>
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="sqlDef" value="&lt;query advanced=&quot;false&quot;&gt;&#10;  &lt;select&gt;&#10;  &lt;field tableName=&quot;DigirTable: mephitis&quot; fieldName=&quot;DecimalLongitude&quot;/&gt;&#10;  &lt;field tableName=&quot;DigirTable: mephitis&quot; fieldName=&quot;DecimalLatitude&quot;/&gt;&#10;  &lt;field tableName=&quot;DigirTable: mephitis&quot; fieldName=&quot;ScientificName&quot;/&gt;&#10;  &lt;/select&gt;&#10;  &lt;tables&gt;&#10;    &lt;table name=&quot;DigirTable: mephitis&quot;/&gt;&#10;  &lt;/tables&gt;&#10;  &lt;where&gt;&#10;    &lt;AND&gt;&#10;        &lt;field tableName=&quot;DigirTable: mephitis&quot;  fieldName=&quot;DecimalLongitude&quot; oper=&quot;LESS THAN&quot; criteria=&quot;360&quot;/&gt;&#10;        &lt;field tableName=&quot;DigirTable: mephitis&quot;  fieldName=&quot;DecimalLatitude&quot; oper=&quot;LESS THAN&quot; criteria=&quot;360&quot;/&gt;&#10;    &lt;/AND&gt;&#10;  &lt;/where&gt;&#10;&lt;/query&gt;&#10;">
+            <property class="ptolemy.actor.gui.style.TextStyle" name="sqlDef">
+                <property class="ptolemy.data.expr.Parameter" name="height" value="10">
+                </property>
+                <property class="ptolemy.data.expr.Parameter" name="width" value="30">
+                </property>
+            </property>
+        </property>
+        <property class="org.kepler.objectmanager.data.db.QBTableauFactory" name="_tableauFactory">
+            <property class="ptolemy.kernel.util.StringAttribute" name="sqlName" value="sqlDef">
+            </property>
+            <property class="ptolemy.kernel.util.StringAttribute" name="schemaName" value="schemaDef">
+            </property>
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:517:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="org.ecoinformatics.seek.datasource.darwincore.DarwinCoreDataSource">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:2002:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#ExternalInputActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#LocalInput">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType222" value="urn:lsid:localhost:onto:2:1#RemoteInput">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType333" value="urn:lsid:localhost:onto:2:1#XMLProcessor">
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[435.0, 150.9921875]">
+        </property>
+        <port class="ptolemy.actor.TypedIOPort" name="Delimiter">
+            <property name="output"/>
+        </port>
+        <port class="ptolemy.actor.TypedIOPort" name="numColumns">
+            <property name="output"/>
+        </port>
+        <port class="ptolemy.actor.TypedIOPort" name="DataTable">
+            <property name="output"/>
+        </port>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+    <configure/>
+  </property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Spears, Higgins</configure>
+</property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>1</configure>
+</property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+    <p>The DarwinCoreDataSource actor uses the DiGIR (Distributed Generic Information Retrieval) 
+      protocol to search for and access occurrence data for species contained in museum collections.</p>
+    
+    <p>The DarwinCoreDataSource actor provides query access to DiGIR data and handles the mechanical issues involved in searching the collection, downloading the results, and emitting the data to downstream actors.</p>
+
+    <p>By default, the ports created by the DarwinCoreDataSource actor provide a complete data table as a string with additional ports specifying the number of attributes and the attribute delimiter used in the data table.</p>    
+    
+    <p>When As Field is specified for the outputType, the actor automatically reconfigures its exposed ports to provide one port for each attribute contained in the result table (after receiving initial search results from the DiGIR service).</p>
+    
+    <p>NOTE: Retrieving data from DiGIR collections may take several minutes per species the first time the workflow is run. Subsequent workflow executions are considerably faster because the data is cached locally during the first execution.</p>
+  </configure>
+  </property>  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:speciesName">
+<configure>Allows search term[s] to be dynamically input as part of the workflow rather than specificed as a static parameter for this actor</configure>
+</property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:trigger">
+<configure>Allows other actors to signal that the the search be performed.  This should be used in cases when the speciesName input port is not being used.</configure>
+</property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:output">
+<configure>Output ports are automatically configured depending on the selected outputType.  See the documentation on outputType for more information</configure>
+</property>  
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:outputType">
+<configure>
+    Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in the data table, or one port that emits the entire data table at once. Specifically, the output format choices are:
+    <table>
+      <tr>
+<td>As Field</td>
+<td> The actor creates one output port for each field (i.e., column/attribute/variable) that is contained in the DiGIR results. The type of each port (e.g., string, int, double, etc.) matches the base type of the field.  Note: a search term should be specified in the searchData in order for the field ports to be created. </td>
+</tr>
+      
+      <tr>
+<td>As Table (the default)</td>
+<td> The selected data will be output as a string that contains the entire search result data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and numColumns - the number of fields in the table. </td>
+</tr>
+      
+      <tr>
+<td>As Row</td>
+<td>  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. </td>
+</tr>  
+    </table>
+    
+  </configure>
+</property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:searchData">
+<configure>Search DiGIR using the entered search term (if not using the speciesName input port)</configure>
+</property>
+  <property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:endPoint">
+<configure>The DiGIR query service endpoint</configure>
+</property>
+</property>
+</entity>
+    <entity class="ptolemy.actor.lib.Expression" name="Expression2">
+        <property class="ptolemy.kernel.util.StringAttribute" name="expression" value="property(&quot;KEPLER&quot;)+&quot;/&quot;+sp_name+&quot;.txt&quot;">
+            <property class="ptolemy.data.expr.Parameter" name="_hide" value="true">
+            </property>
+        </property>
+        <property class="org.kepler.moml.NamedObjId" name="entityId" value="urn:lsid:kepler-project.org:actor:75:1">
+        </property>
+        <property class="ptolemy.kernel.util.StringAttribute" name="class" value="ptolemy.actor.lib.Expression">
+            <property class="ptolemy.kernel.util.StringAttribute" name="id" value="urn:lsid:kepler-project.org:class:950:1">
+            </property>
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType000" value="urn:lsid:localhost:onto:1:1#MathOperationActor">
+        </property>
+        <property class="org.kepler.sms.SemanticType" name="semanticType111" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+        </property>
+        <property class="ptolemy.vergil.icon.BoxedValueIcon" name="_icon">
+            <property class="ptolemy.kernel.util.StringAttribute" name="attributeName" value="expression">
+            </property>
+            <property class="ptolemy.data.expr.Parameter" name="displayWidth" value="60">
+            </property>
+        </property>
+        <property class="ptolemy.kernel.util.Location" name="_location" value="[280.0, 360.0]">
+        </property>
+        <port class="ptolemy.actor.TypedIOPort" name="sp_name">
+            <property name="input"/>
+        </port>
+    <property class="ptolemy.vergil.basic.KeplerDocumentationAttribute" name="KeplerDocumentation">
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="description">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="author">
+<configure>Xiaojun Liu, Edward A. Lee, Steve Neuendorffer</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="version">
+<configure>null</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="userLevelDocumentation">
+<configure>
+<p>The Expression actor evaluates a specified expression (e.g., an addition or multiplication operation), which may reference the values of user-specified input ports, the current time, or the actor's iteration count. The actor outputs the value of the evaluated expression. </p>
+
+<p>Expressions are specified in the Ptolemy expression language via the expression parameter. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. </p>
+
+<p>By default, the expression parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier "time"; and to the current iteration count by the identifier "iteration." </p>
+
+<p>Input ports are created by the user and correspond to variables used in the specified expression. Currently, the Expression actor does not support input multiports. The actor requires all of its inputs to be present. If inputs are not all present, then the actor will generate an error. </p>
+
+<p>Note: the Expression actor can be used instead of many of the arithmetic actors, such as AddSubtract, MultiplyDivide, and TrigFunction. However, those actors will be usually be more efficient, and sometimes more convenient to use.</p>
+</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="port:output">
+<configure>An output port that broadcasts the value of the evaluated expression. The actor automatically determines the type based on the type of the input.</configure>
+</property>
+<property class="ptolemy.kernel.util.ConfigurableAttribute" name="prop:expression">
+<configure>An expression to evaluate. Expressions are specified in the Ptolemy expression language. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. By default, the parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier "time"; and to the current iteration count by the identifier "iteration."</configure>
+</property>
+</property>
+</entity>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+    </relation>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation3">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+        <vertex name="vertex1" value="[250.0, 250.0]">
+        </vertex>
+    </relation>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation2">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+    </relation>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation4">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+    </relation>
+    <relation class="ptolemy.actor.TypedIORelation" name="relation5">
+        <property class="ptolemy.data.expr.Parameter" name="width" value="1">
+        </property>
+    </relation>
+    <link port="Expression.output" relation="relation"/>
+    <link port="Array To Sequence.input" relation="relation"/>
+    <link port="Array To Sequence.output" relation="relation3"/>
+    <link port="Display.input" relation="relation5"/>
+    <link port="Text File Writer.string" relation="relation2"/>
+    <link port="Text File Writer.fileToWrite" relation="relation4"/>
+    <link port="Text File Writer.fileWritten" relation="relation5"/>
+    <link port="DarwinCoreDataSource.speciesName" relation="relation3"/>
+    <link port="DarwinCoreDataSource.DataTable" relation="relation2"/>
+    <link port="Expression2.output" relation="relation4"/>
+    <link port="Expression2.sp_name" relation="relation3"/>
+</entity>

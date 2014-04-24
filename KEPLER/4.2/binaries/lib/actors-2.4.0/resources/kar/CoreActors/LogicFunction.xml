@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<entity name="Logic Function" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:67:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Paul Whitaker</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Logic Function actor reads Boolean tokens, performs a specified logical operation (e.g., "and" or  "xnor"), and outputs the evaluated result as a Boolean token.</p>
+
+<p>Specify a logic function with the function parameter. The following logic functions may be performed:</p>
+
+<table>
+<tr><th>Logic Function
+</th><th>Definition</th></tr>
+<tr><td>and
+</td><td>The logical "and" operator (the default)</td></tr>
+<tr><td>or
+</td><td>The logical "or" operator.</td></tr>
+<tr><td>xor</td><td>The logical "xor" operator. </td></tr>
+<tr><td>nand</td><td>The logical "nand" operator. Equivalent to the negation of "and". </td></tr>
+<tr><td>nor</td><td>The logical "nor" operator. Equivalent to the negation of "or".
+</td></tr>
+<tr><td>xnor</td><td>The logical "xnor" operator. Equivalent to the negation of "xor".</td></tr>
+</table>
+<p>For more information about these functions, see http://whatis.techtarget.com/definition/0,,sid9_gci213512,00.html.</p>
+
+<p>The actor consumes at most one token on each input channel. It does not require that each input channel have a token upon firing. As long as one channel contains a token, the actor will produce output. If no input tokens are available, then no output is produced.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts Boolean tokens representing the evaluated input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts Boolean tokens.</configure></property>
+<property name="prop:function" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The logical operation to perform: and, or, xor, nand, nor, xnor. For more information about these functions, see http://whatis.techtarget.com/definition/0,,sid9_gci213512,00.html.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.logic.LogicFunction" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:942:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowControl" class="org.kepler.sms.SemanticType"/>
+</entity>

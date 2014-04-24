@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="MatrixSplit" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:687:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.domains.sdf.lib.MatrixSplit" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="rowSplit" class="ptolemy.data.expr.Parameter" value="{1}">
+</property>
+
+<property name="columnSplit" class="ptolemy.data.expr.Parameter" value="{1}">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#MatrixOperation">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: MatrixSplit.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This actor splits an input matrix into a sequence of matrices.&#10; This actor reads 1 input matrix and produces N*M output matrices,&#10; where N is the size of the &lt;i&gt;rowSplit&lt;/i&gt; array, and M is&#10; the size of the &lt;i&gt;columnSplit&lt;/i&gt; parameter. The matrices&#10; are produced from submatrices extracted left-to-right,&#10; top-to-bottom, in a raster scan pattern.&#10; For example, if &lt;i&gt;rowSplit&lt;/i&gt; = {1, 2},&#10; &lt;i&gt;columnSplit&lt;/i&gt; = {2, 1}, and the input matrix is&#10; as follows:&#10; &lt;pre&gt;&#10;   1  2  3&#10;   4  5  6&#10;   7  8  9&#10; &lt;/pre&gt;&#10; then the first matrix out is a column vector:&#10;  &lt;pre&gt;&#10;   1&#10;   4&#10; &lt;/pre&gt;&#10; The second matrix out is&#10;  &lt;pre&gt;&#10;   2  3&#10;   5  6&#10; &lt;/pre&gt;&#10; The third is&#10;  &lt;pre&gt;&#10;   7&#10; &lt;/pre&gt;&#10; (a 1x1 matrix) and the fourth is&#10;  &lt;pre&gt;&#10;   8  9&#10; &lt;/pre&gt;&#10; a row vector.&#10; If the input does not have enough elements to fill the specified&#10; output matrices, then zeros (of the same type as the input elements)&#10; are used. If the input is larger than is required to fill the specified&#10; output, then the additional values are discarded.&#10; &lt;p&gt;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="prop:rowSplit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An array specifying the number of rows in the output matrices.  This is an array of integers, with default {1}.</configure></property>
+<property name="prop:columnSplit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An array specifying the number of columns in the output matrices.  This is an array of integers, with default {1}.</configure></property>
+</property></entity>

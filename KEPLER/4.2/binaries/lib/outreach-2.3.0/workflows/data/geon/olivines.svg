@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+      "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width='520' height='420' onload="init(evt)">
+
+<script type="text/ecmascript">
+
+<![CDATA[
+     var lastCircle;
+     function init( evt ) {
+        parent.updateSVG = svgClicked;
+        parent.svgHide = svgHide;
+        parent.svgShow = svgShow;
+     }
+     function svgClicked(circleId) {
+         obj = svgDocument.getElementById('circle'+circleId);
+         if (lastCircle == null) {
+            obj.setAttribute("fill", "#a00000");
+         } else {
+            lastCircle.setAttribute("fill", "white");
+            obj.setAttribute("fill", "#a00000");
+         }
+         lastCircle = obj; 
+         testit(circleId); 
+     }
+     function svgShow(circleId) {
+         obj = svgDocument.getElementById('circle'+circleId);
+         obj.setAttribute("visibility", "visible");
+         svgClicked(circleId);
+     }
+     function svgHide(circleId) {
+         obj = svgDocument.getElementById('circle'+circleId);
+         obj.setAttribute("visibility", "hidden");
+     }
+// ]]>
+
+</script>
+
+<rect x='100' y='60' width='400' height='300' style='fill: none; stroke: black; stroke-width: 1; ' />
+<line x1='100' y1='60' x2='100' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='352' x2='100' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='108' y1='60' x2='108' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='108' y1='355' x2='108' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='116' y1='60' x2='116' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='116' y1='355' x2='116' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='124' y1='60' x2='124' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='124' y1='355' x2='124' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='132' y1='60' x2='132' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='132' y1='355' x2='132' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='140' y1='60' x2='140' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='140' y1='352' x2='140' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='148' y1='60' x2='148' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='148' y1='355' x2='148' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='156' y1='60' x2='156' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='156' y1='355' x2='156' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='164' y1='60' x2='164' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='164' y1='355' x2='164' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='172' y1='60' x2='172' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='172' y1='355' x2='172' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='180' y1='60' x2='180' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='180' y1='352' x2='180' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='188' y1='60' x2='188' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='188' y1='355' x2='188' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='196' y1='60' x2='196' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='196' y1='355' x2='196' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='204' y1='60' x2='204' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='204' y1='355' x2='204' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='212' y1='60' x2='212' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='212' y1='355' x2='212' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='220' y1='60' x2='220' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='220' y1='352' x2='220' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='228' y1='60' x2='228' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='228' y1='355' x2='228' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='236' y1='60' x2='236' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='236' y1='355' x2='236' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='244' y1='60' x2='244' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='244' y1='355' x2='244' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='252' y1='60' x2='252' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='252' y1='355' x2='252' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='260' y1='60' x2='260' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='260' y1='352' x2='260' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='268' y1='60' x2='268' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='268' y1='355' x2='268' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='276' y1='60' x2='276' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='276' y1='355' x2='276' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='284' y1='60' x2='284' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='284' y1='355' x2='284' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='292' y1='60' x2='292' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='292' y1='355' x2='292' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='300' y1='60' x2='300' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='300' y1='352' x2='300' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='308' y1='60' x2='308' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='308' y1='355' x2='308' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='316' y1='60' x2='316' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='316' y1='355' x2='316' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='324' y1='60' x2='324' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='324' y1='355' x2='324' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='332' y1='60' x2='332' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='332' y1='355' x2='332' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='340' y1='60' x2='340' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='340' y1='352' x2='340' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='348' y1='60' x2='348' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='348' y1='355' x2='348' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='356' y1='60' x2='356' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='356' y1='355' x2='356' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='364' y1='60' x2='364' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='364' y1='355' x2='364' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='372' y1='60' x2='372' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='372' y1='355' x2='372' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='380' y1='60' x2='380' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='380' y1='352' x2='380' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='388' y1='60' x2='388' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='388' y1='355' x2='388' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='396' y1='60' x2='396' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='396' y1='355' x2='396' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='404' y1='60' x2='404' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='404' y1='355' x2='404' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='412' y1='60' x2='412' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='412' y1='355' x2='412' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='420' y1='60' x2='420' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='420' y1='352' x2='420' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='428' y1='60' x2='428' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='428' y1='355' x2='428' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='436' y1='60' x2='436' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='436' y1='355' x2='436' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='444' y1='60' x2='444' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='444' y1='355' x2='444' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='452' y1='60' x2='452' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='452' y1='355' x2='452' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='460' y1='60' x2='460' y2='68'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='460' y1='352' x2='460' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='468' y1='60' x2='468' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='468' y1='355' x2='468' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='476' y1='60' x2='476' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='476' y1='355' x2='476' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='484' y1='60' x2='484' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='484' y1='355' x2='484' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='60' x2='492' y2='65'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='355' x2='492' y2='360'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='60' x2='108' y2='60'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='60' x2='500' y2='60'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='66' x2='105' y2='66'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='66' x2='500' y2='66'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='72' x2='105' y2='72'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='72' x2='500' y2='72'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='78' x2='105' y2='78'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='78' x2='500' y2='78'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='84' x2='105' y2='84'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='84' x2='500' y2='84'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='90' x2='108' y2='90'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='90' x2='500' y2='90'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='96' x2='105' y2='96'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='96' x2='500' y2='96'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='102' x2='105' y2='102'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='102' x2='500' y2='102'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='108' x2='105' y2='108'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='108' x2='500' y2='108'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='114' x2='105' y2='114'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='114' x2='500' y2='114'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='120' x2='108' y2='120'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='120' x2='500' y2='120'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='126' x2='105' y2='126'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='126' x2='500' y2='126'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='132' x2='105' y2='132'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='132' x2='500' y2='132'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='138' x2='105' y2='138'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='138' x2='500' y2='138'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='144' x2='105' y2='144'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='144' x2='500' y2='144'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='150' x2='108' y2='150'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='150' x2='500' y2='150'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='156' x2='105' y2='156'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='156' x2='500' y2='156'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='162' x2='105' y2='162'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='162' x2='500' y2='162'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='168' x2='105' y2='168'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='168' x2='500' y2='168'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='174' x2='105' y2='174'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='174' x2='500' y2='174'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='180' x2='108' y2='180'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='180' x2='500' y2='180'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='186' x2='105' y2='186'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='186' x2='500' y2='186'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='192' x2='105' y2='192'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='192' x2='500' y2='192'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='198' x2='105' y2='198'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='198' x2='500' y2='198'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='204' x2='105' y2='204'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='204' x2='500' y2='204'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='210' x2='108' y2='210'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='210' x2='500' y2='210'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='216' x2='105' y2='216'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='216' x2='500' y2='216'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='222' x2='105' y2='222'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='222' x2='500' y2='222'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='228' x2='105' y2='228'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='228' x2='500' y2='228'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='234' x2='105' y2='234'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='234' x2='500' y2='234'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='240' x2='108' y2='240'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='240' x2='500' y2='240'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='246' x2='105' y2='246'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='246' x2='500' y2='246'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='252' x2='105' y2='252'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='252' x2='500' y2='252'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='258' x2='105' y2='258'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='258' x2='500' y2='258'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='264' x2='105' y2='264'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='264' x2='500' y2='264'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='270' x2='108' y2='270'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='270' x2='500' y2='270'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='276' x2='105' y2='276'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='276' x2='500' y2='276'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='282' x2='105' y2='282'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='282' x2='500' y2='282'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='288' x2='105' y2='288'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='288' x2='500' y2='288'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='294' x2='105' y2='294'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='294' x2='500' y2='294'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='300' x2='108' y2='300'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='300' x2='500' y2='300'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='306' x2='105' y2='306'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='306' x2='500' y2='306'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='312' x2='105' y2='312'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='312' x2='500' y2='312'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='318' x2='105' y2='318'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='318' x2='500' y2='318'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='324' x2='105' y2='324'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='324' x2='500' y2='324'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='330' x2='108' y2='330'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='492' y1='330' x2='500' y2='330'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='336' x2='105' y2='336'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='336' x2='500' y2='336'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='342' x2='105' y2='342'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='342' x2='500' y2='342'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='348' x2='105' y2='348'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='348' x2='500' y2='348'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='100' y1='354' x2='105' y2='354'  style='stroke: black; stroke-width: 0.4; ' />
+<line x1='495' y1='354' x2='500' y2='354'  style='stroke: black; stroke-width: 0.4; ' />
+<text x='92' y='375' >0.0</text>
+<text x='132' y='375' >0.1</text>
+<text x='172' y='375' >0.2</text>
+<text x='212' y='375' >0.3</text>
+<text x='252' y='375' >0.4</text>
+<text x='292' y='375' >0.5</text>
+<text x='332' y='375' >0.6</text>
+<text x='372' y='375' >0.7</text>
+<text x='412' y='375' >0.8</text>
+<text x='452' y='375' >0.9</text>
+<text x='75' y='95'>0.9</text>
+<text x='75' y='125'>0.8</text>
+<text x='75' y='155'>0.7</text>
+<text x='75' y='185'>0.6</text>
+<text x='75' y='215'>0.5</text>
+<text x='75' y='245'>0.4</text>
+<text x='75' y='275'>0.3</text>
+<text x='75' y='305'>0.2</text>
+<text x='75' y='335'>0.1</text>
+<line x1='140' y1='60' x2='140' y2='360'  style='stroke: silver; stroke-width: 0.2; ' />
+<line x1='220' y1='60' x2='220' y2='360'  style='stroke: silver; stroke-width: 0.2; ' />
+<line x1='300' y1='60' x2='300' y2='360'  style='stroke: silver; stroke-width: 0.2; ' />
+<line x1='380' y1='60' x2='380' y2='360'  style='stroke: silver; stroke-width: 0.2; ' />
+<line x1='460' y1='60' x2='460' y2='360'  style='stroke: silver; stroke-width: 0.2; ' />
+<text x='250' y='400' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >Fe2/(Fe2+Mg)</text>
+<text x='50' y='270' transform='rotate(-90,50,270)' style='font-weight:bold; font-size: 14pt; font-family: serif; ' >Mg/(Fe2+Mg)</text>
+<text x='126' y='270' transform='rotate(-90,126,270)' style='fill:silver; font-weight:bold; font-size: 14pt; font-family: serif; ' >Forsterite</text>
+<text x='182' y='270' transform='rotate(-90,182,270)' style='fill:silver; font-weight:bold; font-size: 14pt; font-family: serif; ' >Chrysolite</text>
+<text x='262' y='270' transform='rotate(-90,262,270)' style='fill:silver; font-weight:bold; font-size: 14pt; font-family: serif; ' >Hyalosiderite</text>
+<text x='342' y='270' transform='rotate(-90,342,270)' style='fill:silver; font-weight:bold; font-size: 14pt; font-family: serif; ' >Hortonolite</text>
+<text x='422' y='270' transform='rotate(-90,422,270)' style='fill:silver; font-weight:bold; font-size: 14pt; font-family: serif; ' >Ferrohortonolite</text>
+<text x='486' y='270' transform='rotate(-90,486,270)' style='fill:silver; font-weight:bold; font-size: 14pt; font-family: serif; ' >Fayalite</text>
+<a onclick="svgClicked('BH-367-77')">
+<circle id='circleBH-367-77' cx='143' cy='92' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+<a onclick="svgClicked('Bh-368-77')">
+<circle id='circleBh-368-77' cx='189' cy='127' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+<a onclick="svgClicked('GC-1-78')">
+<circle id='circleGC-1-78' cx='188' cy='126' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+<a onclick="svgClicked('BH-184-79')">
+<circle id='circleBH-184-79' cx='172' cy='114' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+<a onclick="svgClicked('BH-223-77')">
+<circle id='circleBH-223-77' cx='170' cy='112' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+<a onclick="svgClicked('5-1')">
+<circle id='circle5-1' cx='199' cy='134' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+<a onclick="svgClicked('Bh-254-77')">
+<circle id='circleBh-254-77' cx='390' cy='277' r='4' fill='white' fill-opacity='0.4' stroke='black' stroke-width='0.8' />
+</a>
+</svg>
+

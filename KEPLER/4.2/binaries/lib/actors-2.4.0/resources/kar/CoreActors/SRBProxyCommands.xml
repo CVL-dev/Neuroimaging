@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<entity name="SRB Proxy Commands" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:265:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SRBProxyCommand actor executes a proxy command on a remote Storage Resource Broker (SRB) system. The actor can execute any command supported by SRB. 
+The actor outputs the result of the command execution as a string, as well as the output file path, if one has been specified.</p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). For more information about SRB, see http://www.sdsc.edu/srb/. For a complete list of supported comands, see http://www.sdsc.edu/srb/index.php/Scommand_Manpages.</p>
+
+<p>The SRBProxyCommand actor receives several inputs: a command to be executed (e.g., Smkdir or Sget) along with any command options (-r or -al), a connection reference to an SRB file system, and an optional output file name. Use the SRBConnect actor to connect to an SRB file system and return a connection reference that the SRBProxyCommand actor can use.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the command execution as a string.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outfileHandle" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the output file path, if outputFileName has been specified.</configure></property>
+<property name="port:arguments" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the command options. Multiple options are concatenated. For more information about commands and their options, see http://www.sdsc.edu/srb/index.php/Scommand_Manpages</configure></property>
+<property name="port:outputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An optional input port that accepts the name of the output file. If an output file is specified, the output of the command will be written to that file.</configure></property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a connection reference to an SRB file system. Use the SRBConnect actor to open a connection and create the reference.</configure></property>
+<property name="port:command" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the command to execute. For a complete list of commands, see http://www.sdsc.edu/srb/index.php/Scommand_Manpages</configure></property>
+<property name="prop:outputLineByLine" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to broadcast the output of the command line by line. The parameter is used to format the output if no outputFile is specified.</configure></property>
+<property name="prop:commandParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The command to execute. For a complete list of commands, see http://www.sdsc.edu/srb/index.php/Scommand_Manpages.</configure></property>
+<property name="prop:outputFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the output file (optional). If an output file is specified, the output of the command will be written to that file.</configure></property>
+<property name="prop:hasTrigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to activate a trigger input port.</configure></property>
+</property>
+<property name="class" value="org.srb.SRBProxyCommand" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1091:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="command" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="arguments" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="outputFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="outfileHandle" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#DatabaseOutputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<property name="PortParameter" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:425:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The PortParameter component specifies a persistent value, but can also accept an updated/current value via an associated port. The current value and the persistent value may differ.</p>
+
+<p>There are a few situations where PortParameter might not behave as expected:</p>
+<ol> 
+<li>If PortParameter is used in a transparent composite actor, then a token provided to a PortParameter will never be read. A transparent composite actor is one without a director. Workaround: Put a director in the composite actor. </li>
+<li>Certain actors (such as the Integrator in CT) read parameter values only during initialization. During initialization, a PortParameter can only have a value set via the parameter (it can't have yet received a token). So if the initial value of the Integrator is set to the value of the PortParameter, then it will see only the parameter value, never the value provided via the port. Workaround: Use a RunCompositeActor to contain the model with the Integrator. </li>
+</ol>
+</configure></property>
+<property name="prop:portParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The specified persistent value. </configure></property>
+
+
+
+</property>
+<property name="class" value="ptolemy.actor.parameters.PortParameter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1189:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+<property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <polyline points="-15,-15, -3,-5, -16,5" style="stroke:black"></polyline>
+      </svg>
+    </configure>
+</property>
+<property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+</property>
+<property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:black" y="20">-P-</text>
+      </svg>
+    </configure>
+</property>
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+</property>

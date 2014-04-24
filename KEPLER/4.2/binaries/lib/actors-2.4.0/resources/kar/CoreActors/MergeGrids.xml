@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<entity name="Merge Grids" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:277:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The MergeGrids actor reads the names of two geospatial image files, merges the files according to a specified merge-operation, and outputs the name of the merged file. The actor can be used to combine several regions into a large region--combining a grid covering North America with one for South America to create a raster grid for the western hemisphere, for example.</p>
+
+<p>The grid1Filename and grid2Filename ports each accept a string representing the name of a geospatial raster file. The order of the input files may be significant (e.g., for "subtraction" merge operations). The geographic extent of the output file will always include the combined extent of the inputs. The cell size will match that of the first input file.</p>
+ 
+<p>Select a merge operation with the mergeOperation parameter.  Choices include:</p>
+<table>
+<tr><td>average</td><td>Average the values of each cell.</td></tr>
+<tr><td>add</td><td>Add the values of each cell.</td></tr>
+<tr><td>subtract</td><td>Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.</td></tr>
+<tr><td>mask</td><td>Missing values in grid2 will mask the corresponding points in grid1. </td></tr>
+<tr><td>not_mask</td><td>Missing values in grid2 will not mask corresponding points in grid1. </td></tr>
+</table>
+
+<p>The MergeGrids actor is similar to the AddGrid actor, except that the MergeGrids can use a variety of merge operations and merges only two grids. The AddGrids actor can be used to merge multiple grids, but uses only addition to merge them.</p></configure></property>
+<property name="port:mergedGridFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the resulting merged  file.</configure></property>
+<property name="port:grid2FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The second grid file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="port:grid1FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The first raster file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="port:mergedGridFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to give the output file.</configure></property>
+<property name="prop:useDisk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to use disk memory for storing grid data. This option in much slower than using only RAM memory (the default) but allows for very large rasters.</configure></property>
+<property name="prop:mergeOperation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of merge to execute. Choices include:
+<table>
+<tr><td>average</td><td>Average the values of each cell.</td></tr>
+<tr><td>add</td><td>Add the values of each cell.</td></tr>
+<tr><td>subtract</td><td>Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.</td></tr>
+<tr><td>mask</td><td>Missing values in grid2 will mask the corresponding points in grid1. </td></tr>
+<tr><td>not_mask</td><td>Missing values in grid2 will not mask corresponding points in grid1. </td></tr>
+</table>
+</configure></property>
+
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.java_gis.MergeGrids" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1102:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="grid1FileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="grid2FileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="mergedGridFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="mergedGridFileResult" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

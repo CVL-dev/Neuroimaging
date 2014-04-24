@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<entity name="Test" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:116:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee, Christopher Hylands, Jim Armstrong</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Test actor reads an input value of any type and compares it to a corresponding value in a specified array of values. If the two values match, the actor fires successfully. If the two values do not match, the actor generates an error. The actor outputs a Boolean token: false if the actor's iteration count is less than or equal to the length of the comparison array; true if the iteration count is greater than the length of the array. The Boolean output can be fed to a Stop actor to stop the workflow upon successfully matching test data.</p>
+
+<p>Unlike the NonstrictTest actor, the Test actor supports a multiport input. The actor also differs from NonstrictTest in that it requires that all inputs be present. </p>
+
+<p>The comparison value is specified with the correctValues parameter. The parameter accepts an array of values, the type of which must match the type of the input (the default array is {true}). The actor cycles through the array values, comparing each consecutive input to the next token in the correctValues array. After each of the values in the correctValues parameter has been matched, any subsequent iteration always succeeds. This behavior allows the actor to be used as a "power-up" test for a model; the actor will check the first few iterations against some known results. </p>
+
+<p>The input is a multiport. If more than one input channel exists, then each element of correctValues must itself be an array, with length matching the number of channels. </p>
+
+<p>Suppose for example that the input consists of one channel, and the first three inputs should be 1, 2, and 3. Then set correctValues to 
+
+ {1, 2, 3}</p>
+
+<p>Suppose instead that the input consists of two channels, and the correct values in the first iteration are 1 on the first channel and 2 on the second. Then on the second iteration, the correct values are 3 on the first channel and 4 on the second. Then set correctValues to 
+
+ {{1, 2}, {3, 4}}
+
+Note: With this setting, no tests are performed after the first two iterations of this actor. </p>
+
+<p>The input values are checked when the actor fires. If an input value is missing or differs from what it should be, then the actor generates an error. To check the input value after the actor fires, then use the NonstrictTest actor. </p>
+
+<p>If the input is a double or complex token, then the comparison "passes" if the value is close to what it should be (i.e., within the specified tolerance). Tolerance is specified with the tolerance parameter, and defaults to 10-9.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Boolean output that is false as long as there is data to compare against the input; the value becomes true on the first firing after such data has been exhausted.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts tokens of any type.</configure></property>
+<property name="prop:tolerance" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token specifying how closely the input must match the value from the correctValues array. The default is 10-9.</configure></property>
+<property name="prop:correctValues" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An array specifying what the input should be. If more than one input channel exists, then each element of the array must itself be an array, with length matching the number of channels. The default is a one-by-one array containing a Boolean true.</configure></property>
+<property name="prop:trainingMode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select the trainingMode parameter to collect the input values and place them in the correctValues array. The trainingMode parameter is a shared parameter, meaning that changing it for any one instance of the actor in the model will change all instances.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Test" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:985:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitTestControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitTestControl" class="org.kepler.sms.SemanticType"/>
+</entity>

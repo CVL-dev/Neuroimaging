@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<property name="DocViewer" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:467:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The DocViewer attribute renders a clickable documentation icon on the Workflow canvas. Clicking the icon opens the workflow documentation window.</configure></property>
+</property>
+<property name="class" value="ptolemy.kernel.util.SingletonAttribute" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1184:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="viewer" class="ptolemy.vergil.basic.DocViewerFactory"/>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation" class="org.kepler.sms.SemanticType"/>
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute" />
+<property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+<configure>
+  <svg>
+    <rect x="-50" y="-20" width="100" height="20" style="fill:yellow"/>
+    <text x="-40" y="-5" style="font-size:12; font-family:SansSerif; fill:black">Documentation</text>
+  </svg>
+</configure>
+</property>
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+</property>

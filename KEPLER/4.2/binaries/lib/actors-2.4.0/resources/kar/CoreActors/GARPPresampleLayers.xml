@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<entity name="GARP Presample Layers" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:121:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkeley, Dan Higgins, NCEAS, UC Santa Barbara</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GARPPresampleLayers actor reads environmental and species location data, samples the data, and outputs the information in a format that other GARP actors can process.</p>
+
+<p>Environmental information is input in the form of "environmental layers", which contain environmental information (e.g., temperature or precipitation) and spatial data. Multiple layers are summarized in a single xml file (*.dxl), and passed to the actor.</p>
+
+<p>Location data consists of a file that contains a list of known points where a species has been found. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character. Typically the (x,y) is (longitude, latitude).</p>
+
+<p>The output file is typically passed to the GARPAlgorithm actor, which can generate a predictive rule set from the information. The rule set can be used to predict other locations where the species might be found.</p>
+
+<p>The actor requires libgarp.so (on linux systems) or garp.dll and libexpat.dll (on Windows systems). Currently, the actor does not work on MacOSX systems.</p>
+
+<p>GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.</p></configure></property>
+<property name="port:cellSetFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a file name for the output file. The output file is usually passed to a GARPAlgorithm actor, which can generate a predictive rule set from the information. This information can also be specified with the cellSetFileNameParameter. </configure></property>
+<property name="port:dataPointFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the species location data. Location data consists of a file that contains a list of known points where a species has been found. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character. Typically the (x,y) is (longitude, latitude). This information can also be specified with the dataPointFileNameParameter.</configure></property>
+<property name="port:layersetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the environmental data. Environmental data is input in the form of environmental layers containing environmental information (e.g., temperature or precipitation) and spatial data. Multiple layers are summarized in a single xml file (*.dxl), and passed to the actor. This information can also be specified with the layersetFilenameParameter.</configure></property>
+<property name="port:cellSetFileNameOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the output file. The port is only fired after the output data has been calculated, and is thus used as a trigger for the next step in the GARP calculation.</configure></property>
+<property name="prop:cellSetFileNameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the generated output file. This file is usually passed to the GARPAlgorithm actor, which creates a rule set for predicting species occurrences. This information can also be specified via the cellSetFileName port. </configure></property>
+<property name="prop:dataPointFileNameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the species location data. Location data consists of a list of known points where a species has been found. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character. Typically the (x,y) is (longitude, latitude). This information can also be specified via the dataPointFileName port.</configure></property>
+<property name="prop:layersetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the environmental data. Environmental data is input in the form of environmental layers containing environmental information (e.g., temperature or precipitation) and spatial data. Multiple layers are summarized in a single xml file (*.dxl), and passed to the actor. This information can also be specified via the layersetFilename port.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.garp.GarpPresampleLayers" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:990:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="layersetFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="dataPointFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="cellSetFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="cellSetFileNameOutput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#NicheModelingActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:4:1#NicheModelingOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

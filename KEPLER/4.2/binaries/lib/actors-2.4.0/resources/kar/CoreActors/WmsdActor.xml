@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<entity name="Wmsd Actor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:120:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>no author given</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The WmsdActor uses the Grid to process CPU-intensive calculations for the Encyclopedia of Life (EOL), which is working to predict the three-dimensional protein structures for all of the genomes that have been sequenced to date.</p>
+
+<p>Because this work requires tremendous computational resources, the actor uses the Grid, which allows people to share computing power, databases, and other tools. The actor uses a Workflow Management System daemon (WMSD) to submit Encyclopedia of Life (EOL) tasks to the Grid via an AppLeS Parameter Sweep Template (APST) program. APST manages the low-level complexities of job submission, heterogeneous resource management, and scheduling. The WMSD selects sequences from an input database, and continuously feeds many thousands of tasks to APST. Modeled protein structures are stored in an on-line, Internet-accessible database.</p>
+
+<p>EOL uses the Grid to predict 3D protein structures on entire genomes from homologous experimentally solved structures in support of rational drug design, ultimately in support of the pharmaceutical industry. See more about the Encyclopedia of Life project at SDSC at http://eol.sdsc.edu.</p>
+
+</configure></property>
+
+
+
+</property>
+<property name="class" value="org.eol.WmsdActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:989:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="dbcon" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="dbconnection" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="categoryDatabaseName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="sourceLabel" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output_log" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WebService" class="org.kepler.sms.SemanticType"/>
+</entity>

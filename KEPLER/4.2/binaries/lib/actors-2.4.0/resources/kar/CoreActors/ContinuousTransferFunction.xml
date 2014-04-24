@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<entity name="ContinuousTransferFunction" class="org.kepler.moml.CompositeClassEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.ContinuousTransferFunction" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:5:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:5:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      A transfer function in the continuous time domain.&#10; This actor implements a transfer function where the single input (u) and&#10; single output (y) can be expressed in (Laplace) transfer function&#10; form as the following equation:&#10; &lt;pre&gt;&#10; y(s)    b(1)*s^(m-1) + b(2)*s^(m-2) + ... + b(m)&#10; ----- = -------------------------------------------&#10; u(s)    a(1)*s^(n-1) + a(2)*s^(n-2) + ... + a(n)&#10; &lt;/pre&gt;&#10; where m and n are the number of numerator and denominator coefficients,&#10; respectively. This actors has two parameters -- numerator and denominator --&#10; containing the coefficients of the numerator and denominator in&#10; descending powers of s. These coefficients are double numbers.&#10; The order of the denominator (n) must be greater&#10; than or equal to the order of the numerator (m).&#10; &lt;p&gt;&#10; This actor extends TypedCompositeActor and works as a higher-order function.&#10; Whenever the parameters are changed, the actor will build a transparent&#10; subsystem inside it using integrators, adders, and scales. This is called&#10; a realization of the transfer function. Notice that there are infinite&#10; number of realizations of a transfer function, and they are equivalent if and&#10; only if the initial conditions are all zero. Here we choose the controllable&#10; canonical form and preset all initial states of the integrators to zero.&#10; If you need to set arbitrary initial&#10; conditions you have to use the state-space representation, for example,&#10; use the LinearStateSpace actor. </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Christopher Brooks, based on the CT ContinuousTransferFunction by Jie Liu</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: ContinuousTransferFunction.xml 24234 2010-05-06 05:21:26Z welker $</configure>
+    </property>
+    <property name="prop:numerator" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The coefficients of the numerator, containing an array of&#10;  DoubleTokens.&#10;  The default value is {1.0}.
+      </configure>
+    </property>
+    <property name="prop:denominator" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The coefficients of the denominator, containing an array&#10;  of DoubleTokens.&#10;  The array must have a length greater&#10;  than or equal to the length of the numerator.&#10;  The default value is {1.0}.
+      </configure>
+    </property>
+  </property>
+  <property name="input" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+</entity>

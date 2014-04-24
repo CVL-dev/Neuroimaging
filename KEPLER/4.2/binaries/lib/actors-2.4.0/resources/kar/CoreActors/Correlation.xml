@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<entity name="Correlation" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:484:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Josh Madin</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Correlation actor uses R to perform parametric and non-parametric tests of association between two input variables (e.g., two arrays of equal length). The actor outputs the level of association (r, rho, or tau, depending on the analysis) between the two variables, an estimate of the p-value (if possible), and n. </p>
+
+
+<p> The actor uses R to perform a variance analysis and outputs a graphical representation of its calculations. The R application must be installed on the local system to use this actor. R is a language and environment for statistical computing and graphics. For more information about R, see http://www.r-project.org/.</p>
+
+<p>By default, the actor performs a Pearson's correlation analysis; to specify another analysis type, connect a Constant actor to the actor&apos;s method port and enter another type of analysis (e.g., &quot;spearmen&quot; or &quot;kendall&quot;).</p> 
+
+<p>The actor performs the analysis and saves the results  to the Kepler working directory. To view the results, connect an ImageJ actor to the graphicsFileName output port.</p></configure></property>
+<property name="port:association" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the calculated level of variable association.</configure></property>
+<property name="port:graphicsFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated graph of the results.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a copy of the text output that R generates.  As the actor communicates with R to run the R function or script, the output port sends back the response (i.e., the values and statistical outputs).</configure></property>
+<property name="port:Variable2" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the second variable. The variable is specified as an array of values. The array length must match that of the array specified for Variable1.</configure></property>
+<property name="port:Method" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The method used to perform the correlation analysis. The default method is Pearson. To change the method, connect a Constant actor and enter another type of analysis (e.g., &quot;spearman&quot; or &quot;kendall&quot;).</configure></property>
+<property name="port:p_value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output that broadcasts the p-value.</configure></property>
+<property name="port:n" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the number of data pairs in the input.</configure></property>
+<property name="port:Variable1" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the first variable. The variable is specified as an array of values. The array length must match that of the array specified for Variable2.</configure></property>
+<property name="prop:numXPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The width of the output graphic in pixels.</configure></property>
+<property name="prop:Rcwd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The 'R' working directory (the home directory by default). </configure></property>
+<property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The expression that is evaluated to produce the output.</configure></property>
+<property name="prop:displayGraphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to create a graphics output port. By default, the actor will create a graphics output port.</configure></property>
+<property name="prop:graphicsOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to create a graphics output port. By default, the actor will create a graphics output port.</configure></property>
+<property name="prop:graphicsFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The graphics output format. Currently the actor supports either  *.pdf or  *.png.</configure></property>
+<property name="prop:numYPixels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The height of the output graphic in pixels.</configure></property>
+<property name="prop:save_nosave" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to save the R workspace when R is closed; set to '--save' to retrieve the workspace later in a workflow in another R-actor.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.R.RExpression" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:graphicsFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:Variable1" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Variable2" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+</property>
+</property>
+<property name="kepler:Method" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+</property>
+<property name="kepler:association" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:p_value" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:n" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="expression" class="ptolemy.kernel.util.StringAttribute" value="if (any(ls() == &quot;Method&quot;) == FALSE) {Method &lt;- &quot;pearson&quot;}&#10;&#10;Variable1 &lt;- as.numeric(Variable1)&#10;Variable2 &lt;- as.numeric(Variable2)&#10;plot(Variable1, Variable2)&#10;&#10;final &lt;- cor.test(Variable1, Variable2, method = Method)&#10;&#10;association &lt;- as.numeric(final$estimate)&#10;p_value &lt;- final$p.value&#10;n &lt;- length(Variable1)&#10;">
+    <property name="R Expression" class="ptolemy.actor.gui.style.TextStyle">
+        <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+    </property>
+</property>
+<property name="save_nosave" class="ptolemy.data.expr.StringParameter" value="--save">
+</property>
+<property name="graphicsOutput" class="ptolemy.data.expr.Parameter" value="true">
+</property>
+<property name="numXPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+<property name="numYPixels" class="ptolemy.data.expr.StringParameter" value="480">
+</property>
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#MathOperationActor"/>
+<property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#StatisticalOperation"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#KendallCorrelation"/>
+<property name="semanticType33" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#PearsonCorrelation"/>
+<property name="semanticType44" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#SpearmanCorrelation"/>
+<property name="_location" class="ptolemy.kernel.util.Location" value="[135.0, 555.0]">
+</property>
+</entity>

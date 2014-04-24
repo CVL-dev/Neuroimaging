@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!--## NOTE: there is currently (1.0RC1) a code dependency that assumes
+## that the actor library and the registry share the same metacat server.
+## The registry and the actor library use the "SEEK" domain to authenticate.
+## This is a known issue, and a solution is being developed.
+
+# the keys should come in groups in the follwing order:
+# name, repository, putpath, authprotocol, authdomain, lsidpath, querypath, authenticatedquerypath, 
+# authorizationPath, registrypath, registryauth, class, lsidAuthority, searchRepository.
+# NOTE: The authdomain cross references the authentication services in authServicesBundle.properties
+# You must add an authentication domain that uses the same server as the repository
+# or authentication will not work.  For instance, if the keplerRepository uses
+# library.kepler-project.org, the authDomain that it is configured for must
+# also use the same server or the session ids returned will not be valid.-->
+<config>
+	
+  <repository>
+    <name>localRepository</name>
+    <repository>localhost:8080</repository>
+    <putpath>/knb/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>LOCAL</authdomain>
+    <lsidpath>/knb/services/IdentifierService</lsidpath>
+    <querypath>/knb/services/QueryService</querypath>
+    <authenticatedquerypath>/knb/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/knb/services/AuthorizationService</authorizationPath>
+    <registrypath>http://localhost:8080/registry/services/RegistryService</registrypath>
+    <registryauth>http://localhost:8080/knb/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-project.org</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>
+  
+  <repository>
+    <name>keplerRepository</name>
+    <repository>library.kepler-project.org</repository>
+    <putpath>/kepler/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>SEEK</authdomain>
+    <lsidpath>/kepler/services/IdentifierService</lsidpath>
+    <querypath>/kepler/services/QueryService</querypath>
+    <authenticatedquerypath>/kepler/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/kepler/services/AuthorizationService</authorizationPath>
+    <registrypath>http://ecogrid.ecoinformatics.org/registry/services/RegistryService</registrypath>
+    <registryauth>http://library.kepler-project.org/kepler/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-project.org</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>
+
+<!--  
+  <repository>
+    <name>sanparksRepository</name>
+    <repository>dataknp.sanparks.org</repository>
+    <putpath>/sanparks/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>SANPARKS</authdomain>
+    <lsidpath>/sanparks/services/IdentifierService</lsidpath>
+    <querypath>/sanparks/services/QueryService</querypath>
+    <authenticatedquerypath>/sanparks/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/sanparks/services/AuthorizationService</authorizationPath>
+    <registrypath>http://ecogrid.ecoinformatics.org/registry/services/RegistryService</registrypath>
+    <registryauth>http://library.kepler-project.org/kepler/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>sanparks.org</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>
+
+   <repository>
+    <name>keplerDevRepository</name>
+    <repository>kepler-dev.nceas.ucsb.edu</repository>
+    <putpath>/kepler/services/PutService</putpath>  
+    <authprotocol>http</authprotocol>
+    <authdomain>KEPLER-DEV</authdomain>
+    <lsidpath>/kepler/services/IdentifierService</lsidpath>
+    <querypath>/kepler/services/QueryService</querypath>
+    <authenticatedquerypath>/kepler/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/kepler/services/AuthorizationService</authorizationPath>
+    <registrypath>http://dev.nceas.ucsb.edu/registry/services/RegistryService</registrypath>
+    <registryauth>http://kepler-dev.nceas.ucsb.edu/kepler/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-dev.nceas.ucsb.edu</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>  
+  
+    <repository>
+    <name>bens-macbook</name>
+    <repository>nceas-macbook04.msi.ucsb.edu:8080</repository>
+    <putpath>/knb/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>bens-macbook</authdomain>
+    <lsidpath>/knb/services/IdentifierService</lsidpath>
+    <querypath>/knb/services/QueryService</querypath>
+    <authenticatedquerypath>/knb/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/knb/services/AuthorizationService</authorizationPath>
+    <registrypath>http://nceas-macbook04.msi.ucsb.edu:8080/registry/services/RegistryService</registrypath>
+    <registryauth>http://nceas-macbook04.msi.ucsb.edu:8080/knb/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-dev.nceas.ucsb.edu</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>
+
+  <repository>
+    <name>fred</name>
+    <repository>fred.msi.ucsb.edu:8080</repository>
+    <putpath>/knb/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>fred</authdomain>
+    <lsidpath>/knb/services/IdentifierService</lsidpath>
+    <querypath>/knb/services/QueryService</querypath>
+    <authenticatedquerypath>/knb/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/knb/services/AuthorizationService</authorizationPath>
+    <registrypath>http://fred.msi.ucsb.edu:8080/registry/services/RegistryService</registrypath>
+    <registryauth>http://fred.msi.ucsb.edu:8080/kepler/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-dev.nceas.ucsb.edu</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>
+  
+   <repository>
+    <name>chico1Repository</name>
+    <repository>chico1.dyndns.org</repository>
+    <putpath>/knb/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>CHICO1</authdomain>
+    <lsidpath>/knb/services/IdentifierService</lsidpath>
+    <querypath>/knb/services/QueryService</querypath>
+    <authenticatedquerypath>/knb/services/AuthenticatedQueryService</authenticatedquerypath>
+    <authorizationPath>/knb/services/AuthorizationService</authorizationPath>
+    <registrypath>http://ecogrid.ecoinformatics.org/registry/services/RegistryService</registrypath>
+    <registryauth>http://library.kepler-project.org/kepler/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-project.org</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository>
+-->
+  
+  <!--<repository>
+    <name>indusRepository</name>
+    <repository>indus.msi.ucsb.edu</repository>
+    <putpath>/kepler/services/PutService</putpath>
+    <authprotocol>http</authprotocol>
+    <authdomain>INDUS</authdomain>
+    <lsidpath>/kepler/services/IdentifierService</lsidpath>
+    <querypath>/kepler/services/QueryService</querypath>
+    <authenticatedquerypath>/kepler/services/AuthenticatedQueryService</authenticatedquerypath>
+	 <authorizationPath>/kepler/services/AuthorizationService</authorizationPath>
+    <registrypath>http://ecogrid.ecoinformatics.org/registry/services/RegistryService</registrypath>
+    <registryauth>http://library.kepler-project.org/kepler/services/AuthenticationService</registryauth>
+    <class>org.kepler.objectmanager.repository.EcogridRepository</class>
+    <lsidAuthority>kepler-project.org</lsidAuthority>
+    <searchRepository>false</searchRepository>
+  </repository> -->
+</config>

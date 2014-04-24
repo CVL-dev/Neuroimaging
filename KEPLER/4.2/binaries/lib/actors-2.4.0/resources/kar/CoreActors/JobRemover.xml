@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<entity name="JobRemover" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:352:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The JobRemover actor is to delete Job from queue whether it is running or waiting in queue. </p>
+<p> It currently support multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF, and can be extended for more. </p> </configure></property>
+<property name="port:job" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input should be a previously submitted job which has not been removed yet, i.e. the output from a JobSubmitter, never given to a JobRemover.</configure></property>
+<property name="port:succ" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The ouput is boolean indicating whether the removal was successful or not. If not such job exists, the result will be true.</configure></property>
+</property>
+<property name="class" value="org.kepler.actor.job.JobRemover" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1216:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="job" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="succ" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#JobCommand" class="org.kepler.sms.SemanticType"/>
+</entity>

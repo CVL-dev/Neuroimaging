@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="GetDecibels" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:710:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.DB" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="inputIsPower" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+<property name="min" class="ptolemy.data.expr.Parameter" value="-100.0">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Spectrum">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Bart Kienhuis and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: DB.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Produce a token that is the value of the input in decibels.&#10; That is, if the input is &lt;i&gt;z&lt;/i&gt;, then the output is&#10; &lt;i&gt;k&lt;/i&gt;*log&lt;sub&gt;10&lt;/sub&gt;(&lt;em&gt;z&lt;/em&gt;).&#10; The constant &lt;i&gt;k&lt;/i&gt; depends on the value of the &lt;i&gt;inputIsPower&lt;/i&gt;&#10; parameter.  If that parameter is true, then &lt;i&gt;k&lt;/i&gt; = 10.&#10; Otherwise (the default) &lt;i&gt;k&lt;/i&gt; = 20.&#10; Normally, you would set &lt;i&gt;inputIsPower&lt;/i&gt; to true if&#10; the input is the square of a signal, and to false otherwise.&#10; &lt;p&gt;&#10; The output is never smaller than the value of the &lt;i&gt;min&lt;/i&gt; parameter.&#10; This makes it easier to plot by limiting the range of output values.&#10; If the input is zero or negative, then the output is the&#10; value of the &lt;i&gt;min&lt;/i&gt; parameter.&#10; &lt;p&gt;&#10; The input and output both have type double.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="prop:inputIsPower" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If the input is proportional to power, then set this to true.  This must be a boolean, and defaults to false.</configure></property>
+<property name="prop:min" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The minimum value of the output.  This is a double,  and defaults to -100.0.</configure></property>
+</property></entity>

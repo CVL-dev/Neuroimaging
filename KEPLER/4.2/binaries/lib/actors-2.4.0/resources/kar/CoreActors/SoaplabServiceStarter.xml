@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<entity name="SoaplabServiceStarter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:377:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Nandita Mangal</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SoaplabServiceStarter actor starts a Soaplab client and creates an empty job used by a Soaplab workflow. The actor receives a Soaplab service client created by the SoaplabChooseOperation actor, and outputs a started Soaplab client, used by the SoaplabAnalysis actor to run specified operations.</p>
+
+<p>Soaplab is a set of Web services providing access to (mainly) data analysis applications on remote computers. The Soaplab actors require an EBI-registered Web Service Description Language (WSDL) file. WSDL is a format for describing network services--from simple eBay watcher services to complex distributed applications. For a complete list of registered EBI-registered WSDLs, see http://www.ebi.ac.uk/soaplab/services.</p>
+
+<p>The actor receives a configured Soaplab client from the SoaplabChooseOperation actor. In the SoaplabStartService parameters, specify an EBI-registered WSDL in the wsdlUrl parameter and click Commit.</p>  
+
+<p>The actor will output a Web service client object used by the SoaplabAnalysis actor to run specified operations.</p>
+
+</configure></property>
+<property name="port:setOperation1" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> An input port that accepts a Soaplab client configured with a "set operation." The set operations are specified and passed to the actor by the SoaplabChooseOperation actor.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> An output port that broadcasts a Soaplab client used by the SoaplabAnalysis actor to perform a Soaplab operation.</configure></property>
+<property name="prop:wsdlUrl" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> An EBI-registered Web Service Description Language (WSDL) file. For a complete list of registered EBI-registered WSDLs, see http://www.ebi.ac.uk/soaplab/services.</configure></property>
+
+</property>
+<property name="class" value="org.sdm.spa.SoaplabServiceStarter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1141:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="setOperation1" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WebServiceActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WebService" class="org.kepler.sms.SemanticType"/>
+</entity>

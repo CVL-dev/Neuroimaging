@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<property name="DDF Director" class="org.kepler.moml.PropertyEntity">
+    <property name="entityId"  value="urn:lsid:kepler-project.org:director:5:1" class="org.kepler.moml.NamedObjId"/>
+    <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+        <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+        <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Gang Zhou</configure></property>
+        <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+        <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+            <p> The dynamic dataflow (DDF) domain is a superset of the synchronous
+            dataflow(SDF) and Boolean dataflow(BDF) domains. In the SDF domain,
+            an actor consumes and produces a fixed number of tokens per firing.
+            This static information makes possible compile-time scheduling. In the
+            DDF domain, there are few constraints on the production and consumption
+            behavior of actors, and the schedulers make no attempt to construct a
+            compile-time schedule. Instead, each actor has a set of firing rules
+            (patterns) and can be fired if one of them is satisfied, i.e., one
+            particular firing pattern forms a prefix of sequences of unconsumed
+            tokens at input ports. The canonical actors in the DDF domain include
+            Select and Switch, which consume or produce tokens on different channels
+            based on the token received from the control port. (In practice, use
+            DDFSelect and DDFBooleanSelect in the DDF-specific library instead of
+            Select and BooleanSelect in the regular FlowControl library; however,
+            Switch and BooleanSwitch in the regular FlowControl library can be
+            used in DDF domain.)</p>
+           
+            <p> The dynamic scheduler implemented in this director fires all enabled
+            and non-deferrable actors once in a basic iteration. A deferrable
+            actor is one that will not help one of the downstream actors become
+            enabled because that downstream actor either already has enough tokens on
+            the channel connecting those two actors or is waiting for tokens on
+            another channel. If no actor fires so far, which means there is no
+            enabled and non-deferrable actor, then among all enabled and deferrable
+            actors, this director fires those which have the smallest maximum number
+            of tokens on their output channels which satisfy the demand of destination
+            actors. If still no actor fires, then there is no enabled actor. A user
+            can treat several such basic iterations as a single iteration by adding
+            a parameter with name <i>requiredFiringsPerIteration</i> to an actor
+            (which is often a sink actor or an actor directly connected to output port
+            of the composite actor) and specifying the number of times this actor must
+            be fired in a single iteration. If the value of the parameter
+            <i>runUntilDeadlockInOneIteration</i> is a BooleanToken with value true,
+            one single iteration consists of repeating the basic iteration until
+            deadlock is reached (thus overriding the previous definition of one
+            iteration), which is the status of the model where all active
+            actors under the control of this director are unable to fire because
+            their firing rules are not satisfied. However, they may be able to fire
+            again during next iteration when tokens are transferred in from an outside
+            domain. Note <i>runUntilDeadlockInOneIteration</i> can be set to true
+            only when this director is not on the top level.</p>
+           
+            <p> The algorithm implementing one basic iteration goes like this:
+            <pre>
+            E = set of enabled actors
+            D = set of deferrable enabled actors
+            </pre>
+            One basic(default) iteration consists of:
+            <pre>
+            if (E\D != empty set) {
+            fire (E\D)
+            } else if (D != empty set) {
+            fire minimax(D)
+            } else {
+            declare deadlock
+            }
+            </pre>
+            The function "minimax(D)" returns a subset of D with the smallest
+            maximum number of tokens on their output channels which satisfy the
+            demand of destination actors.</p>
+           
+            <p> Note that any SDF model can be run with a DDF Director. However, the
+            notion of iteration is different. One could try to imitate the SDF
+            iteration in the DDF domain by controlling the number of firings in one
+            iteration for some actors, such as requiring a plotter to plot a fixed
+            number of points in each iteration.</p>
+           
+            <p> In the DDF domain, the firing rule of any actor is specified by the token
+            consumption rates of its input ports. A general DDF actor could change
+            the consumption rates of its input ports after each firing of this actor.
+            For multiports, an array token could be used to specify different rates
+            for different channels connected to the same multiport. Note that in SDF,
+            all channels connected to the same multiport have the same rate.</p>
+           
+            <p> Based on DDFSimpleSched in Ptolemy Classic, by Edward Lee.
+            See E. A. Lee et al., "The Almagest," documentation for Ptolemy Classic,
+            Vol. 1, Chapter 7, 1997.</p>
+           
+        </configure></property>
+
+        <property name="prop:iterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify the number of times a workflow is iterated. By default, this parameter is set to "0". Note that "0" does not mean "no iterations." Rather, "0" means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. </configure></property>
+        <property name="prop:maximumReceiverCapacity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A Parameter representing the maximum capacity of each receiver controlled by this director. This is an integer that defaults to 0, which means the queue in each receiver is unbounded. To specify bounded queues, set this to a positive integer. </configure></property>
+        <property name="prop:runUntilDeadlockInOneIteration" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A parameter indicating whether one iteration consists of repeated basic iterations until deadlock. If this parameter is true, the model will be executed until deadlock in one iteration. The default value is a BooleanToken with the value false. It cannot be set to true if this director is at the top level.</configure></property>
+    </property>
+
+    <property name="class" value="ptolemy.domains.ddf.kernel.DDFDirector" class="ptolemy.kernel.util.StringAttribute">
+        <property name="id" value="urn:lsid:kepler-project.org:directorclass:5:1" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+
+    <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Director" class="org.kepler.sms.SemanticType"/>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Director"/>
+
+</property>

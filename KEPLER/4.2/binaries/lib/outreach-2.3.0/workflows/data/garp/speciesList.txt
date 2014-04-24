@@ -1,0 +1,2 @@
+Mephitis,digir_data_mephitis.dat
+Zapus,digir_data_zapus.dat

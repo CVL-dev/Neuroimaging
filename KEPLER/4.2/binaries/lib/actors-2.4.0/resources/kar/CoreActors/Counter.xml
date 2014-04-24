@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="Counter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:72:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Counter actor increments or decrements an internal counter, depending on its inputs. The actor outputs the counter value as an integer.</p>
+
+<p>Each time the actor fires, it adjusts its internal counter (incrementing or decrementing the count) based on the input. Whenever a token is received from the increment input, the internal counter is incremented. Whenever a token is received from the decrement port, the internal counter is decremented. Whenever a token is received from either input port, a token is created on the output port with the integer value of the current count. At most one token will be consumed from each input during each firing. If a token is present on both input ports, then the increment and the decrement will cancel out (i.e., the count will remain unchanged), and only one output token will be produced.</p></configure></property>
+<property name="port:increment" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port used to increment the counter. The port accepts tokens of any type. </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the counter value.</configure></property>
+<property name="port:decrement" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port used to decrement the counter. The port accepts tokens of any type.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Counter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:947:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="increment" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="decrement" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#IterativeMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#IterativeOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

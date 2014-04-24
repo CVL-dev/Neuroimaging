@@ -1,0 +1,6 @@
+linked(X,Y) :- link(X,Rel), link(Y,Rel).
+
+connection(X,Y) :- linked(X,Y), portIOType(X,'out'), portIOType(Y,'in'). 
+connection(X,Y) :- linked(X,Y), portIOType(X,'inOut'), portIOType(Y,'in'). 
+connection(X,Y) :- linked(X,Y), portIOType(X,'out'), portIOType(Y,'inOut'). 
+connection(X,Y) :- linked(X,Y), portIOType(X,'inOut'), portIOType(Y,'inOut'). 

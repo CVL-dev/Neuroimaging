@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<entity name="Directory Listing" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:59:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>christopher hylands, edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The DirectoryListing actor reads a local or remote directory name, and outputs an array of file and/or folder names contained by that directory. The returned file names are absolute.</p>
+
+<p>Returned file and folder names may be "filtered" using the optional pattern parameter. Specify a pattern that file and folder names must match in order to be included in the output. The pattern is a regular expression. For example, *.htm matches all .html files, but not .jpg or .pdf files. For a reference on regular expression syntax, see http://java.sun.com/docs/books/tutorial/extra/regex/index.html.</p>
+
+<p>Specify the name of the directory with the directoryOrURL parameter. If directoryOrURL is a local directory, then the listOnlyDirectories and the listOnlyFiles parameters can be used to refine the returned listings. Select listOnlyDirectories to output only directory names. Select listOnlyFiles to output only file names. If both parameters are selected, then the actor generates an error. </p>
+
+<p>If directoryOrURL is a remote directory, then the actor will list the full contents of the directory. Note that the contents of the directory are returned in a different order depending on whether one is using Sun JVM or the IBM JVM. Connect the output to an ArraySort actor to ensure consistency.</p></configure></property>
+<property name="port:directoryOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the directory name or URL from which to read.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of file and/or folder names.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:directoryOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of a local or remote directory. The actor will return the names of the files and/or folders contained by this directory.</configure></property>
+<property name="prop:listOnlyFiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to output only file names. This parameter is only relevant if the directoryOrURL parameter refers to a local directory. If directoryOrURL is a remote URL, then this parameter is ignored.</configure></property>
+<property name="prop:listOnlyDirectories" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to output only directory names. This parameter is only relevant if the directoryOrURL parameter refers to a local directory. If directoryOrURL is a remote URL, then this parameter is ignored.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of iterations that transpire before the actor indicates that it is finished. If firingCountLimit is set to zero, the actor has no limit imposed.</configure></property>
+<property name="prop:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A regular expression that must match file and directory names. The default value is the empty String "", which indicates that everything matches. For a reference on regular expression syntax, see http://java.sun.com/docs/books/tutorial/extra/regex/index.html.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.io.DirectoryListing" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:934:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="directoryOrURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#TextualOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#RemoteInput" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType33" value="urn:lsid:localhost:onto:2:1#TextualOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

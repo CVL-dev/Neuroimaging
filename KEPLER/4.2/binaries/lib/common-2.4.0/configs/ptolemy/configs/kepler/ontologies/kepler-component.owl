@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="urn:lsid:localhost:onto:2:1#"
+  xml:base="urn:lsid:localhost:onto:2:1">
+  <owl:Ontology rdf:about="">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Components</rdfs:label>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="RemoteOutput">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DataOutput"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Remote Output</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DataStringOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DataStructureOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data String Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="UnixCommand">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RemoteInput"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GeneralPurpose"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#RemoteOutput"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unix Command</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Workflow">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="WorkflowOutput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Output</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataOutput"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DataStructureOperation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data Structure Operation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DataOperation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DataInput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data Input</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DatabaseInputFunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RemoteInput"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Database Input Function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DataArrayOperation">
+    <rdfs:subClassOf rdf:resource="#DataStructureOperation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data Array Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#GeneralPurpose">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >General Purpose</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitTestControl">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unit Test Control</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WorkflowControl"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WorkflowInput">
+    <rdfs:subClassOf rdf:resource="#DataInput"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Input</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Workflow"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WorkflowControl">
+    <rdfs:subClassOf rdf:resource="#Workflow"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Control</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="WorkflowWebExport">
+    <rdfs:subClassOf rdf:resource="#Workflow"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Web Export</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="WorkflowDevelopment">
+    <rdfs:subClassOf rdf:resource="#Workflow"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Development</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#RemoteInput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Remote Input</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DataInput"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GridFunction">
+    <rdfs:subClassOf rdf:resource="#RemoteOutput"/>
+    <rdfs:subClassOf rdf:resource="#RemoteInput"/>
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Grid Function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="DatabaseOutputFunction">
+    <rdfs:subClassOf rdf:resource="#RemoteOutput"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Database Output Function</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="LocalOutput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Local Output</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataOutput"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GeometricOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MathematicalOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Geometric Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ExceptionControl">
+    <rdfs:subClassOf rdf:resource="#WorkflowControl"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Exception Control</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="TrigonometricOperation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Trigonometric Operation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MathematicalOperation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Parameter">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Parameter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowInput"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WebService">
+    <rdfs:subClassOf rdf:resource="#RemoteOutput"/>
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:subClassOf rdf:resource="#RemoteInput"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Web Service</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Director">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Director</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="WorkflowDocumentation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Workflow Documentation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Workflow"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Griddles">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Griddles</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GridFunction"/>
+  </owl:Class>
+  
+   <owl:Class rdf:ID="PreConfiguredGridletActor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >gridlets</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Griddles"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="#DataOutput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data Output</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Constant">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Constant</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowInput"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TextualOutput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Textual Output</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowOutput"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LinearAlgebraOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MathematicalOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Linear Algebra Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MatrixOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MathematicalOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Matrix Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ArithmeticOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MathematicalOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Arithmetic Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Nimrod">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nimrod</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GridFunction"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImageOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DataOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Image Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="GraphicalOutput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Graphical Output</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowOutput"/>
+  </owl:Class>
+  <owl:Class rdf:ID="XMLProcessor">
+    <rdfs:subClassOf rdf:resource="#RemoteOutput"/>
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >XML Processor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#RemoteInput"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LocalInput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Local Input</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DataInput"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DataOperation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="StatisticalOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MathematicalOperation"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistical Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="RandomNumberOperation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Random Number Operation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MathematicalOperation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FileSystem">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >File System</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BooleanControl">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Boolean Control</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowControl"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MathematicalOperation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mathematical Operation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DataOperation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SignalProcessing">
+    <rdfs:subClassOf rdf:resource="#MathematicalOperation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Signal Processing</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Communications">
+    <rdfs:subClassOf rdf:resource="#SignalProcessing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Communications</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Filtering">
+    <rdfs:subClassOf rdf:resource="#SignalProcessing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Filtering</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Spectrum">
+    <rdfs:subClassOf rdf:resource="#SignalProcessing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Spectrum</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CalculusOperation">
+    <rdfs:subClassOf rdf:resource="#MathematicalOperation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Calculus Operation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="IterativeOperation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Iterative Operation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathematicalOperation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitSystem">
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unit System</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="JobCommand">
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Job Command</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="SSH">
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SSH</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Time">
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Time</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PublishSubscribe">
+    <rdfs:subClassOf rdf:resource="#GeneralPurpose"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Publish Subscribe</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Sensor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sensor</rdfs:label>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

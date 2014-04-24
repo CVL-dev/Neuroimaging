@@ -1,0 +1,65 @@
+<!DOCTYPE entity PUBLIC "sample" "URI">
+<DDBJXML>
+	<SEQUENCE>
+			LOCUS       AA045112                 163 bp    mRNA    linear   EST 11-MAY-1997
+		DEFINITION  zk63d03.s1 Soares_pregnant_uterus_NbHPU Homo sapiens cDNA clone
+					IMAGE:487493 3' similar to gb:M81635 ERYTHROCYTE BAND 7 INTEGRAL
+					MEMBRANE PROTEIN (HUMAN), mRNA sequence.
+		ACCESSION   AA045112
+		VERSION     AA045112.1
+		KEYWORDS    EST.
+		SOURCE      Homo sapiens (human)
+		  ORGANISM  Homo sapiens
+					Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+					Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+					Catarrhini; Hominidae; Homo.
+		REFERENCE   1  (bases 1 to 163)
+		  AUTHORS   Hillier,L., Lennon,G., Becker,M., Bonaldo,M.F., Chiapelli,B.,
+					Chissoe,S., Dietrich,N., DuBuque,T., Favello,A., Gish,W.,
+					Hawkins,M., Hultman,M., Kucaba,T., Lacy,M., Le,M., Le,N.,
+					Mardis,E., Moore,B., Morris,M., Parsons,J., Prange,C., Rifkin,L.,
+					Rohlfing,T., Schellenberg,K., Soares,M.B., Tan,F., Thierry-Meg,J.,
+					Trevaskis,E., Underwood,K., Wohldmann,P., Waterston,R., Wilson,R.
+					and Marra,M.
+		  TITLE     Generation and analysis of 280,000 human expressed sequence tags
+		  JOURNAL   Genome Res 6 (9), 807-828 (1996)
+		   PUBMED   8889549
+		COMMENT     Contact: Wilson RK
+					Washington University School of Medicine
+					4444 Forest Park Parkway, Box 8501, St. Louis, MO 63108
+					Tel: 314 286 1800
+					Fax: 314 286 1810
+					Email: est@watson.wustl.edu
+					This clone is available royalty-free through LLNL ; contact the
+					IMAGE Consortium (info@image.llnl.gov) for further information.
+					Insert Length: 416   Std Error: 0.00
+					Seq primer: -40M13 fwd. from Amersham
+					High quality sequence stop: 105.
+		FEATURES             Location/Qualifiers
+			 source          1..163
+							 /organism="Homo sapiens"
+							 /mol_type="mRNA"
+							 /db_xref="GDB:3761207"
+							 /db_xref="taxon:9606"
+							 /clone="IMAGE:487493"
+							 /sex="female"
+							 /dev_stage="adult"
+							 /lab_host="DH10B"
+							 /clone_lib="Soares_pregnant_uterus_NbHPU"
+							 /note="Organ: uterus; Vector: pT7T3D-PacI; Site_1: Not I;
+							 Site_2: Eco RI; 1st strand cDNA was primed with a Not I -
+							 oligo(dT) primer [5'
+							 AACTGGAAGAATTCGCGGCCGCCTTTTTTTTTTTTTTTTTT 3'],
+							 double-stranded cDNA was ligated to Eco RI adaptors
+							 (Pharmacia), digested with Not I and cloned into the Not I
+							 and Eco RI sites of the modified pT7T3 vector. Library
+							 went through one round of normalization.  Library
+							 constructed by M. Fatima Bonaldo."
+		BASE COUNT           47 a           38 c           37 g           38 t
+		ORIGIN      
+				1 cacctggaga aacttctgca ctggcactgt gttccnagag ctccttctat gcgtccctcc
+			   61 caagtgattt aatttcagct gattggacta cgaattcaca aggcagaaaa gtcaaggtca
+			  121 tttggnatct ggagacagga gaactcaagg aaccnaaagg act
+		//
+	</SEQUENCE>
+</DDBJXML>

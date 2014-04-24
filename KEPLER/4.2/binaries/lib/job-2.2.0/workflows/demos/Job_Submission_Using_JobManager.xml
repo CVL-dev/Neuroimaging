@@ -1,0 +1,1341 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Job_Submission_Using_JobManager" class="ptolemy.actor.TypedCompositeActor">
+    <display name="JobSubmission_Using_JobManager"/>
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="9.1.devel">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={125, 22, 1509, 977}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1168, 828]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.04951297566968">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-107.84113981355392, 126.57494540614499}">
+    </property>
+    <property name="PN Director" class="ptolemy.domains.pn.kernel.PNDirector">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-460.0, -135.0]">
+        </property>
+    </property>
+    <property name="IdentityFile" class="ptolemy.data.expr.Parameter" value="&quot;/path/to/private/key/file&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.0, 110.0]">
+        </property>
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="ssh identity file (for pwdless login)">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 100.0]">
+        </property>
+    </property>
+    <property name="SimTarget" class="ptolemy.data.expr.Parameter" value="&quot;[user@]host&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.0, 90.0]">
+        </property>
+    </property>
+    <property name="Annotation2" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Simulation machine? [user@]host :">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 80.0]">
+        </property>
+    </property>
+    <property name="JobManager" class="ptolemy.data.expr.Parameter" value="&quot;PBS&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.5, 135.0]">
+        </property>
+    </property>
+    <property name="Annotation3" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="job manager name:&#10;(e.g. PBS, Condor, LoadLeveler, SGE, Fork or LSF)">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 120.0]">
+        </property>
+    </property>
+    <property name="RemoteDir" class="ptolemy.data.expr.Parameter" value="&quot;/remote/path/&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.5, 170.0]">
+        </property>
+    </property>
+    <property name="Annotation4" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Remote directory where job script will be copied&#10;to and submitted from:">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 160.0]">
+        </property>
+    </property>
+    <property name="JobScript" class="ptolemy.data.expr.Parameter" value="&quot;/path/to/your/script/file&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.0, 210.0]">
+        </property>
+    </property>
+    <property name="Annotation5" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Job script (on local disk):">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 200.0]">
+        </property>
+    </property>
+    <property name="Annotation6" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Log file (on local disk): ">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 250.0]">
+        </property>
+    </property>
+    <property name="LogFile" class="ptolemy.data.expr.Parameter" value="&quot;JobSubmission.log&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.0, 260.0]">
+        </property>
+    </property>
+    <property name="LogFormat" class="ptolemy.data.expr.Parameter" value="&quot;text&quot;">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-150.0, 280.0]">
+        </property>
+    </property>
+    <property name="Annotation7" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Log format (text or xml)">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-465.0, 270.0]">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:848:120:8:urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:848:125:1:urn:lsid:kepler-project.org/ns/:5535:78:14:urn:lsid:kepler-project.org/ns/:5535:94:7:urn:lsid:kepler-project.org/ns/:23596:102:6:urn:lsid:kepler-project.org/ns/:27999:774:18:urn:lsid:kepler-project.org/ns/:27999:777:59">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:790:6">
+    </property>
+    <property name="Annotation8" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+        </property>
+        <property name="_hideAllParameters" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+        </property>
+        <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+        </property>
+        <property name="fontFamily" class="ptolemy.data.expr.StringParameter" value="SansSerif">
+        </property>
+        <property name="bold" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="italic" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="This is an example workflow to submit jobs using actors including JobManager, JobSubmission and JobStatus. &#10;This workflow submits a local job script file ('JobScript' paramter) to the host ('SimTarget'), keeps checking its &#10;status until the job is finished.&#10;&#10;To run the workflow, you need first to configure the parameters based on your information.&#10;If the value of the 'IdentityFile' parameter is empty, the 'SSH Session' actor will pop up a dialogue asking your account information.&#10;&#10;The workflow supports multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF. ">
+            <property name="_style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="20">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="80">
+                </property>
+            </property>
+        </property>
+        <property name="center" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Use the Annotation attribute to annotate a workflow. Double-click the attribute to customize the content, font size, color, and basic formatting (bold and italics).</configure></property>
+<property name="prop:fontFamily" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font face. Select a font from the drop-down menu. The default is &quot;SansSerif&quot;.</configure></property>
+<property name="prop:italic" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to indicate that the type should be italics. By default, type will not be italicized.</configure></property>
+<property name="prop:bold" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to indicate that the type should be bold. By default, type will not be bold.</configure></property>
+<property name="prop:textColor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font color. Specify a string representing an array of four elements: red, green, blue, and alpha, where alpha is transparency. The default is an opaque black, {0.0, 0.0, 0.0, 1.0}</configure></property>
+<property name="prop:textSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font size. Select an integer from the drop-down menu or specify a new size by typing it directly into the value field.  The default is 14.</configure></property>
+<property name="prop:text" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The text of the annotation.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:767:13">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-565.0, 335.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:436:1:urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:8021:111:3:urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:8309:37:5:urn:lsid:kepler-project.org/ns/:23141:118:1">
+        </property>
+    </property>
+    <entity name="SubmitSimJob" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[0.0, -15.0]">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={25, 183, 941, 808}, maximized=false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 659]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.789212541789">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{177.1257381439211, 224.5047690614064}">
+        </property>
+        <property name="remoteWorkdir" class="ptolemy.data.expr.StringParameter" value="$RemoteDir">
+            <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{-20.0, -75.0}">
+            </property>
+        </property>
+        <property name="submitFile" class="ptolemy.data.expr.StringParameter" value="$JobScript">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{-20.0, -95.0}">
+            </property>
+        </property>
+        <property name="logFile" class="ptolemy.data.expr.StringParameter" value="$LogFile">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, -55.0]">
+            </property>
+        </property>
+        <property name="logFormat" class="ptolemy.data.expr.StringParameter" value="$LogFormat">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, -35.0]">
+            </property>
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:848:126:1:urn:lsid:kepler-project.org/ns/:5535:93:2">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:783:9">
+        </property>
+        <port name="job" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[360.0, -30.0]">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="jmgr" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-190.0, 80.0]">
+            </property>
+        </port>
+        <entity name="CreateJob" class="ptolemy.actor.TypedCompositeActor">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-170.0, -30.0]">
+            </property>
+            <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+                <property name="iterations" class="ptolemy.data.expr.Parameter" value="1">
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -110.0]">
+                </property>
+            </property>
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={71, 185, 941, 808}, maximized=false}">
+            </property>
+            <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 659]">
+            </property>
+            <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8623399955086">
+            </property>
+            <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{215.8906250000185, 202.4856454849242}">
+            </property>
+            <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:848:127:1">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:782:3">
+            </property>
+            <port name="jobID" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[450.0, 15.0]">
+                </property>
+                <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </port>
+            <entity name="Expression" class="ptolemy.actor.lib.Expression">
+                <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="&quot;&quot;">
+                </property>
+                <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                    <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                    </property>
+                    <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                    </property>
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="{-60.0, 0.0}">
+                </property>
+                <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </entity>
+            <entity name="Expression3" class="ptolemy.actor.lib.Expression">
+                <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="{&quot;&quot;}">
+                </property>
+                <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                    <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                    </property>
+                    <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                    </property>
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-55.0, 95.0]">
+                </property>
+                <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </entity>
+            <entity name="Expression4" class="ptolemy.actor.lib.Expression">
+                <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="remoteWorkdir">
+                </property>
+                <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                    <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                    </property>
+                    <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                    </property>
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, 40.0]">
+                </property>
+                <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </entity>
+            <entity name="JobCreator" class="org.kepler.actor.job.JobCreator">
+                <property name="cmdFile" class="ptolemy.actor.parameters.PortParameter" value="/path/to/your/script/file">
+                </property>
+                <property name="executable" class="ptolemy.actor.parameters.PortParameter" value="">
+                </property>
+                <property name="workdir" class="ptolemy.actor.parameters.PortParameter" value="/remote/path/">
+                </property>
+                <property name="inputfiles" class="ptolemy.actor.parameters.PortParameter" value="{&quot;&quot;}">
+                </property>
+                <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:781:2">
+                </property>
+                <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.job.JobCreator">
+                    <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1212:1">
+                    </property>
+                </property>
+                <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+                </property>
+                <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#JobCommand">
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[255.0, -5.0]">
+                </property>
+                <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:350:1">
+                </property>
+                <port name="cmdFile" class="ptolemy.actor.parameters.ParameterPort">
+                    <property name="input"/>
+                    <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                    </property>
+                </port>
+                <port name="executable" class="ptolemy.actor.parameters.ParameterPort">
+                    <property name="input"/>
+                    <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                    </property>
+                </port>
+                <port name="workdir" class="ptolemy.actor.parameters.ParameterPort">
+                    <property name="input"/>
+                    <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                    </property>
+                </port>
+                <port name="inputfiles" class="ptolemy.actor.parameters.ParameterPort">
+                    <property name="input"/>
+                    <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                    </property>
+                </port>
+                <port name="job" class="ptolemy.actor.TypedIOPort">
+                    <property name="output"/>
+                    <property name="_showName" class="ptolemy.data.expr.Parameter" value="false">
+                    </property>
+                </port>
+            </entity>
+            <entity name="Expression2" class="ptolemy.actor.lib.Expression">
+                <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="submitFile">
+                </property>
+                <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                    <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                    </property>
+                    <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                    </property>
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-35.0, -35.0]">
+                </property>
+                <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </entity>
+            <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+                <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+                </property>
+            </relation>
+            <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+                <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+                </property>
+            </relation>
+            <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+                <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+                </property>
+            </relation>
+            <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+                <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+                </property>
+            </relation>
+            <relation name="relation" class="ptolemy.actor.TypedIORelation">
+                <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+                </property>
+            </relation>
+            <link port="jobID" relation="relation5"/>
+            <link port="Expression.output" relation="relation2"/>
+            <link port="Expression3.output" relation="relation4"/>
+            <link port="Expression4.output" relation="relation3"/>
+            <link port="JobCreator.cmdFile" relation="relation"/>
+            <link port="JobCreator.executable" relation="relation2"/>
+            <link port="JobCreator.workdir" relation="relation3"/>
+            <link port="JobCreator.inputfiles" relation="relation4"/>
+            <link port="JobCreator.job" relation="relation5"/>
+            <link port="Expression2.output" relation="relation"/>
+        </entity>
+        <entity name="ThrowException" class="ptolemy.actor.lib.ThrowException">
+            <property name="message" class="ptolemy.kernel.util.StringAttribute" value="Job submission failed">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[460.0, 100.0]">
+            </property>
+        </entity>
+        <entity name="Const" class="ptolemy.actor.lib.Const">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+            <doc>Create a constant sequence.</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[375.0, 100.0]">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </entity>
+        <entity name="Boolean Switch" class="ptolemy.actor.lib.BooleanSwitch">
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:54:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.BooleanSwitch">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:930:1">
+                </property>
+            </property>
+            <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#BooleanControlActor">
+            </property>
+            <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#BooleanControl">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 0.0]">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <port name="control" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+                </property>
+            </port>
+        </entity>
+        <entity name="Logger" class="org.kepler.actor.Logger">
+            <property name="header" class="ptolemy.data.expr.StringParameter" value="Submit">
+            </property>
+            <property name="format" class="ptolemy.data.expr.StringParameter" value="$logFormat">
+            </property>
+            <property name="Logfile" class="ptolemy.data.expr.FileParameter" value="$logFile">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:509:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.Logger">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1209:1">
+                </property>
+            </property>
+            <property name="semanticType110" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[170.0, 105.0]">
+            </property>
+            <port name="text" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="false">
+                </property>
+            </port>
+            <port name="logfile" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+            </port>
+        </entity>
+        <entity name="JobSubmitter" class="org.kepler.actor.job.JobSubmitter">
+            <property name="jobSubmitOptions" class="ptolemy.actor.parameters.PortParameter" value="">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:785:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.job.JobSubmitter">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1219:1">
+                </property>
+            </property>
+            <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+            </property>
+            <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#JobCommand">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[40.0, 45.0]">
+            </property>
+            <property name="_expertMode" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:354:1:urn:lsid:kepler-project.org/ns/:5535:92:1">
+            </property>
+            <port name="jobIn" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="jobManager" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="jobOut" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="succ" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="log" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+        </entity>
+        <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="job" relation="relation2"/>
+        <link port="jmgr" relation="relation3"/>
+        <link port="CreateJob.jobID" relation="relation"/>
+        <link port="ThrowException.input" relation="relation6"/>
+        <link port="Const.output" relation="relation6"/>
+        <link port="Const.trigger" relation="relation9"/>
+        <link port="Boolean Switch.input" relation="relation7"/>
+        <link port="Boolean Switch.control" relation="relation5"/>
+        <link port="Boolean Switch.trueOutput" relation="relation2"/>
+        <link port="Boolean Switch.falseOutput" relation="relation9"/>
+        <link port="Logger.text" relation="relation4"/>
+        <link port="JobSubmitter.jobIn" relation="relation"/>
+        <link port="JobSubmitter.jobManager" relation="relation3"/>
+        <link port="JobSubmitter.jobOut" relation="relation7"/>
+        <link port="JobSubmitter.succ" relation="relation5"/>
+        <link port="JobSubmitter.log" relation="relation4"/>
+    </entity>
+    <entity name="SelectJobManager" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{-170.0, -15.0}">
+        </property>
+        <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="iterations" class="ptolemy.data.expr.Parameter" value="0">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-140.0, 160.0]">
+            </property>
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={329, 191, 941, 808}, maximized=false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 659]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8934180219167">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{134.78906250000045, 448.8083203125}">
+        </property>
+        <property name="JobManagerName" class="ptolemy.data.expr.StringParameter" value="$JobManager">
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:421:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.data.expr.StringParameter">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1185:1">
+                </property>
+            </property>
+            <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+            </property>
+            <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, 165.0]">
+            </property>
+        </property>
+        <property name="Target" class="ptolemy.data.expr.StringParameter" value="$SimTarget">
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:421:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.data.expr.StringParameter">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1185:1">
+                </property>
+            </property>
+            <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+            </property>
+            <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, 185.0]">
+            </property>
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:848:124:1:urn:lsid:kepler-project.org/ns/:5535:91:4:urn:lsid:kepler-project.org/ns/:23596:101:3">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:780:8">
+        </property>
+        <port name="jmgr" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[425.0, 315.0]">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="false">
+            </property>
+        </port>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-170.0, 295.0]">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <entity name="cJobManagerName" class="ptolemy.actor.lib.StringConst">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="$JobManagerName">
+            </property>
+            <doc>Create a constant sequence with a string value.</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="80">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, 250.0]">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </entity>
+        <entity name="Target machine" class="ptolemy.actor.lib.StringConst">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="$Target">
+            </property>
+            <doc>Create a constant sequence with a string value.</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="80">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-50.0, 295.0]">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </entity>
+        <entity name="JobManager" class="org.kepler.actor.job.JobManager">
+            <property name="jobManager" class="ptolemy.actor.parameters.PortParameter" value="PBS">
+            </property>
+            <property name="target" class="ptolemy.actor.parameters.PortParameter" value="[user@]host">
+            </property>
+            <property name="binPath" class="ptolemy.actor.parameters.PortParameter" value="">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:779:5">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.job.JobManager">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1215:1">
+                </property>
+            </property>
+            <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+            </property>
+            <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#JobCommand">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[270.0, 295.0]">
+            </property>
+            <property name="_expertMode" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:351:1:urn:lsid:kepler-project.org/ns/:5535:90:1:urn:lsid:kepler-project.org/ns/:23596:100:1">
+            </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: JobManager.java 30678 2012-09-14 22:48:44Z jianwu $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;&#10; Define a jobmanager on the local/remote machine&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; This actor uses the org.kepler.job.JobManagerFactory and org.kepler.job&#10; JobManager classes to define a job manager&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; The input should be:&#10; &lt;/p&gt;&#10; &lt;ul&gt;&#10; &lt;li&gt;the supporter class' name, e.g. Condor, PBS, LoadLeveler or whatever for&#10; that a class org.kepler.job.JobSupporter&amp;lt;name&amp;gt;.class exists&lt;/li&gt;&#10; &lt;li&gt;the target machine, either null, &quot;&quot; or &quot;local&quot; to denote a local&#10; jobmanager to be used by local execution command, OR &quot;[user@]host&quot; to denote&#10; a remote jobmanager to be used by an ssh connection.&lt;/li&gt;&#10; &lt;/ul&gt;&#10; &#10; &lt;p&gt;&#10; The output is the created jobmanager of type ObjectToken, which should be&#10; given as parameter to a JobSubmitter.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; On error, an empty string is returned.&#10; &lt;/p&gt;</configure></property>
+<property name="port:binPath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the job manager commands on the target machines. Commands are constructed as &lt;i&gt;binPath/command&lt;/i&gt; and they should be executable this way. This parameter is read each time in fire().</configure></property>
+<property name="port:jobManager" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the jobmanager to be used It should be a name, for which a supporter class exist as &lt;i&gt;org.kepler.job.JobSupport&lt;jobManager&gt;.class  This parameter is read each time in fire().</configure></property>
+<property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with ssh.  This parameter is read each time in fire().</configure></property>
+<property name="port:jmgr" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The created org.kepler.job.JobManager object as ObjectToken. This jmgr should be used in JobSubmitter to submit a job. This port is an output port of type ObjectToken.</configure></property>
+<property name="prop:binPath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the job manager commands on the target machines. Commands are constructed as &lt;i&gt;binPath/command&lt;/i&gt; and they should be executable this way. This parameter is read each time in fire().</configure></property>
+<property name="prop:jobManager" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the jobmanager to be used It should be a name, for which a supporter class exist as &lt;i&gt;org.kepler.job.JobSupport&lt;jobManager&gt;.class  This parameter is read each time in fire().</configure></property>
+<property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with ssh.  This parameter is read each time in fire().</configure></property>
+</property>            <property name="" class="ptolemy.vergil.basic.DocAttribute">
+                <property name="description" class="ptolemy.kernel.util.StringAttribute" value="&#10;&lt;p&gt;&#10; Define a jobmanager on the local/remote machine&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; This actor uses the org.kepler.job.JobManagerFactory and org.kepler.job&#10; JobManager classes to define a job manager&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; The input should be:&#10; &lt;/p&gt;&#10; &lt;ul&gt;&#10; &lt;li&gt;the supporter class' name, e.g. Condor, PBS, LoadLeveler or whatever for&#10; that a class org.kepler.job.JobSupporter&amp;lt;name&amp;gt;.class exists&lt;/li&gt;&#10; &lt;li&gt;the target machine, either null, &quot;&quot; or &quot;local&quot; to denote a local&#10; jobmanager to be used by local execution command, OR &quot;[user@]host&quot; to denote&#10; a remote jobmanager to be used by an ssh connection.&lt;/li&gt;&#10; &lt;/ul&gt;&#10; &#10; &lt;p&gt;&#10; The output is the created jobmanager of type ObjectToken, which should be&#10; given as parameter to a JobSubmitter.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; On error, an empty string is returned.&#10; &lt;/p&gt;">
+                </property>
+                <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Norbert Podhorszki">
+                </property>
+                <property name="version" class="ptolemy.kernel.util.StringAttribute" value="$Id: JobManager.java 30678 2012-09-14 22:48:44Z jianwu $">
+                </property>
+                <property name="jmgr (port)" class="ptolemy.kernel.util.StringAttribute" value="The created org.kepler.job.JobManager object as ObjectToken. This jmgr should be used in JobSubmitter to submit a job. This port is an output port of type ObjectToken.">
+                </property>
+                <property name="binPath (port)" class="ptolemy.kernel.util.StringAttribute" value="The path to the job manager commands on the target machines. Commands are constructed as &lt;i&gt;binPath/command&lt;/i&gt; and they should be executable this way. This parameter is read each time in fire().">
+                </property>
+                <property name="target (port)" class="ptolemy.kernel.util.StringAttribute" value="The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with ssh.  This parameter is read each time in fire().">
+                </property>
+                <property name="jobManager (port)" class="ptolemy.kernel.util.StringAttribute" value="The name of the jobmanager to be used It should be a name, for which a supporter class exist as &lt;i&gt;org.kepler.job.JobSupport&lt;jobManager&gt;.class  This parameter is read each time in fire().">
+                </property>
+                <property name="binPath (parameter)" class="ptolemy.data.expr.StringParameter" value="The path to the job manager commands on the target machines. Commands are constructed as &lt;i&gt;binPath/command&lt;/i&gt; and they should be executable this way. This parameter is read each time in fire().">
+                </property>
+                <property name="target (parameter)" class="ptolemy.data.expr.StringParameter" value="The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with ssh.  This parameter is read each time in fire().">
+                </property>
+                <property name="jobManager (parameter)" class="ptolemy.data.expr.StringParameter" value="The name of the jobmanager to be used It should be a name, for which a supporter class exist as &lt;i&gt;org.kepler.job.JobSupport&lt;jobManager&gt;.class  This parameter is read each time in fire().">
+                </property>
+            </property>
+            <port name="jobManager" class="ptolemy.actor.parameters.ParameterPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="target" class="ptolemy.actor.parameters.ParameterPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="binPath" class="ptolemy.actor.parameters.ParameterPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="jmgr" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="false">
+                </property>
+            </port>
+        </entity>
+        <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex1" value="[-120.0, 295.0]">
+            </vertex>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="jmgr" relation="relation4"/>
+        <link port="trigger" relation="relation6"/>
+        <link port="cJobManagerName.output" relation="relation"/>
+        <link port="cJobManagerName.trigger" relation="relation6"/>
+        <link port="Target machine.output" relation="relation2"/>
+        <link port="Target machine.trigger" relation="relation6"/>
+        <link port="JobManager.jobManager" relation="relation"/>
+        <link port="JobManager.target" relation="relation2"/>
+        <link port="JobManager.jmgr" relation="relation4"/>
+    </entity>
+    <entity name="WaitForSimFinish" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[170.0, -15.0]">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={110, 185, 1108, 808}, maximized=false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[767, 659]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8187337380746">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{512.2667297979799, 272.8079871811311}">
+        </property>
+        <property name="SleepInterval_msec" class="ptolemy.data.expr.Parameter" value="10000">
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:420:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.data.expr.Parameter">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1184:1">
+                </property>
+            </property>
+            <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+            </property>
+            <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[130.0, -100.0]">
+            </property>
+        </property>
+        <property name="logFormat" class="ptolemy.data.expr.StringParameter" value="$LogFormat">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[130.0, -60.0]">
+            </property>
+        </property>
+        <property name="logFile" class="ptolemy.data.expr.StringParameter" value="$LogFile">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[130.0, -80.0]">
+            </property>
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:788:3">
+        </property>
+        <port name="job" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{85.0, 65.0}">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="finishedJob" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[760.0, 35.0]">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <entity name="Expression2" class="ptolemy.actor.lib.Expression">
+            <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="status &lt; 2 ? false : true">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[550.0, 95.0]">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <port name="status" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </port>
+        </entity>
+        <entity name="Sleep" class="ptolemy.actor.lib.Sleep">
+            <property name="sleepTime" class="ptolemy.actor.parameters.PortParameter" value="SleepInterval_msec">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="sleepTime">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{410.0, -30.0}">
+            </property>
+            <port name="input" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="multiport"/>
+                <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="EAST">
+                </property>
+            </port>
+            <port name="output" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="multiport"/>
+                <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="WEST">
+                </property>
+            </port>
+            <port name="sleepTime" class="ptolemy.actor.parameters.ParameterPort">
+                <property name="input"/>
+                <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </port>
+        </entity>
+        <entity name="Nondet-Merge" class="ptolemy.domains.pn.kernel.NondeterministicMerge">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{170.0, 65.0}">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="false">
+            </property>
+            <port name="channel" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+                </property>
+            </port>
+        </entity>
+        <entity name="Boolean Switch" class="ptolemy.actor.lib.BooleanSwitch">
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:54:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.BooleanSwitch">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:930:1">
+                </property>
+            </property>
+            <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#BooleanControlActor">
+            </property>
+            <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#BooleanControl">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[645.0, 0.0]">
+            </property>
+            <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <port name="control" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+                </property>
+            </port>
+        </entity>
+        <entity name="Logger" class="org.kepler.actor.Logger">
+            <property name="header" class="ptolemy.data.expr.StringParameter" value="Status">
+            </property>
+            <property name="format" class="ptolemy.data.expr.StringParameter" value="$logFormat">
+            </property>
+            <property name="Logfile" class="ptolemy.data.expr.FileParameter" value="$logFile">
+            </property>
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:509:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.Logger">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1209:1">
+                </property>
+            </property>
+            <property name="semanticType110" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[410.0, 140.0]">
+            </property>
+            <port name="text" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="false">
+                </property>
+            </port>
+            <port name="logfile" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+            </port>
+        </entity>
+        <entity name="JobStatus" class="org.kepler.actor.job.JobStatus">
+            <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:353:1">
+            </property>
+            <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.job.JobStatus">
+                <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1218:1">
+                </property>
+            </property>
+            <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+            </property>
+            <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#JobCommand">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[290.0, 70.0]">
+            </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki, Chandrika Sivaramakrishnan, Jared Chase</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: JobStatus.java 26613 2011-01-04 03:01:07Z chandrika $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;&#10; Check the status of a Job&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; This actor uses the Job class to ask for the status of a submitted job.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; The input should be a previously submitted job. i.e. the output from a&#10; JobSubmitter. When the job contains more than one task also provide the&#10; number of tasks using the numTasks parameter&#10; &lt;/p&gt;&#10; &lt;p&gt; &#10; Optional inputs -&#10; 1. you could specify the actor to wait for a specific status - for example Running&#10; 2. or wait till one of many status - for example Error,NotInQueue&#10; 3. Or you could ask the actor to all status changes as and when it is detected.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; The output is the status code of the job:&#10; &lt;/p&gt;&#10; &lt;ul&gt;&#10; &lt;li&gt;0: Error: some error occured during the execution of the actor&lt;/li&gt;&#10; &lt;li&gt;1: NotInQueue: no such job in the queue, i.e. never was or already gone&lt;/li&gt;&#10; &lt;li&gt;2: Wait: the job is in the queue and it is not running yet&lt;/li&gt;&#10; &lt;li&gt;3: Running: the job is running&lt;/li&gt;&#10; &lt;/ul&gt;&#10; &lt;p&gt;&#10; If not such job exists, the result will be also the Error status.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; For convenience, the job is also passed on output port &lt;i&gt;jobOut&lt;/i&gt; if the&#10; status is NOT Error and NOT NotInQueue. This token can be used (delaying it&#10; with a Sleep actor) to ask its Status again and again until the job is&#10; finished or aborted.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; When numTasks input is greater than zero, in addition to job's overall&#10; status code the actor also outputs  task id and task status of individual tasks&#10; &lt;/p&gt;</configure></property>
+<property name="port:jobIn" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A submitted job This port is an output port of type Object.</configure></property>
+<property name="port:jobOut" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The job is passed on in this actor. This token can be used (delaying it with a Sleep actor) to ask its Status again and again until the job is finished or aborted. This port is an output port of type Object.</configure></property>
+<property name="port:logport" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Logging information of job status query. Useful to inform user about problems at unsuccessful status query but it also prints out job status and job id on successful query. This port is an output port of type String. The name of port on canvas is 'log'</configure></property>
+<property name="port:taskId" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Task ID : this is the task id for the status code</configure></property>
+<property name="port:statusCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Status code of the job 0 : for some error during execution or if jobID is invalid 1 : not in queue: i.e. already finished if it had ever been there (this is good news!) 2 : job is waiting in the queue 3 : job is running This port is an output port of type Integer;</configure></property>
+<property name="port:taskStatusCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Task status code : for some error during execution or if jobID is invalid 1 : not in queue: i.e. already finished if it had ever been there (this is good news!) 2 : job is waiting in the queue 3 : job is running This port is an output port of type Integer;</configure></property>
+<property name="prop:numTasks" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter to set if the workflow is task parallel.  This allows for the tasks to be created and set to the submitted state</configure></property>
+<property name="prop:job_tokenProdRate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="prop:log_tokenProdRate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="prop:waitUntil" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wait until the job has a specific status.</configure></property>
+<property name="prop:sleepWhileWaiting" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Amount of time (in milliseconds) to sleep between checking job status.</configure></property>
+<property name="prop:sendAllChanges" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter to set if you want job status to ignore waitUntil parameter and send out every status change</configure></property>
+<property name="prop:statuscode_tokenProdRate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The rate parameter for the output port.</configure></property>
+</property>            <property name="" class="ptolemy.vergil.basic.DocAttribute">
+                <property name="description" class="ptolemy.kernel.util.StringAttribute" value="&#10;&lt;p&gt;&#10; Check the status of a Job&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; This actor uses the Job class to ask for the status of a submitted job.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; The input should be a previously submitted job. i.e. the output from a&#10; JobSubmitter. When the job contains more than one task also provide the&#10; number of tasks using the numTasks parameter&#10; &lt;/p&gt;&#10; &lt;p&gt; &#10; Optional inputs -&#10; 1. you could specify the actor to wait for a specific status - for example Running&#10; 2. or wait till one of many status - for example Error,NotInQueue&#10; 3. Or you could ask the actor to all status changes as and when it is detected.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; The output is the status code of the job:&#10; &lt;/p&gt;&#10; &lt;ul&gt;&#10; &lt;li&gt;0: Error: some error occured during the execution of the actor&lt;/li&gt;&#10; &lt;li&gt;1: NotInQueue: no such job in the queue, i.e. never was or already gone&lt;/li&gt;&#10; &lt;li&gt;2: Wait: the job is in the queue and it is not running yet&lt;/li&gt;&#10; &lt;li&gt;3: Running: the job is running&lt;/li&gt;&#10; &lt;/ul&gt;&#10; &lt;p&gt;&#10; If not such job exists, the result will be also the Error status.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; For convenience, the job is also passed on output port &lt;i&gt;jobOut&lt;/i&gt; if the&#10; status is NOT Error and NOT NotInQueue. This token can be used (delaying it&#10; with a Sleep actor) to ask its Status again and again until the job is&#10; finished or aborted.&#10; &lt;/p&gt;&#10; &#10; &lt;p&gt;&#10; When numTasks input is greater than zero, in addition to job's overall&#10; status code the actor also outputs  task id and task status of individual tasks&#10; &lt;/p&gt;">
+                </property>
+                <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Norbert Podhorszki, Chandrika Sivaramakrishnan, Jared Chase">
+                </property>
+                <property name="version" class="ptolemy.kernel.util.StringAttribute" value="$Id: JobStatus.java 26613 2011-01-04 03:01:07Z chandrika $">
+                </property>
+                <property name="numTasks (parameter)" class="ptolemy.data.expr.StringParameter" value="Parameter to set if the workflow is task parallel.  This allows for the tasks to be created and set to the submitted state">
+                </property>
+                <property name="jobIn (port)" class="ptolemy.kernel.util.StringAttribute" value="A submitted job This port is an output port of type Object.">
+                </property>
+                <property name="jobOut (port)" class="ptolemy.kernel.util.StringAttribute" value="The job is passed on in this actor. This token can be used (delaying it with a Sleep actor) to ask its Status again and again until the job is finished or aborted. This port is an output port of type Object.">
+                </property>
+                <property name="taskId (port)" class="ptolemy.kernel.util.StringAttribute" value="Task ID : this is the task id for the status code">
+                </property>
+                <property name="taskStatusCode (port)" class="ptolemy.kernel.util.StringAttribute" value="Task status code : for some error during execution or if jobID is invalid 1 : not in queue: i.e. already finished if it had ever been there (this is good news!) 2 : job is waiting in the queue 3 : job is running This port is an output port of type Integer;">
+                </property>
+                <property name="statusCode (port)" class="ptolemy.kernel.util.StringAttribute" value="Status code of the job 0 : for some error during execution or if jobID is invalid 1 : not in queue: i.e. already finished if it had ever been there (this is good news!) 2 : job is waiting in the queue 3 : job is running This port is an output port of type Integer;">
+                </property>
+                <property name="logport (port)" class="ptolemy.kernel.util.StringAttribute" value="Logging information of job status query. Useful to inform user about problems at unsuccessful status query but it also prints out job status and job id on successful query. This port is an output port of type String. The name of port on canvas is 'log'">
+                </property>
+                <property name="job_tokenProdRate (parameter)" class="ptolemy.data.expr.StringParameter" value="">
+                </property>
+                <property name="log_tokenProdRate (parameter)" class="ptolemy.data.expr.StringParameter" value="">
+                </property>
+                <property name="waitUntil (parameter)" class="ptolemy.data.expr.StringParameter" value="Wait until the job has a specific status.">
+                </property>
+                <property name="statuscode_tokenProdRate (parameter)" class="ptolemy.data.expr.StringParameter" value="The rate parameter for the output port.">
+                </property>
+                <property name="sendAllChanges (parameter)" class="ptolemy.data.expr.StringParameter" value="Parameter to set if you want job status to ignore waitUntil parameter and send out every status change">
+                </property>
+                <property name="sleepWhileWaiting (parameter)" class="ptolemy.data.expr.StringParameter" value="Amount of time (in milliseconds) to sleep between checking job status.">
+                </property>
+            </property>
+            <port name="jobIn" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="false">
+                </property>
+            </port>
+            <port name="jobOut" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="statusCode" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+            <port name="log" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+            </port>
+        </entity>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex" value="{0.0, 0.0}">
+            </vertex>
+        </relation>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation10" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex" value="{0.0, 0.0}">
+            </vertex>
+        </relation>
+        <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation8" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="job" relation="relation5"/>
+        <link port="finishedJob" relation="relation"/>
+        <link port="Expression2.output" relation="relation12"/>
+        <link port="Expression2.status" relation="relation6"/>
+        <link port="Sleep.input" relation="relation9"/>
+        <link port="Sleep.output" relation="relation3"/>
+        <link port="Nondet-Merge.input" relation="relation3"/>
+        <link port="Nondet-Merge.input" relation="relation5"/>
+        <link port="Nondet-Merge.output" relation="relation8"/>
+        <link port="Boolean Switch.input" relation="relation7"/>
+        <link port="Boolean Switch.control" relation="relation12"/>
+        <link port="Boolean Switch.trueOutput" relation="relation9"/>
+        <link port="Boolean Switch.falseOutput" relation="relation"/>
+        <link port="Logger.text" relation="relation4"/>
+        <link port="JobStatus.jobIn" relation="relation8"/>
+        <link port="JobStatus.jobOut" relation="relation7"/>
+        <link port="JobStatus.statusCode" relation="relation6"/>
+        <link port="JobStatus.log" relation="relation4"/>
+    </entity>
+    <entity name="SSH session" class="org.kepler.actor.ssh.SshSession">
+        <property name="target" class="ptolemy.actor.parameters.PortParameter" value="[user@]host">
+        </property>
+        <property name="identity" class="ptolemy.data.expr.FileParameter" value="$IdentityFile">
+        </property>
+        <property name="postpone" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:778:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.ssh.SshSession">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1211:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#UnixCommand">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-310.0, -10.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:507:1">
+        </property>
+        <port name="target" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="Host" class="ptolemy.actor.lib.StringConst">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="$SimTarget">
+        </property>
+        <property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The StringConstant actor outputs a string specified via the actor's value parameter.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specifying strings with the StringConstant actor is convenient, as the actor does not require that strings be surrounded by quotes. The actor is often used to specify file paths, which can be selected using the Browse button available in the actor's parameters.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specified string values can include references to parameters within scope (i.e., parameters defined at the same level of the hierarchy or higher). &lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a string constant specified by the value parameter.  </configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time. </configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the actor. Specified strings do not require enclosing quotes. (To include a '$' sign in the string, enter '$$'.)</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:775:5">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.StringConst">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1052:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#StringFunctionActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Constant">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-420.0, 0.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:204:1">
+        </property>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="SubmitSimJob.job" relation="relation"/>
+    <link port="SubmitSimJob.jmgr" relation="relation2"/>
+    <link port="SelectJobManager.jmgr" relation="relation2"/>
+    <link port="SelectJobManager.trigger" relation="relation3"/>
+    <link port="WaitForSimFinish.job" relation="relation"/>
+    <link port="SSH session.target" relation="relation4"/>
+    <link port="SSH session.target_out" relation="relation3"/>
+    <link port="Host.output" relation="relation4"/>
+</entity>

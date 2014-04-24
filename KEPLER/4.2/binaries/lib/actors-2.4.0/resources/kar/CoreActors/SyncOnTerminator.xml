@@ -1,0 +1,104 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="SyncOnTerminator" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:524:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Norbert Podhorszki</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: SyncOnTerminator.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;
+ Pass on a stream of tokens except for a specific element (termination) and
+ emit the termination when it is found in the stream
+ &lt;i&gt;NumberOfOccurences&lt;/i&gt;th times.&lt;br/&gt;
+ The input should be a stream of tokens of a given type that matches the type
+ of the terminator parameter of this actor.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ Input tokens are passed on as long as the termination element is found as
+ many times as specified. The termination element is not passed on until the
+ &lt;i&gt;NumberOfOccurences&lt;/i&gt;th occurence. After the termination element is
+ emitted, incoming tokens will raise an Exception.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ This actor can be used in the following stream processing scenario. A stream,
+ which has a termination token, is split and elements are processed in
+ parallel and then merged non-deterministically again. In such a case, if the
+ termination token is routed on only one branch, it can overcome other tokens
+ at the merge. So the termination token should be routed on ALL branches and
+ then after the merge this actor can help to wait for the last termination
+ token and thus ensuring that the termination token is the very last token in
+ the stream.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ Note that for record types, you do not need to specify all fields within the
+ terminator. E.g. if you have a stream with {name/string, value=int}, you can
+ define the terminator, for instance, as {name="T"}.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ If the flag &lt;i&gt;discardOthers&lt;/i&gt; is set, the input tokens are NOT emitted on
+ output. That is, there is only one output, the termination token on its
+ &lt;i&gt;NumberOfOccurences&lt;/i&gt;th occurence.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ The actor outputs the input tokens.
+ &lt;/p&gt;
+ 
+ &lt;p&gt;
+ This actor is not always producing a token for an input (namely for the
+ termination tokens), thus, it cannot be used in SDF. Since you do not have
+ parallel stream processing under SDF, this can hardly be a problem.
+ &lt;/p&gt;</configure>
+    </property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output token, which is always the input token.</configure>
+    </property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Input token. The type should match the terminator's type.</configure>
+    </property>
+<property name="prop:terminator" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The terminator element to wait for.</configure>
+    </property>
+<property name="prop:numberOfOccurences" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The number of occurences of the terminator in the stream. The terminator will be emitted only at the last occurence.</configure>
+    </property>
+<property name="prop:discardOthers" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>A flag to indicate whether non-terminator tokens should be passed on or discarded. If set, only one token will be ever emitted, name the terminator at the time of its last occurence.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.sdm.spa.SyncOnTerminator">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1209:1">
+        </property>
+    </property>
+    <property name="input" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="unknown">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="output" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="unknown">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowControl">
+    </property>
+    <property name="semanticType41" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:4:1#CPES">
+    </property>
+</entity>

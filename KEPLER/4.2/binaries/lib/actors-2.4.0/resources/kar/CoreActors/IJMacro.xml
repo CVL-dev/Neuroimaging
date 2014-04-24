@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<entity name="IJMacro" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:271:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The IJMacro actor runs ImageJ macros, which are used to display, edit, analyze, process, save, and print a wide variety of images. For more information about ImageJ, see http://rsb.info.nih.gov/ij/.</p>
+
+<p>The actor accepts a string representing an image file name via the input port or the fileOrURL parameter. The actor will perform the macro specified in the macroString parameter. By default, the actor will open the specified image.</p>
+
+<p>The ImageJ menu toolbar, which appears when the actor opens a specified image, can be used to create additional macros. Select "Plugins > Macros > Record" from the ImageJ menu to create a new macro that can be used by the actor.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string representing the path of an image</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of an image to process. The file name may also be input through the input port.</configure></property>
+<property name="prop:macroString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ImageJ macro to execute. The macro may include the expression "_FILE_", which will be replaced by the path of the specified image file.</configure></property>
+</property>
+<property name="class" value="util.IJMacro" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1096:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ImageManipulationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ImageOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,25 @@
+<molecule title="Ethyne">
+<metadataList title="generated automatically from Openbabel">
+<metadata name="dc:creator" content="OpenBabel version 1-100.1"/>
+<metadata name="dc:description" content="Conversion of legacy filetype to CML"/>
+<metadata name="dc:identifier" content="Unknown"/>
+<metadata name="dc:content"/>
+<metadata name="dc:rights" content="unknown"/>
+<metadata name="dc:type" content="chemistry"/>
+<metadata name="dc:contributor" content="unknown"/>
+<metadata name="dc:creator" content="Openbabel V1-100.1"/>
+<metadata name="dc:date" content="Tue Jun 15 14:44:55 CEST 2004"/>
+<metadata name="cmlm:structure" content="yes"/>
+</metadataList>
+<atomArray>
+<atom id="a1" elementType="C" x3="-0.5997" y3="0.0175" z3="-0.0099"/>
+<atom id="a2" elementType="C" x3="0.5997" y3="-0.0175" z3="0.01"/>
+<atom id="a3" elementType="H" x3="-1.6592" y3="0.0483" z3="-0.0275"/>
+<atom id="a4" elementType="H" x3="1.6592" y3="-0.0483" z3="0.0276"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a1 a2" order="3"/>
+<bond atomRefs2="a1 a3" order="1"/>
+<bond atomRefs2="a2 a4" order="1"/>
+</bondArray>
+</molecule>

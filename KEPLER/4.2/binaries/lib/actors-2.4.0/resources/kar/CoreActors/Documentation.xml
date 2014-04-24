@@ -1,0 +1,59 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Documentation" class="org.kepler.moml.PropertyEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:435:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Rowland R Johnson</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: Documentation.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;This attribute is a visible attribute that displays documentation when
+ configured by double clicking on it or by invoking Configure in the context
+ menu.
+ &lt;/p&gt;&lt;p&gt;
+ The method
+ that causes the documentation to be displayed is createEditor, which
+ is normally used to configure an attribute. This means that the
+ DocumentationAttribute can't be configured. That is, if a
+ double-click occurs or the Configure menu item is selected the
+ documentation will be displayed, and the normal configure dialog
+ will not be offered. Special provisions for "configuring" a
+ DocumentationAttribute are described below.
+ &lt;/p&gt;&lt;p&gt;
+ The documentation is in a file specified by the FileParameter
+ attribute with the name _documentation. The _documentation FileParameter can
+ be on any object, including this DocumentationAttribute, in the containment
+ hierarchy. (As explained below, the _documentation FileParameter will be
+ found on the container of this DocumentationAttribute.) If a
+ _documentation FileParameter can not be found a JFileChooser is
+ presented. The resulting selection, if there is one, is then used
+ to create a _documentation FileParameter on the &lt;i&gt;container&lt;/i&gt;.
+ There are two reasons for this. First, the documentation most likely
+ applies to the container. I.e., this DocumentationAttribute isn't
+ being documented, rather, the thing that this DocumentationAttribute
+ is an attribute of is being documented. Second, the container most
+ likely can be configured in the normal way. Since, the
+ _documentation FileParameter will be on the container the
+ specification for the file containing the documentation can be
+ modified.
+ &lt;/p&gt;
+ &lt;p&gt;Note that if a DocumentationAttribute refers to a pdf file, then it
+ may not be possible to view the pdf file in an applet because
+ {@link ptolemy.actor.gui.BrowserLauncher} uses reflection to look up
+ classes.  The workaround is to use
+ ptolemy.vergil.pdfrenderer.PDFRenderer</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.DocumentationAttribute">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1198:1">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+    </property>
+</entity>

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<entity name="Python Actor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:545:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.python.PythonScript" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:545:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="script" class="ptolemy.kernel.util.StringAttribute" value="# This is a simple actor that copies the input to the output.&#10;# You can remove the ports, add new ports, and modify the script.&#10;class Main :&#10;  &quot;Copy the inputs to the output.&quot;&#10;  def fire(self) :&#10;    token = self.input.get(0)&#10;    self.output.broadcast(token)&#10;    return&#10;&#10;">
+</property>
+
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+</property>
+    
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.TextEditorConfigureFactory">
+  <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="script">
+  </property>
+</property>
+    
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+This actor executes a Python script. The default script has an
+input port and an output port. To view or edit the script, double-click
+on the actor.
+<p>
+
+As an example, a simplified version of the Scale actor can be
+implemented by the following script:
+</p>
+<pre>
+1.  class Main :
+2. &quot;scale&quot;
+3.    def fire(self) :
+4.      if not self.input.hasToken(0) :
+5.        return
+6.      s = self.scale.getToken()
+7.      t = self.input.get(0)
+8.      self.output.broadcast(s.multiply(t))
+</pre>
+Line 1 defines a Python class Main. This name is fixed. An instance
+of this&#10; class is created when the actor is initialized. Line
+2 is a description of&#10; the purpose of the script. Lines 3-8
+define the fire() method. In the method body,&#10; &lt;i&gt;input&lt;/i&gt;
+and &lt;i&gt;output&lt;/i&gt; are ports that have been&#10; added
+to the actor, and &lt;i&gt;scale&lt;/i&gt; is a parameter added to
+the actor (these can be added in the XML that defines the&#10; actor
+instance in an actor library).  The Main class can provide other&#10;
+methods in the Executable interface&#10; as needed.&#10; &lt;p&gt;&#10;
+In the script, use &lt;code&gt;self.actor&lt;/code&gt; to access
+the actor.  For example,&#10;
+&lt;code&gt;self.actor.getDirector()&lt;/code&gt; returns the current
+director of the&#10; actor. For debugging, use
+&lt;code&gt;self.actor.debug(someMessage)&lt;/code&gt;. The&#10;
+final message sent to the debug listeners of the actor will have
+the string&#10; &quot;From script: &quot; inserted at the beginning.
+To avoid generating the debug&#10; message when there are no
+listeners, use:
+<pre>
+if self.actor.isDebugging() :
+  self.actor.debug(someMessage)
+</pre>
+<p>
+This class relies on Jython, which is a Java implementation of
+Python.
+</p>
+Follow the links below for more information about the Python
+language,&#10; licensing, downloads, etc.
+<p>&lt;a href="http://www.python.org" target="_top"&gt;Python&lt;/a&gt;</p>
+<p>&lt;a href="http://www.jython.org" target="_top"&gt;Jython&lt;/a&gt;</p>
+<p>&lt;a href="http://www.jython.org/docs/differences.html"&gt;Differences between Jython and the C version of Python&lt;/a&gt;</p>
+<p>&lt;a
+href=&quot;http://www.jython.org/Project/userguide.html#the-jython-registry&quot;&gt;The
+Jython Registry&lt;/a&gt; - information about how to set the search
+path.&#10;&#10;</p>
+</configure></property>
+</property></entity>

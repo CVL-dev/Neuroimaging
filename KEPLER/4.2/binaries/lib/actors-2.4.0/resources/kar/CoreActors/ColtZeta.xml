@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ColtZeta" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:646:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.colt.ColtZeta" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="ro" class="ptolemy.actor.parameters.PortParameter" value="1.0">
+</property>
+
+<property name="pk" class="ptolemy.actor.parameters.PortParameter" value="1.0">
+</property>
+
+
+<property name="seed" class="ptolemy.actor.parameters.SharedParameter" value="0L">
+</property>
+
+<property name="privateSeed" class="ptolemy.data.expr.Parameter">
+</property>
+
+<property name="resetOnEachRun" class="ptolemy.actor.parameters.SharedParameter" value="false">
+</property>
+
+<property name="generatorClass" class="ptolemy.actor.parameters.SharedParameter" value="DRand">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#RandomNumberOperation">
+</property>
+
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:ro" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:pk" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>David Bauer and Kostas Oikonomou</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ColtZeta.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Produce a random sequence with a Zeta distribution.  On each&#10; iteration, a new random number is produced.  The output port is of&#10; type DoubleToken.  The values that are generated are independent&#10; and identically distributed with the mean and the standard&#10; deviation given by parameters.  In addition, the seed can be&#10; specified as a parameter to control the sequence that is generated.&#10;&#10; &lt;p&gt; This actor instantiates a&#10; &lt;a href=&quot;http://hoschek.home.cern.ch/hoschek/colt/V1.0.3/doc/cern/jet/random/Zeta.html&quot;&gt;cern.jet.random.Zeta&lt;/a&gt; object with&#10; ro and pk set to 1.0.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port.  The type of this port is unspecified.  Derived classes may set it.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The trigger port.  The type of this port is undeclared, meaning  that it will resolve to any data type.</configure></property>
+<property name="port:pk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>pk.  This has type double, initially with value 1.0.</configure></property>
+<property name="port:ro" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>ro.  This has type double, initially with value 1.0.</configure></property>
+<property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The seed that controls the random number generation.  This is a shared parameter, meaning that all instances of  RandomSource or derived classes in the same model share the  same value.  A seed of zero is interpreted to mean that no seed is specified,  which means that each execution of the model could result in  distinct data. For the value 0, the seed is set to  System.currentTimeMillis() + hashCode(), which means that  with extremely high probability, two distinct actors will have  distinct seeds.  However, current time may not have enough  resolution to ensure that two subsequent executions of the  same model have distinct seeds. For a value other than zero,  the seed is set to that value plus the hashCode() of the  full name of the actor. This means that with high probability,  two distinct actors will have distinct, but repeatable seeds.  This parameter contains a LongToken, initially with value 0.</configure></property>
+<property name="prop:generatorClass" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The low-level random number generator (RNG) class name.  This is a string that defaults to &quot;DRand&quot;.  Below are possible values for this parameter and links  to pages that define the meaning of the parameter.  This is a &quot;shared parameter&quot;, which means that  changing this parameter in any one actor will cause  a similar change to be applied to all other Colt  actors within the same top level (unless this is in  a library).  &lt;menu&gt;  &lt;li&gt;&lt;code&gt;&quot;DRand&quot;&lt;/code&gt;  (&lt;a href=&quot;http://hoschek.home.cern.ch/hoschek/colt/V1.0.3/doc/cern/jet/random/engine/DRand.html#in_browser&quot;&gt;Definition&lt;/a&gt;)  &lt;li&gt;&lt;code&gt;&quot;MersenneTwister (MT19937)&quot;&lt;/code&gt;  (&lt;a href=&quot;http://hoschek.home.cern.ch/hoschek/colt/V1.0.3/doc/cern/jet/random/engine/MersenneTwister.html#in_browser&quot;&gt;Definition&lt;/a&gt;)  &lt;li&gt;&lt;code&gt;&quot;Ranecu&quot;&quot;&lt;/code&gt;  (&lt;a href=&quot;http://hoschek.home.cern.ch/hoschek/colt/V1.0.3/doc/edu/cornell/lassp/houle/RngPack/Ranecu.html#in_browser&quot;&gt;Definition&lt;/a&gt;)  &lt;li&gt;&lt;code&gt;&quot;Ranlux&quot;&lt;/code&gt;  (&lt;a href=&quot;http://hoschek.home.cern.ch/hoschek/colt/V1.0.3/doc/cern/jet/random/engine/Ranlux.html#in_browser&quot;&gt;Definition&lt;/a&gt;)  &lt;li&gt;&lt;code&gt;&quot;Ranmar&quot;&lt;/code&gt;  (&lt;a href=&quot;http://hoschek.home.cern.ch/hoschek/colt/V1.0.3/doc/cern/jet/random/engine/Ranmar.html#in_browser&quot;&gt;Definition&lt;/a&gt;)  &lt;/menu&gt;</configure></property>
+<property name="prop:privateSeed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>This private seed overrides the shared seed parameter to specify a   particular seed rather than using System.currentTimeMillis() or  hashCode() to compute the seed value.     By default, this parameter is empty, which means that the shared seed  parameter is used.    WARNING: It is up to the user to make sure that different seed  values are used in different random number generators.</configure></property>
+<property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, this parameter specifies that the random number  generator should be reset on each run of the model (in  the initialize() method). It is a boolean that defaults  to false. This is a shared parameter, meaning that changing  it somewhere in the model causes it to be changed everywhere  in the model.</configure></property>
+<property name="prop:pk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>pk.  This has type double, initially with value 1.0.</configure></property>
+<property name="prop:ro" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>ro.  This has type double, initially with value 1.0.</configure></property>
+</property></entity>

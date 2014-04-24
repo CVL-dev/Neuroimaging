@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="StringSimpleReplace" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:677:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.string.StringSimpleReplace" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="pattern" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="replacement" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="stringToEdit" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DataStringOperation">
+</property>
+
+<property name="kepler:pattern" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:replacement" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:stringToEdit" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Christopher Brooks</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: StringSimpleReplace.java 57046 2010-01-27 23:35:53Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;On each firing, look for instances of the pattern specified by &lt;i&gt;pattern&lt;/i&gt;&#10; in &lt;i&gt;stringToEdit&lt;/i&gt; and replace them with the string given by&#10; &lt;i&gt;replacement&lt;/i&gt;.  If &lt;i&gt;replaceAll&lt;/i&gt; is true, then replace&#10; all instances that match &lt;i&gt;pattern&lt;/i&gt;.  Otherwise, replace only&#10; the first instance that matches.  If there is no match, then the&#10; output is the string provided by &lt;i&gt;stringToEdit&lt;/i&gt;, unchanged.&#10; The &lt;i&gt;pattern&lt;/i&gt; is &lt;b&gt;not&lt;/b&gt; a regular expression, to use&#10; a regular expression, see {link ptolemy.actor.lib.io.StringReplace}.&#10; &lt;p&gt;&#10; The &lt;i&gt;replacement&lt;/i&gt; string, as usual with string-valued parameters&#10; in Ptolemy II, can include references to parameter values in scope.&#10; E.g., if the enclosing composite actor has a parameter named &quot;x&quot;&#10; with value 1, say, then the replacement string a${x}b will become&#10; &quot;a1b&quot;.&lt;/p&gt;&#10; &lt;p&gt;Note that if the &lt;i&gt;pattern&lt;/i&gt; is the two character string&#10; &lt;code&gt;\r&lt;/code&gt;, then that pattern is handled specially and&#10; collapsed to the single character '\r'.  This is for use in removing&#10; \r's from test output.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port on which the edited string is produced.  This has type string.</configure></property>
+<property name="port:stringToEdit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string to edit by replacing substrings that match the  specified pattern with the specified replacement. This is  a string that defaults to the empty string.</configure></property>
+<property name="port:replacement" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The replacement string that replaces any matched instance of the  pattern. It is an empty string by default.</configure></property>
+<property name="port:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The pattern used to pattern match and replace the stringToEdit  string. It is an empty string by default.</configure></property>
+<property name="prop:stringToEdit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string to edit by replacing substrings that match the  specified pattern with the specified replacement. This is  a string that defaults to the empty string.</configure></property>
+<property name="prop:replacement" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The replacement string that replaces any matched instance of the  pattern. It is an empty string by default.</configure></property>
+<property name="prop:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The pattern used to pattern match and replace the stringToEdit  string. It is an empty string by default.</configure></property>
+</property></entity>

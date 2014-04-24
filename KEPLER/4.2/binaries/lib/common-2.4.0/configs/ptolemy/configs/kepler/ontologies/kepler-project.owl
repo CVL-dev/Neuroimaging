@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="urn:lsid:localhost:onto:4:1#"
+  xml:base="urn:lsid:localhost:onto:4:1">
+  <owl:Ontology rdf:about="">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Projects</rdfs:label>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SDM">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SDM</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="SEEK">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SEEK</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="GAMESSInput">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GAMESS Input</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ComputationalChemistry"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PtolemyII">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ptolemy II</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ProcessUtility">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputationalChemistry"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Process Utility</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="NicheModeling">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Niche Modeling</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#SEEK"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Resurgence">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Resurgence</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="GEON">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GEON</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="EOL">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EOL</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BEAM">
+    <rdfs:subClassOf rdf:resource="#SEEK"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BEAM</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#ComputationalChemistry">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Computational Chemistry</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ROADNet">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ROADNet</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CIPRes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CIPRes</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CPES">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CPES</rdfs:label>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

@@ -1,0 +1,448 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<style>
+   .text {
+      font-family : Arial;
+      background-color : #ffffff;
+   }
+   A.table:link {
+           COLOR: blue;
+           TEXT-DECORATION: none
+   }
+   A.table:visited {
+           COLOR: blue;
+           TEXT-DECORATION: none
+   }
+   A.table:active {
+           COLOR: blue;
+           TEXT-DECORATION: none
+   }
+   A.table:hover {
+           COLOR: red;
+           TEXT-DECORATION: underline
+   }
+   .cell_highlight {
+        BACKGROUND-COLOR: #FCC552
+   }
+   .cell_unselected {
+        BACKGROUND-COLOR: #FFFFFF
+   }
+   .cell_selected {
+        BACKGROUND-COLOR: #FFF8DC
+   }
+   .cell_blocked {
+        BACKGROUND-COLOR: silver
+   }
+</style>
+
+<script type="text/javascript">
+
+    var lastRowId = null;
+    var lastEvent = "";
+    var hasDiagram = "yes";
+    var fmap = new Object();
+    var hmap = new Object();
+
+    function testit(rowId) {
+        var column = document.getElementById("row"+rowId);
+        if (lastRowId == null) {
+           column.className='cell_highlight';
+        } else {
+
+           var ids = lastRowId.split(" ");
+           for (var i=0; i<ids.length; i++) {
+              var lastRow = document.getElementById("row"+ids[i]);
+              if (!lastRow.className.match("cell_unselected")) {
+                  lastRow.className='cell_selected';
+              }
+           }
+           column.className='cell_highlight';
+        }
+        lastRowId = rowId;
+    }
+
+    function testmore(rowId) {
+
+        var column = document.getElementById("row"+rowId);
+        if (lastRowId == null) {
+           if (!column.className.match("cell_unselected")) {
+              column.className='cell_highlight';
+           }
+        } else {
+
+           var ids = lastRowId.split(" ");
+           for (var i=0; i<ids.length; i++) {
+              var lastRow = document.getElementById("row"+ids[i]);
+              if (!lastRow.className.match("cell_unselected")) {
+                  lastRow.className='cell_selected';
+              }
+           }
+
+           if (!column.className.match("cell_unselected")) {
+               column.className='cell_highlight';
+           }
+        }
+        lastRowId = rowId;
+
+        var more = fmap[rowId];
+        if (more != null) {
+            var ids = more.split(" ");
+            for (var i=0; i<ids.length; i++) {
+                column = document.getElementById("row"+ids[i]);
+                if (!column.className.match("cell_unselected")) {
+                    column.className='cell_highlight';
+                    lastRowId += " "+ids[i];
+                }
+            }
+        }
+
+    }
+
+    function clickedOnColumn(rowId, rid) {
+        var r = document.getElementById("row"+rowId);
+        if (! lastEvent.match("checkbox"+rowId) && ! r.className.match("cell_unselected")) {
+            testit(rowId);
+            window.showCircle(rid);
+        }
+        lastEvent = "column"+rowId;
+    }
+
+    function highlit(row) {
+        if (lastRowId == null) {
+           row.className='cell_highlight';
+        } else {
+           var lastRow = document.getElementById("row"+lastRowId);
+           lastRow.className='cell_selected';
+           row.className='cell_highlight';
+        }
+        lastRowId = row.getId();
+    }
+
+    function mineralChanged() {
+        var selectForm = document.getElementById("selectForm");
+         selectForm.submit();
+    }
+
+    function doit(rowId, rid) {
+        var row = document.getElementById("row"+rowId);
+        if (row.className.match("cell_unselected")) {
+           row.className = 'cell_selected';
+
+           // make the circle visible
+           var found = false;
+           if (rowId != rid) {
+               row = document.getElementById("row"+rid);
+               if (row.className.match("cell_unselected")) {
+
+                   var more = fmap[rid];
+                   if (more != null) {
+                       var ids = more.split(" ");
+                       for (var i=0; i<ids.length; i++) {
+
+                           if (ids[i] != rowId) {
+                               row = document.getElementById("row"+ids[i]);
+                               if (!row.className.match("cell_unselected")) {
+                                   found = true;
+                                   break;
+                               }
+                           }
+                       }
+                   }
+               } else {
+                   found = true;
+               }
+           }
+
+           if (!found) {
+              window.svgShow(rid);
+           }
+
+        } else {
+           row.className = 'cell_unselected';
+
+           // make the circle hidden if the circle is not shared by many rows
+           var found = false;
+           row = document.getElementById("row"+rid);
+           if (row.className.match("cell_unselected")) {
+               var more = fmap[rid];
+               if (more != null) {
+                   var ids = more.split(" ");
+                   for (var i=0; i<ids.length; i++) {
+
+                       if (ids[i] != rowId) {
+                            row = document.getElementById("row"+ids[i]);
+                            if (!row.className.match("cell_unselected")) {
+                                 found = true;
+                                 break;
+                            }
+                       }
+                   }
+               }
+           } else {
+               found = true;
+           }
+
+           if (!found) {
+              window.svgHide(rid);
+           }
+        }
+        lastEvent = "checkbox"+rowId;
+    }
+
+</script>
+</head>
+
+<body bgcolor=white>
+
+
+
+<div id="block"></div>
+<blockquote >
+   <embed src="C:/Util/Projects/scimodel/lib/testdata/geon/rock1.svg"  type="image/svg+xml" width=480 height=480 />
+</blockquote>
+
+<table  border=0 cellpadding=5>
+   <tr><td><hr width=5200></td></tr>
+   <tr><td>
+        <table cellpadding="4" cellspacing="0" border="1" bordercolor="#e0e0e0">
+            <tr>
+<tr><td><font style="font-size:10pt" >&nbsp;</font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>ssID</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>minssID</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>name</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>Min_sample_ID</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>data tags</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>plagioclase</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>k-feldspar</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>microcline</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>quartz</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>hornblende</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>magnesio-hornblende</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>paragasitic-hornblende</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>clinopyroxene</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>orthopyroxene</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>olivine</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>albite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>tourmaline</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>amphibole</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>diopsite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>biotite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>chlorite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>muscovite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>garnet</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>epidote</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>talc</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>actinolite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>allanite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>apatite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>sphene</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>zircon</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>monazite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>calcite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>carbonate</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>zoisite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>clinozoisite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>sericite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>serpentine</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>spinel</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>fluorite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>fluorencite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>stilpnomelane</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>myrmekite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>nontronite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>uralite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>magnetite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>ilmenite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>hematite</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>rutile</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>opaques</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>mixed assemblages</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>#points</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>methods</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>rock type</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>sample location</b></font></td>
+<td align=middle bgcolor=#fffaf0><font style="font-size:10pt"><b>reference</b></font></td>
+</tr>
+<tr id="row215"  class=cell_selected onclick="clickedOnColumn('215','215')">
+<td><font style="font-size:10pt" >215</font></td>
+<td><font style="font-size:10pt" >2</font></td>
+<td><font style="font-size:10pt" >Baltimore Gabbro Complex</font></td>
+<td><font style="font-size:10pt" >GC-1-78</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >35.8</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >7.5</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >30.7</font></td>
+<td><font style="font-size:10pt" >5.2</font></td>
+<td><font style="font-size:10pt" >2.7</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >10.7</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >0.1</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >tr</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >1200.0</font></td>
+<td><font style="font-size:10pt" >OM</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >Hanan, B.B., 1980, Petrology and Geochemistry of the Baltimore Mafic Complex, Maryland, PhD thesis, Virginia Tech</font></td>
+</tr>
+<tr id="row266"  class=cell_selected onclick="clickedOnColumn('266','266')">
+<td><font style="font-size:10pt" >266</font></td>
+<td><font style="font-size:10pt" >21</font></td>
+<td><font style="font-size:10pt" >Baltimore Gabbro Complex</font></td>
+<td><font style="font-size:10pt" >T105-1</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >41.3</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >41.2</font></td>
+<td><font style="font-size:10pt" >14.5</font></td>
+<td><font style="font-size:10pt" >3.0</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >OM</font></td>
+<td><font style="font-size:10pt" >olivine gabbro</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >Herz, N., 1950, The Petrology of the Baltimore Gabbro and the Petrography of the Baltimore-Patapsco Aqueduct, PhD thesis, Johns Hopkins University</font></td>
+</tr>
+<tr id="row267"  class=cell_selected onclick="clickedOnColumn('267','267')">
+<td><font style="font-size:10pt" >267</font></td>
+<td><font style="font-size:10pt" >30</font></td>
+<td><font style="font-size:10pt" >Baltimore Gabbro Complex</font></td>
+<td><font style="font-size:10pt" >T127-1</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >0.6</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >63.5</font></td>
+<td><font style="font-size:10pt" >13.7</font></td>
+<td><font style="font-size:10pt" >22.2</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >OM</font></td>
+<td><font style="font-size:10pt" >lherzolite</font></td>
+<td><font style="font-size:10pt" >&nbsp;</font></td>
+<td><font style="font-size:10pt" >Herz, N., 1950, The Petrology of the Baltimore Gabbro and the Petrography of the Baltimore-Patapsco Aqueduct, PhD thesis, Johns Hopkins University</font></td>
+</tr>
+
+        </table>
+   </td></tr>
+</table>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>

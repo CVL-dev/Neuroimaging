@@ -1,0 +1,258 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="configuration" class="ptolemy.actor.gui.Configuration">
+	<doc>Configuration for Kepler</doc>
+
+	<!--
+		Help - About brings up the file specified by _about. The value of the
+		_about attribute should be the same as the url property in
+		welcomeWindow.xml FIXME: Unfortunately, the size of the about window
+		is set in ptolemy/actor/gui/TableauFrame.java and not read from
+		welcomeWindow.xml
+	-->
+	<property name="_about" class="ptolemy.kernel.attributes.FileAttribute"
+		value="$CLASSPATH/ptolemy/configs/kepler/intro.htm" />
+
+	<property name="_classesToRemove" class="ptolemy.data.expr.Parameter"
+		value="{&quot;ptolemy.codegen.kernel.StaticSchedulingCodeGenerator&quot;,&quot;ptolemy.codegen.c.kernel.CCodeGenerator&quot;}">
+		<doc>An array of Strings, where each element names a class to be
+			removed by the MoMLFilter.</doc>
+	</property>
+
+	<!-- Specify copyright, used by actor/gui/GenerateCopyrights.java -->
+	<property name="_applicationCopyright" class="ptolemy.kernel.util.StringAttribute"
+		value="ptolemy/configs/kepler/copyright.htm" />
+
+	<!--
+		Specify copyrights for actors, used by
+		actor/gui/GenerateCopyrights.java
+	-->
+	<property name="_applicationCopyrights" class="ptolemy.data.expr.Parameter"
+		value="{{actor=&quot;util.ImageJActor&quot;, copyright=&quot;imagej-copyright.htm&quot;}}" />
+
+	<!-- Specify file to be expanded, used by actor/gui/HTMLAbout.java -->
+	<property name="_applicationDemos" class="ptolemy.data.expr.Parameter"
+		value="{&quot;ptolemy/configs/kepler/intro.htm&quot;}" />
+
+	<!--
+		Specify icon, used by actor/gui/TableauFrame.java If you change the
+		icon, update SplashScreen as well.
+	-->
+	<property name="_applicationIcon" class="ptolemy.kernel.attributes.FileAttribute"
+		value="$CLASSPATH/ptolemy/configs/kepler/KeplerSmallIcon.gif" />
+
+	<!--
+		Specify an alternative action for the Drop action; class specified in
+		'value' should have a 'getMoml' method; called in the
+		ptolemy/vergil/basic/EditorDropTarget class
+	-->
+	<property name="_alternateGetMomlAction" value="org.kepler.moml.GetMomlFromLSID"
+		class="ptolemy.kernel.util.StringAttribute" />
+
+	<!--
+		Specify the default directory to use when File|Open or File|Save is
+		first called. If the directory is not an absolute path, it is assumed
+		to be relative to the Kepler directory. To use this setting, don't forget
+	        to uncomment it. -->
+	<!-- property name="_alternateDefaultOpenDirectory" value=""
+		class="ptolemy.kernel.util.StringAttribute"/-->
+
+	<!-- Custom menu bar for Kepler -->
+	<property name="_alternateTopPackClass" value="org.kepler.gui.KeplerMenuHandler"
+		class="ptolemy.kernel.util.StringAttribute" />
+
+	<!-- Custom actor menu items for kepler -->
+	<!--
+		<property name="_alternateActorInstanceController"
+		value="org.kepler.gui.KeplerActorInstanceController"
+		class="ptolemy.kernel.util.StringAttribute"/>
+	-->
+
+	<!-- Custom icon handler for kepler -->
+	<property name="_alternateXMLIcon" value="org.kepler.gui.KeplerXMLIcon"
+		class="ptolemy.kernel.util.StringAttribute" />
+
+	<!--
+		Specify name of this application, used by actor/gui/HTMLAbout.java
+	-->
+	<property name="_applicationName" class="ptolemy.kernel.util.StringAttribute"
+		value="Kepler" />
+
+	<!-- Create a blank Graph Editor at start time. -->
+	<!--  Used in VergilApplication.java-->
+	<property name="_applicationBlankPtolemyEffigyAtStartup"
+		class="ptolemy.data.expr.Parameter" value="true" />
+
+  <!-- Add support for exporting HTML. -->
+  <!-- Used in BasicGraphFrame.java -->
+  <property name="_exportHTMLActionClassName"
+            class="ptolemy.data.expr.StringParameter"
+            value="ptolemy.vergil.basic.export.html.ExportHTMLAction"/>
+            
+  <!-- Use the Kieler graph layout algorithms. -->
+  <!--  Used in BasicGraphFrame.java-->
+  <property name="_layoutGraphDialog"
+            class="ptolemy.data.expr.StringParameter"
+            value="ptolemy.vergil.basic.layout.KielerLayoutTableauFactory"/>
+
+  <!-- Use the Kieler graph layout algorithms. -->
+  <!--  Used in BasicGraphFrame.java-->
+  <property name="_layoutGraphAction"
+            class="ptolemy.data.expr.StringParameter"
+            value="ptolemy.vergil.basic.layout.kieler.KielerLayoutAction"/>
+
+	<!--
+		Specify the help file to open. This file is at
+		kepler/configs/ptolemy/configs/kepler/doc-index.htm
+	-->
+	<property name="_help" class="ptolemy.kernel.attributes.FileAttribute"
+		value="$CLASSPATH/ptolemy/configs/kepler/doc-index.htm" />
+
+	<!-- The directory of open models, each represented by an effigy. -->
+	<!-- Note that this begins empty. -->
+	<entity name="directory" class="ptolemy.actor.gui.ModelDirectory">
+	</entity>
+
+	<!-- Specify the name of the class that initializes the application. -->
+	<property name="_applicationInitializer" class="ptolemy.data.expr.StringParameter"
+		value="org.kepler.gui.KeplerInitializer" />
+
+
+	<!-- Specify the name of the class that specializes the doc system. -->
+	<property name="_docApplicationSpecializer" class="ptolemy.data.expr.StringParameter"
+		value="org.kepler.gui.KeplerDocApplicationSpecializer" />
+		
+	<!-- Specify the value of the docPreference for GetDocumentationAction. 
+	     Used in ptolemy.vergil.basic.BasicGraphFrame. -->
+	<property name="_getDocumentationActionDocPreference" class="ptolemy.data.expr.Parameter"
+		value="1" />
+
+	<!--
+		Specify the remote location of the documentation. Used in
+		ptolemy/vergil/actor/DocManager.java
+	-->
+	<property name="_remoteDocumentationURLBase" class="ptolemy.data.expr.StringParameter"
+		value="http://kepler-project.org/dist/nightly/javadoc/" />
+    
+	<!--
+		Specify weather multiple documentation windows are allowed at one time
+		Used in the ptolemy/vergil/basic/GetDocumentationAction class
+	-->
+	<property name="_multipleDocumentationAllowed" value="true"
+		class="ptolemy.kernel.util.StringAttribute" />
+
+	<!-- The list of effigy factories, which defines what goes in  -->
+	<!-- the New menu, and also what sorts of files can be opened. -->
+	<!-- These are searched in the order listed here, until one of -->
+	<!-- the effigies agrees to open the file. -->
+	<!-- Any of these effigies that return true to canCreateBlankEffigy -->
+	<!-- will appear in the New menu.  If there is a contained entity   -->
+	<!-- named "blank", then the effigy will initially refer to a clone -->
+	<!-- of that blank entity. -->
+	<entity name="effigyFactory" class="ptolemy.actor.gui.EffigyFactory">
+		<!--
+			MB changed this to point to our own version of
+			graphEffigyFactory.xml, as a fix for Bug #2150 - see:
+			http://bugzilla.ecoinformatics.org/show_bug.cgi?id=2150
+		-->
+		<input source="ptolemy/graphEffigyFactory.xml" />
+		<input source="ptolemy/configs/modalEffigyFactories.xml"/>
+		<input source="ptolemy/configs/pteraEffigyFactory.xml"/>
+		<input source="ptolemy/configs/gtEffigyFactory.xml"/>
+		<input source="ptolemy/configs/iaEffigyFactory.xml" />
+        <!-- Effigy factory for KARs must be before extendedEffigyFactories
+             since the latter includes TextEffigy, which succeeds in loading
+             KARs, but does not display them correctly.
+        -->
+        <entity name="KAR Editor" class="org.kepler.gui.kar.KAREffigy$Factory"/>
+		<input source="ptolemy/configs/extendedEffigyFactories.xml" />
+	</entity>
+
+	<!-- The list of tableau factories, which defines the visual   -->
+	<!-- editors that are available.  After an effigy is created   -->
+	<!-- for a model, these factories are tried in order until one -->
+	<!-- is willing to open the model. Each editor contains a list -->
+	<!-- of other editors that appear in the View menu.            -->
+	<property name="tableauFactory" class="ptolemy.actor.gui.TableauFactory">
+	        <input source="ptolemy/configs/gtTableauFactory.xml"/>
+	        <input source="ptolemy/configs/pteraTableauFactory.xml"/>
+		<input source="ptolemy/configs/iaTableauFactory.xml" />
+		<input source="ptolemy/configs/modalTableauFactory.xml"/>
+		<input source="ptolemy/configs/kepler/caseTableauFactory.xml"/>
+		<!--***controls the graph window***-->
+		<input source="ptolemy/configs/kepler/graphTableauFactory.xml" />
+		<!-- Add the code generator to the full configuration. -->
+		<!--
+			<property name="factory2"
+			class="ptolemy.actor.gui.PtolemyTableauFactory"> <property name="Code
+			Generator" class="ptolemy.copernicus.gui.GeneratorTableau$Factory"/>
+			</property>
+		-->
+		<input source="ptolemy/configs/extendedTableauFactories.xml" />
+	</property>
+	
+	<!-- enables scrollbars on the vergil canvas -->
+	<property name="canvasNavigationModifier"
+		class="org.kepler.gui.CanvasNavigationModifierFactory">
+		<property name="scrollbars" class="org.kepler.gui.ScrollBarModifier$Factory" />
+	</property>
+
+	<!--
+		enables the Kepler-specific right-click context menus for actors,
+		directors etc. (but not for the workflow canvas - see
+		"canvasContextMenuFactory"). To use old-style ptii right-click menus,
+		delete or comment-out this entry:
+	-->
+
+	<property name="contextMenuFactory"
+		class="ptolemy.vergil.basic.ContextMenuFactoryCreator">
+		<property name="contextMenus"
+			class="org.kepler.gui.KeplerContextMenuFactory$Factory" />
+	</property>
+
+	<!--
+		enables the Kepler-specific right-click context menus for the workflow
+		canvas (but not for actors, directors etc. - see
+		"contextMenuFactory"). To use old-style ptii right-click menus, delete
+		or comment-out this entry:
+	-->
+	<property name="canvasContextMenuFactory"
+		class="ptolemy.vergil.basic.ContextMenuFactoryCreator">
+		<property name="canvasContextMenus"
+			class="org.kepler.gui.KeplerSchematicContextMenuFactory$Factory" />
+	</property>
+
+	<!-- Configure the Actor Library by setting a custom LibraryBuilder -->
+	<entity name="actor library" class="ptolemy.kernel.CompositeEntity">
+
+		<entity name="Utilities" class="ptolemy.kernel.CompositeEntity">
+			<property name="LocalPreferences" class="ptolemy.actor.gui.PtolemyPreferences" />
+		</entity>
+
+		<!-- Marker so that tree view expands the library. -->
+		<property name="_libraryMarker" class="ptolemy.kernel.util.SingletonAttribute" />
+
+		<!--
+			This tells the system to use the alternative library builder. The
+			KARLibraryBuilder searches the Local Repository directories for kar
+			files and pulls any it finds into the cache.
+		-->
+		<property name="_alternateLibraryBuilder" value="org.kepler.moml.KARLibraryBuilder"
+			class="ptolemy.kernel.util.StringAttribute">
+		</property>
+	</entity>
+
+	<!--
+		this property excludes certain properties from the docviewer. the
+		syntax for the value is [exact|contains]:<name>. If exact is chosen,
+		only a param with the exact name will be excluded. if contains is
+		chosen, any param whose name contains the name string will be excluded
+	-->
+	<property name="docViewerExclude0" class="ptolemy.kernel.util.StringAttribute"
+		value="contains:semanticType" />
+
+	<property name="docViewerExclude1" class="ptolemy.kernel.util.StringAttribute"
+		value="exact:class" />
+  
+</entity>

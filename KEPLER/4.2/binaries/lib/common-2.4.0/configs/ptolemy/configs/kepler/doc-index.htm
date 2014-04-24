@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title></title>
+  <link href="keplerDefault.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<center>
+<h1> Kepler: A System for Scientific Workflows </h1>
+</center>
+<table>
+  <tbody>
+    <tr>
+      <td valign="top" width="220">
+      <center>
+        <a href="http://kepler-project.org#in_browser">
+           <img alt="Kepler Project" border="0" src="kepler-logo2.png">
+        </a>
+      </center>
+      <br>
+
+
+      </td>
+      <td valign="top">
+      <p>Kepler is a tool for creating and executing complex scientific and 
+      engineering analyses and models using scientific workflows to tie together 
+      diverse computational systems in a unified framework.</p>
+      
+      <p>Scientists in a variety of disciplines (e.g., biology, ecology, astronomy) 
+      need access to scientific data and flexible means for executing complex 
+      analyses on those data. Such analyses can be captured as 'scientific workflows'
+      in which the flow of data from one analytical step to another is captured
+      in a formal workflow language. The Kepler Project's 
+      (<a href="http://kepler-project.org#in_browser">http://kepler-project.org</a>) 
+      overall goal is to produce an open-source scientific workflow system that 
+      allows scientists to design scientific workflows and execute them efficiently 
+      using emerging Grid-based approaches to distributed computation.</p>
+      
+      <p>You can select from one of the example workflows below or create 
+      your own by going to the file menu and selecting new/graph editor. 
+      Please send any questions/comments to our user mailing list at
+      <a href="mailto:kepler-users@ecoinformatics.org">kepler-users@ecoinformatics.org</a>.</p>
+      
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Documentation</h1>
+<table>
+ <tbody>
+   <tr>
+     <th>Title</th><th>Local Copy</th><th>Remote Copy</th>
+   </tr>
+   <tr>
+     <td><strong>Kepler Getting Started Guide</strong></td>
+     <td><a href="getting-started-guide.pdf">Local</a></td>
+     <td><a href="https://code.kepler-project.org/code/kepler-docs/trunk/outreach/documentation/shipping/2.4/getting-started-guide.pdf">Remote</a></td>
+   </tr>
+   <tr>
+    <td><strong>Kepler User Guide</strong></td>
+    <td><a href="UserManual.pdf">Local</a></td>
+    <td><a href="https://code.kepler-project.org/code/kepler-docs/trunk/outreach/documentation/shipping/2.4/UserManual.pdf">Remote</a></td>
+  </tr>
+  <tr>
+    <td><strong>Kepler Actor Reference</strong></td>
+    <td><a href="ActorReference.pdf">Local</a></strong></td>
+    <td><a href="https://code.kepler-project.org/code/kepler-docs/trunk/outreach/documentation/shipping/2.0/ActorReference.pdf">Remote</a></td>
+  </tr>
+  <tr>
+    <td><strong>Guide to Ecological Niche Modeling (ENM)</strong></td>
+    <td><a href="GuideToENM.pdf">Local</a></td>
+    <td><a href="https://code.kepler-project.org/code/kepler-docs/trunk/outreach/documentation/shipping/2.0/GuideToENM.pdf">Remote</a></td>
+  </tr>
+ </tbody>
+</table>
+</ul>
+
+<p>Additional <a href="jar:file:!/ptolemy/configs/ptinyKepler/intro.htm">background 
+information on Ptolemy</a>, the system that Kepler extends and builds upon, 
+might be useful to some users.
+
+<h1>Workflow Demonstration Examples</h1>
+
+<table>
+ <tbody>
+   <tr>
+      <td> <b>Workflow</b> </td>
+      <td> <b>Description</b> </td>
+    </tr>
+
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/04-HelloWorld.xml">Hello World</a></td>
+      <td>The classic "Hello World" in Kepler.  This workflow simply prints a constant value to a display window.</td>
+    </tr>
+
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/01-SimpleAddition.xml">Simple Addition</a></td>
+      <td>Add two numbers and display the result.</td>
+    </tr>
+    
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/02-LotkaVolterraPredatorPrey.xml">Lotka Volterra Predator Prey</a></td>
+      <td>This model shows the solution to the classic Lotka-Volterra predator prey dynamics model. </td>
+    </tr>
+    
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/00-StatisticalSummary.xml">Statistical Summary</a></td>
+      <td>This is a simple example of a scientific workflow that calculates 
+      several statistical summary parameters. 
+	    <i>Requires that the R application be installed</i>
+      </td>
+    </tr>
+    
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/03-ImageDisplay.xml">Image Display</a></td>
+      <td>This workflow reads an image file in JPEG format from a local file on disk, converts it to PNG format, and displays the result.</td>
+    </tr>
+    
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/05-LinearRegression.xml">Linear Regression</a></td>
+      <td>This is an example of how one can carry out a simple linear regression analysis using R and add the regression line to a scatter plot.
+      	<i>Requires that the R application be installed</i>
+      </td>
+    </tr>
+   
+    <!-- Commented out since the web service is not available.
+    <tr>
+      ../../../../demos/getting-started/06-WebServicesAndDataTransformation.xml
+      <td>Web Services and Data Transformation</td>
+      <td>This workflow demonstrates the use of the remote genomics data service to retrieve a genetic sequence.</td>
+    </tr>
+    -->
+    
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/07-CommandLine_1.xml">Command Line 1</a></td>
+      <td>This is an example of how to use the 'External Execution' actor, which executes
+          command line applications.</td>
+    </tr>
+   
+    <!--
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/08-CommandLine_2.xml">Command Line 2</a></td>
+      <td>Example of using the 'External Execution' actor to execute R.
+      	<i>Requires that the R application be installed</i>
+      </td>
+    </tr>
+    -->
+
+    <tr>
+      <td><a href="$CLASSPATH/getting-started/09-XMLDataTransformation.xml">XML Data Transformation</a></td>
+      <td>This workflow demonstrates the use of data tranformation actors to process the XML document
+          of a genetic sequence.</td>
+    </tr>
+
+
+  </tbody>
+</table>
+    
+<p>Additional demonstration workflows may be found in the <b>Demos</b> folder in the Components tree.</p>
+
+<h1>Kepler Project Background</h1>
+<p><a href="http://kepler-project.org#in_browser">Kepler</a> is an open 
+collaboration with many contributors from diverse domains of science and 
+engineering (see Contributors list below). Kepler was founded by researchers at the 
+<a href="http://www.nceas.ucsb.edu#in_browser">National Center for Ecological 
+Analysis and Synthesis (NCEAS)<a> at University of California Santa Barbara, the 
+<a href="http://www.sdsc.edu#in_browser">San Diego Supercomputer Center (SDSC)</a>
+at University of California San Diego, and the 
+<a href="http://ucdavis.edu#in_browser">University of California Davis </a> as 
+part of the <a href="http://seek.ecoinformatics.org#in_browser">SEEK</a> and 
+<a href="http://sdm.lbl.gov/sdmcenter/#in_browser">SDM</a> projects. Kepler 
+extends the <a href="http://ptolemy.eecs.berkeley.edu#in_browser">Ptolemy II</a> 
+system developed by researchers at the University of California Berkeley.</p>
+      <center>
+      <table>
+        <tbody>
+          <tr>
+          <td> 
+	      <a href="http://seek.ecoinformatics.org#in_browser">
+	         <img alt="Science Environment for Ecological Knowledge"
+		      border="0"src="seeklogo.png"
+                      height="50" width="110">
+              </a>
+            </td>
+            <td> 
+              <a href="http://sdm.lbl.gov/sdmcenter#in_browser">
+                 <img alt="SDM Center" border="0" src="sdmcenter.gif"
+	              height="60" width="105">
+              </a>
+            </td>
+            <td> 
+	       <a href="http://ptolemy.eecs.berkeley.edu#in_browser">
+	          <img alt="Ptolemy Project" border="0" src="ptolemy-100.jpg" 
+		       height="40" width="100">
+	       </a>	       
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </center>
+      
+<h1>Contributors</h1>
+The following people contributed to the Kepler project by helping to design, 
+code, document, or otherwise improve the system.  We welcome 
+participation of all kinds (see the 
+<a href="http://kepler-project.org#in_browser">Kepler web site</a> for details).
+
+<table><tbody>
+<tr><th>Name</th><th>Username</th><th>Institution</th><th>First commit</th></tr>
+<tr><td>Matthew Jones</td><td>jones</td><td>NCEAS, UCSB</td><td>2003-08-08</td></tr>
+<tr><td>Chad Berkley </td><td>berkley</td><td>NCEAS, UCSB</td><td>2003-08-08</td></tr>
+<tr><td>Ilkay Altintas</td><td>altintas</td><td>SDSC, UCSD</td><td>2003-08-08</td></tr>
+<tr><td>Efrat Frank</td><td>jaeger</td><td>SDSC, UCSD</td><td>2003-09-29</td></tr>
+<tr><td>Bertram Ludaescher</td><td>ludaesch</td><td>UC Davis</td><td>2004-02-06</td></tr>
+<tr><td>Jing Tao</td><td>tao</td><td>NCEAS, UCSB</td><td>2004-03-22</td></tr>
+<tr><td>Steve Mock</td><td>mock</td><td>SDSC, UCSD</td><td>2004-03-23</td></tr>
+<tr><td>Zhengang Cheng</td><td>cheng</td><td>NCSU</td><td>2004-04-06</td></tr>
+<tr><td>Xiaowen Xin</td><td>xin</td><td>LLNL</td><td>2004-04-09</td></tr>
+<tr><td>Dan Higgins</td><td>higgins</td><td>NCEAS, UCSB</td><td>2004-06-18</td></tr>
+<tr><td>Yang Zhao</td><td>zhao</td><td>UC Berkeley</td><td>2004-07-06</td></tr>
+<tr><td>Christopher Brooks</td><td>brooks</td><td>UC Berkeley</td><td>2004-07-22</td></tr>
+<tr><td>Tobin Fricke</td><td>fricke</td><td>SDSC, UCSD</td><td>2004-07-26</td></tr>
+<tr><td>Rod Spears</td><td>rspears</td><td>U Kansas</td><td>2004-09-20</td></tr>
+<tr><td>Werner Krebs</td><td>krebs</td><td>SDSC, UCSD</td><td>2004-10-04</td></tr>
+<tr><td>Shawn Bowers</td><td>bowers</td><td>UC Davis</td><td>2004-10-26</td></tr>
+<tr><td>Wibke Sudholt</td><td>sudholt</td><td>SDSC, UCSD</td><td>2005-03-16</td></tr>
+<tr><td>Timothy McPhillips</td><td>mcphillips</td><td>UC Davis</td><td>2005-05-27</td></tr>
+<tr><td>Bing Zhu</td><td>zhu</td><td>SDSC, UCSD</td><td>2005-06-03</td></tr>
+<tr><td>Jagan Kommineni</td><td>kommineni</td><td>Monash U, Australia</td><td>2005-06-15</td></tr>
+<tr><td>Nandita Mangal</td><td>mangal</td><td>SDSC, UCSD</td><td>2005-07-24</td></tr>
+<tr><td>John Harris</td><td>harris</td><td>NCEAS, UCSB</td><td>2005-08-26</td></tr>
+<tr><td>Kevin Ruland</td><td>ruland</td><td>U Kansas</td><td>2005-09-13</td></tr>
+<tr><td>Matthew Brooke</td><td>brooke</td><td>NCEAS, UCSB</td><td>2005-09-16</td></tr>
+<tr><td>Jenny Wang</td><td>jwang</td><td>SDSC, UCSD</td><td>2005-10-19</td></tr>
+<tr><td>Oscar Barney</td><td>barney</td><td>SDSC, UCSD</td><td>2005-10-24</td></tr>
+<tr><td>Zhije Guan</td><td>guan</td><td>SDSC, UCSD</td><td>2006-02-07</td></tr>
+<tr><td>Laura Downey</td><td>downey</td><td>LTER, UNM</td><td>2006-02-14</td></tr>
+<tr><td>Norbert Podhorszki</td><td>podhorsz</td><td>UC Davis</td><td>2006-02-21</td></tr>
+<tr><td>Tristan King</td><td>king</td><td>JCU, Australia</td><td>2006-04-20</td></tr>
+<tr><td>Josh Madin</td><td>madin</td><td>NCEAS, UCSB</td><td>2006-05-18</td></tr>
+<tr><td>Edward Lee</td><td>lee</td><td>UC Berkeley</td><td>2006-09-22</td></tr>
+<tr><td>Kirsten Menger-Anderson</td><td>kanderson</td><td></td><td>2007-03-20</td></tr>
+<tr><td>Daniel Crawl</td><td>crawl</td><td>SDSC, UCSD</td><td>2007-04-18</td></tr>
+<tr><td>Derik Barseghian</td><td>barseghian</td><td>NCEAS, UCSB</td><td>2007-05-04</td></tr>
+<tr><td>Lucas Gilbert</td><td>gilbert</td><td>SDSC, UCSD</td><td>2007-05-25</td></tr>
+<tr><td>Nathan Potter</td><td>potter</td><td>OPenDAP</td><td>2007-08-09</td></tr>
+<tr><td>Ben Leinfelder</td><td>leinfelder</td><td>NCEAS, UCSB</td><td>2007-09-24</td></tr>
+<tr><td>Carlos Rueda</td><td>rueda</td><td>UC Davis</td><td>2007-09-25</td></tr>
+<tr><td>Jim Regetz</td><td>regetz</td><td>NCEAS, UCSB</td><td>2007-10-12</td></tr>
+<tr><td>Jianwu Wang</td><td>jianwu</td><td>SDSC, UCSD</td><td>2008-03-10</td></tr>
+<tr><td>Sean Riddle</td><td>riddle</td><td>UC Davis</td><td>2008-04-09</td></tr>
+<tr><td>Aaron Schultz</td><td>aschultz</td><td>NCEAS, UCSB</td><td>2008-04-17</td></tr>
+<tr><td>David Welker</td><td>welker</td><td>UC Davis</td><td>2008-07-16</td></tr>
+<tr><td>Mark Schildhauer</td><td>schild</td><td>NCEAS, UCSB</td><td>2008-08-26</td></tr>
+<tr><td>Debi Staggs</td><td>staggs</td><td>NCEAS, UCSB</td><td>2008-09-03</td></tr>
+<tr><td>Sven Koehler</td><td>koehler</td><td>UC Davis</td><td>2008-10-08</td></tr>
+<tr><td>Faraaz Sareshwala</td><td>fsaresh</td><td>UC Davis</td><td>2008-10-24
+<tr><td>Daniel Zinn</td><td>dzinn</td><td>UC Davis</td><td>2008-11-09</td></tr>
+<tr><td>Madhusudan Gujral</td><td>madhu</td><td>SDSC, UCSD</td><td>2009-01-20</td></tr>
+<tr><td>Chandrika Sivaramakrishnan</td><td>chandrika</td><td>UC Davis</td><td>2009-03-05</td></tr>
+<tr><td>Lei Dou</td><td>dou</td><td>UC Davis</td><td>2009-07-23</td></tr>
+<tr><td>Merve Ildeniz</td><td>ildeniz</td><td>SDSC, UCSD</td><td>2009-08-05</td></tr>
+<tr><td>Gongjing Cao</td><td>gongjing</td><td>UC Davis</td><td>2010-04-28</td></tr>
+<tr><td>Manish Anand</td><td>manish</td><td>SDSC, UCSD</td><td>2010-12-17</td></tr>
+<tr><td>Marcin Plociennik</td><td>plociennik</td><td>Poznan Supercomputing and Networking Center</td><td>2011-08-05</td></tr>
+<tr><td>Tomasz Zok</td><td>zok</td><td>Poznan Supercomputing and Networking Center</td><td>2011-08-05</td></tr>
+<tr><td>Michal Owsiak</td><td>michalo</td><td>Poznan Supercomputing and Networking Center</td><td>2011-08-05</td></tr>
+
+</tbody></table>
+
+<h1>Copyright and License</h1>
+This software is copyrighted by The Regents of the University of
+California (and others) and is released under this open 
+source <a href="copyright.htm">license</a>.
+
+<h1>Acknowledgements and Funding</h1>
+
+This material is based upon work supported by the National Science
+Foundation under awards 0225676 for SEEK, 0225673 (AWSFL008-DS3)
+for GEON, 0619060 for REAP, 0722079 for Kepler/CORE, 1062565 for
+bioKepler, and 0941692 for DISCOSci; the Gordon and Betty Moore
+Foundation award to Calit2 at UCSD for CAMERA; by the Department
+of Energy under Contract No. DE-FC02-01ER25486 for SciDAC/SDM; and
+by DARPA under Contract No. F33615-00-C-1703 for Ptolemy.
+
+<p class="legal">This work was conducted with logistical support from the 
+National Center for Ecological Analysis and Synthesis, a Center funded by NSF 
+(Grant #DEB-0553768), the University of California, Santa Barbara, 
+and the State of California.
+</p>
+
+<p class="legal">Ptolemy receives support in part by the Center for
+Hybrid and Embedded Software Systems (CHESS) at UC Berkeley, which
+receives support from the National Science Foundation (NSF awards
+#0720882 (CSR-EHS: PRET), #1035672 (CPS: Medium: Ptides), and
+#0931843 (CPS: Large: ActionWebs)), the Naval Research Laboratory
+(#NOOI73-12-1-G015), the Multiscale Systems Center (MuSyC), one of
+six research centers funded under the Focus Center Research Program,
+a Semiconductor Research Corporation program, and the following
+companies: Bosch, National Instruments, and Toyota.  In the past,
+CHESS has been sponsored by Agilent, DGIST, General Motors, Hewlett
+Packard, Infineon, and Microsoft.</p>
+
+<p class="legal">Ptolemy is also supported in part by the TerraSwarm
+Research Center, one of six centers supported by the STARnet phase
+of the Focus Center Research Program (FCRP) a Semiconductor Research
+Corporation program sponsored by MARCO and DARPA.</p>
+
+<p class="legal">Ptolemy is also supported in part by the Naval
+Research Laboratory project, "Software Producibility for System of
+Systems," and was accomplished under Cooperative Agreement Number
+NOOI73-12-1-G015. </p>
+
+<p class="legal">Any opinions, findings and conclusions or recomendations 
+expressed in this material are those of the author(s) and do not necessarily 
+reflect the views of the National Science Foundation (NSF).</p>
+
+<p>  </p>
+
+</body>
+</html>

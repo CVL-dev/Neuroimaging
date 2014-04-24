@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<entity name="DDF Boolean Select" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId"  value="urn:lsid:kepler-project.org:actor:526:1" class="org.kepler.moml.NamedObjId"/>
+    <property name="class" value="ptolemy.domains.ddf.lib.DDFBooleanSelect" class="ptolemy.kernel.util.StringAttribute">
+        <property name="id" value="urn:lsid:kepler-project.org:class:526:1" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+        <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+        <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Gang Zhou</configure></property>
+        <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+        <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p> A type polymorphic select with boolean valued control for use in
+ the DDF domain. In the first iteration, an input token at the
+ <i>control</i> port is read and its value is noted. In the second
+ iteration, if the <i>control</i> input read from the previous
+ iteration is true, then an input token at the <i>trueInput</i> port
+ is read and sent to the output. Likewise with a false <i>control</i>
+ input and the <i>falseInput</i> port. It alternates between these
+ two kinds of iterations until stopped. The <i>control</i> port must
+ receive Boolean Tokens. The <i>trueInput</i> and <i>falseInput</i>
+ ports may receive Tokens of any type. Because tokens are immutable,
+ the same Token is sent to the output, rather than a copy.</p>
+ <p>
+ Note this actor sends an output token every two iterations. Contrast
+ this with BooleanSelect which sends an output token every iteration.
+ </p>
+        </configure></property>
+        <property name="port:trueInput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Input for tokens on the true path. The port type can be any type.</configure></property>
+        <property name="port:falseInput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Input for tokens on the false path. The port type can be any type.</configure></property>
+        <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port.  The type is at least the type of <i>trueInput</i> and <i>falseInput</i>. </configure></property>
+        <property name="port:control" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Input that selects one of the other input ports. The type is boolean.</configure></property>
+    </property>
+    <property name="trueInput" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="falseInput" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="output" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+    <property name="control" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+        <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH"/>
+    </property>
+    <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#BooleanControlActor" class="org.kepler.sms.SemanticType"/>
+    <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#BooleanControl" class="org.kepler.sms.SemanticType"/>
+</entity>

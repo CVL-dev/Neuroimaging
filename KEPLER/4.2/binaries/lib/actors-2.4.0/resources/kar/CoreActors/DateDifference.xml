@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<entity name="DateDifference" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:542:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="org.kepler.date.DateDifference" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:542:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:date1" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="date" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="kepler:date2" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="date" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="kepler:granularity" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="long" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Time">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Daniel Crawl</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Calculate the (floor of the) difference between two dates in minutes, &#10;   hours, days, months, etc.&#10;   &lt;p&gt;&#10;   &lt;b&gt;NOTE:&lt;/b&gt; this actor may take a long time to execute if the&#10;   granularity is small, e.g., milliseconds or seconds, and the amount&#10;   of time is large.&#10;   &lt;/p&gt;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The difference between the dates.</configure></property>
+<property name="port:date2" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Input date.</configure></property>
+<property name="port:date1" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Input date.</configure></property>
+<property name="prop:granularity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specifies the granularity of difference between dates, e.g.,   hours, days, months, etc.</configure></property>
+</property></entity>

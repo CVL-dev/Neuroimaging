@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="Add or Subtract" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:69:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>yuhong xiong and Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The AddOrSubtract actor reads values via its two input ports (plus and minus), performs an add and/or subtract operation, and outputs the result.</p>
+
+<p>The input ports are multiports, meaning that they can accept multiple inputs. Any values received via the plus port will be added; any values received via the minus port will be subtracted. Either port can be left unconnected. Leave the minus port unconnected to create a simple adder, for example. </p>
+
+<p>Both of the input ports are polymorphic, accepting data of multiple types. The actor will automatically resolve the input type to the least upper bound of the presented values. For example, if the plus input port receives a Boolean value on one input channel and an integer on another, the resolved type will be a string, permitting the two inputs to be concatenated as strings. Note that strings cannot be subtracted. If the actor resolves an input type into a type that cannot be subtracted, it will generate an error.</p>
+
+<p>The actor outputs the sum or difference and derives an output type based on the input values.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the sum or difference of the inputs. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:minus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be subtracted. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:plus" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be added. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.AddSubtract" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:944:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="plus" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="minus" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArithmeticMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ArithmeticOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

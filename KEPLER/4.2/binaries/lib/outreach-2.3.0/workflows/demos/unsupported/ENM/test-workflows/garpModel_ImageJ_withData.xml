@@ -1,0 +1,527 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="garpModel_ImageJ_withData" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.1.devel">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={11, 22, 1102, 810}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[761, 661]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{353.5000000000001, 198.5000000000001}">
+    </property>
+    <property name="CELLSET" class="ptolemy.data.expr.Parameter" value="property(&quot;KEPLER&quot;)+&quot;/CellSet.xml&quot;">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.218.1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+          <svg>
+            <text style="font-size:14; font-family:SansSerif; fill:blue" x="20" y="20">-P-</text>
+          </svg>
+        </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[185.0, -55.0]">
+        </property>
+    </property>
+    <property name="RULESET" class="ptolemy.data.expr.Parameter" value="property(&quot;KEPLER&quot;)+&quot;/RuleSet.xml&quot;">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.218.1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+          <svg>
+            <text style="font-size:14; font-family:SansSerif; fill:blue" x="20" y="20">-P-</text>
+          </svg>
+        </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[185.0, -30.0]">
+        </property>
+    </property>
+    <property name="ASCIIOUT" class="ptolemy.data.expr.Parameter" value="property(&quot;KEPLER&quot;)+&quot;/garpascii.txt&quot;">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.218.1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+          <svg>
+            <text style="font-size:14; font-family:SansSerif; fill:blue" x="20" y="20">-P-</text>
+          </svg>
+        </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[470.0, -95.0]">
+        </property>
+    </property>
+    <property name="BMPOUT" class="ptolemy.data.expr.Parameter" value="property(&quot;KEPLER&quot;)+&quot;/garpoutput.bmp&quot;">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.218.1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+          <svg>
+            <text style="font-size:14; font-family:SansSerif; fill:blue" x="20" y="20">-P-</text>
+          </svg>
+        </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[470.0, -65.0]">
+        </property>
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+        </property>
+        <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+        </property>
+        <property name="fontFamily" class="ptolemy.data.expr.StringParameter" value="SansSerif">
+        </property>
+        <property name="bold" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="italic" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="This ENM workflow models the distribution of a species (mephitis, a skunk, &#10;in the sample data) based on input occurrence data and environmental &#10;layers. Occurrence data are acquired from museum collections using the &#10;Distributed Generic Information Retrieval (DiGIR) protocol, an open source &#10;client/server protocol for retrieving distributed information (http://digir.net).&#10;The model is displayed using an open source image processing package called &#10;ImageJ. The image is automatically scaled to fit on the screen.&#10; &#10;For more information, double-click the Documentation button, or right-click &#10;the Workflow canvas and select &quot;Documentation&quot; from the drop-down menu.&#10;&#10;&#10;Dan Higgins -- NCEAS&#10;May 2006">
+            <property name="_style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="20">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="80">
+                </property>
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 370.0]">
+        </property>
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="vectorizationFactor" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="allowDisconnectedGraphs" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[75.0, -70.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The SDF Director is often used to oversee fairly simple, sequential workflows in which the director can determine the order of actor invocation from the workflow. Types of workflows that would run well under an SDF Director include processing and reformatting tabular data, converting one data type to another, and reading and plotting a series of data points. A workflow in which an image is read, processed (rotated, scaled, clipped, filtered, etc.), and then displayed, is also an example of a sequential workflow that requires a director simply to ensure that each actor fires in the proper order (i.e., that each actor executes only after it receives its required inputs).&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director is very efficient and will not tax system resources with overhead. However, this efficiency requires that certain conditions be met, namely that the data consumption and production rate of each actor in an SDF workflow be constant and declared. If an actor reads one piece of data and calculates and outputs a single result, it must always read and output a single token of data. This data rate cannot change during workflow execution and, in general, workflows that require dynamic scheduling and/or flow control cannot use this director. Additionally, the SDF Director has no understanding of passing time (at least by default), and actors that depend on a notion of time may not work as expected. For example, a TimedPlotter actor will plot all values at time zero when used in SDF. &lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the SDF Director requires that all actors in its workflow be connected. Otherwise, the director cannot account for concurrency between disconnected workflow parts. Usually, a PN Director should be used for workflows that contain disconnected actors; however, the SDF Director's allowDisconnectedGraphs parameter may also be set to true. The SDF Director will then schedule each disconnected &quot;island&quot; independently. The director cannot infer the sequential relationship between disconnected actors (i.e., nothing forces the director to finish executing all actors on one island before firing actors on another). However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF model indicate an error.&lt;/p&gt;&#10; &#10;&lt;p&gt;Because SDF Directors schedule actors to fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause &quot;deadlock&quot; errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a SampleDelay actor to generate and inject an initial input value into the workflow.&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director determines the order in which actors execute and how many times each actor needs to be fired to complete a single iteration of the workflow. This schedule is calculated BEFORE the director begins to iterate the workflow. Because the SDF Director calculates a schedule in advance, it is quite efficient. However, SDF workflows must be static. In other words, the same number of tokens must be consumed/produced at every iteration of the workflow. Workflows that require dynamic control structures, such as a BooleanSwitch actor that sends output on one of two ports depending on the value of a 'control', cannot be used with an SDF Director because the number of tokens on each output can change for each execution.&lt;/p&gt;&#10;&#10;&lt;p&gt;Unless otherwise specified, the SDF Director assumes that each actor consumes and produces exactly one token per channel on each firing. Actors that do not follow the one-token-per-channel firing convention (e.g., Repeat or Ramp) must declare the number of tokens they produce or consume via the appropriate parameters. &lt;/p&gt;&#10;&#10;&lt;p&gt;The number of times a workflow is iterated is controlled by the director's iterations parameter. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. &lt;/p&gt;&#10;&#10;&lt;p&gt;The amount of data processed by an SDF workflow is a function of both the number of times the workflow iterates and the value of the director's vectorizationFactor parameter. The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. &lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director has several advanced parameters that are generally only relevant when an SDF workflow contains composite components. In most cases the period, timeResolution, synchronizeToRealTime, allowRateChanges, timeResolution, and constrainBufferSizes parameters can be left at their default values.&lt;/p&gt;&#10;&#10;&lt;p&gt;For more information about the SDF Director, see the Ptolemy documentation (http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf).&lt;/p&gt;&#10;&#10;</configure></property>
+<property name="prop:allowDisconnectedGraphs" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to allow disconnected actors in the workflow (by default, all actors are required to be connected). If disconnected actors are permitted, the SDF Director will schedule each disconnected 'island' independently. Nothing &quot;forces&quot; the director to finish executing all actors on one island before firing actors on another. However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF workflow indicate an error.</configure></property>
+<property name="prop:allowRateChanges" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether dynamic rate changes are permitted or not. By default, rate changes are not permitted, and the director will perform a check to disallow such workflows. If the parameter is selected, then workflows that require rate parameters to be modified during execution are valid, and the SDF Director will dynamically compute a new schedule at runtime. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:constrainBufferSizes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether buffer sizes are fixed. By default, buffers are fixed, and attempts to write to the buffer that cause the buffer to exceed its scheduled size result in an error. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time precision used by this director. All time values are rounded to the nearest multiple of this number. The value is a double that defaults to &quot;1E-10&quot; (which is 10-10). This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:iterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify the number of times a workflow is iterated. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </configure></property>
+<property name="prop:vectorizationFactor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the execution should synchronize to real time or not. By default, the director does not synchronize to real time. If synchronize is selected, the director will only process the workflow when elapsed real time matches the product of the period parameter and the iteration count. Note: if the period parameter has a value of 0.0 (the default), then selecting this parameter has no effect. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:period" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time period of each iteration. The value is a double that defaults to 0.0, which means that the director does not increment workflow time. If the value greater than 0.0, the actor will increment workflow time each time it fires. This is an advanced parameter that can usually be left at its default value. </configure></property>
+</property>    </property>
+    <property name="ROOTPATH" class="ptolemy.data.expr.Parameter" value="property(&quot;KEPLER&quot;)">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.218.1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+          <svg>
+            <text style="font-size:14; font-family:SansSerif; fill:blue" x="20" y="20">-P-</text>
+          </svg>
+        </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[185.0, -80.0]">
+        </property>
+    </property>
+    <property name="DocViewer" class="ptolemy.kernel.util.SingletonAttribute">
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The DocViewer attribute renders a clickable documentation icon on the Workflow canvas. Clicking the icon opens the workflow documentation window.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:467:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.kernel.util.SingletonAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1184:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="viewer" class="ptolemy.vergil.basic.DocViewerFactory">
+        </property>
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{-5.0, 380.0}">
+        </property>
+    </property>
+    <property name="Annotation2" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+        </property>
+        <property name="_hideAllParameters" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="12">
+        </property>
+        <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+        </property>
+        <property name="fontFamily" class="ptolemy.data.expr.StringParameter" value="SansSerif">
+        </property>
+        <property name="bold" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="italic" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="NOTE: These parameters define where workflow output files are written.&#10;The expression 'property(&quot;KEPLER&quot;)' evaluates to the top level &#10;Kepler directory. Using an expression of this type allows the path to &#10;be evaluated properly no matter where the Kepler system is installed &#10;in the file system.">
+            <property name="_style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="20">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="80">
+                </property>
+            </property>
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Use the Annotation attribute to annotate a workflow. Double-click the attribute to customize the content, font size, color, and basic formatting (bold and italics).</configure></property>
+<property name="prop:fontFamily" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font face. Select a font from the drop-down menu. The default is &quot;SansSerif&quot;.</configure></property>
+<property name="prop:italic" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to indicate that the type should be italics. By default, type will not be italicized.</configure></property>
+<property name="prop:bold" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to indicate that the type should be bold. By default, type will not be bold.</configure></property>
+<property name="prop:textColor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font color. Specify a string representing an array of four elements: red, green, blue, and alpha, where alpha is transparency. The default is an opaque black, {0.0, 0.0, 0.0, 1.0}</configure></property>
+<property name="prop:textSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font size. Select an integer from the drop-down menu or specify a new size by typing it directly into the value field.  The default is 14.</configure></property>
+<property name="prop:text" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The text of the annotation.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:436:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[465.0, -45.0]">
+        </property>
+    </property>
+    <property name="DocAttribute" class="ptolemy.vergil.basic.DocAttribute">
+        <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Dan Higgins - NCEAS">
+        </property>
+        <property name="since" class="ptolemy.kernel.util.StringAttribute" value="May 2006">
+        </property>
+        <property name="CELLSET (parameter)" class="ptolemy.data.expr.StringParameter" value="The file name for the output file generated by the GarpPresampleLayers actor. This file is passed to the GARPAlgorithm actor, which creates a rule set for predicting species occurrences. ">
+        </property>
+        <property name="RULESET (parameter)" class="ptolemy.data.expr.StringParameter" value="The file name and path for the ruleset created by the GARP algorithm, which is used to generate each predicted species' distribution.">
+        </property>
+        <property name="ASCIIOUT (parameter)" class="ptolemy.data.expr.StringParameter" value="The file name and path for the ASCII grid version of the predicted species' distribution created by the GarpPrediction actor. ">
+        </property>
+        <property name="BMPOUT (parameter)" class="ptolemy.data.expr.StringParameter" value="The file name and path for the bitmap version of the predicted species' distribution created by the GarpPrediction actor. ">
+        </property>
+        <property name="ROOTPATH (parameter)" class="ptolemy.data.expr.StringParameter" value="The root path of the workflow data. The expression 'property(&quot;KEPLER&quot;)' evaluates to the top level  Kepler directory. Using an expression of this type allows the path to  be evaluated properly no matter where the Kepler system is installed  in the file system.">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:ecoinformatics.org:kepler:233:1">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:1348:25:1">
+    </property>
+    <entity name="EnvLayerSet" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="property(&quot;outreach.workflowdir&quot;)+&quot;data/garp/IPCC.dxl&quot;">
+        </property>
+        <doc>Create a constant sequence</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="160.0, 55.0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="GarpPresampleLayers" class="org.ecoinformatics.seek.garp.GarpPresampleLayers">
+        <property name="cellSetFileNameParameter" class="ptolemy.data.expr.FileParameter" value="$CELLSET">
+        </property>
+        <doc>Presample layer files for use with the GarpAlgorithm Actor.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="455.0, 65.0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkeley, Dan Higgins, NCEAS, UC Santa Barbara</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GARPPresampleLayers actor reads environmental and species location data, samples the data, and outputs the information in a format that other GARP actors can process.&lt;/p&gt;&#10;&#10;&lt;p&gt;Environmental information is input in the form of &quot;environmental layers&quot;, which contain environmental information (e.g., temperature or precipitation) and spatial data. Multiple layers are summarized in a single xml file (*.dxl), and passed to the actor.&lt;/p&gt;&#10;&#10;&lt;p&gt;Location data consists of a file that contains a list of known points where a species has been found. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character. Typically the (x,y) is (longitude, latitude).&lt;/p&gt;&#10;&#10;&lt;p&gt;The output file is typically passed to the GARPAlgorithm actor, which can generate a predictive rule set from the information. The rule set can be used to predict other locations where the species might be found.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor requires libgarp.so (on linux systems) or garp.dll and libexpat.dll (on Windows systems). Currently, the actor does not work on MacOSX systems.&lt;/p&gt;&#10;&#10;&lt;p&gt;GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.&lt;/p&gt;&#10;</configure></property>
+<property name="port:cellSetFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a file name for the output file. The output file is usually passed to a GARPAlgorithm actor, which can generate a predictive rule set from the information. This information can also be specified with the cellSetFileNameParameter. </configure></property>
+<property name="port:dataPointFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the species location data. Location data consists of a file that contains a list of known points where a species has been found. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character. Typically the (x,y) is (longitude, latitude). This information can also be specified with the dataPointFileNameParameter.</configure></property>
+<property name="port:layersetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the environmental data. Environmental data is input in the form of environmental layers containing environmental information (e.g., temperature or precipitation) and spatial data. Multiple layers are summarized in a single xml file (*.dxl), and passed to the actor. This information can also be specified with the layersetFilenameParameter.</configure></property>
+<property name="port:cellSetFileNameOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the output file. The port is only fired after the output data has been calculated, and is thus used as a trigger for the next step in the GARP calculation.</configure></property>
+<property name="prop:cellSetFileNameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the generated output file. This file is usually passed to the GARPAlgorithm actor, which creates a rule set for predicting species occurrences. This information can also be specified via the cellSetFileName port. </configure></property>
+<property name="prop:dataPointFileNameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the species location data. Location data consists of a list of known points where a species has been found. This file is a text file, consisting of one location per line. Each line contains a point location (x,y) with the numeric values of x and y separated by a 'tab' character. Typically the (x,y) is (longitude, latitude). This information can also be specified via the dataPointFileName port.</configure></property>
+<property name="prop:layersetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the environmental data. Environmental data is input in the form of environmental layers containing environmental information (e.g., temperature or precipitation) and spatial data. Multiple layers are summarized in a single xml file (*.dxl), and passed to the actor. This information can also be specified via the layersetFilename port.</configure></property>
+</property>    </entity>
+    <entity name="GarpAlgorithm" class="org.ecoinformatics.seek.garp.GarpAlgorithm">
+        <property name="ruleSetFilenameParameter" class="ptolemy.data.expr.FileParameter" value="$RULESET">
+        </property>
+        <doc>Run the GARP algorithm</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="455.0, 145.0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>unknown</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GARPAlgorithm actor reads a set of spatial locations and associated environmental data, and uses a genetic algorithm to create a &quot;rule set&quot; that can be used to make predictions about the presence or absence of a species at various locations.&lt;/p&gt;&#10;&#10;&lt;p&gt;The input data is passed to the actor by the GARPPresampleLayers actor, which generates the environmental data (or &quot;layers&quot;) in the appropriate format. Output is usually passed to the GARPPrediction actor, which makes the environmental predictions based on the generated rule set.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor requires libgarp.so (on linux systems) or garp.dll and libexpat.dll (on Windows systems). Currently, the actor does not work on MacOSX systems.&lt;/p&gt;&#10;&#10;&lt;p&gt;GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.&lt;/p&gt;&#10;</configure></property>
+<property name="port:ruleSetFilenameOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the generated rule set file. The port is only fired after the rule set has been created, and is usually used as a trigger.</configure></property>
+<property name="port:cellSetFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name of the data file containing the spatial and environmental information. This input is usually the output of the GarpPresampleLayers actor.</configure></property>
+<property name="port:ruleSetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name for the output rule set. The file name can also be specified with the cellSetFileNameParameter parameter.</configure></property>
+<property name="prop:ruleSetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the output rule set. The file name can also be specified via the cellSetFileName port.</configure></property>
+<property name="prop:cellSetFileNameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the input data file containing spatial and environmental information. This input is usually the output of the GarpPresampleLayers actor.</configure></property>
+</property>    </entity>
+    <entity name="GarpPrediction" class="org.ecoinformatics.seek.garp.GarpPrediction">
+        <property name="outputASCIIParameter" class="ptolemy.data.expr.FileParameter" value="$ASCIIOUT">
+        </property>
+        <property name="outputBMPParameter" class="ptolemy.data.expr.FileParameter" value="$BMPOUT">
+        </property>
+        <doc>Create a prediction based on the output of a GarpAlgorithm actor.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="430.0, 260.0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkeley, Dan Higgins, NCEAS, UC Santa Barbara</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GARPPrediction actor predicts the distribution of a species in given locations based on a predefined rule set. The actor outputs a bitmapped image (a map) representing species presence or absence with different pixel values (e.g., different colors).&lt;/p&gt;&#10;&#10;&lt;p&gt;The input rule set is usually passed to the actor by the GARPAlgorithm actor, which creates the rule set and outputs it in the proper format. Input locations with environmental data, or &quot;environmental layers&quot;, are passed to the GARPPrediction actor in a summary xml file (*.dxl).&lt;/p&gt; &#10;&#10;&lt;p&gt;The actor outputs the predicted species distribution in two formats: bitmap and ASCII raster grid. Both files contain the same information. The bitmap file is often more easily displayed; the ASCII raster grid can be used by the GARPSummary actor to test the accuracy of the predicted distribution.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor requires libgarp.so (on linux systems) or garp.dll and libexpat.dll (on Windows systems). Currently, the actor does not work on MacOSX systems. &lt;/p&gt;&#10;&#10;&lt;p&gt;GARP (Genetic Algorithm for Rule Set Production) is a genetic algorithm that creates an ecological niche model representing the environmental conditions where a species would be able to maintain populations. For more information about GARP, see http://www.lifemapper.org/desktopgarp/.&lt;/p&gt;&#10;</configure></property>
+<property name="port:ruleSetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the file containing the rule set data (usually the output of a GarpAlgorithm actor).</configure></property>
+<property name="port:layersetFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the location and environmental information (the environmental layers). The file is a *.dxl file, which summarizes a set of spatial data files.</configure></property>
+<property name="port:outputBMP" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the output bitmapped file (*.bmp).</configure></property>
+<property name="port:outputBMPFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated bitmap file after the file has been created. The bitmap file contains the same information as the ASCII  grid file, but in a more easily displayed raster format.</configure></property>
+<property name="port:outputASCII" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name for the output ASCII grid file (*.asc).</configure></property>
+<property name="port:outputASCIIFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the ASCII grid file containing the predicted species distribution. The port fires after the file has been created.</configure></property>
+<property name="prop:ruleSetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the file containing the rule set data (usually the output of a GarpAlgorithm actor).</configure></property>
+<property name="prop:outputASCIIParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to be used for the output ASCII grid file (*.asc).</configure></property>
+<property name="prop:layersetFilenameParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name of the location and environmental data. The file is a *.dxl file, which summarizes a set of spatial data files that contain environmental data.</configure></property>
+<property name="prop:outputBMPParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to be used for the output bitmap file (*.bmp)</configure></property>
+</property>    </entity>
+    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={863, 735, 332, 237}, maximized=false}">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[324, 184]">
+        </property>
+        <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.7.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[275.0, 315.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yuhong Xiong, Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Display actor reads tokens of any type via its input multiport, and displays each token on a separate line in a text display window.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specify the size of the text display window with the rowsDisplayed and columnsDisplayed parameters. Simply resizing the window onscreen does not persistently change the size when the workflow is saved, closed, and then re-opened. &lt;/p&gt;&#10;&#10;&lt;p&gt;If the input is a string token, then the actor strips the surrounding quotation marks before displaying the value.&lt;/p&gt; &#10;&#10;&lt;p&gt;Select the suppressBlankLines parameter to specify that the actor not add blank lines to the display. By default, the actor will add blank lines.&lt;/p&gt;&#10;&#10;&lt;p&gt;Note: this actor can consume large amounts of memory. It is not advisable to use it to display large output streams.&lt;/p&gt;&#10;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts tokens of any type.</configure></property>
+<property name="prop:suppressBlankLines" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should display blank lines (the default) or suppress them.</configure></property>
+<property name="prop:rowsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vertical size of the display, in rows. The value is an integer that defaults to 10.</configure></property>
+<property name="prop:columnsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The horizontal size of the display, in columns. The value is an integer that defaults to 40.</configure></property>
+<property name="prop:title" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The title of the text display window. If specified, the value will appear in the title bar of the text display window.</configure></property>
+</property>    </entity>
+    <entity name="Text File Writer" class="org.resurgence.actor.TextFileWriter">
+        <property name="Change existing" class="ptolemy.data.expr.StringParameter" value="Overwrite">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.295.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[180.0, 175.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The TextFileWriter actor reads a string token and writes it, without any enclosing quotation marks, to a file. The actor outputs the file path of the generated file.&lt;/p&gt; &#10;&#10;&lt;p&gt;The path and name of the output file are specified via input ports. Specify whether the input is appended to the specified file (if it exists), or if an existing file is overwritten via the changeExisting parameter. &lt;/p&gt;&#10;&#10;&lt;p&gt;The TextFileWriter is similar to the FileWriter actor, except that the TextFileWriter actor does not add line breaks to its output, while the FileWriter actor does.&lt;/p&gt;&#10;</configure></property>
+<property name="port:fileToWrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file path of the file to which to write. See FileParameter for more information about specifying file names.</configure></property>
+<property name="port:string" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives a string token to write-one line at a time--to a file.</configure></property>
+<property name="port:fileWritten" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the name and path of the output file.</configure></property>
+<property name="prop:Change existing" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the input is appended to the specified file (if it exists), or if an existing file is overwritten.</configure></property>
+</property>    </entity>
+    <entity name="Constant" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="ROOTPATH+&quot;/digir_data.dat&quot;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:lsid.ecoinformatics.org:actor:101:1">
+        </property>
+        <property name="semanticType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#ConstantActor">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[100.0, 270.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="mephitis mephitis" class="org.ecoinformatics.seek.datasource.darwincore.DarwinCoreDataSource">
+        <property name="searchData" class="ptolemy.data.expr.StringParameter" value="mephitis mephitis">
+        </property>
+        <property name="endPoint" class="ptolemy.kernel.util.StringAttribute" value="http://darwincore.ecoinformatics.org:8080/DigirImpl/services/DigirQueryService">
+        </property>
+        <property name="outputType" class="ptolemy.data.expr.StringParameter" value="As Table">
+        </property>
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;schema&gt;&#10;  &lt;table name=&quot;DigirTable: mephitis mephitis&quot;&gt;&#10;    &lt;field name=&quot;CatalogNumberText&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;CollectionCode&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;YearCollected&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Collector&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;DecimalLongitude&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;DecimalLatitude&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;CatalogNumber&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;ScientificName&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;InstitutionCode&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Species&quot; dataType=&quot;STRING&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;query advanced=&quot;false&quot;&gt;&#10;  &lt;select&gt;&#10;  &lt;field tableName=&quot;DigirTable: mephitis mephitis&quot; fieldName=&quot;DecimalLongitude&quot;/&gt;&#10;  &lt;field tableName=&quot;DigirTable: mephitis mephitis&quot; fieldName=&quot;DecimalLatitude&quot;/&gt;&#10;  &lt;/select&gt;&#10;  &lt;tables&gt;&#10;    &lt;table name=&quot;DigirTable: mephitis mephitis&quot;/&gt;&#10;  &lt;/tables&gt;&#10;  &lt;where&gt;&#10;    &lt;AND&gt;&#10;        &lt;field tableName=&quot;DigirTable: mephitis mephitis&quot;  fieldName=&quot;DecimalLongitude&quot; oper=&quot;LESS THAN&quot; criteria=&quot;360&quot;/&gt;&#10;        &lt;field tableName=&quot;DigirTable: mephitis mephitis&quot;  fieldName=&quot;DecimalLatitude&quot; oper=&quot;LESS THAN&quot; criteria=&quot;360&quot;/&gt;&#10;    &lt;/AND&gt;&#10;  &lt;/where&gt;&#10;&lt;/query&gt;&#10;">
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="_tableauFactory" class="org.kepler.objectmanager.data.db.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="dataOutputFormat" class="ptolemy.data.expr.StringParameter" value="As Table">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{85, 135}">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Spears, Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;    &lt;p&gt;The DarwinCoreDataSource actor uses the DiGIR (Distributed Generic Information Retrieval) &#10;      protocol to search for and access occurrence data for species contained in museum collections.&lt;/p&gt;&#10;    &#10;    &lt;p&gt;The DarwinCoreDataSource actor provides query access to DiGIR data and handles the mechanical issues involved in searching the collection, downloading the results, and emitting the data to downstream actors.&lt;/p&gt;&#10;&#10;    &lt;p&gt;By default, the ports created by the DarwinCoreDataSource actor provide a complete data table as a string with additional ports specifying the number of attributes and the attribute delimiter used in the data table.&lt;/p&gt;    &#10;    &#10;    &lt;p&gt;When As Field is specified for the outputType, the actor automatically reconfigures its exposed ports to provide one port for each attribute contained in the result table (after receiving initial search results from the DiGIR service).&lt;/p&gt;&#10;    &#10;    &lt;p&gt;NOTE: Retrieving data from DiGIR collections may take several minutes per species the first time the workflow is run. Subsequent workflow executions are considerably faster because the data is cached locally during the first execution.&lt;/p&gt;&#10;  </configure></property>
+<property name="port:speciesName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Allows search term[s] to be dynamically input as part of the workflow rather than specificed as a static parameter for this actor</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output ports are automatically configured depending on the selected outputType.  See the documentation on outputType for more information</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Allows other actors to signal that the the search be performed.  This should be used in cases when the speciesName input port is not being used.</configure></property>
+<property name="prop:endPoint" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The DiGIR query service endpoint</configure></property>
+<property name="prop:searchData" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Search DiGIR using the entered search term (if not using the speciesName input port)</configure></property>
+<property name="prop:outputType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;    Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in the data table, or one port that emits the entire data table at once. Specifically, the output format choices are:&#10;    &lt;table&gt;&#10;      &lt;tr&gt;&#10;&lt;td&gt;As Field&lt;/td&gt;&#10;&lt;td&gt; The actor creates one output port for each field (i.e., column/attribute/variable) that is contained in the DiGIR results. The type of each port (e.g., string, int, double, etc.) matches the base type of the field.  Note: a search term should be specified in the searchData in order for the field ports to be created. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;      &#10;      &lt;tr&gt;&#10;&lt;td&gt;As Table (the default)&lt;/td&gt;&#10;&lt;td&gt; The selected data will be output as a string that contains the entire search result data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and numColumns - the number of fields in the table. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;      &#10;      &lt;tr&gt;&#10;&lt;td&gt;As Row&lt;/td&gt;&#10;&lt;td&gt;  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. &lt;/td&gt;&#10;&lt;/tr&gt;  &#10;    &lt;/table&gt;&#10;    &#10;  </configure></property>
+</property>        <port name="Delimiter" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="numColumns" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="DataTable" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <entity name="IJMacro" class="util.IJMacro">
+        <property name="macroString" class="ptolemy.data.expr.StringParameter" value="run(&quot;ASC TextReader&quot;, &quot;open=_FILE_&quot;);&#10;setMinAndMax(-2, 2);&#10;run(&quot;Fire&quot;);">
+            <property name="macro" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:271:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="util.IJMacro">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1096:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ImageManipulationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ReaderExternalInputActor">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[590.0, 305.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The IJMacro actor runs ImageJ macros, which are used to display, edit, analyze, process, save, and print a wide variety of images. For more information about ImageJ, see http://rsb.info.nih.gov/ij/.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor accepts a string representing an image file name via the input port or the fileOrURL parameter. The actor will perform the macro specified in the macroString parameter. By default, the actor will open the specified image.&lt;/p&gt;&#10;&#10;&lt;p&gt;The ImageJ menu toolbar, which appears when the actor opens a specified image, can be used to create additional macros. Select &quot;Plugins &gt; Macros &gt; Record&quot; from the ImageJ menu to create a new macro that can be used by the actor.&lt;/p&gt;&#10;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string representing the path of an image</configure></property>
+<property name="prop:macroString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ImageJ macro to execute. The macro may include the expression &quot;_FILE_&quot;, which will be replaced by the path of the specified image file.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of an image to process. The file name may also be input through the input port.</configure></property>
+</property>    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="320.0, 55.0">
+        </vertex>
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="{290.0, 195.0}">
+        </vertex>
+    </relation>
+    <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="EnvLayerSet.output" relation="relation"/>
+    <link port="GarpPresampleLayers.layersetFilename" relation="relation"/>
+    <link port="GarpPresampleLayers.dataPointFileName" relation="relation6"/>
+    <link port="GarpPresampleLayers.cellSetFileNameOutput" relation="relation5"/>
+    <link port="GarpAlgorithm.cellSetFileName" relation="relation5"/>
+    <link port="GarpAlgorithm.ruleSetFilenameOutput" relation="relation4"/>
+    <link port="GarpPrediction.ruleSetFilename" relation="relation4"/>
+    <link port="GarpPrediction.layersetFilename" relation="relation"/>
+    <link port="GarpPrediction.outputASCIIFileName" relation="relation3"/>
+    <link port="Display.input" relation="relation6"/>
+    <link port="Text File Writer.string" relation="relation2"/>
+    <link port="Text File Writer.fileToWrite" relation="relation7"/>
+    <link port="Text File Writer.fileWritten" relation="relation6"/>
+    <link port="Constant.output" relation="relation7"/>
+    <link port="mephitis mephitis.DataTable" relation="relation2"/>
+    <link port="IJMacro.input" relation="relation3"/>
+</entity>

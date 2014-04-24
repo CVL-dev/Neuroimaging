@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="File Deleter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:572:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="org.kepler.actor.io.FileDeleter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="NONE">
+</property>
+
+<property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+
+<property name="File Path" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#FileSystem">
+</property>
+
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:File Path" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>tao</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Delete a file or directory. If this actor deletes a directory, then the directory&#10; must be empty in order to be deleted.&#10; The output is a  BooleanToken. true if and only if the file or directory is &#10; successfully deleted; false otherwise &#10; If the trigger port is connected, then this actor fires only if a token is&#10; provided on any channel of the trigger port. The value of that token&#10; does not matter. Specifically, if there is no such token, the prefire()&#10; method returns false.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="port:filePathInputParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file or directory path which will be deleted.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="prop:File Path" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file or directory path which will be deleted.</configure></property>
+</property></entity>

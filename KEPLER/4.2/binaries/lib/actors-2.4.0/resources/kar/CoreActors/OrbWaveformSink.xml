@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="Orb Waveform Sink" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:177:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>tobin fricke</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The OrbWaveformSink actor connects to an Antelope ORB ("Object Ring Buffer") host and writes waveform data to it. </p>
+
+<p>Antelope is a system, originally developed by Boulder Real-Time Technologies (http://www.brtt.com/), for archiving and distributing environmental monitoring information, such as data from a remote camera. Antelope ORBs act as sources (and sinks) for real-time data, such as waveforms and events.</p>
+
+<p>The actor connects to the ORB hostname specified by the orbName parameter and writes to the source specified by the srcName parameter. The actor collects samples until it receives enough samples to form a packet. Then the actor packs the samples into an ORB packet and sends the packet to the ORB host. The number of samples per packet as well as the sample rate are specified with the nSamp and sampRate parameters.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts data samples to be written to the Antelope ORB.</configure></property>
+<property name="port:times" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The timestamp for the data samples written to the ORB packet.</configure></property>
+<property name="prop:samprate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The rate at which samples are updated and entered into the packet.</configure></property>
+<property name="prop:srcname" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the requested ORB source (e.g., "PF_GVS/MGENC")</configure></property>
+<property name="prop:nsamp" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of samples per packet.</configure></property>
+<property name="prop:orbname" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ORB hostname. The orbname should be specified in the format "hostname:port". Note that "orbnames.pf-style" names are not supported. Values must use a valid IP address or resolvable DNS name and a numeric port number (e.g., "mercali.ucsd.edu:6770").</configure></property>
+</property>
+<property name="class" value="org.ROADnet.OrbWaveformSink" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1034:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="times" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#OrbActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<!--
+################################################################################
+#
+#    '$RCSfile$'
+#
+#     '$Author: leinfelder $'
+#       '$Date: 2010-07-29 10:48:36 -0700 (Thu, 29 Jul 2010) $'
+#   '$Revision: 25181 $'
+#
+# This ResourceBundle contains THE UI DISPLAY TEXT THAT IS SEEN BY KEPLER USERS,
+# includign button captions, titles, error messages etc.
+# The only exception is menu text, which is located in the files:
+# uiMenuMappings_en_US.properties and uiContextMenuMappings_en_US.properties
+#
+# NOTES:
+# *** IMPORTANT!!!
+#   The following characters MUST be escaped with a backslash:
+#      :   <whitespace>   #   !   \    =
+#   (except where ":", "=" or " " are used as a delimeter between the key and
+#   its corresponding value). This means that any COLON characters in the LSID
+#   *MUST* be escaped with a backslash, thus  \:
+#   for example:    WRONG - urn:lsid:localhost:director:1:1=myIcon
+#                 CORRECT - urn\:lsid\:localhost\:director\:1\:1=myIcon
+# ***
+################################################################################
+
+# Generally trying to categorize these where possible, using dot notation (like
+# the format used in package names) to denote where the captions belong.
+# Examples include:
+#   general.OK_BUTTON=OK
+#   actions.actor.displayName="Configure..." etc
+-->
+<config>
+  <!--
+  ################################################################################
+  # GENERAL APPLICATION-WIDE TEXT
+  ################################################################################
+  -->
+  <pair>
+    <name>general.OK</name>
+    <value>OK</value>
+  </pair>
+  <pair>
+    <name>general.APPLY</name>
+    <value>Apply</value>
+  </pair>
+  <pair>
+    <name>general.CANCEL</name>
+    <value>Cancel</value>
+  </pair>
+  <pair>
+    <name>general.HELP</name>
+    <value>Help</value>
+  </pair>
+  <pair>
+    <name>general.BROWSE</name>
+    <value>Browse</value>
+  </pair>
+  <pair>
+    <name>general.ADD</name>
+    <value>Add</value>
+  </pair>
+  <pair>
+    <name>general.REMOVE</name>
+    <value>Remove</value>
+  </pair>
+  <pair>
+    <name>search.search</name>
+    <value>Search</value>
+  </pair>
+  <pair>
+    <name>search.reset</name>
+    <value>Reset</value>
+  </pair>
+  <pair>
+    <name>search.cancel</name>
+    <value>Cancel</value>
+  </pair>
+  <pair>
+    <name>search.sources</name>
+    <value>Sources</value>
+  </pair>
+  <pair>
+    <name>search.advanced</name>
+    <value>Advanced Search</value>
+  </pair>
+  <!--
+  ################################################################################
+  # TABS
+  ################################################################################
+  -->
+  <pair>
+    <name>components.search</name>
+    <value>Search Components</value>
+  </pair>
+  <pair>
+    <name>components.searchResults</name>
+    <value>Search Results</value>
+  </pair>
+  <pair>
+    <name>components.resultsFound</name>
+    <value>results found.</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration</name>
+    <value>Component Search Configuration</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.componentName</name>
+    <value>Component Name</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.ontologyClassName</name>
+    <value>Ontology Class Name</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.ontologyName</name>
+    <value>Ontology Name</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.karName</name>
+    <value>KAR Name</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.localRepositoryName</name>
+    <value>Local Repository Name</value>
+  </pair>
+  <pair>
+    <name>data.search</name>
+    <value>Search Data</value>
+  </pair>
+  <pair>
+    <name>outline.showPorts</name>
+    <value>Show Ports</value>
+  </pair>
+  <pair>
+    <name>outline.showAttributes</name>
+    <value>Show Attributes</value>
+  </pair>
+  <pair>
+    <name>outline.showRelations</name>
+    <value>Show Relations</value>
+  </pair>
+  <!--
+  ################################################################################
+  # PREFERENCES
+  ################################################################################
+  -->
+  <pair>
+    <name>preferences.title</name>
+    <value>Preferences</value>
+  </pair>
+  <pair>
+  	<name>preferences.description1</name>
+  	<value>The Component Library is built using KAR files found in the following local directories. Adding or removing local directories will rebuild the component library.
+	</value>
+  </pair>
+  <pair>
+  	<name>preferences.description2</name>
+  	<value>By selecting the search box next to remote repositories, components from the remote repositories will be included when searching components.
+	</value>
+  </pair>
+  <pair>
+  	<name>preferences.description3</name>
+  	<value>By selecting the save box next to a local repository, KAR files will be saved to that directory by default.
+	</value>
+  </pair>
+  <pair>
+  	<name>preferences.description4</name>
+  	<value>By selecting the save box next to a remote repository, you will be asked if you want to upload the KAR to that repository when it is saved.
+  	</value>
+  </pair>
+  <pair>
+    <name>preferences.useDefaults</name>
+    <value>Use Defaults</value>
+  </pair>
+  <pair>
+    <name>preferences.build</name>
+    <value>Build</value>
+  </pair>
+  <pair>
+    <name>preferences.search</name>
+    <value>Search</value>
+  </pair>
+  <pair>
+    <name>preferences.save</name>
+    <value>Save</value>
+  </pair>
+  <pair>
+    <name>preferences.type</name>
+    <value>Type</value>
+  </pair>
+  <pair>
+    <name>preferences.name</name>
+    <value>Name</value>
+  </pair>
+  <pair>
+    <name>preferences.source</name>
+    <value>Source</value>
+  </pair>
+  <pair>
+    <name>preferences.data.refresh</name>
+    <value>Refresh</value>
+  </pair>
+  <pair>
+    <name>preferences.data.keepExistingSources</name>
+    <value>Keep existing sources</value>
+  </pair>
+  <pair>
+    <name>preferences.data.serviceName</name>
+    <value>Service Name</value>
+  </pair>
+  <pair>
+    <name>preferences.data.location</name>
+    <value>Location</value>
+  </pair>
+  <pair>
+    <name>preferences.data.documentType</name>
+    <value>Document Type</value>
+  </pair>
+  <!--
+  ################################################################################
+  # GENERAL ERROR TEXT
+  ################################################################################
+  #
+  # @todo - FIXME - Need to do some thinking abotu these and make them more comprehensive
+  #
+  -->
+  <pair>
+    <name>general.errors.noHelpAvailable</name>
+    <value>Cannot open help page.</value>
+  </pair>
+  <pair>
+    <name>general.errors.NameDuplication</name>
+    <value>Error - that name is already in  use</value>
+  </pair>
+  <pair>
+    <name>general.errors.UnknownCannotDo</name>
+    <value>Unknown error - unable to complete your request</value>
+  </pair>
+  <!--
+  ################################################################################
+  # ACTIONS
+  ################################################################################
+  -->
+  <pair>
+    <name>actions.actor.displayName</name>
+    <value>Configure Actor...</value>
+  </pair>
+  <pair>
+    <name>actions.actor.tooltip</name>
+    <value>Change Settings for Actor...</value>
+  </pair>
+  <pair>
+    <name>actions.workflow.typeCheck</name>
+    <value>Type Check</value>
+  </pair>
+  <!--
+  ################################################################################
+  # DIALOGS
+  ################################################################################
+  -->
+  <pair>
+    <name>dialogs.actor.titleBar</name>
+    <value>Configure Actor -</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.generalTab</name>
+    <value>General</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parametersTab</name>
+    <value>Parameters</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.portsTab</name>
+    <value>Ports</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.annotationsTab</name>
+    <value>Annotations</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.unitsTab</name>
+    <value>Units</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.name</name>
+    <value>Actor Name:</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.id</name>
+    <value>Actor ID:</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.note</name>
+    <value>Actor Note:</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.NamesNotesBorderTitle</name>
+    <value>Names/Notes</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.showNameCheckbox</name>
+    <value>Show actor name</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.showNoteCheckbox</name>
+    <value>Show actor note</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.showPortNamesCheckbox</name>
+    <value>Show all port names for ports that are displayed</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.expertCheckbox</name>
+    <value>Show expert parameters</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.addButton</name>
+    <value>Add Param</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.deleteButton</name>
+    <value>Delete Param</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.formatButton</name>
+    <value>Format</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.resetButton</name>
+    <value>Reset</value>
+  </pair>
+</config>

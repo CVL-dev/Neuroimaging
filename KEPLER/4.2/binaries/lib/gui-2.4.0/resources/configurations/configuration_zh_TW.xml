@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config>
+  <!--
+   choose the class that does the searching on the ecogrid library
+  -->
+  <pair>
+    <name>repositorySearcher</name> 
+    <value>org.kepler.objectmanager.repository.EcogridRepositoryLibrarySearcher</value>
+  </pair>
+  
+  <!--
+		The preferencesTabFactory property will generate tabs in the
+		preferences frame accessible in Kepler from the menu
+		Tools->Preferences. All classes specified as sub properties to the
+		preferencesTabFactory property will be added as tabs in the
+		PreferencesFrame. The classes specified must define their own
+		internal Factory class that extends PreferencesTabFactory. Specified
+		classes must be a subclass of java.awt.Component and implement the
+		org.kepler.gui.PreferencesTab interface.
+	-->
+	<preferencesTabFactory>
+		<tab>
+			<name>組件</name>
+			<class>org.kepler.gui.ComponentLibraryPreferencesTab$Factory</class>
+		</tab>
+		<tab>
+			<name>數據</name>
+			<class>org.ecoinformatics.seek.ecogrid.EcogridPreferencesTab$Factory</class>
+		</tab>
+	</preferencesTabFactory>
+
+  <!-- 
+    The ViewPane Extension Point allows developers to add their own layout
+    of TabPanes to Kepler.  Including more than one ViewPane here in the configuration 
+    will present the user with a selection box so they can switch between the views.
+    Classes extending this extension point must specify their own
+    internal Factory class that extends org.kepler.gui.ViewPaneFactory.
+    Classes extending this extension point must be a subclass of 
+    java.awt.Container and implement the org.kepler.gui.ViewPane interface.
+    TabPanes are added to views using the config.xml file, see the viewPaneTabPanes element there.
+  -->
+	<viewPaneFactory>
+		<viewPane>
+			<name>工作流程</name>
+			<class>org.kepler.gui.ClassicViewPane$Factory</class>
+		</viewPane>
+		<!--
+			<viewPane> <name>Workflow Editor</name>
+			<class>org.kepler.gui.DefaultViewPane$Factory</class> </viewPane>
+		-->
+	</viewPaneFactory>
+  
+  <!--
+		The TabPane Extension Point allows Kepler to be configured with a certain
+		set of graphical components that can be added to the interface through the 
+		ViewPane Kepler Extension Point.   The classes
+		specified must define their own internal Factory class that extends
+		org.kepler.gui.TabPaneFactory. Specified classes must be a subclass of
+		java.awt.Component and implement the org.kepler.gui.TabPane
+		interface.
+	-->
+	<tabPaneFactory>
+		<tabPane>
+			<name>組件</name>
+			<class>org.kepler.gui.ComponentLibraryTab$Factory</class>
+		</tabPane>
+		<tabPane>
+			<name>數據</name>
+			<class>org.ecoinformatics.seek.ecogrid.quicksearch.DatasetPanel$Factory</class>
+		</tabPane>
+		<tabPane>
+			<name>概要</name>
+			<class>org.kepler.gui.WorkflowOutlineTabPane$Factory</class>
+		</tabPane>
+	</tabPaneFactory>
+</config>

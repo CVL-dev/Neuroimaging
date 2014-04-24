@@ -1,0 +1,288 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="test-simple-data" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="5.0-beta">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={182, 110, 1068, 794}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[831, 659]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{415.5, 329.5}">
+    </property>
+    <entity name="Fall 2003 grasshopper monitoring -- mid-marsh grasshopper abundance and species diversity at eight GCE LTER sampling sites" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;schema&gt;&#10;  &lt;table name=&quot;INS-GCEM-0310_1_2.TXT&quot;&gt;&#10;    &lt;field name=&quot;Site&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Year&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Month&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Day&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Transect&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Species_Code&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Count&quot; dataType=&quot;INTEGER&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="Selected Entity" class="ptolemy.data.expr.StringParameter" value="INS-GCEM-0310_1_2.TXT">
+        </property>
+        <property name="outputType" class="ptolemy.data.expr.StringParameter" value="As Field">
+        </property>
+        <property name="_tableauFactory" class="org.ecoinformatics.seek.datasource.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="knb-lter-gce.153.7">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.1">
+        </property>
+        <property name="INS-GCEM-0310_1_2-TXT" class="org.ecoinformatics.seek.ecogrid.ResultRecordDetail">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[100.0, 435.0]">
+        </property>
+        <port name="Site" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#FieldStation">
+            </property>
+        </port>
+        <port name="Year" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Year">
+            </property>
+        </port>
+        <port name="Month" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Month">
+            </property>
+        </port>
+        <port name="Day" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Day">
+            </property>
+        </port>
+        <port name="Transect" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#GeographicReference">
+            </property>
+        </port>
+        <port name="Species_Code" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#TaxonomicSpecies">
+            </property>
+        </port>
+        <port name="Count" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#BioticAbundance">
+            </property>
+        </port>
+    </entity>
+
+
+    <entity name="Mollusc population abundance monitoring: Fall 2000 mid-marsh and creekbank infaunal and epifaunal mollusc abundance based on collections from GCE marsh, monitoring sites 1-" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;schema&gt;&#10;  &lt;table name=&quot;INV-GCEM-0305a1_1_1.TXT&quot;&gt;&#10;    &lt;field name=&quot;Year&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Month&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Day&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Site&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Zone&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Plot&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Species&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Mollusc_Count&quot; dataType=&quot;INTEGER&quot;/&gt;&#10;    &lt;field name=&quot;Quadrat_Area&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;Mollusc_Density&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="Selected Entity" class="ptolemy.data.expr.StringParameter" value="INV-GCEM-0305a1_1_1.TXT">
+        </property>
+        <property name="outputType" class="ptolemy.data.expr.StringParameter" value="As Column Vector">
+        </property>
+        <property name="_tableauFactory" class="org.ecoinformatics.seek.datasource.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="knb-lter-gce.109.6">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.1">
+        </property>
+        <property name="INV-GCEM-0305a1_1_1-TXT" class="org.ecoinformatics.seek.ecogrid.ResultRecordDetail">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[100.0, 300.0]">
+        </property>
+        <port name="Year" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Month" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Day" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Site" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Zone" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Plot" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Species" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Mollusc_Count" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Quadrat_Area" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Mollusc_Density" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+
+    <entity name="RExpression Actor" class="org.ecoinformatics.seek.R.RExpression">
+        <property name="R function or script" class="ptolemy.kernel.util.StringAttribute" value="aaa &lt;- split(cnt, factor(spp))&#10;boxplot(aaa)&#10;summary(aaa[[1]])&#10;summary(aaa[[2]])&#10;">
+            <property name="R Expression" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:local:LOCALID0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[270.0, 165.0]">
+        </property>
+        <property name="_semType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#StatisticMathOperationActor">
+        </property>
+        <port name="spp" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="unknown">
+            </property>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#TaxonomicSpecies">
+            </property>
+        </port>
+        <port name="cnt" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="unknown">
+            </property>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#BiotaCount">
+            </property>
+        </port>
+    </entity>
+
+    <entity name="Fall 2001 plant monitoring survey -- biomass calculated from shoot height and flowering status of plants in permanent plots at GCE sampling sites 1-" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute" value="&lt;schema&gt;&#10;  &lt;table name=&quot;PLT-GCEM-0303b_2_0.TXT&quot;&gt;&#10;    &lt;field name=&quot;Year&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Month&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Day&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Site&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Zone&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Plot&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Quadrat_Area&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;Species_Code&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Shoot_Height&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;    &lt;field name=&quot;Flowering_Status&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Plot_Disturbance&quot; dataType=&quot;STRING&quot;/&gt;&#10;    &lt;field name=&quot;Plant_Biomass&quot; dataType=&quot;FLOAT&quot;/&gt;&#10;  &lt;/table&gt;&#10;&lt;/schema&gt;&#10;">
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="Selected Entity" class="ptolemy.data.expr.StringParameter" value="PLT-GCEM-0303b_2_0.TXT">
+        </property>
+        <property name="outputType" class="ptolemy.data.expr.StringParameter" value="As Field">
+        </property>
+        <property name="_tableauFactory" class="org.ecoinformatics.seek.datasource.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="knb-lter-gce.93.15">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.1">
+        </property>
+        <property name="PLT-GCEM-0303b_2_0-TXT" class="org.ecoinformatics.seek.ecogrid.ResultRecordDetail">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{100.0, 130.0}">
+        </property>
+        <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:2:1#SimpleRandomSample">
+        </property>
+        <port name="Year" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Year">
+            </property>
+        </port>
+        <port name="Month" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Month">
+            </property>
+        </port>
+        <port name="Day" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Day">
+            </property>
+        </port>
+        <port name="Site" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#FieldStation">
+            </property>
+        </port>
+        <port name="Zone" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Biome">
+            </property>
+        </port>
+        <port name="Plot" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Plot">
+            </property>
+        </port>
+        <port name="Quadrat_Area" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="Species_Code" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#TaxonomicSpecies">
+            </property>
+        </port>
+        <port name="Shoot_Height" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#VegetationHeight">
+            </property>
+        </port>
+        <port name="Flowering_Status" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#BioticProperty">
+            </property>
+        </port>
+        <port name="Plot_Disturbance" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#EcologicProperty">
+            </property>
+        </port>
+        <port name="Plant_Biomass" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="semType0" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:4:1#Biomass">
+            </property>
+        </port>
+    </entity>
+</entity>

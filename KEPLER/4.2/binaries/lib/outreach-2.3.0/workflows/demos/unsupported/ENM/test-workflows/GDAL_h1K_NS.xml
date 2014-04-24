@@ -1,0 +1,906 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="GDAL_h1K_NS" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.1.devel">
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.300.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-40.0, -30.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The SDF Director is often used to oversee fairly simple, sequential workflows in which the director can determine the order of actor invocation from the workflow. Types of workflows that would run well under an SDF Director include processing and reformatting tabular data, converting one data type to another, and reading and plotting a series of data points. A workflow in which an image is read, processed (rotated, scaled, clipped, filtered, etc.), and then displayed, is also an example of a sequential workflow that requires a director simply to ensure that each actor fires in the proper order (i.e., that each actor executes only after it receives its required inputs).&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director is very efficient and will not tax system resources with overhead. However, this efficiency requires that certain conditions be met, namely that the data consumption and production rate of each actor in an SDF workflow be constant and declared. If an actor reads one piece of data and calculates and outputs a single result, it must always read and output a single token of data. This data rate cannot change during workflow execution and, in general, workflows that require dynamic scheduling and/or flow control cannot use this director. Additionally, the SDF Director has no understanding of passing time (at least by default), and actors that depend on a notion of time may not work as expected. For example, a TimedPlotter actor will plot all values at time zero when used in SDF. &lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the SDF Director requires that all actors in its workflow be connected. Otherwise, the director cannot account for concurrency between disconnected workflow parts. Usually, a PN Director should be used for workflows that contain disconnected actors; however, the SDF Director's allowDisconnectedGraphs parameter may also be set to true. The SDF Director will then schedule each disconnected &quot;island&quot; independently. The director cannot infer the sequential relationship between disconnected actors (i.e., nothing forces the director to finish executing all actors on one island before firing actors on another). However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF model indicate an error.&lt;/p&gt;&#10; &#10;&lt;p&gt;Because SDF Directors schedule actors to fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause &quot;deadlock&quot; errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a SampleDelay actor to generate and inject an initial input value into the workflow.&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director determines the order in which actors execute and how many times each actor needs to be fired to complete a single iteration of the workflow. This schedule is calculated BEFORE the director begins to iterate the workflow. Because the SDF Director calculates a schedule in advance, it is quite efficient. However, SDF workflows must be static. In other words, the same number of tokens must be consumed/produced at every iteration of the workflow. Workflows that require dynamic control structures, such as a BooleanSwitch actor that sends output on one of two ports depending on the value of a 'control', cannot be used with an SDF Director because the number of tokens on each output can change for each execution.&lt;/p&gt;&#10;&#10;&lt;p&gt;Unless otherwise specified, the SDF Director assumes that each actor consumes and produces exactly one token per channel on each firing. Actors that do not follow the one-token-per-channel firing convention (e.g., Repeat or Ramp) must declare the number of tokens they produce or consume via the appropriate parameters. &lt;/p&gt;&#10;&#10;&lt;p&gt;The number of times a workflow is iterated is controlled by the director's iterations parameter. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. &lt;/p&gt;&#10;&#10;&lt;p&gt;The amount of data processed by an SDF workflow is a function of both the number of times the workflow iterates and the value of the director's vectorizationFactor parameter. The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. &lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director has several advanced parameters that are generally only relevant when an SDF workflow contains composite components. In most cases the period, timeResolution, synchronizeToRealTime, allowRateChanges, timeResolution, and constrainBufferSizes parameters can be left at their default values.&lt;/p&gt;&#10;&#10;&lt;p&gt;For more information about the SDF Director, see the Ptolemy documentation (http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf).&lt;/p&gt;&#10;&#10;</configure></property>
+<property name="prop:allowDisconnectedGraphs" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to allow disconnected actors in the workflow (by default, all actors are required to be connected). If disconnected actors are permitted, the SDF Director will schedule each disconnected 'island' independently. Nothing &quot;forces&quot; the director to finish executing all actors on one island before firing actors on another. However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF workflow indicate an error.</configure></property>
+<property name="prop:allowRateChanges" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether dynamic rate changes are permitted or not. By default, rate changes are not permitted, and the director will perform a check to disallow such workflows. If the parameter is selected, then workflows that require rate parameters to be modified during execution are valid, and the SDF Director will dynamically compute a new schedule at runtime. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:constrainBufferSizes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether buffer sizes are fixed. By default, buffers are fixed, and attempts to write to the buffer that cause the buffer to exceed its scheduled size result in an error. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time precision used by this director. All time values are rounded to the nearest multiple of this number. The value is a double that defaults to &quot;1E-10&quot; (which is 10-10). This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:iterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify the number of times a workflow is iterated. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </configure></property>
+<property name="prop:vectorizationFactor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the execution should synchronize to real time or not. By default, the director does not synchronize to real time. If synchronize is selected, the director will only process the workflow when elapsed real time matches the product of the period parameter and the iteration count. Note: if the period parameter has a value of 0.0 (the default), then selecting this parameter has no effect. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:period" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time period of each iteration. The value is a double that defaults to 0.0, which means that the director does not increment workflow time. If the value greater than 0.0, the actor will increment workflow time each time it fires. This is an advanced parameter that can usually be left at its default value. </configure></property>
+</property>    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={3, 22, 1083, 810}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[742, 661]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{303.7500000000001, 323.125}">
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="This workflow accesses HYDRO1k topographical data (a Digital Elevation Model or DEM)&#10;developed at the U.S. Geological Survey's (USGS) EROS Data Center. The workflow &#10;downloads the data for North and South America from a remote server (or, if the &#10;data have already been downloaded, accesses them from a local cache), extracts &#10;the data, converts the HYDRO1k map projection (which uses a Lambert Azimuthal &#10;Equal Area coordinate system) to a format that uses a latitude/longitude system, &#10;converts the raster format (GeoTiff) to one used by GARP (ASC raster grid), &#10;rescales the raster file, and combines the two &quot;cleaned up&quot; files into a single &#10;map that can be used by Environmental Niche Modeling (ENM) workflows.&#10;&#10;The first time the workflow is opened, the data source actors (Hydro1k North &#10;America DEM and Hydro1k South America DEM) will show a &quot;Busy&quot; status as they &#10;download data from a remote server. The initial download may take as long as 30 &#10;minutes. Because of the high resolution of the data, this workflow requires &#10;30-45 minutes to execute once the data are downloaded.  Execution time can be &#10;reduced to about 5 minutes on a computer with more than 512M of RAM by &#10;unselecting the 'Use Disk' option in various actors.&#10;&#10;Note also that the data sources will not be 'Busy' for nearly as long after the&#10;first time the workflow is opened; during the first run, data are saved in the &#10;local cache and no longer require downloading.&#10;Dan Higgins - NCEAS&#10;May 10, 2006&#10;">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[60.0, 515.0]">
+        </property>
+    </property>
+    <property name="ResultDirectory" class="ptolemy.data.expr.Parameter" value="property(&quot;outreach.workflowdir&quot;)+&quot;data/garp/spatialLayers&quot;">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.218.1">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+          <svg>
+            <text style="font-size:14; font-family:SansSerif; fill:blue" x="20" y="20">-P-</text>
+          </svg>
+        </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[100.0, -35.0]">
+        </property>
+    </property>
+    <property name="DocViewer" class="ptolemy.kernel.util.SingletonAttribute">
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer and Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The DocViewer attribute renders a clickable documentation icon on the Workflow canvas. Clicking the icon opens the workflow documentation window.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:467:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.kernel.util.SingletonAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1184:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+        </property>
+        <property name="semanticType111" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="viewer" class="ptolemy.vergil.basic.DocViewerFactory">
+        </property>
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-75.0, 545.0]">
+        </property>
+    </property>
+    <property name="DocAttribute" class="ptolemy.vergil.basic.DocAttribute">
+        <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Dan Higgins">
+        </property>
+        <property name="since" class="ptolemy.kernel.util.StringAttribute" value="May 10, 2006">
+        </property>
+        <property name="ResultDirectory (parameter)" class="ptolemy.data.expr.StringParameter" value="The directory in which to store the processed data.">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:ecoinformatics.org:kepler:233:1">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:1348:26:6">
+    </property>
+    <entity name="GDAL Warp and Projection" class="org.ecoinformatics.seek.gis.gdal.GDALWarpActor">
+        <property name="input params" class="ptolemy.data.expr.StringParameter" value="+proj=laea +lat_0=-15 +lon_0=-60 +x_0=0 +y_0=0">
+        </property>
+        <property name="output params" class="ptolemy.data.expr.StringParameter" value="+proj=latlong">
+        </property>
+        <property name="output format" class="ptolemy.data.expr.StringParameter" value="GTiff">
+        </property>
+        <property name="Cache options" class="ptolemy.data.expr.StringParameter" value="Cache Files but Preserve Location">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="CacheInternal" class="ptolemy.kernel.util.StringAttribute" value="Copy Files to Cache">
+                </property>
+                <property name="CacheExternal" class="ptolemy.kernel.util.StringAttribute" value="Cache Files but Preserve Location">
+                </property>
+                <property name="NoCache" class="ptolemy.kernel.util.StringAttribute" value="No Caching">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.273.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[135.0, 310.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkley </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GDALWarpAndProjection actor &quot;streches&quot; or &quot;warps&quot; a geospatial raster file (e.g., a digital elevation model) from one cartographic projection to another. Before creating the projection, the actor checks the Kepler file cache to see if the projected file already exists. The actor outputs the name of the projected file (or the name of an existing cached version).&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor uses the GDAL (Geospatial Data Abstraction Library) library to create the projection. &#10;For more information about GDAL, see http://www.gdal.org/index.html. &lt;/p&gt;&#10;&#10;&lt;p&gt;Projected files are often stored in the Kepler cache. Files are cached by their file names (without the file extension) and their output format.&lt;/p&gt;&#10;&#10;&lt;p&gt;Use the actor's cacheOption parameter to specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input data is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.&lt;/p&gt;&#10;&#10;&lt;p&gt;The inputParams and outputParams parameters specify the format for the coordinate system. The parameter values must be of a form used by the GDAL Warp utility. See the -s_srs and -t_srs parameters of the GDAL Warp utility for more information about accepted forms: http://www.remotesensing.org/gdal/gdalwarp.html.&lt;/p&gt;&#10;</configure></property>
+<property name="port:inputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input geospatial raster file. The actor can process any of the dozens of GIS raster formats supported by GDAL.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outputCacheType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified output format (e.g., &quot;GTiff&quot; or &quot;AAIGrid&quot;)</configure></property>
+<property name="port:outputCachename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the cache location of the translated output (a file path). If &quot;No cache&quot; is selected as the cacheOption, the port will broadcast nothing.</configure></property>
+<property name="port:outputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the translated file.</configure></property>
+<property name="prop:output format" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format of the output projection (e.g., GTiff).</configure></property>
+<property name="prop:input params" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format for the coordinate system of the input data. The parameter values must be of a form used by the GDAL Warp utility. For more information about supported formats, see www.remotesensing.org/geotiff/proj_list/. For example, a Lambert Azimuthal Eagual Area Projection could be specified as &lt;code&gt;+proj=laea+lat_0=45+long_0=-100+x_0=0+y_0=0&lt;/code&gt;.</configure></property>
+<property name="prop:Cache options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input raster is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the projection file and will ignore all previously stored cache items. Select this option to force the actor to create a projection even if a projection file was previously created and cached.</configure></property>
+<property name="prop:output params" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format for the coordinate system of the output projection. The parameter values must be of a form used by the GDAL Warp utility. For more information about supported formats, see www.remotesensing.org/geotiff/proj_list/. For example, a simple latitude/longitude projection is specified as &lt;code&gt;+proj=latlong.&lt;/code&gt;&#10;</configure></property>
+</property>    </entity>
+    <entity name="GDAL Format Translator" class="org.ecoinformatics.seek.gis.gdal.GDALTranslateActor">
+        <property name="output type" class="ptolemy.data.expr.StringParameter" value="Byte">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="Byte" class="ptolemy.kernel.util.StringAttribute" value="Byte">
+                </property>
+                <property name="Int16" class="ptolemy.kernel.util.StringAttribute" value="Int16">
+                </property>
+                <property name="UInt16" class="ptolemy.kernel.util.StringAttribute" value="UInt16">
+                </property>
+                <property name="UInt32" class="ptolemy.kernel.util.StringAttribute" value="UInt32">
+                </property>
+                <property name="Int32" class="ptolemy.kernel.util.StringAttribute" value="Int32">
+                </property>
+                <property name="Float32" class="ptolemy.kernel.util.StringAttribute" value="Float32">
+                </property>
+                <property name="Float64" class="ptolemy.kernel.util.StringAttribute" value="Float64">
+                </property>
+                <property name="CInt16" class="ptolemy.kernel.util.StringAttribute" value="CInt16">
+                </property>
+                <property name="CInt32" class="ptolemy.kernel.util.StringAttribute" value="CInt32">
+                </property>
+                <property name="CFloat32" class="ptolemy.kernel.util.StringAttribute" value="CFloat32">
+                </property>
+                <property name="CFloat64" class="ptolemy.kernel.util.StringAttribute" value="CFloat64">
+                </property>
+            </property>
+        </property>
+        <property name="output format" class="ptolemy.data.expr.StringParameter" value="AAIGrid">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="VRT" class="ptolemy.kernel.util.StringAttribute" value="VRT">
+                </property>
+                <property name="GeoTiff" class="ptolemy.kernel.util.StringAttribute" value="GeoTiff">
+                </property>
+                <property name="NITF" class="ptolemy.kernel.util.StringAttribute" value="NITF">
+                </property>
+                <property name="HFA" class="ptolemy.kernel.util.StringAttribute" value="HFA">
+                </property>
+                <property name="ELAS" class="ptolemy.kernel.util.StringAttribute" value="ELAS">
+                </property>
+                <property name="AAIGrid" class="ptolemy.kernel.util.StringAttribute" value="AAIGrid">
+                </property>
+                <property name="DTED" class="ptolemy.kernel.util.StringAttribute" value="DTED">
+                </property>
+                <property name="PNG" class="ptolemy.kernel.util.StringAttribute" value="PNG">
+                </property>
+                <property name="JPEG" class="ptolemy.kernel.util.StringAttribute" value="JPEG">
+                </property>
+                <property name="MEM" class="ptolemy.kernel.util.StringAttribute" value="MEM">
+                </property>
+                <property name="GIF" class="ptolemy.kernel.util.StringAttribute" value="GIF">
+                </property>
+                <property name="XPM" class="ptolemy.kernel.util.StringAttribute" value="XPM">
+                </property>
+                <property name="BMP" class="ptolemy.kernel.util.StringAttribute" value="BMP">
+                </property>
+                <property name="PCIDSK" class="ptolemy.kernel.util.StringAttribute" value="PCIDSK">
+                </property>
+                <property name="PNM" class="ptolemy.kernel.util.StringAttribute" value="PNM">
+                </property>
+                <property name="ENVI" class="ptolemy.kernel.util.StringAttribute" value="ENVI">
+                </property>
+                <property name="ESRI" class="ptolemy.kernel.util.StringAttribute" value="ESRI">
+                </property>
+                <property name="PCI" class="ptolemy.kernel.util.StringAttribute" value="PCI">
+                </property>
+                <property name="MFF" class="ptolemy.kernel.util.StringAttribute" value="MFF">
+                </property>
+                <property name="MFF2" class="ptolemy.kernel.util.StringAttribute" value="MFF2">
+                </property>
+                <property name="BT" class="ptolemy.kernel.util.StringAttribute" value="BT">
+                </property>
+                <property name="FIT" class="ptolemy.kernel.util.StringAttribute" value="FIT">
+                </property>
+                <property name="USGSDEM" class="ptolemy.kernel.util.StringAttribute" value="USGSDEM">
+                </property>
+            </property>
+        </property>
+        <property name="Cache options" class="ptolemy.data.expr.StringParameter" value="Cache Files but Preserve Location">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="CacheInternal" class="ptolemy.kernel.util.StringAttribute" value="Copy Files to Cache">
+                </property>
+                <property name="CacheExternal" class="ptolemy.kernel.util.StringAttribute" value="Cache Files but Preserve Location">
+                </property>
+                <property name="NoCache" class="ptolemy.kernel.util.StringAttribute" value="No Caching">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.267.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 335.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkley </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GDALFormatTranslator actor reads a geospatial raster file and translates it to a specified format (e.g., JPEG, AAIGrid, etc). Before performing the translation, the actor checks the Kepler file cache to see if the translated file already exists. The actor outputs the name of the translated file (or the name of an existing cached version).&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor uses the GDAL (Geospatial Data Abstraction Library) translation library to perform the translation. &#10;For more information about GDAL, see http://www.gdal.org/index.html.&lt;/p&gt;&#10;&#10;&lt;p&gt;Translated files are often stored in the Kepler cache. Files are cached by their file names (without the file extension) and their output format.&lt;/p&gt;&#10;&#10;&lt;p&gt;Use the actor's cacheOption parameter to specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input raster is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.&lt;/p&gt;&#10;</configure></property>
+<property name="port:inputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input geospatial raster file.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outputCacheType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified output format (e.g., &quot;GTiff&quot; or &quot;AAIGrid&quot;) </configure></property>
+<property name="port:outputCachename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the cache location of the translated output file. If &quot;No cache&quot; is selected as the cacheOption, the port will broadcast nothing. </configure></property>
+<property name="port:outputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the translated file.</configure></property>
+<property name="prop:output format" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format to which the input raster file should be translated (e.g., JPEG, AAIGrid, etc).</configure></property>
+<property name="prop:Cache options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input raster is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.</configure></property>
+<property name="prop:output type" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The  type of output (e.g., &quot;byte&quot; or &quot;int&quot;).</configure></property>
+</property>    </entity>
+    <entity name="Array Element" class="ptolemy.actor.lib.ArrayElement">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.22.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 300.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The ArrayElement actor reads an array of elements and &quot;looks up&quot; an element specified by a given index number. The specified element is output.&lt;/p&gt;&#10;&#10;&lt;p&gt;The first element in an array has an index of 0 (the second 1, and so on).&lt;/p&gt;&#10;&#10;&lt;p&gt;The ArrayElement actor is similar to the LookupTable actor in function; however, the two actors specify arrays and index numbers in different ways. The ArrayElement actor receives an array via its input port and an index number via a parameter. The LookupTable actor specifies an array with its table parameter and receives an index number via its input port.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the array element identified by the index number.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array from which a value is &quot;looked up&quot; and output. </configure></property>
+<property name="prop:index" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The index number of an element in the array. The index must be an integer. If the index is out of range (i.e., is greater than or equal to the length of the array), the actor will output nothing. The index can be specified via either the index port or parameter. </configure></property>
+</property>    </entity>
+    <entity name="Grid Rescaler" class="org.ecoinformatics.seek.gis.java_gis.GridRescaler">
+        <property name="xllcorner" class="ptolemy.data.expr.Parameter" value="-180.0">
+        </property>
+        <property name="yllcorner" class="ptolemy.data.expr.Parameter" value="-90.0">
+        </property>
+        <property name="cellsize" class="ptolemy.data.expr.Parameter" value="0.1">
+        </property>
+        <property name="numrows" class="ptolemy.data.expr.Parameter" value="1800">
+        </property>
+        <property name="numcols" class="ptolemy.data.expr.Parameter" value="3600">
+        </property>
+        <property name="outputFileName" class="ptolemy.data.expr.FileParameter" value="$ResultDirectory/NewTest_SA.asc">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.266.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[345.0, 345.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;  &lt;p&gt;The GridRescaler actor &quot;rescales&quot; a raster grid file so that it has a new extent and cellspacing. The actor outputs the name of the rescaled file.&lt;/p&gt;&#10;  &#10;&lt;p&gt;The actor reads the file name of one or more ASCII grid files via the input port.  The input port is a multiport. If multiple files are input, the actor will output a sequence of output file name tokens.&lt;/p&gt;&#10;  &#10; &lt;p&gt;The new file is generated based on the values specified in the actor's parameters. The actor uses an algorithm to convert cell values in the output grid from the values in the input grid. The actor currently supports two algorithms: 'Nearest Neighbor' or 'Inverse Distance Weighted'. Algorithms are disk based, allowing very large rasters to be converted.&lt;/p&gt;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name or names of the converted ASCII grid files.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the  the ASCII grid file or files to be converted.</configure></property>
+<property name="prop:use Existing File" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to instruct th e actor to check for currently existing output files. If the specified output file exists, the actor will output the name of the existing file, without repeating the calculation.</configure></property>
+<property name="prop:numrows" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An integer representing the number of rows for the raster. </configure></property>
+<property name="prop:yllcorner" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the y-value (usually a latitude) of the lower-left corner of the raster. If the parameter is empty, the y-value is set to the minimum y in the convex hull.</configure></property>
+<property name="prop:algorithm" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The algorithm  used to calculate cell values in the output grid from the values in the input grid.&#10;  The actor currently supports two algorithms: 'Nearest Neighbor' or 'Inverse Distance Weighted'. Algorithms are disk based, allowing very large rasters to be converted.</configure></property>
+<property name="prop:outputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the output file. If the parameter is left empty, the output file will be given the name of the input file  plus a suffix (&quot;.out&quot;+i). If the parameter is a directory name, output file(s) will be placed in the specified directory. Note that the input port is a multiport so multiple input files can be converted in a single firing.</configure></property>
+<property name="prop:cellsize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the cell size for the raster (assumed square). If the parameter is empty, the actor automatically generates a raster with 50 x-direction cells and y-direction cells to match the y-extent of the convex hull.</configure></property>
+<property name="prop:use disk storage (for large grids)" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to use disk for storing grid data rather than putting all data in RAM arrays during processing. Selecting this option can result in a much slower execution, but allows for very large raster files. </configure></property>
+<property name="prop:xllcorner" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the x-value (usually a longitude) of the lower-left corner of the raster. If the parameter is empty, the x-value is set to the minimum x in the convex hull. </configure></property>
+<property name="prop:numcols" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An integer representing the number of columns for the raster. </configure></property>
+</property>    </entity>
+    <entity name="IJMacro" class="util.IJMacro">
+        <property name="macroString" class="ptolemy.data.expr.StringParameter" value="run(&quot;ASC TextReader&quot;, &quot;open=_FILE_&quot;);&#10;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.271.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[675.0, 430.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The IJMacro actor runs ImageJ macros, which are used to display, edit, analyze, process, save, and print a wide variety of images. For more information about ImageJ, see http://rsb.info.nih.gov/ij/.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor accepts a string representing an image file name via the input port or the fileOrURL parameter. The actor will perform the macro specified in the macroString parameter. By default, the actor will open the specified image.&lt;/p&gt;&#10;&#10;&lt;p&gt;The ImageJ menu toolbar, which appears when the actor opens a specified image, can be used to create additional macros. Select &quot;Plugins &gt; Macros &gt; Record&quot; from the ImageJ menu to create a new macro that can be used by the actor.&lt;/p&gt;&#10;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string representing the path of an image</configure></property>
+<property name="prop:macroString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The ImageJ macro to execute. The macro may include the expression &quot;_FILE_&quot;, which will be replaced by the path of the specified image file.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of an image to process. The file name may also be input through the input port.</configure></property>
+</property>    </entity>
+    <entity name="GDAL Warp and Projection2" class="org.ecoinformatics.seek.gis.gdal.GDALWarpActor">
+        <property name="input params" class="ptolemy.data.expr.StringParameter" value="+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0">
+        </property>
+        <property name="output params" class="ptolemy.data.expr.StringParameter" value="+proj=latlong">
+        </property>
+        <property name="output format" class="ptolemy.data.expr.StringParameter" value="GTiff">
+        </property>
+        <property name="Cache options" class="ptolemy.data.expr.StringParameter" value="Cache Files but Preserve Location">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="CacheInternal" class="ptolemy.kernel.util.StringAttribute" value="Copy Files to Cache">
+                </property>
+                <property name="CacheExternal" class="ptolemy.kernel.util.StringAttribute" value="Cache Files but Preserve Location">
+                </property>
+                <property name="NoCache" class="ptolemy.kernel.util.StringAttribute" value="No Caching">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.273.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[140.0, 115.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkley </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GDALWarpAndProjection actor &quot;streches&quot; or &quot;warps&quot; a geospatial raster file (e.g., a digital elevation model) from one cartographic projection to another. Before creating the projection, the actor checks the Kepler file cache to see if the projected file already exists. The actor outputs the name of the projected file (or the name of an existing cached version).&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor uses the GDAL (Geospatial Data Abstraction Library) library to create the projection. &#10;For more information about GDAL, see http://www.gdal.org/index.html. &lt;/p&gt;&#10;&#10;&lt;p&gt;Projected files are often stored in the Kepler cache. Files are cached by their file names (without the file extension) and their output format.&lt;/p&gt;&#10;&#10;&lt;p&gt;Use the actor's cacheOption parameter to specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input data is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.&lt;/p&gt;&#10;&#10;&lt;p&gt;The inputParams and outputParams parameters specify the format for the coordinate system. The parameter values must be of a form used by the GDAL Warp utility. See the -s_srs and -t_srs parameters of the GDAL Warp utility for more information about accepted forms: http://www.remotesensing.org/gdal/gdalwarp.html.&lt;/p&gt;&#10;</configure></property>
+<property name="port:inputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input geospatial raster file. The actor can process any of the dozens of GIS raster formats supported by GDAL.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outputCacheType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified output format (e.g., &quot;GTiff&quot; or &quot;AAIGrid&quot;)</configure></property>
+<property name="port:outputCachename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the cache location of the translated output (a file path). If &quot;No cache&quot; is selected as the cacheOption, the port will broadcast nothing.</configure></property>
+<property name="port:outputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the translated file.</configure></property>
+<property name="prop:output format" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format of the output projection (e.g., GTiff).</configure></property>
+<property name="prop:input params" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format for the coordinate system of the input data. The parameter values must be of a form used by the GDAL Warp utility. For more information about supported formats, see www.remotesensing.org/geotiff/proj_list/. For example, a Lambert Azimuthal Eagual Area Projection could be specified as &lt;code&gt;+proj=laea+lat_0=45+long_0=-100+x_0=0+y_0=0&lt;/code&gt;.</configure></property>
+<property name="prop:Cache options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input raster is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the projection file and will ignore all previously stored cache items. Select this option to force the actor to create a projection even if a projection file was previously created and cached.</configure></property>
+<property name="prop:output params" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format for the coordinate system of the output projection. The parameter values must be of a form used by the GDAL Warp utility. For more information about supported formats, see www.remotesensing.org/geotiff/proj_list/. For example, a simple latitude/longitude projection is specified as &lt;code&gt;+proj=latlong.&lt;/code&gt;&#10;</configure></property>
+</property>    </entity>
+    <entity name="Array Element2" class="ptolemy.actor.lib.ArrayElement">
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.22.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[40.0, 105.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The ArrayElement actor reads an array of elements and &quot;looks up&quot; an element specified by a given index number. The specified element is output.&lt;/p&gt;&#10;&#10;&lt;p&gt;The first element in an array has an index of 0 (the second 1, and so on).&lt;/p&gt;&#10;&#10;&lt;p&gt;The ArrayElement actor is similar to the LookupTable actor in function; however, the two actors specify arrays and index numbers in different ways. The ArrayElement actor receives an array via its input port and an index number via a parameter. The LookupTable actor specifies an array with its table parameter and receives an index number via its input port.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the array element identified by the index number.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array from which a value is &quot;looked up&quot; and output. </configure></property>
+<property name="prop:index" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The index number of an element in the array. The index must be an integer. If the index is out of range (i.e., is greater than or equal to the length of the array), the actor will output nothing. The index can be specified via either the index port or parameter. </configure></property>
+</property>    </entity>
+    <entity name="Grid Rescaler2" class="org.ecoinformatics.seek.gis.java_gis.GridRescaler">
+        <property name="xllcorner" class="ptolemy.data.expr.Parameter" value="-180.0">
+        </property>
+        <property name="yllcorner" class="ptolemy.data.expr.Parameter" value="-90.0">
+        </property>
+        <property name="cellsize" class="ptolemy.data.expr.Parameter" value="0.1">
+        </property>
+        <property name="numrows" class="ptolemy.data.expr.Parameter" value="1800">
+        </property>
+        <property name="numcols" class="ptolemy.data.expr.Parameter" value="3600">
+        </property>
+        <property name="outputFileName" class="ptolemy.data.expr.FileParameter" value="$ResultDirectory/NewTest_NA.asc">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.266.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[360.0, 150.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;  &lt;p&gt;The GridRescaler actor &quot;rescales&quot; a raster grid file so that it has a new extent and cellspacing. The actor outputs the name of the rescaled file.&lt;/p&gt;&#10;  &#10;&lt;p&gt;The actor reads the file name of one or more ASCII grid files via the input port.  The input port is a multiport. If multiple files are input, the actor will output a sequence of output file name tokens.&lt;/p&gt;&#10;  &#10; &lt;p&gt;The new file is generated based on the values specified in the actor's parameters. The actor uses an algorithm to convert cell values in the output grid from the values in the input grid. The actor currently supports two algorithms: 'Nearest Neighbor' or 'Inverse Distance Weighted'. Algorithms are disk based, allowing very large rasters to be converted.&lt;/p&gt;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name or names of the converted ASCII grid files.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the  the ASCII grid file or files to be converted.</configure></property>
+<property name="prop:use Existing File" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to instruct th e actor to check for currently existing output files. If the specified output file exists, the actor will output the name of the existing file, without repeating the calculation.</configure></property>
+<property name="prop:numrows" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An integer representing the number of rows for the raster. </configure></property>
+<property name="prop:yllcorner" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the y-value (usually a latitude) of the lower-left corner of the raster. If the parameter is empty, the y-value is set to the minimum y in the convex hull.</configure></property>
+<property name="prop:algorithm" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The algorithm  used to calculate cell values in the output grid from the values in the input grid.&#10;  The actor currently supports two algorithms: 'Nearest Neighbor' or 'Inverse Distance Weighted'. Algorithms are disk based, allowing very large rasters to be converted.</configure></property>
+<property name="prop:outputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the output file. If the parameter is left empty, the output file will be given the name of the input file  plus a suffix (&quot;.out&quot;+i). If the parameter is a directory name, output file(s) will be placed in the specified directory. Note that the input port is a multiport so multiple input files can be converted in a single firing.</configure></property>
+<property name="prop:cellsize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the cell size for the raster (assumed square). If the parameter is empty, the actor automatically generates a raster with 50 x-direction cells and y-direction cells to match the y-extent of the convex hull.</configure></property>
+<property name="prop:use disk storage (for large grids)" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to use disk for storing grid data rather than putting all data in RAM arrays during processing. Selecting this option can result in a much slower execution, but allows for very large raster files. </configure></property>
+<property name="prop:xllcorner" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the x-value (usually a longitude) of the lower-left corner of the raster. If the parameter is empty, the x-value is set to the minimum x in the convex hull. </configure></property>
+<property name="prop:numcols" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An integer representing the number of columns for the raster. </configure></property>
+</property>    </entity>
+    <entity name="GDAL Format Translator2" class="org.ecoinformatics.seek.gis.gdal.GDALTranslateActor">
+        <property name="output type" class="ptolemy.data.expr.StringParameter" value="Byte">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="Byte" class="ptolemy.kernel.util.StringAttribute" value="Byte">
+                </property>
+                <property name="Int16" class="ptolemy.kernel.util.StringAttribute" value="Int16">
+                </property>
+                <property name="UInt16" class="ptolemy.kernel.util.StringAttribute" value="UInt16">
+                </property>
+                <property name="UInt32" class="ptolemy.kernel.util.StringAttribute" value="UInt32">
+                </property>
+                <property name="Int32" class="ptolemy.kernel.util.StringAttribute" value="Int32">
+                </property>
+                <property name="Float32" class="ptolemy.kernel.util.StringAttribute" value="Float32">
+                </property>
+                <property name="Float64" class="ptolemy.kernel.util.StringAttribute" value="Float64">
+                </property>
+                <property name="CInt16" class="ptolemy.kernel.util.StringAttribute" value="CInt16">
+                </property>
+                <property name="CInt32" class="ptolemy.kernel.util.StringAttribute" value="CInt32">
+                </property>
+                <property name="CFloat32" class="ptolemy.kernel.util.StringAttribute" value="CFloat32">
+                </property>
+                <property name="CFloat64" class="ptolemy.kernel.util.StringAttribute" value="CFloat64">
+                </property>
+            </property>
+        </property>
+        <property name="output format" class="ptolemy.data.expr.StringParameter" value="AAIGrid">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="VRT" class="ptolemy.kernel.util.StringAttribute" value="VRT">
+                </property>
+                <property name="GeoTiff" class="ptolemy.kernel.util.StringAttribute" value="GeoTiff">
+                </property>
+                <property name="NITF" class="ptolemy.kernel.util.StringAttribute" value="NITF">
+                </property>
+                <property name="HFA" class="ptolemy.kernel.util.StringAttribute" value="HFA">
+                </property>
+                <property name="ELAS" class="ptolemy.kernel.util.StringAttribute" value="ELAS">
+                </property>
+                <property name="AAIGrid" class="ptolemy.kernel.util.StringAttribute" value="AAIGrid">
+                </property>
+                <property name="DTED" class="ptolemy.kernel.util.StringAttribute" value="DTED">
+                </property>
+                <property name="PNG" class="ptolemy.kernel.util.StringAttribute" value="PNG">
+                </property>
+                <property name="JPEG" class="ptolemy.kernel.util.StringAttribute" value="JPEG">
+                </property>
+                <property name="MEM" class="ptolemy.kernel.util.StringAttribute" value="MEM">
+                </property>
+                <property name="GIF" class="ptolemy.kernel.util.StringAttribute" value="GIF">
+                </property>
+                <property name="XPM" class="ptolemy.kernel.util.StringAttribute" value="XPM">
+                </property>
+                <property name="BMP" class="ptolemy.kernel.util.StringAttribute" value="BMP">
+                </property>
+                <property name="PCIDSK" class="ptolemy.kernel.util.StringAttribute" value="PCIDSK">
+                </property>
+                <property name="PNM" class="ptolemy.kernel.util.StringAttribute" value="PNM">
+                </property>
+                <property name="ENVI" class="ptolemy.kernel.util.StringAttribute" value="ENVI">
+                </property>
+                <property name="ESRI" class="ptolemy.kernel.util.StringAttribute" value="ESRI">
+                </property>
+                <property name="PCI" class="ptolemy.kernel.util.StringAttribute" value="PCI">
+                </property>
+                <property name="MFF" class="ptolemy.kernel.util.StringAttribute" value="MFF">
+                </property>
+                <property name="MFF2" class="ptolemy.kernel.util.StringAttribute" value="MFF2">
+                </property>
+                <property name="BT" class="ptolemy.kernel.util.StringAttribute" value="BT">
+                </property>
+                <property name="FIT" class="ptolemy.kernel.util.StringAttribute" value="FIT">
+                </property>
+                <property name="USGSDEM" class="ptolemy.kernel.util.StringAttribute" value="USGSDEM">
+                </property>
+            </property>
+        </property>
+        <property name="Cache options" class="ptolemy.data.expr.StringParameter" value="Cache Files but Preserve Location">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="CacheInternal" class="ptolemy.kernel.util.StringAttribute" value="Copy Files to Cache">
+                </property>
+                <property name="CacheExternal" class="ptolemy.kernel.util.StringAttribute" value="Cache Files but Preserve Location">
+                </property>
+                <property name="NoCache" class="ptolemy.kernel.util.StringAttribute" value="No Caching">
+                </property>
+            </property>
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.267.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[255.0, 135.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkley </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The GDALFormatTranslator actor reads a geospatial raster file and translates it to a specified format (e.g., JPEG, AAIGrid, etc). Before performing the translation, the actor checks the Kepler file cache to see if the translated file already exists. The actor outputs the name of the translated file (or the name of an existing cached version).&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor uses the GDAL (Geospatial Data Abstraction Library) translation library to perform the translation. &#10;For more information about GDAL, see http://www.gdal.org/index.html.&lt;/p&gt;&#10;&#10;&lt;p&gt;Translated files are often stored in the Kepler cache. Files are cached by their file names (without the file extension) and their output format.&lt;/p&gt;&#10;&#10;&lt;p&gt;Use the actor's cacheOption parameter to specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input raster is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.&lt;/p&gt;&#10;</configure></property>
+<property name="port:inputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input geospatial raster file.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outputCacheType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified output format (e.g., &quot;GTiff&quot; or &quot;AAIGrid&quot;) </configure></property>
+<property name="port:outputCachename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the cache location of the translated output file. If &quot;No cache&quot; is selected as the cacheOption, the port will broadcast nothing. </configure></property>
+<property name="port:outputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the translated file.</configure></property>
+<property name="prop:output format" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format to which the input raster file should be translated (e.g., JPEG, AAIGrid, etc).</configure></property>
+<property name="prop:Cache options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be copied to the cache (&quot;Copy files to cache&quot;), copied to the cache as well as the directory where the input raster is stored (&quot;Cache files but preserve location&quot;), or not cached (&quot;No caching&quot;). If &quot;No caching&quot; is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.</configure></property>
+<property name="prop:output type" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The  type of output (e.g., &quot;byte&quot; or &quot;int&quot;).</configure></property>
+</property>    </entity>
+    <entity name="Merge_North_South" class="org.ecoinformatics.seek.gis.java_gis.MergeGrids">
+        <property name="mergeOperation" class="ptolemy.data.expr.StringParameter" value="Average">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.277.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[635.0, 295.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MergeGrids actor reads the names of two geospatial image files, merges the files according to a specified merge-operation, and outputs the name of the merged file. The actor can be used to combine several regions into a large region--combining a grid covering North America with one for South America to create a raster grid for the western hemisphere, for example.&lt;/p&gt;&#10;&#10;&lt;p&gt;The grid1Filename and grid2Filename ports each accept a string representing the name of a geospatial raster file. The order of the input files may be significant (e.g., for &quot;subtraction&quot; merge operations). The geographic extent of the output file will always include the combined extent of the inputs. The cell size will match that of the first input file.&lt;/p&gt;&#10; &#10;&lt;p&gt;Select a merge operation with the mergeOperation parameter.  Choices include:&lt;/p&gt;&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;average&lt;/td&gt;&#10;&lt;td&gt;Average the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;add&lt;/td&gt;&#10;&lt;td&gt;Add the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;subtract&lt;/td&gt;&#10;&lt;td&gt;Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will mask the corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;not_mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will not mask corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;&#10;&lt;p&gt;The MergeGrids actor is similar to the AddGrid actor, except that the MergeGrids can use a variety of merge operations and merges only two grids. The AddGrids actor can be used to merge multiple grids, but uses only addition to merge them.&lt;/p&gt;&#10;</configure></property>
+<property name="port:mergedGridFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the resulting merged  file.</configure></property>
+<property name="port:mergedGridFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to give the output file.</configure></property>
+<property name="port:grid2FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The second grid file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="port:grid1FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The first raster file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="prop:useDisk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to use disk memory for storing grid data. This option in much slower than using only RAM memory (the default) but allows for very large rasters.</configure></property>
+<property name="prop:mergeOperation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of merge to execute. Choices include:&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;average&lt;/td&gt;&#10;&lt;td&gt;Average the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;add&lt;/td&gt;&#10;&lt;td&gt;Add the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;subtract&lt;/td&gt;&#10;&lt;td&gt;Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will mask the corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;not_mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will not mask corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;</configure></property>
+</property>    </entity>
+    <entity name="Merged Result Filename" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="ResultDirectory+&quot;/H1K_DEM_NSA.asc&quot;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:101:1">
+        </property>
+        <property name="semanticType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#ConstantActor">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[495.0, 465.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="SA_Mask" class="org.ecoinformatics.seek.gis.java_gis.MergeGrids">
+        <property name="mergeOperation" class="ptolemy.data.expr.StringParameter" value="Mask">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.277.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[465.0, 370.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MergeGrids actor reads the names of two geospatial image files, merges the files according to a specified merge-operation, and outputs the name of the merged file. The actor can be used to combine several regions into a large region--combining a grid covering North America with one for South America to create a raster grid for the western hemisphere, for example.&lt;/p&gt;&#10;&#10;&lt;p&gt;The grid1Filename and grid2Filename ports each accept a string representing the name of a geospatial raster file. The order of the input files may be significant (e.g., for &quot;subtraction&quot; merge operations). The geographic extent of the output file will always include the combined extent of the inputs. The cell size will match that of the first input file.&lt;/p&gt;&#10; &#10;&lt;p&gt;Select a merge operation with the mergeOperation parameter.  Choices include:&lt;/p&gt;&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;average&lt;/td&gt;&#10;&lt;td&gt;Average the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;add&lt;/td&gt;&#10;&lt;td&gt;Add the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;subtract&lt;/td&gt;&#10;&lt;td&gt;Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will mask the corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;not_mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will not mask corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;&#10;&lt;p&gt;The MergeGrids actor is similar to the AddGrid actor, except that the MergeGrids can use a variety of merge operations and merges only two grids. The AddGrids actor can be used to merge multiple grids, but uses only addition to merge them.&lt;/p&gt;&#10;</configure></property>
+<property name="port:mergedGridFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the resulting merged  file.</configure></property>
+<property name="port:mergedGridFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to give the output file.</configure></property>
+<property name="port:grid2FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The second grid file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="port:grid1FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The first raster file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="prop:useDisk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to use disk memory for storing grid data. This option in much slower than using only RAM memory (the default) but allows for very large rasters.</configure></property>
+<property name="prop:mergeOperation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of merge to execute. Choices include:&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;average&lt;/td&gt;&#10;&lt;td&gt;Average the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;add&lt;/td&gt;&#10;&lt;td&gt;Add the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;subtract&lt;/td&gt;&#10;&lt;td&gt;Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will mask the corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;not_mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will not mask corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;</configure></property>
+</property>    </entity>
+    <entity name="NA_Mask" class="org.ecoinformatics.seek.gis.java_gis.MergeGrids">
+        <property name="mergeOperation" class="ptolemy.data.expr.StringParameter" value="Mask">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:ecoinformatics.org:kepler.277.1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[470.0, 180.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The MergeGrids actor reads the names of two geospatial image files, merges the files according to a specified merge-operation, and outputs the name of the merged file. The actor can be used to combine several regions into a large region--combining a grid covering North America with one for South America to create a raster grid for the western hemisphere, for example.&lt;/p&gt;&#10;&#10;&lt;p&gt;The grid1Filename and grid2Filename ports each accept a string representing the name of a geospatial raster file. The order of the input files may be significant (e.g., for &quot;subtraction&quot; merge operations). The geographic extent of the output file will always include the combined extent of the inputs. The cell size will match that of the first input file.&lt;/p&gt;&#10; &#10;&lt;p&gt;Select a merge operation with the mergeOperation parameter.  Choices include:&lt;/p&gt;&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;average&lt;/td&gt;&#10;&lt;td&gt;Average the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;add&lt;/td&gt;&#10;&lt;td&gt;Add the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;subtract&lt;/td&gt;&#10;&lt;td&gt;Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will mask the corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;not_mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will not mask corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;&#10;&lt;p&gt;The MergeGrids actor is similar to the AddGrid actor, except that the MergeGrids can use a variety of merge operations and merges only two grids. The AddGrids actor can be used to merge multiple grids, but uses only addition to merge them.&lt;/p&gt;&#10;</configure></property>
+<property name="port:mergedGridFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the resulting merged  file.</configure></property>
+<property name="port:mergedGridFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name to give the output file.</configure></property>
+<property name="port:grid2FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The second grid file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="port:grid1FileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The first raster file to be merged (in ESRI ASCII Grid format).</configure></property>
+<property name="prop:useDisk" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to use disk memory for storing grid data. This option in much slower than using only RAM memory (the default) but allows for very large rasters.</configure></property>
+<property name="prop:mergeOperation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The type of merge to execute. Choices include:&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;average&lt;/td&gt;&#10;&lt;td&gt;Average the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;add&lt;/td&gt;&#10;&lt;td&gt;Add the values of each cell.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;subtract&lt;/td&gt;&#10;&lt;td&gt;Subtract the values of each cell. Note: the order in which the input files are specified is significant when using the subtract operation.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will mask the corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;not_mask&lt;/td&gt;&#10;&lt;td&gt;Missing values in grid2 will not mask corresponding points in grid1. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;</configure></property>
+</property>    </entity>
+    <entity name="Southe America Mask file" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="property(&quot;outreach.workflowdir&quot;)+&quot;data/garp/H1K_SA_Mask.asc&quot;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:1348:28:1">
+        </property>
+        <property name="semanticType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#ConstantActor">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[220.0, 395.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:localhost:actor:101:1">
+        </property>
+    </entity>
+    <entity name="North America Mask file" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="property(&quot;outreach.workflowdir&quot;)+&quot;data/garp/H1K_NA_Mask.asc&quot;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:1348:27:1">
+        </property>
+        <property name="semanticType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#ConstantActor">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 195.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:localhost:actor:101:1">
+        </property>
+    </entity>
+    <entity name="Output File North America" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="ResultDirectory+&quot;/H1K_NA.asc&quot;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:101:1">
+        </property>
+        <property name="semanticType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#ConstantActor">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[260.0, 240.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Output File - South America" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="ResultDirectory+&quot;/H1K_SA.asc&quot;">
+        </property>
+        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:localhost:actor:101:1">
+        </property>
+        <property name="semanticType" class="org.kepler.sms.SemanticType" value="urn:lsid:lsid.ecoinformatics.org:onto:1:1#ConstantActor">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 435.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The Constant actor outputs a constant, which is specified by the value parameter. By default, the actor outputs the integer 1.&lt;/p&gt;&#10;&#10;&lt;p&gt;The actor can be used to output other types of values, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The actor'&#10;s output type matches the type of the specified value.&lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified constant. By default, the output is 1.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the Constant actor. By default, the value is the integer token 1. The value can be set to another type, e.g., a string (such as &quot;Hello&quot;) or a double (such as 1.2). The  output type matches the type of the value specified here.</configure></property>
+</property>    </entity>
+    <entity name="Hydro1k North American - DEM" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute">
+            <display name="Schema Definition"/>
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <display name="SQL Command"/>
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="selectedEntity" class="ptolemy.data.expr.StringParameter" value="hydro1k_north_america_dem">
+            <display name="Selected Entity"/>
+        </property>
+        <property name="dataOutputFormat" class="ptolemy.data.expr.StringParameter" value="As UnCompressed File Name">
+            <display name="Data Output Format"/>
+        </property>
+        <property name="fileExtensionFilter" class="ptolemy.data.expr.StringParameter" value="bil">
+            <display name="File Extension Filter"/>
+        </property>
+        <property name="_tableauFactory" class="org.kepler.objectmanager.data.db.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="tao.11656.3">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-85.0, 75.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>matt jones, jing tao, chad</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The EML2Dataset actor provides access to a wide variety of data packages that have been described using EML (Ecological Metadata Language). The actor accesses an EML dataset and handles the mechanical issues involved in parsing metadata, downloading the dataset (if applicable), and emitting data to downstream actors.&lt;/p&gt;&#10;&#10;&lt;p&gt;Each data package contains an EML metadata description and one or more data entities (e.g., data tables, spatial raster images, spatial vector images). The EML metadata allows the described data to be easily ingested into Kepler and exposed for use in downstream components. The data packages can be accessed from the local file system or through any EcoGrid server that provides access to its collection of data objects. The supported data transfer protocols include http, ftp, file, ecogrid, and srb. &lt;/p&gt;&#10;&#10;&lt;p&gt;After parsing the EML metadata, the actor automatically reconfigures its exposed ports to provide one port for each attribute described by the first entity of the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document. To preview the data, right-click the actor icon and select Preview from the drop-down menu.&lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the ports created by the EML2Dataset actor represent data fields, and one tuple of data (e.g., one database row) is emitted on these ports each time the actor fires. Alternatively, the actor can be configured so that the ports represent an array of field values (&quot;AsColumnVector&quot;), or so that the ports represent an entire table of data (&quot;AsTable&quot;). Data tables are formatted in comma-separated-value (CSV) format.&lt;/p&gt;&#10;&#10;&lt;p&gt;If more than one data entity is described in the EML metadata, then the output of the actor defaults to the first entity listed in the EML. To select the other entities, specify an entity with the Selected parameter, or use the Query Builder to describe the filter and join that should be used to produce the data output. To use the Query Builder, right-click the actor and select &quot;Open Actor.&quot; Specify the fields to be output and any filtering constraints to be applied.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output ports are automatically configured to provide one port for each attribute in the first entity described in the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:isLenient" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this parameter is selected, &quot;extra&quot; columns of data (e.g., comments that people have entered on a line or something of that nature) that are not described in the metadata are ignored, allowing the workflow to execute. If the option is unchecked (the default), the workflow execution will halt until the discrepancy between the data and metadata is corrected.</configure></property>
+<property name="prop:checkVersion" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to check the EarthGrid for updates to the data. If the actor finds a version of the data that is more recent than the cached data on your local system, the actor will prompt the user to either download the latest data and metadata or ignore the newer version. Note that different versions of the data can have vastly different structures (new columns, or even new tables of data might be included or removed). If this parameter is selected, users should be prepared to handle changes that might arise from differences in the data structure.</configure></property>
+<property name="prop:selectedEntity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this EML data package has multiple entities, the selectedEntity parameter specifies which entity should be output. When this parameter is unset (the default), data from the first entity described in an EML package is output. This parameter is only used if no query statement is specified, or if a query statement is used and the output format is one of &quot;As Table&quot;, &quot;As Byte Array&quot;, &quot;As Uncompressed File Name&quot;, and &quot;As Cache File Name&quot;. To specify a query statement, right-click the actor and select Open Actor.</configure></property>
+<property name="prop:dataOutputFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in a data table, or one port that emits the entire data table at once in CSV format. Specifically, the output format choices are:&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Field (the default)&lt;/td&gt;&#10;&lt;td&gt; The actor creates one output port for each field (i.e., column/attribute/variable) that is described in the EML metadata for the data package. The type of each port (e.g., string, int, double, etc.) matches the base type of the field. If a query statement has been used to subset the data, then only those fields selected in the query statement will be configured as ports. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Table&lt;/td&gt;&#10;&lt;td&gt; The selected data will be output as a string that contains the entire entity data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and NumColumns - the number of fields in the table. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Row&lt;/td&gt;&#10;&lt;td&gt;  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Byte Array&lt;/td&gt;&#10;&lt;td&gt; Selected data will be output as an array of bytes. The actor creates two output ports: BinaryData - contains the raw data itself, and EndOfStream - indicates whether the end of data stream has been reached.&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As UnCompressed File Name&lt;/td&gt;&#10;&lt;td&gt; This format is only used when the data package is a compressed file (zip, tar, et al). The compressed archive file is uncompressed after it is downloaded. The actor creates one output port, which contains an array of the filenames of all of the uncompressed archive files. If a FileExtensionFilter is specified, then the array will only contain files that match the specified extension.&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Cache File Name&lt;/td&gt;&#10;&lt;td&gt;   Kepler stores data files downloaded from remote sites into its cache system. This output format will send the local cache file path for the data package so that workflow designers can directly access the cache files. The actor creates two output ports: CacheLocalFileName (the local file path) and CacheResourceName (the EML data link. e.g., ecogrid://knb/tao.2.1).&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Column Vector&lt;/td&gt;&#10;&lt;td&gt; This output format is similar to &quot;As Field&quot;, except instead of sending out a single value on each port, the actor sends out an array of all of the data for each field. The type of each port is an array of the base type for the field.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As ColumnBased Record&lt;/td&gt;&#10;&lt;td&gt;  This output format sends all data on one port using a record structure that encapsulates the entire data entity. The record will contain one array for each data field, and the type of each array will be determined by the type of the field it represents.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;&#10;</configure></property>
+<property name="prop:emlFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path of a local EML metadata file used to describe and access an EML data set.</configure></property>
+<property name="prop:fileExtensionFilter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A file extension used to limit the array of file names returned by the actor when the selected output type is &quot;As UnCompressed File Name&quot;. This parameter is ignored for other output types.</configure></property>
+<property name="prop:dataFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to a local data file described by EML (must be used in conjunction with a local EML file). The actor will retrieve the data and automatically configure its ports to output it.</configure></property>
+</property>        <port name="UnzippedFileName" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <entity name="Hydro1k South America - DEM" class="org.ecoinformatics.seek.datasource.eml.eml2.Eml200DataSource">
+        <property name="schemaDef" class="ptolemy.kernel.util.StringAttribute">
+            <display name="Schema Definition"/>
+            <property name="schemaDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="sqlDef" class="ptolemy.kernel.util.StringAttribute">
+            <display name="SQL Command"/>
+            <property name="sqlDef" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="selectedEntity" class="ptolemy.data.expr.StringParameter" value="hydro1k_south_america_dem">
+            <display name="Selected Entity"/>
+        </property>
+        <property name="dataOutputFormat" class="ptolemy.data.expr.StringParameter" value="As UnCompressed File Name">
+            <display name="Data Output Format"/>
+        </property>
+        <property name="fileExtensionFilter" class="ptolemy.data.expr.StringParameter" value="bil">
+            <display name="File Extension Filter"/>
+        </property>
+        <property name="_tableauFactory" class="org.kepler.objectmanager.data.db.QBTableauFactory">
+            <property name="sqlName" class="ptolemy.kernel.util.StringAttribute" value="sqlDef">
+            </property>
+            <property name="schemaName" class="ptolemy.kernel.util.StringAttribute" value="schemaDef">
+            </property>
+        </property>
+        <property name="recordid" class="ptolemy.kernel.util.StringAttribute" value="tao.11690.3">
+        </property>
+        <property name="endpoint" class="ptolemy.kernel.util.StringAttribute" value="http://ecogrid.ecoinformatics.org/knb/services/QueryService">
+        </property>
+        <property name="namespace" class="ptolemy.kernel.util.StringAttribute" value="eml://ecoinformatics.org/eml-2.0.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, 265.0]">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>matt jones, jing tao, chad</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The EML2Dataset actor provides access to a wide variety of data packages that have been described using EML (Ecological Metadata Language). The actor accesses an EML dataset and handles the mechanical issues involved in parsing metadata, downloading the dataset (if applicable), and emitting data to downstream actors.&lt;/p&gt;&#10;&#10;&lt;p&gt;Each data package contains an EML metadata description and one or more data entities (e.g., data tables, spatial raster images, spatial vector images). The EML metadata allows the described data to be easily ingested into Kepler and exposed for use in downstream components. The data packages can be accessed from the local file system or through any EcoGrid server that provides access to its collection of data objects. The supported data transfer protocols include http, ftp, file, ecogrid, and srb. &lt;/p&gt;&#10;&#10;&lt;p&gt;After parsing the EML metadata, the actor automatically reconfigures its exposed ports to provide one port for each attribute described by the first entity of the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document. To preview the data, right-click the actor icon and select Preview from the drop-down menu.&lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the ports created by the EML2Dataset actor represent data fields, and one tuple of data (e.g., one database row) is emitted on these ports each time the actor fires. Alternatively, the actor can be configured so that the ports represent an array of field values (&quot;AsColumnVector&quot;), or so that the ports represent an entire table of data (&quot;AsTable&quot;). Data tables are formatted in comma-separated-value (CSV) format.&lt;/p&gt;&#10;&#10;&lt;p&gt;If more than one data entity is described in the EML metadata, then the output of the actor defaults to the first entity listed in the EML. To select the other entities, specify an entity with the Selected parameter, or use the Query Builder to describe the filter and join that should be used to produce the data output. To use the Query Builder, right-click the actor and select &quot;Open Actor.&quot; Specify the fields to be output and any filtering constraints to be applied.&lt;/p&gt;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Output ports are automatically configured to provide one port for each attribute in the first entity described in the EML description. For example, if the first entity is a data table with four columns, the ports might be &quot;Site&quot;, &quot;Date&quot;, &quot;Plot&quot;, and &quot;Rainfall.&quot; These details are obtained from the EML document.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:isLenient" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this parameter is selected, &quot;extra&quot; columns of data (e.g., comments that people have entered on a line or something of that nature) that are not described in the metadata are ignored, allowing the workflow to execute. If the option is unchecked (the default), the workflow execution will halt until the discrepancy between the data and metadata is corrected.</configure></property>
+<property name="prop:checkVersion" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select this parameter to check the EarthGrid for updates to the data. If the actor finds a version of the data that is more recent than the cached data on your local system, the actor will prompt the user to either download the latest data and metadata or ignore the newer version. Note that different versions of the data can have vastly different structures (new columns, or even new tables of data might be included or removed). If this parameter is selected, users should be prepared to handle changes that might arise from differences in the data structure.</configure></property>
+<property name="prop:selectedEntity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this EML data package has multiple entities, the selectedEntity parameter specifies which entity should be output. When this parameter is unset (the default), data from the first entity described in an EML package is output. This parameter is only used if no query statement is specified, or if a query statement is used and the output format is one of &quot;As Table&quot;, &quot;As Byte Array&quot;, &quot;As Uncompressed File Name&quot;, and &quot;As Cache File Name&quot;. To specify a query statement, right-click the actor and select Open Actor.</configure></property>
+<property name="prop:dataOutputFormat" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify which ports are created for the actor and what data is emitted on those ports during each fire cycle. For example, this field can be configured to produce one port for each column in a data table, or one port that emits the entire data table at once in CSV format. Specifically, the output format choices are:&#10;&lt;table&gt;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Field (the default)&lt;/td&gt;&#10;&lt;td&gt; The actor creates one output port for each field (i.e., column/attribute/variable) that is described in the EML metadata for the data package. The type of each port (e.g., string, int, double, etc.) matches the base type of the field. If a query statement has been used to subset the data, then only those fields selected in the query statement will be configured as ports. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Table&lt;/td&gt;&#10;&lt;td&gt; The selected data will be output as a string that contains the entire entity data. The actor creates three output ports: DataTable - the data itself, Delimiter - delimiter to separate fields, and NumColumns - the number of fields in the table. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Row&lt;/td&gt;&#10;&lt;td&gt;  One tuple of selected data is formatted as an array and output. The actor creates one output port (DataRow), and the data type is a record containing each of the individual data fields. &lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Byte Array&lt;/td&gt;&#10;&lt;td&gt; Selected data will be output as an array of bytes. The actor creates two output ports: BinaryData - contains the raw data itself, and EndOfStream - indicates whether the end of data stream has been reached.&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As UnCompressed File Name&lt;/td&gt;&#10;&lt;td&gt; This format is only used when the data package is a compressed file (zip, tar, et al). The compressed archive file is uncompressed after it is downloaded. The actor creates one output port, which contains an array of the filenames of all of the uncompressed archive files. If a FileExtensionFilter is specified, then the array will only contain files that match the specified extension.&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Cache File Name&lt;/td&gt;&#10;&lt;td&gt;   Kepler stores data files downloaded from remote sites into its cache system. This output format will send the local cache file path for the data package so that workflow designers can directly access the cache files. The actor creates two output ports: CacheLocalFileName (the local file path) and CacheResourceName (the EML data link. e.g., ecogrid://knb/tao.2.1).&lt;/td&gt;&#10;&lt;/tr&gt; &#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As Column Vector&lt;/td&gt;&#10;&lt;td&gt; This output format is similar to &quot;As Field&quot;, except instead of sending out a single value on each port, the actor sends out an array of all of the data for each field. The type of each port is an array of the base type for the field.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&#10;&lt;tr&gt;&#10;&lt;td&gt;As ColumnBased Record&lt;/td&gt;&#10;&lt;td&gt;  This output format sends all data on one port using a record structure that encapsulates the entire data entity. The record will contain one array for each data field, and the type of each array will be determined by the type of the field it represents.&lt;/td&gt;&#10;&lt;/tr&gt;&#10;&lt;/table&gt;&#10;&#10;</configure></property>
+<property name="prop:emlFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path of a local EML metadata file used to describe and access an EML data set.</configure></property>
+<property name="prop:fileExtensionFilter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A file extension used to limit the array of file names returned by the actor when the selected output type is &quot;As UnCompressed File Name&quot;. This parameter is ignored for other output types.</configure></property>
+<property name="prop:dataFilePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to a local data file described by EML (must be used in conjunction with a local EML file). The actor will retrieve the data and automatically configure its ports to output it.</configure></property>
+</property>        <port name="UnzippedFileName" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation10" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation11" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation8" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation13" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation14" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation15" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation16" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation17" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation18" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="GDAL Warp and Projection.inputFilename" relation="relation9"/>
+    <link port="GDAL Warp and Projection.outputFilename" relation="relation4"/>
+    <link port="GDAL Format Translator.inputFilename" relation="relation4"/>
+    <link port="GDAL Format Translator.outputFilename" relation="relation2"/>
+    <link port="Array Element.input" relation="relation"/>
+    <link port="Array Element.output" relation="relation9"/>
+    <link port="Grid Rescaler.input" relation="relation2"/>
+    <link port="Grid Rescaler.output" relation="relation3"/>
+    <link port="IJMacro.input" relation="relation11"/>
+    <link port="GDAL Warp and Projection2.inputFilename" relation="relation5"/>
+    <link port="GDAL Warp and Projection2.outputFilename" relation="relation7"/>
+    <link port="Array Element2.input" relation="relation6"/>
+    <link port="Array Element2.output" relation="relation5"/>
+    <link port="Grid Rescaler2.input" relation="relation10"/>
+    <link port="Grid Rescaler2.output" relation="relation8"/>
+    <link port="GDAL Format Translator2.inputFilename" relation="relation7"/>
+    <link port="GDAL Format Translator2.outputFilename" relation="relation10"/>
+    <link port="Merge_North_South.grid1FileName" relation="relation16"/>
+    <link port="Merge_North_South.grid2FileName" relation="relation15"/>
+    <link port="Merge_North_South.mergedGridFileName" relation="relation12"/>
+    <link port="Merge_North_South.mergedGridFileResult" relation="relation11"/>
+    <link port="Merged Result Filename.output" relation="relation12"/>
+    <link port="SA_Mask.grid1FileName" relation="relation3"/>
+    <link port="SA_Mask.grid2FileName" relation="relation14"/>
+    <link port="SA_Mask.mergedGridFileName" relation="relation18"/>
+    <link port="SA_Mask.mergedGridFileResult" relation="relation15"/>
+    <link port="NA_Mask.grid1FileName" relation="relation8"/>
+    <link port="NA_Mask.grid2FileName" relation="relation13"/>
+    <link port="NA_Mask.mergedGridFileName" relation="relation17"/>
+    <link port="NA_Mask.mergedGridFileResult" relation="relation16"/>
+    <link port="Southe America Mask file.output" relation="relation14"/>
+    <link port="North America Mask file.output" relation="relation13"/>
+    <link port="Output File North America.output" relation="relation17"/>
+    <link port="Output File - South America.output" relation="relation18"/>
+    <link port="Hydro1k North American - DEM.UnzippedFileName" relation="relation6"/>
+    <link port="Hydro1k South America - DEM.UnzippedFileName" relation="relation"/>
+</entity>

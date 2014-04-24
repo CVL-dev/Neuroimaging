@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<entity name="Grid Rescaler" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:266:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+  <p>The GridRescaler actor "rescales" a raster grid file so that it has a new extent and cellspacing. The actor outputs the name of the rescaled file.</p>
+  
+<p>The actor reads the file name of one or more ASCII grid files via the input port.  The input port is a multiport. If multiple files are input, the actor will output a sequence of output file name tokens.</p>
+  
+ <p>The new file is generated based on the values specified in the actor's parameters. The actor uses an algorithm to convert cell values in the output grid from the values in the input grid. The actor currently supports two algorithms: 'Nearest Neighbor' or 'Inverse Distance Weighted'. Algorithms are disk based, allowing very large rasters to be converted.</p>
+
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the  the ASCII grid file or files to be converted.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name or names of the converted ASCII grid files.</configure></property>
+
+<property name="prop:xllcorner" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the x-value (usually a longitude) of the lower-left corner of the raster. If the parameter is empty, the x-value is set to the minimum x in the convex hull. </configure></property>
+<property name="prop:yllcorner" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the y-value (usually a latitude) of the lower-left corner of the raster. If the parameter is empty, the y-value is set to the minimum y in the convex hull.</configure></property>
+<property name="prop:cellsize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A double token representing the cell size for the raster (assumed square). If the parameter is empty, the actor automatically generates a raster with 50 x-direction cells and y-direction cells to match the y-extent of the convex hull.</configure></property>
+<property name="prop:numrows" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An integer representing the number of rows for the raster. </configure></property>
+<property name="prop:numcols" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An integer representing the number of columns for the raster. </configure></property>
+<property name="prop:use disk storage (for large grids)" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to use disk for storing grid data rather than putting all data in RAM arrays during processing. Selecting this option can result in a much slower execution, but allows for very large raster files. </configure></property>
+<property name="prop:algorithm" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The algorithm  used to calculate cell values in the output grid from the values in the input grid.
+  The actor currently supports two algorithms: 'Nearest Neighbor' or 'Inverse Distance Weighted'. Algorithms are disk based, allowing very large rasters to be converted.</configure></property>
+<property name="prop:use Existing File" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to instruct th e actor to check for currently existing output files. If the specified output file exists, the actor will output the name of the existing file, without repeating the calculation.</configure></property>
+<property name="prop:outputFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the output file. If the parameter is left empty, the output file will be given the name of the input file  plus a suffix (".out"+i). If the parameter is a directory name, output file(s) will be placed in the specified directory. Note that the input port is a multiport so multiple input files can be converted in a single firing.</configure></property>
+
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.java_gis.GridRescaler" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1092:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="tokenProductionRate" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:4:1#NicheModeling" class="org.kepler.sms.SemanticType"/>
+</entity>

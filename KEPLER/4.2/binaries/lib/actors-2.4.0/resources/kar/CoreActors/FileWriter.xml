@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<entity name="File Writer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:144:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>No author given</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The FileWriter actor reads a string and writes it to a file. The actor outputs the file path of the generated file.</p>
+
+<p>Specify a destination file path with the fileName parameter. If the specified file does not exist, then the actor will create it.  If the file already exists, then the actor will ask for permission to overwrite it (unless the append parameter is selected, in which case the new content is appended to the existing content).</p>
+
+<p>The actor is similar to the LineWriter, except that the FileWriter outputs the generated file path, while the LineWriter actor does not. FileWriter is also similar to TextFileWriter, except that the FileWriter actor adds line breaks, while the TextFileWriter does not.</p>
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives a string to write to a file.</configure></property>
+<property name="port:url" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated file.</configure></property>
+<property name="prop:append" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to append the input string to an existing, specified file. By default, the actor will overwrite any preexisting file.</configure></property>
+<property name="prop:confirmOverwrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should confirm before overwriting an existing file. By default, the actor will ask for confirmation.</configure></property>
+<property name="prop:fileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the file to which to write. See FileParameter for more information about specifying file names. </configure></property>
+</property>
+<property name="class" value="org.geon.FileWrite" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1003:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="url" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WriterOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

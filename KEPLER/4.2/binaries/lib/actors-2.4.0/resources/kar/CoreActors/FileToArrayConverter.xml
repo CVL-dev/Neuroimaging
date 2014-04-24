@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<entity name="File To Array Converter" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:142:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>efrat jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The FileToArrayConverter actor reads a file or URL, evaluates each line, and outputs an array of the evaluated values. </p>
+
+<p>The actor is similar to the ExpressionReader actor, except that the FileToArrayConverter outputs all of the evaluated expressions as a single array instead of outputting each value separately. </p>
+
+<p>All of the elements in the output array must be of the same type (e.g., integers or doubles, etc.) If the expressions evaluate to different types, an error will occur.</p>
+
+<p>Select a local file to read by right-clicking the actor, selecting Configure Actor, and using the Browse option to select a file. Specify a URL by typing directly into the directoryOrURL field. Note that URLs must contain a trailing slash after the last directory name: http://www.myurl.com/directory/</p>
+
+<p>Use the numberOfLinesToSkip parameter to optionally specify the number of lines to skip at the beginning of the file. 0 is specified by default.</p></configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of evaluated expressions read from an input file. The actor outputs an array of evaluated expression each time it iterates. The type of each array element will match the type of the evaluated expression in the first line of the file.</configure></property>
+<property name="prop:numberOfLinesToSkip" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of lines to skip at the beginning of the file or URL. 0 is specified by default. The value of this parameter must be non-negative.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the file to be read. See FileParameter for more information about specifying file names.</configure></property>
+</property>
+<property name="class" value="org.geon.FileToArray" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1001:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+</entity>

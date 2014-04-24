@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="XMLInclusion" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:679:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.xslt.XMLInclusion" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="template" class="ptolemy.actor.parameters.PortParameter" value="">
+</property>
+
+<property name="headerParameter" class="ptolemy.data.expr.StringParameter" value="&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#XMLProcessor">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="arrayType(xmltoken)" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="xmltoken" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:template" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Christine Avanessians, Edward Lee, Thomas Feng</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: XMLInclusion.java 61462 2011-07-11 22:22:34Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Combine multiple XMLTokens into one XMLToken.&#10;&#10;   &lt;p&gt;The actor reads in multiple arrays of XML Tokens from the&#10;   &lt;i&gt;input&lt;/i&gt; port.  It also takes a port parameter,&#10;   &lt;i&gt;template&lt;/i&gt;, that specifies how the XML tokens will be&#10;   combined.  The template is of the form:&#10;&#10;   &lt;pre&gt;&#10;   &amp;lt;?xml version=&amp;quot;1.0&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&#10;   &amp;lt;Node&amp;gt;&#10;   $inputi,j&#10;   &amp;lt;/Node&amp;gt;&#10;   &lt;/pre&gt;&#10;&#10;   The template is a XML Token with $input as a delimiter for where&#10;   the input XML tokens should be placed, &lt;code&gt;i&lt;/code&gt; specifies&#10;   which array (i.e. which channel) and &lt;code&gt;j&lt;/code&gt; specifies which&#10;   XML Token in the array.  Setting &lt;code&gt;j&lt;/code&gt; equal to&#10;   &lt;code&gt;n&lt;/code&gt; will insert (in order) all XML tokens in that&#10;   particular array into the template file.  If &lt;code&gt;i&lt;/code&gt; or&#10;   &lt;code&gt;j&lt;/code&gt; are out of bounds, &lt;code&gt;$inputi,j&lt;/code&gt; will not&#10;   be replaced.  It also takes in a string parameter,&#10;   &lt;i&gt;headerParameter&lt;/i&gt;, which is the header used for the output XML&#10;   token.  A XML Token with the delimiters replaced with the&#10;   appropriate XML Token is sent to the &lt;i&gt;output&lt;/i&gt; port.  No&#10;   changes are made to the input XML Tokens besides removing the&#10;   header and DTD.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="port:template" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The template that specifies how the XML tokens will be combined.  The type of this parameter is not defined, though it is in string mode.  The initial value is not defined.</configure></property>
+<property name="prop:headerParameter" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The xml header.  This parameter is a string with an initial value of  &lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&amp;gt;&lt;/code&gt;.</configure></property>
+<property name="prop:template" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The template that specifies how the XML tokens will be combined.  The type of this parameter is not defined, though it is in string mode.  The initial value is not defined.</configure></property>
+</property></entity>

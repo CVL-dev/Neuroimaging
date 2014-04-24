@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="Expression Reader" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:60:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ExpressionReader reads a file or URL, one line at a time, and evaluates each line as an expression. One evaluated result is output each time the actor iterates.</p>
+
+<p>The first line in the file determines the data type of the output. For example, if the first line is 20.1*4 (which evaluates to 80.4), the type of the output would be &quot;double.&quot; All other lines must contain expressions that evaluate to the same type or a subtype, or an error will occur. </p>
+
+<p>Note: To output all evaluated values over the course of a single actor iteration, use the FileToArrayConverter actor.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the evaluated result. One result is output each time the actor iterates. The type will match the type of the expression evaluated in the first line of the file.</configure></property>
+<property name="port:endOfFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that indicates whether or not the end of the file has been reached. If the end of the file has been reached, the port will produce a true value. Otherwise, the value is false.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:numberOfLinesToSkip" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of lines to skip at the beginning of the file or URL. The value of this parameter must be non-negative and defaults to 0.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the file to be read. See FileParameter for more information about specifying file names.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.io.ExpressionReader" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:935:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="endOfFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ReaderExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalInput" class="org.kepler.sms.SemanticType"/>
+</entity>

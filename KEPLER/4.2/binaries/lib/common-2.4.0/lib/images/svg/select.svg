@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="40.617" height="44.735" viewBox="0 0 40.617 44.735" overflow="visible" enable-background="new 0 0 40.617 44.735"
+	 xml:space="preserve">
+		<g id="Layer_1">
+			<line fill="none" stroke="#9A9B9B" stroke-linecap="round" x1="15.285" y1="32.07" x2="25.285" y2="22.153"/>
+			<line fill="none" stroke="#9A9B9B" stroke-linecap="round" x1="25.285" y1="22.153" x2="15.369" y2="12.028"/>
+			<line fill="none" stroke="#9A9B9B" stroke-linecap="round" x1="25.285" y1="22.153" x2="12.076" y2="16.653"/>
+			<line fill="none" stroke="#9A9B9B" stroke-linecap="round" x1="25.285" y1="22.153" x2="10.951" y2="22.236"/>
+			<line fill="none" stroke="#9A9B9B" stroke-linecap="round" x1="25.285" y1="22.153" x2="12.16" y2="27.57"/>
+			<line fill="none" stroke="#199698" stroke-linecap="round" x1="20.41" y1="11.069" x2="20.41" y2="44.235"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="15.201" y1="12.07" x2="4.119" y2="12.07"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="15.285" y1="32.153" x2="4.119" y2="32.153"/>
+			<g>
+				<path fill="#199698" d="M11.291,42.331h-1.225v-3.389c0-0.358-0.083-0.627-0.247-0.809c-0.165-0.181-0.363-0.271-0.596-0.271
+					c-0.319,0-0.598,0.14-0.838,0.419s-0.36,0.7-0.36,1.262v2.788H6.8v-5.425h1.117v1.257c0.39-0.913,0.938-1.37,1.644-1.37
+					c0.476,0,0.884,0.15,1.222,0.451c0.339,0.301,0.508,0.829,0.508,1.584V42.331z"/>
+			</g>
+			<g>
+				<path fill="#199698" d="M11.691,7.482H6.079v-1.08h2.208v-4.63C7.552,2.414,6.884,2.854,6.283,3.094V1.772
+					C6.895,1.54,7.278,1.374,7.432,1.275c0.154-0.098,0.379-0.281,0.677-0.548C8.406,0.461,8.615,0.219,8.737,0h0.881v6.402h2.073
+					V7.482z"/>
+			</g>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="11.408" y1="16.473" x2="4.932" y2="16.473"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="10.529" y1="22.182" x2="4.163" y2="22.182"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="11.299" y1="27.79" x2="4.932" y2="27.79"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="37.285" y1="22.153" x2="25.285" y2="22.153"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="6.867" y1="22.182" x2="0.5" y2="22.182"/>
+			<line fill="none" stroke="#000000" stroke-linecap="round" x1="40.117" y1="22.133" x2="33.75" y2="22.133"/>
+		</g>
+	</svg>

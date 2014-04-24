@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<entity name="Rician Distribution Random Number Generator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:90:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ye Zhou</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The RicianDistributionRandomNumberGenerator actor generates a sequence of random numbers with a Rician distribution. A new random number is output every time the actor fires. </p>
+
+<p>The generated values are independent and identically distributed with the mean and the standard deviation given by parameters. The default values of xMean and yMean are both zero, creating a distribution that is also known as a Rayleigh distribution. Hence, the actor is by default a Rayleigh random generator. </p>
+
+<p>A Rician random variable is defined as follows: Let Z = sqrt(X2 + Y2), where X and Y are statistically independent Gaussian random variables with means given by parameters xMean and yMean respectively, and common variance given by parameter standardDeviation.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the random number. The type is double.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The seed that controls the random number generation. A seed of zero (the default) means that the seed is derived from the current system time and a Java hash code (i.e., System.currentTimeMillis() + hashCode()). With extremely high probability, the default seed will ensure that two distinct actors will have distinct seeds. However, current time may not have enough resolution to ensure that two subsequent executions of the same model have distinct seeds. The parameter contains a long token, initially with value 0.</configure></property>
+<property name="prop:xMean" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The mean of the random number along the X-axis. The value is a double that defaults to 0.0.</configure></property>
+<property name="prop:standardDeviation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The standard deviation of the random number. The value is a double that defaults to 1.0.</configure></property>
+<property name="prop:yMean" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The mean of the random number along the Y-axis. The value is a double that defaults to 0.0.</configure></property>
+<property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+Select to reset the random number generator each time the workflow is run. By default, the generator does not reset.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Rician" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:964:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#RandomNumberMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#RandomNumberOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#StatisticalDistribution"/>
+</entity>

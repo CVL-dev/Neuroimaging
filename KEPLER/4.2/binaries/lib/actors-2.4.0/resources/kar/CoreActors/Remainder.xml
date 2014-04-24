@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<entity name="Remainder" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:82:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Remainder actor receives an input value, divides the value by a specified divisor, and outputs the remainder (e.g., the remainder of 5 divided by 2 is 1). </p>
+
+<p>The remainder is calculated according to the IEEE 754 standard: the remainder is mathematically equal to f1 - f2 * n, where f1 is the dividend, f2 is the divisor, and n is the integer closest to the quotient f1/f2. If two integers are equally close to f1/f2, then n is the even integer. If n is 0, then its sign is the same as the dividend.</p>
+
+<p>Note: If either the dividend or the divisor is NaN, or if the dividend is infinite, or if the divisor is 0, the remainder is NaN. Also: If the dividend is finite and the divisor is infinite, then the remainder is the same as the divider. </p>
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives a number used as a dividend. The value is of type double.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the remainder. The remainder is of type double.</configure></property>
+<property name="prop:divisor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The divisor for calculating the remainder. The value is a double that defaults to 1.0. </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Remainder" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:957:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArithmeticMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ArithmeticOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

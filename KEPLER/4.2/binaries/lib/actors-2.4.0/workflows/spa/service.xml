@@ -1,0 +1,404 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Japan Bio Services" class="ptolemy.moml.EntityLibrary">
+  <configure>
+    <?moml
+      <group>
+  <doc>Actors for biology from Japan</doc>
+ 
+   <entity name="getClone_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getClone_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var">
+    </property>
+  </entity>  
+
+  <entity name="getDADEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getDADEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getDDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getDDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getDDBJCONEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getDDBJCONEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getEMBLEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getEMBLEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_CDSEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_CDSEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_DADEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_DADEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_DDBJCONEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_DDBJCONEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_PDBEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_PDBEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_PIREntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_PIREntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_PRFEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_PRFEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_SWISSEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_SWISSEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getGene_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getGene_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var">
+    </property>
+  </entity>   
+
+  <entity name="getLocus_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getLocus_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var">
+    </property>
+  </entity>   
+
+  <entity name="getPDBEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getPDBEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+
+  <entity name="getPID_DADEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getPID_DADEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var">
+    </property>
+  </entity>   
+
+  <entity name="getPID_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getPID_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var">
+    </property>
+  </entity>   
+
+  <entity name="getPIREntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getPIREntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getPRFEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getPRFEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getProd_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getProd_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="var">
+    </property>
+  </entity>   
+
+  <entity name="getQVEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getQVEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getSWISSEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getSWISSEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getXML_DDBJEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getXML_DDBJEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getDDBJVerEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getDDBJVerEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+  <entity name="getFASTA_DDBJVerEntry" class="edu.ncsu.sdm.ptolemy.lib.WebServiceActor">
+	<property name="nameSpace" class="ptolemy.kernel.util.StringAttribute" value="GetEntry">
+    </property>	
+	<property name="locationUrl" class="ptolemy.kernel.util.StringAttribute" value="http://xml.nig.ac.jp/xddbj/GetEntry">
+    </property>	
+	<property name="userName" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+	<property name="password" class="ptolemy.kernel.util.StringAttribute" value="">
+    </property>	
+    <property name="method" class="ptolemy.kernel.util.StringAttribute" value="getFASTA_DDBJVerEntry">
+    </property> 
+    <property name="paramName" class="ptolemy.kernel.util.StringAttribute" value="accession">
+    </property>
+  </entity>   
+
+      </group>
+    ?>
+  </configure>
+</entity>

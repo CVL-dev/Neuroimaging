@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<entity name="PeriodicSampler" class="ptolemy.kernel.ComponentEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.PeriodicSampler" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:13:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:13:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      This actor generates discrete events by periodically sampling the input signal.&#10; The sampling rate is given by parameter &quot;samplePeriod&quot;, which has default value&#10; 0.1.  Specifically, if the actor is initialized at time &lt;i&gt;t&lt;/i&gt; and the sample&#10; period is &lt;i&gt;T&lt;/i&gt;, then the output will have the value of the input&#10; at times &lt;i&gt;t&lt;/i&gt; + &lt;i&gt;nT&lt;/i&gt;, for all natural numbers &lt;i&gt;n&lt;/i&gt;.&#10; This sampler will send to the output the first non-absent input event that occurs&#10; at a sample time. It produces it one microstep later than that input event.&#10; This ensures that the output at microstep 0 is always absent, thus&#10; ensuring continuity from the left. That is, the input is absent prior&#10; to the sample time, so continuity requires that it be absent at&#10; microstep 0 at the sample time. Moreover, this ensures that the&#10; sampler outputs the initial value of the input at the sample time.&#10; &lt;p&gt;&#10; This actor has multiport inputs and outputs. Signals in&#10; each input channel are sampled and produced to corresponding output&#10; channel. When there are multiple inputs, the first non-absent input&#10; from each channel is read, and the output is produced at the first&#10; microstep after the last of the inputs became non-absent. </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: PeriodicSampler.xml 30282 2012-07-25 20:25:23Z crawl $</configure>
+    </property>
+    <property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An input port that contains the value to be sampled.</configure>
+    </property>
+    <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An output port that broadcasts the sampled value.</configure>
+    </property>
+    <property name="prop:samplePeriod" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The parameter for the sampling period. This is a double&#10;  whose default value is 0.1.</configure>
+    </property>
+  </property>
+  <property name="input" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType01" value="urn:lsid:localhost:onto:2:1#Filtering" class="org.kepler.sms.SemanticType"/>
+</entity>

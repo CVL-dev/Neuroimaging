@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<entity name="String Substring" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:99:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Neil Turner and Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The StringSubstring actor reads a string and identifies and outputs a specified segment of the string. </p>
+
+<p>The substring to output is identified with the start and stop ports or parameters. Start and stop accept an integer representing a string index (e.g., 0, which identifies the first character in the string). The start character is included in the output string; the stop character is not (i.e., the substring terminates just before the stop character).</p>
+
+<p>If the value specified for stop is less than the value specified for start, then the substring starts at start and extends to the end of the string. </p>
+
+<p>The default values for start and stop are both 0; the default values identify an empty string.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output that broadcasts the specified substring.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string.</configure></property>
+<property name="port:stop" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an integer string index. The index identifies the position of last character of the substring. The stop index is one greater than the position of the last letter of the desired substring. The default is 0.</configure></property>
+<property name="port:start" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an integer string index. The index identifies the position of first character of the substring. The default is 0.</configure></property>
+<property name="prop:stop" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The stop string index, which identifies the position of the last character of the substring. The stop index is one greater than the position of the last letter of the desired substring. The value is an integer that defaults to 0.</configure></property>
+<property name="prop:start" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The start string index, which identifies the position of the first character of the  substring. The value is an integer that defaults to 0.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.string.StringSubstring" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:973:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="start" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="stop" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

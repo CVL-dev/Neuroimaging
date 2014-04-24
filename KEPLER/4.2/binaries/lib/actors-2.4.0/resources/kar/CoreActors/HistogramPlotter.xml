@@ -1,0 +1,72 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Histogram Plotter" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:17:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: HistogramPlotter.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+A histogram plotter.  This plotter contains an instance of the Histogram
+ class from the Ptolemy plot package as a public member.  A histogram
+ of data at the input port, which can consist of any number of channels,
+ is plotted on this instance. The input data type is double.
+ &lt;p&gt;
+ The output plot consists of a set of vertical bars, each representing
+ a histogram bin.  The height of the bar is the count of the number
+ of inputs that have been observed that fall within that bin.
+ The &lt;i&gt;n&lt;/i&gt;-th bin represents values in the range
+ (&lt;i&gt;x&lt;/i&gt; - &lt;i&gt;w&lt;/i&gt;/2 + &lt;i&gt;o&lt;/i&gt;, &lt;i&gt;x&lt;/i&gt; + &lt;i&gt;w&lt;/i&gt;/2 + &lt;i&gt;o&lt;/i&gt;),
+ where &lt;i&gt;w&lt;/i&gt; is the value of the &lt;i&gt;binWidth&lt;/i&gt; parameter,
+ and &lt;i&gt;o&lt;/i&gt; is the value of the &lt;i&gt;binOffset&lt;/i&gt; parameter.
+ So for example, if &lt;i&gt;o = w/2&lt;/i&gt;,
+ then each bin represents values from &lt;i&gt;nw&lt;/i&gt; to
+ (&lt;i&gt;n&lt;/i&gt; + 1)&lt;i&gt;w&lt;/i&gt; for some integer &lt;i&gt;n&lt;/i&gt;.
+ The default offset is 0.5, half the default bin width, which is 1.0.
+ &lt;p&gt;
+ This actor has a &lt;i&gt;legend&lt;/i&gt; parameter,
+ which gives a comma-separated list of labels to attach to
+ each dataset.  Normally, the number of elements in this list
+ should equal the number of input channels, although this
+ is not enforced.</configure>
+    </property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The input port, which is a multiport.</configure>
+    </property>
+<property name="prop:fillOnWrapup" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If true, fill the plot when wrapup is called.  This parameter has type BooleanToken, and default value true.</configure>
+    </property>
+<property name="prop:binOffset" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The offset for bins of the histogram.  This parameter has type double, with default value 0.5.</configure>
+    </property>
+<property name="prop:automaticRescale" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If true, the plot will automatically rescale if necessary.  This parameter has type BooleanToken, and default value false.</configure>
+    </property>
+<property name="prop:legend" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>A comma-separated list of labels to attach to each data set.  This is always a string, with no enclosing quotation marks.</configure>
+    </property>
+<property name="prop:binWidth" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The width of the bin of the histogram.  This parameter has type double, with default value 1.0.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.HistogramPlotter">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:893:1">
+        </property>
+    </property>
+    <property name="input" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="double">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="true">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Plotter">
+    </property>
+</entity>

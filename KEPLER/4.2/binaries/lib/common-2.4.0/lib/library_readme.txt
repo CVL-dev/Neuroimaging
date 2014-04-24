@@ -1,0 +1,5 @@
+The Kepler lib directory contains a variety of dynamic libraries for use with JNI (Java Native Interface) C++ code on different platforms. Windows dynamic link libraries have a '.dll' extension. Linux libraries have '.so' extensions, and Mac OSX libraries end in '.dylib' or '.jnilib'. The actor name that uses the code is usually reflected in the name (e.g. libgarp.jnilib is the name of the library for the garp actor). 
+
+Note that jni actor code may depend on other libraries. The Garp C++ code calls the SCEW and EXPAT libraries. The Gdal actor calls GDAL, PROJ, and GEOS libraries. Just where these libraries must be located, depends on the OS. In particular, OS X (Mac) will not find these libraries if they remain in the $Kepler/lib/ directory. Move copies of the *.dylib files to the ~/lib/ directory on the Mac. 
+
+April 24, 2007 Note - Currently the *.dylib files for GDAL, PROJ, and GEOS are only for Intel Macs. The libraries for Garp (libexpat.1.dylib) is for both PPC and Intel Macs. 

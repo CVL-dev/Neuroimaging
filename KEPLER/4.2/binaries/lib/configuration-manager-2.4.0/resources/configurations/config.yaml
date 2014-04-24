@@ -1,0 +1,159 @@
+---
+splash-image: images/kepler-splash.png
+jar-dir: actors/lib/jar
+autoDataSourcesUpdate:
+  delay: 0
+  value: true
+log-file: false
+startup:
+  mkdir:
+    - cache
+    - cache/cachedata
+    - cache/objects
+    - cache/RawData
+  tablestestsql: "select TABLE_NAME from INFORMATION_SCHEMA.SYSTEM_TABLES where TABLE_NAME = ucase(?)"
+  createtable: 
+    - "create cached table KEPLERTEXTTABLES ( TABLENAME varchar, URL varchar )"
+    - "create cached table CACHECONTENTTABLE ( NAME varchar, LSID varchar, 
+       DATE varchar, FILE varchar, EXPIRATION varchar, TYPE varchar, PRIMARY 
+       KEY (LSID) )"
+    - "create cached table KAR_LOCAL_REPOS ( NAME varchar, PATH varchar, 
+       PRIMARY KEY (NAME), UNIQUE (PATH) )"
+    - "create cached table KARS_CACHED ( LSID varchar, NAME varchar, 
+       VERSION varchar, REPONAME varchar, KARPATH varchar, PRIMARY KEY (LSID), 
+       FOREIGN KEY (REPONAME) REFERENCES KAR_LOCAL_REPOS (NAME) ON DELETE 
+       CASCADE ON UPDATE CASCADE )"
+    - "create cached table KAR_CONTENTS ( KARLSID varchar, LSID varchar, 
+       NAME varchar, TYPE varchar, PRIMARY KEY (KARLSID,LSID), 
+       FOREIGN KEY (KARLSID) REFERENCES KARS_CACHED (LSID) ON DELETE CASCADE, 
+       FOREIGN KEY (LSID) REFERENCES CACHECONTENTTABLE (LSID) ON DELETE CASCADE)"
+stylesheet:
+  - namespace: "eml://ecoinformatics.org/eml-2.0.0"
+    systemId: "style/eml-2.0.1/eml.xsl"
+  - namespace: "eml://ecoinformatics.org/eml-2.0.1"
+    systemId: "style/eml-2.0.1/eml.xsl"
+qformat: kepler
+stylePath: style
+servers:
+  server-name: geon
+  server-url: http://geon01.sdsc.edu:8164/
+documentation:
+  namespace: http://www.sdsc.geongrid.org/services/search
+  url: http://geon10.sdsc.edu:8080/GEONSearchPortlet/jsp/dataset-detail.jsp
+  username: kepler
+authNamespaceServices: 
+  url: http://gamma.msi.ucsb.edu/OpenAuth/
+viewPaneTabPanes:
+  - viewPane: 
+    - name: "Kepler Classic"
+    - viewPaneLocation: 
+      - location: W
+      - tabPane: Components
+      - tabPane: Data
+      - tabPane: Outline
+    - viewPaneLocation: 
+      - location: E
+canvasViewPaneLocation:
+  - viewPane:
+    - name: Kepler Classic
+      viewPaneLocation: E
+dataTypeDictionary:
+  - dataType: 
+    - name: INTEGER
+    - numberType: natural
+    - description: 32 bit integer without o and negtive integer
+    - alias: natural
+    - numericType: 
+      - minValue: 1
+      - maxValue: 2147483647
+  - dataType: 
+    - name: LONG
+    - numberType: natural
+    - description: 64 bit integer without o and negtive integer
+    - alias: natural
+    - numericType: 
+      - minValue: 1
+      - maxValue: 9.22337e18
+  - dataType: 
+    - name: INTEGER
+    - numberType: whole
+    - description: 32 bit integer
+    - alias: whole
+    - numericType: 
+      - minValue: 1
+      - maxValue: 2147483647
+  - dataType: 
+    - name: LONG
+    - numberType: whole
+    - description: 64 bit integer
+    - alias: whole
+    - numericType: 
+      - minValue: 0
+      - maxValue: 9.22337e18
+  - dataType: 
+    - name: INTEGER
+    - numberType: integer
+    - description: 32 bit integer
+    - alias: xs:integer
+    - alias: integer
+    - alias: Integer
+    - alias: int
+    - alias: Integers
+    - numericType: 
+      - minValue: -2147483647
+      - maxValue: 2147483647
+  - dataType: 
+    - name: LONG
+    - numberType: integer
+    - description: 64 bit integer
+    - alias: xs:long
+    - alias: long
+    - alias: Long
+    - numericType: 
+      - minValue: -9.22337e18
+      - maxValue: 9.22337e18
+  - dataType: 
+    - name: FLOAT
+    - numberType: real
+    - description: IEEE 754 single precision floating point
+    - alias: xs:float
+    - alias: float
+    - alias: Float
+    - alias: Floating point
+    - alias: Floating Point
+    - numericType: 
+      - minValue: -2e-38
+      - maxValue: 2e38
+  - dataType: 
+    - name: DOUBLE
+    - numberType: real
+    - description: IEEE 754 double precision floating point
+    - alias: xs:double
+    - alias: double
+    - alias: Double
+    - alias: decimal
+    - numericType: 
+      - minValue: -2e-308
+      - maxValue: 2e308
+  - dataType: 
+    - name: STRING
+    - numberType: nan
+    - description: text string
+    - alias: xs:string
+    - alias: string
+    - alias: String
+    - alias: Text
+    - alias: text
+    - alias: Date
+    - alias: Enumeration
+    - alias: Codes
+    - textType: 
+      - encoding: ASCII
+  - dataType: 
+    - name: DATETIME
+    - numberType: datetime
+    - description: date time string
+    - alias: dateTime
+    - textType: 
+      - encoding: ASCII
+...

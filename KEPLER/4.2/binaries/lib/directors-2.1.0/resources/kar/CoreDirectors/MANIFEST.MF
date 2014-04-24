@@ -1,0 +1,30 @@
+Manifest-Version: 1.4.2
+KAR-Version: 2.0
+lsid: urn:lsid:kepler-project.org:kar:2001:3
+openable: false
+
+Name: ContinuousDirector.xml
+lsid: urn:lsid:ptolemy.org:director:1:1
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DDFDirector.xml
+lsid: urn:lsid:kepler-project.org:director:5:1
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DEDirector.xml
+lsid: urn:lsid:kepler-project.org:director:3:2
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PNDirector.xml
+lsid: urn:lsid:kepler-project.org:director:2:2
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SDFDirector.xml
+lsid: urn:lsid:kepler-project.org:director:1:2
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+

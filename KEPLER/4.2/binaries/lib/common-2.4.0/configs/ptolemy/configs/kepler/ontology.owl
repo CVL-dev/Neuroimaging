@@ -1,0 +1,1250 @@
+<?xml version="1.0"?>
+
+<rdf:RDF
+    xmlns:rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl  = "http://www.w3.org/2002/07/owl#"
+    xmlns:ont  = "http://seek.ecoinformatics.org/ontology#"
+    xmlns      = "http://seek.ecoinformatics.org/ontology#"
+    xml:base   = "http://seek.ecoinformatics.org/ontology#">
+
+
+
+  <owl:Ontology rdf:about=""/>
+
+  <!-- WorkflowComponent -->
+  <owl:Class rdf:ID="WorkflowComponent">
+    <rdfs:label>Workflow Components</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+    -->
+  <owl:Class rdf:ID="Actor">
+    <rdfs:label>Actors</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowComponent"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Variables
+    -->
+  <owl:Class rdf:ID="Variable">
+    <rdfs:label>Variables</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowComponent"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Variables
+           Parameters
+    -->
+  <owl:Class rdf:ID="Parameter">
+    <rdfs:label>Parameters</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Variable"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Directors
+    -->
+  <owl:Class rdf:ID="Director">
+    <rdfs:label>Directors</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WorkflowComponent"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ConstantActor
+    -->
+  <owl:Class rdf:ID="ConstantActor">
+    <rdfs:label>Constants</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ConstantActor
+             DecorativeActor
+    -->
+  <owl:Class rdf:ID="DecorativeActor">
+    <rdfs:label>Decorative</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ConstantActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ConstantActor
+             DocumentationActor
+    -->
+  <owl:Class rdf:ID="DocumentationActor">
+    <rdfs:label>Documentation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ConstantActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+    -->
+  <owl:Class rdf:ID="OutputActor">
+    <rdfs:label>Outputs</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GraphicalOutputActor
+    -->
+  <owl:Class rdf:ID="GraphicalOutputActor">
+    <rdfs:label>Graphical Displays</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GraphicalOutputActor
+               Graphers
+    -->
+  <owl:Class rdf:ID="Grapher">
+    <rdfs:label>Graphers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GraphicalOutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GraphicalOutputActor
+               Plotter
+    -->
+  <owl:Class rdf:ID="Plotter">
+    <rdfs:label>Plotters</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GraphicalOutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GraphicalOutputActor
+               Scope
+    -->
+  <owl:Class rdf:ID="Scope">
+    <rdfs:label>Scopes</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GraphicalOutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GraphicalOutputActor
+               ExternalGraphicalOutputActor
+    -->
+  <owl:Class rdf:ID="ExternalGraphicalOutputActor">
+    <rdfs:label>External</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GraphicalOutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GraphicalOutputActor
+               OntoBrowserActor
+
+  <owl:Class rdf:ID="OntoBrowserActor">
+    <rdfs:label>Ontology Browsers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GraphicalOutputActor"/>
+  </owl:Class>
+  -->
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             TextualOutputActor
+    -->
+  <owl:Class rdf:ID="TextualOutputActor">
+    <rdfs:label>Textual</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             WriterOutputActor
+    -->
+  <owl:Class rdf:ID="WriterOutputActor">
+    <rdfs:label>Writers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             FileSystemOutputActor
+    -->
+  <owl:Class rdf:ID="FileSystemOutputActor">
+    <rdfs:label>File System</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           FileSystemActor
+    -->
+  <owl:Class rdf:ID="FileSystemActor">
+    <rdfs:label>File System</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           OutputActor
+             GISOutputActor
+    -->
+  <owl:Class rdf:ID="GISOutputActor">
+    <rdfs:label>GIS</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#OutputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+    -->
+  <owl:Class rdf:ID="InputActor">
+    <rdfs:label>Inputs</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             ExternalInputActor
+    -->
+  <owl:Class rdf:ID="ExternalInputActor">
+    <rdfs:label>External</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#InputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             ExternalInputActor
+               SRBExternalInputActor
+    -->
+  <owl:Class rdf:ID="SRBExternalInputActor">
+    <rdfs:label>Storage Resource Broker</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ExternalInputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             ExternalInputActor
+               ReaderExternalInputActor
+    -->
+  <owl:Class rdf:ID="ReaderExternalInputActor">
+    <rdfs:label>Readers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ExternalInputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             ExternalInputActor
+               DatabaseExternalInputActor
+    -->
+  <owl:Class rdf:ID="DatabaseExternalInputActor">
+    <rdfs:label>Database</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ExternalInputActor"/>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             ExternalInputActor
+               GISExternalInputActor
+    -->
+  <owl:Class rdf:ID="GISExternalInputActor">
+    <rdfs:label>GIS</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ExternalInputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             ExternalInputActor
+               GlobusExternalInputActor
+    -->
+  <owl:Class rdf:ID="GlobusExternalInputActor">
+    <rdfs:label>Globus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ExternalInputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             InternalInputActor
+    -->
+  <owl:Class rdf:ID="InternalInputActor">
+    <rdfs:label>Internal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#InputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           InputActor
+             InternalInputActor
+               ClockActor
+    -->
+  <owl:Class rdf:ID="ClockActor">
+    <rdfs:label>Clocks</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#InternalInputActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ConversionActor
+    -->
+  <owl:Class rdf:ID="ConversionActor">
+    <rdfs:label>Converters</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ComplexStructureActor
+    -->
+  <owl:Class rdf:ID="ComplexStructureActor">
+    <rdfs:label>Complex Structures</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ComplexStructureActor
+             ArrayActor
+    -->
+  <owl:Class rdf:ID="ArrayActor">
+    <rdfs:label>Arrays</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComplexStructureActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ComplexStructureActor
+             RecordActor
+    -->
+  <owl:Class rdf:ID="RecordActor">
+    <rdfs:label>Records</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComplexStructureActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ComplexStructureActor
+             VectorActor
+    -->
+  <owl:Class rdf:ID="VectorActor">
+    <rdfs:label>Vectors</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComplexStructureActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ComplexStructureActor
+             TableActor
+    -->
+  <owl:Class rdf:ID="TableActor">
+    <rdfs:label>Tables</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComplexStructureActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ComplexStructureActor
+             ModelActor
+    -->
+  <owl:Class rdf:ID="ModelActor">
+    <rdfs:label>Models</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComplexStructureActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ControlActor
+    -->
+  <owl:Class rdf:ID="ControlActor">
+    <rdfs:label>Control</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ControlActor
+             ExceptionControlActor
+    -->
+  <owl:Class rdf:ID="ExceptionControlActor">
+    <rdfs:label>Exceptions</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ControlActor
+             BooleanControlActor
+    -->
+  <owl:Class rdf:ID="BooleanControlActor">
+    <rdfs:label>Boolean</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ControlActor
+             UnitTestControlActor
+    -->
+  <owl:Class rdf:ID="UnitTestControlActor">
+    <rdfs:label>Unit Testing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+    -->
+  <owl:Class rdf:ID="MathOperationActor">
+    <rdfs:label>Mathematical Operations</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             UnitSystemMathOperationActor
+    -->
+  <owl:Class rdf:ID="UnitSystemMathOperationActor">
+    <rdfs:label>Unit Systems</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             RandomNumberMathOperationActor
+    -->
+  <owl:Class rdf:ID="RandomNumberMathOperationActor">
+    <rdfs:label>Random Numbers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             TrigMathOperationActor
+    -->
+  <owl:Class rdf:ID="TrigMathOperationActor">
+    <rdfs:label>Trig</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             ArithmeticMathOperationActor
+    -->
+  <owl:Class rdf:ID="ArithmeticMathOperationActor">
+    <rdfs:label>Arithmetic</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             StatsticMathOperationActor
+    -->
+  <owl:Class rdf:ID="StatisticMathOperationActor">
+    <rdfs:label>Statistics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             IterativeMathOperationActor
+    -->
+  <owl:Class rdf:ID="IterativeMathOperationActor">
+    <rdfs:label>Iterative Operators</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             CalculusMathOperationActor
+    -->
+  <owl:Class rdf:ID="CalculusMathOperationActor">
+    <rdfs:label>Calculus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           MathOperationActor
+             DiscreteMathOperationActor
+    -->
+  <owl:Class rdf:ID="DiscreteMathOperationActor">
+    <rdfs:label>Discrete</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MathOperationActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           StringFunctionActor
+    -->
+  <owl:Class rdf:ID="StringFunctionActor">
+    <rdfs:label>String Functions</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           StringFunctionActor
+             XMLStringFunctionActor
+    -->
+  <owl:Class rdf:ID="XMLStringFunctionActor">
+    <rdfs:label>XML</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#StringFunctionActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           GISFunctionActor
+    -->
+  <owl:Class rdf:ID="GISFunctionActor">
+    <rdfs:label>GIS Functions</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           GridFunctionActor
+    -->
+  <owl:Class rdf:ID="GridFunctionActor">
+    <rdfs:label>Grid Functions</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ImageManipulationActor
+    -->
+  <owl:Class rdf:ID="ImageManipulationActor">
+    <rdfs:label>Image Manipulation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           ExternalExecutionEnvironmentActor
+    -->
+  <owl:Class rdf:ID="ExternalExecutionEnvironmentActor">
+    <rdfs:label>External Execution Environments</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DataminingActor
+    -->
+  <owl:Class rdf:ID="DataminingActor">
+    <rdfs:label>Datamining</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+    -->
+  <owl:Class rdf:ID="WebServiceActor">
+    <rdfs:label>Web Services</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+             PreConfiguredWebServiceActor
+    -->
+  <owl:Class rdf:ID="PreConfiguredWebServiceActor">
+    <rdfs:label>Pre-Configured</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#WebServiceActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+             PreConfiguredWebServiceActor
+               BlastWebServiceActor
+    -->
+  <owl:Class rdf:ID="BlastWebServiceActor">
+    <rdfs:label>Blast</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PreConfiguredWebServiceActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+             PreConfiguredWebServiceActor
+               ClustalWWebServiceActor
+    -->
+  <owl:Class rdf:ID="ClustalWWebServiceActor">
+    <rdfs:label>ClustalW</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PreConfiguredWebServiceActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+             PreConfiguredWebServiceActor
+               DDBJWebServiceActor
+    -->
+  <owl:Class rdf:ID="DDBJWebServiceActor">
+    <rdfs:label>DDBJ</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PreConfiguredWebServiceActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+             PreConfiguredWebServiceActor
+               FastaWebServiceActor
+    -->
+  <owl:Class rdf:ID="FastaWebServiceActor">
+    <rdfs:label>Fasta</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PreConfiguredWebServiceActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           WebServiceActor
+             PreConfiguredWebServiceActor
+               TxSearchWebServiceActor
+    -->
+  <owl:Class rdf:ID="TxSearchWebServiceActor">
+    <rdfs:label>TxSearch</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#PreConfiguredWebServiceActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+    -->
+  <owl:Class rdf:ID="DomainSpecificActor">
+    <rdfs:label>Domain Specific</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             NicheModelingActor
+    -->
+  <owl:Class rdf:ID="NicheModelingActor">
+    <rdfs:label>Niche Modeling</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DomainSpecificActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             BiodiversityActor
+    -->
+  <owl:Class rdf:ID="BiodiversityActor">
+    <rdfs:label>Biodiversity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DomainSpecificActor"/>
+  </owl:Class>
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             OrbActor
+    -->
+  <owl:Class rdf:ID="OrbActor">
+    <rdfs:label>Orb</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DomainSpecificActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             GenBankActor
+    -->
+  <owl:Class rdf:ID="GenBankActor">
+    <rdfs:label>GenBank</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DomainSpecificActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             PromoterIdentificationActor
+    -->
+  <owl:Class rdf:ID="PromoterIdentificationActor">
+    <rdfs:label>Promoter Identification (PIW)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GenBankActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             ComputationalChemistryActor
+    -->
+  <owl:Class rdf:ID="ComputationalChemistryActor">
+    <rdfs:label>Computational Chemistry</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DomainSpecificActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             ComputationalChemistryActor
+               GamessInputActor
+    -->
+  <owl:Class rdf:ID="GamessInputActor">
+    <rdfs:label>GAMESS Input</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComputationalChemistryActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             ComputationalChemistryActor
+               ProcessingUtilitiesActor
+    -->
+  <owl:Class rdf:ID="ProcessingUtilitiesActor">
+    <rdfs:label>Processing Utilities</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComputationalChemistryActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           FilterActor
+    -->
+  <owl:Class rdf:ID="FilterActor">
+    <rdfs:label>Filters</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           GridFunctionActor
+             NimrodActor
+    -->
+  <owl:Class rdf:ID="NimrodActor">
+    <rdfs:label>Nimrod</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GridFunctionActor"/>
+  </owl:Class>
+
+  
+  <!-- WorkflowComponent
+         Actor
+           GridFunctionActor
+             NimrodActor
+               ExperimentActor
+    -->
+  <owl:Class rdf:ID="ExperimentActor">
+    <rdfs:label>Experiment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#NimrodActor"/>
+  </owl:Class>
+
+  
+  <!-- WorkflowComponent
+         Actor
+           GridFunctionActor
+             NimrodActor
+               PlanFileActor
+    -->
+  <owl:Class rdf:ID="PlanFileActor">
+    <rdfs:label>Plan File</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#NimrodActor"/>
+  </owl:Class>
+
+
+  <!-- WorkflowComponent
+         Actor
+           DomainSpecificActor
+             ComputationalChemistryActor
+               GridUtilitiesActor
+    -->
+  <owl:Class rdf:ID="GridUtilitiesActor">
+    <rdfs:label>Grid Utilities</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ComputationalChemistryActor"/>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="GriddlesActor">
+    <rdfs:label>Griddles</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Actor"/>
+  </owl:Class> 
+  <!-- WorkflowComponent
+         Actor
+           GriddlesActor
+             PreConfiguredGridletActor
+    -->
+  <owl:Class rdf:ID="PreConfiguredGridletActor">
+    <rdfs:label>Gridlets</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#GriddlesActor"/>
+  </owl:Class>
+
+ <!--  Hierarchy with Actors
+    ** ======================
+    ** Workflow Components
+    **   Directors
+    **     D:SDFDirector                                     (ok)
+    **     D:DEDirector                                      (ok)
+    **     D:PNDirector                                      (ok)
+    **     D:CTDirector                                      (ok)
+    **   Actors
+    **     Griddles
+    **        A:GriddlesExec                                 (ok)
+    **        A:GriddlesRemoteExec                           (ok)
+    **        A:JGridletCreater                              (ok)
+    **        A:JGridletRemoteCreater                        (ok)
+    **        A:GriddlesRemoteFile                           (ok)
+    **     Constants
+    **       A:Const                                         (ok)
+    **       A:StringConst                                   (ok)
+    **       A:ConstOnce                                     (ok)
+    **      Decorative
+    **        A:Ellipse                                      (ok)
+    **        A:Image                                        (ok)
+    **        A:Line                                         (ok)
+    **        A:Polygon                                      (ok)
+    **        A:Rectangle                                    (ok)
+    **      Documentation
+    **        A:ModelID                                      (ok)
+    **        A:Annotation                                   (ok)
+    **        A:Documentation                                (ok)
+    **     Filters
+    **	     A:FilterUI					     (ok)
+    **	   File System
+    **	     A:FileCopy										 (ok)
+    **     Outputs
+    **       A:OrbWaveformSink                               (ok)
+    **       Graphical Displays
+    **         A:NextDiagram                                 (ok)
+    **         A:Diagrams                                    (ok)
+    **         A:DiagramsTransitions                         (ok)
+    **         Graphers
+    **           A:BarGraph                                  (ok)
+    **         Plotters
+    **           A:XYPlotter                                 (ok)
+    **           A:TimedPlotter                              (ok)
+    **           A:ArrayPlotter                              (ok)
+    **           A:HistogramPlotter                          (ok)
+    **           A:SequencePlotter                           (ok)
+    **         Scopes
+    **           A:XYScope                                   (ok)
+    **           A:TimedScope                                (ok)
+    **           A:SequenceScope                             (ok)
+    **         External
+    **           A:BrowserDisplay                            (ok)
+    **           A:BrowserUI                                 (ok)
+    **         Ontology Browsers
+    **           A:OntoBrowser                               (not included)
+    **       Textual
+    **         A:Display                                     (ok)
+    **         A:MonitorValue                                (ok)
+    **         A:DirectoryListing                            (ok)
+    **         A:ExecutionLog                                (not included)
+    **         A:Email                                       (ok)
+    **       Writers
+    **         A:LineWriter                                  (ok)
+    **         A:ExpressionWriter                            (not included)
+    **         A:BinaryFileWriter                            (ok)
+    **         A:FileWrite                                   (ok)
+    **         A:SRBWriter                                   (ok)
+    **       FileSystem
+    **        A:DirectoryListing                             (ok)
+    **        A:FileLocator                                  (ok)
+    **       GIS
+    **        A:GrassExport                                  (ok)
+    **     Inputs
+    **       Internal
+    **         Clocks
+    **           A:CurrentTime                               (ok)
+    **       External
+    **         A:EML200DataSource                            (ok)
+    **         A:FTPClient                                   (ok)
+    **         A:OrbImageSource                              (ok)
+    **         A:OrbWaveformSource                           (ok)
+    **         A:OrbPacketObjectSource                       (ok)
+    **         A:FileFetcher                                 (ok)
+    **         A:FileStager                                  (ok)
+    **         Storage Resource Broker
+    **           A:SRBConnect                                (ok)
+    **           A:SRBDisconnect                             (ok)
+    **           A:SRBReader                                 (ok)
+    **           A:SRBWriter                                 (ok)
+    **         Readers
+    **           A:ExpressionReader                          (ok)
+    **           A:FileReader                                (ok)
+    **           A:LineReader                                (ok)
+    **           A:ImageReader                               (ok)
+    **           A:BinaryFileReader                          (ok)
+    **           A:SRBReader                                 (ok)
+    **           A:TextFileReader                            (ok)
+    **           A:PortFileReader                            (not included)
+    **           A:SegmentFileReader                         (ok)
+    **         Database
+    **           A:DatabaseQuery                             (ok)
+    **           A:Dataset                                   (ok)
+    **           A:OpenDBConnection                          (ok)
+    **         GIS
+    **           A:GetPoint                                  (ok)
+    **           A:GrassImport                               (ok)
+    **         Globus
+    **           A:GridFTPUpdated                            (ok)
+    **           A:GridFTP                                   (ok)
+    **     Converters
+    **       A:FileToArray                                   (ok)
+    **       A:ArrayToElements                               (ok)
+    **       A:ArrayToSequence                               (ok)
+    **       A:ElementToArray                                (ok)
+    **       A:SequencetoArray                               (ok)
+    **       A:BooleanToAnything                             (ok)
+    **       A:CartesianToComplex                            (ok)
+    **       A:CartesianToPolar                              (ok)
+    **       A:ComplexToCartesian                            (ok)
+    **       A:ComplexToPolar                                (ok)
+    **       A:ExpressionToToken                             (ok)
+    **       A:InUnitsOf                                     (ok)
+    **       A:LongToDouble                                  (ok)
+    **       A:PolarToCartesian                              (ok)
+    **       A:PolartoComplex                                (ok)
+    **       A:StringToXML                                   (ok)
+    **       A:TokenToExpression                             (ok)
+    **       A:ImageToString                                 (ok)
+    **       A:ADNTToHTML                                    (ok)
+    **       A:FileToString                                  (ok)
+    **       A:InputsToXML                                   (ok)
+    **       A:MoMLToRelational                              (ok)
+    **       A:StringToPolygon                               (ok)
+    **       A:SVGToPolygon                                  (ok)
+    **       A:TokenToString                                 (ok)
+    **       A:XMLToADN                                      (ok)
+    **       A:XMLToOutputs                                  (ok)
+    **       A:ObjectToRecord                                (ok)
+    **       A:ImageConverter                                (ok)
+    **       A:StringToImage                                 (ok)
+    **     Complex Structures
+    **       Arrays
+    **         A:ArrayAppend                                 (ok)
+    **         A:ArrayAverage                                (ok)
+    **         A:ArrayElement                                (ok)
+    **         A:ArrayExtract                                (ok)
+    **         A:ArrayLength                                 (ok)
+    **         A:ArrayLevelCrossing                          (ok)
+    **         A:ArrayMaximum                                (ok)
+    **         A:ArrayMinimum                                (ok)
+    **         A:ArrayPeakSearch                             (ok)
+    **         A:ArraySort                                   (ok)
+    **         A:ArrayToElements                             (ok)
+    **         A:ArrayToSequence                             (ok)
+    **         A:ElementToArray                              (ok)
+    **         A:SequencetoArray                             (ok)
+    **         A:IterateOverArray                            (not included)
+    **         A:MatrixViewer                                (ok)
+    **       Records
+    **         A:RecordAssembler                             (ok)
+    **         A:RecordDisassembler                          (ok)
+    **         A:RecordUpdater                               (ok)
+    **       Vectors
+    **         A:VectorAssembler                             (ok)
+    **         A:VectorDisassembler                          (ok)
+    **       Tables
+    **         A:LookupTable                                 (ok)
+    **       Models
+    **         A:CompositeActor                              (ok)
+    **     Control
+    **       A:Select                                        (ok)
+    **       A:Switch                                        (ok)
+    **       A:Pause                                         (ok)
+    **       A:Stop                                          (ok)
+    **       A:Comparator                                    (ok)
+    **       A:LogicFunction                                 (ok)
+    **       A:Sleep                                         (ok)
+    **       Exceptions
+    **         A:ThrowException                              (ok)
+    **         A:ThrowModelError                             (ok)
+    **       Boolean
+    **         A:BooleanSwitch                               (ok)
+    **         A:BooleanSelect                               (not included)
+    **         A:Equals                                      (ok)
+    **         A:IsPresent                                   (ok)
+    **       Unit Testing
+    **         A:NonStrictTest                               (ok)
+    **         A:Test                                        (ok)
+    **         A:TypeTest                                    (ok)
+    **     Mathematical Operators
+    **       A:Expression                                    (ok)
+    **       A:UnaryMathFunction                             (not included)
+    **       Unit Systems
+    **         A:BasicUnits                                  (ok)
+    **         A:CGSUnitBase                                 (ok)
+    **         A:ElectronicUnitBase                          (ok)
+    **         A:SI                                          (ok)
+    **       Random Numbers
+    **         A:Bernoulli                                   (ok)
+    **         A:DiscreteRandomSource                        (ok)
+    **         A:Gaussian                                    (ok)
+    **         A:Rician                                      (ok)
+    **         A:Uniform                                     (ok)
+    **       Trig
+    **         A:Sinewave                                    (ok)
+    **         A:TrigFunction                                (ok)
+    **         A:ContinuousSinewave                          (not included)
+    **       Arithmetic
+    **         A:Round                                       (ok)
+    **         A:AbsoluteValue                               (ok)
+    **         A:AddSubtract                                 (ok)
+    **         A:MultiplyDivide                              (ok)
+    **         A:Average                                     (ok)
+    **         A:Minimum                                     (ok)
+    **         A:Maximum                                     (ok)
+    **         A:Remainder                                   (ok)
+    **         A:Scale                                       (ok)
+    **       Statistics
+    **         A:Interpolator                                (ok)
+    **         A:Interpolate (geon)                          (ok)
+    **         A:Quantizer                                   (ok)
+    **       Iterative Operators
+    **         A:Ramp                                        (ok)
+    **         A:Accumulator                                 (ok)
+    **         A:Counter                                     (ok)
+    **         A:IterateOverArray                            (not included)
+    **         A:Limiter                                     (ok)
+    **       Calculus
+    **         A:Differential                                (ok)
+    **         A:ContinuousSinewave                          (not included)
+    **         A:Integrator                                  (ok)
+    **         A:DifferentialSystem                          (ok)
+    **       Discrete
+    **         A:DotProduct                                  (ok)
+    **     String Functions
+    **       A:StringCompare                                 (ok)
+    **       A:StringFunction                                (ok)
+    **       A:StringIndexOf                                 (ok)
+    **       A:StringLength                                  (ok)
+    **       A:StringMatches                                 (ok)
+    **       A:StringReplace                                 (ok)
+    **       A:StringSubstring                               (ok)
+    **       A:StringConcat                                  (ok)
+    **       A:StringConst                                   (ok)
+    **       A:DelimitedParser                               (ok)
+    **       XML
+    **         A:XPath                                       (ok)
+    **         A:XSLTActor                                   (ok)
+    **     GIS Functions
+    **       A:GridOverlay                                   (ok)
+    **       A:PointInPolygon                                (ok)
+    **       A:PointInPolygonXY                              (ok)
+    **       A:GrassExport                                   (ok)
+    **       A:GetPoint                                      (ok)
+    **       A:GrassImport                                   (ok)
+    **       A:DensityGridder                                (not included)
+    **       A:Rescaler                                      (ok)
+    **     Grid Functions
+    **       A:GlobusProxy                                   (ok)
+    **       A:GlobusJob                                     (ok)
+    **       A:GridFTP                                       (ok)
+    **       A:GridFTPUpdated                                (ok)
+    **       A:RunJobGridClient                              (ok)
+    **       A:ParameterizedGlobusJob                        (ok)
+    **     Image Manipulation
+    **       A:ImageDisplay                                  (ok)
+    **       A:ImageReader
+    **       A:ImageRotate                                   (ok)
+    **       A:ImageToString                                 (ok)
+    **       A:URLToImage                                    (ok)
+    **       A:ImageContrast                                 (ok)
+    **       A:ImagePartition                                (ok)
+    **       A:ImageSequence                                 (ok)
+    **       A:ImageUnpartition                              (ok)
+    **       A:MonitorImage                                  (ok)
+    **       A:ImageJActor                                   (ok)
+    **       A:ImageConverter                                (ok)
+    **     External Execution Environments
+    **       A:Exec                                          (ok)
+    **       A:PythonActor                                   (ok)
+    **       A:MatlabExpression                              (ok)
+    **       A:InteractiveShell                              (ok)
+    **       A:UserInteractiveShell                          (ok)
+    **       A:PythonScript                                  (ok)
+    **       A:InvokeService                                 (ok)
+    **       A:ServerExecute                                 (ok)
+    **       A:WMSDActor                                     (ok)
+    **       A:GlobusJob                                     (ok)
+    **       A:CommandLine                                   (ok)
+    **       A:WebService                                    (ok)
+    **       A:InteractiveExec                               (ok)
+    **     Datamining
+    **       A:Trainer                                       (ok)
+    **     Web Services
+    **       A:WebService                                    (ok)
+    **       A:WSHarvester                                   (ok)
+    **       Pre-configured
+    **         Blast
+    **           A:Blast_searchParam                         (not included)
+    **           A:Blast_searchSimple                        (not included)
+    **           A:Blast_extractPosition                     (not included)
+    **           A:Blast_searchParamAsync                    (not included)
+    **           A:Blast_searchSimpleAsync                   (not included)
+    **         ClustalW
+    **           A:ClustalW_analyzeParam                     (not included)
+    **           A:ClustalW_analyzeSimple                    (not included)
+    **           A:ClustalW_analyzeParamAsync                (not included)
+    **           A:ClustalW_analyzeSimpleAsync               (not included)
+    **         DDBJ
+    **           A:DDBJ_getFFEntity                          (not included)
+    **           A:DDBJ_getXMLEntry                          (not included)
+    **           A:DDBJ_getFeatureInfo                       (not included)
+    **           A:DDBJ_getAllFeatures                       (not included)
+    **           A:DDBJ_getRelatedFeatures                   (not included)
+    **           A:DDBJ_getRelatedFeaturesSeq                (not included)
+    **         Fasta
+    **           A:Fasta_searchParam                         (not included)
+    **           A:Fasta_searchSimple                        (not included)
+    **           A:Fasta_searchParamAsync                    (not included)
+    **           A:Fasta_searchSimpleAsync                   (not included)
+    **         TxSearch
+    **           A:TxSearch_searchSimple                     (not included)
+    **           A:TxSearch_searchParam                      (not included)
+    **           A:TxSearch_getTxId                          (not included)
+    **           A:TxSearch_getTxName                        (not included)
+    **           A:TxSearch_searchLineage                    (not included)
+    **     Database
+    **       A:DatabaseQuery                                 (ok)
+    **       A:Dataset                                       (ok)
+    **       A:OpenDBConnection                              (ok)
+    **     Domain Specific Actors
+    **       Niche Modeling
+    **         A:GarpPresampleLayers                         (ok)
+    **         A:GarpAlgorithm                               (ok)
+    **         A:GarpPrediction                              (ok)
+    **       Orb
+    **         A:OrbPacketObjectSource                       (ok)
+    **         A:OrbImageSource                              (ok)
+    **         A:OrbWaveformSink                             (ok)
+    **         A:OrbWaveformSource                           (ok)
+    **       GenBank
+    **         A:BlastOne                                    (ok)
+    **         A:BlastTwo                                    (ok)
+    **         A:Clasfavor                                   (ok)
+    **         A:ClustalW                                    (ok)
+    **         A:ClustalW_Local                              (ok)
+    **         A:CreateExpressionFromQuery                   (ok)
+    **         A:CreateRequestFromResult                     (ok)
+    **         A:ClustalW_Remote                             (ok)
+    **         A:Genbank                                     (ok)
+    **         A:LocalBlastOne                               (ok)
+    **         A:Transfac                                    (ok)
+    **         Promoter Identification (PIW)
+    **           A:EnumHomolog                               (ok)
+    **           A:EnumItem                                  (ok)
+    **           A:EnumItemTriggered                         (ok)
+    **           A:ExtractItem                               (ok)
+    **           A:FastaFormat                               (ok)
+    **           A:GISequence                                (ok)
+    **           A:GISequencePromotRegion                    (ok)
+    **
+    **   Variables
+    **     A:Recorder                                        (ok)
+    **     A:SetVariable                                     (ok)
+    **     A:LoggingActor                                    (ok)
+    **     Parameters
+    **       A:Parameter                                     (ok)
+    **       A:StringParameter                               (ok)
+    **       A:FileParameter                                 (ok)
+    **       A:ColorAttribute                                (ok)
+    **       A:IntRangeParameter                             (ok)
+    **       A:PortParameter                                 (ok)
+    **       A:RequireVersion                                (ok)
+    **       A:ScopeExtendingAttribute                       (ok)
+    **
+    -->
+
+</rdf:RDF>

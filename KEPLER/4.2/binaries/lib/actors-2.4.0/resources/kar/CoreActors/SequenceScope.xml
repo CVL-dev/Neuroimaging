@@ -1,0 +1,82 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Sequence Scope" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:19:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: SequenceScope.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;A sequence plotter for sequences that are potentially infinitely long.
+ This plotter contains an instance of the Plot
+ class from the Ptolemy plot package as a public member. Data at
+ the input, which can consist of any number of channels, are plotted
+ on this instance.  Each channel is plotted as a separate data set.
+ The horizontal axis represents the count of the iterations, modulo
+ the &lt;i&gt;width&lt;/i&gt; parameter, scaled by the &lt;i&gt;xUnit&lt;/i&gt; parameter.
+ The &lt;i&gt;width&lt;/i&gt; parameter must be an integer that gives the width
+ of the plot in number of samples. It defaults to 10.
+ If the &lt;i&gt;persistence&lt;/i&gt; parameter is positive, then it specifies
+ the number of points that are remembered. It also defaults to 10.
+ Any points older than these are erased and forgotten.
+ The horizontal increment between samples is given by the
+ &lt;i&gt;xUnit&lt;/i&gt; parameter. Its default value is 1.0. The horizontal value
+ of the first sample is given by the &lt;i&gt;xInit&lt;/i&gt; parameter.
+ Its default value is 0.0. The input is of type DoubleToken.
+ &lt;/p&gt;&lt;p&gt;
+ Note that this actor uses XOR drawing mode, which is fast, but
+ will produce sometimes very annoying artifacts. In particular,
+ when lines or points overlap, they will erase each other (if they
+ are from the same data set) or produce some other color (if
+ they are from distinct data sets).  To avoid these artifacts,
+ use ArrayPlotter.&lt;/p&gt;</configure>
+    </property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Input port, which has type DoubleToken.</configure>
+    </property>
+<property name="prop:xInit" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The start point of the X axis.</configure>
+    </property>
+<property name="prop:fillOnWrapup" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If true, fill the plot when wrapup is called.  This parameter has type BooleanToken, and default value true.</configure>
+    </property>
+<property name="prop:automaticRescale" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If true, the plot will automatically rescale if necessary.  This parameter has type BooleanToken, and default value false.</configure>
+    </property>
+<property name="prop:legend" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>A comma-separated list of labels to attach to each data set.  This is always a string, with no enclosing quotation marks.</configure>
+    </property>
+<property name="prop:startingDataset" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The starting dataset number to which data is plotted.  This parameter has type IntToken, with default value 0.  Its value must be non-negative.</configure>
+    </property>
+<property name="prop:width" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The width of the X axis, in number of samples (an integer).</configure>
+    </property>
+<property name="prop:persistence" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The number of samples to be displayed at any one time (an integer).</configure>
+    </property>
+<property name="prop:xUnit" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The increment of the X axis.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.SequenceScope">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:895:1">
+        </property>
+    </property>
+    <property name="input" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="double">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="true">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Scope">
+    </property>
+</entity>

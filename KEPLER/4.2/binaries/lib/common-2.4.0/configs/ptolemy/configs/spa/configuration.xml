@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="configuration" class="ptolemy.actor.gui.Configuration">
+
+  <doc>Configuration for SPA.</doc>
+
+  <entity name="directory" class="ptolemy.actor.gui.ModelDirectory">
+  </entity>
+
+  <entity name="effigyFactory" class="ptolemy.actor.gui.EffigyFactory">
+    <input source="ptolemy/configs/graphEffigyFactory.xml"/>
+    <input source="ptolemy/configs/extendedEffigyFactories.xml"/>
+  </entity>
+
+  <property name="tableauFactory" class="ptolemy.actor.gui.TableauFactory">
+    <input source="ptolemy/configs/spa/graphTableauFactory.xml"/>
+    <input source="ptolemy/configs/extendedTableauFactories.xml"/>
+  </property>
+
+  <entity name="actor library" class="ptolemy.kernel.CompositeEntity">
+
+    <property name="_libraryMarker"
+              class="ptolemy.kernel.util.SingletonAttribute"/>
+    <input source="ptolemy/configs/utilitiesLibrary.xml"/>
+
+    <class name="director library" extends="ptolemy.moml.EntityLibrary">
+      <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector"/>
+      <property name="PN Director" class="ptolemy.domains.pn.kernel.PNDirector"/>
+    </class>
+
+    <class name="actor library" extends="ptolemy.moml.EntityLibrary">
+      <input source="ptolemy/actor/lib/sources.xml"/>
+      <input source="ptolemy/actor/lib/sinks.xml"/>
+      <input source="ptolemy/actor/lib/io/io.xml"/>
+      <input source="ptolemy/actor/lib/math.xml"/>
+      <input source="ptolemy/actor/lib/random.xml"/>
+      <input source="ptolemy/actor/lib/flowcontrol.xml"/>
+      <input source="ptolemy/actor/lib/realtime.xml"/>
+      <input source="ptolemy/actor/lib/logic/logic.xml"/>
+      <input source="ptolemy/actor/lib/conversions/conversions.xml"/>
+      <input source="ptolemy/actor/lib/array.xml"/>
+      <input source="ptolemy/actor/lib/matrix.xml"/>
+    </class>
+
+    <class name="SPA library" extends="ptolemy.moml.EntityLibrary">
+      <input source="ptolemy/configs/spa/spa.xml"/>
+      <input source="ptolemy/configs/spa/webservices.xml"/>
+    </class>
+
+  </entity>
+
+</entity>

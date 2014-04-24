@@ -1,0 +1,142 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="MineralClassifier" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="3.0.2">
+    </property>
+    <property name="PN Director" class="ptolemy.domains.pn.kernel.PNDirector">
+        <property name="initialQueueCapacity" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="maximumQueueCapacity" class="ptolemy.data.expr.Parameter" value="65536">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="105.0, 30.0">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={168, 177, 815, 509}}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 400]">
+    </property>
+    <property name="0:annotation" class="ptolemy.kernel.util.Attribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="245.0, -30.0">
+        </property>
+        <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure><svg><text x="20" y="20" style="font-size:18; font-family:Aharoni; fill:blue">Modal Classification for Naming
+Igneous Rocks.
+</text></svg></configure>
+        </property>
+        <property name="_hideName" class="ptolemy.data.expr.Parameter">
+        </property>
+        <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+        </property>
+    </property>
+    <property name="0:annotation2" class="ptolemy.kernel.util.Attribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="245.0, 10.0">
+        </property>
+        <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure><svg><text x="20" y="20" style="font-size:14; font-family:Aharoni; fill:darkgray">Modal Classification for Naming
+Igneous Rocks.
+Retrieve classification Points from the
+ModalData database and then get the rock
+name by their position in the diagram.</text></svg></configure>
+        </property>
+        <property name="_hideName" class="ptolemy.data.expr.Parameter">
+        </property>
+        <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+        </property>
+    </property>
+    <entity name="PointinPolygon" class="org.geon.PointinPolygon">
+        <doc>PointinPolygon</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="310.0, 210.0">
+        </property>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="polygonRegions" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="points" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+    </entity>
+    <entity name="Diagram File" class="org.geon.SVGToPolygon">
+        <property name="fileOrURL" class="ptolemy.data.expr.FileParameter" value="C:\Util\Projects\scimodel\outreach/resources/data\geon\rock1.svg">
+        </property>
+        <doc>SVGToPolygon</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="200.0, 170.0">
+        </property>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+        </port>
+    </entity>
+    <entity name="Rock Name" class="ptolemy.actor.lib.gui.Display">
+        <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+        </property>
+        <property name="title" class="ptolemy.kernel.util.StringAttribute">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="420.0, 200.0">
+        </property>
+        <port name="input" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+        </port>
+    </entity>
+    <entity name="RetrievePoints" class="org.geon.RetrievePoints">
+        <doc>RetrievePoints</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="110.0, 220.0">
+        </property>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="points" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="dbcon" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <entity name="DiagramDisplay" class="org.geon.BrowserDisplay">
+        <property name="fileOrURL" class="ptolemy.data.expr.FileParameter" value="file:/C:/Util/Projects/scimodel/outreach/resources/data/geon/gabbro.html">
+        </property>
+        <doc>BrowserDisplay</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="420.0, 270.0">
+        </property>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="PointinPolygon.output" relation="relation"/>
+    <link port="PointinPolygon.trigger" relation="relation4"/>
+    <link port="PointinPolygon.polygonRegions" relation="relation2"/>
+    <link port="PointinPolygon.points" relation="relation3"/>
+    <link port="Diagram File.output" relation="relation2"/>
+    <link port="Diagram File.trigger" relation="relation5"/>
+    <link port="Rock Name.input" relation="relation"/>
+    <link port="RetrievePoints.trigger" relation="relation5"/>
+    <link port="RetrievePoints.points" relation="relation3"/>
+    <link port="DiagramDisplay.trigger" relation="relation4"/>
+</entity>

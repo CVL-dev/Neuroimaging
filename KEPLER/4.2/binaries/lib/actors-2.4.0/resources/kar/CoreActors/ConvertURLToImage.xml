@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<entity name="Convert URL To Image" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:107:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Christopher Hylands</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ConvertURLToImage actor reads the URL or path of an image and outputs the image in a form that can be used by other actors (an image token).</p>
+
+<p>The actor accepts a string representing the URL or file path of an image via the input port. Specify local files by using the prefix &quot;file://&quot; instead of &quot;http://&quot;. To specify a file relative to the current directory, use &quot;../&quot; or &quot;./&quot;. For example, if the current directory contains a file called &quot;test.jpg&quot;, then the input should be set to &quot;file:./test.jpg&quot;. If the parent directory contains a file called &quot;test.jpg&quot;, then the input should be set to &quot;file:../test.jpg&quot;. To reference the file test.jpg, located at &quot;/tmp/test.jpg&quot;, the input should be set to file:///tmp/test.jpg.
+</p>
+<p>The ConvertURLToImage actor is similar in function to the ImageReader, except that the ConvertURLToImage actor receives and converts a URL via an input port, while the ImageReader receives a URL via a parameter.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an image token.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string representing the URL or file path of an image.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.image.URLToImage" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:981:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ImageManipulationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ImageOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

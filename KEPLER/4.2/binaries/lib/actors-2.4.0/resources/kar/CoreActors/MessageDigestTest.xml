@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<entity name="Message Digest Test" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:468:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Dan Higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>
+The MessageDigestTest actor compares a file to a previous version to see whether or not the contents have changed. The actor outputs a Boolean value: true if the file is unchanged; false if it differs from the comparison string.</p>
+
+<p>The actor uses an MD5 algorithm (a function that is often used to test the integrity of files) to perform the test.</p>
+
+<p>Specify a previous file version with the MD5_MessageDigest parameter. The parameter accepts a hex string that the actor will test the input file against. To create a MD5 string, place the actor in "learning mode" by selecting the learningMode parameter. When the actor is in learning mode, it will read the input file and create a comparison string that the actor will store in its MD5_MessageDigest parameter. When the actor is in learning mode, it will output false.</p></configure></property>
+<property name="port:testResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the test: true if the file is unchanged, or false if it differs from the comparison string.</configure></property>
+<property name="port:testFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name of the file to be tested.</configure></property>
+<property name="prop:learningMode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to put the actor in learning mode. When the actor is in learning mode, it will read the input file and create a hex comparison string that the actor will store in its MD5_MessageDigest parameter. When the actor is in learning mode, it will output false.</configure></property>
+<property name="prop:MD5_MessageDigest" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A MD5 hex string that the actor will use to compare against the input file to see if its content has changed. (e.g., 22D62410E268D65B7D59FCFBE3AEFB8C).</configure></property>
+</property> 
+<property name="class" value="util.MessageDigestTest" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:2002:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="testFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+ </property>
+<property name="testResult" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+ </property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitTestControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitTestControl" class="org.kepler.sms.SemanticType"/>
+</entity>

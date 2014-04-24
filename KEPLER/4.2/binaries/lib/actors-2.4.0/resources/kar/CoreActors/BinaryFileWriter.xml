@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<entity name="Binary File Writer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:126:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The BinaryFileWriter actor receives an array of bytes and writes it to a file. The actor outputs the file path of the generated file.</p>
+
+<p>The BinaryFileWriter will write to the file specified with the fileName parameter. The written data can be appended to the specified file (if it exists), or an existing file can be overwritten--with or without confirmation--depending on the settings of the append and confirmOverwrite parameters.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that receives an array of bytes.</configure></property>
+<property name="port:filePath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the generated file.</configure></property>
+<property name="prop:append" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to append the generated file to the existing, specified file. By default, the actor will overwrite any preexisting file.</configure></property>
+<property name="prop:confirmOverwrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should request confirmation before overwriting a file. By default, the actor will not ask for confirmation.</configure></property>
+<property name="prop:fileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the file to which to write.  Type in a file name or use the Browse button to select a destination file. See FileParameter for more information about specifying file names.</configure></property>
+</property>
+<property name="class" value="org.geon.BinaryFileWriter" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:995:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{unsignedByte}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="filePath" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WriterOutputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#LocalOutput" class="org.kepler.sms.SemanticType"/>
+</entity>

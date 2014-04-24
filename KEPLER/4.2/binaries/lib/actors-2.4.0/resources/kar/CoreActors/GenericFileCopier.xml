@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<entity name="Generic File Copier" class="ptolemy.kernel.ComponentEntity">
+	<property name="entityId" value="urn:lsid:kepler-project.org:actor:549:1" class="org.kepler.moml.NamedObjId" />
+	<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+		<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>null</configure>
+		</property>
+		<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>Chandrika Sivaramakrishnan</configure>
+		</property>
+		<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>1.0 Feb 2009</configure>
+		</property>
+		<property name="userLevelDocumentation"	class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				<p>
+				The GenericFileCopier actor copies files between a local and 
+				remote machine or between two remote machines, using scp, sftp, 
+				bbcp or srmlite protocol. The actor uses the SSH protocol to 
+				connect to remote hosts. If the host is an empty string or 
+				"local" or "localhost", the Java Runtime will be used for 
+				execution instead of SSH. If both the source and destination are
+				the same remote host a simple 'cp' command is used instead of 
+				the specified protocol. To copy files between two remote machines,
+				the actor connects to the source machine using ssh and executes
+				the appropriate copy command on the source machine. It uses the 
+				org.kepler.ssh.SshExec actors for this. After the command 
+				terminates, the actor returns the stdout, stderr, and exit code 
+				of the operation. An exit code of zero represents success. 
+				</p>
+				<p>
+				Set the <i>timeoutSeconds</i> parameter to terminate the 
+				command after a specified amount of time. Specify 0 to wait 
+				indefinitely for command termination. Use the
+				<i>cleanupAfterError</i> parameter to kill the remote process
+				(and all of its	children) after an error or timeout. Set this 
+				parameter only if connecting to a Unix server. On windows, 
+				process.destroy() is called by default at the end of the 
+				process, but this does not always destroy the process.
+				</p>
+				<p>
+				Features such as overwriting of existing files, errors 
+				during partial copy of directories, error codes, error 
+				messages, etc. depend on the specific protocol used for copy.
+				User may overwrite some of the default settings by 
+				specifying additional command line options 
+				</p>
+				<p>
+				machingConfig.xml present in the module common under
+				configs/ptolemy/configs/spa can be used to configure the 
+				list of machines, the file transfer protocols available in 
+				those machines and the path where it is installed. This value 
+				can be overwritten by giving it explicitly in the parameters 
+				"path to protocol on source" and "path to protocol on destination". 
+				All copy commands are always run on the local machine or the 
+				source machine in case of copy	between two remote machines. If 
+				protocol paths are neither configured in machineConfig.xml nor in
+				path parameters, its searched in /usr/bin, /bin, /usr/local/bin, 
+				home directory and	current directory.				
+				</p>
+				<p>
+				<b>Limitations:</b>
+				<ul>
+					<li>Remote machines should be accessible using SSH</li>
+					<li>If the copy protocol is not in standard path or if
+					the path is not explicitly configured, bash shell is used 
+					to set default search path</li>
+					<li>Copy between a local and a remote machine using sftp or  
+					scp uses the JSCH  api instead of a executing a command, 
+					hence parameters timeout and cleanupAfterError are ignored.
+					In case of sftp the command line options parameter is also 
+					ignored</li>
+					<li>This actor was tested with srmlite 2.2.0.7.r6. Versions
+					earlier might not return non zero exit codes in case of some
+					errors</li>
+					<li>Retry feature of srmlite is currently not supported.
+					Retry count should be configured to 0 before using it with
+					this actor</li>
+					<li>Actor does not return non zero exit codes when you try
+					a NON recursive	copy on a directory with bbcp as the protocol.  
+					This is because of a bug in bbcp</li>
+					<li>When using bbcp to transfer file(s) between localhost
+					and a remote host, password is prompted even for localhost. 
+					</li>
+				</ul>
+				</p>
+				
+			</configure>
+		</property>
+
+		<property name="port:sourceFile"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The file/directory to be copied. If only file name is used it 
+				is searched	in the user's home directory. 
+			</configure>
+		</property>
+		<property name="port:destinationFile"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The destination path / file of the copy operation. 
+			</configure>
+		</property>
+		<property name="port:errors"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Errors, if any, encountered during the copy operation. This
+				would be either error message from the actor(validation errors,
+				connection exceptions, timeouts etc) or the output and error 
+				messages from the copy command (stdout and stderr). This would
+				be an empty string when exit code is zero.
+			</configure>
+		</property>
+		<property name="port:exitcode"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The exit code of the command. Exit code of 0 represents success.
+				If there is an SSH connection related error (or timeout) 
+				the exitcode will be -32767
+			</configure>
+		</property>
+		<property name="prop:source machine"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The machine which contains the file to be copied. It should be
+				null, "", "local" or "localhost" for  local machine 
+				or [user@]host[:port] to denote a remote machine accessible 
+				with SSH. If user is not provided, the local username will be 
+				used. If port is not provided, the default port 22 will be 
+				applied.
+			</configure>
+		</property>
+		<property name="prop:source file"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The file/directory to be copied. If only file name is used it 
+				is searched	in the user's home directory. 
+			</configure>
+		</property>
+		<property name="prop:destination machine"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The machine to which the files are to be copied. It should be
+				null, "", "local" or "localhost" for local machine 
+				or [user@]host[:port] to denote a remote machine accessible 
+				with SSH. If user is not provided, the local username will be 
+				used. If port is not provided, the default port 22 will be 
+				applied.
+			</configure>
+		</property>
+		<property name="prop:destination file"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				The destination path / file of the copy operation. 
+			</configure>
+		</property>
+		<property name="prop:recursive"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Boolean parameter to indicate if this is a recursive copy
+			</configure>
+		</property>
+		<property name="prop:protocol"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Protocol to be used for the copy operation. It defaults to scp
+				if the copy involves a remote machine. This parameter is ignored
+				if both the source and remote machine are the same. If both
+				the machines are localhost java runtime is used for the copy. If
+				both the machines are the same remote machine 'cp' command is used. 
+			</configure>
+		</property>
+		<property name="prop:timeoutSeconds"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Timeout in seconds. The command will be timed out after
+				the specified amount of time. Specify 0 to wait
+				indefinitely for command termination.
+			</configure>
+		</property>
+		<property name="prop:cleanupAfterError"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Kill remote process(es) after an error or timeout. Set
+				this parameter only if connecting to a Unix server
+				(other platforms do not support it). All processes
+				belonging to the same group as the remote command (i.e.,
+				its children) will be killed.
+			</configure>
+		</property>
+		<property name="prop:protocolPathSrc"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Path where the selected protocol is installed on the source
+				machine	
+			</configure>
+		</property>
+		<property name="prop:protocolPathDest"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Path where the selected protocol is installed on the 
+				destination machine
+			</configure>
+		</property>
+		<property name="prop:cmdOptions"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Optional command line arguments to be used with the copy command
+			</configure>
+		</property>
+		<property name="prop:srmProtocol"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Protocol to be used with srmlite. This defaults to scp.
+			</configure>
+		</property>
+	</property>
+	<property name="class" value="org.sdm.spa.actors.transport.GenericFileCopier"
+		class="ptolemy.kernel.util.StringAttribute">
+		<property name="id"
+			value="urn:lsid:kepler-project.org:class:549:1"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+	<property name="source machine" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input"
+            class="ptolemy.kernel.util.StringAttribute" />
+        <property name="dataType" value="string"
+            class="ptolemy.kernel.util.StringAttribute" />
+        <property name="isMultiport" value="false"
+            class="ptolemy.kernel.util.StringAttribute" />
+        <property name="_showName" class="ptolemy.data.expr.Parameter"
+            value="true" />
+    </property>
+	<property name="source file" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="input"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="string"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="_showName" class="ptolemy.data.expr.Parameter"
+			value="true" />
+	</property>
+    <property name="destination machine" class="org.kepler.moml.PortAttribute">
+        <property name="direction" value="input"
+            class="ptolemy.kernel.util.StringAttribute" />
+        <property name="dataType" value="string"
+            class="ptolemy.kernel.util.StringAttribute" />
+        <property name="isMultiport" value="false"
+            class="ptolemy.kernel.util.StringAttribute" />
+        <property name="_showName" class="ptolemy.data.expr.Parameter"
+            value="true" />
+    </property>
+	<property name="destination file" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="input"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="string"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="_showName" class="ptolemy.data.expr.Parameter"
+			value="true" />
+	</property>
+	<property name="exitcode" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="output"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="int"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="_showName" class="ptolemy.data.expr.Parameter"
+			value="true" />
+	</property>
+	<property name="errors" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="output"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="string"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="_showName" class="ptolemy.data.expr.Parameter"
+			value="true" />
+	</property>
+	<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor" class="org.kepler.sms.SemanticType"/>
+	<property name="semanticType21" value="urn:lsid:localhost:onto:2:1#SSH" class="org.kepler.sms.SemanticType"/>
+</entity>
+

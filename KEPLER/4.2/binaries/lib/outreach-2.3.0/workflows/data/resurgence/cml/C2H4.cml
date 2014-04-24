@@ -1,0 +1,29 @@
+<molecule title="Ethene">
+<metadataList title="generated automatically from Openbabel">
+<metadata name="dc:creator" content="OpenBabel version 1-100.1"/>
+<metadata name="dc:description" content="Conversion of legacy filetype to CML"/>
+<metadata name="dc:identifier" content="Unknown"/>
+<metadata name="dc:content"/>
+<metadata name="dc:rights" content="unknown"/>
+<metadata name="dc:type" content="chemistry"/>
+<metadata name="dc:contributor" content="unknown"/>
+<metadata name="dc:creator" content="Openbabel V1-100.1"/>
+<metadata name="dc:date" content="Tue Jun 15 14:45:02 CEST 2004"/>
+<metadata name="cmlm:structure" content="yes"/>
+</metadataList>
+<atomArray>
+<atom id="a1" elementType="C" x3="-0.6695" y3="0.0106" z3="-0.0117"/>
+<atom id="a2" elementType="C" x3="0.6694" y3="-0.0107" z3="0.0113"/>
+<atom id="a3" elementType="H" x3="-1.2124" y3="0.9672" z3="-0.0212"/>
+<atom id="a4" elementType="H" x3="-1.2426" y3="-0.9282" z3="-0.0213"/>
+<atom id="a5" elementType="H" x3="1.2426" y3="0.9281" z3="0.0209"/>
+<atom id="a6" elementType="H" x3="1.2124" y3="-0.9672" z3="0.0208"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a1 a2" order="2"/>
+<bond atomRefs2="a1 a3" order="1"/>
+<bond atomRefs2="a1 a4" order="1"/>
+<bond atomRefs2="a2 a5" order="1"/>
+<bond atomRefs2="a2 a6" order="1"/>
+</bondArray>
+</molecule>

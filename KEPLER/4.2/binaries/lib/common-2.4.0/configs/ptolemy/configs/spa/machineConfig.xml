@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<machines>
+
+  <machineEntry   protocol="ssh" 
+        transferProtocols="scp|sftp|srmlite|bbcp"
+        protocolPaths="/usr/bin||/home/srmlite/bin|/home/bbcp_dir/"
+        user="user2"                   
+        host="localhost"/>
+
+  <machineEntry  protocol="ssh"
+        transferProtocols="scp|sftp|bbcp"
+        protocolPaths="||/opt/public/bin"
+        user="user1"
+        host="host1"/>
+  
+</machines>

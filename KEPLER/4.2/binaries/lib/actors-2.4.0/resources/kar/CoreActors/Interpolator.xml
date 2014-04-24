@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<entity name="Interpolator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:4:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Sarah Packman, Yuhong Xiong</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The Interpolator actor produces an interpolation based on its parameters. The actor receives an array of values, and approximates the values between the specified ones based on an index array that "anchors" each value to the actor's internal iteration count.  </p>
+
+<p>The values parameter specifies a sequence of values to produce at the output. The indexes parameter specifies when those values should be produced.  The values and indexes parameters must both contain arrays of equal lengths; if the lengths are not equal, the actor will generate an error. In addition, the indexes array must be increasing and non-negative. </p>
+
+<p>This actor counts iterations. Whenever the iteration count matches an entry in the indexes array, the corresponding entry (at the same position) in the values array is produced at the output. Whenever the iteration count does not match a value in the indexes array, an interpolation of the values is produced at the output.</p>
+
+<p>The values are periodic if the period parameter contains a positive value. In this case, the period must be greater than the largest index, and values within the index range 0 to (period-1) are repeated indefinitely. If the period is zero, the values are not periodic, and the values outside the range of the indexes are considered to be 0.0.</p>
+
+<p>The order parameter specifies which order of interpolation to apply whenever the iteration count does not match an index in the indexes array. The actor currently supports zero, first, and third order interpolations. </p>
+ 
+</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a specified value or an interpolation.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:order" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The order of interpolation for non-index iterations. The actor currently supports zero, first, and third order interpolations.</configure></property>
+<property name="prop:values" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The values that will be produced at the specified indexes. This parameter is an array, and must have the same length as the array specified by the indexes parameter. The default value is {1.0, 0.0}.</configure></property>
+<property name="prop:indexes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The indexes at which the specified values will be produced. This parameter is an array of integers, and must have the same length as the array specified by the values parameter. The indexes array must be increasing and non-negative. The default value is {0, 1}.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of iterations that transpire before the actor indicates that it is finished. If firingCountLimit is set to zero, the actor has no limit imposed.</configure></property>
+<property name="prop:period" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The period of the reference values. This parameter must contain an integer token.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Interpolator" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:880:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StatisticMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#IterativeOperation" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#WorkflowInput" class="org.kepler.sms.SemanticType"/>
+</entity>

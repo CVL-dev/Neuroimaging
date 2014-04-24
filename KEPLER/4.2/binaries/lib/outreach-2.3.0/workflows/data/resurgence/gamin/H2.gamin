@@ -1,0 +1,10 @@
+ $CONTRL COORD=CART UNITS=ANGS $END
+ $DATA
+Hydrogen
+Put symmetry info here
+
+H      1.0    -0.54960   0.00570  -0.01900 
+H      1.0     0.54960  -0.00570   0.01900 
+ $END
+
+

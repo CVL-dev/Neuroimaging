@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<entity name="Comparator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:64:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The Comparator reads two values and compares them. The actor outputs a Boolean value (true or false) that indicates whether the comparison criteria were met or not.</p>
+
+<p>Specify the type of comparison to perform with the comparison parameter. The following comparisons may be performed:</p>
+
+<table border="1">
+<tr><td>Comparison</td><td>Definition</td></tr>
+<tr><td>></td><td>left is greater than right; the default comparison.</td></tr>
+<tr><td>>=</td><td>left is greater than or equal to right</td></tr>
+<tr><td>less than</td><td>left is less than right</td></tr>
+<tr><td>less than or equal</td><td>left is less than or equal to right</td></tr>
+<tr><td>==</td><td>left equals right</td></tr>
+</table>
+
+<p>The input ports are named &quot;left&quot; and &quot;right&quot; to indicate which side of the comparison operator their value appears on.</p>
+
+<p>The tolerance parameter, which defaults to zero, defines an error tolerance. If the tolerance is greater than zero, the actor will output true when the specified comparison is not exactly satisfied, but rather is almost satisfied within the specified tolerance.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a Boolean value (true or false) that indicates whether the comparison criteria were met or not.</configure></property>
+<property name="port:right" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double(or any data type that can be losslessly converted to a double token) that will be used on the right side of the comparison operator.</configure></property>
+<property name="port:left" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double (or any data type that can be losslessly converted to a double token) that will be used on the left side of the comparison operator.</configure></property>
+<property name="prop:tolerance" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The tolerance for the comparison. If the tolerance is greater than zero, the actor will output true when the comparison is satisfied within the specified tolerance (i.e., the comparison need not be exactly satisfied). The value is a double that defaults to 0.0.</configure></property>
+<property name="prop:comparison" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The comparison to perform. The default is greater than.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.logic.Comparator" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:939:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="left" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="right" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowControl" class="org.kepler.sms.SemanticType"/>
+</entity>

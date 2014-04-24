@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<entity name="Array Peak Search" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:28:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The ArrayPeakSearch actor reads an array and outputs the indices and values of peak values.</p>
+
+<p>The actor reads a source array via its input port. The actor will search all array elements that fall between the index specified with the startIndex and the index specified with the endIndex port or parameter.</p>
+
+<p>The dip and squelch parameters control the output's sensitivity to noise. Dip specifies the amount that the signal must differ from a local maximum before a peak is detected. Squelch specifies the value below which the input is ignored by the actor. The parameters are specified either as absolute numbers or as relative numbers. </p>
+
+<p>If the dip and squelch parameters are absolute numbers, the actor detects a peak if the array elements rise above the specified dip before the peak, or fall below the specified dip after the peak. </p>
+
+<p>If the dip and squelch parameters are relative numbers, then the actor detects a peak when the array elements rise by the specified factor relative to a minimum (before the peak), or dip by the given factor relative to a peak (after the peak). Note that dip is relative to the most recently seen peak or valley, and squelch is relative to the global peak in the array.</p>
+
+<p>Relative values can be specified as linear (a fraction) or in decibels. Select either absolute or a flavor of relative from the drop-down menu beside the scale parameter.</p>
+
+<p>For example, if the dip parameter is 2.0, and the scale parameter has the value "relative linear", then a dip must drop to half of a local peak value to be considered a dip. If the squelch parameter is 10.0 and scale has the value "relative linear", then any peaks that lie below 1/10 of the global peak are ignored. </p>
+
+<p>If scale has the value "relative amplitude decibels", then a value of 6.0 is equivalent to the linear value 2.0. If scale has the value "relative power decibels", then a value of 3.0 is equivalent to the linear value 2.0. In either decibel scale, 0.0 is equivalent to 0.0 linear. </p>
+</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of doubles.</configure></property>
+<property name="port:peakValues" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the values of the peaks. The type is an array of doubles. </configure></property>
+<property name="port:peakIndices" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the indices of the peaks. The type is an array of integers. </configure></property>
+
+<property name="prop:dip" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The amount that the signal must differ from a local maximum before a peak is detected. The default is 0.0. Use the scale parameter to specify whether the dip is interpreted as an absolute threshold or relative to a local peak.</configure></property>
+<property name="prop:squelch" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value below which the input is ignored by the actor. The default is -10.0. Use the scale parameter to specify whether the squelch value is interpreted as an absolute number or a number relative to the global peak.</configure></property>
+<property name="prop:scale" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specifies whether the dip and squelch should be interpreted as absolute or relative. If relative, the scale can be linear, in amplitude decibels, or in power decibels. The default value is "absolute".
+
+Note: If decibels are used, then the corresponding linear threshold is 10 to the power of (threshold/N ), where N is 20 (for amplitude decibels) or 10 (for power decibels). </configure></property>
+<property name="prop:maximumNumberOfPeaks" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maximum number of peaks to report. Specify an integer. The default is MaxInt.</configure></property>
+<property name="prop:startIndex" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The starting point of the search. If the index is larger than the value of endIndex, the search is conducted backwards (and the results presented in reverse order). If the index is larger than the length of the input array, then the search is started at the end of the input array. The default is the integer 0. </configure></property>
+<property name="prop:endIndex" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The end point of the search. If the index is larger than the length of the input array, then the search is to the end of the array. </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.ArrayPeakSearch" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:904:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="startIndex" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="endIndex" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{double}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="peakValues" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="peakIndices" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{int}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArrayActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataArrayOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

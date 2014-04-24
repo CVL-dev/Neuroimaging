@@ -1,0 +1,10 @@
+ $CONTRL COORD=CART UNITS=ANGS $END
+ $DATA
+Hydrogen fluoride
+Put symmetry info here
+
+F      9.0    -0.54950   0.01690  -0.01600 
+H      1.0     0.54950  -0.01690   0.01600 
+ $END
+
+

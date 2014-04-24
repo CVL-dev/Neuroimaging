@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<property name="BasicUnits" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:437:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>BasicUnits defines a unit system that consists of a set of base and derived units.</p>
+
+<p>The base units in the BasicUnits system are meters and seconds. The system defines centimeters, millimeters, and inches in terms of meters; milliseconds are defined in terms of seconds.</p>
+
+<p>To view or edit the defined units, right-click the BasicUnits icon and select &quot;Configure Attribute&quot; from the drop-down menu.</p></configure></property>
+</property>
+<property name="class" value="ptolemy.data.unit.UnitSystem" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1200:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitSystemMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitSystem" class="org.kepler.sms.SemanticType"/>
+<property name="meters" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Length" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="meter" class="ptolemy.data.expr.Parameter" value="meters">
+</property>
+<property name="m" class="ptolemy.data.expr.Parameter" value="meters">
+</property>
+<property name="cm" class="ptolemy.data.expr.Parameter" value="0.01*meters">
+</property>
+<property name="centimeters" class="ptolemy.data.expr.Parameter" value="cm">
+</property>
+<property name="centimeter" class="ptolemy.data.expr.Parameter" value="cm">
+</property>
+<property name="mm" class="ptolemy.data.expr.Parameter" value="0.001*meters">
+</property>
+<property name="millimeter" class="ptolemy.data.expr.Parameter" value="mm">
+</property>
+<property name="millimeters" class="ptolemy.data.expr.Parameter" value="mm">
+</property>
+<property name="in" class="ptolemy.data.expr.Parameter" value="2.54*cm">
+</property>
+<property name="inch" class="ptolemy.data.expr.Parameter" value="in">
+</property>
+<property name="inches" class="ptolemy.data.expr.Parameter" value="in">
+</property>
+<property name="seconds" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Time" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="sec" class="ptolemy.data.expr.Parameter" value="seconds">
+</property>
+<property name="second" class="ptolemy.data.expr.Parameter" value="seconds">
+</property>
+<property name="ms" class="ptolemy.data.expr.Parameter" value="0.001*seconds">
+</property>
+<property name="millisecond" class="ptolemy.data.expr.Parameter" value="ms">
+</property>
+<property name="milliseconds" class="ptolemy.data.expr.Parameter" value="ms">
+</property>
+<property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <rect x="-30" y="-15" width="60" height="30" style="fill:grey"></rect>
+      </svg>
+    </configure>
+</property>
+</property>

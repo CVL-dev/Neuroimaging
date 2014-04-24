@@ -1,0 +1,3 @@
+{"../../outreach/resources/data/geon/eby1.svg", "Zr + Nb + Ce + Y", "FeO / MgO"}
+{"../../outreach/resources/data/geon/eby2.svg", "Y", "Nb"}
+{"../../outreach/resources/data/geon/whalen.svg", "10000 * Ga / Al", "Zr"}

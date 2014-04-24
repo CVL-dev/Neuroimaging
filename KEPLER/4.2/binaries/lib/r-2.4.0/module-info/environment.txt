@@ -1,0 +1,3 @@
+R_HOME:Mac OS X=/Library/Frameworks/R.framework/Resources
+R_HOME:Windows=C:\Program Files\R\R-2.10.1
+R_HOME:linux=

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<entity name="String To Int" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:294:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The  StringToInt actor reads a string, converts it to an integer, and outputs the result. </p>
+
+<p>The actor creates the integer by placing one byte (i.e., one character) of the string into the least significant byte of an integer. Typically, this byte is the ASCII code of the character.</p>
+</configure></property>
+<property name="port:string" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string.</configure></property>
+<property name="port:integer" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the converted string as an integer.</configure></property>
+</property>
+<property name="class" value="org.resurgence.actor.StringToInt" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1119:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="string" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="integer" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ConversionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

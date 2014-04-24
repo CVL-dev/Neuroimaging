@@ -1,0 +1,59 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Parameter" class="org.kepler.moml.PropertyEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:420:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Neil Smyth, Edward A. Lee, Xiaojun Liu</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: Parameter.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+&lt;p&gt;Parameter extends Variable with additional support for string-valued
+ variables that makes these friendlier at the user interface level.
+ In particular, this class supports an annotation that specifies
+ choices for values.  A user interface can use this to present a
+ choice dialog that offers the specified values.  This is typically
+ used when a particular set of choices make sense.  The values can
+ be any expression, or if used in conjunction with string mode,
+ any string.&lt;/p&gt;
+ &lt;p&gt;
+ By default, an instance of Parameter, unlike Variable, is persistent.&lt;/p&gt;
+ &lt;p&gt;
+ By convention, an instance of NamedObj has a set of attributes,
+ some of which are visible to users and some of which are not.
+ When a user interface presents these attributes
+ for editing, it presents only those that are visible.
+ By default, an instance of Parameter is visible, as indicated by the fact
+ that it returns FULL in its getVisibility() method.  This can be overridden
+ by calling setVisibility().&lt;/p&gt;</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.data.expr.Parameter">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1184:1">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+    </property>
+    <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+    </property>
+    <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+        <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+        </property>
+    </property>
+    <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+        <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+    </property>
+    <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+    </property>
+</entity>

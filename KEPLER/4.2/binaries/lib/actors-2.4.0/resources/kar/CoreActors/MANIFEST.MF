@@ -1,0 +1,2692 @@
+Manifest-Version: 1.4.2
+KAR-Version: 2.1
+openable: false
+lsid: urn:lsid:kepler-project.org:kar:2000:11
+
+Name: MetadataParser.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:747:1
+
+Name: MonitorManager.xml
+lsid: urn:lsid:kepler-project.org:actor:566:1
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Documentation.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:435:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OpenBabel.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:381:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StartPlanFile.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:410:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ContinuousIntegrator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:9:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XPathProcessor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:209:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokenToJSON.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:669:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SoaplabChooseOperation.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:380:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SVGConcatenate.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:297:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LineCoder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:737:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileLocationChooser.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:413:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Image.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:431:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Average.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:71:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Repeat.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:364:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayToSequence.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:31:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BitsToInt.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:681:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Noise.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:12:2
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokenDuplicator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:280:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: NetCDFWriter.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:707:1
+
+Name: CreateDate.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:541:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TimedScope.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:13:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Distributor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:531:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FIR.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:683:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: NonstrictTest.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:115:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBProxyCommands.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:265:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CloseDatabaseConnection.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:368:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToUnsignedByteArray.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:666:1
+
+Name: ArrayAverage.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:21:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DocViewer.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:467:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBSGet.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:255:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IntToBits.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:684:1
+
+Name: XSLTransformer.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:680:1
+
+Name: ExpressionReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:60:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ElementsToArray.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:32:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XMLUpdater.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:600:1
+
+Name: Substitute.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:411:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Select.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:50:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DateDifference.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:542:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IntArrayToString.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:664:1
+
+Name: Get2DPoint.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:281:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JSONToToken.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:668:1
+
+Name: BusDisassembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:609:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DelayLine.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:733:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FTPClient.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:145:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RangePointsParameter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:407:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileCopier.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:289:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MoleculeSelector.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:382:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OrbPacketObjectSource.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:175:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Line.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:432:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DelayStart.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:711:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: NexusFileReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:456:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SI.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:440:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Accumulator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:70:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ModelReference.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:536:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CAMERAURLProcessor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:556:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ImageConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:216:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtLogarithmic.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:639:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ShowLocations.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:274:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UnitConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:40:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Case.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:537:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileToArrayConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:142:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GARPAlgorithm.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:122:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConvertURLToImage.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:107:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayAccumulate.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:601:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DotProduct.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:74:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VariableFIR.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:691:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArchiveCounter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:510:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ContinuousTransferFunction.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:5:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Regression.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:488:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HuffmanDecoder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:653:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBGetPhysicalLocation.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:257:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtHyperGeometric.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:638:1
+
+Name: GDALWarpandProjection.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:273:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ClustalWSeqAlign.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:470:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RandomInteger.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:619:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TimeStamp.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:370:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringIndexOf.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:95:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RaisedCosine.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:689:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConcatenateArrays.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:527:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GrassBuffer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:247:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TriggeredEnumItem.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:191:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ResettableTimer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:621:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtExponentialPower.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:636:1
+
+Name: MappedLogger.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:512:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RMean.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:489:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MonitorReceiverContents.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:44:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SequenceToMatrix.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:690:1
+
+Name: Initializer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:455:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HammingDecoder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:651:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AscGridVal.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:530:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Switch.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:51:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PolygonDiagramsDataset.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:140:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Subscriber.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:723:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SshFileRemover.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:515:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SoaplabServiceStarter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:377:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExperimentStarter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:418:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Slicer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:657:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HammingCoder.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:650:1
+
+Name: Scatterplot.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:492:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GridOverlay.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:147:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UnaryMathFunction.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:726:1
+
+Name: XMLAssembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:520:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayMaximum.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:26:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExpressionToToken.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:39:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TreeImprover.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:460:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FixToDouble.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:662:1
+
+Name: Autocorrelation.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:730:1
+
+Name: ArrayLevelCrossing.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:25:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VariableSleep.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:727:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SoaplabAnalysis.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:378:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LogicFunction.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:67:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TreeParser.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:462:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringAccumulator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:292:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BooleanMultiplexor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:298:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBCreateQueryConditions.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:262:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringSubstring.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:99:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TextFileWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:295:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ImageContrast.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:108:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConfigurationSelect.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:611:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JobStatus.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:353:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GAMESSAtomDataExtractor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:389:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Discard.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:712:1
+
+Name: FileDeleter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:572:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MatrixToSequence.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:688:1
+
+Name: StringFunction.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:94:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LineWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:63:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Test.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:116:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RangeStepParameter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:408:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IIR.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:614:1
+
+Name: GrassHull.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:249:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IntRangeParameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:424:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Quantizer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:81:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DatabaseQuery.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:129:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GridRescaler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:266:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Barplot.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:482:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GARPSummary.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:362:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokenToStringConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:166:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OrderedMerge.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:717:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RunningMaximum.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:622:1
+
+Name: OrbWaveformSink.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:177:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IsPresent.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:66:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GaussianDistributionRandomNumberGenerator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:89:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LinkToOpenTableaux.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:703:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GAMESSInputGenerator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:391:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GridReset.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:363:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExecutionTime.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:613:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LempelZivDecoder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:655:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JobGetDirectory.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:516:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Polygon.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:433:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UnsignedByteArrayToString.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:667:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayToElements.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:30:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToXML.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:45:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayFilter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:597:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Constant.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:1:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GarpPrediction.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:123:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Bernoulli.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:87:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Limiter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:76:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Exit.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:713:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UpSample.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:738:1
+
+Name: ASCToRAW.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:253:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UniformDistributionRandomNumberGenerator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:91:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayPermute.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:535:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BrowserUI.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:240:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ENMPCP.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:376:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Minimum.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:79:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Round.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:491:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: URLToLocalFile.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:252:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayRemoveElement.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:745:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OpalClient.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:547:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CompositeActor.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:449:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SampleDelay.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:365:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CountTrues.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:732:1
+
+Name: RandomDate.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:544:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AbsoluteValue.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:68:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ApplyFilterOverArray.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:671:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBAddMetadata.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:259:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Commutator.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:624:1
+
+Name: DoubleToFix.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:661:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XYScope.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:12:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Rectangle.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:434:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: KeywordGroup.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:386:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UnionAll.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:559:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Pulse.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:720:1
+
+Name: ColtBreitWigner.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:633:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToPolygonConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:163:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RandomDirectoryMaker.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:557:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtGamma.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:637:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GAMESSLocalRun.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:394:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RecordDisassembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:48:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TreeVizForester.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:464:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokenCounter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:296:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DataGridTransfer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:553:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayPeakSearch.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:28:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ElectronicUnitBase.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:439:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BarGraph.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:16:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SVGToPolygonConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:164:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: EmailSender.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:188:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AddorSubtract.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:69:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VariableLattice.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:743:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBCreateQueryInterface.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:263:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SequencePlotter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:18:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AreaEventType.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:692:1
+
+Name: ColtPoissonSlow.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:643:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XMLViewer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:588:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ApplyFunctionOverSequence.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:729:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AddPointToSVG.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:283:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LineReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:62:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SelectionDialog.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:534:2
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayContains.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:602:1
+
+Name: MessageDigestTest.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:468:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GenericFileCopier.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:549:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Counter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:72:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CreateUniqueFile.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:708:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Triangular.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:627:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ComplexToCartesian.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:37:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TreeDecomposer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:459:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Synchronizer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:725:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Babel.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:392:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MoleculeArrayProducer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:414:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBGetMetadata.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:260:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SequenceToArray.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:33:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayAppend.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:20:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringParameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:421:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DataGroup.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:383:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DiscreteClock.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:7:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CVHulltoRaster.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:276:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Scrambler.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:656:1
+
+Name: IconLink.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:700:1
+
+Name: Annotation.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:436:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayElementAsMatrix.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:603:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DefaultIconScript.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:694:1
+
+Name: Chop.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:731:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TypeTest.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:117:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UnionDisassembler.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:628:1
+
+Name: SubMatrix.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:625:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IJMacro.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:271:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: NetCDFReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:706:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtBinomial.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:631:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LinearModel.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:485:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SshDirectoryList.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:508:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OnError.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:405:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BasicUnits.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:437:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringSplit.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:678:1
+
+Name: StringReplace.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:98:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ReadTable.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:513:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Rescaler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:212:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ScopeExtendingAttribute.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:428:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OrbImageSource.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:176:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VectorAssembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:52:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MastOpalInput.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:453:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SshSession.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:507:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MatrixSplit.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:687:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokenToExpression.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:46:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DirectoryMaker.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:286:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayElement.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:22:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DarwinCoreDataSource.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:517:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JobGetRealJobID.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:355:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SummaryStatistics.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:447:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BrowserDisplay.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:127:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GAMESSKeywords.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:390:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BooleanToAnything.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:34:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RecordAssembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:47:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IconScript.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:701:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ViterbiDecoder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:659:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MovingAverage.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:617:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TrueGate.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:676:1
+
+Name: ColtZeta.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:646:1
+
+Name: Summary.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:493:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExpressionWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:673:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayOfRecordsToRecordOfArrays.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:599:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BooleanSwitch.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:54:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToN.xml
+dependsOn: 
+type: org.kepler.data.conversion.StringToN
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:558:1
+dependsOnModule: core
+
+Name: DygraphsJSPlotter.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:696:1
+
+Name: Maximum.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:78:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Parameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:420:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ImageJ.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:251:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MatrixJoin.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:686:1
+
+Name: RunCompositeActor.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:504:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CreateRequestFromResult.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:187:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConvolutionalCoder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:647:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Pause.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:201:2
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LinearDifferenceEquationSystem.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:714:1
+
+Name: RQuantile.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:494:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XYPlotter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:11:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TemporaryScriptCreator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:393:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HadamardCode.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:649:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DateToString.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:543:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FormattedGroup.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:385:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: WebService.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:207:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBQueryMetadata.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:261:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ClimateFileProcessor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:272:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToLong.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:528:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBStreamPut.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:162:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GAMESSPlanFileGenerator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:415:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PolarToCartesian.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:42:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RecursiveLattice.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:742:1
+
+Name: LinkTarget.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:702:1
+
+Name: ImageRotate.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:105:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileCopy.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:287:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ApplyFunction.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:728:1
+
+Name: RecIDCM3.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:458:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VariableSetter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:10:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ForkResourceAdder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:398:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ParameterSet.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:529:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Ramp.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:5:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Recorder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:9:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayOfRecordsWriter.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:598:1
+
+Name: HTMLTextPosition.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:699:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TreeMerger.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:461:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayExtract.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:23:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GAMESSNimrodRun.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:416:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ImageReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:104:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TrigFunction.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:85:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArraySort.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:29:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColorParameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:423:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BinaryFileWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:126:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XSLTProcessor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:210:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CopyToNode.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:401:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:194:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JobCreator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:350:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Ellipse.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:430:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: WallClockTime.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:629:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OpenDatabaseConnection.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:155:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtExponential.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:635:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Display.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:7:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MultiplyorDivide.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:80:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExperimentMonitor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:396:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SyncOnTerminator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:524:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RealTimePlotter.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:670:1
+
+Name: FileParameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:422:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Stop.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:55:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: EndPlanFile.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:402:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GUIRunCIPRes.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:469:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtChiSquare.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:634:1
+
+Name: OneofParameter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:404:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CopyFromNode.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:400:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HTMLText.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:698:1
+
+Name: CreateExpressionFromQuery.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:186:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Sinewave.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:6:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExternalExecution.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:102:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ImageDisplay.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:103:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RMedian.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:490:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GARPPresampleLayers.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:121:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BusAssembler.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:608:1
+
+Name: SSHtoExecute.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:369:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LevelCrossingDetector.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:10:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokentoSeparateChannelsTransmitter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:371:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Sequence.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:721:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ComputeHistogram.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:740:1
+
+Name: FileListSequencer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:417:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Remainder.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:82:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DifferentialSystem.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:6:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BootstrapSampleDelay.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:682:1
+
+Name: PointInPolygon.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:156:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExperimentPreparator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:397:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LevinsonDurbin.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:615:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Expression.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:75:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GenericJobLauncher.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:554:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MonitorValue.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:8:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StartGAMESSInput.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:387:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LogicalNot.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:675:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayLength.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:24:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileNameChooser.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:388:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConvertImageToString.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:106:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Title.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:705:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LongToDouble.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:41:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Boxplot.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:483:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DifferentialEquation.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:73:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XMLInclusion.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:679:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtNegativeBinomial.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:640:1
+
+Name: JobSubmitter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:354:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ShowTypes.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:739:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToInt.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:294:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PolygonDiagramsTransition.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:141:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DiscreteRandomNumberGenerator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:88:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LookupTable.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:77:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SequenceScope.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:19:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CAMERARESTService.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:552:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FixToFix.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:663:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MultipleTabDisplay.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:571:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileExistenceMonitor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:412:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CartesianToPolar.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:36:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RicianDistributionRandomNumberGenerator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:90:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MetadataSource.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:505:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: EndGAMESSInput.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:384:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StatusChecker.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:291:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayUpdate.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:606:1
+
+Name: AnythingToDouble.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:660:1
+
+Name: StringLength.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:96:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TimedPlotter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:14:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtBinomialSelector.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:632:1
+
+Name: ColtStudentT.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:644:1
+
+Name: MonitorImage.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:112:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RandomNormal.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:486:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToIntArray.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:665:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SingleParameter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:409:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GMLDisplayer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:374:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayToString.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:284:2
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SemanticTypeParameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:522:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AlignmentEditor_Seaview.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:477:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JRunCIPRes.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:478:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: EventSource.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:8:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MatlabExpression.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:532:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Scale.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:83:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PAUPConsensusTrees.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:479:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GetDecibels.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:710:1
+
+Name: NextDiagram.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:153:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PhyloDataReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:457:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayMinimum.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:27:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VisualModelReference.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:540:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArraySum.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:604:1
+
+Name: PAUPInfer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:472:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CartesianToComplex.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:35:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Sleep.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:92:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SshDirectoryCreator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:514:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SoaplabChooseResultType.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:379:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: IFFT.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:736:1
+
+Name: ObjectToRecordConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:174:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayPlotter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:15:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TempActor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:165:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RunningMinimum.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:623:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AddGrids.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:446:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Comparator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:64:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JobFileFetcher.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:551:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CGSUnitBase.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:438:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HTMLImage.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:697:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Correlation.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:484:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BandlimitedNoise.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:2:2
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XMLDisassembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:521:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: UserInteractiveShell.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:206:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ClimateChangeFileProcessor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:367:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: EML2Dataset.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:119:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MemeOpalInput.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:452:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ComplexToPolar.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:38:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringConstant.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:204:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TimeDelay.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:626:1
+
+Name: WmsdActor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:120:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringMatches.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:97:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: OrderedRecordAssembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:555:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: InteractiveShell.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:3:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BinaryFileReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:125:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GDALFormatTranslator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:267:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PolarToComplex.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:43:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ContinuousTimeDelay.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:4:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ArrayToMatrix.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:605:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: JobRemover.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:352:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ESRIShapeFileDisplayer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:375:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBConnect.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:159:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DefaultTitle.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:695:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DecimalFormatConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:570:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ContinuousMerge.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:3:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Interpolator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:4:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ParameterDisplayIconScript.xml
+type: org.kepler.moml.PropertyEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:704:1
+
+Name: PeriodicSampler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:13:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: WSWithComplexTypes.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:519:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBStreamGet.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:161:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LempelZivCoder.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:654:1
+
+Name: DirectoryListing.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:59:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TreeToString.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:463:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TokenReader.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:674:1
+
+Name: BooleanAccumulator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:285:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TransitiveClosureDatabaseQuery.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:278:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DefaultIconLink.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:693:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LinearStateSpace.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:11:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DatabaseTableCreator.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:573:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Logger.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:509:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PoissonClock.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:618:1
+
+Name: MatrixToArray.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:616:1
+
+Name: DatabaseWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:518:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtPoisson.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:642:1
+
+Name: OrbWaveformSource.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:178:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ANOVA.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:481:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SubsetChooserActor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:471:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DDFBooleanSelect.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:526:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MergeGrids.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:277:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RecordUpdater.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:49:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConfigurationSwitch.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:612:1
+
+Name: FFT.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:735:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: QMViewDisplay.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:395:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RandomParameter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:406:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SRBSPut.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:256:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SshFileCopier.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:511:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Equals.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:65:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RandomUniform.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:487:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: BooleanSelect.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:607:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringToImageConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:217:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RequireVersion.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:426:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SProxy.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:258:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtBeta.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:630:1
+
+Name: EcogridWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:466:2
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GrassRaster.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:248:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ExecuteOnNode.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:403:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FilterUI.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:264:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SshExecuteCmd.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:506:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ConvexHull.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:275:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PointInPolygonXY.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:157:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: HuffmanCoder.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:652:1
+
+Name: JobManager.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:351:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtVonMises.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:645:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PhaseUnwrap.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:718:1
+
+Name: VectorDisassembler.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:53:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DownSample.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:734:1
+
+Name: IterateOverArray.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:539:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ColtNormal.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:641:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: MatrixViewer.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:86:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: VariableRecursiveLattice.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:744:1
+
+Name: ThrowException.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:56:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: CurrentTime.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:2:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SubscriptionAggregator.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:724:1
+
+Name: StringSimpleReplace.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:677:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: LMSAdaptive.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:685:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: FileWriter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:144:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ZeroOrderHold.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:ptolemy.org:actor:14:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringSplitter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:293:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Clock.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:610:1
+
+Name: HistogramPlotter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:17:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: AnyofParameter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:399:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Lattice.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:741:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: GetPoint.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:146:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: XMLToADNConverter.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:167:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: NondeterministicMerge.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:525:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Sequencer.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:722:1
+
+Name: RemoveNilTokens.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:620:1
+
+Name: PythonActor.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:545:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: ZipFiles.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:465:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: RESTService.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:546:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: TrellisDecoder.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:658:1
+
+Name: MultiInstanceComposite.xml
+type: org.kepler.moml.CompositeClassEntity
+lsid: urn:lsid:kepler-project.org:actor:538:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: StringCompare.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:93:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: SimpleFileReader.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:361:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Multiplexor.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:716:1
+
+Name: ThrowModelError.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:57:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: Publisher.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:719:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: PortParameter.xml
+type: org.kepler.moml.PropertyEntity
+lsid: urn:lsid:kepler-project.org:actor:425:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+
+Name: DeScrambler.xml
+type: ptolemy.kernel.ComponentEntity
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+lsid: urn:lsid:kepler-project.org:actor:648:1
+
+Name: ServerExecute.xml
+type: ptolemy.kernel.ComponentEntity
+lsid: urn:lsid:kepler-project.org:actor:158:1
+handler: org.kepler.kar.handlers.ActorMetadataKAREntryHandler
+

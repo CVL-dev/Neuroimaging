@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity name="ContinuousIntegrator" class="ptolemy.kernel.ComponentEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.Integrator" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:9:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:9:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      The integrator in the continuous domain.&#10; The &lt;i&gt;derivative&lt;/i&gt; port receives the derivative of the state of the integrator&#10; with respect to time. The &lt;i&gt;state&lt;/i&gt; output port shows the state of the&#10; integrator. So an ordinary differential equation (ODE),&#10; dx/dt = f(x, t), can be built as follows:&#10; &lt;P&gt;&#10; &lt;pre&gt;&#10;            +---------------+&#10;     dx/dt  |               |   x&#10; +---------&gt;|   Integrator  |---------+-----&gt;&#10; |          |               |         |&#10; |          +----^-----^----+         |&#10; |                                    |&#10; |             |---------|            |&#10; +-------------| f(x, t) |&lt;-----------+&#10;               |---------|&#10; &lt;/pre&gt;&#10; &lt;P&gt;&#10; An integrator also has a port-parameter called &lt;i&gt;initialState&lt;/i&gt;. The&#10; parameter provides the initial state for integration during the initialization&#10; stage of execution. If during execution an input token is provided on&#10; the port, then the state of the integrator will be reset at that time&#10; to the value of the token. The default value of the parameter is 0.0.&#10; &lt;P&gt;&#10; An integrator also has an input port named &lt;i&gt;impulse&lt;/i&gt;.&#10; When present, a token at the &lt;i&gt;impulse&lt;/i&gt; input&#10; port is interpreted as the weight of a Dirac delta function.&#10; It cause an instantaneous increment or decrement to the state.&#10; If both &lt;i&gt;impulse&lt;/i&gt; and &lt;i&gt;initialState&lt;/i&gt; have data, then&#10; &lt;i&gt;initialState&lt;/i&gt; dominates.&#10; &lt;P&gt;&#10; An integrator can generate an output (its current state) before&#10; the derivative input is known, and hence can be used in feedback&#10; loops like that above without creating a causality loop.&#10; The &lt;i&gt;impulse&lt;/i&gt; and &lt;i&gt;initialState&lt;/i&gt; inputs&#10; ports must be known, however, before an output can be produced.&#10; The effect of data at these inputs on the output is instantaneous.&#10; &lt;P&gt;&#10; For different ODE solving methods, the functionality&#10; of an integrator may be different. The delegation and strategy design&#10; patterns are used in this class, the abstract ODESolver class, and the&#10; concrete ODE solver classes. Some solver-dependent methods of integrators&#10; delegate to the concrete ODE solvers.&#10; &lt;P&gt;&#10; An integrator can possibly have several auxiliary variables for the&#10; the ODE solvers to use. The ODE solver class provides the number of&#10; variables needed for that particular solver.&#10; The auxiliary variables can be set and get by setAuxVariables()&#10; and getAuxVariables() methods.&#10; &lt;p&gt;&#10; This class is based on the CTIntegrator by Jie Liu. </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Haiyang Zheng and Edward A. Lee</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: ContinuousIntegrator.xml 24234 2010-05-06 05:21:26Z welker $</configure>
+    </property>
+    <property name="port:state" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure>An output port that broadcasts the "next step" for the integration.</configure>
+    </property>
+    <property name="port:impulse" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure>The impulse input port. This is a single port of type double.</configure>
+    </property>
+    <property name="prop:initialState" class="ptolemy.kernel.util.ConfigurableAttribute">
+    <configure>The initial state of the integrator. The default value is 0.0.</configure>
+    </property>
+  </property>
+  <property name="impulse" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="state" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+</entity>

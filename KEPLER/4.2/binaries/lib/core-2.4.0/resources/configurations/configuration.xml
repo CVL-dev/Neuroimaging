@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+
+   <!-- If you change KARComplianceMode you need also change KARFile.KAR_COMPLIANCE_DEFAULT
+	 We need both for users that started with an earlier version of configuration.xml
+	 that lacks KARComplianceMode element: -->
+  <KARComplianceMode>relaxed</KARComplianceMode>
+
+  <karEntryHandlerFactory>
+    <karHandler>
+      <name>amkeh</name> 
+      <class>org.kepler.kar.handlers.ActorMetadataKAREntryHandler$Factory</class>
+	</karHandler>
+  </karEntryHandlerFactory>
+
+	<karVersions>
+		<currentVersion>2.1</currentVersion>
+		
+		<!--  if you change the namespaces (not sure you ever should) or schemaUrls you must also change defaults in KARFile -->
+		<karVersion>
+			<version>2.1</version>
+			<namespace>http://www.kepler-project.org/kar-2.1.0</namespace>
+			<schemaUrl>https://code.kepler-project.org/code/kepler/branches/releases/release-branches/core-2.1/resources/KARFile-2.1.0.xsd</schemaUrl>
+			<resourceDir>kar-2.1.0</resourceDir>
+			<resourceFileName>KARFile-2.1.0.xsd</resourceFileName>
+		</karVersion>
+		
+		<karVersion>
+			<version>2.0</version>
+			<namespace>http://www.kepler-project.org/kar-2.0.0</namespace>
+			<schemaUrl>https://code.kepler-project.org/code/kepler/branches/releases/release-branches/core-2.0/resources/KARFile.xsd</schemaUrl>
+			<resourceDir>kar-2.0.0</resourceDir>
+			<resourceFileName>KARFile.xsd</resourceFileName>
+		</karVersion>
+	</karVersions>
+
+  <coreDB>
+     <!-- host name running the database -->
+     <pair>
+        <name>DB Host</name>
+        <value>localhost</value>
+     </pair>
+
+     <!-- database name (i.e., schema or sid) -->
+     <pair>
+        <name>DB Name</name>
+        <value>coreDB</value>
+     </pair>
+
+     <!-- type of database -->
+     <pair>
+       <name>DB Type</name>
+       <value>HSQL</value>
+     </pair>
+
+     <!-- user name for database -->
+     <pair>
+       <name>DB User Name</name>
+       <value>sa</value>
+     </pair>
+
+     <!-- database port 
+       The list of HSQL ports used by Kepler is at:
+       https://kepler-project.org/developers/reference/accessing-hsql 
+     -->
+     <pair>
+       <name>DB Port</name>
+       <value>9006</value>
+     </pair>
+
+     <!-- password for database -->
+     <pair>
+       <name>Password</name>
+       <value></value>
+     </pair>
+  
+     <!-- prefix for table names (leave blank for no prefix) -->
+     <pair>
+        <name>DB Table Prefix</name>
+        <value></value>
+     </pair>
+  </coreDB>
+
+</config>

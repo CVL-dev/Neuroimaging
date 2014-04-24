@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<entity name="Model Reference" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:536:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.hoc.ModelReference" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:536:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:modelFileOrURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+
+<property name="modelFileOrURL" class="ptolemy.actor.parameters.FilePortParameter" value="">
+</property>
+
+<property name="executionOnFiring" class="ptolemy.data.expr.StringParameter" value="run in calling thread">
+</property>
+
+<property name="lingerTime" class="ptolemy.data.expr.Parameter" value="0L">
+</property>
+
+<property name="postfireAction" class="ptolemy.data.expr.StringParameter" value="do nothing">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Workflow">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee, Elaine Cheong</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+This is an atomic actor that can execute a model specified by
+ a file or URL. This can be used to define an actor whose firing behavior
+ is given by a complete execution of another model.
+ <p>
+ An instance of this actor can have ports added to it.  If it has
+ input ports, then on each firing, before executing the referenced
+ model, this actor will read an input token from the input port, if
+ there is one, and use it to set the value of a top-level parameter
+ in the referenced model that has the same name as the port, if there
+ is one. The simplest way to ensure that there is a matching parameter
+ is to use a PortParameter for inputs.  However, this actor will work
+ also for ordinary ports. In this case, if there is a top-level
+ parameter of the referenced model with the same name as the port, and
+ it is an instance of Variable (or its derived class Parameter), then
+ the token read at the input is moved into it using its setToken() method.
+ Otherwise, if it is an instance of Settable, then a string representation
+ of the token is copied using the setExpression() method.
+ Input ports should not be multiports, and if they are, then
+ all but the first channel will be ignored.
+ </p>
+ <p>
+ If this actor has output ports and the referenced model is executed,
+ then upon completion of that execution, this actor looks for top-level
+ parameters in the referenced model whose names match those of the output
+ ports. If there are such parameters, then the final value of those
+ parameters is sent to the output ports. If such a parameter is an
+ instance of Variable (or its derived class Parameter), then its
+ contained token is sent to the output. Otherwise, if it is an
+ instance of Settable, then a string token is produced on the output
+ with its value equal to that returned by getExpression() of the
+ Settable.  If the model is executed in the calling thread, then
+ the outputs will be produced before the fire() method returns.
+ If the model is executed in a new thread, then the outputs will
+ be produced whenever that thread completes execution of the model.
+ Output ports should not be multiports. If they are, then all but
+ the first channel will be ignored.
+ Normally, when you create output ports for this actor, you will have
+ to manually set the type.  There is no type inference from the
+ parameter of the referenced model.
+ </p>
+ <p>
+ A typical use of this actor will use the SetVariable actor
+ inside to define the value of the output port.
+ </p>
+ <p>
+ A suite of parameters is provided to control what happens when this
+ actor executes:
+ <ul>
+ <li> <i>executionOnFiring</i>:
+ The value of this string attribute determines what execution
+ happens when the fire() method is invoked.  The recognized
+ values are:
+ <ul>
+ <li> "run in calling thread" (the default) </li>
+ <li> "run in a new thread" </li>
+ <li> "do nothing". </li>
+ </ul>
+ If execution in a separate thread is selected, then the execution can
+ optionally be stopped by the postfire() method (see below). If the model
+ is still executing the next time fire() is called on this actor, then
+ the fire() method will wait for completion of the first execution.
+ If an exception occurs during a run in another thread, then it will
+ be reported at the next invocation of fire(), postfire(), or wrapup().
+ Note that if you select "run in a new thread" and this actor has
+ output ports, the data is produced to those output ports when
+ the execution completes, whenever that might be.  This may make
+ output ports difficult to use in some domains.
+ </li>
+ <li> <i>lingerTime</i>:
+ The amount of time (in milliseconds) to linger in the fire()
+ method of this actor.  This is a long that defaults to 0L.
+ If the model is run in the calling thread, then the linger
+ occurs after the run is complete. If the model is run in a
+ new thread, then the linger occurs after the run starts,
+ and the run is stopped after the linger time expires.
+ This can be used, for example, to run a model for a specified
+ amount of time, then ask it to finish() and continue.
+ </li>
+ <li> <i>modelFileOrURL</i>:
+ The file name or URL of the model that this actor will execute.
+ This can be specified either by setting the parameter or by
+ providing a string at the input port.
+ </li>
+ <li> <i>postfireAction</i>:
+ The value of this string attribute determines what happens
+ in the postfire() method.  The recognized values are:
+ <ul>
+ <li> "do nothing" (the default) </li>
+ <li> "stop executing" </li>
+ </ul>
+ The "stop executing" choices will only have an effect if
+ if <i>executionOnFiring</i> is set to "run in a new thread".
+ This can be used, for example, to run a model for a specified
+ amount of time, and then stop it.
+ </li>
+ </ul>
+ </p>
+ <p>
+ There are currently some limitations:
+ <ul>
+ <li>
+ The referenced model cannot create any displays. Use the subclass
+ VisualModelReference to do that.
+ </li>
+ <li>
+ FIXME: Pausing the referring model doesn't pause the referenced model.
+ </li>
+ <li>
+ FIXME: Need options for error handling.
+ </li>
+ </ul>
+ </p></configure></property>
+<property name="prop:modelFileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL of the model that this actor represents.  This is empty by default, which means that there is no  associated model to execute.</configure></property>
+<property name="prop:executionOnFiring" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value of this string parameter determines what execution  happens when the fire() method is invoked.  The recognized  values are:  <ul>  <li> "run in calling thread" (the default) </li>  <li> "run in a new thread" </li>  <li> "do nothing". </li>  </ul></configure></property>
+<property name="prop:postfireAction" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value of this string attribute determines what happens  in the postfire() method.  The recognized values are:  <ul>  <li> "do nothing" (the default) </li>  <li> "stop executing" </li>  </ul>  The "stop executing" choices will only have an effect if  if <i>executionOnFiring</i> is set to "run in a new thread".  This can be used, for example, to run a model for a specified  amount of time, and then stop it.</configure></property>
+<property name="prop:lingerTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The amount of time (in milliseconds) to linger in the fire()  method of this actor.  This is a long that defaults to 0L.  If the model is run, then the linger occurs after the run  is complete (if the run occurs in the calling thread) or  after the run starts (if the run occurs in a separate thread).</configure></property>
+</property></entity>

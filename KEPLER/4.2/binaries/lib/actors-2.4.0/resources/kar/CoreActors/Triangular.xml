@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Triangular" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:627:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.Triangular" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="seed" class="ptolemy.actor.parameters.SharedParameter" value="0L">
+</property>
+
+<property name="privateSeed" class="ptolemy.data.expr.Parameter">
+</property>
+
+<property name="resetOnEachRun" class="ptolemy.actor.parameters.SharedParameter" value="false">
+</property>
+
+<property name="mode" class="ptolemy.actor.parameters.PortParameter" value="0.5">
+</property>
+
+<property name="min" class="ptolemy.actor.parameters.PortParameter" value="0.0">
+</property>
+
+<property name="max" class="ptolemy.actor.parameters.PortParameter" value="1.0">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#RandomNumberOperation">
+</property>
+
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:mode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:min" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:max" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+      <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Raymond A. Cardillo</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: Triangular.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Produce a random sequence with a triangular distribution.  On each iteration,&#10; a new random number is produced.  The output port is of type double.&#10; The values that are generated are independent and identically distributed&#10; with mode and bounds as defined by the parameters.  In addition, the&#10; seed can be specified as a parameter to control the sequence that is&#10; generated.</configure></property>
+<property name="port:max" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maximum value.  This parameter contains a DoubleToken, initially with value 1.0.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port.  The type of this port is unspecified.  Derived classes may set it.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The trigger port.  The type of this port is undeclared, meaning  that it will resolve to any data type.</configure></property>
+<property name="port:min" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The minimum value.  This parameter contains a DoubleToken, initially with value 0.0.</configure></property>
+<property name="port:mode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The mode of the distribution (peak of triangle).  This parameter contains a DoubleToken, initially with value 0.5.</configure></property>
+<property name="prop:max" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maximum value.  This parameter contains a DoubleToken, initially with value 1.0.</configure></property>
+<property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The seed that controls the random number generation.  This is a shared parameter, meaning that all instances of  RandomSource or derived classes in the same model share the  same value.  A seed of zero is interpreted to mean that no seed is specified,  which means that each execution of the model could result in  distinct data. For the value 0, the seed is set to  System.currentTimeMillis() + hashCode(), which means that  with extremely high probability, two distinct actors will have  distinct seeds.  However, current time may not have enough  resolution to ensure that two subsequent executions of the  same model have distinct seeds. For a value other than zero,  the seed is set to that value plus the hashCode() of the  full name of the actor. This means that with high probability,  two distinct actors will have distinct, but repeatable seeds.  This parameter contains a LongToken, initially with value 0.</configure></property>
+<property name="prop:privateSeed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>This private seed overrides the shared seed parameter to specify a   particular seed rather than using System.currentTimeMillis() or  hashCode() to compute the seed value.     By default, this parameter is empty, which means that the shared seed  parameter is used.    WARNING: It is up to the user to make sure that different seed  values are used in different random number generators.</configure></property>
+<property name="prop:min" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The minimum value.  This parameter contains a DoubleToken, initially with value 0.0.</configure></property>
+<property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, this parameter specifies that the random number  generator should be reset on each run of the model (in  the initialize() method). It is a boolean that defaults  to false. This is a shared parameter, meaning that changing  it somewhere in the model causes it to be changed everywhere  in the model.</configure></property>
+<property name="prop:mode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The mode of the distribution (peak of triangle).  This parameter contains a DoubleToken, initially with value 0.5.</configure></property>
+</property></entity>

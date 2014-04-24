@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<entity name="DataTurbine" class="ptolemy.kernel.ComponentEntity">
+	<property name="entityId" value="urn:lsid:kepler-project.org:actor:550:10"
+		class="org.kepler.moml.NamedObjId" />
+
+	<property name="class"
+		value="org.kepler.data.datasource.dataturbine.DataTurbine" class="ptolemy.kernel.util.StringAttribute">
+		<property name="id" value="urn:lsid:kepler-project.org:class:550:10"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+
+	<property name="kepler:Start Time (for Request or Subscribe modes)"
+		class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="input"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="unknown"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+
+	<property name="kepler:Duration (for Request or Subscribe modes)"
+		class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="input"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="unknown"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+
+	<property name="kepler:DataTurbine Address" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="input"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="unknown"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+
+	<property name="kepler:specificChannel Name" class="org.kepler.moml.PortAttribute">
+		<property name="direction" value="input"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="dataType" value="unknown"
+			class="ptolemy.kernel.util.StringAttribute" />
+		<property name="isMultiport" value="false"
+			class="ptolemy.kernel.util.StringAttribute" />
+	</property>
+
+	<property name="Sink Mode" class="ptolemy.data.expr.Parameter"
+		value="Request">
+	</property>
+
+	<property name="Reference (for Request or Subscribe modes)"
+		class="ptolemy.data.expr.Parameter" value="absolute">
+	</property>
+
+	<property name="Block Timeout (ms) (for Fetch)" class="ptolemy.data.expr.Parameter"
+		value="15000">
+	</property>
+
+	<property name="Output Data Type" class="ptolemy.data.expr.Parameter"
+		value="Record of 2 arrays">
+	</property>
+
+	<property name="Pad data gaps with nils" class="ptolemy.data.expr.Parameter"
+		value="false">
+	</property>
+
+	<property name="semanticType00" value="urn:lsid:localhost:onto:2:1#RemoteInputActor"
+		class="org.kepler.sms.SemanticType">
+	</property>
+
+	<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#RemoteInput"
+		class="org.kepler.sms.SemanticType">
+	</property>
+
+	<property name="KeplerDocumentation"
+		class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+		<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>null</configure>
+		</property>
+		<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>Derik Barseghian</configure>
+		</property>
+		<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>null</configure>
+		</property>
+		<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>&#10;The DataTurbine actor retrieves and outputs data from
+				an RBNB DataTurbine server. &#10; Sink mode Request has been tested
+				beneath SDF,&#10; modes Monitor and Subscribe briefly in PN.
+			</configure>
+		</property>
+		<property name="prop:Output Data Type" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>Format of output datapoint and timestamp pairs: Record of
+				2 Arrays, or an Array of X Records.</configure>
+		</property>
+		<property name="prop:Sink Mode" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>
+				Sink mode.
+				<br />
+				<ul>
+					<li>"Request": Initiates a request for a specific time slice of
+						data.</li>
+					<li>"Subscribe": Starts a continuous feed of data on the specified
+						channels to this sink, for retrieval. Each block retrieved will be
+						duration time units in length.</li>
+					<li>"Monitor": Similar to Subscribe, but allows for continuous
+						frames of data without gaps.</li>
+				</ul>
+			</configure>
+		</property>
+		<property name="prop:Block Timeout (ms) (for Fetch)" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>The amount of time (ms) to wait for data to become
+				available. Use 0 for no delay or any negative number for an infinite
+				delay.</configure>
+		</property>
+		<property name="prop:Pad data gaps with nils" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>Will attempt to identify and pad gappy data with pairs of
+				timestamps and nils Need at least 2 samples to be able to pad.
+			</configure>
+		</property>
+		<property name="prop:Start Time (for Request or Subscribe modes)"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>Start time for Request or Subscribe modes. seconds or Date: yyyy-MM-dd HH:mm:ss
+			</configure>
+		</property>
+		<property name="prop:Reference (for Request or Subscribe modes)"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>For
+				Subscribe mode: Any of &quot;newest&quot;, &quot;oldest&quot;,
+				&quot;absolute&quot;, &quot;next&quot;, or &quot;previous&quot;.
+				<br />
+				For Request mode:
+				<ul>
+					<li>&quot;absolute&quot; -- The start parameter is absolute time
+						from midnight, Jan 1st, 1970 UTC.</li>
+					<li>&quot;newest&quot; -- The start parameter is measured from the
+						most recent data available in the server at the time this request
+						is received. Note that for this case, the start parameter actually
+						represents the end of the duration, and positive times proceed
+						toward oldest data.</li>
+					<li>&quot;oldest&quot; -- As &quot;newest&quot;, but relative to
+						the oldest data.</li>
+					<li>&quot;aligned&quot; -- As &quot;newest&quot;, but rather than
+						per channel, this is relative to the newest for all of the
+						channels.</li>
+					<li>&quot;after&quot; -- A combination between &quot;absolute&quot;
+						and &quot;newest&quot;, this flag causes the server to return the
+						newest data available after the specified start time. Unlike
+						&quot;newest&quot;, you do not have to request the data to find
+						out that you already have it. Unlike &quot;absolute&quot;, a gap
+						may be inserted in the data to provide you with the freshest data.
+					</li>
+					<li>&quot;modified&quot; -- Similar to &quot;after&quot;, but
+						attempts to return a duration's worth of data in a contiguous
+						block. If the data is not available after the start time, it will
+						be taken from before the start time.</li>
+					<li>&quot;next&quot; - gets the data that immediately follows the
+						time range specified. This will skip over gaps.</li>
+					<li>&quot;previous&quot; - get the data that immediately preceeds
+						the time range specified. This will skip over gaps.</li>
+				</ul>
+			</configure>
+		</property>
+		<property name="prop:Duration (s) (for Request or Subscribe modes)"
+			class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>The duration of the request. Unit is seconds.</configure>
+		</property>
+		<property name="prop:DataTurbine Address" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>The URL to the DataTurbine Server</configure>
+		</property>
+		<property name="prop:specificChannel Name" class="ptolemy.kernel.util.ConfigurableAttribute">
+			<configure>The name of the channel to output through the
+				specifiedChannel output port</configure>
+		</property>
+	</property>
+</entity>

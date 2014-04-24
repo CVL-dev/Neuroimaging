@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<entity name="Add Grids" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:446:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>dan higgins</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The AddGrids actor reads two or more geospatial image files, merges the files by adding the cell values, and outputs the name of the merged file.</p>
+
+<p>The gridFilenameArray port accepts an array of image file names. The extent and cell size of the merged file will match that of the first input file. The name of the merged file is specified via the mergedGridFilename port.</p>
+
+<p>The actor's primary purpose is to combine stochastic files to give a spatial distribution where more probable cells have larger values. Thus, cell values are added for all pixels in the input file list. </p>
+
+<p>The AddGrids actor is similar to the MergeGrids actor, except that AddGrids actor can be used to merge multiple files, while MergeGrids can merge only two.</p></configure></property>
+<property name="port:mergedGridFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the file name of the merged raster file (acts as a trigger when addition is complete).</configure></property>
+<property name="port:mergedGridFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the name given to the resulting output file</configure></property>
+<property name="port:gridFilenameArrayPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string array of file names for the raster files to be added.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.java_gis.AddGrids" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1209:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="gridFilenameArrayPort" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="mergedGridFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="mergedGridFileResult" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

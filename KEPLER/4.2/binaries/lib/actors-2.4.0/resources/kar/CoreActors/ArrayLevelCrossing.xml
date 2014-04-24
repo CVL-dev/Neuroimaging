@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<entity name="Array Level Crossing" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:25:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The ArrayLevelCrossing actor reads an array and outputs the index of the first element that is above or below a specified threshold. If no element meets the specified criteria, the actor outputs -1.</p>
+
+<p>The actor begins searching the source array at the index specified via the start parameter or port. By default, the actor searches forward from the start position. Deselect the forwards parameter to search backwards.</p>
+
+<p>The threshold can be absolute or relative to the value at the starting index. If the threshold is relative, it can be specified on a linear scale or in decibels. </p>
+
+<p>If the threshold is relative and the actor is searching for values above the threshold, then values that exceed the value of the starting index by more than the threshold are reported. If the threshold is relative and the actor is searching for values below the threshold, then values that are below the value of the starting index by more than the threshold are reported. </p>
+</configure></property>
+<property name="port:array" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of doubles. </configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the index of the first array element to meet the specified criteria. </configure></property>
+<property name="prop:forwards" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The direction in which to search. The default is forwards. Deselect the parameter to search backwards from the start position.</configure></property>
+<property name="prop:threshold" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The threshold for which to search. The threshold is a double that can be interpreted on an absolute or relative scale depending on the value of the scale parameter. If relative, the threshold can be on either a linear or decibel scale. The default threshold is 0.0. </configure></property>
+<property name="prop:above" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specifies whether array values should be above or below the specified threshold. The default is below. Uncheck to search for values above the threshold. </configure></property>
+<property name="prop:scale" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specifies whether the threshold should be interpreted as absolute or relative. If relative, the scale can be linear, in amplitude decibels, or in power decibels. The default value is "absolute". Note: If decibels are used, then the corresponding linear threshold is 10 to the power of (threshold/N ), where N is 20 (for amplitude decibels) or 10 (for power decibels). </configure></property>
+<property name="prop:start" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The index from which to start looking for a threshold crossing. The default is the integer 0. </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.ArrayLevelCrossing" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:901:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="start" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="array" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{double}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArrayActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataArrayOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,635 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="urn:lsid:localhost:onto:3:1#"
+  xml:base="urn:lsid:localhost:onto:3:1">
+  <owl:Ontology rdf:about="">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Disciplines</rdfs:label>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="TheoreticalEcology">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Ecology"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Theoretical Ecology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Chemistry">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Chemistry</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Astrophysics">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Astrophysics</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Physics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Meteorology">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Meteorology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="AnalyticalEcology">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Ecology"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Analytical Ecology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Engineering">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Engineering</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Physics">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Physics</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectricalEngineering">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Electrical Engineering</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Engineering"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Geology">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Geology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Biology">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Biology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ComputerScience">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Computer Science</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Ecology">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ecology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BiologyAcd">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Acd</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignment">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentConsensus">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Consensus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentDifferences">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Differences</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentDotPlots">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Dot Plots</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentEditing">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Editing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentGlobal">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Global</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentGraphical">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Graphical</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentLocal">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Local</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentMultiple">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Multiple</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentProfiles">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Profiles</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyAlignmentStatistics">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alignment Statistics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyAlignment"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyClustering">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clustering</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyClusteringGraph">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clustering Graph</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyClustering"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyClusteringSequences">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clustering Sequences</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyClustering"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabases">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabasesIndexing">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases Indexing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDatabases"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabasesPostSearchGraphical">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases Post Search Graphical</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDatabases"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabasesPostSearchProcessing">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases Post Search Processing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDatabases"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabasesRetrieval">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases Retrieval</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDatabases"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabasesSearching">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases Searching</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDatabases"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDatabasesSubmissionTools">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Databases Submission Tools</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDatabases"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDisplay">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Display</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDisplayAlignments">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Display Alignments</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDisplay"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDisplayAnnotation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Display Annotation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDisplay"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDisplayDotplots">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Display Dotplots</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDisplay"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDisplaySequenceTraces">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Display Sequence Traces</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDisplay"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyDisplayStructure">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Display Structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyDisplay"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyEdit">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Edit</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyEnzymeKinetics">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enzyme Kinetics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyFeatureTables">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Feature Tables</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyHmm">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Hmm</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyInformation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Information</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyMenus">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Menus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyMicroarray">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Microarray</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyMicroarrayAnalysis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Microarray Analysis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyMicroarray"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyMicroarrayAnnotation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Microarray Annotation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyMicroarray"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyMicroarrayGraphicalViews">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Microarray Graphical Views</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyMicroarray"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyMicroarrayPrimers">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Microarray Primers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyMicroarray"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleic">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleic2dStructure">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic 2d Structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicAnnotation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Annotation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicAssembly">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Assembly</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicBaseCalling">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Base Calling</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicCodonUsage">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Codon Usage</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicComposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Composition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicCpgIslands">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Cpg Islands</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicEst">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Est</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicGeneFinding">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Gene Finding</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicGraphical">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Graphical</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicMasking">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Masking</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicMotifs">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Motifs</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicMutation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Mutation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicNextgen">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Nextgen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicPrimers">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Primers</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicProfiles">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Profiles</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicRepeats">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Repeats</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicRestriction">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Restriction</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicTranscription">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Transcription</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicTranslation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Translation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogeny">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyBayesian">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Bayesian</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyClustering">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Clustering</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyConsensus">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Consensus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyContinuousCharacters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Continuous Characters</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyDiscreteCharacters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Discrete Characters</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyDistanceMatrix">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Distance Matrix</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyGeneFrequencies">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Gene Frequencies</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyMaximumLikelihood">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Maximum Likelihood</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyMaximumParsimony">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Maximum Parsimony</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyMisc">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Misc</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyMolecularSequence">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Molecular Sequence</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPhylogenyTreeDrawing">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phylogeny Tree Drawing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPhylogeny"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPipelines">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pipelines</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPipelinesSequenceAssembly">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pipelines Sequence Assembly</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPipelines"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPipelinesSequenceProcessing">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pipelines Sequence Processing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPipelines"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPipelinesSequenceTyping">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pipelines Sequence Typing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPipelines"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyPipelinesWorkflows">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pipelines Workflows</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyPipelines"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProtein">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProtein2dStructure">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein 2d Structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProtein3dStructure">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein 3d Structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinComposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Composition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinDynamics">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Dynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinMapping">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Mapping</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinMasking">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Masking</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinMotifs">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Motifs</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinMutation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Mutation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinProfiles">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Profiles</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatistics">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatisticsBiodiversity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics Biodiversity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyStatistics"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatisticsGeneral">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics General</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyStatistics"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatisticsMicroarray">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics Microarray</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyStatistics"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatisticsOtherSequence">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics Other Sequence</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyStatistics"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatisticsQtl">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics Qtl</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyStatistics"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyTest">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Test</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtils">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsDatabaseCreation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Database Creation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsDatabaseIndexing">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Database Indexing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsMisc">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Misc</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsSequenceCleaning">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Sequence Cleaning</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsSequenceInfo">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Sequence Info</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsSequenceReformatting">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Sequence Reformatting</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsSoftwareDevelopment">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Software Development</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinAnnotation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Annotation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProtein"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicPrediction">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Prediction</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleic"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicPredictionRNA">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Prediction RNA</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleicPrediction"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyNucleicPredictionORF">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nucleic Prediction ORF</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyNucleicPrediction"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinAnnotationFunction">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Annotation Function</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProteinAnnotation"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyProteinAnnotationPathway">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protein Annotation Pathway</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyProteinAnnotation"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyStatisticsSequences">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Statistics Sequences</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyStatistics"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyQualityControl">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Quality Control</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Biology"/>
+    </owl:Class>
+  <owl:Class rdf:ID="BiologyUtilsResultMerge">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Utils Result Merge</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#BiologyUtils"/>
+    </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

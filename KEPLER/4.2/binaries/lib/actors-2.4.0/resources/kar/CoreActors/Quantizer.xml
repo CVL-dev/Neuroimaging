@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<entity name="Quantizer" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:81:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jie Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Quantizer actor reads a double token and quantizes it according to the specified quantization levels. The actor outputs the quantized version of the input.</p>
+
+<p>The quantization levels are specified with the levels parameter, which contains an array of doubles. The elements must be in an increasing order. The default value is {-1.0, 1.0}. </p>
+
+<p>Suppose u is the input, and levels = {a, b, c}, where a is less than b, and b is less than c. The output of the actor will be: </p>
+ <ul>
+ <li>a, if u is less than or equal to (b+a)/2</li>
+ <li>b, if (b+a)/2 is less than u, and u is less than or equal to (c+b )/2</li>
+ <li>c, if u is greater than (c+b)/2</li>
+ </ul>
+ 
+<p>For the default levels {-1.0, 1.0}, the output is (almost) the signum function of the input, or +1.0 if the input is positive, and -1.0 otherwise. If the input is 0, the actor outputs -1.0.</p>
+
+<p>The actor does not require that the quantization intervals be equal, i.e., we allow that (c-b) not equal (b-a).</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the quantized version of the input (a double token).</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a double token.</configure></property>
+<property name="prop:levels" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The quantization levels. The parameter contains an array of doubles. The elements must be in an increasing order. The default value is {-1.0, 1.0}.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Quantizer" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:956:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StatisticMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#StatisticalOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

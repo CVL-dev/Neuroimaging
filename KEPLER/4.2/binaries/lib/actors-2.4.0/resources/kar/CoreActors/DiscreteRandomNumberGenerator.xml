@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<entity name="Discrete Random Number Generator" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:88:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jeff Tsay, Yuhong Xiong</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The DiscreteRandomNumberGenerator actor reads an array of values and selects a value at random based on specified probabilities. The actor outputs the selected value.</p>
+
+<p>The actor will select and output one of the values specified by the values parameter. This parameter accepts an array of elements of any type. The default is an array of integers {0,1}.</p>
+
+<p>The actor selects random output values based on the probability mass function (pmf) specified with the pmf parameter. This parameter accepts an array of values between 0.0 and 1 that sum to 1. The default is {0.5, 0.5}.
+The length of the pmf array must be the same as the length of the values array. Each element of the pmf array specifies the probability of the corresponding element in the values array.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the selected random value.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The seed that controls the random number generation. A seed of zero (the default) means that the seed is derived from the current system time and a Java hash code (i.e., System.currentTimeMillis() + hashCode()). With extremely high probability, the default seed will ensure that two distinct actors will have distinct seeds. However, current time may not have enough resolution to ensure that two subsequent executions of the same model have distinct seeds. The parameter contains a long token, initially with value 0.</configure></property>
+<property name="prop:values" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An array of values that can be sent to the output. The actor will select and output one value based on the value of the pmf parameter. The initial value is an integer array,{0, 1}.</configure></property>
+<property name="prop:pmf" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The probability mass function (pmf). This parameter accepts an array of values between 0.0 and 1 that sum to 1. The default is {0.5, 0.5}.
+The length of the pmf array must be the same as the length of the values array. Each element of the pmf array specifies the probability of the corresponding element in the values array.</configure></property>
+<property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to reset  the random number generator each time the workflow is run. By default, the generator does not reset. </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.DiscreteRandomSource" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:962:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#RandomNumberMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#RandomNumberOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

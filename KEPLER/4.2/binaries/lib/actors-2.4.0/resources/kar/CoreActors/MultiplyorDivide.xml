@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<entity name="Multiply or Divide" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:80:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The MultiplyOrDivide actor reads values via its two input ports (multiply and divide), performs the multiply and/or divide operation, and outputs the result. </p>
+
+<p>The actor's input ports are multiports, meaning that they can accept multiple inputs. Any values received via the multiply port will be multiplied; any values received via the divide port will be divided. Either port can be left unconnected. If no input tokens are available on the multiply input, then a numerator of one is assumed for division operations. Alternatively,  the divide port can be left unconnected to create a simple multiplier.</p>
+
+<p>Both of the actor's input ports are polymorphic, accepting data of multiple types (integers, floats, etc). The actor will automatically resolve the input type to the least upper bound of the presented values. The actor may permit the multiply and divide inputs to resolve to types that cannot in fact be multiplied or divided. If the actor resolves an input type into a type that cannot be processed, it will generate an error.</p>
+
+<p>The actor outputs the result of the calculation and derives an output type from the input values.</p></configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the result of the calculation. The actor derives the output type based on the type of the inputs.</configure></property>
+<property name="port:multiply" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be multiplied. The actor automatically infers the input type based on the type of the input values.</configure></property>
+<property name="port:divide" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A muliport that accepts values to be divided. The actor automatically infers the input type based on the type of the input values.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.MultiplyDivide" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:955:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="multiply" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="divide" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ArithmeticMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#ArithmeticOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

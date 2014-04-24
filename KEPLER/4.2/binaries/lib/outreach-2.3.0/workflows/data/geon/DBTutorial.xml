@@ -1,0 +1,783 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="DBTutorial" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="4.1">
+    </property>
+    <property name="Annotation" class="ptolemy.kernel.util.Attribute">
+        <property name="_location" class="ptolemy.kernel.util.Attribute">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {161, 34, 830, 795}, maximized = false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 686]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{300.0, 343.0}">
+    </property>
+    <entity name="ColumnsInfo" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[155.0, 310.0]">
+        </property>
+        <property name="table_name" class="ptolemy.data.expr.StringParameter" value="'GRAVITY_TABLE'">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[345.0, 285.0]">
+            </property>
+        </property>
+        <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[105.0, 190.0]">
+            </property>
+        </property>
+        <property name="UTEPdatabaseUsername" class="ptolemy.data.expr.StringParameter" value="geon">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[345.0, 265.0]">
+            </property>
+        </property>
+        <property name="Annotation2" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Extracting columns information.">
+            </property>
+            <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+            </property>
+            <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.6,0.2,0.0,1.0}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[340.0, 230.0]">
+            </property>
+        </property>
+        <entity name="OpenDBConnection" class="org.geon.OpenDBConnection">
+            <property name="catalog" class="ptolemy.kernel.util.StringAttribute">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="none" class="ptolemy.kernel.util.StringAttribute">
+                    </property>
+                    <property name="Geon" class="ptolemy.kernel.util.StringAttribute" value="GEON database drivers catalog">
+                    </property>
+                    <property name="JDBC" class="ptolemy.kernel.util.StringAttribute" value="JDBC online drivers catalog">
+                    </property>
+                </property>
+            </property>
+            <property name="driverName" class="ptolemy.kernel.util.StringAttribute" value="oracle.jdbc.OracleDriver">
+            </property>
+            <property name="databaseURL" class="ptolemy.kernel.util.StringAttribute" value="jdbc:oracle:thin:@129.108.20.225:1521:PDB1">
+            </property>
+            <property name="username" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <property name="password" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <doc>OpenDBConnection</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[148.3984375, 304.08203125]">
+            </property>
+        </entity>
+        <entity name="query" class="org.geon.ConstOnce">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;select column_name, data_type from USER_TAB_COLUMNS&#10;     where table_name = &quot; + table_name">
+                <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                    <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                    </property>
+                    <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                    </property>
+                </property>
+            </property>
+            <doc>Const</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[155.0, 430.0]">
+            </property>
+        </entity>
+        <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {-4, -4, 292, 222}, maximized = false}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[520.0, 420.0]">
+            </property>
+        </entity>
+        <entity name="DatabaseQuery" class="org.geon.DatabaseQuery">
+            <property name="outputType" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="XML" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                    </property>
+                    <property name="Record" class="ptolemy.kernel.util.StringAttribute" value="Record">
+                    </property>
+                    <property name="String" class="ptolemy.kernel.util.StringAttribute" value="String">
+                    </property>
+                </property>
+            </property>
+            <property name="outputEachRowSeparately" class="ptolemy.data.expr.Parameter" value="false">
+            </property>
+            <doc>DatabaseQuery</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[365.0, 440.0]">
+            </property>
+        </entity>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[205.0, 285.0]">
+            </vertex>
+        </relation>
+        <link port="OpenDBConnection.dbcon" relation="relation2"/>
+        <link port="query.output" relation="relation3"/>
+        <link port="Display.input" relation="relation"/>
+        <link port="DatabaseQuery.dbcon" relation="relation2"/>
+        <link port="DatabaseQuery.query" relation="relation3"/>
+        <link port="DatabaseQuery.result" relation="relation"/>
+    </entity>
+    <entity name="TablesInfo" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[155.0, 215.0]">
+        </property>
+        <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[105.0, 190.0]">
+            </property>
+        </property>
+        <property name="UTEPdatabaseUsername" class="ptolemy.data.expr.StringParameter" value="geon">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[335.0, 265.0]">
+            </property>
+        </property>
+        <property name="Annotation2" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Extracting table names from &#10;Gravity database at UTEP.">
+            </property>
+            <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+            </property>
+            <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.6,0.2,0.0,1.0}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, 210.0]">
+            </property>
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {161, 34, 830, 795}, maximized = false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[600, 686]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{300.0, 343.0}">
+        </property>
+        <entity name="OpenDBConnection" class="org.geon.OpenDBConnection">
+            <property name="catalog" class="ptolemy.kernel.util.StringAttribute">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="none" class="ptolemy.kernel.util.StringAttribute">
+                    </property>
+                    <property name="Geon" class="ptolemy.kernel.util.StringAttribute" value="GEON database drivers catalog">
+                    </property>
+                    <property name="JDBC" class="ptolemy.kernel.util.StringAttribute" value="JDBC online drivers catalog">
+                    </property>
+                </property>
+            </property>
+            <property name="driverName" class="ptolemy.kernel.util.StringAttribute" value="oracle.jdbc.OracleDriver">
+            </property>
+            <property name="databaseURL" class="ptolemy.kernel.util.StringAttribute" value="jdbc:oracle:thin:@129.108.20.225:1521:PDB1">
+            </property>
+            <property name="username" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <property name="password" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <doc>OpenDBConnection</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[148.3984375, 304.08203125]">
+            </property>
+        </entity>
+        <entity name="query" class="org.geon.ConstOnce">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;select table_name from CAT&quot;">
+                <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                    <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                    </property>
+                    <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                    </property>
+                </property>
+            </property>
+            <doc>Const</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[155.0, 430.0]">
+            </property>
+        </entity>
+        <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {-4, -4, 292, 222}, maximized = false}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[520.0, 420.0]">
+            </property>
+        </entity>
+        <entity name="DatabaseQuery" class="org.geon.DatabaseQuery">
+            <property name="outputType" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="XML" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                    </property>
+                    <property name="Record" class="ptolemy.kernel.util.StringAttribute" value="Record">
+                    </property>
+                    <property name="String" class="ptolemy.kernel.util.StringAttribute" value="String">
+                    </property>
+                </property>
+            </property>
+            <property name="outputEachRowSeparately" class="ptolemy.data.expr.Parameter" value="false">
+            </property>
+            <doc>DatabaseQuery</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[365.0, 440.0]">
+            </property>
+        </entity>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[205.0, 285.0]">
+            </vertex>
+        </relation>
+        <link port="OpenDBConnection.dbcon" relation="relation2"/>
+        <link port="query.output" relation="relation3"/>
+        <link port="Display.input" relation="relation"/>
+        <link port="DatabaseQuery.dbcon" relation="relation2"/>
+        <link port="DatabaseQuery.query" relation="relation3"/>
+        <link port="DatabaseQuery.result" relation="relation"/>
+    </entity>
+    <entity name="QueryGravityDatabase" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[155.0, 415.0]">
+        </property>
+        <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[75.0, 220.0]">
+            </property>
+        </property>
+        <property name="latMax" class="ptolemy.data.expr.Parameter" value="&quot;35&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[260.0, 280.0]">
+            </property>
+        </property>
+        <property name="query" class="ptolemy.data.expr.Parameter" value="&quot;select latdd,londd,simpleba,elevation,freeair &#10;        from GRAVITY_TABLE &#10;        where latdd between &quot; + latMin + &quot; and &quot;  + latMax + &quot; &#10;        and londd between &quot; + longMin + &quot; and &quot; + longMax">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[260.0, 195.0]">
+            </property>
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Parameters for querying UTEP &#10;gravity DB to generate the dataset.">
+            </property>
+            <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+            </property>
+            <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.6,0.2,0.0,1.0}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[260.0, 115.0]">
+            </property>
+        </property>
+        <property name="longMax" class="ptolemy.data.expr.Parameter" value="&quot;-119&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[360.0, 280.0]">
+            </property>
+        </property>
+        <property name="UTEPdatabaseUsername" class="ptolemy.data.expr.StringParameter" value="geon">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[260.0, 170.0]">
+            </property>
+        </property>
+        <property name="latMin" class="ptolemy.data.expr.Parameter" value="&quot;34.9&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[260.0, 260.0]">
+            </property>
+        </property>
+        <property name="longMin" class="ptolemy.data.expr.Parameter" value="&quot;-120&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[360.0, 260.0]">
+            </property>
+        </property>
+        <property name="xslFile" class="ptolemy.data.expr.FileParameter" value="C:\projects\kepler\tutorial\gravity.xsl">
+            <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 1.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:#00BB00" y="20">-F-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[330.0, 445.0]">
+            </property>
+        </property>
+        <property name="query_sub" class="ptolemy.data.expr.Parameter" value="&quot;select latdd,londd,simpleba,elevation,freeair&#10;        from GRAVITY_TABLE &#10;        where latdd between &quot; + latMin + &quot; and &quot;  + latMax + &quot; &#10;        and londd between &quot; + longMin + &quot; and &quot; + longMax + &quot; &#10;	        and freeair &gt; (select max(simpleba) - min(simpleba)&#10;             from GRAVITY_TABLE &#10;             where latdd between &quot; + latMin + &quot; and &quot;  + latMax + &quot; &#10;             and londd between &quot; + longMin + &quot; and &quot; + longMax + &quot;)&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[100.0, 510.0]">
+            </property>
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="orderBy" class="ptolemy.data.expr.Parameter" value="&quot;select latdd,londd,simpleba,elevation,freeair&#10;        from GRAVITY_TABLE &#10;        where latdd between &quot; + latMin + &quot; and &quot;  + latMax + &quot; &#10;        and londd between &quot; + longMin + &quot; and &quot; + longMax + &quot; &#10;	        order by OBSERVEDREADING&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[545.0, 515.0]">
+            </property>
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {-4, -4, 1160, 844}, maximized = false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[930, 735]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{465.0, 367.5}">
+        </property>
+        <property name="Annotation2" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Use either query,&#10;query_sub or orderBy">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[20.0, 430.0]">
+            </property>
+        </property>
+        <entity name="OpenDBConnection" class="org.geon.OpenDBConnection">
+            <property name="catalog" class="ptolemy.kernel.util.StringAttribute">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="none" class="ptolemy.kernel.util.StringAttribute">
+                    </property>
+                    <property name="Geon" class="ptolemy.kernel.util.StringAttribute" value="GEON database drivers catalog">
+                    </property>
+                    <property name="JDBC" class="ptolemy.kernel.util.StringAttribute" value="JDBC online drivers catalog">
+                    </property>
+                </property>
+            </property>
+            <property name="driverName" class="ptolemy.kernel.util.StringAttribute" value="oracle.jdbc.OracleDriver">
+            </property>
+            <property name="databaseURL" class="ptolemy.kernel.util.StringAttribute" value="jdbc:oracle:thin:@129.108.20.225:1521:PDB1">
+            </property>
+            <property name="username" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <property name="password" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <doc>OpenDBConnection</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[75.0, 335.0]">
+            </property>
+        </entity>
+        <entity name="query" class="org.geon.ConstOnce">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="query">
+                <property name="style" class="ptolemy.actor.gui.style.LineStyle">
+                </property>
+            </property>
+            <doc>Const</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[80.0, 415.0]">
+            </property>
+        </entity>
+        <entity name="DatabaseQuery" class="org.geon.DatabaseQuery">
+            <property name="outputType" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="XML" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                    </property>
+                    <property name="Record" class="ptolemy.kernel.util.StringAttribute" value="Record">
+                    </property>
+                    <property name="String" class="ptolemy.kernel.util.StringAttribute" value="String">
+                    </property>
+                </property>
+            </property>
+            <property name="outputEachRowSeparately" class="ptolemy.data.expr.Parameter" value="false">
+            </property>
+            <doc>DatabaseQuery</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[290.0, 425.0]">
+            </property>
+        </entity>
+        <entity name="XSLTActor" class="org.sdm.spa.XSLTActor">
+            <property name="XSLT File Path" class="ptolemy.data.expr.FileParameter" value="$xslFile">
+            </property>
+            <doc>XSLTActor</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[380.0, 390.0]">
+            </property>
+        </entity>
+        <entity name="BrowserUI" class="org.sdm.spa.BrowserUI">
+            <doc>BrowserUI</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[510.0, 390.0]">
+            </property>
+        </entity>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[115.0, 395.0]">
+            </vertex>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <link port="OpenDBConnection.dbcon" relation="relation2"/>
+        <link port="query.output" relation="relation3"/>
+        <link port="DatabaseQuery.dbcon" relation="relation2"/>
+        <link port="DatabaseQuery.query" relation="relation3"/>
+        <link port="DatabaseQuery.result" relation="relation"/>
+        <link port="XSLTActor.xmlIn" relation="relation"/>
+        <link port="XSLTActor.htmlOut" relation="relation4"/>
+        <link port="BrowserUI.fileOrURL" relation="relation4"/>
+    </entity>
+    <entity name="QueryGravityDatabaseXPATH" class="ptolemy.actor.TypedCompositeActor">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[155.0, 520.0]">
+        </property>
+        <property name="latMax" class="ptolemy.data.expr.Parameter" value="&quot;35&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 280.0]">
+            </property>
+        </property>
+        <property name="query" class="ptolemy.data.expr.Parameter" value="&quot;select latdd,londd,simpleba,elevation,freeair &#10;        from GRAVITY_TABLE &#10;        where latdd between &quot; + latMin + &quot; and &quot;  + latMax + &quot; &#10;        and londd between &quot; + longMin + &quot; and &quot; + longMax">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 195.0]">
+            </property>
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Parameters for querying UTEP &#10;gravity DB to generate the dataset.">
+            </property>
+            <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+            </property>
+            <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.6,0.2,0.0,1.0}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 115.0]">
+            </property>
+        </property>
+        <property name="longMax" class="ptolemy.data.expr.Parameter" value="&quot;-119&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[345.0, 280.0]">
+            </property>
+        </property>
+        <property name="UTEPdatabaseUsername" class="ptolemy.data.expr.StringParameter" value="geon">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 170.0]">
+            </property>
+        </property>
+        <property name="latMin" class="ptolemy.data.expr.Parameter" value="&quot;34.9&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 260.0]">
+            </property>
+        </property>
+        <property name="longMin" class="ptolemy.data.expr.Parameter" value="&quot;-120&quot;">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[345.0, 260.0]">
+            </property>
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {161, 34, 987, 795}, maximized = false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[757, 686]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{378.5, 343.0}">
+        </property>
+        <property name="tag" class="ptolemy.data.expr.StringParameter" value="SIMPLEBA">
+            <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+                <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+                </property>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[250.0, 310.0]">
+            </property>
+        </property>
+        <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{105, 180}">
+            </property>
+        </property>
+        <entity name="OpenDBConnection" class="org.geon.OpenDBConnection">
+            <property name="catalog" class="ptolemy.kernel.util.StringAttribute">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="none" class="ptolemy.kernel.util.StringAttribute">
+                    </property>
+                    <property name="Geon" class="ptolemy.kernel.util.StringAttribute" value="GEON database drivers catalog">
+                    </property>
+                    <property name="JDBC" class="ptolemy.kernel.util.StringAttribute" value="JDBC online drivers catalog">
+                    </property>
+                </property>
+            </property>
+            <property name="driverName" class="ptolemy.kernel.util.StringAttribute" value="oracle.jdbc.OracleDriver">
+            </property>
+            <property name="databaseURL" class="ptolemy.kernel.util.StringAttribute" value="jdbc:oracle:thin:@129.108.20.225:1521:PDB1">
+            </property>
+            <property name="username" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <property name="password" class="ptolemy.data.expr.StringParameter" value="$UTEPdatabaseUsername">
+            </property>
+            <doc>OpenDBConnection</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[90.0, 345.0]">
+            </property>
+        </entity>
+        <entity name="query" class="org.geon.ConstOnce">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="query">
+                <property name="style" class="ptolemy.actor.gui.style.LineStyle">
+                </property>
+            </property>
+            <doc>Const</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[95.0, 425.0]">
+            </property>
+        </entity>
+        <entity name="DatabaseQuery" class="org.geon.DatabaseQuery">
+            <property name="outputType" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                    <property name="XML" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                    </property>
+                    <property name="Record" class="ptolemy.kernel.util.StringAttribute" value="Record">
+                    </property>
+                    <property name="String" class="ptolemy.kernel.util.StringAttribute" value="String">
+                    </property>
+                </property>
+            </property>
+            <property name="outputEachRowSeparately" class="ptolemy.data.expr.Parameter" value="false">
+            </property>
+            <doc>DatabaseQuery</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[255.0, 435.0]">
+            </property>
+        </entity>
+        <entity name="StringToXML" class="ptolemy.actor.lib.conversions.StringToXML">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[350.0, 415.0]">
+            </property>
+        </entity>
+        <entity name="XPath" class="org.sdm.spa.XPath">
+            <property name="xpath" class="ptolemy.actor.parameters.PortParameter" value="&quot;//&quot; + tag">
+            </property>
+            <doc>XPath</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[435.0, 415.0]">
+            </property>
+        </entity>
+        <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds = {430, 321, 292, 222}, maximized = false}">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[585.0, 425.0]">
+            </property>
+        </entity>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[130.0, 405.0]">
+            </vertex>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <link port="OpenDBConnection.dbcon" relation="relation2"/>
+        <link port="query.output" relation="relation3"/>
+        <link port="DatabaseQuery.dbcon" relation="relation2"/>
+        <link port="DatabaseQuery.query" relation="relation3"/>
+        <link port="DatabaseQuery.result" relation="relation"/>
+        <link port="StringToXML.input" relation="relation"/>
+        <link port="StringToXML.output" relation="relation4"/>
+        <link port="XPath.input" relation="relation4"/>
+        <link port="XPath.output" relation="relation5"/>
+        <link port="Display.input" relation="relation5"/>
+    </entity>
+</entity>

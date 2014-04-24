@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<config>
+
+  <check-for-patches>true</check-for-patches>  
+
+  <kepler>
+    <version>2.4</version>
+  </kepler>
+
+  <splash>
+    <image>images/kepler-splash-new.png</image>
+    <versionLabel>Version: </versionLabel>
+  </splash>
+
+  <!--the directory where jars inside actor KARs are written. -->
+  <jar-dir>actors/lib/jar/</jar-dir>
+  
+  <!--set to 'true' to auto-refresh datasources (registry entries) when Kepler first starts -->
+  <!--the delay attribute is the number of seconds to wait before executing the update thread --> 
+  <!-- See org.kepler.KeplerInitializer.updateDataSources() to see where this happens. --> 
+  <autoDataSourcesUpdate> 
+    <delay>0</delay>
+    <value>true</value>
+  </autoDataSourcesUpdate>
+
+  <!--set to 'true' to redirect stf out and err messages to a file called "kepler_stderr.log" -->
+  <log_file>false</log_file>
+
+  <!-- Startup configuration -->
+  <startup>
+    <mkdir>cachedata</mkdir>
+    <mkdir>objects</mkdir>
+    <mkdir>RawData</mkdir>
+    <!--  changing this line to move to hsql 1.8.0.10: -->
+    <!-- <tabletestsql>select TABLE_NAME from SYSTEM_TABLES where TABLE_NAME = ucase(?)</tabletestsql> -->
+    <tabletestsql>select TABLE_NAME from INFORMATION_SCHEMA.SYSTEM_TABLES where TABLE_NAME = ucase(?) and TABLE_SCHEM = ucase(?)</tabletestsql>
+    <!-- 
+    	This table is used for EML stuff
+     -->
+    <createtable>create cached table KEPLERTEXTTABLES ( TABLENAME varchar, URL varchar )</createtable>
+
+	<!-- 
+		The CACHECONTENTTABLE maintains a list of all of the objects that have been Java Serialized
+		in the cache directory.
+		NAME - This is the name of the object
+		LSID - Life Science ID
+		DATE - Current system time in miliseconds whenever the row is inserted or updated
+		FILE - The File where the java serialization can be found in the cache
+		TYPE - The java binary class name of the serialized object (e.g. org.kepler.objectmanager.cache.ActorCacheObject)
+		CLASSNAME - The classname attribute on the object (e.g. ptolemy.actor.lib.gui.Display)
+	-->
+	<createtable>create cached table CACHECONTENTTABLE ( NAME varchar, LSID varchar, DATE varchar, FILE varchar, TYPE varchar, CLASSNAME varchar, PRIMARY KEY (LSID) )</createtable>
+	<!-- 
+		The CACHE_SEMTYPES holds the semantic types for each of the entries in the cachecontenttable.
+		LSID - Life Science ID (KeplerLSID format)
+		SEMTYPE - Semantic Type (also KeplerLSID format)
+	-->
+	<createtable>create cached table CACHE_SEMTYPES ( LSID varchar, SEMTYPE varchar, PRIMARY KEY (LSID,SEMTYPE), FOREIGN KEY (LSID) REFERENCES CACHECONTENTTABLE (LSID) ON DELETE CASCADE )</createtable>
+	<!--
+		The KAR_LOCAL_REPOS table is used to store the paths of the local repositories.
+		PATH - the absolute path of the local directory that is the root directory of this local repository
+		NAME - a user specified name to be used as a short name for the local repository
+	-->
+	<createtable>create cached table KAR_LOCAL_REPOS ( NAME varchar, PATH varchar, PRIMARY KEY (NAME), CONSTRAINT uk_repopath UNIQUE (PATH) )</createtable>
+	<!--
+		The KARS_CACHED table is used to keep track of what KARS have been cached in Kepler and where they are on disk.
+		FILE - The full path to the KAR file on disk
+		LASTMODIFIED - The last modified time of the KAR file.
+		LSID - This is the lsid of the kar file
+		VERSION - The KAR Manifest version of this KAR file.
+		REPONAME - This is the name of the local repository that the kar file came from
+	-->
+	<createtable>create cached table KARS_CACHED ( FILE varchar, LASTMODIFIED bigint, LSID varchar, VERSION varchar not null, REPONAME varchar null, PRIMARY KEY (FILE), FOREIGN KEY (REPONAME) REFERENCES KAR_LOCAL_REPOS (NAME) ON DELETE CASCADE ON UPDATE CASCADE )</createtable>
+	<!-- 
+		The KAR_ERRORS table is used to keep track of KARS that have errors.
+		FILE - The full path to the KAR file on disk
+		LASTMODIFIED - The last modified time of the KAR file.
+		LSID - This is the lsid of the kar file
+		VERSION - The KAR Manifest version of this KAR file.
+		REPONAME - This is the name of the local repository that the kar file came from (e.g. actors)
+		DEPENDENCIES - The Module dependencies string for this KAR file.
+	-->
+	<createtable>create cached table KAR_ERRORS ( FILE varchar, LASTMODIFIED bigint, LSID varchar, VERSION varchar, REPONAME varchar, DEPENDENCIES varchar, PRIMARY KEY (FILE), FOREIGN KEY (REPONAME) REFERENCES KAR_LOCAL_REPOS (NAME) ON DELETE CASCADE ON UPDATE CASCADE )</createtable>
+	<!-- 
+		The KAR_CONTENTS table is a linking table that tells us which cache object came from which KAR file.
+		KID - the KAR ID from the KARS_CACHED table, this is the kar where the content is contained
+		LSID - the LSID of the KAREntry
+		NAME - the name of the KAREntry in the KARFile (e.g. /resources/file.xml)
+		TYPE - the type of the KAREntry (e.g. ptolemy.kernel.ComponentEntity)
+	--> 
+	<createtable>create cached table KAR_CONTENTS ( FILE varchar, LSID varchar, NAME varchar, TYPE varchar, PRIMARY KEY (FILE,LSID), FOREIGN KEY (FILE) REFERENCES KARS_CACHED (FILE) ON DELETE CASCADE, FOREIGN KEY (LSID) REFERENCES CACHECONTENTTABLE (LSID) ON DELETE CASCADE  )</createtable>
+	<!-- 
+		The LIBRARY_INDEX table is used to keep an ordered index of all objects that are in the Component Library tree model.
+		LIID - Library Index ID
+		PARENT - Preorder Tree Traversal Parent Library Index ID
+		LFT - Preorder Tree Traversal Left integer
+		RGT - Preorder Tree Traversal Right integer
+		LEVEL - Preorder Tree Traversal Level (1 is the highest)
+		LSID - If there are LSIDs associated with this LIID then this is the default (it will also appear in LIBRARY_LSIDS table).
+		TYPE - The type of object (See org.kepler.objectmanager.library.LibIndex for static ints beginning with TYPE_ for allowed values).
+		NAME - The name that is displayed in the tree.
+	-->
+   <createtable>create cached table LIBRARY_INDEX ( LIID integer generated by default as identity (START WITH 1), PARENT integer default null, LFT integer not null, RGT integer not null, LEVEL integer not null, LSID varchar default null, TYPE integer not null, NAME varchar not null, PRIMARY KEY (LIID), CONSTRAINT uk_childname UNIQUE (PARENT,NAME), FOREIGN KEY (PARENT) REFERENCES LIBRARY_INDEX (LIID) ON DELETE CASCADE  )</createtable>
+	<!-- 
+		The LIBRARY_ATTRIBUTES table allows string attributes to be assigned to rows of the LIBRARY_INDEX table.
+		LIID - Library Index ID
+		NAME - The Name of the attribute
+		VALUE - The value of the attribute
+	-->
+	<createtable>create cached table LIBRARY_ATTRIBUTES ( LIID integer not null, NAME varchar not null, VALUE varchar default null, PRIMARY KEY (LIID,NAME), FOREIGN KEY (LIID) REFERENCES LIBRARY_INDEX (LIID) ON DELETE CASCADE )</createtable>
+	<!-- 
+		The LIBRARY_LSIDS table allows multiple LSIDs (most likely lsid revisions) to be associated with a single Library Item.
+		LIID - Library Index ID
+		LSID - An LSID associated with the LIID
+	-->
+	<createtable>create cached table LIBRARY_LSIDS ( LIID integer not null, LSID varchar not null, PRIMARY KEY (LIID,LSID), FOREIGN KEY (LIID) REFERENCES LIBRARY_INDEX (LIID) ON DELETE CASCADE ) </createtable>
+	<!-- 
+		The LIBRARY_SEARCH table is used to keep searchable text strings that are associated with Library Items.
+		SID - Search ID, an auto generated ID to be used as the primary key
+		TYPE - an integer that specifies what type of string this is
+				types include actor name, actor classname, ontology classes, etc.
+				the types are specified in the class org.kepler.objectmanager.cache.CacheSearch
+		LIID - The LIID this SEARCHSTRING is associated with
+		SEARCHSTRING - a string that is used during searches of Library content
+	 -->
+	 <createtable>create cached table LIBRARY_SEARCH ( SID integer generated by default as identity, TYPE integer not null, LIID integer not null, SEARCHSTRING varchar not null, PRIMARY KEY (SID), FOREIGN KEY (LIID) REFERENCES LIBRARY_INDEX (LIID) ON DELETE CASCADE, CONSTRAINT uk_liidsearchstring UNIQUE (LIID,SEARCHSTRING)  )</createtable>
+  </startup>
+
+  <!-- List of stylesheets used to transform XML documents -->
+  <stylesheets>
+    <stylesheet>
+        <namespace>eml://ecoinformatics.org/eml-2.0.0</namespace>
+        <systemid>style/eml-2.1.0/eml.xsl</systemid>
+    </stylesheet>
+    <stylesheet>
+        <namespace>eml://ecoinformatics.org/eml-2.0.1</namespace>
+        <systemid>style/eml-2.1.0/eml.xsl</systemid>
+    </stylesheet>
+	  <stylesheet>
+        <namespace>eml://ecoinformatics.org/eml-2.1.0</namespace>
+        <systemid>style/eml-2.1.0/eml.xsl</systemid>
+    </stylesheet>
+   	<stylesheet>
+        <namespace>eml://ecoinformatics.org/eml-2.1.1</namespace>
+        <systemid>style/eml-2.1.0/eml.xsl</systemid>
+    </stylesheet>
+  </stylesheets>
+
+  <!-- Style parameters particular to the EML stylesheets -->
+  <qformat>kepler</qformat>
+  <stylePath>style</stylePath>
+  
+  <!-- Style parameters for BrowserUI actor, the unit for MaxWaitTime is second -->
+  <!-- If the value of MaxWaitTime is negative number, such as '-1', it means that BrowserUI actor will not throw timeout exception -->
+  <servers>
+  	  <server>
+          <name>geon</name>
+  	  	  <url>http://localhost</url>
+		  <port>6418</port>
+		  <context>browserUI</context>
+		  <maxWaitTime>300</maxWaitTime>
+  	  </server>
+  </servers>
+
+  <documentation>
+      <namespace>http://www.sdsc.geongrid.org/services/search</namespace>
+      <url>http://geon10.sdsc.edu:8080/GEONSearchPortlet/jsp/dataset-detail.jsp</url>
+      <username>kepler</username>
+  </documentation>
+  
+<!-- 
+Here is where the location of TabPanes within ViewPanes is defined.
+The TabPanes listed here need to be configured in the tabPaneFactory element
+of the configuration.xml file.
+The ViewPanes listed here need to be configured in the viewPaneFactory element
+of the configuration.xml file.
+ -->
+  <viewPaneTabPanes>
+  	<viewPane>
+      <name>Workflow</name>
+  		<viewPaneLocation>
+        <name>W</name>
+  			<tabPane>
+          <name>Components</name>
+        </tabPane>
+  			<tabPane>
+          <name>Data</name>
+        </tabPane>
+  			<tabPane>
+          <name>Outline</name>
+        </tabPane>
+  		</viewPaneLocation>
+  		<viewPaneLocation>
+        <name>E</name>
+  		</viewPaneLocation>
+  	</viewPane>
+  </viewPaneTabPanes>
+  <!-- Specify where the canvas should go -->
+  <canvasViewPaneLocation>
+  	<viewPane>
+      <name>Workflow</name>
+  		<viewPaneLocation>
+        <name>E</name>
+      </viewPaneLocation>
+  	</viewPane>
+  </canvasViewPaneLocation>
+  
+  <!-- a list of data type mappings and synonomies -->
+  <dataTypeDictionary>
+
+    <dataType>
+      <name>INTEGER</name>
+      <numberType>natural</numberType>
+      <description>32 bit integer without o and negtive integer</description>
+      <alias>natural</alias>
+      <numericType>
+        <minValue>1</minValue>
+        <maxValue>2147483647</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>LONG</name>
+      <numberType>natural</numberType>
+      <description>64 bit integer without o and negtive integer</description>
+      <alias>natural</alias>
+      <numericType>
+        <minValue>1</minValue>
+        <maxValue>9.22337e18</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>INTEGER</name>
+      <numberType>whole</numberType>
+      <description>32 bit integer</description>
+      <alias>whole</alias>
+      <numericType>
+        <minValue>0</minValue>
+        <maxValue>2147483647</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>LONG</name>
+      <numberType>whole</numberType>
+      <description>64 bit integer</description>
+      <alias>whole</alias>
+      <numericType>
+        <minValue>0</minValue>
+        <maxValue>9.22337e18</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>INTEGER</name>
+      <numberType>integer</numberType>
+      <description>32 bit integer</description>
+      <alias>xs:integer</alias>
+      <alias>integer</alias>
+      <alias>Integer</alias>
+      <alias>int</alias>
+      <alias>Integers</alias>
+      <numericType>
+        <minValue>-2147483647</minValue>
+        <maxValue>2147483647</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>LONG</name>
+      <numberType>integer</numberType>
+      <description>64 bit integer</description>
+      <alias>xs:long</alias>
+      <alias>long</alias>
+      <alias>Long</alias>
+      <numericType>
+        <minValue>-9.22337e18</minValue>
+        <maxValue>9.22337e18</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>FLOAT</name>
+      <numberType>real</numberType>
+      <description>IEEE 754 single precision floating point</description>
+      <alias>xs:float</alias>
+      <alias>float</alias>
+      <alias>Float</alias>
+      <alias>Floating point</alias>
+      <alias>Floating Point</alias>
+      <numericType>
+        <minValue>2e-38</minValue>
+        <maxValue>2e38</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>DOUBLE</name>
+      <numberType>real</numberType>
+      <description>IEEE 754 double precision floating point</description>
+      <alias>xs:double</alias>
+      <alias>double</alias>
+      <alias>Double</alias>
+      <alias>decimal</alias>
+      <numericType>
+        <minValue>2e-308</minValue>
+        <maxValue>2e308</maxValue>
+      </numericType>
+    </dataType>
+
+    <dataType>
+      <name>STRING</name>
+      <numberType>nan</numberType>
+      <description>text string</description>
+      <alias>xs:string</alias>
+      <alias>string</alias>
+      <alias>String</alias>
+      <alias>Text</alias>
+      <alias>text</alias>
+      <alias>Date</alias>
+      <alias>Enumeration</alias>
+      <alias>Codes</alias>
+      <textType>
+        <encoding>ASCII</encoding>
+      </textType>
+    </dataType>
+
+    <dataType>
+      <name>DATETIME</name>
+      <numberType>datetime</numberType>
+      <description>date time string</description>
+      <alias>dateTime</alias>
+      <textType>
+        <encoding>ASCII</encoding>
+      </textType>
+    </dataType>
+
+  </dataTypeDictionary>
+
+  <!-- this part is for data query sql engine in kepler-->
+  <sqlEngines>  
+    <sqlEngine>
+      <sqlEngineName>hsql</sqlEngineName>
+      <userName>sa</userName>
+      <password> </password>
+      <url>jdbc:hsqldb:hsql://localhost/</url>
+      <!-- database port 
+        The list of HSQL ports used by Kepler is at:
+        https://kepler-project.org/developers/reference/accessing-hsql 
+      -->
+      <port>9005</port>
+      <dbName>hsqldb</dbName>
+      <!-- <dbDriver>org.hsqldb.jdbcDriver</dbDriver> -->
+      <!-- <jdbcConnect>jdbc:hsqldb:data/hsql/hsqldb</jdbcConnect> -->
+      <SQLDictionary>
+        <createTable>CREATE CACHED TABLE</createTable>
+        <dropSuffix>IF EXISTS</dropSuffix>
+        <semicolon>;</semicolon>
+        <textTable>
+          <createTextTable>CREATE TEXT TABLE</createTextTable>
+          <setTable>SET TABLE</setTable>
+          <source>SOURCE</source>
+          <fieldSeperator>fs=</fieldSeperator>
+          <ignoreFirst>ignore_first=true</ignoreFirst>
+        </textTable>
+      </SQLDictionary>
+      <DBdataTypeMapping>
+        <defaultDBdataType>LONGVARCHAR</defaultDBdataType>
+        <defaultJavaDataType>String</defaultJavaDataType>
+        <mapping>
+           <metadataDataType>INTEGER</metadataDataType>
+           <DBdataType>INTEGER</DBdataType>
+           <javaDataType>Integer</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>LONG</metadataDataType>
+          <DBdataType>BIGINT</DBdataType>
+          <javaDataType>Long</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>DOUBLE</metadataDataType>
+          <DBdataType>DOUBLE</DBdataType>
+          <javaDataType>Double</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>FLOAT</metadataDataType>
+          <DBdataType>FLOAT</DBdataType>
+          <javaDataType>Float</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>STRING</metadataDataType>
+          <DBdataType>LONGVARCHAR</DBdataType>
+          <javaDataType>String</javaDataType>
+        </mapping>
+        <mapping>
+          <metadataDataType>DATETIME</metadataDataType>
+          <DBdataType>DATETIME</DBdataType>
+          <javaDataType>Timestamp</javaDataType>
+        </mapping>
+     </DBdataTypeMapping>
+  
+     <delimiterMapping>
+       <mapping>
+          <!-- Note the below metadataDelimiter is a <tab> character -->
+          <metadataDelimiter>tab</metadataDelimiter>
+          <DBdelimiter>\t</DBdelimiter>
+       </mapping>
+       <mapping>
+          <metadataDelimiter>;</metadataDelimiter>
+          <DBdelimiter>\semi</DBdelimiter>
+       </mapping>
+       <mapping>
+          <metadataDelimiter>"</metadataDelimiter>
+          <DBdelimiter>\quote</DBdelimiter>
+       </mapping>
+       <mapping>
+          <metadataDelimiter>'</metadataDelimiter>
+          <DBdelimiter>\apos</DBdelimiter>
+       </mapping>
+       <mapping>
+          <metadataDelimiter>space</metadataDelimiter>
+          <DBdelimiter>\space</DBdelimiter>
+       </mapping>
+       <mapping>
+          <metadataDelimiter>\</metadataDelimiter>
+          <DBdelimiter>\\</DBdelimiter>
+       </mapping>
+       <prefixmapping>
+           <metadataDelimiter>0x</metadataDelimiter>
+          <DBdelimiter>\u</DBdelimiter>
+       </prefixmapping>
+       <prefixmapping>
+           <metadataDelimiter>#x</metadataDelimiter>
+          <DBdelimiter>\u00</DBdelimiter>
+       </prefixmapping>
+     </delimiterMapping>
+    </sqlEngine>
+  
+    <sqlEngine>
+      <sqlEngineName>geon</sqlEngineName>
+      <userName>geongrid</userName>
+      <password></password>
+      <email>klin@ucsd.edu</email>
+      <dbDriver>org.geongrid.jdbc.driver.Driver</dbDriver>
+      <jdbcConnect>jdbc:geon://geon01.sdsc.edu:25322</jdbcConnect>
+    </sqlEngine>
+  </sqlEngines>
+</config>

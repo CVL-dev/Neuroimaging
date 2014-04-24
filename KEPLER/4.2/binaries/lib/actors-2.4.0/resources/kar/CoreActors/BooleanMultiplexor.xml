@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<entity name="Boolean Multiplexor" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:298:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Boolean Multiplexor uses a Boolean value to determine which of two input values to output. The actor is useful when creating workflow control structures, which allow workflows to branch, for example.</p>
+
+<p>The actor reads values of any type via its trueInput and falseInput port. In addition, the actor receives a Boolean &quot;select&quot; token, which it uses to determine which input value to select and output. The actor outputs the selected value each time it iterates.</p>
+
+<p>The actor must receive tokens on all ports. Each time the actor fires, it reads one token from each of its input ports
+ and outputs the selected token.</p></configure></property>
+<property name="port:select" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives a Boolean token (true or false) that is used to select and output either the trueInput or falseInput value.</configure></property>
+<property name="port:falseInput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives tokens of any type. The value will be output if the &quot;select&quot; token is false.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the selected input value.</configure></property>
+<property name="port:trueInput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives tokens of any type. The value will be output if the &quot;select&quot; token is true.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.BooleanMultiplexor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1123:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trueInput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="falseInput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="select" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#BooleanControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#BooleanControl" class="org.kepler.sms.SemanticType"/>
+</entity>

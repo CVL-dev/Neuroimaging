@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<entity name="GDAL Warp and Projection" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:273:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Chad Berkley </configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<p>The GDALWarpAndProjection actor "streches" or "warps" a geospatial raster file (e.g., a digital elevation model) from one cartographic projection to another. Before creating the projection, the actor checks the Kepler file cache to see if the projected file already exists. The actor outputs the name of the projected file (or the name of an existing cached version).</p>
+
+<p>The actor uses the GDAL (Geospatial Data Abstraction Library) library to create the projection. 
+For more information about GDAL, see http://www.gdal.org/index.html. </p>
+
+<p>Projected files are often stored in the Kepler cache. Files are cached by their file names (without the file extension) and their output format.</p>
+
+<p>Use the actor's cacheOption parameter to specify whether the output should be copied to the cache ("Copy files to cache"), copied to the cache as well as the directory where the input data is stored ("Cache files but preserve location"), or not cached ("No caching"). If "No caching" is selected, the actor will not cache the translated file and will ignore all previously stored cache items. Select this option to force the actor to perform a translation even if the input file was previously translated and cached.</p>
+
+<p>The inputParams and outputParams parameters specify the format for the coordinate system. The parameter values must be of a form used by the GDAL Warp utility. See the -s_srs and -t_srs parameters of the GDAL Warp utility for more information about accepted forms: http://www.remotesensing.org/gdal/gdalwarp.html.</p></configure></property>
+<property name="port:inputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the file name of the input geospatial raster file. The actor can process any of the dozens of GIS raster formats supported by GDAL.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:outputCacheType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the specified output format (e.g., "GTiff" or "AAIGrid")</configure></property>
+<property name="port:outputFilename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the path to the translated file.</configure></property>
+<property name="port:outputCachename" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the cache location of the translated output (a file path). If "No cache" is selected as the cacheOption, the port will broadcast nothing.</configure></property>
+<property name="prop:output params" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format for the coordinate system of the output projection. The parameter values must be of a form used by the GDAL Warp utility. For more information about supported formats, see www.remotesensing.org/geotiff/proj_list/. For example, a simple latitude/longitude projection is specified as <code>+proj=latlong.</code></configure></property>
+<property name="prop:input params" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format for the coordinate system of the input data. The parameter values must be of a form used by the GDAL Warp utility. For more information about supported formats, see www.remotesensing.org/geotiff/proj_list/. For example, a Lambert Azimuthal Eagual Area Projection could be specified as <code>+proj=laea+lat_0=45+long_0=-100+x_0=0+y_0=0</code>.</configure></property>
+<property name="prop:Cache options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the output should be copied to the cache ("Copy files to cache"), copied to the cache as well as the directory where the input raster is stored ("Cache files but preserve location"), or not cached ("No caching"). If "No caching" is selected, the actor will not cache the projection file and will ignore all previously stored cache items. Select this option to force the actor to create a projection even if a projection file was previously created and cached.</configure></property>
+<property name="prop:output format" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The format of the output projection (e.g., GTiff).</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.gdal.GDALWarpActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1098:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="inputFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputFilename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="tokenProductionRate" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+</property>
+<property name="outputCachename" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="outputCacheType" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+<property name="Cache options" class="ptolemy.kernel.util.Attribute">
+    <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+        <property name="CacheInternal" class="ptolemy.kernel.util.StringAttribute" value="Copy Files to Cache">
+        </property>
+        <property name="CacheExternal" class="ptolemy.kernel.util.StringAttribute" value="Cache Files but Preserve Location">
+        </property>
+        <property name="NoCache" class="ptolemy.kernel.util.StringAttribute" value="No Caching">
+        </property>
+    </property>
+</property>
+</entity>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<entity name="Case" class="org.kepler.moml.CompositeClassEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:537:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.hoc.Case" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:537:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<port name="control" class="ptolemy.actor.TypedIOPort">
+  <property name="input"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_cardinal" class="ptolemy.kernel.util.StringAttribute" value="SOUTH">
+</property>
+</port>
+
+<property name="_director" class="ptolemy.actor.lib.hoc.CaseDirector">
+    <property name="timeResolution" class="ptolemy.actor.parameters.SharedParameter" value="1E-10">
+    </property>
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowControl">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;An actor that executes one of several refinements depending on the&#10; value provided by the &lt;i&gt;control&lt;/i&gt; port-parameter. To use this,&#10; look inside, add refinement cases, and populate them with computations.&#10; Each refinement is a composite that is required to have its own director.&#10; The name of the refinement is value that the control must have to&#10; execute this refinement.&#10; This actor always provides one case called &quot;default&quot;. This is&#10; the refinement that is executed if no other refinement matches&#10; the control input.  All refinements have the same ports,&#10; and adding ports to any one refinement or to the case actor&#10; itself results in identical ports being added to all refinements.</configure></property>
+<property name="port:control" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port-parameter on which the control token is provided.  This can have any type, and is initialized with a default value  of true.</configure></property>
+</property><entity name="default" class="ptolemy.actor.lib.hoc.Refinement">
+</entity>
+</entity>

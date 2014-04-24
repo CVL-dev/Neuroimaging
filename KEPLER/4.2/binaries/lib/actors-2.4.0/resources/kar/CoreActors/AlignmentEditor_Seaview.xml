@@ -1,0 +1,68 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="AlignmentEditor(Seaview)" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:477:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Zhijie Guan, Alex Borchers</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: AlignmentEditor_Seaview.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+Given an alignment, the AlignmentEditor_Seaview actor displays the alignment
+ in the seaview window and facititates the user to edit the alignment. Note1:
+ since Seaview is an application running as another process with GUI, the
+ actor cannot monitor the execution of Seaview. Thus the actor cannot know
+ when the user finishes the work and closes the Seaview window. Note2: Here we
+ assume the user will save the output file with the same name as the input
+ file. We will change it to let the user input the output file name in the
+ future.</configure>
+    </property>
+<property name="port:standardError" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard error stream of the execution is sent out through this port.</configure>
+    </property>
+<property name="port:inputTrigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The trigger that will enable the execution of this actor is received through this port.</configure>
+    </property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The exit code of the execution is sent out through this port.</configure>
+    </property>
+<property name="port:outputFileName" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output file name is sent out throught this port. The output file contains the edited alignment.</configure>
+    </property>
+<property name="port:inputFileName" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The input file name is transferred into the actor through this port. The input file contains the alignment for reviewing and editing.</configure>
+    </property>
+<property name="port:standardOutput" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard output stream of the execution is sent out through this port.</configure>
+    </property>
+<property name="prop:monitoredErrorWords" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The monitored words are defined in this parameter.</configure>
+    </property>
+<property name="prop:errorFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard error file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:workingDirectory" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The workfing directory of the external program is defined in this parameter.</configure>
+    </property>
+<property name="prop:arguments" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The arguments of the program that will be executed are defined in this parameter.</configure>
+    </property>
+<property name="prop:outputFile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard output file's path and name are defined in this parameter.</configure>
+    </property>
+<property name="prop:command" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The command path and name are defined in this parameter.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.cipres.kepler.AlignmentEditor_Seaview">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1210:1">
+        </property>
+    </property>
+    <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#CIPResActor">
+    </property>
+</entity>

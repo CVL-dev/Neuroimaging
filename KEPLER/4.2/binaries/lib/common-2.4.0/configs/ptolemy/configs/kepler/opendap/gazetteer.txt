@@ -1,0 +1,357 @@
+# OPeNDAP Basic Gazetteer
+# 25 May 2004
+# The coordinates are rectangular bounds and must be in the order N S W E
+*Oceans, Seas, Lakes
+Adriatic Sea 46N 40N 12E 20E
+Aegean Sea 41N 36N 22E 28E
+Andaman Sea 17N 5N 93E 98E
+Arabian Sea 25N 8N 50E 75E
+Aral Sea 47N 43N 57E 63E
+Arctic Ocean 90N 70N 0W 0E
+Atlantic Ocean 60N 60S 80W 20E
+Azov, Sea of 47N 45N 35E 39E
+Baffin Bay 80N 66N 80W 55W
+Baltic Sea 60N 54N 12E 24E
+Baykal, Lake 56N 51N 104E 110E
+Beaufort Sea 80N 70N 170W 125W
+Bengal, Bay of 22N 5N 80E 95E
+Bering Sea 65N 52N 163E 160W
+Black Sea 47N 42N 27E 42E
+Caribbean Sea 22N 9N 88W 62W
+Caspian Sea 47N 37N 47E 54E
+Celebes Sea 6N 1N 118E 125E
+Coral Sea 10S 18S 143E 160E
+East China Sea 35N 26N 121E 130E
+Erie, Lake 43N 41N 84W 79W
+Great Bear Lake 67N 65N 125W 118W
+Great Salt Lake 42N 40N 113W 112W
+Great Slave Lake 63N 61N 118W 110W
+Gulf of Aden 14N 10N 43E 52E
+Gulf of Alaska 60N 50N 160W 130W
+Gulf of Bothnia 63N 60N 17E 22E
+Gulf of California 32.5N 23N 115W 108W
+Gulf of Guinea 5N 15S 5W 13E
+Gulf of Mexico 30N 20N 98W 80W
+Gulf of Campeche 22N 18N 97W 90W
+Gulf of Maine 45N 40N 71W 60W
+Gulf of Panama 9N 7N 80.5W 78W
+Gulf of St. Lawrence 50N 46N 65W 57W
+Hudson Bay 70N 50N 95W 72W
+Huron, Lake 47N 43N 85W 80W
+Indian Ocean 10N 60S 40E 120E
+Japan, Sea of 47N 35N 129E 140E
+Java Sea 4S 8S 105E 120E
+Labrador Sea 66N 50N 65W 45W
+Ladoga, Lake 61.5N 60N 30E 33E
+Mediterranean Sea 44N 30N 4E 35E
+Michigan, Lake 46N 41.5N 88W 85W
+North Sea 59N 52N 2E 8E
+Nyasa, Lake 9S 14S 34E 35E
+Okhotsk, Sea of 60N 45N 140E 155E
+Ontario, Lake 44N 43N 80W 76W
+Pacific Ocean 50N 70S 120E 80W
+Persian Gulf 30N 24N 47E 56E
+Phillipine Sea 25N 0S 122E 145E
+Red Sea 30N 12N 32E 43E
+South China Sea 23N 5S 119E 120E
+Superior, Lake 48N 46N 92W 85W
+Tanganyika, Lake 3S 8S 28E 32E
+Tasman Sea 22S 45S 155E 175E
+Tyrrhenian Sea 43N 38N 10E 16E
+Vanern 59.5N 58.5N 12E 14E
+Victoria, Lake 0N 2.5S 32E 34E
+Winnipeg, Lake 54N 50N 100W 96W
+Yellow Sea 41N 35N 118E 125E
+*Land Regions
+Africa 37N 35S 20W 52E
+Alaska 71N 54N 180W 130W
+Antartica 60S 90S 0W 0E
+Arabia 32N 12N 35E 60E
+Australia 10S 50S 110E 180E
+Caucasia 45N 40N 40E 50E
+Central America 15N 5N 90W 75W
+Central Asia 50N 30N 40E 90E
+East Africa 32N 10S 20E 52E
+East Asia 50N 20N 90E 150E
+Europe 70N 36N 10W 26E
+Greenland 83N 60N 70W 10W
+India 30N 12N 65E 90E
+Indochina 23N 8N 93E 111E
+Indonesia 8N 10S 95E 155E
+Micronesia 6N 25S 155E 130W
+Middle East 40N 28N 30E 50E
+Muscovy 70N 50N 30E 60E
+North Africa 36N 20N 20W 40E
+North America 70N 10N 170W 50W
+Scandinavia 71N 54N 5E 40E
+Siberia 76N 50N 60E 140E
+South Africa 10S 35S 10E 50E
+South America 12N 55S 81W 34W
+Southeast Asia 30N 10N 95E 140E
+Sub-Saharan Africa 15N 35S 20W 52E
+West Africa 20N 10S 20W 20E
+*Islands
+Aleutian Islands 55N 52N 178W 163W
+Antilles 18.5N 12N 65W 59W
+Baffin 75N 62N 90W 60W
+Bahamas 28N 21N 80W 70W
+Borneo 7.5N 4.5S 108E 120E
+Canary Islands 29.5N 27.5N 18W 13W
+Celebes 2N 5.5S 118E 125E
+Corsica 43N 41.3N 8.4E 9.5E
+Cuba 24N 20N 85W 74W
+Ellesmere 83N 76N 95W 60W
+Gotland 58N 57N 18E 19E
+Great Britain 59N 50N 6W 2E
+Greenland 84N 60N 70W 20W
+Hainan 20N 18N 107E 111.5E
+Hawaii 22.5N 18N 160.5W 154.4W
+Hispaniola 20N 17N 75W 68W
+Hokkaido 45.2N 42N 140E 145.2E
+Honshu 42N 33N 130E 143E
+Iceland 67N 64N 25W 15W
+Ireland 55.2N 51.3N 10.3W 5.6W
+Java 6S 9S 105E 115E
+Long Island 41.1N 40.8N 74W 72W
+Luzon 19N 13N 120E 125E
+Madagascar 12S 25S 44E 51E
+Mindoro 13.5N 12N 120E 121.5E
+Newfoundland 52N 46N 60W 53W
+New Guinea 0N 11S 130E 151E
+New Zealand 34S 46.5S 167E 178.5E
+Novaya Zemlya 77N 70N 50E 70E
+Sakhalin 55N 45.5N 142E 145E
+Sardinia 41.2N 38.8N 8E 10E
+Sicily 38.3N 36.6N 12E 15.6E
+Sjaelland 56.2N 54.7N 11E 12.8E
+Sri Lanka 10N 6.5N 79.6E 83E
+Sumatra 6N 6S 95E 106E
+Taiwan 25.2N 22.5N 120E 122E
+Tasmania 40S 43S 144E 148E
+Tierra del Fuego 52.5S 56S 71W 65W
+Victoria 74N 69N 120W 100W
+*Deserts
+Alvord 43N 41N 119W 116W
+Arabian 30N 15N 38E 56E
+Atacama 19S 30S 71W 69W
+Chihuahuan 34N 28N 108W 100W
+Dashte Kavir 36N 33N 52E 57E
+Gobi 47N 37.5N 98E 118E
+Gibson 20S 30S 120E 130E
+Great Basin 42.5N 37N 120W 112W
+Great Indian 30N 24N 66E 77E
+Great Sandy (Aus) 18S 23.5S 120E 130E
+Great Sandy (US) 44N 42N 122W 119W
+Great Victoria 26S 30S 123E 135E
+Kalahari 18S 28S 17E 26E
+Kara-Kum 42N 32N 55E 65E
+Kyzyl-Kum 45N 41N 60E 68E
+Mojave 36N 34N 118.5W 115.5W
+Namib 18S 28S 12E 17E
+Patagonian 36S 50S 70W 63W
+Sahara 35N 15N 17W 30E
+Simpson 23.5S 28S 134.5E 140E
+Sonoran 34N 28N 115W 108W
+Takla Makan 43N 36.5N 75E 95E
+*Mountains
+Aconcagua 32S 33S 71W 70W
+Alaska Range 65N 60N 155W 140W
+Alps 48N 45N 5E 16E
+Altai Mountains 55N 44N 85E 100E
+Andes 5S 55S 80W 63W
+Annapurna 24N 23N 83E 84E
+Antofalla 25S 26S 69W 68W
+Appalachian Range 40N 34N 85W 77W
+Ararat 40N 39N 44E 45E
+Atlas Mountains 36N 27N 10W 10E
+Ben Nevis 56.81N 56.79N 4.97W 4.96W
+Bitterroot Range 47N 44N 116W 112W
+Blanc 46N 45N 6E 7E
+Bolivar 7N 6N 64W 63W
+Brooks Range 70N 66N 165W 140W
+Carpathians 50N 45N 16E 28E
+Cascades 48N 46N 122W 120W
+Caucasus 45N 40N 39E 50E
+Chimborazo 1S 2S 79W 78W
+Citlaltepetl 20N 19N 98W 97W
+Cotopaxi 0S 1S 79W 78W
+Cristobal Colon 11N 10N 75W 74W
+Damavand 36N 35N 52E 53E
+Dhaulagiri 29N 28N 83W 84W
+Dykh-Tau 44N 43N 43E 44E
+Elbrus 44N 43N 42E 43E
+Everest 29N 28N 86E 87E
+Foraker 63N 62N 153W 152W
+Gasherbrum 36N 35N 76E 77E
+Gongga Shan 30N 29N 101E 102E
+Gosainthan 29N 28N 85E 86E
+Grampian Highlands 58N 56N 5W 2W
+Great Dividing Range 15S 38S 142E 154E
+Gurla Mandhata 31N 30N 81E 82E
+Himalayas 33N 27N 75E 96E
+Hindu Kush 38N 30N 65E 74E
+Huascaran 9S 10S 78W 77W
+Huila 3N 2N 77W 76W
+Illimani 16S 17S 68W 67W
+Incahuasi 29S 30S 72W 71W
+Iztaccihuatl 20N 19N 29W 28W
+Jaya 4S 5S 131E 132E
+K2 36N 35N 76E 77E
+Kailas 32N 31N 81E 82E
+Kanchenjunga 28N 27N 88E 89E
+Kazbek 43N 42 44E 45E
+Kilimanjaro 3S 4S 37E 38E
+Kirinyaga 0S 1S 37E 38E
+Klyuchevskaya 57N 56N 160E 161E
+Kommunizma 40N 39N 71E 72E
+Kula Kangri 34N 33N 90E 91E
+Lenina 56N 55N 37E 38E
+Llullaillaco 24S 25S 69W 68W
+Logan 61N 60N 141W 140W
+Matterhorn 50N 49N 7E 8E
+McKinley 64N 63N 152W 151W
+Makalu 28N 27N 87E 88E
+Margherita 1N 0N 29E 30E
+Mercedario 31S 32S 71W 70W
+Misti 16S 17S 72W 71W
+Muztagata 39N 38N 75E 76E
+Namcha Barwa 30N 29N 29E 30E
+Nanda Devi 31N 30N 80E 81E
+Nanga Parbat 36N 35N 75E 76E
+Ningjing Shan 34N 29N 96E 99E
+Ojos del Salado 27S 28S 69W 68W
+Pissis 27S 28S 69W 68W
+Pobedy 43N 42N 80E 81E
+Popocatepetl 20N 19N 99W 98W
+Qionglai Shan 33N 30N 102E 104E
+Rainier 47N 46N 122W 121W
+Rakaposhi 37N 36N 74E 75E
+Ras Dashen 13N 12N 38E 39E
+Rocky Mountains 60N 45N 135W 110W
+Rosa 46N 45N 7E 8E
+St. Elias 61N 60N 141W 140W
+Sajama 18S 19S 69W 68W
+Sierra Madra del Sur 20N 15N 102W 95W
+Sierra Nevada 40N 35N 125W 115W
+Sikhote Alin Range 50N 43N 133E 140E
+Tien Shan 45N 35N 65E 85E
+Tirich Mir 37N 36N 71E 72E
+Tocorpuri 22S 23S 68W 67W
+Tupungato 33S 34S 70W 69W
+Urals 66N 47N 55E 67E
+Vinson Massif 78S 79S 86W 85W
+Washington 45N 44N 72W 71W
+Whitney 37N 36N 119W 118W
+Yerupaja 10S 11S 77W 76W
+*Rivers
+Aldan 64N 57N 130E 137E
+Amazon 2N 8S 76W 48W
+Amu Dar'ya (Oxus) 44N 36N 58E 70E
+Amur 57N 46S 115E 141E
+#Araguaia
+#Arkansas
+#Athabasca
+Brahmaputra 30N 23N 83E 95.5E
+#Branco
+#Brazos
+#Canadian
+#Churchill 
+#Colorado
+#Columbia 
+#Congo (Zaire)
+#Cumberland
+#Danube
+#Darling
+#Dnieper
+#Dniester
+#Don
+#Donets
+#Elbe
+#Euphrates
+#Fraser
+#Gambia
+Ganges 29N 23N 80E 90.5E
+#Gila
+#Godavari
+Huang (Yellow) 41N 35N 105E 119E
+#Indus
+#Irrawaddy
+#Japura
+#Jurua
+#Kama
+#Kasai
+Kerulen 48N 47N 108E 117E
+#Kolyma
+#Lena
+#Limpopo
+#Loire
+#Mackenzie 68N 61N 136W 119W
+#Madeira-Mamore
+#Magdalena
+#Maranon
+#Mekong
+#Meuse
+#Mississippi
+#Missouri
+#Murray
+#Negro
+#Nelson-Saskatchewan
+#Neman
+#Niger
+#Nile
+#Ob-Irtysh
+#Oder
+#Ohio
+#Oka
+#Orange
+#Orinoco
+#Ottawa
+#Paraguay
+#Parana
+#Paranaiba
+#Peace
+#Pechora
+#Pecos
+#Pilcomayo
+#Plata-Parana
+#Purus
+#Red
+#Rhine
+#Rhone
+#Rio Grande
+#Roosevelt
+#St. Lawrence
+#Salado
+#Salween
+#Sao Francisco
+#Saskatchewan
+#Sava
+#Snake
+#Sungari (Songhua)
+Syr-Dar'ya 45N 40N 61E 70E
+#Tagus
+#Tarim
+#Tennessee
+#Tigris
+#Tisza
+#Tobol
+#Tocantins
+#Ucayali
+#Ural
+#Uruguay
+#Verkhnyaya Tunguska (Angara)
+#Vilyuy
+#Volga
+#White
+#Wisla (Vistula)
+Yarlung Zangbo Jiang 30N 28N 83E 95.5E
+#Xingu
+Yangtze 33N 29.5N 105E 121E
+#Yellowstone
+#Yenisey
+#Yukon
+#Zambezi
+
+#*Countries
+*Custom
+ 41.0N 36.0N 22.0E 28.0E

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="DelayStart" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:711:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.DelayStart" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="startTime" class="ptolemy.data.expr.StringParameter" value="12:00 pm">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowControl">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: DelayStart.java 61458 2011-07-11 19:54:07Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;This actor, which has no ports, delays the execution of the model&#10; until a specified time by sleeping the thread that calls the&#10; initialize() method until the specified time. If the time is&#10; in the past, then there is no delay. The time is assumed to be&#10; today, and is given as in &quot;1:00 pm&quot; for one in the afternoon.&#10; &lt;p&gt;&#10; If this actor is used in SDF, then the director must be set&#10; to allow disconnected graphs.  Note that it makes no sense&#10; to use this actor in PN or CSP, since it will only delay the&#10; start of its own thread.</configure></property>
+<property name="prop:startTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The start time. FIXME: Spec.  This is a string that defaults to FIXME</configure></property>
+</property></entity>

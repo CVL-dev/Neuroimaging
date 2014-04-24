@@ -1,0 +1,82 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="MappedLogger" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:512:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Norbert Podhorszki</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: MappedLogger.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+Log a string (single-line) into a file but also keep all text in a HashSet so
+ that the strings can quickly looked up. This actor is useful to create simple
+ checkpoint mechanism.
+ 
+ At first call, MappedLogger looks for the specified file and reads it into
+ memory if exists.
+ 
+ At each call, the MappedLogger checks if a the input line already is in the
+ set. If not, it writes the line into the set and the file. It returns the
+ boolean flag indicating whether the line was already found (true) or not
+ (false). The check and write is an atomic operation, so two actors cannot mix
+ up this behaviour.
+ 
+ All MappedLogger actors can write into the same file, if their parameter
+ points to the same file. This allows checking if others already did (and
+ logged) something.
+ 
+ Query only (not writing out a line, but only checking its existence) can be
+ achieved by setting the boolean flag 'checkOnly'.
+ 
+ If the line is empty (or only white spaces), nothing will be written and
+ false will be returned.</configure>
+    </property>
+<property name="port:line" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The text to be printed into the log. It must be single-line (no newline) This port expects strings.</configure>
+    </property>
+<property name="port:found" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The boolean return value. True if the line is found in the already existing text.</configure>
+    </property>
+<property name="prop:logfile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The log file. It can be changed between firings. The file will be created if does not exists. If exists its content will be read before the first execution.</configure>
+    </property>
+<property name="prop:checkOnly" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Boolean flag. If true, input will only be checked against already existing texts but will not be printed out.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.MappedLogger">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1209:1">
+        </property>
+    </property>
+    <property name="logfile" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="file">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="line" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="string">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="found" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="output">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="boolean">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+    </property>
+</entity>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-command-panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CipresCommandLanguage.xsd">
+<!-- cmd param for specifying parameters for multiple alignment-->
+	<!-- cmd param for gapopen-->
+	<cmd-params name="gapopen">
+		<datatype>Float</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Gap opening penalty (0-100)</label>
+		<default-value>10.00</default-value>
+		<tool-tip-text>A penalty is subtracted for each gap introduced into an alignment because the gap increases uncertainty into an alignment. If gaps are introduced without a penalty than they can be introduced at random and eventually all characters will be aligned in even random sequences.</tool-tip-text>
+		<code-template> -gapopen=$gapopen</code-template>
+		<test test-name="isGreaterThanZero">
+			<left-operand>$gapopen</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="isLessThan100">
+			<left-operand>$gapopen</left-operand>
+			<operator>less_than</operator>
+			<right-operand>100</right-operand>
+		</test>
+		<requirement-test-expression>isGreaterThanZero AND isLessThan100</requirement-test-expression>
+		<requirement-test-expression-message>The gap opening penalty must be a number between 0 and 100</requirement-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for gapext-->
+	<cmd-params name="gapext">
+		<datatype>Float</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Gap extension penalty (0-100)</label>
+		<default-value>0.20</default-value>
+		<code-template> -gapext=$gapext</code-template>
+		<test test-name="isGreaterThanZero">
+			<left-operand>$gapext</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="isLessThan100">
+			<left-operand>$gapext</left-operand>
+			<operator>less_than</operator>
+			<right-operand>100</right-operand>
+		</test>
+		<requirement-test-expression>isGreaterThanZero AND isLessThan100</requirement-test-expression>
+		<requirement-test-expression-message>The gap extension penalty must be a number between 0 and 100</requirement-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- cmd param for maxdiv-->
+	<cmd-params name="maxdiv">
+		<datatype>Integer</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Delay divergent sequences (%)</label>
+		<default-value>30</default-value>
+		<code-template> -maxdiv=$maxdiv</code-template>
+		<tool-tip-text>Delays the alignment of the most distantly related sequences until after the most closely related sequences have been aligned. The setting shows the percent identity level required to delay the addition of a sequence; sequences that are less identical than this level to any other sequences will be aligned later.</tool-tip-text>
+		<test test-name="isGreaterThanZero">
+			<left-operand>$maxdiv</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="isLessThan100">
+			<left-operand>$maxdiv</left-operand>
+			<operator>less_than</operator>
+			<right-operand>100</right-operand>
+		</test>
+		<requirement-test-expression>isGreaterThanZero AND isLessThan100</requirement-test-expression>
+		<requirement-test-expression-message>Delay divergent sequences must be an integer between 0 and 100</requirement-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- cmd param for transweight-->
+	<cmd-params name="transweight">
+		<datatype>Float</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>DNA Transition weight (0-1)</label>
+		<default-value>0.5</default-value>
+		<code-template> -transweight=$transweight</code-template>
+		<tool-tip-text>A weight of zero means that the transitions are scored as mismatches; a weight of 1 gives transitions the full match score. For distantly related DNA sequences, the weight should be near to zero; for closely related sequences it can be useful to assign a higher score.</tool-tip-text>
+		<test test-name="isGreaterThanZero">
+			<left-operand>$transweight</left-operand>
+			<operator>greater_than</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="isZero">
+			<left-operand>$transweight</left-operand>
+			<operator>equals</operator>
+			<right-operand>0</right-operand>
+		</test>
+		<test test-name="isLessThanOne">
+			<left-operand>$transweight</left-operand>
+			<operator>less_than</operator>
+			<right-operand>1</right-operand>
+		</test>
+		<test test-name="isOne">
+			<left-operand>$transweight</left-operand>
+			<operator>equals</operator>
+			<right-operand>1</right-operand>
+		</test>
+		<requirement-test-expression>(isGreaterThanZero OR isZero) AND (isLessThanOne OR isOne)</requirement-test-expression>
+		<requirement-test-expression-message>DNA Transition weight must be a number between 0 and 1</requirement-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for negative-->
+	<cmd-params name="negative">
+		<datatype>boolean</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Use negative values in matrix?</label>
+		<default-value>No</default-value>
+		<switch-true-value>-negative</switch-true-value>
+		<switch-false-value></switch-false-value>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for endgap-->
+	<cmd-params name="endgap">
+		<datatype>boolean</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>End gap separation penalty</label>
+		<default-value>Yes</default-value>
+		<tool-tip-text>End gap separation treats end gaps just like internal gaps. If you turn this off, end gaps will be ignored for this purpose. This is useful when you wish to align fragments where the end gaps are not biologically meaningful.</tool-tip-text>
+		<switch-true-value>-endgap</switch-true-value>
+		<switch-false-value></switch-false-value>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for type-->
+	<cmd-params name="type">
+		<datatype>Excl</datatype>
+		<label>Type</label>
+		<default-value>dna</default-value>
+		<code-template> -type=$type</code-template>
+		<list-item>
+			<value>dna</value>
+			<display>dna</display>
+		</list-item>
+		<list-item>
+			<value>protein</value>
+			<display>protein</display>
+		</list-item>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for dnamatrix-->
+	<cmd-params name="dnamatrix">
+		<datatype>Excl</datatype>
+		<label>DNA weight matrix</label>
+		<tool-tip-text>For DNA, a single matrix (not a series) is used. Two hard-coded matrices are available: IUB. This is the default scoring matrix used by BESTFIT for the comparison of nucleic acid sequences. X's and N's are treated as matches to any IUB ambiguity symbol. All matches score 1.9; all mismatches for IUB symbols score 0. CLUSTALW(1.6). The previous system used by ClustalW, in which matches score 1.0 and mismatches score 0. All matches for IUB symbols also score 0.</tool-tip-text>
+		<code-template> -dnamatrix=$dnamatrix</code-template>
+		<list-item>
+			<value>iub</value>
+			<display>IUB</display>
+		</list-item>
+		<list-item>
+			<value>clustalw</value>
+			<display>CLUSTALW</display>
+		</list-item>
+		<test test-name="isTypeDna">
+			<left-operand>$type</left-operand>
+			<operator>equals</operator>
+			<right-operand>dna</right-operand>
+		</test>
+		<availability-test-expression>isTypeDna</availability-test-expression>
+		<availability-test-expression-message>DNA weight matrix can only be set if type=dna</availability-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for matrix-->
+	<cmd-params name="matrix">
+		<datatype>Excl</datatype>
+		<label>Protein weight matrix</label>
+		<code-template> -matrix=$matrix</code-template>
+		<list-item>
+			<value>gonnet</value>
+			<display>Gonnet</display>
+		</list-item>
+		<list-item>
+			<value>blosum</value>
+			<display>BLOSUM</display>
+		</list-item>
+		<list-item>
+			<value>pam</value>
+			<display>PAM</display>
+		</list-item>
+		<test test-name="isTypeProtein">
+			<left-operand>$type</left-operand>
+			<operator>equals</operator>
+			<right-operand>protein</right-operand>
+		</test>
+		<availability-test-expression>isTypeProtein</availability-test-expression>
+		<availability-test-expression-message>Protein weight matrix, Residue-specific penalties, and Hydrophilic gaps can only be set if type = protein</availability-test-expression-message>
+	</cmd-params>
+		<!-- -->
+	<!-- -->
+	<!-- cmd param for nopgap-->
+	<cmd-params name="nopgap">
+		<datatype>boolean</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Residue-specific penalties</label>
+		<default-value>Yes</default-value>
+		<tool-tip-text>Residue specific penalties are amino acid specific gap penalties that reduce or increase the gap opening penalties at each position in the alignment or sequence.</tool-tip-text>
+		<switch-true-value>-nopgap</switch-true-value>
+		<switch-false-value></switch-false-value>
+		<test test-name="isTypeProtein">
+			<left-operand>$type</left-operand>
+			<operator>equals</operator>
+			<right-operand>protein</right-operand>
+		</test>
+		<availability-test-expression>isTypeProtein</availability-test-expression>
+		<availability-test-expression-message>Protein weight matrix, Residue-specific penalties, and Hydrophilic gaps can only be set if type = protein</availability-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for nohgap-->
+	<cmd-params name="nohgap">
+		<datatype>boolean</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Hydrophilic gaps</label>
+		<default-value>Yes</default-value>
+		<tool-tip-text>Hydrophilic gap penalties are used to increase the chances of a gap within a run (5 or more residues) of hydrophilic amino acids; these are likely to be loop or random coil regions where gaps are more common.</tool-tip-text>
+		<switch-true-value>-nohgap</switch-true-value>
+		<switch-false-value></switch-false-value>
+		<test test-name="isTypeProtein">
+			<left-operand>$type</left-operand>
+			<operator>equals</operator>
+			<right-operand>protein</right-operand>
+		</test>
+		<availability-test-expression>isTypeProtein</availability-test-expression>
+		<availability-test-expression-message>Protein weight matrix, Residue-specific penalties, and Hydrophilic gaps can only be set if type = protein</availability-test-expression-message>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for newtree-->
+	<cmd-params name="newtree">
+		<datatype>InFile</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>New guide tree file</label>
+		<code-template>-newtree=$newtree</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for usetree-->
+	<cmd-params name="usetree">
+		<datatype>InFile</datatype>
+		<is-mandatory>false</is-mandatory>
+		<label>Old guide tree file</label>
+		<code-template>-usetree=$usetree</code-template>
+	</cmd-params>
+
+</service-command-panel>
+

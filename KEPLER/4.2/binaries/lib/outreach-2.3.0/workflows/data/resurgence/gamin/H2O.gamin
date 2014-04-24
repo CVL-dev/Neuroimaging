@@ -1,0 +1,11 @@
+ $CONTRL COORD=CART UNITS=ANGS $END
+ $DATA
+Water
+Put symmetry info here
+
+O      8.0    -0.44430  -0.20410  -0.09540 
+H      1.0     0.49710  -0.22110  -0.06570 
+H      1.0    -0.72600  -0.65350   0.68310 
+ $END
+
+

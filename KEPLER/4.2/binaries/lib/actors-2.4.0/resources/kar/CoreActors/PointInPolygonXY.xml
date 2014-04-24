@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<entity name="Point In Polygon XY" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:157:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>
+The PointInPolygonXY actor is a project-specific actor used within the GEON mineral classifier workflow for calculating a classification point given mineral composition and coordinate names.</p>
+
+<p>The actor receives a classification point (x,y) and a set of polygons that are defined by an array of points and assigned a region name. The actor determines whether the classification point is contained in one or more of the input regions and outputs an array of the names of the regions that contain the point.</p>
+
+<p>GEON (Geosciences Network) is a distributed infrastructure for Geoscience research and education. For more 
+information about GEON, see http://www.geongrid.org/.</p>
+</configure></property>
+<property name="port:point" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of two doubles representing the specified (x,y) classification point.</configure></property>
+<property name="port:region" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of the names of the polygon regions that contains the classification point.</configure></property>
+<property name="port:polygonRegions" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a set of polygons and their region names.</configure></property>
+</property>
+<property name="class" value="org.geon.PointinPolygonXY" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1015:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="region" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="point" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{double}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="polygonRegions" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

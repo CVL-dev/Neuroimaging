@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="54.344" height="58.757" viewBox="0 0 54.344 58.757" overflow="visible" enable-background="new 0 0 54.344 58.757"
+	 xml:space="preserve">
+		<g id="Layer_1">
+			<rect x="0.504" y="6.275" fill="#FFCF8A" width="53.436" height="46.91"/> 
+			<ellipse fill="#FFCF8A" stroke="#F9F9F9" cx="27.172" cy="6" rx="26.672" ry="5.5"/> 
+			<ellipse fill="#FFCF8A" cx="27.17" cy="53.257" rx="26.672" ry="5.5"/> 
+			<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="30.2002" y1="33.1304" x2="26.6937" y2="29.6238">
+				<stop  offset="0" style="stop-color:#EA990A"/>
+				<stop  offset="0.166" style="stop-color:#EB9A0D"/>
+				<stop  offset="0.2755" style="stop-color:#ED9F16"/>
+				<stop  offset="0.3686" style="stop-color:#F2A825"/>
+				<stop  offset="0.452" style="stop-color:#F8B33A"/>
+				<stop  offset="0.5225" style="stop-color:#FFC152"/>
+				<stop  offset="0.5821" style="stop-color:#FBBA45"/>
+				<stop  offset="0.7556" style="stop-color:#F2A825"/>
+				<stop  offset="0.9011" style="stop-color:#EC9D11"/>
+				<stop  offset="1" style="stop-color:#EA990A"/>
+				<stop  offset="1" style="stop-color:#3C3C3C"/>
+				<stop  offset="1" style="stop-color:#EA990A"/>
+				<a:midPointStop  offset="0" style="stop-color:#EA990A"/>
+				<a:midPointStop  offset="0.7849" style="stop-color:#EA990A"/>
+				<a:midPointStop  offset="0.5225" style="stop-color:#FFC152"/>
+				<a:midPointStop  offset="0.3765" style="stop-color:#FFC152"/>
+				<a:midPointStop  offset="1" style="stop-color:#EA990A"/>
+				<a:midPointStop  offset="0.5" style="stop-color:#EA990A"/>
+				<a:midPointStop  offset="1" style="stop-color:#3C3C3C"/>
+				<a:midPointStop  offset="0.5" style="stop-color:#3C3C3C"/>
+				<a:midPointStop  offset="1" style="stop-color:#EA990A"/>
+			</linearGradient>
+			<polygon fill="url(#XMLID_3_)" stroke="#635037" stroke-width="0.5" points="46.312,17.018 14.086,49.244 10.581,45.738 
+				42.808,13.511 "/>
+			<line fill="none" stroke="#635037" stroke-width="0.2" x1="11.635" y1="46.792" x2="43.862" y2="14.566"/>
+			<line fill="none" stroke="#635037" stroke-width="0.2" x1="13.154" y1="48.146" x2="45.38" y2="15.919"/>
+			<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="11.2593" y1="52.0522" x2="7.7527" y2="48.5457">
+				<stop  offset="0" style="stop-color:#CEAD6A"/>
+				<stop  offset="0.2646" style="stop-color:#D0AF6C"/>
+				<stop  offset="0.3599" style="stop-color:#D6B672"/>
+				<stop  offset="0.4279" style="stop-color:#E2C17E"/>
+				<stop  offset="0.4824" style="stop-color:#F2D28E"/>
+				<stop  offset="0.5056" style="stop-color:#FCDC97"/>
+				<stop  offset="0.9719" style="stop-color:#CEAD6A"/>
+				<stop  offset="1" style="stop-color:#3C3C3C"/>
+				<stop  offset="1" style="stop-color:#929292"/>
+				<a:midPointStop  offset="0" style="stop-color:#CEAD6A"/>
+				<a:midPointStop  offset="0.87" style="stop-color:#CEAD6A"/>
+				<a:midPointStop  offset="0.5056" style="stop-color:#FCDC97"/>
+				<a:midPointStop  offset="0.5" style="stop-color:#FCDC97"/>
+				<a:midPointStop  offset="0.9719" style="stop-color:#CEAD6A"/>
+				<a:midPointStop  offset="0.5" style="stop-color:#CEAD6A"/>
+				<a:midPointStop  offset="1" style="stop-color:#3C3C3C"/>
+				<a:midPointStop  offset="0.5" style="stop-color:#3C3C3C"/>
+				<a:midPointStop  offset="1" style="stop-color:#929292"/>
+			</linearGradient>
+			<polygon fill="url(#XMLID_4_)" stroke="#635037" stroke-width="0.4" points="10.28,46.017 13.786,49.525 6.978,52.827 "/>
+			<polygon fill="#484949" stroke="#565656" stroke-width="0.2" points="7.668,51.273 8.545,52.15 6.843,52.975 "/>
+		</g>
+	</svg>

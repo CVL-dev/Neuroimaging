@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="TokenReader" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:674:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.io.TokenReader" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="NONE">
+</property>
+
+<property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+
+<property name="fileOrURL" class="ptolemy.data.expr.FileParameter" value="">
+</property>
+
+<property name="newline" class="ptolemy.data.expr.Parameter" value="property(&quot;line.separator&quot;)">
+</property>
+
+
+<property name="outputType" class="ptolemy.data.expr.Parameter">
+</property>
+
+<property name="errorHandlingStrategy" class="ptolemy.data.expr.StringParameter" value="">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#LocalInput">
+</property>
+
+<property name="semanticType01" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ReaderExternalInputActor">
+</property>
+
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="kepler:fileOrURL" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee, Marten Lohstroh</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: TokenReader.java 63773 2012-06-19 19:06:41Z marten $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;An actor that reads a string expression from a file or URL upon receiving a &#10; signal on its &lt;i&gt;trigger&lt;/i&gt; input port, and outputs a token that is the &#10; result of evaluating the read string. The file or URL is specified by the &#10; &lt;i&gt;FileOrURL&lt;/i&gt; parameter or set using the &lt;i&gt;FileOrURL&lt;/i&gt; port. If the &#10; file or URL cannot be read, the expression cannot be parsed successfully,&#10; or the resulting token does not match the type constraint of the output port,&#10; the value of the &lt;i&gt;errorHandlingStrategy&lt;/i&gt; parameter determines the &#10; behavior of this actor.&#10; TODO: describe automatic port constraint setting &#10; FIXME: More here. Particularly, document output type handling.</configure></property>
+<property name="port:fileOrURLPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port for optionally providing a file name. This has  type string.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port.  The type of this port is unspecified.  Derived classes may set it.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The trigger port.  The type of this port is undeclared, meaning  that it will resolve to any data type.</configure></property>
+<property name="prop:newline" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The end of line character(s).  The default value is the value  of the line.separator property</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If a positive integer, then the number of iterations before the  actor indicates to the scheduler that it is finished by returning  false in its postfire() method.</configure></property>
+<property name="prop:errorHandlingStrategy" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The strategy to use if:  &lt;ul&gt;  &lt;li&gt; the file or URL cannot be read,&lt;/li&gt;  &lt;li&gt; the data read from the file or the URL cannot be parsed,&lt;/li&gt;  &lt;li&gt; the parsed token cannot be converted into a token of the type  given by &lt;i&gt;outputType&lt;/i&gt;, if such a type is given, or&lt;/li&gt;  &lt;li&gt; the parsed token cannot  be converted to a token of the resolved type of the output, if no &lt;i&gt;outputType&lt;/i&gt;  is given.&lt;/li&gt;  &lt;/ul&gt;  This is a string that has the following  possible values: &quot;Do Nothing&quot; or &quot;Throw Exception&quot;, where  &quot;Throw Exception&quot; is the default.</configure></property>
+<property name="prop:fileOrURL" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file name or URL from which to read.  This is a string with  any form accepted by FileParameter.</configure></property>
+<property name="prop:outputType" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If this parameter has a value, then the value specifies the  type of the output port. When the actor reads from the file  or URL, it expects the data read to be a string that can be  parsed into a token that is convertible to (or identical to)  this output type. If it is not, then the action taken is  specified by the &lt;i&gt;errorHandlingStrategy&lt;/i&gt; parameter.  If this parameter has no value (the default), then the  output type will be set to match whatever is first read from the  file or URL and will be updated on each subsequent firing if  the data read from the file or URL cannot be converted to the  type determined by the first read.</configure></property>
+</property></entity>

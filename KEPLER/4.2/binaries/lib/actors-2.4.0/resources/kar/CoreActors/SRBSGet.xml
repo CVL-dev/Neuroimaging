@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<entity name="SRB SGet" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:255:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SRBSGet actor fetches one or more file objects from a remote Storage Resource Broker (SRB) and places the fetched objects in the local file system. Users must have a valid SRB account. The actor outputs an array of all the local file paths as well as an exit status (e.g., "success" or a generated error).</p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). For more information about SRB, see http://www.sdsc.edu/srb/.</p>
+
+<p>The SGet actor receives several inputs: an array of SRB files to get, a local directory to place the returned files, and a connection reference to an SRB file system. Use the SRBConnect actor to connect to an SRB file system and return a connection reference that the SGet actor can use. Choose to overwrite existing files or append the fetched files to existing files of the same name using the actor's parameters.</p></configure></property>
+<property name="port:localDir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the local directory in which to place the fetched files.</configure></property>
+<property name="port:filesToGet" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts paths of the SRB files to fetch.</configure></property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the exit status of the operation (e.g., "success" or a generated error).</configure></property>
+<property name="port:fetchedFiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts an array of the local file paths of the fetched files.</configure></property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a connection reference to an SRB file system. Use the SRBConnect actor to open a connection and create the reference.</configure></property>
+<property name="prop:append" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to append the generated file to the specified file if it already existts or to overwrite it. By default, the actor will overwrite any preexisting file (after asking for permission).</configure></property>
+<property name="prop:localDir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The local directory in which to place the fetched files.</configure></property>
+<property name="prop:confirmOverwrite" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should confirm before overwriting an existing file. By default, the actor will request confirmation before overwriting a file.</configure></property>
+</property>
+<property name="class" value="org.srb.SGet" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1081:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="filesToGet" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="fetchedFiles" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="exitCode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="localDir" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+      "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width='420.0' height='700.0'>
+
+<script type="text/ecmascript">
+
+<![CDATA[
+     function show(tid) {
+         if (lastMsg != null) {
+            lastMsg.setAttribute("visibility", "hidden");
+         }
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "visible");
+         obj.setAttribute("fill", "navy");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "#5f7f8f");
+     }
+     function unshow(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "hidden");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "white");
+         if (lastMsg != null) {
+            lastMsg.setAttribute("fill", "brown");
+            lastMsg.setAttribute("visibility", "visible");
+         }
+     }
+     var lastCircle;
+     var lastMsg; 
+// ]]>
+
+</script>
+
+<text id='properties' visibility = 'hidden' properties='top Plag left Px right Hbl bot NULL leftPadding 40.0 topPadding 31.102725426581742 diagramWidth 340.0 triangleDiagramHeight 294.44863728670913' />
+<rect x='0' y='0' rx='5' ry='5' width='420.0' height='700.0' fill='#f4f4f4' />
+<text x='195.0' y='21.102725426581742' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Plag</text>
+<text x='10.0' y='325.55136271329087' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Px</text>
+<text x='385.0' y='325.55136271329087' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Hbl</text>
+<polygon id='anorthositePolygon' points='193.0,60.54758915525265 227.0,60.54758915525265 210.0,31.102725426581742' onmouseover='show("anorthosite")' onmouseout='unshow("anorthosite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='anorthosite' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+anorthosite</text>
+<polygon id='noritePolygon' points='193.0,60.54758915525265 210.0,60.54758915525265 74.0,296.10649898462 57.00000000000003,296.10649898462' onmouseover='show("norite")' onmouseout='unshow("norite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='norite' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+norite</text>
+<polygon id='hornblendePolygon' points='210.0,60.54758915525265 227.0,60.54758915525265 363.0,296.10649898462 346.0,296.10649898462' onmouseover='show("hornblende")' onmouseout='unshow("hornblende")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='hornblende' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+hornblendite gabbro</text>
+<polygon id='gabbroPolygon' points='210.0,60.54758915525265 74.0,296.10649898462 346.0,296.10649898462' onmouseover='show("gabbro")' onmouseout='unshow("gabbro")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='gabbro' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+gabbro</text>
+<polygon id='pyroxenitePolygon' points='57.00000000000003,296.10649898462 40.0,325.55136271329087 74.0,325.55136271329087' onmouseover='show("pyroxenite")' onmouseout='unshow("pyroxenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='pyroxenite' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+pyroxenite</text>
+<polygon id='hblpyroxenitePolygon' points='57.00000000000003,296.10649898462 74.0,325.55136271329087 210.0,325.55136271329087 210.0,296.10649898462' onmouseover='show("hblpyroxenite")' onmouseout='unshow("hblpyroxenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='hblpyroxenite' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+hornblende pyroxenite</text>
+<polygon id='pxhblPolygon' points='210.0,325.55136271329087 210.0,296.10649898462 363.0,296.10649898462 346.0,325.55136271329087' onmouseover='show("pxhbl")' onmouseout='unshow("pxhbl")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='pxhbl' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+pyroxenite hornblendite</text>
+<polygon id='hornblenditePolygon' points='346.0,325.55136271329087 363.0,296.10649898462 380.0,325.55136271329087' onmouseover='show("hornblendite")' onmouseout='unshow("hornblendite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='hornblendite' x='210.0' y='345.55136271329087' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+hornblendite</text>
+</svg>
+

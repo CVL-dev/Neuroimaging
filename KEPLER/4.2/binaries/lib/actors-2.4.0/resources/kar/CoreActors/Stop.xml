@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<entity name="Stop" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:55:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The Stop actor stops a workflow after the current iteration is complete. The actor receives Boolean tokens via its input multiport. When the actor receives a true token, it stops the workflow.</p>
+
+<p>When the current iteration is complete depends on the workflow director. Under an SDF Director, the current iteration is concluded and the execution is stopped when the Stop actor receives a true token. Under a DE Director, actors may be invoked after Stop is invoked (if an event with time stamp T and value true arrives at the Stop actor, then concluding the current iteration means processing all events in the event queue with time stamp T, some of which may not yet have been processed before the Stop actor is invoked).</p>
+
+<p>The Stop actor is not the best way to stop a PN workflow, which has no well-defined notion of an iteration. To stop a PN workflow, design the workflow so that all actors are starved of data when the workflow is to stop. The director will detect this starvation, and halt the workflow. Note: if nondeterminism is acceptable, the Stop actor can be used.</p></configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts Boolean tokens. When the port receives a true token, the workflow is stopped. If the port is not connected, then the actor requests a pause whenever it fires.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.Stop" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:931:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ControlActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowControl" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<property name="Image" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:431:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee and Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The Image attribute renders an image on the Workflow canvas. Specify a source image (a GIF, JPEG, etc) with the source parameter.</configure></property>
+<property name="prop:source" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The source image file. Specify a file name or URL.  The default is "$CLASSPATH/ptolemy/vergil/kernel/attributes/ptIIplanetIcon.gif".</configure></property>
+</property>
+<property name="class" value="ptolemy.vergil.kernel.attributes.ImageAttribute" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1194:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#DecorativeActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation" class="org.kepler.sms.SemanticType"/>
+</property>

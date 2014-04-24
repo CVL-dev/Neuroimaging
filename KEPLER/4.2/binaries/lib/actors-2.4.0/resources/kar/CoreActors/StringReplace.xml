@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<entity name="String Replace" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:98:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> Antonio Yordan-Nones, Neil E. Turner, Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The StringReplace actor reads a string and searches it for a specified pattern. The actor replaces either the first instance of the pattern or all occurrences of the pattern with a specified replacement string. The actor outputs the edited string.</p>
+
+<p>The actor accepts a source string, a replacement string, and a pattern to search for via either its input ports or its parameters. The pattern is specified as a regular expression. For more information about regular expressions, see http://java.sun.com/docs/books/tutorial/extra/regex/index.html.</p>
+
+<p>If  the replaceAll parameter is specified, the actor will replace all instances of the string that match the specified pattern. Otherwise, the actor will replace only the first instance that matches. </p>
+
+<p>If the actor finds no match, then the actor outputs the original source string, unchanged.</p> 
+</configure></property>
+<property name="port:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A port that accepts a regular expression, which is compared to the input string. The default is an empty string. The regular expression may also be specified via the pattern parameter.</configure></property>
+<property name="port:replacement" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A port accepts a replacement string that replaces any matched instance of the specified pattern. The default is an empty string. The replacement string may also be specified via the replacement parameter.</configure></property>
+<property name="port:stringToEdit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A port that accepts a source string. The actor will edit the string according to the settings specified by the pattern, replacement, and replaceAll parameters.The source string may also be specified with the stringToEdit parameter</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the edited string. </configure></property>
+<property name="prop:replaceAll" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether or not to replace all instances that match the pattern. By default, the actor will replace all instances. Deselect the parameter to replace only the first instance.</configure></property>
+<property name="prop:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A regular expression, which is compared to the input string. The default is an empty string. The regular expression may  be specified via either the pattern port or parameter.</configure></property>
+<property name="prop:replacement" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A replacement string that replaces any matched instance of the specified pattern. The default is an empty string. The replacement string may  be specified via either the replacement port or parameter.</configure></property>
+<property name="prop:stringToEdit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A source string. The actor will edit the string based on the settings specified by the pattern, replacement, and replaceAll parameters. The source string may  be specified via either the stringToEdit port or parameter.</configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.string.StringReplace" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:972:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="pattern" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="replacement" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="stringToEdit" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-command-panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CipresCommandLanguage.xsd">
+	<!-- cmd param for sequence file-->
+	<cmd-params name="infile">
+		<datatype>InFile</datatype>
+		<is-mandatory>true</is-mandatory>
+		<label>Path to input data file</label>
+		<tool-tip-text>The program accepts sequences in the following formats: NBRF/PIR, EMBL/UniProt, Pearson (Fasta), GDE, ALN/ClustalW, GCG/MSF, RSF</tool-tip-text>
+		<code-template>" -infile=$infile"</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- cmd param for ouput file-->
+	<cmd-params name="outfile">
+		<datatype>InFile</datatype>
+		<label>Path for output data file</label>
+		<tool-tip-text>Sets the location to write the output file</tool-tip-text>
+		<code-template>" -outfile=$outfile"</code-template>
+	</cmd-params>
+	<!-- -->
+	<!-- cmd param for specifying the output format-->
+	<cmd-params name="output">
+		<datatype>Excl</datatype>
+		<label>Output format</label>
+		<tool-tip-text>Sets the format for the output file</tool-tip-text>
+		<code-template> -output=$output</code-template>
+		<list-item>
+			<value>NEXUS</value>
+			<display>NEXUS</display>
+		</list-item>
+		<list-item>
+			<value>PHYLIP</value>
+			<display>PHYLIP</display>
+		</list-item>
+		<list-item>
+			<value>GCG</value>
+			<display>GCG</display>
+		</list-item>
+		<list-item>
+			<value>GDE</value>
+			<display>GDE</display>
+		</list-item>
+		<list-item>
+			<value>PIR</value>
+			<display>PIR</display>
+		</list-item>
+		<test test-name="isOutfileNotSet">
+			<left-operand>$outfile</left-operand>
+			<operator>not_null</operator>
+			<right-operand></right-operand>
+		</test>
+		<availability-test-expression>isOutfileNotSet</availability-test-expression>
+		<availability-test-expression-message>output format can only be set if if an output file location has been set</availability-test-expression-message>
+   </cmd-params>
+	<!-- -->
+	<!-- -->
+	<!-- cmd param for specifying pairwise alignment speed-->
+	<cmd-params name="quicktree">
+		<datatype>Excl</datatype>
+		<label>Pairwise alignment speed</label>
+		<default-value>fast</default-value>
+		<tool-tip-text>Sets the pairwise alignment speed. FAST: method of Wilbur and Lipman (extremely fast but approximate) SLOW: by dynamic programming (slow but accurate</tool-tip-text>
+		<code-template> -quicktree=$quicktree</code-template>
+		<list-item>
+			<value>slow</value>
+			<display>SLOW</display>
+		</list-item>
+		<list-item>
+			<value>fast</value>
+			<display>FAST</display>
+		</list-item>
+	</cmd-params>            <!--name="quicktree"-->
+	
+	<!-- -->
+		<!--following set of nested params valid linked to quicktree-->
+		<!-- -->
+		<cmd-params name="quicktreeFastParams">
+			<label>Params for FAST pairwise alignments (-quicktree)</label>
+			<code-template> $quicktreeFastParams</code-template>
+			<test test-name="isQuicktreeFast">
+				<left-operand>$quicktree</left-operand>
+				<operator>equals</operator>
+				<right-operand>fast</right-operand>
+			</test>
+			<availability-test-expression>isQuicktreeFast</availability-test-expression>
+			<availability-test-expression-message>ktuple, topdiags, window, pairgap, and score can only be set if quicktree is set to FAST</availability-test-expression-message>
+			<!-- -->
+			<!--cmd-params below are valid if quicktrees=FAST-->
+			<!-- -->
+			<!-- cmd param for KTUPLE-->
+			<cmd-params name="ktuple">
+				<datatype>Integer</datatype>
+				<is-mandatory>false</is-mandatory>
+				<label>Word size (-ktuple)</label>
+				<default-value>1</default-value>
+				<tool-tip-text>This is the size of exactly matching fragment that is used. INCREASE for speed (max= 2 for proteins; 4 for DNA), DECREASE for sensitivity. For longer sequences (e.g. &gt;1000 residues) you may need to increase the default</tool-tip-text>
+				<code-template> -ktuple=$ktuple</code-template>
+				<test test-name="isGreaterThanZero">
+					<left-operand>$ktuple</left-operand>
+					<operator>greater_than</operator>
+					<right-operand>0</right-operand>
+				</test>
+		<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+				<requirement-test-expression-message>Word Size (ktuple) must be an integer greater than 0</requirement-test-expression-message>
+			</cmd-params>
+			<!-- -->
+			<!-- -->
+			<!-- cmd param for topdiags-->
+			<cmd-params name="topdiags">
+				<datatype>Integer</datatype>
+				<is-mandatory>false</is-mandatory>
+				<label>Number of best diagonals (-topdiags)</label>
+				<default-value>5</default-value>
+				<tool-tip-text>The number of k-tuple matches on each diagonal (in an imaginary dot-matrix plot) is calculated. Only the best ones (with most matches) are used in the alignment. This parameter specifies how many. Decrease for speed; increase for sensitivity.</tool-tip-text>
+				<code-template> -topdiags=$topdiags</code-template>
+				<test test-name="isGreaterThanZero">
+					<left-operand>$topdiags</left-operand>
+					<operator>greater_than</operator>
+					<right-operand>0</right-operand>
+				</test>
+				<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+				<requirement-test-expression-message>Topdiags must be an integer greater than 0</requirement-test-expression-message>
+			</cmd-params>
+			<!-- -->
+			<!-- -->
+			<!-- cmd param for window-->
+			<cmd-params name="window">
+				<datatype>Integer</datatype>
+				<is-mandatory>false</is-mandatory>
+				<label>Window around best diags (-window)</label>
+				<default-value>5</default-value>
+				<tool-tip-text>The number of k-tuple matches on each diagonal (in an imaginary dot-matrix plot) is calculated. Only the best ones (with most matches) are used in the alignment. This parameter specifies how many. Decrease for speed; increase for sensitivity.</tool-tip-text>
+				<code-template> -window=$window</code-template>
+				<test test-name="isGreaterThanZero">
+					<left-operand>$window</left-operand>
+					<operator>greater_than</operator>
+					<right-operand>0</right-operand>
+				</test>
+				<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+				<requirement-test-expression-message>Topdiags must be an integer greater than 0</requirement-test-expression-message>
+			</cmd-params>
+			<!-- -->
+			<!-- -->
+			<!-- cmd param for pairgap-->
+			<cmd-params name="pairgap">
+				<datatype>Float</datatype>
+				<is-mandatory>false</is-mandatory>
+				<label>Gap penalty (-pairgap)</label>
+				<default-value>3</default-value>
+				<tool-tip-text>This is a penalty for each gap in the fast alignments. It has little affect on the speed or sensitivity except for extreme values.</tool-tip-text>
+				<code-template> -pairgap=$pairgap</code-template>
+				<test test-name="isGreaterThanZero">
+					<left-operand>$pairgap</left-operand>
+					<operator>greater_than</operator>
+					<right-operand>0</right-operand>
+				</test>
+				<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+				<requirement-test-expression-message>Pairgap must be a float greater than 0</requirement-test-expression-message>
+			</cmd-params>
+			<!-- -->
+			<!-- -->
+			<!-- cmd param for specifying how alignment score should be generated-->
+			<cmd-params name="score">
+				<datatype>Excl</datatype>
+				<label>% or absolute score (-score)</label>
+				<default-value>percent</default-value>
+				<tool-tip-text>Specifies how alignment score should be generated</tool-tip-text>
+				<code-template> -score=$score</code-template>
+				<list-item>
+					<value>percent</value>
+					<display>percent</display>
+				</list-item>
+				<list-item>
+					<value>absolute</value>
+					<display>absolute</display>
+				</list-item>
+			</cmd-params>   <!--name="score"-->
+		</cmd-params>       <!--name="quicktreeFastParams"-->
+
+		<cmd-params name="quicktreeSlowParams">
+			<label>Params for SLOW pairwise alignments</label>
+			<code-template> $quicktreeSlowParams</code-template>
+			<test test-name="isQuicktreeSlow">
+				<left-operand>$quicktree</left-operand>
+				<operator>equals</operator>
+				<right-operand>slow</right-operand>
+			</test>
+			<availability-test-expression>isQuicktreeSlow</availability-test-expression>
+			<availability-test-expression-message>PWDNAMATRIX, PWGAPOPEN, and PWGAPEXT can only be set if quicktree is set to SLOW</availability-test-expression-message>
+			<!-- -->
+			<!--cmd-params below are valid if quicktrees=SLOW-->
+			<!-- -->
+			<!-- cmd param for pwdnamatrix-->
+			<cmd-params name="pwdnamatrix">
+				<datatype>Excl</datatype>
+				<label>DNA weight matrix (-pwdnamatrix)</label>
+				<default-value>iub</default-value>
+				<tool-tip-text>For DNA, a single matrix (not a series) is used. Two hard-coded matrices are available: IUB. This is the default scoring matrix used by BESTFIT for the comparison of nucleic acid sequences. X's and N's are treated as matches to any IUB ambiguity symbol. All matches score 1.9; all mismatches for IUB symbols score 0. CLUSTALW(1.6). The previous system used by ClustalW, in which matches score 1.0 and mismatches score 0. All matches for IUB symbols also score 0.</tool-tip-text>
+				<code-template> -pwdnamatrix=$pwdnamatrix</code-template>
+				<list-item>
+					<value>iub</value>
+					<display>IUB</display>
+				</list-item>
+				<list-item>
+					<value>clustalw</value>
+					<display>CLUSTALW</display>
+				</list-item>
+			</cmd-params>   <!--name="pwdnamatrix"-->
+			<!-- -->
+			<!-- -->
+			<!-- cmd param for pwgapopen-->
+			<cmd-params name="pwgapopen">
+				<datatype>Float</datatype>
+				<is-mandatory>false</is-mandatory>
+				<label>Gap opening penalty (-pwgapopen)</label>
+				<default-value>10.00</default-value>
+				<tool-tip-text>A penalty is subtracted for each gap introduced into an alignment because the gap increases uncertainty into an alignment. If gaps are introduced without a penalty than they can be introduced at random and eventually all characters will be aligned in even random sequences.</tool-tip-text>
+				<code-template> -pwgapopen=$pwgapopen</code-template>
+				<test test-name="isGreaterThanZero">
+					<left-operand>$pwgapopen</left-operand>
+					<operator>greater_than</operator>
+					<right-operand>0</right-operand>
+				</test>
+				<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+				<requirement-test-expression-message>Gap opening penalty must be a float greater than 0</requirement-test-expression-message>
+			</cmd-params>
+			<!-- -->
+			<!-- -->
+			<!-- cmd param for pwgapext-->
+			<cmd-params name="pwgapext">
+				<datatype>Float</datatype>
+				<is-mandatory>false</is-mandatory>
+				<label>Gap extension penalty (-pwgapext)</label>
+				<default-value>0.10</default-value>
+				<code-template> -pwgapext=$pwgapext</code-template>
+				<test test-name="isGreaterThanZero">
+					<left-operand>$pwgapext</left-operand>
+					<operator>greater_than</operator>
+					<right-operand>0</right-operand>
+				</test>
+				<requirement-test-expression>isGreaterThanZero</requirement-test-expression>
+				<requirement-test-expression-message>Gap extension penalty must be a float greater than 0</requirement-test-expression-message>
+			</cmd-params>
+			<!-- -->
+		</cmd-params>   <!--name="quicktreeSlowParams"-->
+
+</service-command-panel>

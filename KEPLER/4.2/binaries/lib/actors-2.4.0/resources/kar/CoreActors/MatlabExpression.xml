@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<entity name="MatlabExpression" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:532:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Zoltan Kemenczy and Sean Simmons</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+<p>
+<b>NOTE:</b> This actor will not run unless Kepler can find the Matlab libraries.
+You must set an environment variable to the Matlab libraries directory before running
+Kepler. The following examples are for Matlab R2007b installed in a common location;
+you should change them to reflect the version and location of Matlab on your computer.
+</p>
+<p> 
+Mac:
+<br>In a terminal window:</br>
+<br>export DYLD_LIBRARY_PATH=/Applications/MATLAB_R2007b/bin/maci</br>
+<br>kepler</br>
+</p>
+<p> 
+Windows: 
+<br>Start->Run</br>
+<br>cmd</br>
+<br>set PATH=%PATH%;c:\Program Files\MATLAB\R2007b\bin\win32</br>
+<br>kepler.bat</br>
+</p>
+<p>
+Linux:
+<br>In a terminal window:</br>
+<br>export LD_LIBRARY_PATH=/usr/local/matlab/bin/glnx86</br>
+<br>kepler</br>
+</p>     
+<p>
+On each firing send an expression for evaluation to matlab. The expression 
+is any valid matlab expression, e.g.:
+
+ <pre>
+ [out1, out2, ... ] = SomeMatlabFunctionOrExpression( in1, in2, ... );...
+ </pre>
+
+ The expression may include references to the input port names, current
+ time (<i>time</i>), and a count of the firing (<i>iteration</i>). This
+ is similar to the Expression actor. To refer to parameters in scope, use 
+$$name or $${name} within the expression.
+ </p><p>
+ The matlab engine is opened (started) during prefire() by the first
+ matlab Expression actor. Subsequent open()s simply increment a use
+ count.
+</p><p>
+ At the start of fire(), <i>clear variables;clear globals</i> commands are
+ sent to matlab to clear its workspace. This helps detect errors where the
+ matlab expression refers to a matlab variable not initialized from the
+ input ports of this actor instance.
+</p><p>
+ After the evaluation of the matlab expression is complete, the fire()
+ method iterates through names of output ports and converts matlab
+ variables with corresponding names to Tokens that are sent to the
+ corresponding output ports. Incorrect expressions are usually first
+ detected at this point by not finding the expected variables. If an
+ output port variable is not found in the matlab engine, an
+ exception is thrown. The exception description string contains the last
+ stdout of the matlab engine that usually describes the error.
+</p><p>
+ The parameters <i>get1x1asScalars</i> and <i>getIntegerMatrices</i> control
+ data conversion (see below).
+</p><p>
+ A Parameter named <i>packageDirectories</i> may be added to this actor
+ to augment the search path of the matlab engine during the firing of this
+ actor. The value of this parameter should evaluate to a StringToken,
+ e.g.:
+
+ <pre>
+ "path1, path2, ..."
+ </pre>
+
+ containing a comma-separated list of paths to be prepended to the matlab
+ engine search path before <i>expression</i> is evaluated. The list may
+ contain paths relative to the directory in which ptolemy was started,
+ or any directory listed in the current classpath (in that order, first
+ match wins). See ptolemy.data.expr.UtilityFunctions#findFile(String).
+ After evaluation, the previous search path is restored.
+</p><p>
+ A Parameter named <i>_debugging</i> may be used to turn on debug print
+ statements to stdout from the matlab Engine and the ptmatlab JNI. An IntToken
+ with a value of 1 turns on Engine debug statements, a value of 2 adds
+ ptmatlab debug statements as well.  A value of 0 or the absence of the
+ <i>_debugging</i> parameter yields normal operation.
+      </p>
+      </configure>
+    </property>
+    <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      </configure>
+    </property>
+    <property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+The parameter that is evaluated to produce the output. Typically, this parameter 
+evaluates an expression involving the inputs. To refer to parameters in scope 
+within the expression, use $name or ${name}, where "name" is the name of the 
+parameter.
+      </configure>
+    </property>
+    <property name="prop:get1x1asScalars" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+If true, 1x1 matrix results are converted to ScalarTokens instead of a 1x1 
+MatrixToken, default is <i>true</i>.
+      </configure>
+    </property>
+    <property name="prop:getIntegerMatrices" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+If true, all double-valued matrix results are checked to see if all elements 
+represent integers, and if so, an IntMatrixToken is returned, default is 
+<i>false</i> for performance reasons.
+      </configure>
+    </property>
+  </property>
+  <property name="class" value="ptolemy.matlab.Expression" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="expression" class="ptolemy.data.expr.StringParameter" value="">
+    <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+      <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+      </property>
+      <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+      </property>
+    </property>
+  </property>
+  <property name="get1x1asScalars" class="ptolemy.data.expr.Parameter" value="true">
+  </property>
+  <property name="getIntegerMatrices" class="ptolemy.data.expr.Parameter" value="false">
+  </property>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeneralPurpose" class="org.kepler.sms.SemanticType"/>
+</entity>

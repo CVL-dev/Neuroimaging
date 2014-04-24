@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<entity name="Transitive Closure Database Query" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:278:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+
+<p>The TransitiveClosureDatabaseQuery actor performs database queries against an open database using an initial set of values as a constraint. If a query result does not match a value in the initial constraint set, the actor adds that result to the set. The actor continues to query the database until no new values are added to the constraint set. The actor outputs all values that match the constraint.</p>
+
+<p>The actor requires a reference to an open database, which can be created and passed via the OpenDatabaseConnection actor. A query is specified with either the query port or parameter. In addition, an initial set of query constraints is specified via the fieldInSet parameter.</p>
+
+<p> The actor outputs all values that match the constraint set, either as an array of values, or as a sequence of separate tokens, depending on the setting of the outputEachRowSeparately parameter. </p>
+
+</configure></property>
+<property name="port:query" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A database query string.</configure></property>
+<property name="port:initialSet" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an array of initial query constraint values (e.g., {val1, val2, val3})</configure></property>
+<property name="port:dbcon" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a reference to the database connection, which can be created and passed via the OpenDatabaseConnection actor.</configure></property>
+<property name="port:result set" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the values that match the constraint set, either as an array of values, or as a sequence of separate tokens, depending on the setting of the outputEachRowSeparately parameter.</configure></property>
+<property name="prop:outputEachRowSeparately" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to display the complete result as an array, or to output each result separately.</configure></property>
+<property name="prop:fieldInSet" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An array of initial query constraint values (e.g., {val1, val2, val3})</configure></property>
+<property name="prop:query" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A database query string.</configure></property>
+</property>
+<property name="class" value="org.geon.TransitiveClosureDBQuery" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1103:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="dbcon" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="dbconnection" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="initial set" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{general}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="result set" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="query" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#DatabaseExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+</entity>

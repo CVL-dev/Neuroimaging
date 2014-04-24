@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<!--
+################################################################################
+#
+#    '$RCSfile$'
+#
+#     '$Author: leinfelder $'
+#       '$Date: 2010-07-29 10:48:36 -0700 (Thu, 29 Jul 2010) $'
+#   '$Revision: 25181 $'
+#
+# This ResourceBundle contains THE UI DISPLAY TEXT THAT IS SEEN BY KEPLER USERS,
+# includign button captions, titles, error messages etc.
+# The only exception is menu text, which is located in the files:
+# uiMenuMappings_en_US.properties and uiContextMenuMappings_en_US.properties
+#
+# NOTES:
+# *** IMPORTANT!!!
+#   The following characters MUST be escaped with a backslash:
+#      :   <whitespace>   #   !   \    =
+#   (except where ":", "=" or " " are used as a delimeter between the key and
+#   its corresponding value). This means that any COLON characters in the LSID
+#   *MUST* be escaped with a backslash, thus  \:
+#   for example:    WRONG - urn:lsid:localhost:director:1:1=myIcon
+#                 CORRECT - urn\:lsid\:localhost\:director\:1\:1=myIcon
+# ***
+################################################################################
+
+# Generally trying to categorize these where possible, using dot notation (like
+# the format used in package names) to denote where the captions belong.
+# Examples include:
+#   general.OK_BUTTON=OK
+#   actions.actor.displayName="Configure..." etc
+-->
+<config>
+  <!--
+  ################################################################################
+  # GENERAL APPLICATION-WIDE TEXT
+  ################################################################################
+  -->
+  <pair>
+    <name>general.OK</name>
+    <value>行</value>
+  </pair>
+  <pair>
+    <name>general.APPLY</name>
+    <value>申請</value>
+  </pair>
+  <pair>
+    <name>general.CANCEL</name>
+    <value>取消</value>
+  </pair>
+  <pair>
+    <name>general.HELP</name>
+    <value>幫助</value>
+  </pair>
+  <pair>
+    <name>general.BROWSE</name>
+    <value>瀏覽</value>
+  </pair>
+  <pair>
+    <name>general.ADD</name>
+    <value>加</value>
+  </pair>
+  <pair>
+    <name>general.REMOVE</name>
+    <value>消除</value>
+  </pair>
+  <pair>
+    <name>search.search</name>
+    <value>搜索</value>
+  </pair>
+  <pair>
+    <name>search.reset</name>
+    <value>復位</value>
+  </pair>
+  <pair>
+    <name>search.cancel</name>
+    <value>取消</value>
+  </pair>
+  <pair>
+    <name>search.sources</name>
+    <value>來源</value>
+  </pair>
+  <pair>
+    <name>search.advanced</name>
+    <value>高級搜索</value>
+  </pair>
+  <!--
+  ################################################################################
+  # TABS
+  ################################################################################
+  -->
+  <pair>
+    <name>components.search</name>
+    <value>搜索組件</value>
+  </pair>
+  <pair>
+    <name>components.searchResults</name>
+    <value>搜索結果</value>
+  </pair>
+  <pair>
+    <name>components.resultsFound</name>
+    <value>結果發現</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration</name>
+    <value>搜索配置組件</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.componentName</name>
+    <value>組件名稱</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.ontologyClassName</name>
+    <value>本體類名</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.ontologyName</name>
+    <value>本體名稱</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.karName</name>
+    <value>KAR名</value>
+  </pair>
+  <pair>
+    <name>components.search.configuration.options.localRepositoryName</name>
+    <value>本地倉庫名稱</value>
+  </pair>
+  <pair>
+    <name>data.search</name>
+    <value>搜索數據</value>
+  </pair>
+    <pair>
+    <name>outline.showPorts</name>
+    <value>顯示端口</value>
+  </pair>
+  <pair>
+    <name>outline.showAttributes</name>
+    <value>顯示屬性</value>
+  </pair>
+  <pair>
+    <name>outline.showRelations</name>
+    <value>顯示關係</value>
+  </pair>
+  <!--
+  ################################################################################
+  # PREFERENCES
+  ################################################################################
+  -->
+  <pair>
+    <name>preferences.title</name>
+    <value>偏好</value>
+  </pair>
+  <pair>
+  	<name>preferences.description1</name>
+  	<value>該構件庫是使用家中找到的文件下列本地目錄。添加或刪除本地目錄將重建的組件庫。
+	</value>
+  </pair>
+  <pair>
+  	<name>preferences.description2</name>
+  	<value>通過選擇搜索框旁邊的遠程倉庫，零部件從遠程存儲庫將包含在搜索組件。
+	</value>
+  </pair>
+  <pair>
+  	<name>preferences.description3</name>
+  	<value>通過選擇保存框旁邊的一個本地倉庫，嘉和文件將被保存到該目錄的默認。
+	</value>
+  </pair>
+  <pair>
+  	<name>preferences.description4</name>
+  	<value>通過選擇保存框旁邊的一個遠程倉庫，你會被詢問是否要上傳到該庫的家時，被保存。
+  	</value>
+  </pair>
+  <pair>
+    <name>preferences.useDefaults</name>
+    <value>使用默認值</value>
+  </pair>
+  <pair>
+    <name>preferences.build</name>
+    <value>建設</value>
+  </pair>
+  <pair>
+    <name>preferences.search</name>
+    <value>搜索</value>
+  </pair>
+  <pair>
+    <name>preferences.save</name>
+    <value>保存</value>
+  </pair>
+  <pair>
+    <name>preferences.type</name>
+    <value>類型</value>
+  </pair>
+  <pair>
+    <name>preferences.name</name>
+    <value>名稱</value>
+  </pair>
+  <pair>
+    <name>preferences.source</name>
+    <value>來源</value>
+  </pair>
+  <pair>
+    <name>preferences.data.refresh</name>
+    <value>刷新</value>
+  </pair>
+  <pair>
+    <name>preferences.data.keepExistingSources</name>
+    <value>保持現有來源</value>
+  </pair>
+  <pair>
+    <name>preferences.data.serviceName</name>
+    <value>服務名稱</value>
+  </pair>
+  <pair>
+    <name>preferences.data.location</name>
+    <value>位置</value>
+  </pair>
+  <pair>
+    <name>preferences.data.documentType</name>
+    <value>文件類型</value>
+  </pair>
+  <!--
+  ################################################################################
+  # GENERAL ERROR TEXT
+  ################################################################################
+  #
+  # @todo - FIXME - Need to do some thinking abotu these and make them more comprehensive
+  #
+  -->
+  <pair>
+    <name>general.errors.noHelpAvailable</name>
+    <value>無法打開幫助頁</value>
+  </pair>
+  <pair>
+    <name>general.errors.NameDuplication</name>
+    <value>錯誤 - 這個名字已被使用</value>
+  </pair>
+  <pair>
+    <name>general.errors.UnknownCannotDo</name>
+    <value>未知的錯誤 - 無法完成您的請求</value>
+  </pair>
+  <!--
+  ################################################################################
+  # ACTIONS
+  ################################################################################
+  -->
+  <pair>
+    <name>actions.actor.displayName</name>
+    <value>配置演員...</value>
+  </pair>
+  <pair>
+    <name>actions.actor.tooltip</name>
+    <value>更改設置為演員...</value>
+  </pair>
+  <pair>
+    <name>actions.workflow.typeCheck</name>
+    <value>類型檢查</value>
+  </pair>
+  <!--
+  ################################################################################
+  # DIALOGS
+  ################################################################################
+  -->
+  <pair>
+    <name>dialogs.actor.titleBar</name>
+    <value>演員配置 -</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.generalTab</name>
+    <value>一般</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parametersTab</name>
+    <value>參數</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.portsTab</name>
+    <value>端口</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.annotationsTab</name>
+    <value>註解</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.unitsTab</name>
+    <value>單位</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.name</name>
+    <value>演員名:</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.id</name>
+    <value>演員編號:</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.note</name>
+    <value>演員注意:</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.NamesNotesBorderTitle</name>
+    <value>名稱/債券</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.showNameCheckbox</name>
+    <value>顯示演員的名字</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.showNoteCheckbox</name>
+    <value>顯示演員注意</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.general.showPortNamesCheckbox</name>
+    <value>顯示所有端口名稱所顯示的端口</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.expertCheckbox</name>
+    <value>參數顯示專家</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.addButton</name>
+    <value>添加參數</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.deleteButton</name>
+    <value>刪除參數</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.formatButton</name>
+    <value>格式化</value>
+  </pair>
+  <pair>
+    <name>dialogs.actor.parameters.resetButton</name>
+    <value>復位</value>
+  </pair>
+</config>

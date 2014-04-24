@@ -1,0 +1,485 @@
+<?xml version="1.0"?>
+<!--
+################################################################################
+#
+#    '$RCSfile$'
+#
+#     '$Author: berkley $'
+#       '$Date: 2010-04-27 17:12:36 -0700 (Tue, 27 Apr 2010) $'
+#   '$Revision: 24000 $'
+#
+# This ResourceBundle contains the mappings used by the kepler popup
+# context-menu framework
+#
+# CONTEXT MENU MENU MAPPINGS - HOWTO:
+# These are KEPLER context menu assignments.
+# Valid entries are in one of the following forms:
+#
+# 1) RE-USING PTII CONTEXT-MENU ITEMS:
+#             TARGET-><KEPLER MENU LOCATION>=TARGET-><PTII MENU LOCATION>
+#
+#    Each Key and its corresponding Value are a delimited String
+#    representation of the hierarchical "path" to this menu item. "TARGET" is
+#    the thing the user is clicking on - can be one of:
+#     DIRECTOR
+#     ACTOR
+#     ATTRIBUTE
+#     PORT
+#     LINK
+#     WORKFLOW
+#
+#    For example, the "Get Documentation" menu item beneath the "Documentation"
+#    item on the Actor context menu would have a menuPath of:
+#     ACTOR->Documentation->Get\ Documentation.
+#
+#    Delimeter is "->" (no quotes), and *escaped* spaces are allowed within menu
+#    text strings, but not around the delimiters; i.e:
+#     "New->Graph\ Editor" is OK, but "File\ ->New" is not.
+#
+#    EXAMPLE:
+#             ACTOR->Configure\ Actor=ACTOR->Configure
+#
+#    This would take the Action that was originally assigned to the
+#    PTII actor context-menu item "Configure", and would
+#    re-assign it to a Kepler context menu that will be assigned to actors, and
+#    will be displayed as "Configure Actor"
+#
+#    * NOTE (i): the "key" part of the key=value pair (i.e. the KEPLER MENU
+#         LOCATION) is case-sensitive - The menu text shown in Kepler will be
+#         exactly the same as the "key" text.
+#
+#    * NOTE (ii): the "value" part of the key=value pair (i.e. the PTII MENU
+#         LOCATION) is *not* case-sensitive - so you don't need to worry about
+#         whether the original PTII menu was File->Print or File->print - either
+#         form will work.
+#
+#    * NOTE (iii): the "value" part of the key=value pair ***MUST*** contain at
+#         least one delimiter ("->"), otherwise it will be assumed to be a
+#         classname; see section (2):
+#
+# 2) INSTANTIATING NEW KEPLER ACTIONS:
+#             <KEPLER MENU LOCATION>=fully.qualified.Classname
+#
+#    Again, each Key is a delimited String representation of the
+#    hierarchical "path" to this Kepler context menu item (see above).
+#    Each value is a fully-qualified classname of a class that implements the
+#    javax.swing.Action interface, and which will be instantiated and assigned
+#    to the menu location specified in the key.
+#
+#    * NOTE (iv): the "key" part of the key=value pair (i.e. the KEPLER MENU
+#         LOCATION) is case-sensitive - see explanation in NOTE (i), above.
+#
+#    * NOTE (v): the "value" part of the key=value pair is also case-sensitive
+#         when using this fully.qualified.Classname form. it should match the
+#         case of the actual fully.qualified.Classname exactly. Also, the
+#         "value" MUST NOT start with the TARGET
+#         (i.e. NOT like ACTOR->my.class.Name), but should comprise only the
+#         fully-qualified classname on its own
+#
+# 3) NOTE ON ACCELERATOR KEY ASSIGNMENTS:
+#
+#    To add accelerator key assignments (Alt+whatever), and thus show the
+#    relevant letter of the menu name as underlined, add a tilde (~) before
+#    the letter that should be the accelerator, but ONLY IN THE KEY  - the part
+#    before the "=", but after the TARGET (ACTOR-> or DIRECTOR-> etc);
+#    for example, in the "Configure\ Actor" context menu, to make the
+#    "A" an accelerator key (so the user can access it by typing Alt+A), and to
+#    add an underline below the "A", the mapping entry would look like this:
+#
+#             ACTOR->Configure\ ~Actor=ACTOR->Configure
+#
+#    NOTE: If you have more than one entry for a given menu, all entries
+#    *should* have the same accelerator key set; however, in the event that
+#    conflicting entries are found, only the *first* entry will be used.  For
+#    example, if the following mappings appear in this order:
+#
+#    DIRECTOR->~Documentation->Get\ Documentation=...etc
+#    DIRECTOR->Do~cumentation->Customize\ Documentation=...etc
+#
+#    ...then the first accelerator (the "D") will be the one that is assigned.
+#    This enables the inclusion of only one accelerator underscore on the first
+#    line, if desired, in order to enhance readability - instead of repeating
+#    the accelerator for all entries. Consequently, if the first occurence of a
+#    menu does *not* have an accelerator assigned, the menu will not have an
+#    accelerator key, even if a subsequent mapping does try to introduce a key!
+#
+# 4) ADDING MENU SEPARATORS:
+#
+#    To add a menu separator, add a key=value pair of the following form:
+#    TARGET->MenuName->MENU_SEPARATOR_<UNIQUE number>=<one or more chars>.
+#    So for example, a separator in a top-level context menu might look like
+#    this:
+#    ...
+#    ACTOR->Send\ to\ Back=ACTOR->Send\ to\ Back
+#    ACTOR->Bring\ to\ Front=ACTOR->Bring\ to\ Front
+#    ACTOR->MENU_SEPARATOR_1=line
+#    ACTOR->Edit\ Semantic\ Type...=ACTOR->Edit\ Semantic\ Type...
+#    ...etc
+#    The number after the "MENU_SEPARATOR_" MUST be unique for THIS particular
+#    menu - if it is not, only the first separator will appear in Kepler. One
+#    way is to assign an incrementing int to each menu separator (1, 2, 3.. etc)
+#    (note: they are not *required* to be in order - it's just easier to track)
+#    The choice of characters after the "=" is fairly arbitrary, provided
+#    there is at least one character, and none of the characters belong to the
+#    set of "special" characters (see important note below); however, you should
+#    be consistent to avoid confusion. I have chosen dashes to
+#    mimic the appearance of a menu separator, so it is obvious at a glance.
+#
+# * * * * * * * * * * * * IMPORTANT NOTE FOR ALL ENTRIES * * * * * * * * * * * *
+#
+#   The following characters MUST be escaped with a backslash:
+#      <whitespace>   :   #   !   \    =
+#   (EXCEPT where ":" "=" or " " are used as a delimeter between the key and
+#   its corresponding value). This means that any WHITESPACE characters
+#   *MUST* be escaped with a backslash, thus  \:
+#   for example:    WRONG - File->New->Workflow=File->New->Graph Editor
+#                 CORRECT - File->New->Workflow=File->New->Graph\ Editor
+#
+# 5) DEBUGGING:
+#    Edit module-manager/src/log4j.properties and add the following line:
+#       log4j.logger.org.kepler.gui.KeplerContextMenuFactory=DEBUG
+#    Note that the Context menus are not processed until a right click on
+#    an actor occurs.     
+#    See https://kepler-project.org/developers/reference/using-commons-logging
+#
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+################################################################################
+-->
+<config>
+  <!--
+  #############################
+  # DIRECTOR CONTEXT MENUS
+  #############################
+  
+  # ORIG PTII ITEMS:
+  # DIRECTOR->Listen\ to\ Director=***TODO***
+  #DIRECTOR->Appearance->Bring\ to\ Front=DIRECTOR->Appearance->Bring\ to\ Front
+  #DIRECTOR->Appearance->Send\ to\ Back=DIRECTOR->Appearance->Send\ to\ Back
+  -->
+  <pair>
+    <name>DIRECTOR->Configure Director</name>
+    <value>DIRECTOR->Customize->Configure</value>
+  </pair>
+  <pair>
+    <name>DIRECTOR->Customize Name</name>
+    <value>DIRECTOR->Customize->Rename</value>
+  </pair>
+  <pair>
+    <name>DIRECTOR->Documentation->Display</name>
+    <!--<value>DIRECTOR->Documentation->Get Documentation</value>-->
+    <value>org.kepler.gui.ShowDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>DIRECTOR->Documentation->Customize</name>
+    <value>DIRECTOR->Documentation->Customize Documentation</value>
+  </pair>
+  <pair>
+    <name>DIRECTOR->Documentation->Remove Customization</name>
+    <!-- <value>DIRECTOR->Documentation->Remove Custom Documentation</value> -->
+    <value>org.kepler.gui.RemoveCustomKeplerDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>DIRECTOR->View LSID</name>
+    <value>org.kepler.gui.lsid.LSIDViewerAction</value>
+  </pair>
+  <pair>
+    <name>DIRECTOR->MENU_SEPARATOR_1</name>
+    <value>-------------------</value>
+  </pair>
+  <!--
+  #############################
+  # ACTOR CONTEXT MENUS
+  #############################
+  
+  
+  # ACTOR->Configure\ Actor=org.kepler.gui.ActorDialogAction
+  -->
+  <pair>
+    <name>ACTOR->Configure Actor</name>
+    <value>ACTOR->Customize->Configure</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Customize Name</name>
+    <value>ptolemy.vergil.kernel.RenameDialogAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Configure Ports</name>
+    <value>ACTOR->Customize->Ports</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Configure Units</name>
+    <value>ACTOR->Customize->Units Constraints</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Open Actor</name>
+    <value>ACTOR->Open Actor</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Look Inside</name>
+    <value>ACTOR->Look Inside</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Get Metadata</name>
+    <!--<value>ACTOR->Get Metadata</value>-->
+    <value>org.ecoinformatics.seek.ecogrid.quicksearch.GetMetadataAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Compute Merge</name>
+    <value>ACTOR->Compute Merge</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Edit Merge Mappings</name>
+    <value>ACTOR->Edit Merge Mappings</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Documentation->Display</name>
+   <!--  <value>ACTOR->Documentation->Get Documentation</value> -->
+   <value>org.kepler.gui.ShowDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Documentation->Customize</name>
+    <value>ACTOR->Documentation->Customize Documentation</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Documentation->Remove Customization</name>
+    <!-- <value>ACTOR->Documentation->Remove Custom Documentation</value> -->
+    <value>org.kepler.gui.RemoveCustomKeplerDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->MENU_SEPARATOR_1</name>
+    <value>-------------------</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Listen to Actor</name>
+    <value>ptolemy.vergil.actor.ActorController$ListenToActorAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Suggest->Compatible Input</name>
+    <value>org.kepler.sms.gui.SuggestCompatibleInputAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Suggest->Compatible Output</name>
+    <value>org.kepler.sms.gui.SuggestCompatibleOutputAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Suggest->Similar Components</name>
+    <value>org.kepler.sms.gui.SuggestSimilarComponentsAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Semantic Type Annotation...</name>
+    <value>org.kepler.sms.gui.AnnotateComponentAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Save Archive (KAR)...</name>
+    <value>org.kepler.gui.kar.ExportActorArchiveAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Upload to Repository</name>
+    <value>org.kepler.gui.kar.ActorUploaderAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->View LSID</name>
+    <value>org.kepler.gui.lsid.LSIDViewerAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Preview</name>
+    <value>org.kepler.gui.PreviewActorAction</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Class Actions->Create Instance</name>
+    <value>ACTOR->Class Actions->Create Instance</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Class Actions->Create Subclass</name>
+    <value>ACTOR->Class Actions->Create Subclass</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Class Actions->Convert to Instance</name>
+    <value>ACTOR->Class Actions->Convert to Instance</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Convert to Class</name>
+    <value>ACTOR->Convert to Class</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Appearance->Bring to Front</name>
+    <value>ACTOR->Appearance->Bring to Front</value>
+  </pair>
+  <pair>
+    <name>ACTOR->Appearance->Send to Back</name>
+    <value>ACTOR->Appearance->Send to Back</value>
+  </pair>
+  <pair>
+    <!-- this is for states in modal models -->
+    <name>ACTOR->Add Refinement</name>
+    <value>ACTOR->Add Refinement</value>
+  </pair>
+  <pair>
+    <!-- this is for states in modal models -->
+    <name>ACTOR->Remove Refinement</name>
+    <value>ACTOR->Remove Refinement</value>
+  </pair>
+  <!--
+  
+  #############################
+  # ATTRIBUTE CONTEXT MENUS
+  #############################
+  
+  # ORIG PTII ITEMS:
+  -->
+  <pair>
+    <name>ATTRIBUTE->Configure Attribute</name>
+    <value>ATTRIBUTE->CUSTOMIZE->CONFIGURE</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->Customize Name</name>
+    <value>ptolemy.vergil.kernel.RenameDialogAction</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->Documentation->Display</name>
+    <!--   <value>ATTRIBUTE->Documentation->Get Documentation</value> -->
+    <value>org.kepler.gui.ShowDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->Documentation->Customize</name>
+    <value>ATTRIBUTE->Documentation->Customize Documentation</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->Documentation->Remove Customization</name>
+    <!-- <value>ATTRIBUTE->Documentation->Remove Custom Documentation</value> -->
+    <value>org.kepler.gui.RemoveCustomKeplerDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->MENU_SEPARATOR_1</name>
+    <value>-------------------</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->Appearance->Bring to Front</name>
+    <value>ATTRIBUTE->Appearance->Bring to Front</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->Appearance->Send to Back</name>
+    <value>ATTRIBUTE->Appearance->Send to Back</value>
+  </pair>
+  <pair>
+    <name>ATTRIBUTE->View LSID</name>
+    <value>org.kepler.gui.lsid.LSIDViewerAction</value>
+  </pair>
+  <pair>
+    <name>PORT->Configure Port</name>
+    <value>PORT->Customize->Configure</value>
+  </pair>
+  <pair>
+    <name>PORT->Customize Name</name>
+    <value>PORT->Customize Name</value>
+  </pair>
+  <pair>
+    <name>PORT->Documentation->Display</name>
+    <!--  <value>PORT->Documentation->Get Documentation</value> -->
+    <value>org.kepler.gui.ShowDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>PORT->Documentation->Customize</name>
+    <value>PORT->Documentation->Customize Documentation</value>
+  </pair>
+  <pair>
+    <name>PORT->Documentation->Remove Customization</name>
+    <!--  <value>PORT->Documentation->Remove Custom Documentation</value> -->
+    <value>org.kepler.gui.RemoveCustomKeplerDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>PORT->Listen to Port</name>
+    <value>PORT->Listen to Port</value>
+  </pair>
+  <pair>
+    <name>PORT->MENU_SEPARATOR_1</name>
+    <value>-------------------</value>
+  </pair>
+  <pair>
+    <name>PORT->Appearance->Send to Back</name>
+    <value>PORT->Appearance->Send to Back</value>
+  </pair>
+  <pair>
+    <name>PORT->Appearance->Bring to Front</name>
+    <value>PORT->Appearance->Bring to Front</value>
+  </pair>
+  <!--
+  #############################
+  # LINK (RELATION) CONTEXT MENUS
+  #############################
+  -->
+  <pair>
+    <name>LINK->Configure</name>
+    <value>LINK->Configure</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Rename</name>
+    <value>org.kepler.gui.RenameComponentEntityAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->MENU_SEPARATOR_1</name>
+    <value>-------------------</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Configure Workflow</name>
+    <value>WORKFLOW->Configure</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Type Check->Summary</name>
+    <value>org.kepler.gui.WorkflowTypeCheckerDialogAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Documentation->Display</name>
+    <!-- <value>WORKFLOW->Documentation->Get Documentation</value> -->
+    <value>org.kepler.gui.ShowDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Documentation->Customize</name>
+    <value>WORKFLOW->Documentation->Customize Documentation</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Documentation->Remove Customization</name>
+    <!--  <value>WORKFLOW->Documentation->Remove Custom Documentation</value> -->
+    <value>org.kepler.gui.RemoveCustomKeplerDocumentationAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->MENU_SEPARATOR_1</name>
+    <value>-------------------</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Semantic Type Annotation...</name>
+    <value>org.kepler.sms.gui.AnnotateComponentAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Semantic Search</name>
+    <value>org.kepler.gui.SemanticSearchDialogAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Suggest Channels</name>
+    <value>WORKFLOW->Suggest Channels</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Open Base Class</name>
+    <value>WORKFLOW->Open Base Class</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->UnitConstraints Solver</name>
+    <value>WORKFLOW->UnitConstraints Solver</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Configure Ports</name>
+    <value>WORKFLOW->Configure Ports</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Configure Units</name>
+    <value>WORKFLOW->Configure Units</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->Save Archive (KAR)...</name>
+    <value>org.kepler.gui.kar.ExportArchiveAction</value>
+  </pair>
+  <pair>
+    <name>WORKFLOW->View LSID</name>
+    <value>org.kepler.gui.lsid.LSIDViewerAction</value>
+  </pair>
+</config>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity name="File Copier" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:289:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wibke Sudholt</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The FileCopier actor copies a file to a specified directory. The actor outputs the file's new path. </p>
+
+<p>Specify an existing file to copy via the actor's input port, and choose a new file location with the destination port or parameter. If the specified destination directory does not exist, the actor will create it. If the destination file already exists, the actor can be instructed overwrite it. By default, the actor will not overwrite an existing file. To append the content of a specified file to an existing destination file, use the FileCopy actor.</p>
+
+<p>The FileCopier actor can also be used to move a file to the specified destination. To move (rather than copy) a file, select the move parameter.
+</p>
+</configure></property>
+<property name="port:directory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts the destination directory name. The directory name can also be specified with the directory parameter.</configure></property>
+<property name="port:newFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the new file path and name.</configure></property>
+<property name="port:oldFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts an existing file path and name. See FileParameter for more information about specifying paths.</configure></property>
+<property name="prop:directory" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The destination directory name. The directory name can be specified via either the directory port or parameter.</configure></property>
+<property name="prop:Overwrite existing" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should overwrite an existing destination file. By default, the actor will not overwrite an existing file.</configure></property>
+<property name="prop:Move files" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should move the specified file instead of copying it. By default, the actor will not move the specified file.</configure></property>
+</property>
+<property name="class" value="org.resurgence.actor.FileCopier" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1114:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="directory" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+<property name="oldFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="newFile" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#FileSystemActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#FileSystem" class="org.kepler.sms.SemanticType"/>
+</entity>

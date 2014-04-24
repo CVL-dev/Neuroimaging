@@ -1,0 +1,170 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="queryTestDB2" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="3.0.2">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={5, 191, 972, 499}}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[757, 390]">
+    </property>
+    <property name="0:annotation" class="ptolemy.kernel.util.Attribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="310.0, 85.0">
+        </property>
+        <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure><svg><text x="20" y="20" style="font-size:14; font-family:Arial; fill:darkgray">select rock type 'eolian sands' from south america.</text></svg></configure>
+        </property>
+        <property name="_hideName" class="ptolemy.data.expr.Parameter">
+        </property>
+        <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+        </property>
+    </property>
+    <property name="0:annotation2" class="ptolemy.kernel.util.Attribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="310.0, 60.0">
+        </property>
+        <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure><svg><text x="20" y="20" style="font-size:18; font-family:Arial; fill:blue">Querying DB2.
+</text></svg></configure>
+        </property>
+        <property name="_hideName" class="ptolemy.data.expr.Parameter">
+        </property>
+        <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+        </property>
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="Scheduler" class="ptolemy.domains.sdf.kernel.SDFScheduler">
+        </property>
+        <property name="allowDisconnectedGraphs" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+        <property name="vectorizationFactor" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="135.0, 60.0">
+        </property>
+    </property>
+    <entity name="DatabaseQuery" class="org.geon.DatabaseQuery">
+        <property name="outputType" class="ptolemy.kernel.util.StringAttribute" value="XML">
+            <property name="style" class="ptolemy.actor.gui.style.ChoiceStyle">
+                <property name="XML" class="ptolemy.kernel.util.StringAttribute" value="XML">
+                </property>
+                <property name="Record" class="ptolemy.kernel.util.StringAttribute" value="Record">
+                </property>
+                <property name="String" class="ptolemy.kernel.util.StringAttribute" value="String">
+                </property>
+            </property>
+        </property>
+        <property name="outputEachRowSeparately" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <doc>DatabaseQuery</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="320.0, 245.0">
+        </property>
+        <port name="dbcon" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="query" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="result" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <entity name="Query" class="org.geon.ConstOnce">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;SELECT * FROM  testpgap.pgap_geogagePMR AS PGAP inner join testpgap.lith_lith AS LL on (PGAP.loc_no=LL.loc_no) inner join testpgap.lith AS L on (PGAP.loc_no=L.loc_no) WHERE ( PGAP.continent  like 'South America' ) and ( LL.lith_code like '%E%' )&quot;">
+            <property name="style" class="ptolemy.actor.gui.style.LineStyle">
+            </property>
+        </property>
+        <doc>ConstOnce</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="200.0, 255.0">
+        </property>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+        </port>
+    </entity>
+    <entity name="OpenDBConnection" class="org.geon.OpenDBConnection">
+        <property name="catalog" class="ptolemy.kernel.util.StringAttribute">
+        </property>
+        <property name="driverName" class="ptolemy.kernel.util.StringAttribute" value="com.ibm.db2.jcc.DB2Driver">
+        </property>
+        <property name="databaseURL" class="ptolemy.kernel.util.StringAttribute" value="jdbc:db2://compute1.sdsc.geongrid.org:50000/testpgap">
+        </property>
+        <property name="username" class="ptolemy.kernel.util.StringAttribute" value="efrat">
+        </property>
+        <property name="password" class="ptolemy.kernel.util.StringAttribute">
+        </property>
+        <doc>OpenDBConnection</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="165.0, 195.0">
+        </property>
+        <port name="dbcon" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <entity name="XSLTActor" class="org.sdm.spa.XSLTActor">
+        <property name="XSLT File Path" class="ptolemy.kernel.attributes.FileAttribute" value="file:/C:/util/Projects/kepler/outreach/resources/data/geon/pgap.xsl">
+        </property>
+        <doc>XSLTActor</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="375.0, 215.0">
+        </property>
+        <port name="xmlIn" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="htmlOut" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+        </port>
+    </entity>
+    <entity name="BrowserUI" class="org.sdm.spa.BrowserUI">
+        <property name="fileToShow" class="ptolemy.kernel.attributes.FileAttribute" value="file:/C:/util/Projects/kepler/outreach/resources/data/geon/temp.html">
+        </property>
+        <property name="configFile" class="ptolemy.kernel.attributes.FileAttribute">
+        </property>
+        <doc>BrowserUI</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="505.0, 225.0">
+        </property>
+        <port name="fileOrURL" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+    </entity>
+    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+        <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+        </property>
+        <property name="title" class="ptolemy.kernel.util.StringAttribute">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="405.0, 295.0">
+        </property>
+        <port name="input" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+        </port>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <vertex name="vertex1" value="355.0, 260.0">
+        </vertex>
+    </relation>
+    <link port="DatabaseQuery.dbcon" relation="relation2"/>
+    <link port="DatabaseQuery.query" relation="relation"/>
+    <link port="DatabaseQuery.result" relation="relation5"/>
+    <link port="Query.output" relation="relation"/>
+    <link port="OpenDBConnection.dbcon" relation="relation2"/>
+    <link port="XSLTActor.xmlIn" relation="relation5"/>
+    <link port="XSLTActor.htmlOut" relation="relation4"/>
+    <link port="BrowserUI.fileOrURL" relation="relation4"/>
+    <link port="Display.input" relation="relation5"/>
+</entity>

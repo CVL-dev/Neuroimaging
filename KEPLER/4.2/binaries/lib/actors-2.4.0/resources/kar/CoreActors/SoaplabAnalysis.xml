@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<entity name="SoaplabAnalysis" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:378:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Nandita Mangal</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SoaplabAnalysis actor executes a standard Soaplab operation using a client created by the SoaplabServiceStarter actor and "set operations" specified by a SoaplabChooseOperation actor. The actor outputs a Soaplab client used by the SoaplabChooseResult actor, which specifies which results to return and display.</p>
+
+<p>Soaplab is a set of Web services providing access to (mainly) data analysis applications on remote computers. The Soaplab actors require an EBI-registered Web Service Description Language (WSDL) file. WSDL is a format for describing network services--from simple eBay watcher services to complex distributed applications. For a complete list of registered EBI-registered WSDLs, see http://www.ebi.ac.uk/soaplab/services.</p>
+
+<p>The actor receives a configured Soaplab client from the SoaplabServiceStarter actor. From the SoaplabAnalysis parameters, select a standard Soaplab operation (e.g., run) from the drop-down menu beside the soaplabMethodName parameter. Standard operations are present in every Soaplab service. Alternatively, enter a non-standard Soaplab method using the "OR Enter another Soaplab Method" parameter. </p>
+
+<p>The actor outputs a Soaplab client that is used by the ChooseResultsOperation actor to examine the Soaplab results and specify which results to return.</p>
+</configure></property>
+<property name="port:clientInput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> An input port that accepts information about the Soaplab client and its initial inputs. This information is passed to the actor by the SoaplabServiceStarter actor.</configure></property>
+<property name="port:clientOutput" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> An output port that broadcasts an object representing the Soaplab results. Use the ChooseResultsOperation actor to examine the results and specify the results to return.</configure></property>
+<property name="prop:soaplabMethodName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> A standard Soaplab operation (e.g., run) to perform. Standard operations are present in every Soaplab service. </configure></property>
+<property name="prop:OR Enter another Soaplab Method" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> An alternative Soaplab operation to perform. Operations must be defined by the Soaplab service via the WSDL file.</configure></property>
+</property>
+<property name="class" value="org.sdm.spa.SoaplabAnalysis" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1142:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="clientInput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="clientOutput" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="object" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WebServiceActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WebService" class="org.kepler.sms.SemanticType"/>
+</entity>

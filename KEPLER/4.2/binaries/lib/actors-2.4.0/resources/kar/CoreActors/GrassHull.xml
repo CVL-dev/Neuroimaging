@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<entity name="Grass Hull" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:249:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jianting Zhang</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The GRASSHull actor reads a set of (x,y) points, calculates the points that define the convex hull (i.e., the smallest polygon that contains the given points), and saves the hull points to a file. The actor outputs the number of points in the convex hull, as well as the name of the file that contains the calculated hull points.</p>
+
+<p>The actor is similar to the ConvexHull actor, only it is based on GRASS (Geographic Resources Analysis Support System), which is an open source software toolkit used to manage and analyze geospatial data and produce graphics and maps. For more information about GRASS, see http://grass.itc.it/.</p>
+
+<p>The pointFileName port actor accepts a set of (x,y) points as a tab-delimited text file. Use the hullFileName input port to specify a name for the generated output file. </p>
+
+<p>The actor outputs the number of (x,y) pairs contained in the generated hull file via the numHullPoint point, and the name of the convex hull file via the hullFileResult port. Note that the value of the hullFileName input port and the hullFileResult port are the same (the output is used as a trigger).</p></configure></property>
+<property name="port:hullFileResult" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the hull file name (the output is used as a trigger). The value is the same as that of the hullFileName input.</configure></property>
+<property name="port:hullFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a name to be given to the output convex hull point list file</configure></property>
+<property name="port:pointFileName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a tab-delimited text file containing (x,y) input points</configure></property>
+<property name="port:numHullPoint" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the number of (x,y) pairs in the hull file.</configure></property>
+</property>
+<property name="class" value="org.ecoinformatics.seek.gis.grass.GISHullActor" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1075:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="pointFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="hullFileName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="numHullPoint" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="int" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="hullFileResult" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#GISFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#GeometricOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

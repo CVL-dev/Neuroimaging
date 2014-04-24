@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<entity name="OpalClient" class="ptolemy.kernel.ComponentEntity">
+  <property name="entityId"  value="urn:lsid:kepler-project.org:actor:547:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Opal client for Kepler</configure></property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Luca Clementi</configure></property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>1.0-alpha</configure></property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+<h1>
+This actor can be used to access Opal based serivce.
+</h1>
+<p>If you modify the URL in the properties editor you have to commit and reopen the properties editor.</p>
+<p>Below there is the documentation of the service pointed by the URL.</p>
+
+    </configure></property>
+  </property>
+  <property name="class" value="edu.sdsc.nbcr.opal.OpalClient" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:kepler-project.org:class:547:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#WebServiceActor" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:2:1#WebService" class="org.kepler.sms.SemanticType"/>
+</entity>

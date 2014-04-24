@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<property name="IconLink" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:700:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.vergil.basic.export.web.IconLink" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="displayText" class="ptolemy.data.expr.StringParameter" value="http://ptolemy.org">
+</property>
+
+<property name="height" class="ptolemy.data.expr.Parameter" value="1">
+</property>
+
+<property name="width" class="ptolemy.data.expr.Parameter" value="60">
+</property>
+
+<property name="style" class="ptolemy.actor.gui.style.TextStyle">
+    <property name="height" class="ptolemy.data.expr.Parameter" value="height">
+    </property>
+    <property name="width" class="ptolemy.data.expr.Parameter" value="width">
+    </property>
+</property>
+
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+
+<property name="linkTarget" class="ptolemy.vergil.basic.export.web.LinkTarget" value="_lightbox">
+</property>
+
+<property name="_icon" class="ptolemy.vergil.icon.TextIcon">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowWebExport">
+</property>
+
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: IconLink.java 63832 2012-06-28 18:03:37Z ltrnc $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Attribute specifying a URI to link to from an icon.&#10; Using the &lt;i&gt;linkTarget&lt;/i&gt; parameter, you can control how the&#10; link is displayed.&#10; &lt;p&gt;&#10; To use this, drag it onto an icon in your model. Then double&#10; click on that icon to set the URL to link to. The &lt;i&gt;linkTarget&lt;/i&gt;&#10; parameter specifies whether the link should be opened in a&#10; new browser window (the default), in the same browser window,&#10; in a lightbox, etc.&#10; &lt;p&gt;&#10; Note that this attribute can be used in combination with&#10; {@link LinkToOpenTableaux}. The latter provides a hyperlink that works&#10; within Vergil, whereas this attribute provides a hyperlink&#10; that works in an exported HTML page.  For example,&#10; LinkToOpenTableaux might be used to provide a hyperlink to another&#10; model (a pointer to its MoML file), so that double clicking&#10; on the container of the LiveLink attribute opens the other&#10; model. If that container also contains an instance of&#10; IconLink, then when the model is exported to a web page,&#10; the container's icon can become a link to the exported page&#10; for the other model.</configure></property>
+<property name="prop:height" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the height of the editing box.  This is an int that defaults to 20.</configure></property>
+<property name="prop:width" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the width of the editing box.  This is an int that defaults to 60.</configure></property>
+<property name="prop:displayText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter giving the text to display in the Ptolemy model.  This defaults to &quot;Content for Export to Web&quot;.</configure></property>
+<property name="prop:linkTarget" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Parameter specifying the target for the link.  The possibilities are:  &lt;ul&gt;  &lt;li&gt;&lt;b&gt;_lightbox&lt;/b&gt;: Open in a lightbox-style popup frame.  &lt;li&gt;&lt;b&gt;_blank&lt;/b&gt;: Open in a new window or tab.  &lt;li&gt;&lt;b&gt;_self&lt;/b&gt;: Open in the same frame as it was clicked.  &lt;li&gt;&lt;b&gt;_parent&lt;/b&gt;: Open in the parent frameset.  &lt;li&gt;&lt;b&gt;_top&lt;/b&gt;: Open in the full body of the window.  &lt;li&gt;&lt;b&gt;&lt;i&gt;framename&lt;/i&gt;&lt;/b&gt;: Open in a named frame.  &lt;/ul&gt;  The default is &quot;_lightbox&quot;.</configure></property>
+</property></property>

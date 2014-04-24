@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+      "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width='420.0' height='700.0'>
+
+<script type="text/ecmascript">
+
+<![CDATA[
+     function show(tid) {
+         if (lastMsg != null) {
+            lastMsg.setAttribute("visibility", "hidden");
+         }
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "visible");
+         obj.setAttribute("fill", "navy");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "#5f7f8f");
+     }
+     function unshow(tid) {
+         obj = svgDocument.getElementById(tid);
+         obj.setAttribute("visibility", "hidden");
+         obj = svgDocument.getElementById(tid+"Polygon");
+         obj.setAttribute("fill", "white");
+         if (lastMsg != null) {
+            lastMsg.setAttribute("fill", "brown");
+            lastMsg.setAttribute("visibility", "visible");
+         }
+     }
+     var lastCircle;
+     var lastMsg; 
+// ]]>
+
+</script>
+
+<text id='properties' visibility = 'hidden' properties='top Q left A right P bot F leftPadding 40.0 topPadding 31.102725426581742 diagramWidth 340.0 triangleDiagramHeight 294.44863728670913' />
+<rect x='0' y='0' rx='5' ry='5' width='420.0' height='700.0' fill='#f4f4f4' />
+<text x='195.0' y='21.102725426581742' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >Q</text>
+<text x='10.0' y='325.55136271329087' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >A</text>
+<text x='385.0' y='325.55136271329087' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >P</text>
+<text x='195.0' y='635.0' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >F</text>
+<polygon id='quartzolitePolygon' points='193.0,60.54758915525265 227.0,60.54758915525265 210.0,31.102725426581742' onmouseover='show("quartzolite")' onmouseout='unshow("quartzolite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='quartzolite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartzolite</text>
+<polygon id='quartzrichPolygon' points='193.0,60.54758915525265 227.0,60.54758915525265 278.0,148.88218034126538 142.0,148.88218034126538' onmouseover='show("quartzrich")' onmouseout='unshow("quartzrich")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='quartzrich' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartz rich granitic</text>
+<polygon id='alkfeldgranitePolygon' points='142.0,148.88218034126538 155.6,148.88218034126538 101.20000000000002,266.661635255949 74.00000000000003,266.661635255949' onmouseover='show("alkfeldgranite")' onmouseout='unshow("alkfeldgranite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='alkfeldgranite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+alkali feldspar granite</text>
+<polygon id='syenogranitePolygon' points='155.6,148.88218034126538 189.6,148.88218034126538 169.2,266.661635255949 101.20000000000002,266.661635255949' onmouseover='show("syenogranite")' onmouseout='unshow("syenogranite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='syenogranite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+syeno granite</text>
+<polygon id='monzogranitePolygon' points='189.6,148.88218034126538 230.39999999999998,148.88218034126538 250.8,266.661635255949 169.2,266.661635255949' onmouseover='show("monzogranite")' onmouseout='unshow("monzogranite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='monzogranite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+monzo granite</text>
+<polygon id='granodioritePolygon' points='230.39999999999998,148.88218034126538 264.4,148.88218034126538 318.8,266.661635255949 250.8,266.661635255949' onmouseover='show("granodiorite")' onmouseout='unshow("granodiorite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='granodiorite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+granodiorite</text>
+<polygon id='tonalitePolygon' points='264.4,148.88218034126538 278.0,148.88218034126538 346.0,266.661635255949 318.8,266.661635255949' onmouseover='show("tonalite")' onmouseout='unshow("tonalite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='tonalite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+tonalite</text>
+<polygon id='qrzalkfeldsyenitePolygon' points='74.00000000000003,266.661635255949 101.20000000000002,266.661635255949 80.80000000000003,310.82893084895545 48.50000000000003,310.82893084895545' onmouseover='show("qrzalkfeldsyenite")' onmouseout='unshow("qrzalkfeldsyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='qrzalkfeldsyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartz alkali feldspar syenite</text>
+<polygon id='quartzsyenitePolygon' points='101.20000000000002,266.661635255949 169.2,266.661635255949 161.55,310.82893084895545 80.80000000000003,310.82893084895545' onmouseover='show("quartzsyenite")' onmouseout='unshow("quartzsyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='quartzsyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartz syenite</text>
+<polygon id='quartzmonzonitePolygon' points='169.2,266.661635255949 250.8,266.661635255949 258.45,310.82893084895545 161.55,310.82893084895545' onmouseover='show("quartzmonzonite")' onmouseout='unshow("quartzmonzonite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='quartzmonzonite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartz monzonite</text>
+<polygon id='quartzmonzoPolygon' points='250.8,266.661635255949 318.8,266.661635255949 339.2,310.82893084895545 258.45,310.82893084895545' onmouseover='show("quartzmonzo")' onmouseout='unshow("quartzmonzo")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='quartzmonzo' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartz monzodiorite quartz monzogabbro</text>
+<polygon id='quartzPolygon' points='318.8,266.661635255949 346.0,266.661635255949 371.5,310.82893084895545 339.2,310.82893084895545' onmouseover='show("quartz")' onmouseout='unshow("quartz")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='quartz' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+quartz diorite quartz gabbro quartz anorthosite</text>
+<polygon id='alkfeldsyenitePolygon' points='48.50000000000003,310.82893084895545 80.80000000000003,310.82893084895545 74.00000000000003,325.55136271329087 40.00000000000003,325.55136271329087' onmouseover='show("alkfeldsyenite")' onmouseout='unshow("alkfeldsyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='alkfeldsyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+alkali feldspar syenite</text>
+<polygon id='syenitePolygon' points='80.80000000000003,310.82893084895545 161.55,310.82893084895545 159.0,325.55136271329087 74.00000000000003,325.55136271329087' onmouseover='show("syenite")' onmouseout='unshow("syenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='syenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+syenite</text>
+<polygon id='monzonitePolygon' points='161.55,310.82893084895545 258.45,310.82893084895545 261.0,325.55136271329087 159.0,325.55136271329087' onmouseover='show("monzonite")' onmouseout='unshow("monzonite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='monzonite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+monzonite</text>
+<polygon id='monzoPolygon' points='258.45,310.82893084895545 339.2,310.82893084895545 346.0,325.55136271329087 261.0,325.55136271329087' onmouseover='show("monzo")' onmouseout='unshow("monzo")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='monzo' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+monzodiorite monzogabbro</text>
+<polygon id='diogabanorthPolygon' points='339.2,310.82893084895545 371.5,310.82893084895545 380.0,325.55136271329087 346.0,325.55136271329087' onmouseover='show("diogabanorth")' onmouseout='unshow("diogabanorth")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='diogabanorth' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+diorite gabbro anorthosite</text>
+<polygon id='foidbearalkfeldsyenitePolygon' points='40.00000000000003,325.55136271329087 74.00000000000003,325.55136271329087 91.00000000000003,354.99622644196177 57.00000000000003,354.99622644196177' onmouseover='show("foidbearalkfeldsyenite")' onmouseout='unshow("foidbearalkfeldsyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidbearalkfeldsyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid bearing alkali feldspar syenite</text>
+<polygon id='foidbearsyenitePolygon' points='74.00000000000003,325.55136271329087 159.0,325.55136271329087 176.0,354.99622644196177 91.00000000000003,354.99622644196177' onmouseover='show("foidbearsyenite")' onmouseout='unshow("foidbearsyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidbearsyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid bearing syenite</text>
+<polygon id='foidbearmonzonitePolygon' points='159.0,325.55136271329087 261.0,325.55136271329087 244.0,354.99622644196177 176.0,354.99622644196177' onmouseover='show("foidbearmonzonite")' onmouseout='unshow("foidbearmonzonite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidbearmonzonite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid bearing monzonite</text>
+<polygon id='foidbearmonzoPolygon' points='261.0,325.55136271329087 346.0,325.55136271329087 329.0,354.99622644196177 244.0,354.99622644196177' onmouseover='show("foidbearmonzo")' onmouseout='unshow("foidbearmonzo")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidbearmonzo' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid bearing monzodiorite foid bearing monzogabbro</text>
+<polygon id='foidbeardiogabanorthPolygon' points='346.0,325.55136271329087 380.0,325.55136271329087 363.0,354.99622644196177 329.0,354.99622644196177' onmouseover='show("foidbeardiogabanorth")' onmouseout='unshow("foidbeardiogabanorth")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidbeardiogabanorth' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid bearing diorite foid bearing gabbro foid bearing anorthosite</text>
+<polygon id='foidsyenitePolygon' points='57.00000000000003,354.99622644196177 91.00000000000003,354.99622644196177 155.6,502.22054508531636 142.0,502.22054508531636' onmouseover='show("foidsyenite")' onmouseout='unshow("foidsyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidsyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid syenite</text>
+<polygon id='foidmonzosyenitePolygon' points='91.00000000000003,354.99622644196177 210.0,354.99622644196177 210.0,502.22054508531636 155.6,502.22054508531636' onmouseover='show("foidmonzosyenite")' onmouseout='unshow("foidmonzosyenite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidmonzosyenite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foidmonzo syenite</text>
+<polygon id='foidmonzoPolygon' points='210.0,354.99622644196177 329.0,354.99622644196177 264.4,502.22054508531636 210.0,502.22054508531636' onmouseover='show("foidmonzo")' onmouseout='unshow("foidmonzo")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidmonzo' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid monzosyenite foid gabbro</text>
+<polygon id='foiddiogabPolygon' points='329.0,354.99622644196177 363.0,354.99622644196177 278.0,502.22054508531636 264.4,502.22054508531636' onmouseover='show("foiddiogab")' onmouseout='unshow("foiddiogab")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foiddiogab' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foid diorite foid gabbro</text>
+<polygon id='foidolitePolygon' points='142.0,502.22054508531636 278.0,502.22054508531636 210.0,620.0' onmouseover='show("foidolite")' onmouseout='unshow("foidolite")'  fill='white' style='stroke: black; stroke-width: 0.4; ' />
+<text id='foidolite' x='210.0' y='640.0' fill='brown' text-anchor='middle' visibility='hidden' style='font-weight:bold; font-size: 12pt; font-family: serif; ' >
+foidolite</text>
+</svg>
+

@@ -1,0 +1,672 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Job_Submission_Using_GenericJobLauncher" class="ptolemy.actor.TypedCompositeActor">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:787:15">
+    </property>
+    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.TypedCompositeActor">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="null">
+        </property>
+    </property>
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="9.1.devel">
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org/ns/:15960:1:108:urn:lsid:kepler-project.org/ns/:27999:753:77:urn:lsid:kepler-project.org/ns/:27999:765:47">
+    </property>
+    <property name="SDF Director" class="ptolemy.domains.sdf.kernel.SDFDirector">
+        <property name="iterations" class="ptolemy.data.expr.Parameter" value="AUTO">
+        </property>
+        <property name="vectorizationFactor" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="allowDisconnectedGraphs" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="allowRateChanges" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="constrainBufferSizes" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="period" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="synchronizeToRealTime" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="Scheduler" class="ptolemy.domains.sdf.kernel.SDFScheduler">
+            <property name="constrainBufferSizes" class="ptolemy.data.expr.Parameter" value="constrainBufferSizes">
+            </property>
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;The SDF Director is often used to oversee fairly simple, sequential workflows in which the director can determine the order of actor invocation from the workflow. Types of workflows that would run well under an SDF Director include processing and reformatting tabular data, converting one data type to another, and reading and plotting a series of data points. A workflow in which an image is read, processed (rotated, scaled, clipped, filtered, etc.), and then displayed, is also an example of a sequential workflow that requires a director simply to ensure that each actor fires in the proper order (i.e., that each actor executes only after it receives its required inputs).&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director is very efficient and will not tax system resources with overhead. However, this efficiency requires that certain conditions be met, namely that the data consumption and production rate of each actor in an SDF workflow be constant and declared. If an actor reads one piece of data and calculates and outputs a single result, it must always read and output a single token of data. This data rate cannot change during workflow execution and, in general, workflows that require dynamic scheduling and/or flow control cannot use this director. Additionally, the SDF Director has no understanding of passing time (at least by default), and actors that depend on a notion of time may not work as expected. For example, a TimedPlotter actor will plot all values at time zero when used in SDF. &lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the SDF Director requires that all actors in its workflow be connected. Otherwise, the director cannot account for concurrency between disconnected workflow parts. Usually, a PN Director should be used for workflows that contain disconnected actors; however, the SDF Director's allowDisconnectedGraphs parameter may also be set to true. The SDF Director will then schedule each disconnected &quot;island&quot; independently. The director cannot infer the sequential relationship between disconnected actors (i.e., nothing forces the director to finish executing all actors on one island before firing actors on another). However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF model indicate an error.&lt;/p&gt;&#10; &#10;&lt;p&gt;Because SDF Directors schedule actors to fire only after they receive their inputs, workflows that require loops (feeding an actor's output back into its input port for further processing) can cause &quot;deadlock&quot; errors. The deadlock errors occur because the actor depends on its own output value as an initial input. To fix this problem, use a SampleDelay actor to generate and inject an initial input value into the workflow.&lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director determines the order in which actors execute and how many times each actor needs to be fired to complete a single iteration of the workflow. This schedule is calculated BEFORE the director begins to iterate the workflow. Because the SDF Director calculates a schedule in advance, it is quite efficient. However, SDF workflows must be static. In other words, the same number of tokens must be consumed/produced at every iteration of the workflow. Workflows that require dynamic control structures, such as a BooleanSwitch actor that sends output on one of two ports depending on the value of a 'control', cannot be used with an SDF Director because the number of tokens on each output can change for each execution.&lt;/p&gt;&#10;&#10;&lt;p&gt;Unless otherwise specified, the SDF Director assumes that each actor consumes and produces exactly one token per channel on each firing. Actors that do not follow the one-token-per-channel firing convention (e.g., Repeat or Ramp) must declare the number of tokens they produce or consume via the appropriate parameters. &lt;/p&gt;&#10;&#10;&lt;p&gt;The number of times a workflow is iterated is controlled by the director's iterations parameter. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. &lt;/p&gt;&#10;&#10;&lt;p&gt;The amount of data processed by an SDF workflow is a function of both the number of times the workflow iterates and the value of the director's vectorizationFactor parameter. The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. &lt;/p&gt;&#10;&#10;&lt;p&gt;The SDF Director has several advanced parameters that are generally only relevant when an SDF workflow contains composite components. In most cases the period, timeResolution, synchronizeToRealTime, allowRateChanges, timeResolution, and constrainBufferSizes parameters can be left at their default values.&lt;/p&gt;&#10;&#10;&lt;p&gt;For more information about the SDF Director, see the Ptolemy documentation (http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf).&lt;/p&gt;&#10;&#10;</configure></property>
+<property name="prop:allowDisconnectedGraphs" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to allow disconnected actors in the workflow (by default, all actors are required to be connected). If disconnected actors are permitted, the SDF Director will schedule each disconnected 'island' independently. Nothing &quot;forces&quot; the director to finish executing all actors on one island before firing actors on another. However, the order of execution within each island should be correct. Usually, disconnected graphs in an SDF workflow indicate an error.</configure></property>
+<property name="prop:allowRateChanges" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether dynamic rate changes are permitted or not. By default, rate changes are not permitted, and the director will perform a check to disallow such workflows. If the parameter is selected, then workflows that require rate parameters to be modified during execution are valid, and the SDF Director will dynamically compute a new schedule at runtime. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time precision used by this director. All time values are rounded to the nearest multiple of this number. The value is a double that defaults to &quot;1E-10&quot; (which is 10-10). This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:constrainBufferSizes" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether buffer sizes are fixed. By default, buffers are fixed, and attempts to write to the buffer that cause the buffer to exceed its scheduled size result in an error. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:iterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify the number of times a workflow is iterated. By default, this parameter is set to &quot;0&quot;. Note that &quot;0&quot; does not mean &quot;no iterations.&quot; Rather, &quot;0&quot; means that the workflow will iterate forever. Values greater than zero specify the actual number of times the director should execute the entire workflow. A value of 1, meaning that the director will run the workflow once, is often the best setting when building an SDF workflow. </configure></property>
+<property name="prop:vectorizationFactor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vectorizationFactor is used to increase the efficiency of a workflow by increasing the number of times actors fire each time the workflow iterates. If the parameter is set to a positive integer (other than 1), the director will fire each actor the specified number of times more than normal. The default is 1, indicating that no vectorization should be performed. Keep in mind that changing the vectorizationFactor parameter changes the meaning of a nested SDF workflow and may cause deadlock in a workflow that uses it. </configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the execution should synchronize to real time or not. By default, the director does not synchronize to real time. If synchronize is selected, the director will only process the workflow when elapsed real time matches the product of the period parameter and the iteration count. Note: if the period parameter has a value of 0.0 (the default), then selecting this parameter has no effect. This is an advanced parameter that can usually be left at its default value.</configure></property>
+<property name="prop:period" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The time period of each iteration. The value is a double that defaults to 0.0, which means that the director does not increment workflow time. If the value greater than 0.0, the actor will increment workflow time each time it fires. This is an advanced parameter that can usually be left at its default value. </configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:764:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.sdf.kernel.SDFDirector">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:directorclass:1:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Director">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Director">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{160.0, 95.0}">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:director:1:1:urn:lsid:kepler-project.org/ns/:15960:2:1">
+        </property>
+    </property>
+    <property name="TargetHost" class="ptolemy.data.expr.StringParameter" value="[user@]host[:port]">
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;StringParameter specifies a persistent string. &lt;/p&gt;&#10;&#10;&lt;p&gt;Change the name of the StringParameter to better identify the specified value (right-click the parameter and select &quot;Customize Name&quot; from the menu). Other actors may refer to the StringParameter using the $NAME syntax (e.g. $Parameter).&#10;&lt;/p&gt;</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:758:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.data.expr.StringParameter">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1185:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+        </property>
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[195.0, 355.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:421:1">
+        </property>
+    </property>
+    <property name="IdentityFile" class="ptolemy.data.expr.StringParameter" value="/path/to/private/key/file">
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;StringParameter specifies a persistent string. &lt;/p&gt;&#10;&#10;&lt;p&gt;Change the name of the StringParameter to better identify the specified value (right-click the parameter and select &quot;Customize Name&quot; from the menu). Other actors may refer to the StringParameter using the $NAME syntax (e.g. $Parameter).&#10;&lt;/p&gt;</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:760:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.data.expr.StringParameter">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1185:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Parameter">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Parameter">
+        </property>
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 0.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+        <svg>
+          <text x="20" style="font-size:14; font-family:SansSerif; fill:red" y="20">-S-</text>
+        </svg>
+      </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[195.0, 335.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:421:1">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={58, 33, 1615, 820}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1274, 671]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.25">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{543.6, 290.40000000000003}">
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
+        </property>
+        <property name="_hideAllParameters" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="textSize" class="ptolemy.data.expr.Parameter" value="14">
+        </property>
+        <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+        </property>
+        <property name="fontFamily" class="ptolemy.data.expr.StringParameter" value="SansSerif">
+        </property>
+        <property name="bold" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="italic" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="This is an example of GeneicJobLauncher actor. This workflow submit a job that runs 'hostname' at allocated node.&#10;To run the workflow, you need first to configure 'TargetHost' and 'IdentityFile' parameters based on your information.&#10;If the value of the 'IdentityFile' parameter is empty, the 'SSH Session' actor will pop up a dialogue asking your account information.&#10;&#10;The GeneicJobLauncher actor currently supports multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF. &#10;Configure 'scheduler' parameter to fit your job scheduler type. &#10;&#10;More configuration options of the GeneicJobLauncher actor can be found at its documentation.&#10;&#10;Jianwu Wang, SDSC">
+            <property name="_style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="20">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="80">
+                </property>
+            </property>
+        </property>
+        <property name="center" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Use the Annotation attribute to annotate a workflow. Double-click the attribute to customize the content, font size, color, and basic formatting (bold and italics).</configure></property>
+<property name="prop:fontFamily" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font face. Select a font from the drop-down menu. The default is &quot;SansSerif&quot;.</configure></property>
+<property name="prop:italic" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to indicate that the type should be italics. By default, type will not be italicized.</configure></property>
+<property name="prop:bold" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to indicate that the type should be bold. By default, type will not be bold.</configure></property>
+<property name="prop:textColor" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font color. Specify a string representing an array of four elements: red, green, blue, and alpha, where alpha is transparency. The default is an opaque black, {0.0, 0.0, 0.0, 1.0}</configure></property>
+<property name="prop:textSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The font size. Select an integer from the drop-down menu or specify a new size by typing it directly into the value field.  The default is 14.</configure></property>
+<property name="prop:text" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The text of the annotation.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:767:6">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#WorkflowDocumentation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[110.0, 410.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:436:1:urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:8021:111:3:urn:lsid:gamma.msi.ucsb.edu/OpenAuth/:8309:37:5:urn:lsid:kepler-project.org/ns/:23141:118:1">
+        </property>
+    </property>
+    <entity name="Host" class="ptolemy.actor.lib.StringConst">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="$TargetHost">
+        </property>
+        <property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The StringConstant actor outputs a string specified via the actor's value parameter.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specifying strings with the StringConstant actor is convenient, as the actor does not require that strings be surrounded by quotes. The actor is often used to specify file paths, which can be selected using the Browse button available in the actor's parameters.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specified string values can include references to parameters within scope (i.e., parameters defined at the same level of the hierarchy or higher). &lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a string constant specified by the value parameter.  </configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time. </configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the actor. Specified strings do not require enclosing quotes. (To include a '$' sign in the string, enter '$$'.)</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:15960:3:8">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.StringConst">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1052:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#StringFunctionActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Constant">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[350.0, 190.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:204:1">
+        </property>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="Command Text" class="ptolemy.actor.lib.StringConst">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="hostname">
+        </property>
+        <property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The StringConstant actor outputs a string specified via the actor's value parameter.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specifying strings with the StringConstant actor is convenient, as the actor does not require that strings be surrounded by quotes. The actor is often used to specify file paths, which can be selected using the Browse button available in the actor's parameters.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specified string values can include references to parameters within scope (i.e., parameters defined at the same level of the hierarchy or higher). &lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a string constant specified by the value parameter.  </configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time. </configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the actor. Specified strings do not require enclosing quotes. (To include a '$' sign in the string, enter '$$'.)</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:755:4">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.StringConst">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1052:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#StringFunctionActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Constant">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[445.0, 290.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:204:1:urn:lsid:kepler-project.org/ns/:15960:3:14">
+        </property>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="SSH Session" class="org.kepler.actor.ssh.SshSession">
+        <property name="target" class="ptolemy.actor.parameters.PortParameter" value="">
+        </property>
+        <property name="identity" class="ptolemy.data.expr.FileParameter" value="">
+        </property>
+        <property name="gridcert" class="ptolemy.data.expr.FileParameter" value="">
+        </property>
+        <property name="gridproxy" class="ptolemy.data.expr.FileParameter" value="">
+        </property>
+        <property name="portforwarding" class="ptolemy.actor.parameters.PortParameter" value="{}">
+        </property>
+        <property name="postpone" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="closeAtEnd" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Norbert Podhorszki</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&#10; &lt;p&gt;The SSHSession actor creates an SSH session to a remote host.  If requested, the session will not be opened until the first actor that uses SSH is invoked by the workflow (e.g., an SSHExecuteCmd actor). This actor is used to provide a private-key for public-key authentication, and to connect to a remote machine at a certain point in the workflow (e.g., at the very beginning so that a password is specified then rather than during execution).&lt;/p&gt;&#10;   &#10;&lt;p&gt;The actor outputs a connection reference (the name of the host target), which is retrieved by other actors so that they can use the connection. If the target is an empty string or &quot;local&quot;, the actor does nothing, and all commands (in other SSH actors) will be executed locally using Java Runtime.&lt;/p&gt;&#10;&#10;&lt;p&gt;If the parameter &lt;i&gt;postpone&lt;/i&gt; is true, the connection is not established until the first remote operation is executed. However, one of the main purposes of this actor is to request passwords and make a connection at the beginning of the workflow. The default is false. &lt;/p&gt;&#10;&#10;&lt;p&gt;If the parameter &lt;i&gt;closeAtEnd&lt;/i&gt; is true, the session will be closed at the end of the workflow. If false, the session will remain open. The default is false, as the underlying SSH package has only one session (within Kepler) to a given user@host:port.   If two workflows are executing on the same host, and the SSH session is closed at the end of one of the workflows, the other will likely experience a broken operation.&lt;/p&gt;&#10;&#10;&lt;p&gt;The &lt;i&gt;failed&lt;/i&gt; output port emits a BooleanToken indicating whether the connection failed: 'true' if the &lt;i&gt;postpone&lt;/i&gt; flag is false and the connection failed, otherwise, 'false'. The port is used to throw an exception or stop a workflow that cannot run without  a connection, or to successively try out other hosts.&lt;/p&gt;&#10;&#10;&lt;p&gt;Port forwarding is supported. The 'portforwarding' parameter should have the format  &quot;-L port:host:hostport -R port:host:hostport ...&quot;. Many local and/or remote forwarding specification can be given.&lt;/p&gt;&#10;&#10;&#10;&#10;&#10;&#10;</configure></property>
+<property name="port:failed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A BooleanToken indicating whether the connection failed: 'true' if the &lt;i&gt;postpone&lt;/i&gt; flag is false and the connection failed, otherwise, 'false'. </configure></property>
+<property name="port:identity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path for the SSH identity file. Specify an identity path to connect to an SSH host without having to reenter the password.   </configure></property>
+<property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+<property name="port:portforwarding" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specification for local and/or port forwardings. Format: &quot;-L port:host:hostport -R port:host:hostport ...&quot;. Many local and/or remote forwarding specification can be given.  </configure></property>
+<property name="port:target_out" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A string that identifies the created session. The value is identical to the value of the specified target. If the target is specified as a parameter, you do not need to connect this port to pass the connection reference to downstream actors.  </configure></property>
+<property name="prop:closeAtEnd" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the connection to the host should be closed when the workflow terminates. If you run more than one workflow simultaneously on the same remote host, this flag should be false to avoid closing the session in one workflow while the others are still using it. &#10; </configure></property>
+<property name="prop:identity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The file path for the SSH identity file. Specify an identity path to connect to an SSH host without having to reenter the password.  </configure></property>
+<property name="prop:postpone" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to postpone the connection until the first remote operation is executed. The default is false, as one of the main purposes of this actor is to request passwords and make a connection at the beginning of the workflow.  </configure></property>
+<property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with SSH. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied.  This parameter is read once at initialize. </configure></property>
+<property name="prop:portforwarding" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specification for local and/or port forwardings. Format: &quot;-L port:host:hostport -R port:host:hostport ...&quot;. Many local and/or remote forwarding specification can be given.  </configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:759:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.ssh.SshSession">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1211:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+        </property>
+        <property name="semanticType21" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#SSH">
+        </property>
+        <property name="semanticType41" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:4:1#CPES">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[470.0, 200.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:507:1:urn:lsid:kepler-project.org/ns/:15960:6:2">
+        </property>
+        <port name="target" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="portforwarding" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="false">
+            </property>
+        </port>
+    </entity>
+    <entity name="Display2" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={633, 603, 484, 186}, maximized=false}">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[484, 164]">
+        </property>
+        <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+        </property>
+        <property name="suppressBlankLines" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="title" class="ptolemy.data.expr.StringParameter" value="">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yuhong Xiong, Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The Display actor reads tokens of any type via its input multiport, and displays each token on a separate line in a text display window.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specify the size of the text display window with the rowsDisplayed and columnsDisplayed parameters. Simply resizing the window onscreen does not persistently change the size when the workflow is saved, closed, and then re-opened. &lt;/p&gt;&#10;&#10;&lt;p&gt;If the input is a string token, then the actor strips the surrounding quotation marks before displaying the value.&lt;/p&gt; &#10;&#10;&lt;p&gt;Select the suppressBlankLines parameter to specify that the actor not add blank lines to the display. By default, the actor will add blank lines.&lt;/p&gt;&#10;&#10;&lt;p&gt;Note: this actor can consume large amounts of memory. It is not advisable to use it to display large output streams.&lt;/p&gt;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts tokens of any type.</configure></property>
+<property name="prop:suppressBlankLines" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should display blank lines (the default) or suppress them.</configure></property>
+<property name="prop:rowsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vertical size of the display, in rows. The value is an integer that defaults to 10.</configure></property>
+<property name="prop:columnsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The horizontal size of the display, in columns. The value is an integer that defaults to 40.</configure></property>
+<property name="prop:title" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The title of the text display window. If specified, the value will appear in the title bar of the text display window.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:769:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.Display">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:883:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#TextualOutputActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[800.0, 300.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:7:1">
+        </property>
+    </entity>
+    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={678, 804, 484, 186}, maximized=false}">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[484, 164]">
+        </property>
+        <property name="rowsDisplayed" class="ptolemy.data.expr.Parameter" value="10">
+        </property>
+        <property name="columnsDisplayed" class="ptolemy.data.expr.Parameter" value="40">
+        </property>
+        <property name="suppressBlankLines" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="title" class="ptolemy.data.expr.StringParameter" value="">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yuhong Xiong, Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The Display actor reads tokens of any type via its input multiport, and displays each token on a separate line in a text display window.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specify the size of the text display window with the rowsDisplayed and columnsDisplayed parameters. Simply resizing the window onscreen does not persistently change the size when the workflow is saved, closed, and then re-opened. &lt;/p&gt;&#10;&#10;&lt;p&gt;If the input is a string token, then the actor strips the surrounding quotation marks before displaying the value.&lt;/p&gt; &#10;&#10;&lt;p&gt;Select the suppressBlankLines parameter to specify that the actor not add blank lines to the display. By default, the actor will add blank lines.&lt;/p&gt;&#10;&#10;&lt;p&gt;Note: this actor can consume large amounts of memory. It is not advisable to use it to display large output streams.&lt;/p&gt;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts tokens of any type.</configure></property>
+<property name="prop:suppressBlankLines" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether the actor should display blank lines (the default) or suppress them.</configure></property>
+<property name="prop:rowsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The vertical size of the display, in rows. The value is an integer that defaults to 10.</configure></property>
+<property name="prop:columnsDisplayed" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The horizontal size of the display, in columns. The value is an integer that defaults to 40.</configure></property>
+<property name="prop:title" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The title of the text display window. If specified, the value will appear in the title bar of the text display window.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:768:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.Display">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:883:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#TextualOutputActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[795.0, 215.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:7:1">
+        </property>
+    </entity>
+    <entity name="IdentityFile" class="ptolemy.actor.lib.StringConst">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="$IdentityFile">
+        </property>
+        <property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The StringConstant actor outputs a string specified via the actor's value parameter.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specifying strings with the StringConstant actor is convenient, as the actor does not require that strings be surrounded by quotes. The actor is often used to specify file paths, which can be selected using the Browse button available in the actor's parameters.&lt;/p&gt;&#10;&#10;&lt;p&gt;Specified string values can include references to parameters within scope (i.e., parameters defined at the same level of the hierarchy or higher). &lt;/p&gt;&#10;&#10;&lt;p&gt;NOTE: If using a PN Director, the 'firingCountLimit' parameter is often set to a finite integer (e.g. '1') so that the workflow will terminate. &lt;/p&gt;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts a string constant specified by the value parameter.  </configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time. </configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The limit on the number of times the actor will fire. The default value is 'NONE', meaning there is no limit on the number of time the constant will be provided to the output port. Any integer can be provided as a value for this parameter.</configure></property>
+<property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The value produced by the actor. Specified strings do not require enclosing quotes. (To include a '$' sign in the string, enter '$$'.)</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:761:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.StringConst">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1052:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#StringFunctionActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Constant">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[350.0, 240.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:204:1:urn:lsid:kepler-project.org/ns/:15960:3:8">
+        </property>
+        <port name="trigger" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="GenericJobLauncher" class="org.kepler.actor.job.GenericJobLauncher">
+        <property name="target" class="ptolemy.actor.parameters.PortParameter" value="">
+        </property>
+        <property name="cmdFile" class="ptolemy.actor.parameters.PortParameter" value="">
+        </property>
+        <property name="cmdFileLocal" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="executable file" class="ptolemy.data.expr.StringParameter" value="">
+        </property>
+        <property name="workdir" class="ptolemy.actor.parameters.PortParameter" value=".kepler-hpcc">
+        </property>
+        <property name="use given workdir" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="inputfiles" class="ptolemy.actor.parameters.PortParameter" value="{}">
+        </property>
+        <property name="remotefiles" class="ptolemy.actor.parameters.PortParameter" value="{}">
+        </property>
+        <property name="scheduler" class="ptolemy.actor.parameters.PortParameter" value="PBS">
+        </property>
+        <property name="Use default fork script" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="binary path" class="ptolemy.data.expr.StringParameter" value="">
+        </property>
+        <property name="job submit options" class="ptolemy.data.expr.StringParameter" value="">
+        </property>
+        <property name="numTasks" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+        <property name="Wait Until Status" class="ptolemy.data.expr.Parameter" value="NotInQueue">
+        </property>
+        <property name="Wait Until Sleep (seconds)" class="ptolemy.data.expr.Parameter" value="5">
+        </property>
+        <property name="cmdText" class="ptolemy.actor.parameters.PortParameter" value="hostname">
+            <property name="_style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Frankie Kwok, Chandrika Sivaramakrishnan, Jared Chase</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: GenericJobLauncher.xml 30999 2012-10-31 22:15:59Z jianwu $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&lt;p&gt;GenericJobLauncher actor is a generic actor that can create, submit and manage a job on a remote machine accessible through SSH. The user may choose to wait till the job has attained a specific status in the queue - for example till it is Running, Complete, Not in Queue etc.&lt;/p&gt;&#10;&#10;&lt;p&gt;This actor is based on the JobCreator, JobManager, JobSubmitter and JobStatus actors. It abstracts all the actions of these actors, and the control flow required to combine these in a job launching workflow.&lt;/p&gt;&#10;&#10;&lt;p&gt;Five more parameters are configurable in 'expert' mode. They are &quot;job submit options&quot; (optional parameters to pass to submitting a job), &quot;binary path&quot; (the full path to the jobmanager commands on the target machine), &quot;executable file&quot; (executable file's name parameter and port), &quot;use given workdir&quot; (use the value of parameter 'workdir' and doesn't create unique sub directory if selected), &quot;Use default fork script&quot; (flag to set if you want the actor to stage the default fork script). To enable Expert mode, double-click the actor and choose 'Preferences' button. In the popup dialogue, choose 'expert mode'.&lt;/p&gt;&#10;</configure></property>
+<property name="port:cmdFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The submit file to be used at job submission. Absolute (or relative to current dir of Java) file path should be provided. The job file must be provided here, or the contents can be specified in cmdText.</configure></property>
+<property name="port:logPort" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Logging information of job status or for any error messages.</configure></property>
+<property name="port:scheduler" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the job scheduler to be used. Should be a name, for which a supporter class exists as org.kepler.job.JobSupport{scheduler}.class</configure></property>
+<property name="port:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. Target in user@host:port format. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied. If target is &quot;local&quot; or empty, all commands will be executed locally.</configure></property>
+<property name="port:cmdText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The text of the job specification. The job specification must either  be provided in this parameter or the file name in cmdFile.</configure></property>
+<property name="port:dependentJob" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>One or more jobs that must successfully complete before this job can run.</configure></property>
+<property name="port:inputfiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string array of local input files that will be copied to the working directory. Absolute path names, or relative to current dir of the running java virtual machine, should be provided.</configure></property>
+<property name="port:jobOut" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Logging information of job status query. Useful to inform user about problems at unsuccessful status query but it also prints out job status and jobid on successful query. This token can be used (delaying it with a Sleep actor) to ask its Status again and again until the job is finished or aborted. This port is an output port of type Object.</configure></property>
+<property name="port:success" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>boolean flag to indicate if job launch was successful</configure></property>
+<property name="port:workdir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The working directory in which the actual job submission command will be executed. It should be an absolute path, or a relative one. In the latter case on remote machine, the directory path will be relative to the user's home directory (coming from the use of ssh). &lt;/p&gt; By default, a new unique sub directory is created within this workdir based on the job id created by kepler. Job is run from this sub directory. This can be overwritten by setting the parameter &quot;use given workdir&quot;.</configure></property>
+<property name="port:remotefiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string array of remote input files that will be copied to the working directory. Absolute path names, or relative to the user home dir on the remote host should be provided.</configure></property>
+<property name="prop:cmdFile" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The submit file to be used at job submission. Absolute (or relative to current dir of Java) file path should be provided. The job file must be provided here, or the contents can be specified in cmdText.</configure></property>
+<property name="prop:use given workdir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>By default, Kepler creates a unique sub directory within workdir based on the the job id it creates for the job. Job is run from this sub directory. Set this flag to true if you want job to be run directly from workdir instead of a subdir.</configure></property>
+<property name="prop:job submit options" class="ptolemy.kernel.util.ConfigurableAttribute"><configure></configure></property>
+<property name="prop:scheduler" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The name of the job scheduler to be used. It currently support multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF, and can be extended for more. It should be a name, for which a supporter class exists as org.kepler.job.JobSupport{scheduler}.class.</configure></property>
+<property name="prop:Wait Until Status" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Wait until the job has a reached specific status. The available status' that can be reached are: any, wait, running, not in queue, and error.</configure></property>
+<property name="prop:numTasks" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The number of tasks for the job - used in a task parallel job</configure></property>
+<property name="prop:executable file" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The executable file to be used at job submission. Absolute path names, or relative to current dir of the running java virtual machine, should be provided. If it is &quot;&quot; then it is considered to be already at the remote site, otherwise the actor will look for it locally and stage it to the &lt;i&gt;workdir&lt;/i&gt; before job submission.</configure></property>
+<property name="prop:cmdFileLocal" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specifying whether the cmdFile is locally stored or on the remote target.</configure></property>
+<property name="prop:target" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with ssh.</configure></property>
+<property name="prop:cmdText" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The text of the job specification. The job specification must either  be provided in this parameter or the file name in cmdFile.</configure></property>
+<property name="prop:inputfiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string array of inputfiles. Absolute path names, or relative to current dir of the running java virtual machine, should be provided.</configure></property>
+<property name="prop:Use default fork script" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Boolean flag to indicate if the default fork script should be staged. If bin path is provided the default script is uploaded to bin path, else it is uploaded to the working directory</configure></property>
+<property name="prop:Wait Until Sleep (seconds)" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Amount of time (in seconds) to sleep between checking job status.</configure></property>
+<property name="prop:binary path" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The path to the job manager commands on the target machines. Commands are constructed as &lt;i&gt;binPath/command&lt;/i&gt; and they should be executable this way.</configure></property>
+<property name="prop:workdir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure> The working directory in which the actual job submission command will be executed. It should be an absolute path, or a relative one. In the latter case on remote machine, the directory path will be relative to the user's home directory (coming from the use of ssh). &lt;/p&gt; By default, a new unique sub directory is created within this workdir based on the job id created by kepler. Job is run from this sub directory. This can be overwritten by setting the parameter &quot;use given workdir&quot;</configure></property>
+<property name="prop:remotefiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The string array of remote input files. Absolute path names, or relative to the user home dir on the remote host should be provided.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:27999:771:5">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.job.GenericJobLauncher">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:554:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#ExternalExecutionEnvironmentActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#JobCommand">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[620.0, 230.0]">
+        </property>
+        <property name="" class="ptolemy.vergil.basic.DocAttribute">
+            <property name="description" class="ptolemy.kernel.util.StringAttribute" value="&#10;&lt;p&gt;GenericJobLauncher actor is a generic actor that can create, submit and manage a job on a remote machine accessible through SSH. The user may choose to wait till the job has attained a specific status in the queue - for example till it is Running, Complete, Not in Queue etc.&lt;/p&gt;&#10;&#10;&lt;p&gt;This actor is based on the JobCreator, JobManager, JobSubmitter and JobStatus actors. It abstracts all the actions of these actors, and the control flow required to combine these in a job launching workflow.&lt;/p&gt;&#10;&#10;&lt;p&gt;Five more parameters are configurable in 'expert' mode. They are &quot;job submit options&quot; (optional parameters to pass to submitting a job), &quot;binary path&quot; (the full path to the jobmanager commands on the target machine), &quot;executable file&quot; (executable file's name parameter and port), &quot;use given workdir&quot; (use the value of parameter 'workdir' and doesn't create unique sub directory if selected), &quot;Use default fork script&quot; (flag to set if you want the actor to stage the default fork script). To enable Expert mode, double-click the actor and choose 'Preferences' button. In the popup dialogue, choose 'expert mode'.&lt;/p&gt;&#10;">
+            </property>
+            <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Frankie Kwok, Chandrika Sivaramakrishnan, Jared Chase">
+            </property>
+            <property name="version" class="ptolemy.kernel.util.StringAttribute" value="$Id: GenericJobLauncher.xml 30999 2012-10-31 22:15:59Z jianwu $">
+            </property>
+            <property name="cmdFileLocal (parameter)" class="ptolemy.data.expr.StringParameter" value="Specifying whether the cmdFile is locally stored or on the remote target.">
+            </property>
+            <property name="numTasks (parameter)" class="ptolemy.data.expr.StringParameter" value="The number of tasks for the job - used in a task parallel job">
+            </property>
+            <property name="Wait Until Status (parameter)" class="ptolemy.data.expr.StringParameter" value="Wait until the job has a reached specific status. The available status' that can be reached are: any, wait, running, not in queue, and error.">
+            </property>
+            <property name="Wait Until Sleep (seconds) (parameter)" class="ptolemy.data.expr.StringParameter" value="Amount of time (in seconds) to sleep between checking job status.">
+            </property>
+            <property name="jobOut (port)" class="ptolemy.kernel.util.StringAttribute" value="Logging information of job status query. Useful to inform user about problems at unsuccessful status query but it also prints out job status and jobid on successful query. This token can be used (delaying it with a Sleep actor) to ask its Status again and again until the job is finished or aborted. This port is an output port of type Object.">
+            </property>
+            <property name="logPort (port)" class="ptolemy.kernel.util.StringAttribute" value="Logging information of job status or for any error messages.">
+            </property>
+            <property name="success (port)" class="ptolemy.kernel.util.StringAttribute" value="boolean flag to indicate if job launch was successful">
+            </property>
+            <property name="dependentJob (port)" class="ptolemy.kernel.util.StringAttribute" value="One or more jobs that must successfully complete before this job can run.">
+            </property>
+            <property name="cmdFile (port)" class="ptolemy.kernel.util.StringAttribute" value="The submit file to be used at job submission. Absolute (or relative to current dir of Java) file path should be provided. The job file must be provided here, or the contents can be specified in cmdText.">
+            </property>
+            <property name="scheduler (port)" class="ptolemy.kernel.util.StringAttribute" value="The name of the job scheduler to be used. Should be a name, for which a supporter class exists as org.kepler.job.JobSupport{scheduler}.class">
+            </property>
+            <property name="target (port)" class="ptolemy.kernel.util.StringAttribute" value="The machine to be used at job submission. Target in user@host:port format. If user is not provided, the local username will be used. If port is not provided, the default port 22 will be applied. If target is &quot;local&quot; or empty, all commands will be executed locally.">
+            </property>
+            <property name="cmdText (port)" class="ptolemy.kernel.util.StringAttribute" value="The text of the job specification. The job specification must either  be provided in this parameter or the file name in cmdFile.">
+            </property>
+            <property name="inputfiles (port)" class="ptolemy.kernel.util.StringAttribute" value="The string array of local input files that will be copied to the working directory. Absolute path names, or relative to current dir of the running java virtual machine, should be provided.">
+            </property>
+            <property name="workdir (port)" class="ptolemy.kernel.util.StringAttribute" value="The working directory in which the actual job submission command will be executed. It should be an absolute path, or a relative one. In the latter case on remote machine, the directory path will be relative to the user's home directory (coming from the use of ssh). &lt;/p&gt; By default, a new unique sub directory is created within this workdir based on the job id created by kepler. Job is run from this sub directory. This can be overwritten by setting the parameter &quot;use given workdir&quot;.">
+            </property>
+            <property name="remotefiles (port)" class="ptolemy.kernel.util.StringAttribute" value="The string array of remote input files that will be copied to the working directory. Absolute path names, or relative to the user home dir on the remote host should be provided.">
+            </property>
+            <property name="cmdFile (parameter)" class="ptolemy.data.expr.StringParameter" value="The submit file to be used at job submission. Absolute (or relative to current dir of Java) file path should be provided. The job file must be provided here, or the contents can be specified in cmdText.">
+            </property>
+            <property name="use given workdir (parameter)" class="ptolemy.data.expr.StringParameter" value="By default, Kepler creates a unique sub directory within workdir based on the the job id it creates for the job. Job is run from this sub directory. Set this flag to true if you want job to be run directly from workdir instead of a subdir.">
+            </property>
+            <property name="job submit options (parameter)" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="scheduler (parameter)" class="ptolemy.data.expr.StringParameter" value="The name of the job scheduler to be used. It currently support multiple job schedulers: Condor, PBS, SGE, Fork, NCCS, LoadLeveler, LSF, and can be extended for more. It should be a name, for which a supporter class exists as org.kepler.job.JobSupport{scheduler}.class.">
+            </property>
+            <property name="executable file (parameter)" class="ptolemy.data.expr.StringParameter" value="The executable file to be used at job submission. Absolute path names, or relative to current dir of the running java virtual machine, should be provided. If it is &quot;&quot; then it is considered to be already at the remote site, otherwise the actor will look for it locally and stage it to the &lt;i&gt;workdir&lt;/i&gt; before job submission.">
+            </property>
+            <property name="target (parameter)" class="ptolemy.data.expr.StringParameter" value="The machine to be used at job submission. It should be null, &quot;&quot; or &quot;local&quot; for the local machine or [user@]host to denote a remote machine accessible with ssh.">
+            </property>
+            <property name="cmdText (parameter)" class="ptolemy.data.expr.StringParameter" value="The text of the job specification. The job specification must either  be provided in this parameter or the file name in cmdFile.">
+            </property>
+            <property name="inputfiles (parameter)" class="ptolemy.data.expr.StringParameter" value="The string array of inputfiles. Absolute path names, or relative to current dir of the running java virtual machine, should be provided.">
+            </property>
+            <property name="Use default fork script (parameter)" class="ptolemy.data.expr.StringParameter" value="Boolean flag to indicate if the default fork script should be staged. If bin path is provided the default script is uploaded to bin path, else it is uploaded to the working directory">
+            </property>
+            <property name="binary path (parameter)" class="ptolemy.data.expr.StringParameter" value="The path to the job manager commands on the target machines. Commands are constructed as &lt;i&gt;binPath/command&lt;/i&gt; and they should be executable this way.">
+            </property>
+            <property name="workdir (parameter)" class="ptolemy.data.expr.StringParameter" value=" The working directory in which the actual job submission command will be executed. It should be an absolute path, or a relative one. In the latter case on remote machine, the directory path will be relative to the user's home directory (coming from the use of ssh). &lt;/p&gt; By default, a new unique sub directory is created within this workdir based on the job id created by kepler. Job is run from this sub directory. This can be overwritten by setting the parameter &quot;use given workdir&quot;">
+            </property>
+            <property name="remotefiles (parameter)" class="ptolemy.data.expr.StringParameter" value="The string array of remote input files. Absolute path names, or relative to the user home dir on the remote host should be provided.">
+            </property>
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:554:1">
+        </property>
+        <port name="target" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="cmdFile" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="workdir" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="inputfiles" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="remotefiles" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="scheduler" class="ptolemy.actor.parameters.ParameterPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="jobOut" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="logPort" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+        <port name="success" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+    </relation>
+    <link port="Host.output" relation="relation4"/>
+    <link port="Command Text.output" relation="relation3"/>
+    <link port="SSH Session.target" relation="relation4"/>
+    <link port="SSH Session.identity" relation="relation6"/>
+    <link port="SSH Session.target_out" relation="relation"/>
+    <link port="Display2.input" relation="relation2"/>
+    <link port="Display.input" relation="relation5"/>
+    <link port="IdentityFile.output" relation="relation6"/>
+    <link port="GenericJobLauncher.target" relation="relation"/>
+    <link port="GenericJobLauncher.logPort" relation="relation5"/>
+    <link port="GenericJobLauncher.success" relation="relation2"/>
+    <link port="GenericJobLauncher.cmdText" relation="relation3"/>
+</entity>

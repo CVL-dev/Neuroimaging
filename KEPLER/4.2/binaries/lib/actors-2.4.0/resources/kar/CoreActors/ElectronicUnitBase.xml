@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<property name="ElectronicUnitBase" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:439:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>ElectronicUnitBase defines a unit system that consists of a set of base and derived units.</p>
+
+<p>To view or edit the defined units, right-click the ElectronicUnitBase icon and select Configure Attribute from the drop-down menu.</p></configure></property>
+</property>
+<property name="class" value="ptolemy.data.unit.UnitSystem" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1202:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#UnitSystemMathOperationActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#UnitSystem" class="org.kepler.sms.SemanticType"/>
+<property name="volt" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="electricPotential" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="ampere" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="electricCurrent" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="second" class="ptolemy.data.unit.BaseUnit" value="1.0">
+    <property name="Time" class="ptolemy.data.unit.UnitCategory">
+    </property>
+</property>
+<property name="meter" class="ptolemy.data.expr.Parameter" value="1E+7*ampere*second/volt/(299792458.0^2)">
+</property>
+<property name="kilogram" class="ptolemy.data.expr.Parameter" value="ampere*volt*(second^3)/(meter^2)">
+</property>
+<property name="kelvin" class="ptolemy.data.expr.Parameter" value="1.38065E-23*kilogram*(meter^2)/(second^2)">
+</property>
+<property name="mole" class="ptolemy.data.expr.Parameter" value="6.022142E+23">
+</property>
+<property name="candela" class="ptolemy.data.expr.Parameter" value="kilogram*(meter^2)/(second^3)/683">
+</property>
+<property name="ohm" class="ptolemy.data.expr.Parameter" value="volt/ampere">
+</property>
+<property name="mho" class="ptolemy.data.expr.Parameter" value="ampere/volt">
+</property>
+<property name="coulomb" class="ptolemy.data.expr.Parameter" value="ampere*second">
+</property>
+<property name="esu" class="ptolemy.data.expr.Parameter" value="coulomb/(299792458.0*10)">
+</property>
+<property name="statvolt" class="ptolemy.data.expr.Parameter" value="299.792458*volt">
+</property>
+<property name="gauss" class="ptolemy.data.expr.Parameter" value="statvolt/(meter/100)">
+</property>
+<property name="electronCharge" class="ptolemy.data.expr.Parameter" value="1.6021765E-19*coulomb">
+</property>
+<property name="farad" class="ptolemy.data.expr.Parameter" value="ampere*second/volt">
+</property>
+<property name="henry" class="ptolemy.data.expr.Parameter" value="volt*second/ampere">
+</property>
+<property name="kg" class="ptolemy.data.expr.Parameter" value="kilogram">
+</property>
+<property name="gram" class="ptolemy.data.expr.Parameter" value="kilogram/1000">
+</property>
+<property name="cm" class="ptolemy.data.expr.Parameter" value="meter/100">
+</property>
+<property name="amp" class="ptolemy.data.expr.Parameter" value="ampere">
+</property>
+<property name="planckConstant" class="ptolemy.data.expr.Parameter" value="hBar*2*pi">
+</property>
+<property name="planckConstantReduced" class="ptolemy.data.expr.Parameter" value="1.0545716E-34*joule*second">
+</property>
+<property name="hBar" class="ptolemy.data.expr.Parameter" value="planckConstantReduced">
+</property>
+<property name="lightSpeed" class="ptolemy.data.expr.Parameter" value="299792458.0*meter/second">
+</property>
+<property name="dyne" class="ptolemy.data.expr.Parameter" value="gram*cm/second^2">
+</property>
+<property name="newton" class="ptolemy.data.expr.Parameter" value="kilogram*meter/second^2">
+</property>
+<property name="joule" class="ptolemy.data.expr.Parameter" value="newton*meter">
+</property>
+<property name="erg" class="ptolemy.data.expr.Parameter" value="dyne*cm">
+</property>
+<property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <rect x="-30" y="-15" width="60" height="30" style="fill:grey"></rect>
+      </svg>
+    </configure>
+</property>
+</property>

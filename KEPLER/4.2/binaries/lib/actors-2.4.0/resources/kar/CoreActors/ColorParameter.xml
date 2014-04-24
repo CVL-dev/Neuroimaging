@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<property name="ColorParameter" class="org.kepler.moml.PropertyEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:423:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>
+Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The ColorParameter specifies a color, which can be selected from the Choose menu that is available when the parameter is double-clicked.</p>
+
+<p>Each color is represented by an array of the form {red, green, blue, alpha}. Each value in the array is a double that falls within the range of 0.0 to 1.0 (a blue color might be represented as {0.0,0.0,1.0,1.0), for example). The &quot;alpha&quot; value represents opacity, where 1.0 is opaque, and 0.0 is fully transparent (invisible).</p></configure></property>
+</property>
+<property name="class" value="ptolemy.actor.gui.ColorAttribute" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1187:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#Parameter" class="org.kepler.sms.SemanticType"/>
+<property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+</property>
+<property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+    <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{1.0, 0.0, 1.0, 1.0}">
+    </property>
+</property>
+<property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+    <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:#BB00BB" y="20">-C-</text>
+      </svg>
+    </configure>
+</property>
+<property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+</property>
+</property>

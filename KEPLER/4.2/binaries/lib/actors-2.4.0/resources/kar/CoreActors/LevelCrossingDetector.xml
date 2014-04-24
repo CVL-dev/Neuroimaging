@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<entity name="LevelCrossingDetector" class="ptolemy.kernel.ComponentEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.LevelCrossingDetector" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:10:1" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:10:1" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+      An event detector that converts continuous signals to discrete events when&#10; the input &lt;i&gt;trigger&lt;/i&gt; signal crosses a threshold specified by the &lt;i&gt;level&lt;/i&gt;&#10; parameter. The &lt;i&gt;direction&lt;/i&gt; parameter&#10; can constrain the actor to detect only rising or falling transitions.&#10; It has three possible values, &quot;rising&quot;, &quot;falling&quot;, and &quot;both&quot;, where&#10; &quot;both&quot; is the default. This actor will produce an output whether the&#10; input is continuous or not. That is, if a discontinuity crosses the&#10; threshold in the right direction, it produces an output at the time&#10; of the discontinuity.  If the input is continuous,&#10; then the output is produced when the input is&#10; within &lt;i&gt;errorTolerance&lt;/i&gt; of the level.&#10; The value of the output is given by the &lt;i&gt;value&lt;/i&gt; parameter,&#10; which by default has the value of the &lt;i&gt;level&lt;/i&gt; parameter.&#10; &lt;p&gt;&#10; This actor will not produce an event on its very first firing.&#10; If you need an output at time zero, then you need generate a&#10; level crossing discontinuity at time zero.&#10; &lt;p&gt;&#10; This actor will also not produce an event if the current microstep is 0.&#10; In that case, the output is postponed by one microstep. This ensures&#10; that the output signal, which is discrete, satisfies the piecewise&#10; continuity constraint, and is absent at microstep 0. </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee, Haiyang Zhen</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: LevelCrossingDetector.java 56640 2009-12-14 16:53:16Z bldmastr </configure>
+    </property>
+    <property name="prop:direction" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>A parameter that can be used to limit the detected level crossings&#10;  to rising or falling. There are three choices: &quot;falling&quot;, &quot;rising&quot;, and&#10;  &quot;both&quot;. The default value is &quot;both&quot;.
+      </configure>
+    </property>
+    <property name="prop:errorTolerance" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The error tolerance specifying how close the value of a continuous&#10;  input needs to be to the specified level to produce the output event.&#10;  Note that this indirectly affects the accuracy of the time of the&#10;  output since the output can be produced at any time after the&#10;  level crossing occurs while it is still within the specified&#10;  error tolerance of the level. This is a double with default 1e-4.
+      </configure>
+    </property>
+    <property name="prop:level" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The parameter that specifies the level threshold. By default, it&#10;  contains a double with value 0.0. Note, a change of this&#10;  parameter at run time will not be applied until the next&#10;  iteration.
+      </configure>
+    </property>
+    <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output port. The type is at least the type of the <i>value</i> parameter.</configure>
+    </property>
+    <property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure>
+    </property>
+    <property name="prop:value" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The output value to produce when a level-crossing is detected.&#10;  This can be any data type. It defaults to the same value&#10;  as the &lt;i&gt;level&lt;/i&gt; parameter.
+      </configure>
+    </property>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="trigger" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+</entity>

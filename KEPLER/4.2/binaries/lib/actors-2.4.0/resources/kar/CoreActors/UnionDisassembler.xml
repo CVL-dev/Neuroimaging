@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="UnionDisassembler" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:628:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.UnionDisassembler" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#DataStructureOperation">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Yang Zhao, Marten Lohstroh</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: UnionDisassembler.java 63960 2012-07-13 22:59:42Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;On each firing, read one UnionToken from the input port and send out&#10; the value to the output port that matches the label name of the&#10; input token. This actor is polymorphic. The labels for the UnionToken must&#10; match the names of the output ports.&#10;&#10; This is achieved using three type constraints: &#10; &lt;ul&gt;&#10; &lt;li&gt;&lt;tt&gt;input &gt;= {|x = typeOf(outputPortX), y = typeOf(outputPortY), ..|}&lt;/tt&gt;,&#10; which requires the types of the fields in the input union to be compatible &#10; with the corresponding output ports. This constraint is set in the &#10; constructor of this class.&#10; &lt;/li&gt;&#10; &lt;li&gt;&lt;tt&gt;each output &gt;= the type of the corresponding field inside the input&#10; union&lt;/tt&gt;, which is similar to the usual default constraints, however this&#10; constraint establishes a dependency between fields inside the input union&#10; and the outputs, instead of just between inputs and outputs.&#10; &lt;/li&gt;&#10; &lt;/ul&gt;&#10; Note that the constraint &lt;tt&gt;input &lt;= {|x = GENERAL, y = GENERAL, ..|}&#10; &lt;/tt&gt;, which is used in &lt;code&gt;RecordDisassembler&lt;/code&gt; to force the input&#10; to  contain a corresponding field for each output port, is useless for&#10; &lt;code&gt;UnionDisassembler&lt;/code&gt;. This is due to the inverse width subtyping&#10; of &lt;code&gt;UnionToken&lt;/code&gt;.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.</configure></property>
+</property></entity>

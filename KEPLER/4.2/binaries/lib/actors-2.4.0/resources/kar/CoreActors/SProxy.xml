@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<entity name="SProxy" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:258:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Efrat Jaeger</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The SProxy actor executes a proxy command on a remote Storage Resource Broker (SRB) system. Only a predefined set of SRB commands can be executed via the SProxy actor. To execute a broader range of commands, use the SRBProxyCommands actor. </p>
+
+<p>SRB is a Grid storage management system providing data access, transfer, and search functionality, as well as persistent archiving (usually for files). For more information about SRB, see http://www.sdsc.edu/srb/.</p>
+
+<p>Use the SRBConnect actor to open a connection and create a reference that the SProxy actor can use to access the SRB system. Users must have a valid SRB account to use the SProxy actor. Currently supported commands include: 'list directory', 'copy', 'move', 'remove', 'replicate', 'create directory', 'remove directory', and 'change mode'. </p>
+
+<p>COMMANDS DESCRIPTIONS: </p>
+<p>list directory: List the contents of a remote directory. To use this command, input a path specifying the name of the remote directory to list. The actor outputs the contained file paths as a string, consisting of arrays of path information. Select outputEachFileSeparately to output each file path individually.</p>
+
+<p>copy: Copy files to a new location. Directories are recursively copied. To use this command, input a path specifying a remote file path and a newPath providing the location to which files should be copied. The actor outputs the new file paths as a string, which consists of arrays of path information.</p>
+
+<p>move: Move files to a new location. Directories are recursively moved. To use this command, input a path specifying a remote file path and a newPath providing the location to which files should be moved. The actor outputs the new file paths as a string, which consists of arrays of path information.</p>
+
+<p>remove: Remove files from the remote system. To use this command, input a path specifying the remote file path. Select "forward parent directory (for Srm/Srmdir)" to output a list of the removed files' parent directory paths.</p>
+
+<p>replicate: Replicate a file or directory. Unlike copied objects, replicated objects are considered equivalent in SRB (i.e., they are identified by the same identifier). To use this command, input a path specifying the remote file path and a newPath providing the resource (storage system) to which files should be replicated. The actor outputs the new resource path as a string.</p>
+
+<p>create directory: Create a new directory. To use this command, input a path specifying the new directory path. The actor outputs the new directory path as a string.</p>
+
+<p>remove directory: Remove directories from the SRB system. To use this command, input a path specifying the remote directory. Select "-r (for Srm)" to remove a non-empty directory recursively. Select "forward parent directory (for Srm/Srmdir)" to output a list of the parent directory paths of removed directories. </p>
+
+<p>change mode: Change a specified user's permission to access a file or directory. To use this command, input a path specifying a remote file or directory, a permission string, the username of the person receiving the permission, and the user's mdasDomain.</p></configure></property>
+<property name="port:listedFiles" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the command results. Output varies depending on the selected command and parameters.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure></property>
+<property name="port:newPath" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a new file path. Use for copy, move, and replicate commands.</configure></property>
+<property name="port:mdasDomain" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a user metadata domain, which contains password information (e.g., ~.srb/.MdasAuth). Specify a mdasDomain when using change mode commands. </configure></property>
+<property name="port:exitCode" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the execution exit code. (e.g. "Success" if the actor has completed its task).</configure></property>
+<property name="port:userName" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a user name of the person to whom to grant permission. Specify when using  change mode commands.</configure></property>
+<property name="port:SRBFileSystem" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a reference to an SRB file system (e.g., srb.sdsc.edu). Use the SRBConnect actor to open a connection and create the reference.</configure></property>
+<property name="port:permission" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts file permissions. Specify when using change mode commands.</configure></property>
+<property name="port:path" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a path to a remote SRB file or directory (e.g., {"/pzone/home/kepler_dev.sdsc/test"})</configure></property>
+<property name="prop:hasTrigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Select to activate a trigger input port.</configure></property>
+<property name="prop:command" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The proxy command to perform: list directory, copy, move, remove, replicate, create directory, remove directory, change mode.</configure></property>
+<property name="prop:_r" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to remove non-empty directories recursively. This parameter is only relevant for remove commands.</configure></property>
+<property name="prop:outputEachFileSeparately" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to output the complete directory list at once or to output each file separately. This parameter is only relevant for list directory commands.</configure></property>
+<property name="prop:forwardParentDir" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to output the parent directories of removed files/directories. This parameter is only relevant for remove and remove directory commands.</configure></property>
+
+</property>
+<property name="class" value="org.srb.SProxy" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:1084:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="SRBFileSystem" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="general" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="path" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="{string}" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="newPath" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="permission" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="userName" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="mdasDomain" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="exitCode" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="string" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.kernel.util.Attribute">
+</property>
+</property>
+<property name="trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#SRBExternalInputActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DatabaseInputFunction" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType22" value="urn:lsid:localhost:onto:2:1#DatabaseOutputFunction" class="org.kepler.sms.SemanticType"/>
+<property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+    <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="command">
+    </property>
+    <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+    </property>
+</property>
+</entity>

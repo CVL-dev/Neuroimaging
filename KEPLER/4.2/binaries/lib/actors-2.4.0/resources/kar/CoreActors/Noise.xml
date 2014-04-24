@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<entity name="Noise" class="ptolemy.kernel.ComponentEntity">
+  <property name="class" value="ptolemy.domains.continuous.lib.Noise" class="ptolemy.kernel.util.StringAttribute">
+    <property name="id" value="urn:lsid:ptolemy.org:class:12:2" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="entityId"  value="urn:lsid:ptolemy.org:actor:12:2" class="org.kepler.moml.NamedObjId"/>
+  <property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+    <property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+    <property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+	This actor generates continuous-time noise with a Gaussian distribution.&#10;It provides two rather ad-hoc approximations to a white noise process, depending&#10;on the value of the &lt;i&gt;linearlyInterpolate&lt;/i&gt; parameter. Specifically,&#10;if this parameter is true (the default), then the output signal is&#10;a continuous signal that linearly interpolates between&#10;Gaussian random numbers generated at each sample time chosen by&#10;the solver. If the solver step size is constant or increasing, then these Gaussian&#10;random numbers will be independent. However, if the solver finds itself having&#10;to reduce the step size after performing a speculative execution into the&#10;future, then the random number produced at the end of the reduced&#10;integration step will be correlated with that produced at the beginning&#10;of the integration step. (FIXME: Need a figure to illustrate this.)&#10;&lt;p&gt;&#10;If &lt;i&gt;linearlyInterpolate&lt;/i&gt; is set to false, then this actor will&#10;hold the value of its output constant for the duration of an integration&#10;step. Thus, the output signal is piecewise constant. At each time step&#10;chosen by the solver, the value is given by a new independent Gaussian&#10;random number.  This method has the advantage that samples at all&#10;times chosen by the solver are uncorrelated.&#10;&lt;p&gt;&#10;In both cases, whether &lt;i&gt;linearlyInterpolate&lt;/i&gt; is true or false, if the&#10;solver holds its step size constant, then the resulting signal is&#10;statistically equivalent to filtered white noise. If &lt;i&gt;linearlyInterpolate&lt;/i&gt;&#10;is true, then the power spectrum has the shape of a sinc squared.&#10;If it is false, then it has the shape of the absolute value of a sinc&#10;function. In the latter case, the power is infinite, so the approximation&#10;is not physically realizable. In the former case, the power is finite.&#10;In both cases, sampling the process at the rate of one over the step&#10;size yields a discrete-time white noise process.&#10;&lt;p&gt;&#10;It is worth explaining why we must approximate white noise.&#10;In general, it is not possible in any discretized approximation of a continuous&#10;random process to exactly simulate a white noise process. By definition, a&#10;white noise process is one where any two values at distinct times are&#10;uncorrelated. A naive attempt to simulate this might simply generate&#10;a new random number at each sample time at which the solver chooses&#10;to fire the actor. However, this cannot work in general.&#10;Specifically, the semantics of the continuous domain assumes&#10;that signals are piecewise continuous. The signal resulting from&#10;the above strategy will not be piecewise continuous. If the solver&#10;refines a step size and chooses a point close to a previously calculated&#10;point, the new value produced by such an actor would not be close to the&#10;previously value previously produced. This can result in the solver&#10;assuming that its step size is too large and reducing it until it can&#10;reduce it no more.&#10;&lt;p&gt;&#10;To demonstrate this effect, try connecting a GaussianActor to a&#10;LevelCrossingDetector actor under a ContinuousDirector. An execution&#10;of the model will immediately trigger an exception with a message&#10;like &quot;The refined step size is less than the time resolution, at time...&quot;&#10;Conceptually, with a true white noise process, the level crossing&#10;occurs &lt;i&gt;at all times&lt;/i&gt;, and therefore the exception is,&#10;in fact, the correct response.&#10;&lt;p&gt;&#10;If you modify the above example by sending the output of the&#10;Gaussian actor directly to an Integrator, and then the output&#10;of the Integrator to the LevelCrossingDetector, then the exception&#10;disappears. The Integrator ensures that the signal is piecewise&#10;continuous. This might seem like a reasonable approximation to a&#10;Weiner process, but in fact it is problematic. In particular,&#10;at the times that the LevelCrossingDetector triggers, the&#10;Gaussian actor will actually produce two distinct random numbers&#10;at the same time (at different microsteps). This changes the&#10;statistics of the output in a very subtle way.&#10;&lt;p&gt;&#10;Note that a much more principled noise process is generated&#10;by the ptolemy.domains.continuous.lib.BandlimitedNoise actor.
+      </configure>
+    </property>
+    <property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Edward A. Lee</configure>
+    </property>
+    <property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: Noise.java 56639 2009-12-14 16:51:52Z eal$</configure>
+    </property>
+    <property name="prop:linearlyInterpolate" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>If true, linearly between random number for multistep solvers, and otherwise, perform zero-order hold. This is a boolean that defaults to true.</configure>
+    </property>
+    <property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An output port that broadcasts the generated random numbers.</configure>
+    </property>
+    <property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>An input port that has no declared type (in other words, the port can accept any data type: double, int, array, etc.) If the port is connected, the actor will not fire until the trigger port receives an input token. Connecting the port is optional, but useful when scheduling the actor to perform at a certain time.</configure>
+    </property>
+    <property name="prop:mean" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The mean of the random numbers. The value is a double that defaults to 0.</configure>
+    </property>
+    <property name="prop:seed" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The seed that controls the random number generation. A seed of zero (the default) means that the seed is derived from the current system time and a Java hash code (i.e., System.currentTimeMillis() + hashCode()). With extremely high probability, the default seed will ensure that two distinct actors will have distinct seeds. However, current time may not have enough resolution to ensure that two subsequent executions of the same model have distinct seeds. The parameter contains a long token, initially with value 0.</configure>
+    </property>
+    <property name="prop:standardDeviation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The standard deviation of the random numbers. The value is a double that defaults to 1.</configure>
+    </property>
+    <property name="prop:resetOnEachRun" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Select to reset  the random number generator each time the workflow is run. By default, the generator does not reset. </configure>
+    </property>
+  </property>
+  <property name="output" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="double" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="trigger" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="mean" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="standardDeviation" class="org.kepler.moml.PortAttribute">
+    <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+  </property>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:1:1#ContinuousActor" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType00" value="urn:lsid:localhost:onto:2:1#RandomNumberMathOperationActor" class="org.kepler.sms.SemanticType"/>
+  <property name="semanticType11" value="urn:lsid:localhost:onto:3:1#RandomNumberOperation" class="org.kepler.sms.SemanticType"/>
+  <property name="seed" class="ptolemy.actor.parameters.SharedParameter" value="0L"/>
+</entity>

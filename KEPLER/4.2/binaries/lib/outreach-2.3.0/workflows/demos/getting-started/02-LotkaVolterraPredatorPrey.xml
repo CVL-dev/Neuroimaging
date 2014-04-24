@@ -1,0 +1,456 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="02-LotkaVolterraPredatorPrey" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="9.0.devel">
+    </property>
+    <property name="r" class="ptolemy.data.expr.Parameter" value="2">
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[340.0, 50.0]">
+        </property>
+    </property>
+    <property name="a" class="ptolemy.data.expr.Parameter" value="0.1">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[340.0, 75.0]">
+        </property>
+    </property>
+    <property name="b" class="ptolemy.data.expr.Parameter" value="0.1">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[340.0, 100.0]">
+        </property>
+    </property>
+    <property name="d" class="ptolemy.data.expr.Parameter" value="0.1">
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[340.0, 125.0]">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, 22, 897, 830}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[556, 681]">
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.0,0.4,0.4,1.0}">
+        </property>
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="This model shows the solution to the classic Lotka-Volterra &#10;predator prey dynamics model.  It uses the Continuous Time &#10;domain to solve two coupled differential equations, one that models &#10;the predator population and one that models the prey &#10;population.  The results are plotted as they are calculated showing &#10;both population change and a phase diagram of the dynamics.&#10;&#10;Rich Williams, 2003, NCEAS  ">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1199:1">
+            </property>
+        </property>
+        <property name="semanticType000" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#DocumentationActor">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[40.0, 430.0]">
+        </property>
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{278.0, 340.5}">
+    </property>
+    <property name="DocAttribute" class="ptolemy.vergil.basic.DocAttribute">
+        <property name="description" class="ptolemy.kernel.util.StringAttribute" value="This model shows the solution to the classic Lotka-Volterra predator prey dynamics model.  It uses the Continuous Time domain to solve two coupled differential equations, one that models the predator population and one that models the prey  population.  The results are plotted as they are calculated showing both population change and a phase diagram of the dynamics.&#10;">
+        </property>
+        <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Rich Williams">
+        </property>
+        <property name="r (parameter)" class="ptolemy.data.expr.StringParameter" value="intrinsic rate of prey population increase">
+        </property>
+        <property name="a (parameter)" class="ptolemy.data.expr.StringParameter" value="predation rate coefficient">
+        </property>
+        <property name="b (parameter)" class="ptolemy.data.expr.StringParameter" value="reproduction rate of predators per 1 prey eaten">
+        </property>
+        <property name="d (parameter)" class="ptolemy.data.expr.StringParameter" value="predator mortality rate  ">
+        </property>
+    </property>
+    <property name="Continuous Director" class="ptolemy.domains.continuous.kernel.ContinuousDirector">
+        <property name="startTime" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="1000">
+        </property>
+        <property name="synchronizeToRealTime" class="ptolemy.data.expr.Parameter" value="false">
+        </property>
+        <property name="initStepSize" class="ptolemy.data.expr.Parameter" value="0.1">
+        </property>
+        <property name="maxStepSize" class="ptolemy.data.expr.Parameter" value="1.0">
+        </property>
+        <property name="maxIterations" class="ptolemy.data.expr.Parameter" value="20">
+        </property>
+        <property name="errorTolerance" class="ptolemy.data.expr.Parameter" value="1e-6">
+        </property>
+        <property name="ODESolver" class="ptolemy.data.expr.StringParameter" value="ExplicitRK23Solver">
+        </property>
+        <property name="minStepSize" class="ptolemy.data.expr.Parameter" value="1e-5">
+        </property>
+        <property name="valueResolution" class="ptolemy.data.expr.Parameter" value="1e-8">
+        </property>
+        <property name="runAheadLength" class="ptolemy.data.expr.Parameter" value="0.1">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jie Liu, Haiyang Zheng</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&#10;&lt;p&gt;The Continuous Time (CT) Director is designed to oversee workflows that predict how systems evolve as a function of time (i.e., &quot;dynamic systems&quot;). In CT workflows, the rates of change of parameters are related to the current value or rates of change of other parameters, often in complex and coupled ways that are described by differential equations.&lt;/p&gt;&#10;&#10;&lt;p&gt;When a CT directed workflow is used in Kepler, tokens are passed from one actor to another just as they are in SDF or PN workflows. However, the Continuous Director keeps track of the &quot;time&quot; of each iteration as well as the time between each iteration (i.e., the &quot;time step&quot;). By insuring that the time step is small enough, the director can use simple extrapolations to estimate new values. The Continuous Director then iterates the workflow enough times to reach the desired stop time. The entire process is thus just numerical integration. &lt;/p&gt;&#10;&#10;&lt;p&gt;In general, the relevance of the director's parameters varies depending on the type of  ODE solver algorithm selected. If the algorithm is fixed-step (FowardEulerSolver and BackwardEulerSolver), the director will use the value specified by the initStepSize as the step size. The specified value is a 'guess' at an initial integration step size. If the integral does not look right, changing the initStepSize might provide a better result. For variable-step-size algorithms (ExplicitRK23Solver and ExplicitRK45Solver), step-size will change based on the rate of change of the original function's values (i.e., derivative values). In other words, time-steps within an integration will change throughout the calculation, and the initStepSize is used only as an initial suggestion.&lt;/p&gt;&#10;&#10;&lt;p&gt;Directors with variable-step-size algorithms use the maxStepSize and minStepSize parameters to set upper and lower bounds for estimated step sizes. These parameters are used for adjusting tradeoffs between accuracy and performance. For simple dynamic systems, setting an upper bound with the maxStepSize parameter helps ensure that the algorithm will use an adequate number of time points. For more complex systems, the minStepSize ensures that the algorithm will not consume too many system resources by using increasingly minute step sizes. The minStepSize is also used for the first step after breakpoints.&lt;/p&gt;&#10;&#10;&lt;p&gt;The timeResolution parameter is also used to adjust the tradeoff between accuracy and speed. In general, one would not change this parameter unless a function is known to change substantially in times of less than the parameter's default value, 1E-10 sec. The parameter helps ensure that variable-step-size algorithms do not use unnecessarily small time steps that would result is long execution times. Reducing the parameter's value might produce more accurate results, but at a performance cost.&lt;/p&gt;&#10;&#10;&lt;p&gt;The errorTolerance parameter is only relevant to CT directors that use variable-step-size algorithms. Workflow actors that perform integration error control (e.g., the Integrator actor) will compare their estimated error to the value specified by the errorTolerance parameter. If the estimated error is greater than the errorTolerance, the director will decide that the step size is inaccurate and will decrease it. In most cases, the default value of the errorTolerance parameter (1e-4) does not require change.&lt;/p&gt;&#10;&#10;&lt;p&gt;The startTime and stopTime parameters specify the initial and final time for the integration. By default, the time starts at 0 and runs to infinity. Note: the startTime and stopTime parameters are only applicable when the Continuous Director is at the top level. If a CT workflow is contained in another workflow, the Continuous Director will use the time of its executive director.&lt;/p&gt;&#10;&#10;&lt;p&gt;The maxIterations specifies the number of times the director will iterate to determine a &quot;fixed point.&quot;  A fixed point is reached if two successive iteration steps produce the &quot;same&quot; result. How close values must be to be considered fixed, is specified with the valueResolution parameter, which defaults to 1e-6.&lt;/p&gt;&#10;&#10;&lt;p&gt;The synchronizeToRealTime and runAheadLength parameters are advanced parameters that are genrally only used when a CT workflow is nested in another workflow. For example, if the Continuous Director is embedded in an event-based workflow (e.g., a workflow that uses a DE Director), the Continuous Director will &quot;run ahead&quot; of the global time by the amount specified by the runAheadLength parameter, and prepare to roll back if necessary. The local current time in the sub-workflow is compared with the current time of the executive director. If the local time is later than the global time, then the directed system will rollback to a &quot;known good&quot; state. The &quot;known good&quot; state is the state of the system at the time when local time is equal to the current time of the executive director. In general, the timeResolution and runAheadLength parameters should be left at their default values.&lt;/p&gt;&#10;&#10;&lt;p&gt;For more information about the Continuous Director, see the Ptolemy II User Manual http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign3-domains/ptIIdesign3-domains.pdf.&lt;/p&gt;&#10;</configure></property>
+<property name="prop:initStepSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The initial integration step size. The value is a double that defaults to 0.1.</configure></property>
+<property name="prop:stopTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The final time for the integration. By default, the time starts at 0 and runs to infinity.</configure></property>
+<property name="prop:startTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Starting time of the integration. The value is a double that defaults to 0.0.</configure></property>
+<property name="prop:timeResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The timeResolution parameter is  used to adjust the tradeoff between accuracy and speed. In general, one would not change this parameter unless a function is known to change substantially in times of less than the parameter's default value, 1E-10 sec. The parameter helps ensure that variable-step-size algorithms do not use unnecessarily small time steps that would result is long execution times. Reducing the parameter's value might produce more accurate results, but at a performance cost.</configure></property>
+<property name="prop:ODESolver" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The class name of the normal ODE solver used. The default value is a string: &quot;ptolemy.domains.continuous.kernel.solver.ExplicitRK23Solver&quot;.</configure></property>
+<property name="prop:maxIterations" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maxIterations specifies the number of times the director will iterate to determine a &quot;fixed point.&quot;  A fixed point is reached if two successive iteration steps produce the &quot;same&quot; result. How close values must be to be considered fixed is specified with the valueResolution parameter.</configure></property>
+<property name="prop:runAheadLength" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The runAheadLength parameter is an advanced parameter that is genrally only used when a CT workflow is nested in another workflow. For example, if the Continuous Director is embedded in an event-based workflow (e.g., a workflow that uses a DE Director), the Continuous Director will &quot;run ahead&quot; of the global time by the amount specified by the runAheadLength parameter, and prepare to roll back if necessary. The local current time in the sub-workflow is compared to the current time of the executive director. If the local time is later than the global time, then the directed system will rollback to a &quot;known good&quot; state. The &quot;known good&quot; state is the state of the system at the time when local time is equal to the current time of the executive director. </configure></property>
+<property name="prop:maxStepSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The maxStepSize  parameter sets an upper bound for estimated step sizes. The value is a double that defaults to 1.0.</configure></property>
+<property name="prop:errorTolerance" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The errorTolerance parameter is only relevant to directors that use variable-step-size algorithms. Workflow actors that perform integration error control (e.g., the Integrator actor) will compare their estimated error to the value specified by the errorTolerance parameter. If the estimated error is greater than the errorTolerance, the director will decide that the step size is inaccurate and will decrease it. In most cases, the default value of the errorTolerance parameter (1e-4) does not require change</configure></property>
+<property name="prop:minStepSize" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The minStepSize  parameter sets a lower bound for estimated step sizes. The value is a double that defaults to 1e-5.</configure></property>
+<property name="prop:synchronizeToRealTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Indicator whether the execution will synchronize to real time. The value is a Boolean token that defaults to false. The synchronizeToRealTime is an advanced parameter that is genrally only used when a CT workflow is nested in another workflow.</configure></property>
+<property name="prop:valueResolution" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Value resolution specifies how close values must be to be considered fixed. The default is 1e-6.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:52:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.continuous.kernel.ContinuousDirector">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:directorclass:4:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Director">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Director">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[30.0, 15.0]">
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:director:4:1">
+        </property>
+    </property>
+    <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:436:1">
+    </property>
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:51:9">
+    </property>
+    <entity name="Timed Plotter" class="ptolemy.actor.lib.gui.TimedPlotter">
+        <property name="fillOnWrapup" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="legend" class="ptolemy.kernel.util.StringAttribute" value="Prey, Predator">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={915, 435, 500, 322}, maximized=false}">
+        </property>
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+        </property>
+        <property name="startingDataset" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The TimedPlotter actor reads one or more double tokens via its input multiport and plots each as a separate data set each time the actor iterates. The actor displays the graph on the screen. The horizontal axis represents time.&lt;/p&gt;</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts double tokens that will be plotted over time.</configure></property>
+<property name="prop:fillOnWrapup" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to rescale the plot so that all data is visible. By default, the actor scales the plot to fill the display area.</configure></property>
+<property name="prop:startingDataset" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The starting dataset number. The value must be a non-negative integer. The default is 0.</configure></property>
+<property name="prop:legend" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Annotations that will be displayed with the plot graph. Specify a comma-separated list of values that correspond to the input data sets (e.g., rainfall, temperature, elevation).</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:53:2">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.TimedPlotter">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:890:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Plotter">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GraphicalOutput">
+        </property>
+        <property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#GraphicalAnalysis">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[205.0, 65.0]">
+        </property>
+        <property name="" class="ptolemy.vergil.basic.DocAttribute">
+            <property name="description" class="ptolemy.kernel.util.StringAttribute" value="&lt;p&gt;The TimedPlotter actor reads one or more double tokens via its input multiport and plots each as a separate data set each time the actor iterates. The actor displays the graph on the screen. The horizontal axis represents time.&lt;/p&gt;">
+            </property>
+            <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Edward A. Lee">
+            </property>
+            <property name="version" class="ptolemy.kernel.util.StringAttribute" value="null">
+            </property>
+            <property name="fillOnWrapup (parameter)" class="ptolemy.data.expr.StringParameter" value="Specify whether to rescale the plot so that all data is visible. By default, the actor scales the plot to fill the display area.">
+            </property>
+            <property name="legend (parameter)" class="ptolemy.data.expr.StringParameter" value="Annotations that will be displayed with the plot graph. Specify a comma-separated list of values that correspond to the input data sets (e.g., rainfall, temperature, elevation).">
+            </property>
+            <property name="startingDataset (parameter)" class="ptolemy.data.expr.StringParameter" value="The starting dataset number. The value must be a non-negative integer. The default is 0.">
+            </property>
+            <property name="input (port)" class="ptolemy.kernel.util.StringAttribute" value="A multiport that accepts double tokens that will be plotted over time.">
+            </property>
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:14:1">
+        </property>
+        <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>Timed Plotter</title>
+<xRange min="0.0" max="109.3959102093"/>
+<yRange min="6.576797106987841E-4" max="40.37872082013296"/>
+</plot>?>
+        </configure>
+    </entity>
+    <entity name="XY Plotter" class="ptolemy.actor.lib.gui.XYPlotter">
+        <property name="fillOnWrapup" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={917, 75, 500, 322}, maximized=false}">
+        </property>
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+        </property>
+        <property name="startingDataset" class="ptolemy.data.expr.Parameter" value="0">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jie Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The XYPlotter actor plots (x,y) points and displays the graph. The actor reads x and y double tokens via its two input multiports. Each time the actor iterates, it reads one token from each input channel.  &lt;/p&gt;&#10;&#10;&lt;p&gt;X and Y tokens received on the first channel of the input port&#10; are plotted together, as are the tokens received on the second channels, etc. The two input port must have the same width (i.e., the same number of input channels).&lt;/p&gt;</configure></property>
+<property name="port:inputY" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts doubles representing y-values. The port must have the same width (i.e., number of input channels) as the inputX port.</configure></property>
+<property name="port:inputX" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A multiport that accepts one or more doubles representing x-values. The port must have the same width (i.e., number of input channels) as the inputY port.</configure></property>
+<property name="prop:fillOnWrapup" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Specify whether to rescale the plot so that all data is visible. By default, the actor scales the plot to fill the display area.</configure></property>
+<property name="prop:startingDataset" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The starting dataset number to which data is plotted. The value must be a non-negative integer. The default is 0.</configure></property>
+<property name="prop:legend" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Annotations that will be displayed with the plot graph. Specify a comma-separated list of values that correspond to the input data sets (e.g., rainfall, temperature, elevation).</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org/ns/:21224:54:4">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.gui.XYPlotter">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:887:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#Plotter">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GraphicalOutput">
+        </property>
+        <property name="semanticType22" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:5:1#ScatterPlot">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[205.0, 135.0]">
+        </property>
+        <property name="" class="ptolemy.vergil.basic.DocAttribute">
+            <property name="description" class="ptolemy.kernel.util.StringAttribute" value="&lt;p&gt;The XYPlotter actor plots (x,y) points and displays the graph. The actor reads x and y double tokens via its two input multiports. Each time the actor iterates, it reads one token from each input channel.  &lt;/p&gt;&#10;&#10;&lt;p&gt;X and Y tokens received on the first channel of the input port&#10; are plotted together, as are the tokens received on the second channels, etc. The two input port must have the same width (i.e., the same number of input channels).&lt;/p&gt;">
+            </property>
+            <property name="author" class="ptolemy.kernel.util.StringAttribute" value="Jie Liu">
+            </property>
+            <property name="version" class="ptolemy.kernel.util.StringAttribute" value="null">
+            </property>
+            <property name="fillOnWrapup (parameter)" class="ptolemy.data.expr.StringParameter" value="Specify whether to rescale the plot so that all data is visible. By default, the actor scales the plot to fill the display area.">
+            </property>
+            <property name="legend (parameter)" class="ptolemy.data.expr.StringParameter" value="Annotations that will be displayed with the plot graph. Specify a comma-separated list of values that correspond to the input data sets (e.g., rainfall, temperature, elevation).">
+            </property>
+            <property name="startingDataset (parameter)" class="ptolemy.data.expr.StringParameter" value="The starting dataset number to which data is plotted. The value must be a non-negative integer. The default is 0.">
+            </property>
+            <property name="inputX (port)" class="ptolemy.kernel.util.StringAttribute" value="A multiport that accepts one or more doubles representing x-values. The port must have the same width (i.e., number of input channels) as the inputY port.">
+            </property>
+            <property name="inputY (port)" class="ptolemy.kernel.util.StringAttribute" value="A multiport that accepts doubles representing y-values. The port must have the same width (i.e., number of input channels) as the inputX port.">
+            </property>
+        </property>
+        <property name="derivedFrom" class="org.kepler.moml.NamedObjIdReferralList" value="urn:lsid:kepler-project.org:actor:11:1">
+        </property>
+        <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>XY Plotter</title>
+<xRange min="6.576797106987841E-4" max="9.587825433458939"/>
+<yRange min="7.998753459930935" max="40.37872082013296"/>
+</plot>?>
+        </configure>
+    </entity>
+    <entity name="dn1/dt" class="ptolemy.actor.lib.Expression">
+        <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="r*n1 - a*n1*n2">
+            <property name="_hide" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu, Edward A. Lee, Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The Expression actor evaluates a specified expression (e.g., an addition or multiplication operation), which may reference the values of user-specified input ports, the current time, or the actor's iteration count. The actor outputs the value of the evaluated expression. &lt;/p&gt;&#10;&#10;&lt;p&gt;Expressions are specified in the Ptolemy expression language via the expression parameter. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. &lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the expression parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier &quot;time&quot;; and to the current iteration count by the identifier &quot;iteration.&quot; &lt;/p&gt;&#10;&#10;&lt;p&gt;Input ports are created by the user and correspond to variables used in the specified expression. Currently, the Expression actor does not support input multiports. The actor requires all of its inputs to be present. If inputs are not all present, then the actor will generate an error. &lt;/p&gt;&#10;&#10;&lt;p&gt;Note: the Expression actor can be used instead of many of the arithmetic actors, such as AddSubtract, MultiplyDivide, and TrigFunction. However, those actors will be usually be more efficient, and sometimes more convenient to use.&lt;/p&gt;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the value of the evaluated expression. The actor automatically determines the type based on the type of the input.</configure></property>
+<property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An expression to evaluate. Expressions are specified in the Ptolemy expression language. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. By default, the parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier &quot;time&quot;; and to the current iteration count by the identifier &quot;iteration.&quot;</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:75:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.Expression">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:950:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#MathOperationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[230.0, 260.0]">
+        </property>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="n2" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="n1" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+    </entity>
+    <entity name="dn2/dt" class="ptolemy.actor.lib.Expression">
+        <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="-d*n2 + b*n1*n2">
+            <property name="_hide" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Xiaojun Liu, Edward A. Lee, Steve Neuendorffer</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&lt;p&gt;The Expression actor evaluates a specified expression (e.g., an addition or multiplication operation), which may reference the values of user-specified input ports, the current time, or the actor's iteration count. The actor outputs the value of the evaluated expression. &lt;/p&gt;&#10;&#10;&lt;p&gt;Expressions are specified in the Ptolemy expression language via the expression parameter. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. &lt;/p&gt;&#10;&#10;&lt;p&gt;By default, the expression parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier &quot;time&quot;; and to the current iteration count by the identifier &quot;iteration.&quot; &lt;/p&gt;&#10;&#10;&lt;p&gt;Input ports are created by the user and correspond to variables used in the specified expression. Currently, the Expression actor does not support input multiports. The actor requires all of its inputs to be present. If inputs are not all present, then the actor will generate an error. &lt;/p&gt;&#10;&#10;&lt;p&gt;Note: the Expression actor can be used instead of many of the arithmetic actors, such as AddSubtract, MultiplyDivide, and TrigFunction. However, those actors will be usually be more efficient, and sometimes more convenient to use.&lt;/p&gt;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the value of the evaluated expression. The actor automatically determines the type based on the type of the input.</configure></property>
+<property name="prop:expression" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An expression to evaluate. Expressions are specified in the Ptolemy expression language. For more information about the expression language, see http://ptolemy.eecs.berkeley.edu/papers/05/ptIIdesign1-intro/ptIIdesign1-intro.pdf. By default, the parameter is empty, and attempting to execute the actor without first specifying an expression generates an error. Expressions can refer to the values of inputs by the port name; to the current time by the identifier &quot;time&quot;; and to the current iteration count by the identifier &quot;iteration.&quot;</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:75:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.actor.lib.Expression">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:950:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#MathOperationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#GeneralPurpose">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[230.0, 340.0]">
+        </property>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="n1" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+        <port name="n2" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+        </port>
+    </entity>
+    <entity name="Integraten1" class="ptolemy.domains.continuous.lib.Integrator">
+        <display name="Integrate n1"/>
+        <property name="initialState" class="ptolemy.actor.parameters.PortParameter" value="1">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jie Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&#10;&lt;p&gt;The Integrator actor is used with a Continuous Director to help solve ordinary differential equations (ODEs). The actor helps control the accuracy of the ODE solution by adjusting integration step sizes. The actor has memory, which is its state. &lt;/p&gt;&#10;&#10;&lt;p&gt;The actor has one input port and one output port. Conceptually, the input is the derivative of the output with respect to time. So an ordinary differential equation dx/dt = f(x, t) can be built by: &lt;/p&gt;&#10; &lt;pre&gt;&#10;               +---------------+&#10; &#10;        dx/dt  |               |   x&#10; &#10;    +---------&gt;|   Integrator  |---------+-----&gt;&#10; &#10;    |          |               |         |&#10; &#10;    |          +---------------+         |&#10; &#10;    |                                    |&#10; &#10;    |             |---------------|      |&#10; &#10;    +-------------| f(x, t)       |------+&#10; &#10;                  | Expression    |    &#10;                  |---------------|&#10; &lt;/pre&gt;&#10;&lt;p&gt;The above schematic can be built with two actors: the Integrator and the Expression actor. The Expression actor specifies the integrand of a differential equation. The output of the Expression actor is connected to the input of an Integrator actor. The output of the Integrator is then connected back to the input of the Expression actor. This loop is then iterated a number of times by the Continuous Director, numerically integrating the differential equation.   &#10;&lt;/p&gt;&#10;&#10;&lt;p&gt;The Integrator has one parameter: the initialState, which specifies the initial state of the integrator. Changes to the initialState parameter are ignored after workflow execution starts, unless the initialize() method is called again. The default value of the parameter is 0.0. &lt;/p&gt;&#10;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the &quot;next step&quot; for the integration.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives the derivative of the actor's output with respect to time.</configure></property>
+<property name="prop:initialState" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The initial state of the integrator. The default value is 0.0.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:100:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.continuous.lib.Integrator">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:974:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#CalculusMathOperationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#CalculusOperation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[405.0, 250.0]">
+        </property>
+    </entity>
+    <entity name="Integrator" class="ptolemy.domains.continuous.lib.Integrator">
+        <property name="initialState" class="ptolemy.actor.parameters.PortParameter" value="8">
+        </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Jie Liu</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;&#10;&lt;p&gt;The Integrator actor is used with a Continuous Director to help solve ordinary differential equations (ODEs). The actor helps control the accuracy of the ODE solution by adjusting integration step sizes. The actor has memory, which is its state. &lt;/p&gt;&#10;&#10;&lt;p&gt;The actor has one input port and one output port. Conceptually, the input is the derivative of the output with respect to time. So an ordinary differential equation dx/dt = f(x, t) can be built by: &lt;/p&gt;&#10; &lt;pre&gt;&#10;               +---------------+&#10; &#10;        dx/dt  |               |   x&#10; &#10;    +---------&gt;|   Integrator  |---------+-----&gt;&#10; &#10;    |          |               |         |&#10; &#10;    |          +---------------+         |&#10; &#10;    |                                    |&#10; &#10;    |             |---------------|      |&#10; &#10;    +-------------| f(x, t)       |------+&#10; &#10;                  | Expression    |    &#10;                  |---------------|&#10; &lt;/pre&gt;&#10;&lt;p&gt;The above schematic can be built with two actors: the Integrator and the Expression actor. The Expression actor specifies the integrand of a differential equation. The output of the Expression actor is connected to the input of an Integrator actor. The output of the Integrator is then connected back to the input of the Expression actor. This loop is then iterated a number of times by the Continuous Director, numerically integrating the differential equation.   &#10;&lt;/p&gt;&#10;&#10;&lt;p&gt;The Integrator has one parameter: the initialState, which specifies the initial state of the integrator. Changes to the initialState parameter are ignored after workflow execution starts, unless the initialize() method is called again. The default value of the parameter is 0.0. &lt;/p&gt;&#10;&#10;&#10;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that broadcasts the &quot;next step&quot; for the integration.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that receives the derivative of the actor's output with respect to time.</configure></property>
+<property name="prop:initialState" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The initial state of the integrator. The default value is 0.0.</configure></property>
+</property>        <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:100:1">
+        </property>
+        <property name="class" class="ptolemy.kernel.util.StringAttribute" value="ptolemy.domains.continuous.lib.Integrator">
+            <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:974:1">
+            </property>
+        </property>
+        <property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:1:1#CalculusMathOperationActor">
+        </property>
+        <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#CalculusOperation">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[405.0, 330.0]">
+        </property>
+    </entity>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[132.16796875, 202.46875]">
+        </vertex>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[95.0, 405.0]">
+        </vertex>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="Timed Plotter.input" relation="relation4"/>
+    <link port="Timed Plotter.input" relation="relation3"/>
+    <link port="XY Plotter.inputX" relation="relation3"/>
+    <link port="XY Plotter.inputY" relation="relation4"/>
+    <link port="dn1/dt.output" relation="relation2"/>
+    <link port="dn1/dt.n2" relation="relation4"/>
+    <link port="dn1/dt.n1" relation="relation3"/>
+    <link port="dn2/dt.output" relation="relation5"/>
+    <link port="dn2/dt.n1" relation="relation3"/>
+    <link port="dn2/dt.n2" relation="relation4"/>
+    <link port="Integraten1.derivative" relation="relation2"/>
+    <link port="Integraten1.state" relation="relation3"/>
+    <link port="Integrator.derivative" relation="relation5"/>
+    <link port="Integrator.state" relation="relation4"/>
+</entity>

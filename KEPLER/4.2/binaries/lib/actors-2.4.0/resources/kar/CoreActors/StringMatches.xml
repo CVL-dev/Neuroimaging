@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<entity name="String Matches" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:97:1" class="org.kepler.moml.NamedObjId"/>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Antonio Yordan-Nones, Colin Cochran (contribuor Edward a lee)</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure><p>The StringMatches actor reads a string and compares it to a pattern. The actor outputs true if the pattern matches the string, and false if it does not.</p>
+
+<p>The pattern is specified as a regular expression. For more information about regular expressions, see http://java.sun.com/docs/books/tutorial/extra/regex/index.html.</p> 
+</configure></property>
+<property name="port:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a regular expression, which is compared to the input string. The default is an empty string. The regular expression may also be specified via the pattern parameter.</configure></property>
+<property name="port:matchString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An input port that accepts a string to be compared to a specified regular expression. The string may also be specified via the matchString parameter.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>An output port that indicates whether the input string and regular expression match. The actor outputs true if there is a match, or false if not. </configure></property>
+<property name="prop:pattern" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A regular expression, which is compared to the input string. The default is an empty string. The regular expression may also be specified via the pattern port. </configure></property>
+<property name="prop:matchString" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>A string to be compared to a specified regular expression. The string may also be specified via the matchString port. </configure></property>
+</property>
+<property name="class" value="ptolemy.actor.lib.string.StringMatches" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="urn:lsid:kepler-project.org:class:971:1" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="pattern" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="matchString" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+    <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="semanticType00" value="urn:lsid:localhost:onto:1:1#StringFunctionActor" class="org.kepler.sms.SemanticType"/>
+<property name="semanticType11" value="urn:lsid:localhost:onto:2:1#DataStringOperation" class="org.kepler.sms.SemanticType"/>
+</entity>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11.0, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+    <!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+    <!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+    <!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+    <!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+    <!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+    <!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+    <!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+    <!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+    <!ENTITY ns_svg "http://www.w3.org/2000/svg">
+    <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg
+     xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" i:viewOrigin="276.3354 416.1729" i:rulerOrigin="0 0" i:pageBounds="0 792 612 0"
+     xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     width="62.002" height="42" viewBox="0 0 62.002 42" overflow="visible" enable-background="new 0 0 62.002 42"
+     xml:space="preserve">
+        <switch>
+            <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                </i:pgfRef>
+            </foreignObject>
+            <g i:extraneous="self">
+                <g id="Layer_1" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#4F008000FFFF">
+                    <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M61.002,35c0,3.313-2.686,6-6,6H7
+                        c-3.313,0-6-2.688-6-6V7c0-3.314,2.688-6,6-6h48.002c3.314,0,6,2.686,6,6V35z"/>
+                    <g>
+                        <path i:knockout="Off" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M35.841,5.479
+                            c0.786,0,1.427,0.205,1.923,0.614c0.495,0.408,0.742,0.942,0.743,1.6c0,0.495-0.146,0.884-0.437,1.163
+                            c-0.28,0.28-0.674,0.42-1.18,0.42c-0.646,0-1.131-0.35-1.454-1.051c-0.323-0.711-0.642-1.065-0.954-1.065
+                            c-1.098,0-1.729,3.42-1.891,10.261c-0.043,1.391-0.076,2.473-0.098,3.249c-0.107,3.103-0.29,5.624-0.549,7.563
+                            c-0.248,1.94-0.588,3.409-1.018,4.411c-0.517,1.219-1.196,2.166-2.037,2.845c-0.84,0.689-1.745,1.034-2.715,1.034
+                            c-0.786,0-1.426-0.209-1.922-0.63c-0.506-0.409-0.759-0.942-0.76-1.599c0-0.486,0.141-0.868,0.42-1.147
+                            c0.281-0.271,0.679-0.405,1.196-0.405c0.646,0,1.131,0.345,1.455,1.035c0.333,0.699,0.667,1.05,1.002,1.05
+                            c1.056,0,1.68-3.571,1.875-10.714c0.032-1.196,0.053-2.123,0.064-2.78c0.097-3.092,0.269-5.597,0.517-7.516
+                            c0.248-1.915,0.598-3.408,1.051-4.475c0.517-1.218,1.19-2.165,2.02-2.846C33.934,5.817,34.85,5.479,35.841,5.479z"/>
+                    </g>
+                </g>
+            </g>
+        </switch>
+    </svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cipres-kepler-registry>
+   <!--Paup parsimony-->
+   <actors>
+      <actor-name>InferTreeByParsimony_Paup</actor-name>
+      <app-name>paup</app-name>
+      <app-path-win></app-path-win>
+      <app-path-mac>/Applications/paup4b10-ppc-macosx/paup4b10-ppc-macosx</app-path-mac>
+      <gui-xml-filename>InferTreeByParsimony_Paup.xml</gui-xml-filename>
+      <std-out-error-prefix>Error(#</std-out-error-prefix>
+      <output_param_name>outfile</output_param_name>
+   </actors>
+   
+   <!--Paup ConTree-->
+   <actors>
+      <actor-name>ConsensusTree_Paup</actor-name>
+      <app-name>paup</app-name>
+      <app-path-win></app-path-win>
+      <app-path-mac>/Applications/paup4b10-ppc-macosx/paup4b10-ppc-macosx</app-path-mac>
+      <gui-xml-filename>ConsensusTree_Paup.xml</gui-xml-filename>
+      <std-out-error-prefix>Error(#</std-out-error-prefix>
+      <output_param_name>outfile</output_param_name>
+   </actors>
+   
+   <!--Clustal-->
+   <actors>
+      <actor-name>SequenceAlign_Clustal</actor-name>
+      <app-name>clustal</app-name>
+      <app-path-win>bin/win/clustalw-1.83.exe</app-path-win>
+      <app-path-mac>bin/mac/clustalw-1.83</app-path-mac>
+      <gui-xml-filename>SequenceAlign_Clustal.xml</gui-xml-filename>
+      <std-out-error-prefix>Error:</std-out-error-prefix>
+      <output_param_name>outfile</output_param_name>
+   </actors>
+   
+   <!--seaview-->
+   <actors>
+      <actor-name>AlignmentEditor_Seaview</actor-name>
+      <app-name>seaview</app-name>
+      <app-path-win>bin/win/seaview.exe</app-path-win>
+      <app-path-mac>bin/mac/seaview.app</app-path-mac>
+      <std-out-error-prefix>Error:</std-out-error-prefix>
+      <output_param_name>outfile</output_param_name>
+   </actors>
+   
+</cipres-kepler-registry>

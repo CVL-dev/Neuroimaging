@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<abbreviations>
+    <abb name = "Q">
+    	<min>quartz</min>
+    </abb>
+    <abb name = "A">
+    	<min>k-feldspar</min>
+    	<min>microcline</min>
+    </abb>
+    <abb name = "Plag">
+    	<min>plagioclase</min>
+    </abb>
+    <abb name = "P">
+    	<min>plagioclase</min>
+    </abb>
+    <abb name = "Ol">
+    	<min>olivine</min>
+    </abb>
+    <abb name = "Hbl">
+    	<min>hornblende</min>
+    </abb>
+    <abb name = "Px">
+    	<min>clinopyroxene</min>
+    	<min>orthopyroxene</min>
+    </abb>
+    <abb name = "Opx">
+    	<min>orthopyroxene</min>
+    </abb>
+    <abb name = "Cpx">
+    	<min>clinopyroxene</min>
+    </abb>
+    <abb name = "M">
+    	<min>biotite</min>
+	<min>muscovite</min>
+    	<min>amphibole</min>
+    	<min>olivine</min>
+    	<min>epidote</min>
+    	<min>allanite</min>
+    	<min>garnet</min>
+    	<min>clinopyroxene</min>
+    	<min>orthopyroxene</min>
+    	<min>ilmenite</min>
+    	<min>magnetite</min>
+    	<min>opaques</min>
+    	<min>zircon</min>
+    	<min>apatite</min>
+    	<min>carbonate</min>
+    </abb>
+</abbreviations>

@@ -1,0 +1,6 @@
+core-2.4.^
+common-2.4.^
+module-manager-2.4.^
+configuration-manager-2.4.^
+kepler-tasks-2.4.^
+ptolemy-kepler-2.4.^

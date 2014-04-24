@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="HammingCoder" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:650:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.comm.HammingCoder" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="uncodedRate" class="ptolemy.data.expr.Parameter" value="4">
+</property>
+
+<property name="codedRate" class="ptolemy.data.expr.Parameter" value="7">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Communications">
+</property>
+
+<property name="kepler:input" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="boolean" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Ye Zhou</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: HammingCoder.java 57040 2010-01-27 20:52:32Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Encode the information symbols into Hamming code.&#10; Let &lt;i&gt;k&lt;/i&gt; denotes parameter &lt;i&gt;uncodedRate&lt;/i&gt; and &lt;i&gt;n&lt;/i&gt; denotes&#10; parameter &lt;i&gt;codedRate&lt;/i&gt;. During each firing, the actor consumes&#10; &lt;i&gt;k&lt;/i&gt; bits and encode them into a block of code with length &lt;i&gt;n&lt;/i&gt;.&#10; The rate of the code is &lt;i&gt;k/n&lt;/i&gt;.&#10; &lt;p&gt;&#10; For a Hamming code, &lt;i&gt;k&lt;/i&gt; and &lt;i&gt;n&lt;/i&gt; must satisfy the following:&#10; &lt;i&gt;n&lt;/i&gt; = 2&lt;i&gt;&lt;sup&gt;m&lt;/sup&gt;&lt;/i&gt; - 1&#10; &lt;i&gt;k&lt;/i&gt; = 2&lt;sup&gt;&lt;i&gt;m&lt;/i&gt;&lt;/sup&gt; - 1 - &lt;i&gt;m&lt;/i&gt;;&#10; where &lt;i&gt;m&lt;/i&gt; is any positive integer. Note &lt;i&gt;m&lt;/i&gt; = &lt;i&gt;n&lt;/i&gt; - &lt;i&gt;k&lt;/i&gt;.&#10; It is called the order of the Hamming code. The lowest order is &lt;i&gt;m&lt;/i&gt; = 2,&#10; and (&lt;i&gt;n&lt;/i&gt;, &lt;i&gt;k&lt;/i&gt;) = (3, 1).&#10; &lt;p&gt;&#10; The generator matrix G is defined as:&#10; G&lt;i&gt;&lt;sub&gt;k*n&lt;/sub&gt;&lt;/i&gt; = [I&lt;i&gt;&lt;sub&gt;k&lt;/sub&gt;&lt;/i&gt; | P&lt;i&gt;&lt;sub&gt;k*(n-k)&lt;/sub&gt;&lt;/i&gt; ]&#10; where P is called the parity matrix.&#10; The subscript of a matrix indicates its dimension.&#10; &lt;p&gt;&#10; The parity check matrix H is defined as:&#10; H&lt;sub&gt;&lt;i&gt;(n-k)*n&lt;/i&gt;&lt;/sub&gt; = [P&lt;sup&gt;T&lt;/sup&gt; | I&lt;sub&gt;&lt;i&gt;n-k&lt;/i&gt;&lt;/sub&gt; ]&#10; Each column of H must be one of the non-zero &lt;i&gt;n&lt;/i&gt; = 2&lt;sup&gt;&lt;i&gt;m&lt;/i&gt;&lt;/sup&gt; - 1&#10; combinations of &lt;i&gt;m&lt;/i&gt; bits.&#10; &lt;p&gt;&#10; To generate a Hamming code, the &lt;i&gt;k&lt;/i&gt; information bits is considered&#10; as a row vector &lt;i&gt;&lt;u&gt;X&lt;/u&gt;&lt;/i&gt;. Its Hamming code is&#10; &lt;i&gt;&lt;u&gt;Y&lt;/u&gt;&lt;/i&gt; = &lt;i&gt;&lt;u&gt;X&lt;/u&gt;&lt;/i&gt; * G.&#10; Hence &lt;i&gt;&lt;u&gt;Y&lt;/u&gt;&lt;/i&gt; is a row vector of length &lt;i&gt;n&lt;/i&gt;. The result is&#10; then sent to the output port in sequence.&#10; &lt;p&gt;&#10; For more information on Hamming codes, see Proakis, Digital&#10; Communications, Fourth Edition, McGraw-Hill, 2001, pp. 416-424.&#10; &lt;p&gt;</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port. By default, the type of this output is constrained  to be at least that of the input.</configure></property>
+<property name="port:input" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The input port.  This base class imposes no type constraints except  that the type of the input cannot be greater than the type of the  output.</configure></property>
+<property name="prop:uncodedRate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Integer defining the uncode block size. It should be a positive  integer. Its default value is the integer 4.</configure></property>
+<property name="prop:codedRate" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Integer defining the Hamming code block size.  This parameter should be a non-negative integer.  Its default value is the integer 7.</configure></property>
+</property></entity>

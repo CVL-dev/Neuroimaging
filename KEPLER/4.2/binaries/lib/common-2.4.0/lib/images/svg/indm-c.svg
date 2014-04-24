@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 11.0, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+    <!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+    <!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+    <!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+    <!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+    <!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+    <!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+    <!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+    <!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+    <!ENTITY ns_svg "http://www.w3.org/2000/svg">
+    <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg
+     xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" i:viewOrigin="272.7363 420.1675" i:rulerOrigin="0 0" i:pageBounds="0 792 612 0"
+     xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     width="68.318" height="48.607" viewBox="0 0 68.318 48.607" overflow="visible" enable-background="new 0 0 68.318 48.607"
+     xml:space="preserve">
+        <switch>
+            <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                </i:pgfRef>
+            </foreignObject>
+            <g i:extraneous="self">
+                <g id="Layer_1" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#4F008000FFFF">
+                    <g>
+                        <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M67.318,35c0,3.313-2.633,6-5.883,6H14.369
+                            c-3.25,0-5.883-2.688-5.883-6V7c0-3.314,2.633-6,5.883-6h47.066c3.25,0,5.883,2.686,5.883,6V35z"/>
+                        <path i:knockout="Off" fill="none" stroke="#FFFFFF" stroke-width="4" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                            c-3.314,0-6-2.688-6-6v-28c0-3.313,2.686-6,6-6h48c3.314,0,6,2.687,6,6V40.607z"/>
+                        <path i:knockout="Off" fill="#199698" stroke="#199698" stroke-width="2" d="M62,40.607c0,3.313-2.686,6-6,6H8
+                            c-3.314,0-6-2.688-6-6v-28c0-3.313,2.686-6,6-6h48c3.314,0,6,2.687,6,6V40.607z"/>
+                    </g>
+                    <polygon i:knockout="Off" fill="#FFFFFF" points="56.901,13.555 51.063,7.717 51.063,11.531 6.632,11.531 6.632,15.577
+                        51.063,15.577 51.063,19.393 "/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="12.634" cy="24.768" r="2.333"/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="24.468" cy="27.433" r="2.333"/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="33.801" cy="22.934" r="2.333"/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="45.468" cy="27.599" r="2.333"/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="29.634" cy="34.267" r="2.333"/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="14.801" cy="36.601" r="2.333"/>
+                    <circle i:knockout="Off" fill="#FFFFFF" cx="41.301" cy="38.767" r="2.333"/>
+                </g>
+            </g>
+        </switch>
+    </svg>

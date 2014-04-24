@@ -1,0 +1,869 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="urn:lsid:lsid.ecoinformatics.org:onto:7:1#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="urn:lsid:lsid.ecoinformatics.org:onto:7:1">
+  <owl:Ontology rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified</owl:versionInfo>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SEEK Statistics Ontology</rdfs:label>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SystematicRandomSample">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RandomSample"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="StratifiedRandomSample">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#RandomSample"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Regression">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DependentVariable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The variable of interest being measured</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PredictorVariable"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="IndependentVariable"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Variable"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BinomialSamplingDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NormalSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NegativeBinomialSamplingDistribution"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SamplingDistribution"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="UniformSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PoissanSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GeometricSamplingDistribution"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="OutlierAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Mode">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CentralTendency"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonlinearRegression">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Regression"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CanonicalCorrelationAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CanonicalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReciprocalAveraging">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Range">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MultipleCorrelationAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MultivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CentralTendency">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UnivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PartialCanonicalAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CanonicalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ParallelCoordinatePlot">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="MultiSample"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NumberOfSamples">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SamplingMethods"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AnalysisOfVariance">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultiSample"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Symmetry">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Distribution"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ControlTreatment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Treatment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ModalSample">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PurposiveSample"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling of the typical case</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NormalSamplingDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NegativeBinomialSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UniformSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GeometricSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PoissanSamplingDistribution"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BinomialSamplingDistribution"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PieChart">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalStatisticalAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="StatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Rank">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DataTransformation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FixedVariable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A variable that takes on a specific set of values.  An independent variable whose levels are assigned by the experimenter.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonRandomSample">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#RandomSample"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingMethods"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DotPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MultipleAnalysisOfVariance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AnalysisOfCovariance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="TwoSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BoxAndWhiskerPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Observation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ObservationConcepts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ObservationConcepts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExperimentalObservation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Observation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Quantile">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GeometricSamplingDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UniformSamplingDistribution"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NormalSamplingDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PoissanSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NegativeBinomialSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BinomialSamplingDistribution"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Correlation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Population">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An entire collection of people, animals, plants or things from which data are collected, which we wish to describe or draw conclusions about.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ObservationConcepts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExperimentalDesign"/>
+  <owl:Class rdf:ID="Variance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LogisticRegression">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Regression"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Scaling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DataTransformation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PurposiveSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NonRandomSample"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Non-random sampling of predefined groups</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CoefficientOfVariation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SampleUnit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A person, animal, plant or thing which is actually studied by a researcher; the basic objects upon which a study or experiment is carried out.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ObservationConcepts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExpertSample">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sample of individuals who have expertise in a particular area of interest.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PurposiveSample"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#IndependentVariable">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The variables controlled by the experimenter</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DependentVariable"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CriterionVariable"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ResponseVariable"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="StemAndLeafPlot">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SnowballSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PurposiveSample"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling occurs along a network</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Histogram">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfMultipleMeans">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultiSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PostTestExperimentalObservation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalObservation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RepeatedMeasureExperimentalObservation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalObservation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ConvenienceSample">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling that occurs through the direct selection by the investigator because of ease of access.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NonRandomSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FrequencyDistribution">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Distribution"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CovarianceExperimentalDesign">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalDesign"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ResponseVariable">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The variable of interest being measured, which responds to predictor variables.</rdfs:comment>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#IndependentVariable"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PredictorVariable"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="DiscriminantAnalysis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Operates on data sets for which prespecified, well-defined groups exist.  Assesses relationships between one set of discriminating variables and a single grouping variable, attempting to define the relationship between independent and dependent variables</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultipleCorrelationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Quartile">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfRegression">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UniformSamplingDistribution">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NegativeBinomialSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BinomialSamplingDistribution"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NormalSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GeometricSamplingDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PoissanSamplingDistribution"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="FactorAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#OrdinationAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HeterogeneitySample">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling in order to collect a broad assortment of types, not necessarily proportional to their occurrence</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PurposiveSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ContinuousVariable">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CategoricalVariable"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Variables that take on any value</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="DichotomousVariable"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="BinaryVariable"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#OrdinationAnalysis">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultipleCorrelationAnalysis"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Organizes sampling entities along continuous gradients.  Assesses relationships within a single set of variables; no attempt is made to define the relationship between variables</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PredictorVariable">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ResponseVariable"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CriterionVariable"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DependentVariable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The variable from which a prediction is made</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NegativeBinomialSamplingDistribution">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingDistribution"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PoissanSamplingDistribution"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UniformSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BinomialSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NormalSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GeometricSamplingDistribution"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BlockedExperimentalDesign">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalDesign"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample">
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultiSample"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NumberOfSamples"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BinaryVariable">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ContinuousVariable"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PolarOrdination">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#OrdinationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RepeatedMeasuresExperimentalDesign">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalDesign"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Distribution">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PrincipalComponentsAnalysis">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#OrdinationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CurvilinearRegression">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Regression"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PreTestExperimentalObservation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalObservation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MultipleRegressionAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DichotomousVariable">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ContinuousVariable"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Variables that can take on only two different values</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PoissanSamplingDistribution">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UniformSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NormalSamplingDistribution"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GeometricSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BinomialSamplingDistribution"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NegativeBinomialSamplingDistribution"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DataTransformation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MatchedSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NonRandomSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ClusterAnalysis">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultipleCorrelationAnalysis"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Organizes sampling entities into discrete classes or groups, such that within-group similarity is maximized and among-group similarity is minimized according to some objective criteria</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CanonicalCorrespondenceAnalysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CanonicalAnalysis"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SpatialStatisticalAnalysis">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CategoricalVariable">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ContinuousVariable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A variable whose values represent a set of non-overlapping categories that can be sorted.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SimpleExperimentalDesign">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalDesign"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Skewness">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Distribution"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StandardDeviation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LinearRegression">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Regression"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BarChart">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DiscreteVariable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Variables that take on a small set of possible values that can be counted.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Mean">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CentralTendency"/>
+  </owl:Class>
+  <owl:Class rdf:ID="QuotaSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PurposiveSample"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sampling for a specified number of cases that meet certain requirements</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfVariances">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ObservationConcepts"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A group of units selected from a larger group (the population), from which conclusions about the larger group will be inferred.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Crosstabulation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Median">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CentralTendency"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#RandomSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SamplingMethods"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NonRandomSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FactorialExperimentalDesign">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#ExperimentalDesign"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CanonicalAnalysisOfDiscriminance">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DiscriminantAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CriterionVariable">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#IndependentVariable"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#PredictorVariable"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The variable to be predicted</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#CanonicalAnalysis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Organizes sampling entities along pairs (or larger groupings) of continous gradients.   Reduces the dimensionality of a multivariate data set by condensing a large number of original variables into a smaller set of new composite dimensions with a minimum loss of information.  Often an attempt is made to define the relationship between a set of independent variables and a set of dependent variables.  </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultipleCorrelationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparisonOfMeans">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample">
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultiSample"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NumberOfSamples"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NonmetricMultidimensionalScaling">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#OrdinationAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultiSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NumberOfSamples"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ClusterAreaRandomSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#RandomSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RandomVariable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A numerical value which is determined by the outcomes or events of an experiment.  A random independent variable is one whose levels vary from one replication to another, and are not determined by the experimenter.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Variable"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#BivariateStatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SupervisedClassification">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#DiscriminantAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SimpleRandomSample">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#RandomSample"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ScatterPlot">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#TwoSample"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#GraphicalStatisticAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MultiWayCrossTabulation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#MultivariateStatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NonExperimentalObservation">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Observation"/>
+  </owl:Class>
+  <owl:Class rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Dispersion">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#SingleSample"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#UnivariateStatisticalAnalysis"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NonparametricRegression">
+    <rdfs:subClassOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#Regression"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="isNumberOfSamples">
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NumberOfSamples"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="urn:lsid:lsid.ecoinformatics.org:onto:7:1#hasNumberOfSamples">
+    <rdfs:range rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#NumberOfSamples"/>
+    <rdfs:domain rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#StatisticalAnalysis"/>
+    <owl:inverseOf rdf:resource="urn:lsid:lsid.ecoinformatics.org:onto:7:1#isNumberOfSamples"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A statistical analysis that is applied on a single sample</rdfs:comment>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.0, Build 257)  http://protege.stanford.edu -->

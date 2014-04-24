@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ExecutionTime" class="ptolemy.kernel.ComponentEntity">
+<property name="entityId"  value="urn:lsid:kepler-project.org:actor:613:1" class="org.kepler.moml.NamedObjId"/>
+<property name="class" value="ptolemy.actor.lib.ExecutionTime" class="ptolemy.kernel.util.StringAttribute">
+  <property name="id" value="null" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+
+<property name="firingCountLimit" class="ptolemy.data.expr.Parameter" value="NONE">
+</property>
+
+<property name="NONE" class="ptolemy.data.expr.Parameter" value="0">
+</property>
+
+<property name="executionTime" class="ptolemy.data.expr.Parameter" value="1000L">
+</property>
+
+<property name="realTime" class="ptolemy.data.expr.Parameter" value="false">
+</property>
+
+<property name="granularity" class="ptolemy.data.expr.Parameter" value="400000L">
+</property>
+
+<property name="semanticType00" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#Time">
+</property>
+
+<property name="kepler:output" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="output" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="long" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="false" class="ptolemy.kernel.util.StringAttribute"/>
+</property>
+<property name="kepler:trigger" class="org.kepler.moml.PortAttribute">
+  <property name="direction" value="input" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="dataType" value="unknown" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="isMultiport" value="true" class="ptolemy.kernel.util.StringAttribute"/>
+  <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+</property>
+</property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>null</configure></property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>Edward A. Lee</configure></property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>$Id: ExecutionTime.java 61696 2011-08-02 19:52:10Z cxh $</configure></property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>&#10;Read the input token, if there is one, execute an (uninteresting)&#10; computation to consume a specified amount of real time or to execute&#10; it a fixed number of times, and produce&#10; on the output the actual execution time (in milliseconds). Unlike the&#10; Sleep actor, which suspends the calling thread for the specified&#10; amount of time, this actor performs a computation during the&#10; specified amount of time, thus consuming compute resources.&#10; If &lt;i&gt;realTime&lt;/i&gt; is true, then the number of computations it&#10; performs is not fixed, but rather depends on what the thread&#10; scheduler does. If it is false, then the amount of computation&#10; done is fixed. The default is false.</configure></property>
+<property name="port:output" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The output port.  The type of this port is unspecified.  Derived classes may set it.</configure></property>
+<property name="port:trigger" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The trigger port.  The type of this port is undeclared, meaning  that it will resolve to any data type.</configure></property>
+<property name="prop:firingCountLimit" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If a positive integer, then the number of iterations before the  actor indicates to the scheduler that it is finished by returning  false in its postfire() method.</configure></property>
+<property name="prop:realTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>If true, then the executionTime parameter is  interpreted as milliseconds. If it is false (the default), then the  executionTime parameter is interpreted to specify the number  of cycles of a fixed computation.  Use false to specify  a fixed computational load, and use true to specify an  amount of real time to consume. When this is true,  if the thread executing the fire() method is preempted  during its run, then less computation is done.</configure></property>
+<property name="prop:granularity" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The granularity of the computation. This parameter specifies  the number of additions performed in each invocation of the  (uninteresting) computation. This is a long, which defaults  to 400000, which yields a computation time granularity  of approximately 1msec on a MacBook Pro.</configure></property>
+<property name="prop:executionTime" class="ptolemy.kernel.util.ConfigurableAttribute"><configure>The amount of time to consume. This is either in milliseconds,  if the realTime parameter is set to true, or in the number of  iterations of a fixed computation, if the realTime parameter  is set to false. This is a long  that defaults to 1000L.</configure></property>
+</property></entity>

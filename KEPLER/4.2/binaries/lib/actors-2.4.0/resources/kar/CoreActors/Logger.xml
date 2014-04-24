@@ -1,0 +1,52 @@
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN" "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="Logger" class="ptolemy.kernel.ComponentEntity">
+    <property name="entityId" class="org.kepler.moml.NamedObjId" value="urn:lsid:kepler-project.org:actor:509:1">
+    </property>
+<property name="KeplerDocumentation" class="ptolemy.vergil.basic.KeplerDocumentationAttribute">
+<property name="description" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>null</configure>
+    </property>
+<property name="author" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>Norbert Podhorszki</configure>
+    </property>
+<property name="version" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>$Id: Logger.xml 30507 2012-08-22 23:51:26Z crawl $</configure>
+    </property>
+<property name="userLevelDocumentation" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>
+Log information directed into a file. All Logger actors can write into the
+ same file, if their parameter points to the same file. Format as it is, or
+ XML. text format: date: header: text XML format:
+ 
+ 
+ If the text is empty (or only white spaces), nothing will be written. So you
+ do not need to filter out e.g. empty stderr messages before connecting to
+ this Logger actor.</configure>
+    </property>
+<property name="port:text" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The text to be printed into the log. This port is expects strings.</configure>
+    </property>
+<property name="prop:logfile" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The log file. It can be changed between firings. The file will be created if does not exists, otherwise text will be appended to the existing file.</configure>
+    </property>
+<property name="prop:format" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The format of the logger. Currently "text" or "xml". Other value will mean "text". If different loggers use different format option for the same file, the output will be a mixture of different formats.</configure>
+    </property>
+<property name="prop:header" class="ptolemy.kernel.util.ConfigurableAttribute">
+      <configure>The header information to be printed with the log. Useful to provide an actor name, or some meaningful name. Date is printed independently to the log.</configure>
+    </property>
+</property>    <property name="class" class="ptolemy.kernel.util.StringAttribute" value="org.kepler.actor.Logger">
+        <property name="id" class="ptolemy.kernel.util.StringAttribute" value="urn:lsid:kepler-project.org:class:1209:1">
+        </property>
+    </property>
+    <property name="text" class="org.kepler.moml.PortAttribute">
+        <property name="direction" class="ptolemy.kernel.util.StringAttribute" value="input">
+        </property>
+        <property name="dataType" class="ptolemy.kernel.util.StringAttribute" value="string">
+        </property>
+        <property name="isMultiport" class="ptolemy.kernel.util.StringAttribute" value="false">
+        </property>
+    </property>
+    <property name="semanticType11" class="org.kepler.sms.SemanticType" value="urn:lsid:localhost:onto:2:1#TextualOutput">
+    </property>
+</entity>
