@@ -1,7 +1,7 @@
 clear
 
 NAME=kepler
-VERSION=4.2
+VERSION=2.4
 BUILD_DIR=`pwd`/binaries
 
 DEST_PATH=${NAME^^}/$VERSION
@@ -28,7 +28,7 @@ if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules pack
 if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
 
 module load mesalib 2> /tmp/build_mod_load
-module load kepler/4.2 2> /tmp/build_mod_load
+module load kepler/2.4 2> /tmp/build_mod_load
 CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
 if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate kepler package. Please install it and load it: 'module load kepler' !!!!!\n"
 fi
