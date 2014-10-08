@@ -10,7 +10,7 @@ ModuleFileDescription="graphicsmagick"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.1.9"
+PACKAGE_RELEASE="4.0.7"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
