@@ -10,7 +10,7 @@ ModuleFileDescription="register"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.2"
+PACKAGE_RELEASE="4.0.6"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -21,7 +21,7 @@ SOURCE_BUILD_FLAG="ON"
 # Set RPM package dependency requires, using following string format and 
 # delimited by ",". <package1 >= version, package2 >= version, .....>
 #
-RPM_PACKAGE_REQUIRES="cvl-modules3_2_9,freeglut, cvl-mesalib9_1,cvl-libjpeg-turbo1_3_0,cvl-minc2_1_0,cvl-netcdf4_1_1,cvl-hdf51_8_5,cvl-bicpl1_4_6"
+RPM_PACKAGE_REQUIRES="freeglut, cvl-mesalib9_1,cvl-libjpeg-turbo1_3_0,cvl-minc2_1_0,cvl-netcdf4_1_1,cvl-hdf51_8_5,cvl-bicpl1_4_6"
 
 #
 # Source configure file.
