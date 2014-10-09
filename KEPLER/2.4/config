@@ -10,7 +10,7 @@ ModuleFileDescription="kepler"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.5"
+PACKAGE_RELEASE="4.0.6"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -21,7 +21,7 @@ SOURCE_BUILD_FLAG="ON"
 # Set RPM package dependency requires, using following string format and 
 # delimited by ",". <package1 >= version, package2 >= version, .....>
 #
-RPM_PACKAGE_REQUIRES="cvl-modules3_2_9, cvl-mesalib9_1, java-1.6.0-openjdk"
+RPM_PACKAGE_REQUIRES="cvl-mesalib9_1, java-1.7.0-openjdk"
 
 #
 # Source configure file.
