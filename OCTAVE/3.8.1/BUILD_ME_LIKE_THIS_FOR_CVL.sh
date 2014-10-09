@@ -24,7 +24,7 @@ rm -rf $BUILD_DIR
 
 if [ ! -f /etc/profile.d/modules.sh ]; then echo "ERROR: Modules package is not installed !!!!!"; exit -1; fi;
 
-./configure --prefix=$BUILD_DIR/$NAME/$VERSION --with-hdf5-includedir="/usr/local/hdf5/1.8.5/include" --with-hdf5-libdir="/usr/local/hdf5/1.8.5/lib" CPPFLAGS="-I/usr/local/hdf5/1.8.5/include" LDFLAGS="-L/usr/local/hdf5/1.8.5/lib" && make && make install
+./configure --prefix=$BUILD_DIR/$NAME/$VERSION --with-hdf5-includedir="/usr/local/hdf5/1.8.5/include" --with-hdf5-libdir="/usr/local/hdf5/1.8.5/lib" CPPFLAGS="-I/usr/local/hdf5/1.8.5/include" LDFLAGS="-L/usr/local/hdf5/1.8.5/lib" --without-qhull && make && make install
 if [ $? -ne 0 ]; then
         echo "Build aborted! Check for errors..."
         exit -1
