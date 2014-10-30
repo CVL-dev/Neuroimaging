@@ -1,5 +1,7 @@
 #!/bin/bash
 
+chmod 755 /usr/local/daris-integration/0.9.14/bin/*.sh
+
 if [ ! -f /etc/mediaflux/servicerc ]; then
 	if [ ! -d /etc/mediaflux ]; then
 		mkdir /etc/mediaflux

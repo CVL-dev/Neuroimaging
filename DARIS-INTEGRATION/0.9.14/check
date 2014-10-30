@@ -11,5 +11,3 @@ INSTALL_DIR=$3
 if [ ! -f ${INSTALL_DIR}/validate_module.sh ]; then
     cp ${SOURCE_DIR}/validate_module.sh ${INSTALL_DIR}
 fi
-
-echo -e "$SOURCE_DIR\n$BUILD_DIR\n$INSTALL_DIR" > /tmp/check.txt
