@@ -26,7 +26,6 @@ echo -e "***********************************************************************
 
 rm -rf $NAME-$VERSION-sources.tar.gz
 rm -rf $BUILD_DIR
-mkdir -p ./etc/profile.d
 
 mkdir -p $BUILD_DIR/$NAME/$VERSION
 
@@ -43,29 +42,6 @@ if [ $? -ne 0 ]; then
 fi
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
 cp $SOURCES/Scripts/* $BUILD_DIR/$NAME/$VERSION/bin
-
-cd $CURRENT
-rm -rf ./etc/profile.d/ants_modules.sh
-cat > ./etc/profile.d/ants_modules.sh <<EOF
-#!/bin/bash
-echo -n "Checking ANTS 'modules' requirements..."
-if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules package is not installed !!!!!\n"; fi;
-
-. /etc/profile.d/modules.sh
-
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-
-module load ants/1.9.4 2> /tmp/build_mod_load
-CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
-if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate ants package. Please install it and load it: 'module load ants' !!!!!\n"
-fi
-
-rm -rf /tmp/build_mod_load
-export ANTSPATH=/usr/local/$NAME/$VERSION/bin
-
-echo -e "Finished.\n"
-EOF
-chmod 777 ./etc/profile.d/ants_modules.sh
 
 TARGET=$CURRENT/$NAME-$VERSION-binaries.tar.gz
 rm -rf $TARGET

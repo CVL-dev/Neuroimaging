@@ -10,7 +10,7 @@ ModuleFileDescription="ants"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.7"
+PACKAGE_RELEASE="4.0.8"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -71,7 +71,7 @@ function PatchCommand()
 # Module file environment setting, multiple lines should be delimited by ";"
 # Note: Certain characters such as " and $ need be escaped by "\"
 #
-#EnvironmentModuleList="
+EnvironmentModuleList="setenv ANTSPATH /usr/local/\$name/\$ver/bin"
 #prepend-path --delim \" \" JPEG_CFLAGS -I/usr/local/\$name/\$ver/include;
 #prepend-path --delim \" \" JPEG_LDFLAGS -L/usr/local/\$name/\$ver/lib;
 #prepend-path --delim \" \" JPEG_LDFLAGS -lturbojpeg;
@@ -90,7 +90,7 @@ function PatchCommand()
 # "<Source>:<Destination>", multiple lines must be delimited by ";". 
 # Source files must be available in current source directory.
 #
-PackageInstallDirectoryList=etc:/
+#PackageInstallDirectoryList=
 
 #
 # Set menu layout in format <project_type>:<application_menu>. If this is not 
@@ -180,6 +180,8 @@ INSTALL_MODULE_FILE="ON"
 #
 #InstallDirectory=
 
+
+
 #
 # Package auto dependency check flag, "true" for enabling the check, "false"
 # for not.
@@ -191,7 +193,7 @@ AutoDependencyCheck="true"
 # should be available in the source location. Edit following variable for 
 # file name (no path) and only one script can be defined.
 #
-#PreInstallScript="cvl-license-installer.sh"
+PreInstallScript="pre-install.sh"
 
 #
 # Post installation script for RPM package only. The bash script file 
@@ -279,5 +281,11 @@ case "$1" in
         ;;
     -z|--source-build-flag)
         echo -n ${SOURCE_BUILD_FLAG}
+        ;;
+    -x1|--pre-uninstall-script-file)
+        echo -n ${PreUninstallScript}
+        ;;
+    -x2|--post-uninstall-script-file)
+        echo -n ${PostUninstallScript}
         ;;
 esac
