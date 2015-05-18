@@ -1,0 +1,5 @@
+#!/bin/sh
+module load mesalib
+module load glu
+module load libjpeg-turbo
+Slicer
