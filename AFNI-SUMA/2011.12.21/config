@@ -10,7 +10,7 @@ ModuleFileDescription="afni-suma"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.6"
+PACKAGE_RELEASE="4.0.7"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -71,7 +71,7 @@ function PatchCommand()
 # Module file environment setting, multiple lines should be delimited by ";"
 # Note: Certain characters such as " and $ need be escaped by "\"
 #
-#EnvironmentModuleList="
+EnvironmentModuleList="module load libjpeg-turbo;module load mesalib;module load glu"
 #prepend-path --delim \" \" JPEG_CFLAGS -I/usr/local/\$name/\$ver/include;
 #prepend-path --delim \" \" JPEG_LDFLAGS -L/usr/local/\$name/\$ver/lib;
 #prepend-path --delim \" \" JPEG_LDFLAGS -lturbojpeg;
@@ -90,7 +90,7 @@ function PatchCommand()
 # "<Source>:<Destination>", multiple lines must be delimited by ";". 
 # Source files must be available in current source directory.
 #
-PackageInstallDirectoryList=etc:/
+#PackageInstallDirectoryList=etc:/
 
 #
 # Set menu layout in format <project_type>:<application_menu>. If this is not 
@@ -145,7 +145,7 @@ MenuDirectory="AFNI/SUMA:~/suma_logo.png"
 #
 # Multiple lines should be delimited by ";".
 #
-MenuDesktop="bin/afni_cvl.sh:Afni GUI:~/afnigui_logo.png:false;bin/suma_cvl.sh:Suma GUI:~/suma_logo.png:false"
+MenuDesktop="bin/afni:Afni GUI:~/afnigui_logo.png:false;bin/suma:Suma GUI:~/suma_logo.png:false"
 
 #
 # Set library dependencies in following format (version is optional):
@@ -191,7 +191,7 @@ AutoDependencyCheck="true"
 # should be available in the source location. Edit following variable for 
 # file name (no path) and only one script can be defined.
 #
-#PreInstallScript="cvl-license-installer.sh"
+PreInstallScript="pre-install.sh"
 
 #
 # Post installation script for RPM package only. The bash script file 
