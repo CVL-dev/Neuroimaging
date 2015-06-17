@@ -42,26 +42,6 @@ fi
 echo "This is a binary build" > $INSTALL_DIR/$NAME/$VERSION/readme.txt
 
 cd $CURRENT_DIR
-rm -rf ./etc/profile.d/dnifti_modules.sh
-cat > ./etc/profile.d/dnifti_modules.sh <<EOF
-#!/bin/bash
-echo -n "Checking DNIFTI 'modules' requirements..."
-if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules package is not installed !!!!!\n"; fi;
-
-. /etc/profile.d/modules.sh
-
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-
-module load dnifti/2.30.0 2> /tmp/build_mod_load
-CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
-if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate dnifti package. Please install it and load it: 'module load dnifti' !!!!!\n"
-fi
-
-rm -rf /tmp/build_mod_load
-
-echo -e "Finished.\n"
-EOF
-chmod 777 ./etc/profile.d/dnifti_modules.sh
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $INSTALL_DIR
