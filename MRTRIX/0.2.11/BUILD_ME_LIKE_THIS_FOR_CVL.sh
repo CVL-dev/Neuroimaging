@@ -23,7 +23,6 @@ echo -e "***********************************************************************
 rm -rf $NAME-$VERSION-sources.tar.gz
 rm -rf $BUILD_DIR
 mkdir -p $BUILD_DIR/$NAME/$VERSION/lib
-mkdir -p ./etc/profile.d
 
 ./build clean
 ./build linkto=
@@ -35,27 +34,6 @@ mv ./bin $BUILD_DIR/$NAME/$VERSION
 cp ./lib/*.so $BUILD_DIR/$NAME/$VERSION/lib
 
 echo "This is a binary build" > $BUILD_DIR/$NAME/$VERSION/readme.txt
-
-rm -rf ./etc/profile.d/mrtrix_modules.sh
-cat > ./etc/profile.d/mrtrix_modules.sh <<EOF
-#!/bin/bash
-echo -n "Checking MRTRIX 'modules' requirements..."
-if [ ! -f /etc/profile.d/modules.sh ]; then echo -e "FAILED\nERROR: Modules package is not installed !!!!!\n"; fi;
-
-. /etc/profile.d/modules.sh
-
-if [ ! -f /tmp/build_mod_load ]; then touch /tmp/build_mod_load; chmod 777 /tmp/build_mod_load; fi;
-
-module load mrtrix/0.2.11 2> /tmp/build_mod_load
-CHECK_SIZE=\`stat -c%s /tmp/build_mod_load\`
-if [ \$CHECK_SIZE -ne 0 ]; then echo -e "FAILED\nERROR: Could not locate mrtrix package. Please install it and load it: 'module load mrtrix' !!!!!\n"
-fi
-
-rm -rf /tmp/build_mod_load
-
-echo -e "Finished.\n"
-EOF
-chmod 777 ./etc/profile.d/mrtrix_modules.sh
 
 rm -rf $NAME-$VERSION-binaries.tar.gz
 tar cvfz $NAME-$VERSION-binaries.tar.gz $BUILD_DIR
