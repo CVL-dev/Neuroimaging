@@ -3,6 +3,7 @@ clear
 NAME=nimrod
 VERSION=4.0.0
 BUILD_DIR=`pwd`/nimrod_build
+NIMROD_WRAPPER=`pwd`/nimrod
 
 DEST_PATH=${NAME^^}/$VERSION
 
@@ -34,6 +35,9 @@ fi
 rm -rf $NAME-$VERSION-sources.tar.gz
 
 # copy over into build dir (needed coz silly nimrod uses prefix to set runtime config instead of more flexible mechanisms) 
+# before wrap nimrod coz of cvl requirements ...
+mv /usr/local/$NAME/$VERSION/bin/nimrod /usr/local/$NAME/$VERSION/bin/nimrod-wrapped
+cp -f $NIMROD_WRAPPER /usr/local/$NAME/$VERSION/bin
 cp -r /usr/local/$NAME $BUILD_DIR
 rm -rf /usr/local/$NAME
 

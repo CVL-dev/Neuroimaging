@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export NIMROD_HOSTNAME=$(ifconfig eth0 | sed '/inet\ /!d;s/.*r://g;s/\ .*//g')
+export PSQL_LOCATION=$(whereis psql | awk '{print substr($2, 0, length($2)-length("/psql"))}')
+
+if [ ! -f ~/.nimrodrc ]; then touch ~/.nimrodrc; fi;
+if [ ! -d ~/.nimrod/experiments ]; then mkdir -p ~/.nimrod/experiments; fi;
+
+nimrod-wrapped "$@"

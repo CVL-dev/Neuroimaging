@@ -26,4 +26,3 @@ if (${PROJECT_NAME}_LOCAL_CONFIG)
 endif(${PROJECT_NAME}_LOCAL_CONFIG)
 
 include(CvlBuildConfig)
-

@@ -37,7 +37,7 @@ chown nimrod:nimrod /tmp/db_create_lang.sql &>> /tmp/post-install.log
 su -c "su - nimrod <<EOF
 psql -f /tmp/db_create_lang.sql &>> /tmp/post-install.log
 rm -rf /tmp/db_create_lang.sql &>> /tmp/post-install.log
-source /etc/profile.d/nimrod_modules.sh &>> /tmp/post-install.log
+module load nimrod &>> /tmp/post-install.log
 nimrod dbcreate &>> /tmp/post-install.log
 EOF
 "
