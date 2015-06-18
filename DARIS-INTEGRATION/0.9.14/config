@@ -10,7 +10,7 @@ ModuleFileDescription="daris-integration"
 #
 # Package release number.
 #
-PACKAGE_RELEASE="4.0.7"
+PACKAGE_RELEASE="4.0.8"
 
 #
 # For source package, set it "ON", for binary package, set it "OFF".
@@ -72,7 +72,7 @@ function PatchCommand()
 # Note: Certain characters such as " and $ need be escaped by "\"
 #
 #prepend-path --delim \" \" TISSUE_STACK_ENV /usr/local/\$name/\$ver/tissuestack_env
-#EnvironmentModuleList=""
+EnvironmentModuleList="setenv MFLUX_HOME /usr/local/\$name/\$ver;setenv MFLUX_BIN /usr/local/\$name/\$ver/bin"
 #
 # Install configuration files to package in format of "<Source>:<Destination>",
 # multiple lines must be delimited by ";". Source files must be available in
@@ -85,7 +85,7 @@ function PatchCommand()
 # "<Source>:<Destination>", multiple lines must be delimited by ";". 
 # Source files must be available in current source directory.
 #
-PackageInstallDirectoryList=etc:/
+#PackageInstallDirectoryList=etc:/
 
 #
 # Set menu layout in format <project_type>:<application_menu>. If this is not 
@@ -186,7 +186,7 @@ AutoDependencyCheck="true"
 # should be available in the source location. Edit following variable for 
 # file name (no path) and only one script can be defined.
 #
-#PreInstallScript="pre-install.sh"
+PreInstallScript="pre-install.sh"
 
 #
 # Post installation script for RPM package only. The bash script file 
